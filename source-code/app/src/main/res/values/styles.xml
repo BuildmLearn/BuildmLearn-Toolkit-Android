@@ -1,8 +1,64 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+
+    <style name="Base.AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark</item>
+        <item name="colorAccent">@color/color_accent</item>
+        <item name="android:textColorLink">?attr/colorAccent</item>
+
+        <item name="activatedBackgroundIndicator">@drawable/activated_background</item>
+    </style>
+
+    <style name="AppTheme" parent="Base.AppTheme">
+        <item name="android:textColorSecondary">@color/secondary_text</item>
+        <item name="android:listViewStyle">@style/ListView.Buildmlearn</item>
+        <item name="android:scrollViewStyle">@style/ScrollView.Buildmlearn</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar" tools:ignore="newApi">
+        <item name="windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <!-- Allows the action mode icons to be shown on top of the Toolbar -->
+        <item name="windowActionModeOverlay">true</item>
+    </style>
+
+    <style name="MainMenuItem" parent="TextAppearance.AppCompat.Body2">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/main_menu_item_height</item>
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:paddingLeft">@dimen/main_menu_padding</item>
+        <item name="android:textSize">@dimen/main_menu_text_size</item>
+        <item name="android:textColor">@color/navigation_drawer_listview</item>
+        <item name="android:drawablePadding">@dimen/main_menu_drawable_padding</item>
+    </style>
+
+    <style name="AuxMenuItem" parent="TextAppearance.AppCompat.Body2">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/main_menu_item_height</item>
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:textSize">@dimen/main_menu_text_size</item>
+        <item name="android:paddingLeft">@dimen/main_menu_padding</item>
+        <item name="android:drawablePadding">@dimen/main_menu_drawable_padding</item>
+        <item name="android:textColor">@color/navigation_drawer_listview</item>
+
+    </style>
+
+    <style name="Toolbar.Buildmlearn" parent="Widget.AppCompat.Toolbar">
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+    </style>
+
+    <style name="ListView.Buildmlearn" parent="android:Widget.ListView.White">
+        <item name="android:listSelector">?attr/selectableItemBackground</item>
+        <item name="android:fadingEdge">none</item>
+    </style>
+
+    <style name="ScrollView.Buildmlearn" parent="android:Widget.ScrollView">
+        <!-- Fading edges were enabled by default on older devices and are now deprecated. -->
+        <item name="android:fadingEdge">none</item>
     </style>
 
 </resources>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Drawable used as a background for activated items. -->
+    <attr name="activatedBackgroundIndicator" format="reference" />
+</resources>
