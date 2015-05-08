@@ -16,28 +16,23 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import org.buildmlearn.toolkit.R;
-import org.buildmlearn.toolkit.model.NavigationAuxMenuItem;
-import org.buildmlearn.toolkit.model.NavigationDrawerMenu;
-import org.buildmlearn.toolkit.model.NavigationMenuItem;
-
-import java.util.ArrayList;
+import org.buildmlearn.toolkit.model.Section;
 
 /**
  * Created by Abhishek on 21/04/15.
  */
 public class NavigationDrawerMenuAdapter extends BaseAdapter {
 
+    private Section[] sections = Section.values();
     private LayoutInflater inflater;
     private int currentSectionForegroundColor;
     private int currentSectionBackgroundColor;
-    private ArrayList<NavigationMenuItem> menus;
     private Context context;
 
-    public NavigationDrawerMenuAdapter(Context context, LayoutInflater inflater, ArrayList<NavigationMenuItem> menus) {
+    public NavigationDrawerMenuAdapter(Context context, LayoutInflater inflater) {
         this.inflater = inflater;
         this.context = context;
         // Select the primary color to tint the current section
-        this.menus = menus;
         TypedArray a = context.getTheme().obtainStyledAttributes(new int[]{R.attr.colorPrimary});
         try {
             currentSectionForegroundColor = a.getColor(0, context.getResources().getColor(R.color.color_primary));
@@ -49,12 +44,12 @@ public class NavigationDrawerMenuAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return menus.size();
+        return sections.length;
     }
 
     @Override
-    public NavigationMenuItem getItem(int position) {
-        return menus.get(position);
+    public Section getItem(int position) {
+        return sections[position];
     }
 
     @Override
@@ -65,22 +60,21 @@ public class NavigationDrawerMenuAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        NavigationMenuItem menu = getItem(position);
-        if (menu.menuType() == NavigationMenuItem.PROJECT_MENU) {
+        Section menu = getItem(position);
+        if (menu.getType() == Section.ACTIVITY || menu.getType() == Section.FRAGMENT ) {
             if (convertView == null) {
                 convertView = inflater.inflate(R.layout.item_main_menu, parent, false);
             }
-            NavigationDrawerMenu projectMenu = (NavigationDrawerMenu) menu;
             TextView tv = (TextView) convertView.findViewById(R.id.section_text);
-            SpannableString sectionTitle = new SpannableString(context.getString(projectMenu.getTitleResourceId()));
+            SpannableString sectionTitle = new SpannableString(context.getString(menu.getTitleResId()));
             Drawable sectionIcon;
             if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                sectionIcon = context.getDrawable(projectMenu.getIconResId());
+                sectionIcon = context.getDrawable(menu.getIconResId());
             } else {
-                sectionIcon = context.getResources().getDrawable(projectMenu.getIconResId());
+                sectionIcon = context.getResources().getDrawable(menu.getIconResId());
             }
             int backgroundColor;
-            if (projectMenu.isSelected()) {
+            if (menu.isSelected()) {
                 // Special color for the current section
 //            sectionTitle.setSpan(new StyleSpan(Typeface.BOLD), 0, sectionTitle.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 sectionTitle.setSpan(new ForegroundColorSpan(currentSectionForegroundColor), 0, sectionTitle.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -93,29 +87,11 @@ public class NavigationDrawerMenuAdapter extends BaseAdapter {
             tv.setText(sectionTitle);
             tv.setCompoundDrawablesWithIntrinsicBounds(sectionIcon, null, null, null);
             tv.setBackgroundColor(backgroundColor);
-        } else if (menu.menuType() == NavigationMenuItem.SECTION) {
+        } else if (menu.getType() == Section.SECTION_DIVIDER) {
             if (convertView == null) {
                 convertView = inflater.inflate(R.layout.item_section_divider, parent, false);
             }
-        } else {
-            if (convertView == null) {
-                convertView = inflater.inflate(R.layout.item_aux_menu, parent, false);
-            }
-            NavigationAuxMenuItem projectMenu = (NavigationAuxMenuItem) menu;
-            TextView tv = (TextView) convertView.findViewById(R.id.section_text);
-            SpannableString sectionTitle = new SpannableString(context.getString(projectMenu.getTitle()));
-            Drawable sectionIcon;
-            if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                sectionIcon = context.getDrawable(projectMenu.getIconResId());
-            } else {
-                sectionIcon = context.getResources().getDrawable(projectMenu.getIconResId());
-            }
-            int backgroundColor = Color.TRANSPARENT;
-            tv.setText(sectionTitle);
-            tv.setCompoundDrawablesWithIntrinsicBounds(sectionIcon, null, null, null);
-            tv.setBackgroundColor(backgroundColor);
         }
-
         return convertView;
     }
 }

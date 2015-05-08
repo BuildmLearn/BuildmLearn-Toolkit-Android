@@ -24,12 +24,7 @@ import android.widget.Toast;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.adapter.NavigationDrawerMenuAdapter;
-import org.buildmlearn.toolkit.model.NavigationAuxMenuItem;
-import org.buildmlearn.toolkit.model.NavigationDrawerMenu;
-import org.buildmlearn.toolkit.model.NavigationMenuItem;
-import org.buildmlearn.toolkit.model.SectionDivider;
-
-import java.util.ArrayList;
+import org.buildmlearn.toolkit.model.Section;
 
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.
@@ -66,7 +61,8 @@ public class NavigationDrawerFragment extends Fragment {
     private int mCurrentSelectedPosition = 0;
     private boolean mFromSavedInstanceState;
     private boolean mUserLearnedDrawer;
-    private ArrayList<NavigationMenuItem> menus;
+    private Section[] menus;
+//    private ArrayList<BaseMenuItem> menus;
 
     public NavigationDrawerFragment() {
     }
@@ -106,31 +102,22 @@ public class NavigationDrawerFragment extends Fragment {
         mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                for (NavigationMenuItem menu : menus) {
-                    if (menu.menuType() == NavigationMenuItem.PROJECT_MENU)
-                        ((NavigationDrawerMenu) menu).setIsSelected(false);
-                }
+                position--;
 
-                if (menus.get(position - 1).menuType() == NavigationMenuItem.PROJECT_MENU) {
-                    ((NavigationDrawerMenu) menus.get(position - 1)).setIsSelected(true);
+                if(menus[position].getType() == Section.FRAGMENT) {
+                    for(int i=0; i<menus.length; i++) {
+                        menus[i].setIsSelected(false);
+                    }
+                    menus[position].setIsSelected(true);
                 }
                 selectItem(position);
             }
         });
-
-        menus = new ArrayList<>();
-        menus.add(new NavigationDrawerMenu(NavigationDrawerMenu.ACTION, null, R.drawable.menu_open, true, R.string.menu_load_project));
-        menus.add(new NavigationDrawerMenu(NavigationDrawerMenu.ACTION, null, R.drawable.menu_store, true, R.string.menu_buildmlearn_store));
-        menus.add(new NavigationDrawerMenu(NavigationDrawerMenu.ACTION, null, R.drawable.menu_upload, true, R.string.menu_my_uploads));
-        menus.add(new NavigationDrawerMenu(NavigationDrawerMenu.ACTION, null, R.drawable.menu_drafts, true, R.string.menu_drafts));
-        menus.add(new SectionDivider());
-        menus.add(new NavigationAuxMenuItem(null, R.drawable.menu_settings, R.string.menu_settings));
-        menus.add(new NavigationAuxMenuItem(null, R.drawable.menu_how_to, R.string.menu_how_to));
-        menus.add(new NavigationAuxMenuItem(null, R.drawable.menu_info, R.string.menu_about_us));
-        menus.add(new NavigationAuxMenuItem(null, R.drawable.menu_privacy_policy, R.string.menu_privacy_policy));
-//        menus.get(0).setIsSelected(true);
-        NavigationDrawerMenuAdapter adapter = new NavigationDrawerMenuAdapter(getActivity().getApplicationContext(), inflater, menus);
-
+        NavigationDrawerMenuAdapter adapter = new NavigationDrawerMenuAdapter(getActivity().getApplicationContext(), inflater);
+        menus = Section.values();
+        if (menus.length > 0) {
+            menus[0].setIsSelected(true);
+        }
         mDrawerListView.setAdapter(adapter);
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
         return mDrawerListView;
@@ -305,4 +292,5 @@ public class NavigationDrawerFragment extends Fragment {
          */
         void onNavigationDrawerItemSelected(int position);
     }
+
 }
