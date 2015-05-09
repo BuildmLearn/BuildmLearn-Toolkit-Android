@@ -10,6 +10,7 @@ import org.buildmlearn.toolkit.R;
  */
 public enum Section {
 
+    HOME(null, R.string.menu_home, R.drawable.menu_home, Section.FRAGMENT),
     OPEN_PROJECT(null, R.string.menu_load_project, R.drawable.menu_open, Section.FRAGMENT),
     STORE(null, R.string.menu_buildmlearn_store, R.drawable.menu_store, Section.FRAGMENT),
     UPLOAD(null, R.string.menu_my_uploads, R.drawable.menu_upload, Section.FRAGMENT),

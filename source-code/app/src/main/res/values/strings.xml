@@ -19,5 +19,6 @@
     <string name="menu_how_to">How to</string>
     <string name="menu_about_us">About BuildmLearn</string>
     <string name="menu_privacy_policy">Privacy Policy</string>
+    <string name="menu_home">Home</string>
 
 </resources>
