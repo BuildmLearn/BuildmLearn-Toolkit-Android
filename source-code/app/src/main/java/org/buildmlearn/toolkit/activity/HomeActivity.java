@@ -1,22 +1,23 @@
 package org.buildmlearn.toolkit.activity;
 
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
+import android.widget.Toast;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.fragment.NavigationDrawerFragment;
+import org.buildmlearn.toolkit.fragment.TestFragment;
+import org.buildmlearn.toolkit.model.Section;
 
 
 public class HomeActivity extends ActionBarActivity
@@ -31,6 +32,7 @@ public class HomeActivity extends ActionBarActivity
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
     private CharSequence mTitle;
+    private Section currentSection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,26 +52,52 @@ public class HomeActivity extends ActionBarActivity
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
-        // update the main content by replacing fragments
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
-                .commit();
-    }
+        Section[] menuItem = Section.values();
+        Section selectedMenuItem = menuItem[position];
+        if (selectedMenuItem.getType() == Section.ACTIVITY) {
+            Class<?> c;
+            if (selectedMenuItem.getViewName() != null) {
+                try {
+                    c = Class.forName(selectedMenuItem.getViewName());
+                    Intent intent = new Intent(this, c);
+                    startActivity(intent);
+                } catch (ClassNotFoundException e) {
+                    Toast.makeText(this, e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
+                }
+            }
+            return;
+        } else if (selectedMenuItem.getType() == Section.FRAGMENT) {
+            if (currentSection == null || selectedMenuItem != currentSection) {
+                currentSection = selectedMenuItem;
+                FragmentManager fm = getSupportFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                Fragment f = fm.findFragmentById(R.id.container);
+                if (f != null) {
+                    if (currentSection.isKeep()) {
+                        ft.detach(f);
+                    } else {
+                        ft.remove(f);
+                    }
+                }
+                String fragmentClassName = currentSection.getViewName();
+                if (currentSection.isKeep() && ((f = fm.findFragmentByTag(fragmentClassName)) != null)) {
+                    ft.attach(f);
+                } else {
+                    f = Fragment.instantiate(this, fragmentClassName);
+                    Bundle args = new Bundle();
+                    args.putString(TestFragment.ARG_PARAM1, "ABC: " + position);
+                    args.putString(TestFragment.ARG_PARAM2, "XYZ: " + position);
+                    f.setArguments(args);
+                    ft.add(R.id.container, f, fragmentClassName);
+                }
+                ft.commit();
 
-    public void onSectionAttached(int number) {
-        switch (number) {
-            case 1:
-                mTitle = getString(R.string.title_section1);
-                break;
-            case 2:
-                mTitle = getString(R.string.title_section2);
-                break;
-            case 3:
-                mTitle = getString(R.string.title_section3);
-                break;
+
+            }
         }
     }
+
 
     public void restoreActionBar() {
         ActionBar actionBar = getSupportActionBar();
@@ -107,44 +135,5 @@ public class HomeActivity extends ActionBarActivity
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        public PlaceholderFragment() {
-        }
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            return rootView;
-        }
-
-        @Override
-        public void onAttach(Activity activity) {
-            super.onAttach(activity);
-            ((HomeActivity) activity).onSectionAttached(
-                    getArguments().getInt(ARG_SECTION_NUMBER));
-        }
-    }
 
 }

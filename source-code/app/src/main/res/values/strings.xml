@@ -20,5 +20,8 @@
     <string name="menu_about_us">About BuildmLearn</string>
     <string name="menu_privacy_policy">Privacy Policy</string>
     <string name="menu_home">Home</string>
+    <string name="title_activity_test">TestActivity</string>
+
+    <string name="hello_world">Hello world!</string>
 
 </resources>
