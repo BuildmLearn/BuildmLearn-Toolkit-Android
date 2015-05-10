@@ -2,4 +2,8 @@
 <resources>
     <!-- Drawable used as a background for activated items. -->
     <attr name="activatedBackgroundIndicator" format="reference" />
+    <declare-styleable name="TextViewPlus">
+        <attr name="customFont" format="string" />
+    </declare-styleable>
+
 </resources>
