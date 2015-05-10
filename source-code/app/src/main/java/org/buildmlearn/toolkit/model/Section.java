@@ -3,7 +3,7 @@ package org.buildmlearn.toolkit.model;
 import android.app.Activity;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.StringRes;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.activity.TestActivity;

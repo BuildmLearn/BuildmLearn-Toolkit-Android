@@ -3,9 +3,9 @@ package org.buildmlearn.toolkit.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -70,7 +70,7 @@ public class HomeActivity extends ActionBarActivity
         } else if (selectedMenuItem.getType() == Section.FRAGMENT) {
             if (currentSection == null || selectedMenuItem != currentSection) {
                 currentSection = selectedMenuItem;
-                FragmentManager fm = getSupportFragmentManager();
+                FragmentManager fm = getFragmentManager();
                 FragmentTransaction ft = fm.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                 Fragment f = fm.findFragmentById(R.id.container);
                 if (f != null) {
