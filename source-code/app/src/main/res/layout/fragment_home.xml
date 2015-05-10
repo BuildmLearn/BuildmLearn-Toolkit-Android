@@ -1,114 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#e8e8e8">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="@dimen/layout_margin">
+        android:layout_height="match_parent">
 
-        <android.support.v7.widget.CardView
-            android:id="@+id/card_view"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            card_view:cardBackgroundColor="@color/color_primary_dark"
-            card_view:cardCornerRadius="@dimen/cardview_default_radius"
-            card_view:cardElevation="@dimen/cardview_default_elevation"
-            card_view:contentPaddingBottom="@dimen/cardview_bottom_padding"
-            card_view:contentPaddingLeft="@dimen/cardview_padding_left_right"
-            card_view:contentPaddingRight="@dimen/cardview_padding_left_right"
-            card_view:contentPaddingTop="@dimen/cardview_top_padding">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/layout_margin">
 
-            <LinearLayout
+            <android.support.v7.widget.CardView
+                android:id="@+id/card_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_gravity="center"
+                card_view:cardBackgroundColor="@color/color_primary_dark"
+                card_view:cardCornerRadius="@dimen/cardview_default_radius"
+                card_view:cardElevation="@dimen/cardview_default_elevation"
+                card_view:contentPaddingBottom="@dimen/cardview_bottom_padding"
+                card_view:contentPaddingLeft="@dimen/cardview_padding_left_right"
+                card_view:contentPaddingRight="@dimen/cardview_padding_left_right"
+                card_view:contentPaddingTop="@dimen/cardview_top_padding">
 
-                <ImageView
-                    android:id="@+id/logo"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="@dimen/cardview_bottom_padding"
-                    android:src="@drawable/logo_70" />
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/buildmlearn_welcome_title"
-                    android:textAllCaps="false"
-                    android:textColor="@color/abc_primary_text_material_dark"
-                    android:textSize="@dimen/abc_text_size_headline_material" />
+                    <ImageView
+                        android:id="@+id/logo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/cardview_bottom_padding"
+                        android:src="@drawable/logo_70" />
 
-                <TextView
-                    android:id="@+id/subtext"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/cardview_bottom_padding"
-                    android:text="@string/buildmlearn_welcome_text"
-                    android:textAllCaps="false"
-                    android:textColor="@color/abc_secondary_text_material_dark"
-                    android:textSize="@dimen/abc_text_size_small_material" />
+                    <TextView
+                        android:id="@+id/title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/buildmlearn_welcome_title"
+                        android:textAllCaps="false"
+                        android:textColor="@color/abc_primary_text_material_dark"
+                        android:textSize="@dimen/abc_text_size_headline_material" />
+
+                    <TextView
+                        android:id="@+id/subtext"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/cardview_bottom_padding"
+                        android:text="@string/buildmlearn_welcome_text"
+                        android:textAllCaps="false"
+                        android:textColor="@color/abc_secondary_text_material_dark"
+                        android:textSize="@dimen/abc_text_size_small_material" />
 
 
-            </LinearLayout>
+                </LinearLayout>
 
-        </android.support.v7.widget.CardView>
+            </android.support.v7.widget.CardView>
 
-        <android.support.v7.widget.CardView
-            android:id="@+id/store_card_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/layout_margin"
-            android:layout_gravity="center"
-            card_view:cardBackgroundColor="@color/color_primary_dark"
-            card_view:cardCornerRadius="@dimen/cardview_default_radius"
-            card_view:cardElevation="@dimen/cardview_default_elevation"
-            card_view:contentPaddingBottom="@dimen/cardview_bottom_padding"
-            card_view:contentPaddingLeft="@dimen/cardview_padding_left_right"
-            card_view:contentPaddingRight="@dimen/cardview_padding_left_right"
-            card_view:contentPaddingTop="@dimen/cardview_top_padding">
-
-            <LinearLayout
+            <android.support.v7.widget.CardView
+                android:id="@+id/store_card_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/layout_margin"
+                card_view:cardBackgroundColor="@color/color_primary_dark"
+                card_view:cardCornerRadius="@dimen/cardview_default_radius"
+                card_view:cardElevation="@dimen/cardview_default_elevation"
+                card_view:contentPaddingBottom="@dimen/cardview_bottom_padding"
+                card_view:contentPaddingLeft="@dimen/cardview_padding_left_right"
+                card_view:contentPaddingRight="@dimen/cardview_padding_left_right"
+                card_view:contentPaddingTop="@dimen/cardview_top_padding">
 
-                <ImageView
-                    android:id="@+id/store_logo"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="@dimen/cardview_bottom_padding"
-                    android:src="@drawable/store" />
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/store_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/buildmlearn_store_title"
-                    android:textAllCaps="false"
-                    android:textColor="@color/abc_primary_text_material_dark"
-                    android:textSize="@dimen/abc_text_size_headline_material" />
+                    <ImageView
+                        android:id="@+id/store_logo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/cardview_bottom_padding"
+                        android:src="@drawable/store" />
 
-                <TextView
-                    android:id="@+id/store_subtext"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/cardview_bottom_padding"
-                    android:text="@string/buildmlearn_store_text"
-                    android:textAllCaps="false"
-                    android:textColor="@color/abc_secondary_text_material_dark"
-                    android:textSize="@dimen/abc_text_size_small_material" />
+                    <TextView
+                        android:id="@+id/store_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/buildmlearn_store_title"
+                        android:textAllCaps="false"
+                        android:textColor="@color/abc_primary_text_material_dark"
+                        android:textSize="@dimen/abc_text_size_headline_material" />
+
+                    <TextView
+                        android:id="@+id/store_subtext"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/cardview_bottom_padding"
+                        android:text="@string/buildmlearn_store_text"
+                        android:textAllCaps="false"
+                        android:textColor="@color/abc_secondary_text_material_dark"
+                        android:textSize="@dimen/abc_text_size_small_material" />
 
 
-            </LinearLayout>
+                </LinearLayout>
 
-        </android.support.v7.widget.CardView>
+            </android.support.v7.widget.CardView>
 
-    </LinearLayout>
-</ScrollView>
+        </LinearLayout>
+    </ScrollView>
+
+    <com.getbase.floatingactionbutton.AddFloatingActionButton
+        android:id="@+id/semi_transparent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="16dp"
+        fab:fab_colorNormal="@color/color_accent"
+        fab:fab_colorPressed="@color/floating_action_button_pressed"
+        fab:fab_plusIconColor="@color/floating_action_button_icon" />
+
+</RelativeLayout>

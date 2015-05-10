@@ -1,15 +1,7 @@
 <resources>
     <string name="app_name">BuildmLearn Toolkit</string>
-
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
-    <string name="action_new_project">New Project</string>
-
     <string name="action_settings">Settings</string>
     <string name="menu_load_project">Load Project</string>
     <string name="menu_buildmlearn_store">BuildmLearn Store</string>
@@ -25,7 +17,7 @@
 
     <string name="hello_world">Hello world!</string>
 
-<!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="buildmlearn_welcome_text">The BuildmLearn Toolkit is an easy-to-use program that helps users make mobile apps without any knowledge of application development.\n\nThe toolkit helps creating mobile application with various functionality and allows teachers to input their custom content.</string>
     <string name="buildmlearn_store_text">BuildmLearn store is a app store where teachers submit mobile applications created using BuildmLearn Toolkit. Thus, this store is a distribution medium for apps created using the BuildmLearn Toolkit.</string>

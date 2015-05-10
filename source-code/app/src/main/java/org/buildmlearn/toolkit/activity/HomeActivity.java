@@ -1,11 +1,15 @@
 package org.buildmlearn.toolkit.activity;
 
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.content.Inten
+;
+impo t android.os.Bundle;
+import
+ndroid app.Fragment;
+import android.app
+Fragme tManager;
+import androi
+.app.F agmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;

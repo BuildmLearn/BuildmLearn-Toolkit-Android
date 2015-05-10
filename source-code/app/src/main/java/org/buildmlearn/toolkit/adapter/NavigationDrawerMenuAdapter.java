@@ -61,7 +61,7 @@ public class NavigationDrawerMenuAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         Section menu = getItem(position);
-        if (menu.getType() == Section.ACTIVITY || menu.getType() == Section.FRAGMENT ) {
+        if (menu.getType() == Section.ACTIVITY || menu.getType() == Section.FRAGMENT) {
             if (convertView == null) {
                 convertView = inflater.inflate(R.layout.item_main_menu, parent, false);
             }
