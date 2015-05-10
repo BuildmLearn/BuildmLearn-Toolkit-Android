@@ -31,6 +31,7 @@
         <item name="android:paddingLeft">@dimen/main_menu_padding</item>
         <item name="android:textSize">@dimen/main_menu_text_size</item>
         <item name="android:textColor">@color/navigation_drawer_listview</item>
+        <item name="background">@color/abc_background_cache_hint_selector_material_light</item>
         <item name="android:drawablePadding">@dimen/main_menu_drawable_padding</item>
     </style>
 

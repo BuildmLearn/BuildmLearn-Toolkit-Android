@@ -11,4 +11,9 @@
     <dimen name="main_menu_text_size">14sp</dimen>
     <dimen name="main_menu_drawable_padding">16dp</dimen>
     <dimen name="main_menu_item_height">48dp</dimen>
+    <dimen name="layout_margin">8dp</dimen>
+    <dimen name="cardview_top_padding">24dp</dimen>
+    <dimen name="cardview_bottom_padding">16dp</dimen>
+    <dimen name="cardview_padding_left_right">16dp</dimen>
+    <dimen name="headline">24sp</dimen>
 </resources>

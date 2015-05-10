@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.activity.TestActivity;
+import org.buildmlearn.toolkit.fragment.HomeFragment;
 import org.buildmlearn.toolkit.fragment.TestFragment;
 
 /**
@@ -14,7 +15,7 @@ import org.buildmlearn.toolkit.fragment.TestFragment;
  */
 public enum Section {
 
-    HOME(TestFragment.class, R.string.menu_home, R.drawable.menu_home, false),
+    HOME(HomeFragment.class, R.string.menu_home, R.drawable.menu_home, false),
     OPEN_PROJECT(TestFragment.class, R.string.menu_load_project, R.drawable.menu_open, false),
     STORE(TestFragment.class, R.string.menu_buildmlearn_store, R.drawable.menu_store, false),
     UPLOAD(TestFragment.class, R.string.menu_my_uploads, R.drawable.menu_upload, false),
