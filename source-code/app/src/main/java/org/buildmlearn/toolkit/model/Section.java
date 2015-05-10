@@ -1,11 +1,9 @@
 package org.buildmlearn.toolkit.model;
 
 import android.app.Activity;
-import android.support.annot
-tion.D awableRes;
-import android.support.annot
-tion.S ringRes;
 import android.app.Fragment;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.StringRes;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.activity.TestActivity;
