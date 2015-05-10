@@ -17,7 +17,6 @@ public enum Section {
 
     HOME(HomeFragment.class, R.string.menu_home, R.drawable.menu_home, false),
     OPEN_PROJECT(TestFragment.class, R.string.menu_load_project, R.drawable.menu_open, false),
-    STORE(TestFragment.class, R.string.menu_buildmlearn_store, R.drawable.menu_store, false),
     UPLOAD(TestFragment.class, R.string.menu_my_uploads, R.drawable.menu_upload, false),
     DRAFTS(TestFragment.class, R.string.menu_drafts, R.drawable.menu_drafts, false),
     DIVIDER(),

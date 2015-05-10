@@ -4,7 +4,6 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Settings</string>
     <string name="menu_load_project">Load Project</string>
-    <string name="menu_buildmlearn_store">BuildmLearn Store</string>
     <string name="menu_my_uploads">My Uploads</string>
     <string name="menu_drafts">My Drafts</string>
     <string name="menu_settings">Settings</string>
