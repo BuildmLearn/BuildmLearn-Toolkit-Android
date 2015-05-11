@@ -21,5 +21,6 @@
     <string name="buildmlearn_welcome_text">The BuildmLearn Toolkit is an easy-to-use program that helps users make mobile apps without any knowledge of application development.\n\nThe toolkit helps creating mobile application with various functionality and allows teachers to input their custom content.</string>
     <string name="buildmlearn_store_text">BuildmLearn store is a app store where teachers submit mobile applications created using BuildmLearn Toolkit. Thus, this store is a distribution medium for apps created using the BuildmLearn Toolkit.</string>
     <string name="buildmlearn_store_title">BuildmLearn Store</string>
+    <string name="goto_store">Goto Store</string>
 
 </resources>

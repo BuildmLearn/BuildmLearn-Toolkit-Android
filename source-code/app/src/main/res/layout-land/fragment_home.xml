@@ -98,6 +98,16 @@
                             style="@style/CardView.Body"
                             class="org.buildmlearn.toolkit.views.TextViewPlus"
                             android:text="@string/buildmlearn_store_text"/>
+
+                        <Button
+                            android:id="@+id/button"
+                            style="@style/Button.Raised"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_marginBottom="@dimen/button_margin_bottom"
+                            android:layout_marginLeft="@dimen/button_margin_left_right"
+                            android:text="@string/goto_store"/>
                     </LinearLayout>
 
 
