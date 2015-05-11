@@ -35,5 +35,12 @@
     <dimen name="cardview_title_padding_left_right">16dp</dimen>
     <dimen name="cardview_title_padding_top">24dp</dimen>
 
+    <!-- Button-->
+    <dimen name="button_margin_bottom">24dp</dimen>
+    <dimen name="button_margin_left_right">16dp</dimen>
+
+
+    <!-- Button Raised-->
+    <dimen name="button_raised_height">36dp</dimen>
 
 </resources>

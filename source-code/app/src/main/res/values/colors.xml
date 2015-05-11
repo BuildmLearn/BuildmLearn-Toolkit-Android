@@ -2,6 +2,9 @@
 <resources>
     <color name="color_primary">#3F51B5</color>
     <color name="color_primary_dark">#303F9F</color>
+    <color name="primary_400">#5C6BC0</color>
+    <color name="primary_800">#283593</color>
+    <color name="primary_900">#1A237E</color>
     <color name="color_accent">#FF4081</color>
     <color name="floating_action_button_icon">#b3ffffff</color>
     <color name="floating_action_button_pressed">#ff80ab</color>

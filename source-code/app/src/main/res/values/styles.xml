@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools"
-           xmlns:font="http://schemas.android.com/apk/res-auto">
+    >
 
     <!-- Base application theme. -->
 
@@ -7,8 +7,9 @@
         <item name="colorPrimary">@color/color_primary</item>
         <item name="colorPrimaryDark">@color/color_primary_dark</item>
         <item name="colorAccent">@color/color_accent</item>
+        <item name="colorButtonNormal">@color/primary_900</item>
         <item name="android:textColorLink">?attr/colorAccent</item>
-
+        <item name="colorControlHighlight">@color/primary_800</item>
         <item name="activatedBackgroundIndicator">@drawable/activated_background</item>
     </style>
 
@@ -94,7 +95,10 @@
         <item name="customFont">roboto_medium.ttf</item>
     </style>
 
-
+    <style name="Button.Raised" parent="Widget.AppCompat.Button">
+        <item name="android:textColor">@color/abc_secondary_text_material_dark</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 
 
 </resources>
