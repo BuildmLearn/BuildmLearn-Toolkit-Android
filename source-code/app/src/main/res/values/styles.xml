@@ -1,4 +1,5 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools"
+           xmlns:font="http://schemas.android.com/apk/res-auto">
 
     <!-- Base application theme. -->
 
@@ -61,5 +62,39 @@
         <!-- Fading edges were enabled by default on older devices and are now deprecated. -->
         <item name="android:fadingEdge">none</item>
     </style>
+
+    <style name="TextView.Body1" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/abc_secondary_text_material_dark</item>
+        <item name="android:textSize">@dimen/cardview_body_text_size</item>
+        <item name="customFont">minecrafter_3.ttf</item>
+    </style>
+
+    <style name="CardView.Body" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">@dimen/cardview_body_padding_left_right</item>
+        <item name="android:paddingRight">@dimen/cardview_body_padding_left_right</item>
+        <item name="android:paddingBottom">@dimen/cardview_body_padding_bottom</item>
+        <item name="android:paddingTop">@dimen/cardview_body_padding_top</item>
+        <item name="android:textColor">@color/abc_primary_text_material_dark</item>
+        <item name="android:textSize">@dimen/cardview_body_text_size</item>
+        <item name="customFont">roboto_regular.ttf</item>
+    </style>
+
+    <style name="CardView.Title" parent="TextAppearance.AppCompat.Title">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">@dimen/cardview_title_padding_left_right</item>
+        <item name="android:paddingRight">@dimen/cardview_title_padding_left_right</item>
+        <item name="android:paddingTop">@dimen/cardview_title_padding_top</item>
+        <item name="android:textColor">@color/abc_primary_text_material_dark</item>
+        <item name="android:textSize">@dimen/cardview_title_text_size</item>
+        <item name="customFont">roboto_medium.ttf</item>
+    </style>
+
+
+
 
 </resources>
