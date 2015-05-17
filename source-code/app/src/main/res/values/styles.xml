@@ -54,6 +54,12 @@
         <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
     </style>
 
+    <style name="Toolbar.Buildmlearn.Simulator" parent="Widget.AppCompat.Toolbar">
+        <item name="android:background">@color/simulator_action_bar</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+    </style>
+
     <style name="ListView.Buildmlearn" parent="android:Widget.ListView.White">
         <item name="android:listSelector">?attr/selectableItemBackground</item>
         <item name="android:fadingEdge">none</item>

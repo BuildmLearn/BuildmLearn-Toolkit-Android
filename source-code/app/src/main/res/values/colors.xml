@@ -14,6 +14,7 @@
     <color name="translucent_grey">#0c000000</color>
     <color name="navigation_drawer_listview">#DE000000</color>
     <color name="buildmlearn_blue_translucent">#663479c4</color>
+    <color name="simulator_action_bar">#AA181818</color>
 
     <!-- Quiz Template-->
     <color name="quiz_template_blue_background">#255593</color>
