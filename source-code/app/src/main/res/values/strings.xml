@@ -23,4 +23,13 @@
     <string name="buildmlearn_store_title">BuildmLearn Store</string>
     <string name="goto_store">Goto Store</string>
 
+    <!-- Quiz Template-->
+
+
+    <string name="quiz_template_hello">Hello World, TFTQuizActivity!</string>
+    <string name="quiz_template_app_name">Quiz Time</string>
+    <string name="quiz_template_start">Start</string>
+    <string name="about_us">This application has been developed using the BuildmLearn Toolkit.\n\nTo know more about BuildmLearn Toolkit visit http://buildmlearn.org/</string>
+    <string name="quiz_template_action_info">Info</string>
+
 </resources>
