@@ -28,7 +28,7 @@
         <activity
             android:name=".simulator.Simulator"
             android:label="@string/title_activity_simulator"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:parentActivityName=".activity.HomeActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
