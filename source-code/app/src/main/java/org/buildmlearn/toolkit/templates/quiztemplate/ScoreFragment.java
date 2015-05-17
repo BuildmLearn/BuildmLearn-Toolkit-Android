@@ -29,75 +29,64 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
 
 package org.buildmlearn.toolkit.templates.quiztemplate;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentActivity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
 import org.buildmlearn.toolkit.R;
 
-public class ScoreActivity extends ActionBarActivity {
+public class ScoreFragment extends Fragment {
     private GlobalData gd;
     private TextView mTv_correct, mTv_wrong, mTv_unanswered;
+    private FragmentActivity faActivity;
+    private View view;
 
-    /**
-     * Called when the activity is first created.
-     */
+
+    @Nullable
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.quiz_template_score_view);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        faActivity = (FragmentActivity) super.getActivity();
+        view = inflater.inflate(R.layout.quiz_template_fragment_score_view, container, false);
+
         gd = GlobalData.getInstance();
 
-        mTv_correct = (TextView) findViewById(R.id.tv_correct);
-        mTv_wrong = (TextView) findViewById(R.id.tv_wrong);
-        mTv_unanswered = (TextView) findViewById(R.id.tv_unanswered);
+        mTv_correct = (TextView) view.findViewById(R.id.tv_correct);
+        mTv_wrong = (TextView) view.findViewById(R.id.tv_wrong);
+        mTv_unanswered = (TextView) view.findViewById(R.id.tv_unanswered);
         mTv_correct.setText("Total Correct: " + gd.correct);
         mTv_wrong.setText("Total Wrong: " + gd.wrong);
         int unanswered = gd.total - gd.correct - gd.wrong;
         mTv_unanswered.setText("Unanswered: " + unanswered);
 
-        Button startAgainButton = (Button) findViewById(R.id.start_again_button);
+        Button startAgainButton = (Button) view.findViewById(R.id.start_again_button);
         startAgainButton.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
+                // TODO: Replace by fragment
                 Intent myIntent = new Intent(arg0.getContext(),
-                        TFTQuizActivity.class);
+                        TFTQuizFragment.class);
                 startActivityForResult(myIntent, 0);
-                finish();
             }
         });
 
-        Button quitButton = (Button) findViewById(R.id.quit_button);
+        Button quitButton = (Button) view.findViewById(R.id.quit_button);
         quitButton.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
-                // android.os.Process.killProcess(android.os.Process.myPid());
-                finish();
+                // TODO: Show simulator finish screen
             }
         });
+
+        return view;
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        getMenuInflater().inflate(R.menu.main, menu);
-
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        return true;
-    }
-
-
 }
