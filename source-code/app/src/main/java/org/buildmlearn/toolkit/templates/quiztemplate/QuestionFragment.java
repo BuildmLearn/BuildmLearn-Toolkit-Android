@@ -51,6 +51,8 @@ import java.util.List;
 
 public class QuestionFragment extends Fragment {
 
+    public final static String TAG = "QUESTION_FRAGMENT";
+
     private GlobalData gd;
     private TextView iQuestion_no_Label;
     private TextView iQuestionLabel;
@@ -144,10 +146,7 @@ public class QuestionFragment extends Fragment {
                 } else {
                     // if the quiz is over
                     reInitialize();
-                    // TODO: Replace startactivity() by Fragment.
-                    Intent myIntent = new Intent(arg0.getContext(),
-                            ScoreFragment.class);
-                    startActivity(myIntent);
+                    getActivity().getFragmentManager().beginTransaction().replace(R.id.container, new ScoreFragment(), ScoreFragment.TAG).addToBackStack(null).commit();
                 }
             }
         });
@@ -155,7 +154,7 @@ public class QuestionFragment extends Fragment {
 
         populateQuestion(iQuestionIndex);
 
-        return super.onCreateView(inflater, container, savedInstanceState);
+        return view;
     }
 
 

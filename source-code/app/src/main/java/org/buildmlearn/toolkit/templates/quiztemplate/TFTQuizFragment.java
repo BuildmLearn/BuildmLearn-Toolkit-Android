@@ -43,6 +43,10 @@ import android.widget.TextView;
 import org.buildmlearn.toolkit.R;
 
 public class TFTQuizFragment extends Fragment {
+
+    public final static String TAG = "QUIZ_FRAGMENT_START";
+
+
     private GlobalData gd;
     private View view;
     private FragmentActivity faActivity;
@@ -57,7 +61,7 @@ public class TFTQuizFragment extends Fragment {
         gd = GlobalData.getInstance();
         reInitialize();
         // gd.ReadContent(TFTQuizFragment.this);
-        gd.readXml(getActivity(), "quiz_content.xml");
+        gd.readXml(getActivity(), "template_assets/quiz_content.xml");
         TextView quizAuthor = (TextView) view.findViewById(R.id.tv_author);
         TextView quizTitle = (TextView) view.findViewById(R.id.tv_apptitle);
 
@@ -69,10 +73,8 @@ public class TFTQuizFragment extends Fragment {
 
             @Override
             public void onClick(View arg0) {
-                // TODO: Replace this by fragment
-                Intent myIntent = new Intent(arg0.getContext(),
-                        QuestionFragment.class);
-                startActivity(myIntent);
+
+                getActivity().getFragmentManager().beginTransaction().replace(R.id.container, new QuestionFragment(), QuestionFragment.TAG).addToBackStack(null).commit();
             }
         });
 

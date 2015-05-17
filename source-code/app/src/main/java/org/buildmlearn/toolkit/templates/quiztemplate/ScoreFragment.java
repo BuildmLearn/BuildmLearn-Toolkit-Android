@@ -44,6 +44,9 @@ import android.widget.TextView;
 import org.buildmlearn.toolkit.R;
 
 public class ScoreFragment extends Fragment {
+
+    public final static String TAG = "SCORE_FRAGMENT";
+
     private GlobalData gd;
     private TextView mTv_correct, mTv_wrong, mTv_unanswered;
     private FragmentActivity faActivity;
@@ -71,10 +74,7 @@ public class ScoreFragment extends Fragment {
 
             @Override
             public void onClick(View arg0) {
-                // TODO: Replace by fragment
-                Intent myIntent = new Intent(arg0.getContext(),
-                        TFTQuizFragment.class);
-                startActivityForResult(myIntent, 0);
+                getActivity().getFragmentManager().beginTransaction().replace(R.id.container, new TFTQuizFragment(), TFTQuizFragment.TAG).addToBackStack(null).commit();
             }
         });
 

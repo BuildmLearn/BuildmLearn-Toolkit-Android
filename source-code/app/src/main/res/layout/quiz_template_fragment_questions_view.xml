@@ -46,7 +46,6 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:onClick="radioClick"
             android:textColor="@android:color/white" >
         </RadioButton>
 
@@ -55,7 +54,6 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:onClick="radioClick"
             android:textColor="@android:color/white" >
         </RadioButton>
 
@@ -64,7 +62,6 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:onClick="radioClick"
             android:text="RadioButton"
             android:textColor="@android:color/white" >
         </RadioButton>
@@ -74,7 +71,6 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:onClick="radioClick"
             android:textColor="@android:color/white" >
         </RadioButton>
     </RadioGroup>
