@@ -1,13 +1,16 @@
 package org.buildmlearn.toolkit.simulator;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.templates.quiztemplate.TFTQuizFragment;
+
+;
 
 public class Simulator extends ActionBarActivity {
 
@@ -16,6 +19,9 @@ public class Simulator extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simulator);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeButtonEnabled(true);
         getFragmentManager().beginTransaction().replace(R.id.container, new TFTQuizFragment(), TFTQuizFragment.TAG).addToBackStack(null).commit();
     }
 
