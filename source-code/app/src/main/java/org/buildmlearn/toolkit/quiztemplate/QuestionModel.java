@@ -1,4 +1,4 @@
-package org.buildmlearn.toolkit.templates.quiztemplate;
+package org.buildmlearn.toolkit.quiztemplate;
 
 import java.util.ArrayList;
 

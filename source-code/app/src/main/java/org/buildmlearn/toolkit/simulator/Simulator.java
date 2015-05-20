@@ -8,7 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import org.buildmlearn.toolkit.R;
-import org.buildmlearn.toolkit.templates.quiztemplate.TFTQuizFragment;
+import org.buildmlearn.toolkit.quiztemplate.TFTQuizFragment;
 
 ;
 

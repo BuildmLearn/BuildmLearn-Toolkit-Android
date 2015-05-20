@@ -4,14 +4,14 @@ All rights reserved.
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
 
- * Redistributions of source code must retain the above copyright notice, this
+* Redistributions of source code must retain the above copyright notice, this
   list of conditions and the following disclaimer.
 
- * Redistributions in binary form must reproduce the above copyright notice,
+* Redistributions in binary form must reproduce the above copyright notice,
   this list of conditions and the following disclaimer in the documentation
   and/or other materials provided with the distribution.
 
- * Neither the name of the BuildmLearn nor the names of its
+* Neither the name of the BuildmLearn nor the names of its
   contributors may be used to endorse or promote products derived from
   this software without specific prior written permission.
 
@@ -26,10 +26,10 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
 
-package org.buildmlearn.toolkit.templates.quiztemplate;
+
+package org.buildmlearn.toolkit.quiztemplate;
 
 import android.app.Fragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
@@ -42,50 +42,50 @@ import android.widget.TextView;
 
 import org.buildmlearn.toolkit.R;
 
-public class TFTQuizFragment extends Fragment {
+public class ScoreFragment extends Fragment {
 
-    public final static String TAG = "QUIZ_FRAGMENT_START";
-
+    public final static String TAG = "SCORE_FRAGMENT";
 
     private GlobalData gd;
-    private View view;
+    private TextView mTv_correct, mTv_wrong, mTv_unanswered;
     private FragmentActivity faActivity;
+    private View view;
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         faActivity = (FragmentActivity) super.getActivity();
-        view = inflater.inflate(R.layout.quiz_template_fragment_start_view, container, false);
+        view = inflater.inflate(R.layout.quiz_template_fragment_score_view, container, false);
 
         gd = GlobalData.getInstance();
-        reInitialize();
-        // gd.ReadContent(TFTQuizFragment.this);
-        gd.readXml(getActivity(), "template_assets/quiz_content.xml");
-        TextView quizAuthor = (TextView) view.findViewById(R.id.tv_author);
-        TextView quizTitle = (TextView) view.findViewById(R.id.tv_apptitle);
 
-        quizAuthor.setText(gd.iQuizAuthor);
-        quizTitle.setText(gd.iQuizTitle);
+        mTv_correct = (TextView) view.findViewById(R.id.tv_correct);
+        mTv_wrong = (TextView) view.findViewById(R.id.tv_wrong);
+        mTv_unanswered = (TextView) view.findViewById(R.id.tv_unanswered);
+        mTv_correct.setText("Total Correct: " + gd.correct);
+        mTv_wrong.setText("Total Wrong: " + gd.wrong);
+        int unanswered = gd.total - gd.correct - gd.wrong;
+        mTv_unanswered.setText("Unanswered: " + unanswered);
 
-        Button startButton = (Button) view.findViewById(R.id.btn_start);
-        startButton.setOnClickListener(new OnClickListener() {
+        Button startAgainButton = (Button) view.findViewById(R.id.start_again_button);
+        startAgainButton.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
+                getActivity().getFragmentManager().beginTransaction().replace(R.id.container, new TFTQuizFragment(), TFTQuizFragment.TAG).addToBackStack(null).commit();
+            }
+        });
 
-                getActivity().getFragmentManager().beginTransaction().replace(R.id.container, new QuestionFragment(), QuestionFragment.TAG).addToBackStack(null).commit();
+        Button quitButton = (Button) view.findViewById(R.id.quit_button);
+        quitButton.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                // TODO: Show simulator finish screen
             }
         });
 
         return view;
     }
-
-    private void reInitialize() {
-        gd.total = 0;
-        gd.correct = 0;
-        gd.wrong = 0;
-        gd.iQuizList.clear();
-    }
-
 }
