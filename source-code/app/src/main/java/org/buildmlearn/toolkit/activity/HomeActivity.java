@@ -36,6 +36,7 @@ public class HomeActivity extends ActionBarActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_home);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
 
@@ -60,6 +61,7 @@ public class HomeActivity extends ActionBarActivity
                     c = Class.forName(selectedMenuItem.getViewName());
                     Intent intent = new Intent(this, c);
                     startActivity(intent);
+
                 } catch (ClassNotFoundException e) {
                     Toast.makeText(this, e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
                     e.printStackTrace();

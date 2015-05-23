@@ -59,6 +59,7 @@ public class NavigationDrawerFragment extends Fragment {
 
     private boolean mFromSavedInstanceState;
     private boolean mUserLearnedDrawer;
+    private boolean isClicked = false;
     private Section[] menus;
 
     private int selectedSectionMenu = 0;
@@ -81,6 +82,7 @@ public class NavigationDrawerFragment extends Fragment {
         }
 
         // Select either the default item (0) or the last selected item.
+
         selectItem(selectedSectionMenu);
     }
 
@@ -101,6 +103,7 @@ public class NavigationDrawerFragment extends Fragment {
         mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                 position--;
 
                 if (menus[position].getType() == Section.FRAGMENT) {
@@ -109,6 +112,7 @@ public class NavigationDrawerFragment extends Fragment {
                     }
                     menus[position].setIsSelected(true);
                 }
+                isClicked = true;
                 selectItem(position);
             }
         });
@@ -159,8 +163,9 @@ public class NavigationDrawerFragment extends Fragment {
                 if (!isAdded()) {
                     return;
                 }
-                if (mCallbacks != null) {
+                if (mCallbacks != null && isClicked) {
                     mCallbacks.onNavigationDrawerItemSelected(selectedSectionMenu);
+                    isClicked = false;
                 }
 
                 getActivity().supportInvalidateOptionsMenu(); // calls onPrepareOptionsMenu()

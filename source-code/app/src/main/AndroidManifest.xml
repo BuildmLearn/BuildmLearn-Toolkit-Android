@@ -28,12 +28,9 @@
         <activity
             android:name=".simulator.Simulator"
             android:label="@string/title_activity_simulator"
-            android:parentActivityName=".activity.HomeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Buildmlearn.FullScreen">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="org.buildmlearn.toolkit.activity.HomeActivity" />
+
         </activity>
         <activity
             android:name=".activity.TemplateActivity"

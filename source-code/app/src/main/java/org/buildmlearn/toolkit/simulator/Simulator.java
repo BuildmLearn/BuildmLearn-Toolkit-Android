@@ -21,7 +21,6 @@ public class Simulator extends ActionBarActivity {
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setHomeButtonEnabled(true);
         getFragmentManager().beginTransaction().replace(R.id.container, new TFTQuizFragment(), TFTQuizFragment.TAG).addToBackStack(null).commit();
     }
 
@@ -42,8 +41,11 @@ public class Simulator extends ActionBarActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        } else if (id == android.R.id.home) {
+            onBackPressed();
         }
 
         return super.onOptionsItemSelected(item);
     }
+
 }

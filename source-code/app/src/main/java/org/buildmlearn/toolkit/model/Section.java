@@ -73,7 +73,9 @@ public enum Section {
     }
 
     public void setIsSelected(boolean isSelected) {
-        this.isSelected = isSelected;
+        if (type == FRAGMENT) {
+            this.isSelected = isSelected;
+        }
     }
 
     public int getTitleResId() {
