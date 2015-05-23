@@ -32,5 +32,6 @@
     <string name="about_us">This application has been developed using the BuildmLearn Toolkit.\n\nTo know more about BuildmLearn Toolkit visit http://buildmlearn.org/</string>
     <string name="quiz_template_action_info">Info</string>
     <string name="title_activity_simulator">Simulator</string>
+    <string name="title_activity_template">Template</string>
 
 </resources>
