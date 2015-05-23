@@ -6,6 +6,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.utilities.ZipUtils;
+
+import java.io.IOException;
 
 public class TestActivity extends ActionBarActivity {
 
@@ -13,6 +16,12 @@ public class TestActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
+        ZipUtils.copyAssets(this, "FlashCardTemplateApp_v2.0.apk");
+        try {
+            ZipUtils.unZip("FlashCardTemplateApp_v2.0.apk", "TestFolder");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
