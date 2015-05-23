@@ -3,8 +3,6 @@ package org.buildmlearn.toolkit.utilities;
 import android.content.Context;
 import android.content.res.AssetManager;
 
-import org.buildmlearn.toolkit.constant.Constants;
-
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -25,50 +23,103 @@ public class ZipUtils {
     private final static String TAG = "ZIP_UTIL";
     private final static int BUFFER_SIZE = 2048;
 
-    public static void zipFiles(String[] files, String zipFile) throws IOException {
-        BufferedInputStream origin = null;
-        ZipOutputStream out = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(zipFile)));
-        try {
-            byte data[] = new byte[BUFFER_SIZE];
 
-            for (int i = 0; i < files.length; i++) {
-                FileInputStream fi = new FileInputStream(files[i]);
-                origin = new BufferedInputStream(fi, BUFFER_SIZE);
-                try {
-                    ZipEntry entry = new ZipEntry(files[i].substring(files[i].lastIndexOf("/") + 1));
-                    out.putNextEntry(entry);
-                    int count;
-                    while ((count = origin.read(data, 0, BUFFER_SIZE)) != -1) {
-                        out.write(data, 0, count);
-                    }
-                } finally {
-                    origin.close();
+    public static boolean zipFileAtPath(String sourcePath, String zipFilePath) {
+        // ArrayList<String> contentList = new ArrayList<String>();
+        final int BUFFER = 2048;
+
+
+        File sourceFile = new File(sourcePath);
+        try {
+            BufferedInputStream origin = null;
+            FileOutputStream dest = new FileOutputStream(zipFilePath);
+            ZipOutputStream out = new ZipOutputStream(new BufferedOutputStream(
+                    dest));
+            if (sourceFile.isDirectory()) {
+                zipSubFolder(out, sourceFile, sourceFile.getParent().length());
+            } else {
+                byte data[] = new byte[BUFFER];
+                FileInputStream fi = new FileInputStream(sourcePath);
+                origin = new BufferedInputStream(fi, BUFFER);
+                ZipEntry entry = new ZipEntry(getLastPathComponent(sourcePath));
+                out.putNextEntry(entry);
+                int count;
+                while ((count = origin.read(data, 0, BUFFER)) != -1) {
+                    out.write(data, 0, count);
                 }
             }
-        } finally {
             out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+/*
+ *
+ * Zips a subfolder
+ *
+ */
+
+    private static void zipSubFolder(ZipOutputStream out, File folder,
+                                     int basePathLength) throws IOException {
+
+        final int BUFFER = 2048;
+
+        File[] fileList = folder.listFiles();
+        BufferedInputStream origin = null;
+        for (File file : fileList) {
+            if (file.isDirectory()) {
+                zipSubFolder(out, file, basePathLength);
+            } else {
+                byte data[] = new byte[BUFFER];
+                String unmodifiedFilePath = file.getPath();
+                String relativePath = unmodifiedFilePath
+                        .substring(basePathLength);
+                FileInputStream fi = new FileInputStream(unmodifiedFilePath);
+                origin = new BufferedInputStream(fi, BUFFER);
+                ZipEntry entry = new ZipEntry(relativePath);
+                out.putNextEntry(entry);
+                int count;
+                while ((count = origin.read(data, 0, BUFFER)) != -1) {
+                    out.write(data, 0, count);
+                }
+                origin.close();
+            }
         }
     }
 
-    public static void unZip(String zipFile, String folderName) throws IOException {
+    /*
+     * gets the last path component
+     *
+     * Example: getLastPathComponent("downloads/example/fileToZip");
+     * Result: "fileToZip"
+     */
+    public static String getLastPathComponent(String filePath) {
+        String[] segments = filePath.split("/");
+        String lastPathComponent = segments[segments.length - 1];
+        return lastPathComponent;
+    }
+
+
+    public static void unZip(String zipFilePath, String destinationFolder) throws IOException {
         int size;
         byte[] buffer = new byte[BUFFER_SIZE];
-        folderName = Constants.BUILD_M_LEARN_PATH + folderName;
         try {
-            if (!folderName.endsWith("/")) {
-                folderName += "/";
+            if (!destinationFolder.endsWith("/")) {
+                destinationFolder += "/";
             }
-            File f = new File(folderName);
+            File f = new File(destinationFolder);
             if (!f.isDirectory()) {
                 f.mkdirs();
             }
 
-            zipFile = Constants.BUILD_M_LEARN_PATH + zipFile;
-            ZipInputStream zin = new ZipInputStream(new BufferedInputStream(new FileInputStream(zipFile), BUFFER_SIZE));
+            ZipInputStream zin = new ZipInputStream(new BufferedInputStream(new FileInputStream(zipFilePath), BUFFER_SIZE));
             try {
                 ZipEntry ze;
                 while ((ze = zin.getNextEntry()) != null) {
-                    String path = folderName + ze.getName();
+                    String path = destinationFolder + ze.getName();
                     File unzipFile = new File(path);
 
                     if (ze.isDirectory()) {
@@ -106,19 +157,19 @@ public class ZipUtils {
         }
     }
 
-    public static void copyAssets(Context context, String fileName) {
+    public static void copyAssets(Context context, String assetFileName, String destinationDirectory) {
         AssetManager assetManager = context.getAssets();
         InputStream in;
         OutputStream out;
         try {
-            in = assetManager.open(fileName);
-            String outPutPath = Constants.BUILD_M_LEARN_PATH;
+            in = assetManager.open(assetFileName);
+            String outPutPath = destinationDirectory;
             File f = new File(outPutPath);
             if (!f.isDirectory()) {
                 f.mkdirs();
             }
 
-            File outFile = new File(outPutPath, fileName);
+            File outFile = new File(outPutPath, assetFileName);
             out = new FileOutputStream(outFile);
             copyFile(in, out);
             in.close();

@@ -9,4 +9,6 @@ public class Constants {
 
     public final static String BUILD_M_LEARN_PATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/BuildmLearn/";
 
+    public final static String UNZIP = BUILD_M_LEARN_PATH + "unzipped/";
+
 }
