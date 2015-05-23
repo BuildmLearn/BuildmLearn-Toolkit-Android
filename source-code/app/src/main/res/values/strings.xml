@@ -38,4 +38,12 @@
     <string name="basic_m_learning_title">Basic mLearning</string>
     <string name="basic_m_learning_description">Create app displaying clickable list of textual information</string>
 
+    <string name="flash_card_title">Flash Cards</string>
+    <string name="flash_card_description">Choose this template to create flash card applications</string>
+
+    <string name="learn_spellings_title">Learn Spellings</string>
+    <string name="learn_spellings_description">Choose this template to create applications for learning to spell words</string>
+
+    <string name="quiz_title">Quiz</string>
+    <string name="quiz_description">Choose this template to create Quiz-like applications</string>
 </resources>

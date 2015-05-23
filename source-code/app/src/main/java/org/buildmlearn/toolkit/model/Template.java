@@ -10,7 +10,10 @@ import org.buildmlearn.toolkit.R;
  */
 public enum Template {
 
-    BASIC_M_LEARNING(R.string.basic_m_learning_title, R.string.basic_m_learning_description, R.drawable.basic_m_learning);
+    BASIC_M_LEARNING(R.string.basic_m_learning_title, R.string.basic_m_learning_description, R.drawable.basic_m_learning),
+    LEARN_SPELLING(R.string.learn_spellings_title, R.string.learn_spellings_description, R.drawable.basic_m_learning),
+    QUIZ(R.string.quiz_title, R.string.quiz_description, R.drawable.basic_m_learning),
+    FLASH_CARD(R.string.flash_card_title, R.string.flash_card_description, R.drawable.basic_m_learning);
 
     private @DrawableRes int image;
     private @StringRes int title;
