@@ -1,6 +1,9 @@
 package org.buildmlearn.toolkit.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.support.annotation.ColorRes;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +23,7 @@ public class TemplateAdapter extends BaseAdapter {
     private int count;
 
     private Template[] templates = Template.values();
+    private ListColor[] colors = ListColor.values();
 
     public TemplateAdapter(Context context, int count) {
         this.context = context;
@@ -59,6 +63,26 @@ public class TemplateAdapter extends BaseAdapter {
         ((TextView) view.findViewById(R.id.description)).setText(template.getDescription());
         ((ImageView)view.findViewById(R.id.image)).setImageResource(template.getImage());
 
+        int color = colors[i % colors.length].getColor();
+        ((CardView)view.findViewById(R.id.card_view)).setCardBackgroundColor(color);
+
         return view;
+    }
+
+    private enum ListColor {
+        BLUE("#29A6D4"),
+        GREEN("#1C7D6C"),
+        ORANGE("#F77400"),
+        RED("#F53B3C");
+
+        private @ColorRes int color;
+
+        ListColor(String colorCode) {
+            this.color = Color.parseColor(colorCode);
+        }
+
+        public int getColor() {
+            return color;
+        }
     }
 }
