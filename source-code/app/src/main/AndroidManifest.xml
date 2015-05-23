@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.buildmlearn.toolkit" >
+    package="org.buildmlearn.toolkit">
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".activity.HomeActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,7 +20,7 @@
         <activity
             android:name=".activity.TestActivity"
             android:label="@string/title_activity_test"
-            android:parentActivityName=".activity.HomeActivity" >
+            android:parentActivityName=".activity.HomeActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.buildmlearn.toolkit.activity.HomeActivity" />
@@ -30,7 +30,7 @@
             android:label="@string/title_activity_simulator"
             android:parentActivityName=".activity.HomeActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Buildmlearn.FullScreen" >
+            android:theme="@style/Buildmlearn.FullScreen">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.buildmlearn.toolkit.activity.HomeActivity" />
@@ -38,7 +38,8 @@
         <activity
             android:name=".activity.TemplateActivity"
             android:label="@string/title_activity_template"
-            android:parentActivityName=".activity.HomeActivity" >
+            android:parentActivityName=".activity.HomeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.buildmlearn.toolkit.activity.HomeActivity" />

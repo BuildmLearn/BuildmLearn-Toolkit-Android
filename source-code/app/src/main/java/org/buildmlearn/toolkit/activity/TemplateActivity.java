@@ -1,7 +1,9 @@
 package org.buildmlearn.toolkit.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AbsListView;
@@ -10,13 +12,17 @@ import android.widget.ListAdapter;
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.adapter.TemplateAdapter;
 
-public class TemplateActivity extends Activity {
+public class TemplateActivity extends ActionBarActivity {
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_template);
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeButtonEnabled(true);
         ListAdapter mAdapter = new TemplateAdapter(this, 6);
         AbsListView mListView = (AbsListView) findViewById(android.R.id.list);
         mListView.setAdapter(mAdapter);
