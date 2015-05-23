@@ -43,4 +43,7 @@
     <!-- Button Raised-->
     <dimen name="button_raised_height">36dp</dimen>
 
+    <!-- Template CardView-->
+    <dimen name="cardview_template_height">180dp</dimen>
+
 </resources>
