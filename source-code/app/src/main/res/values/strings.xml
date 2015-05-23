@@ -34,4 +34,8 @@
     <string name="title_activity_simulator">Simulator</string>
     <string name="title_activity_template">Template</string>
 
+    <!-- Template Resources-->
+    <string name="basic_m_learning_title">Basic mLearning</string>
+    <string name="basic_m_learning_description">Create app displaying clickable list of textual information</string>
+
 </resources>

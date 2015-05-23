@@ -65,7 +65,6 @@ public class HomeActivity extends ActionBarActivity
                     e.printStackTrace();
                 }
             }
-            return;
         } else if (selectedMenuItem.getType() == Section.FRAGMENT) {
             if (currentSection == null || selectedMenuItem != currentSection) {
                 currentSection = selectedMenuItem;
@@ -100,7 +99,6 @@ public class HomeActivity extends ActionBarActivity
 
     public void restoreActionBar() {
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setTitle(mTitle);
     }

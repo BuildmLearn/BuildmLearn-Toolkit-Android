@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                xmlns:fab="http://schemas.android.com/apk/res-auto"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#e8e8e8">
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e8e8e8">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -35,18 +35,20 @@
                         android:id="@+id/logo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/logo_70"/>
+                        android:src="@drawable/logo_70" />
 
-                    <TextView
+                    <view
                         android:id="@+id/title"
                         style="@style/CardView.Title"
-                        android:text="@string/buildmlearn_welcome_title"/>
+                        class="org.buildmlearn.toolkit.views.TextViewPlus"
+                        android:text="@string/buildmlearn_welcome_title" />
 
 
-                    <TextView
+                    <view
                         android:id="@+id/subtext"
                         style="@style/CardView.Body"
-                        android:text="@string/buildmlearn_welcome_text"/>
+                        class="org.buildmlearn.toolkit.views.TextViewPlus"
+                        android:text="@string/buildmlearn_welcome_text" />
 
 
                 </LinearLayout>
@@ -73,18 +75,19 @@
                         android:id="@+id/store_logo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/store"/>
+                        android:src="@drawable/store" />
 
-                    <TextView
+                    <view
                         android:id="@+id/store_title"
                         style="@style/CardView.Title"
-                        android:text="@string/buildmlearn_store_title"/>
+                        class="org.buildmlearn.toolkit.views.TextViewPlus"
+                        android:text="@string/buildmlearn_store_title" />
 
                     <view
                         android:id="@+id/view"
                         style="@style/CardView.Body"
                         class="org.buildmlearn.toolkit.views.TextViewPlus"
-                        android:text="@string/buildmlearn_store_text"/>
+                        android:text="@string/buildmlearn_store_text" />
 
                     <Button
                         android:id="@+id/button"
@@ -94,7 +97,7 @@
                         android:layout_gravity="left"
                         android:layout_marginBottom="@dimen/button_margin_bottom"
                         android:layout_marginLeft="@dimen/button_margin_left_right"
-                        android:text="@string/goto_store"/>
+                        android:text="@string/goto_store" />
 
 
                 </LinearLayout>
@@ -114,6 +117,6 @@
         android:layout_marginRight="16dp"
         fab:fab_colorNormal="@color/color_accent"
         fab:fab_colorPressed="@color/floating_action_button_pressed"
-        fab:fab_plusIconColor="@color/floating_action_button_icon"/>
+        fab:fab_plusIconColor="@color/floating_action_button_icon" />
 
 </RelativeLayout>

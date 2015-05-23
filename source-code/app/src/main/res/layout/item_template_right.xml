@@ -23,25 +23,24 @@
             android:orientation="vertical">
 
 
-            <TextView
-                android:id="@+id/title1"
+            <view
+                android:id="@+id/title"
                 style="@style/CardView.Title"
-                android:text="mBasic Learning" />
+                class="org.buildmlearn.toolkit.views.TextViewPlus" />
 
-            <TextView
-                android:id="@+id/subtext2"
+            <view
+                android:id="@+id/description"
                 style="@style/CardView.Body"
-                android:text="Create app displaying clickable list of textual information" />
+                class="org.buildmlearn.toolkit.views.TextViewPlus" />
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/image"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
             android:paddingRight="@dimen/cardview_body_padding_left_right"
-            android:scaleType="fitEnd"
-            android:src="@drawable/basic_m_learning" />
+            android:scaleType="fitEnd" />
     </LinearLayout>
 
 
