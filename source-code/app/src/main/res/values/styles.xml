@@ -95,7 +95,7 @@
         <item name="android:paddingTop">@dimen/cardview_body_padding_top</item>
         <item name="android:textColor">@color/abc_primary_text_material_dark</item>
         <item name="android:textSize">@dimen/cardview_body_text_size</item>
-        <item name="customFont"> .ttf</item>
+        <item name="customFont">roboto_regular.ttf</item>
     </style>
 
     <style name="CardView.Title" parent="TextAppearance.AppCompat.Title">
