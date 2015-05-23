@@ -5,11 +5,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AbsListView;
-import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 
 import org.buildmlearn.toolkit.R;
-import org.buildmlearn.toolkit.fragment.dummy.DummyContent;
+import org.buildmlearn.toolkit.adapter.TemplateAdapter;
 
 public class TemplateActivity extends Activity {
 
@@ -17,9 +16,8 @@ public class TemplateActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_template_list);
-        ListAdapter mAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);
+        setContentView(R.layout.activity_template);
+        ListAdapter mAdapter = new TemplateAdapter(this, 6);
         AbsListView mListView = (AbsListView) findViewById(android.R.id.list);
         mListView.setAdapter(mAdapter);
     }

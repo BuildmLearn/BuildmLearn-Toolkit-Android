@@ -9,6 +9,9 @@
         android:id="@android:id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:horizontalSpacing="8dp"
+        android:verticalSpacing="8dp"
+        android:layout_margin="@dimen/layout_margin"
         android:numColumns="2" />
 
     <TextView
