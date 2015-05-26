@@ -8,8 +8,6 @@
         <item name="colorButtonNormal">@color/primary_900</item>
         <item name="android:colorButtonNormal">@color/primary_900</item>
         <item name="android:textColorLink">?attr/colorAccent</item>
-        <item name="android:colorControlHighlight">@color/primary_800</item>
-        <item name="activatedBackgroundIndicator">@drawable/activated_background</item>
     </style>
 
     <style name="Button.Raised" parent="Widget.AppCompat.Button">
@@ -17,4 +15,5 @@
         <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:textStyle">normal</item>
     </style>
+
 </resources>

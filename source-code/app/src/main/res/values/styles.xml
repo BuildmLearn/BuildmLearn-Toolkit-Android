@@ -1,27 +1,31 @@
-<resources xmlns:tools="http://schemas.android.com/tools"
-    >
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
 
-    <style name="Base.AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="Base.AppTheme" parent="Base.Theme.AppCompat.Light">
         <item name="colorPrimary">@color/color_primary</item>
         <item name="colorPrimaryDark">@color/color_primary_dark</item>
         <item name="colorAccent">@color/color_accent</item>
         <item name="colorButtonNormal">@color/primary_900</item>
         <item name="android:textColorLink">?attr/colorAccent</item>
-        <item name="colorControlHighlight">@color/primary_800</item>
         <item name="activatedBackgroundIndicator">@drawable/activated_background</item>
+        <!--<item name="colorControlNormal">#c5c5c5</item>-->
+
     </style>
 
     <style name="AppTheme" parent="Base.AppTheme">
-        <item name="android:textColorSecondary">@color/secondary_text</item>
+        <item name="android:textColorPrimary">@color/black_primary_text</item>
+        <item name="android:textColorSecondary">@color/black_secondary_text</item>
         <item name="android:listViewStyle">@style/ListView.Buildmlearn</item>
         <item name="android:scrollViewStyle">@style/ScrollView.Buildmlearn</item>
     </style>
 
     <style name="AppTheme.NoActionBar" tools:ignore="newApi">
-        <item name="windowActionBar">false</item>
+        <item name="android:windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+            
         <!-- Allows the action mode icons to be shown on top of the Toolbar -->
         <item name="windowActionModeOverlay">true</item>
     </style>
@@ -40,7 +44,7 @@
         <item name="android:gravity">left|center_vertical</item>
         <item name="android:paddingLeft">@dimen/main_menu_padding</item>
         <item name="android:textSize">@dimen/main_menu_text_size</item>
-        <item name="android:textColor">@color/navigation_drawer_listview</item>
+        <item name="android:textColor">@color/black_primary_text</item>
         <item name="background">@color/abc_background_cache_hint_selector_material_light</item>
         <item name="android:drawablePadding">@dimen/main_menu_drawable_padding</item>
     </style>
@@ -52,7 +56,7 @@
         <item name="android:textSize">@dimen/main_menu_text_size</item>
         <item name="android:paddingLeft">@dimen/main_menu_padding</item>
         <item name="android:drawablePadding">@dimen/main_menu_drawable_padding</item>
-        <item name="android:textColor">@color/navigation_drawer_listview</item>
+        <item name="android:textColor">@color/black_primary_text</item>
 
     </style>
 
@@ -113,6 +117,15 @@
         <item name="android:textColor">@color/abc_secondary_text_material_dark</item>
         <item name="android:textStyle">bold</item>
     </style>
+
+    <!-- EditText-->
+    <style name="EditText.Dark">
+        <item name="android:textColor">@color/abc_primary_text_material_dark</item>
+        <item name="colorControlNormal">@color/white_hint_text_disabled</item>
+        <item name="colorControlActivated">@color/color_accent</item>
+    </style>
+
+    <style name="EditText"></style>
 
 
 </resources>
