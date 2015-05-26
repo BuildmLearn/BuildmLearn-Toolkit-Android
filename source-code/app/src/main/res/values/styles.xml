@@ -90,6 +90,14 @@
         <item name="customFont">minecrafter_3.ttf</item>
     </style>
 
+    <style name="TextView.Caption" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white_hint_text_disabled</item>
+        <item name="android:textSize">@dimen/caption</item>
+        <item name="customFont">roboto_regular.ttf</item>
+    </style>
+
     <style name="CardView.Body" parent="TextAppearance.AppCompat.Body1">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -123,6 +131,7 @@
         <item name="android:textColor">@color/abc_primary_text_material_dark</item>
         <item name="colorControlNormal">@color/white_hint_text_disabled</item>
         <item name="colorControlActivated">@color/color_accent</item>
+        <item name="android:textColorHint">@color/white_hint_text_disabled</item>
     </style>
 
     <style name="EditText"></style>

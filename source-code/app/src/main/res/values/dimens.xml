@@ -16,6 +16,7 @@
     <dimen name="cardview_bottom_padding">16dp</dimen>
     <dimen name="cardview_padding_left_right">16dp</dimen>
     <dimen name="headline">24sp</dimen>
+    <dimen name="headline_leading">32sp</dimen>
     <dimen name="title">20sp</dimen>
     <dimen name="sub_title">16sp</dimen>
     <dimen name="caption">12sp</dimen>

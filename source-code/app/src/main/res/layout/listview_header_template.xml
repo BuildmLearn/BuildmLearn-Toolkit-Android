@@ -1,22 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="wrap_content"
     android:background="@color/color_primary"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingBottom="25dp"
+    android:paddingLeft="72dp"
+    android:paddingRight="16dp"
+    android:paddingTop="25dp">
 
+    <TextView
+        android:id="@+id/textView2"
+        style="@style/TextView.Caption"
+        android:text="@string/label_author"
+        android:textColor="@color/color_accent" />
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/editText"
-        android:theme="@style/EditText.Dark"
         style="@style/EditText.Dark"
-        android:layout_gravity="center_horizontal" />
-
-    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="@string/hint_author"
+        android:inputType="textPersonName"
+        android:textSize="@dimen/headline_leading"
+        android:theme="@style/EditText.Dark" />
+
+    <TextView
+        android:id="@+id/textView"
+        style="@style/TextView.Caption"
+        android:text="@string/label_quiz"
+        android:textColor="@color/color_accent" />
+
+    <EditText
         android:id="@+id/editText2"
-        android:layout_gravity="center_horizontal" />
+        style="@style/EditText.Dark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/EditText.Dark"
+        android:hint="@string/hint_quiz_name" />
+
+
 </LinearLayout>
