@@ -2,7 +2,7 @@ package org.buildmlearn.toolkit.simulator;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,7 +12,7 @@ import org.buildmlearn.toolkit.quiztemplate.TFTQuizFragment;
 
 ;
 
-public class Simulator extends ActionBarActivity {
+public class Simulator extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -28,4 +28,9 @@ public class QuizTemplate implements TemplateInterface {
     public String onAttach() {
         return "This is Quiz Template";
     }
+
+    @Override
+    public String getTitle() {
+        return "Quiz Template";
+    }
 }

@@ -11,5 +11,7 @@ public interface TemplateInterface {
     public BaseAdapter newTemplateEditorAdapter(Context context);
 
     public String onAttach();
+
+    public String getTitle();
     
 }

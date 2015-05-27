@@ -45,7 +45,8 @@
         </activity>
         <activity
             android:name=".activity.TemplateEditor"
-            android:label="@string/title_activity_template_editor" >
+            android:label="@string/title_activity_template_editor"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>
 
