@@ -24,6 +24,8 @@
 
     <!-- Styles-->
 
+    <!-- Floating action button-->
+    <dimen name="floating_action_button_padding_bottom_right">16dp</dimen>
 
     <!-- CardView Body-->
     <dimen name="cardview_body_padding_left_right">16dp</dimen>

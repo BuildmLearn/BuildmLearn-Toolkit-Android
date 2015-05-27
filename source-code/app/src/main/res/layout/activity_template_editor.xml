@@ -26,8 +26,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginBottom="@dimen/floating_action_button_padding_bottom_right"
+        android:layout_marginRight="@dimen/floating_action_button_padding_bottom_right"
         fab:fab_colorNormal="@color/color_accent"
         fab:fab_colorPressed="@color/floating_action_button_pressed"
         fab:fab_plusIconColor="@color/floating_action_button_icon" />
