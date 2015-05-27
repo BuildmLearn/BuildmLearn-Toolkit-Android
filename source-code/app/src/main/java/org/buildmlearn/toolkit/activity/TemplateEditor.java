@@ -46,6 +46,13 @@ public class TemplateEditor extends AppCompatActivity {
         } else {
             restoreTemplateEditor(savedInstanceState);
         }
+
+        findViewById(R.id.button_add_item).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectedTemplate.addItem(TemplateEditor.this);
+            }
+        });
     }
 
     @Override

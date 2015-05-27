@@ -17,5 +17,7 @@ public interface TemplateInterface extends Serializable {
     public String onAttach();
 
     public String getTitle();
+
+    public void addItem(Context context);
     
 }
