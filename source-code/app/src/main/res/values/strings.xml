@@ -45,10 +45,19 @@
     <string name="learn_spellings_description">Choose this template to create applications for learning to spell words</string>
 
     <string name="quiz_title">Quiz</string>
+    <string name="quiz_new_question_title">Add New Question</string>
+    <string name="quiz_delete">Delete</string>
+    <string name="quiz_add">Add</string>
     <string name="quiz_description">Choose this template to create Quiz-like applications</string>
     <string name="hint_quiz_name">Quiz Name</string>
     <string name="label_quiz">Quiz Name</string>
     <string name="hint_author">Name</string>
     <string name="label_author">Author</string>
     <string name="title_activity_template_editor">TemplateEditor</string>
+    <string name="quiz_new_question">Question</string>
+    <string name="quiz_new_question_answer">Answers</string>
+    <string name="quiz_option_hint_1">Option 1</string>
+    <string name="quiz_option_hint_2">Option 2</string>
+    <string name="quiz_option_hint_3">Option 3</string>
+    <string name="quiz_option_hint_4">Option 4</string>
 </resources>

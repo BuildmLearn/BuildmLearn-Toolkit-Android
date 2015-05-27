@@ -1,13 +1,12 @@
 package org.buildmlearn.toolkit.templates;
 
-import android.R;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
-import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
+
+import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.fragment.dummy.DummyContent;
 import org.buildmlearn.toolkit.fragment.dummy.DummyContent.DummyItem;
 import org.buildmlearn.toolkit.model.TemplateInterface;
@@ -28,7 +27,7 @@ public class QuizTemplate implements TemplateInterface {
     @Override
     public BaseAdapter newTemplateEditorAdapter(Context context) {
         mAdapter = new ArrayAdapter<>(context,
-                android.R.layout.simple_list_item_1, R.id.text1, DummyContent.ITEMS);
+                android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);
         return mAdapter;
     }
 
@@ -50,32 +49,70 @@ public class QuizTemplate implements TemplateInterface {
 
     @Override
     public void addItem(final Context context) {
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-                context);
-
-        // set title
-        alertDialogBuilder.setTitle("Add new item to Quiz Template?");
-
-        // set dialog message
-        alertDialogBuilder
-                .setMessage("Click yes to add!")
-                .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        Toast.makeText(context, "Lets add some items", Toast.LENGTH_LONG).show();
-                        DummyContent.ITEMS.add(new DummyItem("1", "Abhishek Batra"));
-                        mAdapter.notifyDataSetChanged();
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-
-                        dialog.cancel();
-                    }
-                });
-
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
+        boolean wrapInScrollView = true;
+        new MaterialDialog.Builder(context)
+                .title(R.string.quiz_new_question_title)
+                .customView(R.layout.quiz_dialog_add_question, wrapInScrollView)
+                .positiveText(R.string.quiz_add)
+                .negativeText(R.string.quiz_delete)
+                .show();
     }
+
+//    private void showCustomView(Context context) {
+//        MaterialDialog dialog = new MaterialDialog.Builder(context)
+//                .title(R.string.googleWifi)
+//                .customView(R.layout.dialog_customview, true)
+//                .positiveText(R.string.connect)
+//                .negativeText(android.R.string.cancel)
+//                .callback(new MaterialDialog.ButtonCallback() {
+//                    @Override
+//                    public void onPositive(MaterialDialog dialog) {
+//                        showToast("Password: " + passwordInput.getText().toString());
+//                    }
+//
+//                    @Override
+//                    public void onNegative(MaterialDialog dialog) {
+//                    }
+//                }).build();
+//
+//        final View positiveAction = dialog.getActionButton(DialogAction.POSITIVE);
+//        //noinspection ConstantConditions
+//        passwordInput = (EditText) dialog.getCustomView().findViewById(R.id.password);
+//        passwordInput.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                positiveAction.setEnabled(s.toString().trim().length() > 0);
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//            }
+//        });
+//
+//        // Toggling the show password CheckBox will mask or unmask the password input EditText
+//        CheckBox checkbox = (CheckBox) dialog.getCustomView().findViewById(R.id.showPassword);
+//        checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                passwordInput.setInputType(!isChecked ? InputType.TYPE_TEXT_VARIATION_PASSWORD : InputType.TYPE_CLASS_TEXT);
+//                passwordInput.setTransformationMethod(!isChecked ? PasswordTransformationMethod.getInstance() : null);
+//            }
+//        });
+//
+//        int widgetColor = ThemeSingleton.get().widgetColor;
+//        MDTintHelper.setTint(checkbox,
+//                widgetColor == 0 ? getResources().getColor(R.color.material_teal_500) : widgetColor);
+//
+//        MDTintHelper.setTint(passwordInput,
+//                widgetColor == 0 ? getResources().getColor(R.color.material_teal_500) : widgetColor);
+//
+//        dialog.show();
+//        positiveAction.setEnabled(false); // disabled by default
+//    }
+
 
 }
