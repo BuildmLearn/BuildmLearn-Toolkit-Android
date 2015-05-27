@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <view
+            android:id="@+id/view2"
+            style="@style/TextView.CircleIcon"
+            class="org.buildmlearn.toolkit.views.TextViewPlus"
+            android:text="G" />
+
+        <view
+            android:id="@+id/view1"
+            style="@style/TextView.Title"
+            class="org.buildmlearn.toolkit.views.TextViewPlus"
+            android:layout_marginLeft="16dp"
+            android:paddingBottom="24dp"
+            android:paddingTop="20dp"
+            android:text="What is the capital of India?" />
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="72dp"
+        android:background="@color/color_divider">
+
+    </View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#E3E3E3"
+        android:orientation="vertical"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp"
+        android:paddingLeft="72dp">
+
+        <view
+            android:id="@+id/answer1"
+            style="@style/TextView.Body1"
+            class="org.buildmlearn.toolkit.views.TextViewPlus"
+            android:paddingBottom="8dp"
+            android:text="What is the capital of India?" />
+
+        <view
+            android:id="@+id/answer2"
+            style="@style/TextView.Body1"
+            class="org.buildmlearn.toolkit.views.TextViewPlus"
+            android:paddingBottom="8dp"
+            android:text="What is the capital of India?" />
+
+        <view
+            android:id="@+id/answer3"
+            style="@style/TextView.Body1"
+            class="org.buildmlearn.toolkit.views.TextViewPlus"
+            android:paddingBottom="8dp"
+            android:text="What is the capital of India?" />
+
+        <view
+            android:id="@+id/answer4"
+            style="@style/TextView.Body1"
+            class="org.buildmlearn.toolkit.views.TextViewPlus"
+            android:paddingBottom="8dp"
+            android:text="What is the capital of India?" />
+    </LinearLayout>
+</LinearLayout>

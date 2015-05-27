@@ -85,9 +85,17 @@
     <style name="TextView.Body1" parent="TextAppearance.AppCompat.Body1">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/abc_secondary_text_material_dark</item>
+        <item name="android:textColor">@color/black_secondary_text</item>
         <item name="android:textSize">@dimen/cardview_body_text_size</item>
-        <item name="customFont">minecrafter_3.ttf</item>
+        <item name="customFont">roboto_medium.ttf</item>
+    </style>
+
+    <style name="TextView.Title" parent="TextAppearance.AppCompat.Title">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/black_primary_text</item>
+        <item name="android:textSize">@dimen/title</item>
+        <item name="customFont">roboto_regular.ttf</item>
     </style>
 
     <style name="TextView.Caption" parent="TextAppearance.AppCompat.Caption">
@@ -96,6 +104,17 @@
         <item name="android:textColor">@color/white_hint_text_disabled</item>
         <item name="android:textSize">@dimen/caption</item>
         <item name="customFont">roboto_regular.ttf</item>
+    </style>
+
+    <style name="TextView.CircleIcon" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:textColor">@color/white_primary_text</item>
+        <item name="android:textSize">@dimen/headline</item>
+        <item name="android:background">@drawable/bg_circular</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginLeft">@dimen/activity_horizontal_margin</item>
+        <item name="customFont">roboto_light.ttf</item>
     </style>
 
     <style name="TextView.Caption.Light" parent="TextAppearance.AppCompat.Caption">
