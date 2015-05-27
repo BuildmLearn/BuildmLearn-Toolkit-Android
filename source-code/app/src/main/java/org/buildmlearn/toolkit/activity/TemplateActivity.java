@@ -1,18 +1,22 @@
 package org.buildmlearn.toolkit.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ListAdapter;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.adapter.TemplateAdapter;
+import org.buildmlearn.toolkit.constant.Constants;
 
-public class TemplateActivity extends ActionBarActivity {
+public class TemplateActivity extends AppCompatActivity {
 
 
     @Override
@@ -26,6 +30,20 @@ public class TemplateActivity extends ActionBarActivity {
         ListAdapter mAdapter = new TemplateAdapter(this, 6);
         AbsListView mListView = (AbsListView) findViewById(android.R.id.list);
         mListView.setAdapter(mAdapter);
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                int templateId = position;
+
+                Intent intent = new Intent(getApplicationContext(), TemplateEditor.class);
+                intent.putExtra(Constants.TEMPLATE_ID, templateId);
+                startActivity(intent);
+                finish();
+
+
+            }
+        });
     }
 
     @Override

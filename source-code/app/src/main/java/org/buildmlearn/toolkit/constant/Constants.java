@@ -11,4 +11,6 @@ public class Constants {
 
     public final static String UNZIP = BUILD_M_LEARN_PATH + "unzipped/";
 
+    public final static String TEMPLATE_ID = "TEMPLATE_ID";
+
 }

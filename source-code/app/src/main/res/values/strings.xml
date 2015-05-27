@@ -50,4 +50,5 @@
     <string name="label_quiz">Quiz Name</string>
     <string name="hint_author">Name</string>
     <string name="label_author">Author</string>
+    <string name="title_activity_template_editor">TemplateEditor</string>
 </resources>
