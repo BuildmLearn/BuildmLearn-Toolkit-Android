@@ -1,8 +1,13 @@
 package org.buildmlearn.toolkit.templates;
 
 import android.content.Context;
+import android.view.View;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.Toast;
 
+import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.buildmlearn.toolkit.R;
@@ -27,32 +32,6 @@ public class QuizTemplate implements TemplateInterface {
 
     @Override
     public BaseAdapter newTemplateEditorAdapter(Context context) {
-        ArrayList<String> options = new ArrayList<>();
-        options.add("New Delhi");
-        options.add("Banglore");
-        options.add("Hyderabad");
-        options.add("Mumbai");
-        quizData.add(new QuizModel("What is the capital of India ?", options, 0));
-        quizData.add(new QuizModel("Who is the prime minister of India ?", options, 0));
-        quizData.add(new QuizModel("Whats is the atomic weight of Gold ?", options, 0));
-        quizData.add(new QuizModel("What is the capital of India ?", options, 0));
-        quizData.add(new QuizModel("Who is the prime minister of India ?", options, 0));
-        quizData.add(new QuizModel("Whats is the atomic weight of Gold ?", options, 0));
-        quizData.add(new QuizModel("What is the capital of India ?", options, 0));
-        quizData.add(new QuizModel("Who is the prime minister of India ?", options, 0));
-        quizData.add(new QuizModel("Whats is the atomic weight of Gold ?", options, 0));
-        quizData.add(new QuizModel("What is the capital of India ?", options, 0));
-        quizData.add(new QuizModel("Who is the prime minister of India ?", options, 0));
-        quizData.add(new QuizModel("Whats is the atomic weight of Gold ?", options, 0));
-        quizData.add(new QuizModel("What is the capital of India ?", options, 0));
-        quizData.add(new QuizModel("Who is the prime minister of India ?", options, 0));
-        quizData.add(new QuizModel("Whats is the atomic weight of Gold ?", options, 0));
-        quizData.add(new QuizModel("What is the capital of India ?", options, 0));
-        quizData.add(new QuizModel("Who is the prime minister of India ?", options, 0));
-        quizData.add(new QuizModel("Whats is the atomic weight of Gold ?", options, 0));
-        quizData.add(new QuizModel("What is the capital of India ?", options, 0));
-        quizData.add(new QuizModel("Who is the prime minister of India ?", options, 0));
-        quizData.add(new QuizModel("Whats is the atomic weight of Gold ?", options, 0));
         mAdapter = new QuizAdapter(context, quizData);
         return mAdapter;
     }
@@ -64,8 +43,7 @@ public class QuizTemplate implements TemplateInterface {
 
     @Override
     public String onAttach() {
-        count++;
-        return "This is Quiz Template, Count: " + count;
+        return "Quiz Template";
     }
 
     @Override
@@ -76,69 +54,108 @@ public class QuizTemplate implements TemplateInterface {
     @Override
     public void addItem(final Context context) {
         boolean wrapInScrollView = true;
-        new MaterialDialog.Builder(context)
+        final MaterialDialog dialog = new MaterialDialog.Builder(context)
                 .title(R.string.quiz_new_question_title)
                 .customView(R.layout.quiz_dialog_add_question, wrapInScrollView)
                 .positiveText(R.string.quiz_add)
                 .negativeText(R.string.quiz_delete)
-                .show();
+                .build();
+
+        final EditText question = (EditText) dialog.findViewById(R.id.quiz_question);
+        final ArrayList<RadioButton> buttons = new ArrayList<>();
+        final ArrayList<EditText> options = new ArrayList<>();
+        options.add((EditText) dialog.findViewById(R.id.quiz_option_1));
+        options.add((EditText) dialog.findViewById(R.id.quiz_option_2));
+        options.add((EditText) dialog.findViewById(R.id.quiz_option_3));
+        options.add((EditText) dialog.findViewById(R.id.quiz_option_4));
+        buttons.add((RadioButton) dialog.findViewById(R.id.quiz_radio_1));
+        buttons.add((RadioButton) dialog.findViewById(R.id.quiz_radio_2));
+        buttons.add((RadioButton) dialog.findViewById(R.id.quiz_radio_3));
+        buttons.add((RadioButton) dialog.findViewById(R.id.quiz_radio_4));
+
+        for (final RadioButton button : buttons) {
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    checkButton(buttons, options, button.getId(), context);
+                }
+            });
+        }
+
+        dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                boolean isValidated = true;
+                int checkedAns = getCheckedAnswer(buttons);
+                if (checkedAns < 0) {
+                    Toast.makeText(context, "Choose a correct option", Toast.LENGTH_SHORT).show();
+                    isValidated = false;
+                }
+                if (question.getText().toString().equals("")) {
+
+                    question.setError("Question is required");
+                    isValidated = false;
+                }
+
+                int optionCount = 0;
+                for (EditText option : options) {
+                    if (!option.getText().toString().equals("")) {
+                        optionCount++;
+                    }
+                }
+                if (optionCount < 2) {
+                    Toast.makeText(context, "Minimum two multiple answers are required.", Toast.LENGTH_SHORT).show();
+                    isValidated = false;
+                }
+
+                if (isValidated) {
+                    dialog.dismiss();
+                    ArrayList<String> answerOptions = new ArrayList<String>();
+                    int correctAnswer = 0;
+                    for (int i = 0; i < buttons.size(); i++) {
+                        if (buttons.get(i).isChecked() && !options.get(i).getText().toString().equals("")) {
+                            correctAnswer = answerOptions.size();
+                            answerOptions.add(options.get(i).getText().toString());
+                        } else if (!options.get(i).getText().toString().equals("")) {
+                            answerOptions.add(options.get(i).getText().toString());
+                        }
+                    }
+                    String questionText = question.getText().toString();
+                    quizData.add(new QuizModel(questionText, answerOptions, correctAnswer));
+                    mAdapter.notifyDataSetChanged();
+                }
+
+            }
+        });
+        dialog.show();
+
     }
 
-//    private void showCustomView(Context context) {
-//        MaterialDialog dialog = new MaterialDialog.Builder(context)
-//                .title(R.string.googleWifi)
-//                .customView(R.layout.dialog_customview, true)
-//                .positiveText(R.string.connect)
-//                .negativeText(android.R.string.cancel)
-//                .callback(new MaterialDialog.ButtonCallback() {
-//                    @Override
-//                    public void onPositive(MaterialDialog dialog) {
-//                        showToast("Password: " + passwordInput.getText().toString());
-//                    }
-//
-//                    @Override
-//                    public void onNegative(MaterialDialog dialog) {
-//                    }
-//                }).build();
-//
-//        final View positiveAction = dialog.getActionButton(DialogAction.POSITIVE);
-//        //noinspection ConstantConditions
-//        passwordInput = (EditText) dialog.getCustomView().findViewById(R.id.password);
-//        passwordInput.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                positiveAction.setEnabled(s.toString().trim().length() > 0);
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//            }
-//        });
-//
-//        // Toggling the show password CheckBox will mask or unmask the password input EditText
-//        CheckBox checkbox = (CheckBox) dialog.getCustomView().findViewById(R.id.showPassword);
-//        checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                passwordInput.setInputType(!isChecked ? InputType.TYPE_TEXT_VARIATION_PASSWORD : InputType.TYPE_CLASS_TEXT);
-//                passwordInput.setTransformationMethod(!isChecked ? PasswordTransformationMethod.getInstance() : null);
-//            }
-//        });
-//
-//        int widgetColor = ThemeSingleton.get().widgetColor;
-//        MDTintHelper.setTint(checkbox,
-//                widgetColor == 0 ? getResources().getColor(R.color.material_teal_500) : widgetColor);
-//
-//        MDTintHelper.setTint(passwordInput,
-//                widgetColor == 0 ? getResources().getColor(R.color.material_teal_500) : widgetColor);
-//
-//        dialog.show();
-//        positiveAction.setEnabled(false); // disabled by default
-//    }
+    private void checkButton(ArrayList<RadioButton> buttons, ArrayList<EditText> options, int id, Context context) {
+        for (RadioButton button : buttons) {
+            if (button.getId() == id) {
+                int index = buttons.indexOf(button);
+                if (options.get(index).getText().toString().equals("")) {
+                    Toast.makeText(context, "Enter a valid option before marking it as answer", Toast.LENGTH_LONG).show();
+                    button.setChecked(false);
+                    return;
+                } else {
+                    button.setChecked(true);
+                }
+            } else {
+                button.setChecked(false);
+            }
+        }
+    }
 
+    private int getCheckedAnswer(ArrayList<RadioButton> buttons) {
+        for (int i = 0; i < buttons.size(); i++) {
+            if (buttons.get(i).isChecked()) {
+                return i;
+            }
+        }
+        return -1;
+    }
 
 }
