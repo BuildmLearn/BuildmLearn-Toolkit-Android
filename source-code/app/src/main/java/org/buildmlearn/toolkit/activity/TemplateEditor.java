@@ -1,6 +1,8 @@
 package org.buildmlearn.toolkit.activity;
 
 import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -10,9 +12,12 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.afollestad.materialdialogs.ThemeSingleton;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.constant.Constants;
@@ -27,6 +32,7 @@ public class TemplateEditor extends AppCompatActivity {
     private int templateId;
     private Template template;
     private TemplateInterface selectedTemplate;
+    private int selectedPosition = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +75,24 @@ public class TemplateEditor extends AppCompatActivity {
         View templateHeader = inflater.inflate(R.layout.listview_header_template, templateEdtiorList, false);
         templateEdtiorList.addHeaderView(templateHeader, null, false);
         templateEdtiorList.setAdapter(adapter);
+
+        templateEdtiorList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+                if (selectedPosition == position - 1) {
+                    selectedPosition = -1;
+                    view.setBackgroundResource(0);
+                    restoreColorScheme();
+                } else {
+                    selectedPosition = position - 1;
+                    Log.d(TAG, "Position: " + selectedPosition);
+                    view.setBackgroundColor(getResources().getColor(R.color.color_divider));
+                    changeColorScheme();
+                }
+                return true;
+            }
+        });
 
     }
 
@@ -132,5 +156,33 @@ public class TemplateEditor extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void changeColorScheme() {
+        int primaryColor = getResources().getColor(R.color.color_selected);
+        int primaryColorDark = getResources().getColor(R.color.color_selected_dark);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(primaryColor));
+        ThemeSingleton.get().positiveColor = primaryColor;
+        ThemeSingleton.get().neutralColor = primaryColor;
+        ThemeSingleton.get().negativeColor = primaryColor;
+        ThemeSingleton.get().widgetColor = primaryColor;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(primaryColorDark);
+            getWindow().setNavigationBarColor(primaryColor);
+        }
+    }
+
+    public void restoreColorScheme() {
+        int primaryColor = getResources().getColor(R.color.color_primary);
+        int primaryColorDark = getResources().getColor(R.color.color_primary_dark);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(primaryColor));
+        ThemeSingleton.get().positiveColor = primaryColor;
+        ThemeSingleton.get().neutralColor = primaryColor;
+        ThemeSingleton.get().negativeColor = primaryColor;
+        ThemeSingleton.get().widgetColor = primaryColor;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(primaryColorDark);
+            getWindow().setNavigationBarColor(primaryColor);
+        }
     }
 }
