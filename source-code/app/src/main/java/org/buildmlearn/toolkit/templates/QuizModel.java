@@ -1,11 +1,12 @@
 package org.buildmlearn.toolkit.templates;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by abhishek on 28/5/15.
  */
-public class QuizModel {
+public class QuizModel implements Serializable {
 
     private String question;
     private ArrayList<String> options;

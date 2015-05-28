@@ -12,13 +12,13 @@
         android:orientation="horizontal">
 
         <view
-            android:id="@+id/view2"
+            android:id="@+id/question_icon"
             style="@style/TextView.CircleIcon"
             class="org.buildmlearn.toolkit.views.TextViewPlus"
             android:text="G" />
 
         <view
-            android:id="@+id/view1"
+            android:id="@+id/question"
             style="@style/TextView.Title"
             class="org.buildmlearn.toolkit.views.TextViewPlus"
             android:layout_marginLeft="16dp"

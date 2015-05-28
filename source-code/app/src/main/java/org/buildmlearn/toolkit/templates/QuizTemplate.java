@@ -1,15 +1,14 @@
 package org.buildmlearn.toolkit.templates;
 
 import android.content.Context;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.buildmlearn.toolkit.R;
-import org.buildmlearn.toolkit.fragment.dummy.DummyContent;
-import org.buildmlearn.toolkit.fragment.dummy.DummyContent.DummyItem;
 import org.buildmlearn.toolkit.model.TemplateInterface;
+
+import java.util.ArrayList;
 
 /**
  * Created by abhishek on 27/5/15.
@@ -17,17 +16,26 @@ import org.buildmlearn.toolkit.model.TemplateInterface;
 public class QuizTemplate implements TemplateInterface {
 
 
-    transient private ArrayAdapter<DummyItem> mAdapter;
+    transient private QuizAdapter mAdapter;
+    private ArrayList<QuizModel> quizData;
     private int count;
 
     public QuizTemplate() {
         count = 0;
+        this.quizData = new ArrayList<>();
     }
 
     @Override
     public BaseAdapter newTemplateEditorAdapter(Context context) {
-        mAdapter = new ArrayAdapter<>(context,
-                android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);
+        ArrayList<String> options = new ArrayList<>();
+        options.add("New Delhi");
+        options.add("Banglore");
+        options.add("Hyderabad");
+        options.add("Mumbai");
+        quizData.add(new QuizModel("What is the capital of India ?", options, 0));
+        quizData.add(new QuizModel("Who is the prime minister of India ?", options, 0));
+        quizData.add(new QuizModel("Whats is the atomic weight of Gold ?", options, 0));
+        mAdapter = new QuizAdapter(context, quizData);
         return mAdapter;
     }
 
