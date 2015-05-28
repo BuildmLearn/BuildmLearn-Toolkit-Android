@@ -95,7 +95,15 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/black_primary_text</item>
         <item name="android:textSize">@dimen/title</item>
-        <item name="customFont">roboto_regular.ttf</item>
+        <item name="customFont">roboto_light.ttf</item>
+    </style>
+
+    <style name="TextView.Title.Thin" parent="TextAppearance.AppCompat.Body2">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/sub_title</item>
+        <item name="android:textColor">@color/black_primary_text</item>
+        <item name="customFont">roboto_medium.ttf</item>
     </style>
 
     <style name="TextView.Caption" parent="TextAppearance.AppCompat.Caption">

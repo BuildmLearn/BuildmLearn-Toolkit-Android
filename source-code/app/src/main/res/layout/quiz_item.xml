@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:animateLayoutChanges="true"
     android:orientation="vertical">
 
     <LinearLayout
@@ -15,16 +15,15 @@
             android:id="@+id/question_icon"
             style="@style/TextView.CircleIcon"
             class="org.buildmlearn.toolkit.views.TextViewPlus"
-            android:text="G" />
+            android:layout_gravity="center_vertical" />
 
         <view
             android:id="@+id/question"
-            style="@style/TextView.Title"
+            style="@style/TextView.Title.Thin"
             class="org.buildmlearn.toolkit.views.TextViewPlus"
             android:layout_marginLeft="16dp"
-            android:paddingBottom="24dp"
-            android:paddingTop="20dp"
-            android:text="What is the capital of India?" />
+            android:paddingBottom="16dp"
+            android:paddingTop="16dp" />
 
 
     </LinearLayout>
@@ -38,40 +37,38 @@
     </View>
 
     <LinearLayout
+        android:id="@+id/quiz_options_box"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#E3E3E3"
+        android:background="@color/translucent_grey"
         android:orientation="vertical"
-        android:paddingTop="16dp"
         android:paddingBottom="8dp"
-        android:paddingLeft="72dp">
+        android:paddingLeft="72dp"
+        android:paddingTop="16dp"
+        android:visibility="gone">
 
         <view
             android:id="@+id/answer1"
             style="@style/TextView.Body1"
             class="org.buildmlearn.toolkit.views.TextViewPlus"
-            android:paddingBottom="8dp"
-            android:text="What is the capital of India?" />
+            android:paddingBottom="8dp" />
 
         <view
             android:id="@+id/answer2"
             style="@style/TextView.Body1"
             class="org.buildmlearn.toolkit.views.TextViewPlus"
-            android:paddingBottom="8dp"
-            android:text="What is the capital of India?" />
+            android:paddingBottom="8dp" />
 
         <view
             android:id="@+id/answer3"
             style="@style/TextView.Body1"
             class="org.buildmlearn.toolkit.views.TextViewPlus"
-            android:paddingBottom="8dp"
-            android:text="What is the capital of India?" />
+            android:paddingBottom="8dp" />
 
         <view
             android:id="@+id/answer4"
             style="@style/TextView.Body1"
             class="org.buildmlearn.toolkit.views.TextViewPlus"
-            android:paddingBottom="8dp"
-            android:text="What is the capital of India?" />
+            android:paddingBottom="8dp" />
     </LinearLayout>
 </LinearLayout>

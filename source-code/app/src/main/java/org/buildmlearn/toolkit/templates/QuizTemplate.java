@@ -35,6 +35,24 @@ public class QuizTemplate implements TemplateInterface {
         quizData.add(new QuizModel("What is the capital of India ?", options, 0));
         quizData.add(new QuizModel("Who is the prime minister of India ?", options, 0));
         quizData.add(new QuizModel("Whats is the atomic weight of Gold ?", options, 0));
+        quizData.add(new QuizModel("What is the capital of India ?", options, 0));
+        quizData.add(new QuizModel("Who is the prime minister of India ?", options, 0));
+        quizData.add(new QuizModel("Whats is the atomic weight of Gold ?", options, 0));
+        quizData.add(new QuizModel("What is the capital of India ?", options, 0));
+        quizData.add(new QuizModel("Who is the prime minister of India ?", options, 0));
+        quizData.add(new QuizModel("Whats is the atomic weight of Gold ?", options, 0));
+        quizData.add(new QuizModel("What is the capital of India ?", options, 0));
+        quizData.add(new QuizModel("Who is the prime minister of India ?", options, 0));
+        quizData.add(new QuizModel("Whats is the atomic weight of Gold ?", options, 0));
+        quizData.add(new QuizModel("What is the capital of India ?", options, 0));
+        quizData.add(new QuizModel("Who is the prime minister of India ?", options, 0));
+        quizData.add(new QuizModel("Whats is the atomic weight of Gold ?", options, 0));
+        quizData.add(new QuizModel("What is the capital of India ?", options, 0));
+        quizData.add(new QuizModel("Who is the prime minister of India ?", options, 0));
+        quizData.add(new QuizModel("Whats is the atomic weight of Gold ?", options, 0));
+        quizData.add(new QuizModel("What is the capital of India ?", options, 0));
+        quizData.add(new QuizModel("Who is the prime minister of India ?", options, 0));
+        quizData.add(new QuizModel("Whats is the atomic weight of Gold ?", options, 0));
         mAdapter = new QuizAdapter(context, quizData);
         return mAdapter;
     }

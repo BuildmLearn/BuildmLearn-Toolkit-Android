@@ -18,7 +18,8 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/toolbar"
         android:layout_gravity="center_vertical"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:divider="@android:color/transparent" />
 
     <com.getbase.floatingactionbutton.AddFloatingActionButton
         android:id="@+id/button_add_item"
