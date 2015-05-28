@@ -48,6 +48,7 @@
     <string name="quiz_new_question_title">Add New Question</string>
     <string name="quiz_delete">Delete</string>
     <string name="quiz_add">Add</string>
+    <string name="quiz_edit">Edit Question</string>
     <string name="quiz_description">Choose this template to create Quiz-like applications</string>
     <string name="hint_quiz_name">Quiz Name</string>
     <string name="label_quiz">Quiz Name</string>

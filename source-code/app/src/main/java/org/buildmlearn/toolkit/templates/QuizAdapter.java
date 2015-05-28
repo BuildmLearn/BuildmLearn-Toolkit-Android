@@ -80,7 +80,7 @@ public class QuizAdapter extends BaseAdapter {
                 holder.options.get(i).setText(Character.toString((char) ascii) + ")  " + data.getOptions().get(i));
                 holder.options.get(i).setVisibility(View.VISIBLE);
             } else {
-                holder.options.get(i).setVisibility(View.INVISIBLE);
+                holder.options.get(i).setVisibility(View.GONE);
             }
         }
 
