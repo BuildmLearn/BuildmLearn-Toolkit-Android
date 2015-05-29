@@ -34,6 +34,8 @@ public class TemplateEditor extends AppCompatActivity {
     private TemplateInterface selectedTemplate;
     private int selectedPosition = -1;
 
+    private View selectedView = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +69,7 @@ public class TemplateEditor extends AppCompatActivity {
         super.onSaveInstanceState(outState);
     }
 
-    private void populateListView(BaseAdapter adapter) {
+    private void populateListView(final BaseAdapter adapter) {
         if (templateEdtiorList == null) {
             templateEdtiorList = (ListView) findViewById(R.id.template_editor_listview);
         }
@@ -80,11 +82,19 @@ public class TemplateEditor extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
+                if(position == 0) {
+                    return false;
+                }
+
                 if (selectedPosition == position - 1) {
                     selectedPosition = -1;
                     view.setBackgroundResource(0);
                     restoreColorScheme();
                 } else {
+                    if(selectedView != null) {
+                        selectedView.setBackgroundResource(0);
+                    }
+                    selectedView = view;
                     selectedPosition = position - 1;
                     Log.d(TAG, "Position: " + selectedPosition);
                     view.setBackgroundColor(getResources().getColor(R.color.color_divider));
@@ -159,7 +169,7 @@ public class TemplateEditor extends AppCompatActivity {
     }
 
     public void changeColorScheme() {
-        int primaryColor = getResources().getColor(R.color.color_selected);
+        int primaryColor = getResources().getColor(R.color.color_primary_dark);
         int primaryColorDark = getResources().getColor(R.color.color_selected_dark);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(primaryColor));
         ThemeSingleton.get().positiveColor = primaryColor;
