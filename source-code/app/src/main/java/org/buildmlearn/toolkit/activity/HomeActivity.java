@@ -9,14 +9,19 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.InflateException;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import com.crashlytics.android.Crashlytics;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.fragment.NavigationDrawerFragment;
 import org.buildmlearn.toolkit.fragment.TestFragment;
 import org.buildmlearn.toolkit.model.Section;
+
+import io.fabric.sdk.android.Fabric;
 
 
 public class HomeActivity extends AppCompatActivity
@@ -36,6 +41,7 @@ public class HomeActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
 
         setContentView(R.layout.activity_home);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
@@ -48,6 +54,12 @@ public class HomeActivity extends AppCompatActivity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+
+        throw new InflateException();
+    }
+
+    public void stackOverflow() {
+        stackOverflow();
     }
 
     @Override

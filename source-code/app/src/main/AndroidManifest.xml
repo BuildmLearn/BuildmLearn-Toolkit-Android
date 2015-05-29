@@ -48,6 +48,10 @@
             android:label="@string/title_activity_template_editor"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="c1d33469d628f14f5b248cb6d6dcf6de726ef5e3" />
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
