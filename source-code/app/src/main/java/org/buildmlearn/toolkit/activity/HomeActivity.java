@@ -9,7 +9,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.InflateException;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -55,12 +54,8 @@ public class HomeActivity extends AppCompatActivity
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
 
-        throw new InflateException();
     }
-
-    public void stackOverflow() {
-        stackOverflow();
-    }
+    
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
