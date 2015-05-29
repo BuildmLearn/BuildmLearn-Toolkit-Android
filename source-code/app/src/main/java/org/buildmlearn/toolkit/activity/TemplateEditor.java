@@ -33,7 +33,7 @@ public class TemplateEditor extends AppCompatActivity {
     private Template template;
     private TemplateInterface selectedTemplate;
     private int selectedPosition = -1;
-
+    private boolean showTemplateSelectedMenu;
     private View selectedView = null;
 
     @Override
@@ -82,7 +82,7 @@ public class TemplateEditor extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
-                if(position == 0) {
+                if (position == 0) {
                     return false;
                 }
 
@@ -91,7 +91,7 @@ public class TemplateEditor extends AppCompatActivity {
                     view.setBackgroundResource(0);
                     restoreColorScheme();
                 } else {
-                    if(selectedView != null) {
+                    if (selectedView != null) {
                         selectedView.setBackgroundResource(0);
                     }
                     selectedView = view;
@@ -149,7 +149,21 @@ public class TemplateEditor extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_template_editor, menu);
+        Log.d(TAG, "onCreateOptionsMenu");
+//        getMenuInflater().inflate(R.menu.menu_template_editor, menu);
+//        showTemplateSelectedMenu = false;
+
+        return true;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        Log.d(TAG, "onPrepareOptionsMenu");
+        if(showTemplateSelectedMenu) {
+            getMenuInflater().inflate(R.menu.menu_template_item_selected, menu);
+        } else {
+            getMenuInflater().inflate(R.menu.menu_template_editor, menu);
+        }
         return true;
     }
 
@@ -160,12 +174,32 @@ public class TemplateEditor extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id) {
+            case R.id.action_delete:
+                selectedTemplate.deleteItem(selectedPosition);
+                restoreSelectedView();
+                break;
+            case R.id.action_edit:
+                selectedTemplate.editItem(this, selectedPosition);
+                restoreSelectedView();
+                break;
+            case R.id.action_simulate:
+
+                break;
+            case R.id.action_save:
+
+                break;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void restoreSelectedView() {
+        if(selectedView != null) {
+            selectedView.setBackgroundResource(0);
+        }
+
+        restoreColorScheme();
     }
 
     public void changeColorScheme() {
@@ -180,6 +214,9 @@ public class TemplateEditor extends AppCompatActivity {
             getWindow().setStatusBarColor(primaryColorDark);
             getWindow().setNavigationBarColor(primaryColor);
         }
+
+        showTemplateSelectedMenu = true;
+        invalidateOptionsMenu();
     }
 
     public void restoreColorScheme() {
@@ -194,5 +231,7 @@ public class TemplateEditor extends AppCompatActivity {
             getWindow().setStatusBarColor(primaryColorDark);
             getWindow().setNavigationBarColor(primaryColor);
         }
+        showTemplateSelectedMenu = false;
+        invalidateOptionsMenu();
     }
 }
