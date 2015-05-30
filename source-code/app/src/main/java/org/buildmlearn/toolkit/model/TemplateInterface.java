@@ -10,18 +10,20 @@ import java.io.Serializable;
  */
 public interface TemplateInterface extends Serializable {
 
-    public BaseAdapter newTemplateEditorAdapter(Context context);
+    BaseAdapter newTemplateEditorAdapter(Context context);
 
-    public BaseAdapter currentTemplateEditorAdapter();
+    BaseAdapter currentTemplateEditorAdapter();
 
-    public String onAttach();
+    String onAttach();
 
-    public String getTitle();
+    String getTitle();
 
-    public void addItem(Context context);
+    void addItem(Context context);
 
-    public void editItem(Context context, int position);
+    void editItem(Context context, int position);
 
-    public void deleteItem(int position);
+    void deleteItem(int position);
+
+    void saveProject(String name, String title);
     
 }

@@ -1,5 +1,8 @@
 package org.buildmlearn.toolkit.templates;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -44,8 +47,21 @@ public class QuizModel implements Serializable {
         this.correctAnswer = correctAnswer;
     }
 
-    public String getXml() {
-        return null;
+    public Element getXml(Document doc) {
+        Element rootElement = doc.createElement("item");
+        Element questionElement = doc.createElement("question");
+        questionElement.appendChild(doc.createTextNode(question));
+        rootElement.appendChild(questionElement);
+        for (String option : options) {
+            Element optionElement = doc.createElement("option");
+            optionElement.appendChild(doc.createTextNode(option));
+            rootElement.appendChild(optionElement);
+        }
+
+        Element answerElement = doc.createElement("answer");
+        answerElement.appendChild(doc.createTextNode(String.valueOf(correctAnswer)));
+        rootElement.appendChild(answerElement);
+        return rootElement;
     }
 
     public boolean isSelected() {

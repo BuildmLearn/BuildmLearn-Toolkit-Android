@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -187,6 +188,14 @@ public class TemplateEditor extends AppCompatActivity {
 
                 break;
             case R.id.action_save:
+                String author = ((EditText)findViewById(R.id.author_name)).getText().toString();
+                String title = ((EditText)findViewById(R.id.template_title)).getText().toString();
+                if(author.equals("") || title.equals("")) {
+
+                }
+                else {
+                    selectedTemplate.saveProject(author, title);
+                }
 
                 break;
         }
