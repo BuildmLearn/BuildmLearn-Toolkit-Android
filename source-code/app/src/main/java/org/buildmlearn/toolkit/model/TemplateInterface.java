@@ -3,7 +3,11 @@ package org.buildmlearn.toolkit.model;
 import android.content.Context;
 import android.widget.BaseAdapter;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * Created by abhishek on 27/5/15.
@@ -24,6 +28,6 @@ public interface TemplateInterface extends Serializable {
 
     void deleteItem(int position);
 
-    void saveProject(String name, String title);
+    ArrayList<Element> getItems(Document doc);
     
 }

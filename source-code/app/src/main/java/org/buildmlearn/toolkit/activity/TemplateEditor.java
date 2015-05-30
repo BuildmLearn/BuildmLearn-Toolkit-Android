@@ -24,6 +24,21 @@ import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.constant.Constants;
 import org.buildmlearn.toolkit.model.Template;
 import org.buildmlearn.toolkit.model.TemplateInterface;
+import org.w3c.dom.Attr;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
+import java.io.StringWriter;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 public class TemplateEditor extends AppCompatActivity {
 
@@ -160,7 +175,7 @@ public class TemplateEditor extends AppCompatActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         Log.d(TAG, "onPrepareOptionsMenu");
-        if(showTemplateSelectedMenu) {
+        if (showTemplateSelectedMenu) {
             getMenuInflater().inflate(R.menu.menu_template_item_selected, menu);
         } else {
             getMenuInflater().inflate(R.menu.menu_template_editor, menu);
@@ -188,15 +203,7 @@ public class TemplateEditor extends AppCompatActivity {
 
                 break;
             case R.id.action_save:
-                String author = ((EditText)findViewById(R.id.author_name)).getText().toString();
-                String title = ((EditText)findViewById(R.id.template_title)).getText().toString();
-                if(author.equals("") || title.equals("")) {
-
-                }
-                else {
-                    selectedTemplate.saveProject(author, title);
-                }
-
+                saveProject();
                 break;
         }
 
@@ -204,7 +211,7 @@ public class TemplateEditor extends AppCompatActivity {
     }
 
     public void restoreSelectedView() {
-        if(selectedView != null) {
+        if (selectedView != null) {
             selectedView.setBackgroundResource(0);
         }
 
@@ -242,5 +249,61 @@ public class TemplateEditor extends AppCompatActivity {
         }
         showTemplateSelectedMenu = false;
         invalidateOptionsMenu();
+    }
+
+    private void saveProject() {
+
+        EditText authorEditText = ((EditText) findViewById(R.id.author_name));
+        EditText titleEditText = ((EditText) findViewById(R.id.template_title));
+        String author = ((EditText) findViewById(R.id.author_name)).getText().toString();
+        String title = ((EditText) findViewById(R.id.template_title)).getText().toString();
+        if (author.equals("")) {
+            authorEditText.setError("Author name is required");
+        } else if (title.equals("")) {
+            titleEditText.setError("Title is required");
+        } else {
+
+            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder docBuilder;
+            try {
+
+                docBuilder = docFactory.newDocumentBuilder();
+                Document doc = docBuilder.newDocument();
+                Element rootElement = doc.createElement("buildmlearn_application");
+                Attr attr = doc.createAttribute("type");
+                attr.setValue(selectedTemplate.getTitle());
+                rootElement.setAttributeNode(attr);
+
+                Element authorElement = doc.createElement("author");
+                rootElement.appendChild(authorElement);
+
+                Element nameElement = doc.createElement("name");
+                nameElement.appendChild(doc.createTextNode(author));
+
+                authorElement.appendChild(nameElement);
+
+                Element titleElement = doc.createElement("title");
+                titleElement.appendChild(doc.createTextNode(title));
+                rootElement.appendChild(titleElement);
+
+                doc.appendChild(rootElement);
+                Element dataElement = doc.createElement("data");
+                rootElement.appendChild(dataElement);
+                for (Element item : selectedTemplate.getItems(doc)) {
+                    dataElement.appendChild(item);
+                }
+                Transformer transformer = TransformerFactory.newInstance().newTransformer();
+                StreamResult result = new StreamResult(new StringWriter());
+                DOMSource source = new DOMSource(doc);
+                transformer.transform(source, result);
+                Log.d(selectedTemplate.getTitle(), result.getWriter().toString());
+            } catch (ParserConfigurationException e) {
+                e.printStackTrace();
+            } catch (TransformerConfigurationException e) {
+                e.printStackTrace();
+            } catch (TransformerException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

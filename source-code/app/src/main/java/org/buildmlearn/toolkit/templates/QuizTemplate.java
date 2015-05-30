@@ -1,7 +1,6 @@
 package org.buildmlearn.toolkit.templates;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
@@ -13,22 +12,10 @@ import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.model.TemplateInterface;
-import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import java.io.StringWriter;
 import java.util.ArrayList;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 
 /**
  * Created by abhishek on 27/5/15.
@@ -243,48 +230,17 @@ public class QuizTemplate implements TemplateInterface {
     }
 
     @Override
-    public void saveProject(String name, String title) {
-        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder docBuilder = null;
-        try {
-            docBuilder = docFactory.newDocumentBuilder();
-            Document doc = docBuilder.newDocument();
-            Element rootElement = doc.createElement("buildmlearn_application");
-            Attr attr = doc.createAttribute("type");
-            attr.setValue(getTitle());
-            rootElement.setAttributeNode(attr);
+    public ArrayList<Element> getItems(Document doc) {
 
-            Element authorElement = doc.createElement("author");
-            rootElement.appendChild(authorElement);
+        ArrayList<Element> itemElements = new ArrayList<>();
 
-            Element nameElement = doc.createElement("name");
-            nameElement.appendChild(doc.createTextNode(name));
 
-            authorElement.appendChild(nameElement);
+        for (QuizModel data : quizData) {
 
-            Element titleElement = doc.createElement("title");
-            titleElement.appendChild(doc.createTextNode(title));
-            rootElement.appendChild(titleElement);
-
-            doc.appendChild(rootElement);
-            Element dataElement = doc.createElement("data");
-            rootElement.appendChild(dataElement);
-            for (QuizModel data : quizData) {
-                dataElement.appendChild(data.getXml(doc));
-            }
-            Transformer transformer = TransformerFactory.newInstance().newTransformer();
-            StreamResult result = new StreamResult(new StringWriter());
-            DOMSource source = new DOMSource(doc);
-            transformer.transform(source, result);
-            Log.d(this.getTitle(), result.getWriter().toString());
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        } catch (TransformerConfigurationException e) {
-            e.printStackTrace();
-        } catch (TransformerException e) {
-            e.printStackTrace();
+            itemElements.add(data.getXml(doc));
         }
 
+        return itemElements;
 
     }
 
