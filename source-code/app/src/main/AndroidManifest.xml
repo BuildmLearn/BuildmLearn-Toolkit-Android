@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.buildmlearn.toolkit" >
+    package="org.buildmlearn.toolkit">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -9,11 +9,11 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".activity.HomeActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,7 +23,7 @@
         <activity
             android:name=".activity.TestActivity"
             android:label="@string/title_activity_test"
-            android:parentActivityName=".activity.HomeActivity" >
+            android:parentActivityName=".activity.HomeActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.buildmlearn.toolkit.activity.HomeActivity" />
@@ -32,13 +32,12 @@
             android:name=".simulator.Simulator"
             android:label="@string/title_activity_simulator"
             android:screenOrientation="portrait"
-            android:theme="@style/Buildmlearn.FullScreen" >
-        </activity>
+            android:theme="@style/Buildmlearn.FullScreen"></activity>
         <activity
             android:name=".activity.TemplateActivity"
             android:label="@string/title_activity_template"
             android:parentActivityName=".activity.HomeActivity"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.buildmlearn.toolkit.activity.HomeActivity" />
@@ -46,8 +45,8 @@
         <activity
             android:name=".activity.TemplateEditor"
             android:label="@string/title_activity_template_editor"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="c1d33469d628f14f5b248cb6d6dcf6de726ef5e3" />

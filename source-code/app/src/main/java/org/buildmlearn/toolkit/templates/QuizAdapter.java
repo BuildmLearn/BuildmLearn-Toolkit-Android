@@ -153,7 +153,7 @@ public class QuizAdapter extends BaseAdapter {
         buttons.add((RadioButton) dialog.findViewById(R.id.quiz_radio_3));
         buttons.add((RadioButton) dialog.findViewById(R.id.quiz_radio_4));
 
-        for(int i=0; i<data.getOptions().size(); i++) {
+        for (int i = 0; i < data.getOptions().size(); i++) {
             options.get(i).setText(data.getOptions().get(i));
         }
 

@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity" >
+    tools:context=".MainActivity">
 
     <View
         android:id="@+id/divider"
@@ -26,8 +26,7 @@
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@android:color/white"
-        android:textStyle="bold" >
-    </TextView>
+        android:textStyle="bold"></TextView>
 
     <TextView
         android:id="@+id/tv_author"
@@ -38,8 +37,7 @@
         android:layout_margin="10dp"
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@android:color/white" >
-    </TextView>
+        android:textColor="@android:color/white"></TextView>
 
     <Button
         android:id="@+id/btn_start"
@@ -47,11 +45,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="@string/quiz_template_start"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
+        android:text="@string/quiz_template_start"
         android:textAppearance="@android:style/TextAppearance.Large"
-        android:textColor="@android:color/white" >
-    </Button>
+        android:textColor="@android:color/white"></Button>
 
 </RelativeLayout>

@@ -12,8 +12,8 @@
     <view
         android:id="@+id/textView2"
         style="@style/TextView.Caption"
-        android:text="@string/label_author"
         class="org.buildmlearn.toolkit.views.TextViewPlus"
+        android:text="@string/label_author"
         android:textColor="@color/color_accent" />
 
     <EditText
@@ -29,8 +29,8 @@
     <view
         android:id="@+id/textView"
         style="@style/TextView.Caption"
-        android:text="@string/label_quiz"
         class="org.buildmlearn.toolkit.views.TextViewPlus"
+        android:text="@string/label_quiz"
         android:textColor="@color/color_accent" />
 
     <EditText
@@ -38,8 +38,8 @@
         style="@style/EditText.Dark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/EditText.Dark"
-        android:hint="@string/hint_quiz_name" />
+        android:hint="@string/hint_quiz_name"
+        android:theme="@style/EditText.Dark" />
 
 
 </LinearLayout>

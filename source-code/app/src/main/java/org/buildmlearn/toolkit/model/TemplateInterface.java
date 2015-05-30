@@ -29,5 +29,5 @@ public interface TemplateInterface extends Serializable {
     void deleteItem(int position);
 
     ArrayList<Element> getItems(Document doc);
-    
+
 }

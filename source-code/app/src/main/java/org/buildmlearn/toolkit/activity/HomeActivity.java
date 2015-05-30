@@ -55,7 +55,7 @@ public class HomeActivity extends AppCompatActivity
                 (DrawerLayout) findViewById(R.id.drawer_layout));
 
     }
-    
+
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {

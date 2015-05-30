@@ -16,9 +16,15 @@ public enum Template {
 //    QUIZ(R.string.quiz_title, R.string.quiz_description, R.drawable.basic_m_learning),
 //    FLASH_CARD(R.string.flash_card_title, R.string.flash_card_description, R.drawable.basic_m_learning);
 
-    private @DrawableRes int image;
-    private @StringRes int title;
-    private @StringRes int description;
+    private
+    @DrawableRes
+    int image;
+    private
+    @StringRes
+    int title;
+    private
+    @StringRes
+    int description;
     private Class<? extends TemplateInterface> templateClass;
 
     Template(@StringRes int title, @StringRes int description, @DrawableRes int image, Class<? extends TemplateInterface> templateClass) {

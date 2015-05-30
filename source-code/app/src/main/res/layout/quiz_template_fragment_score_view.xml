@@ -4,7 +4,7 @@
     android:layout_height="fill_parent"
     android:background="@color/quiz_template_blue_background"
     android:orientation="vertical"
-    android:weightSum="1" >
+    android:weightSum="1">
 
     <TextView
         android:id="@+id/quiz_title"
@@ -16,8 +16,7 @@
         android:text="You have completed the quiz"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@android:color/white"
-        android:textStyle="bold" >
-    </TextView>
+        android:textStyle="bold"></TextView>
 
     <View
         android:id="@+id/divider"
@@ -35,8 +34,7 @@
         android:layout_margin="20dp"
         android:text="Total Correct:"
         android:textColor="@android:color/white"
-        android:textSize="20sp" >
-    </TextView>
+        android:textSize="20sp"></TextView>
 
     <TextView
         android:id="@+id/tv_wrong"
@@ -47,8 +45,7 @@
         android:layout_margin="20dp"
         android:text="Total Wrong:"
         android:textColor="@android:color/white"
-        android:textSize="20sp" >
-    </TextView>
+        android:textSize="20sp"></TextView>
 
     <TextView
         android:id="@+id/tv_unanswered"
@@ -59,8 +56,7 @@
         android:layout_margin="20dp"
         android:text="Unanswered: "
         android:textColor="@android:color/white"
-        android:textSize="20sp" >
-    </TextView>
+        android:textSize="20sp"></TextView>
 
     <Button
         android:id="@+id/quit_button"
@@ -71,8 +67,7 @@
         android:layout_margin="10dp"
         android:padding="10dp"
         android:text="Exit"
-        android:textColor="@android:color/white" >
-    </Button>
+        android:textColor="@android:color/white"></Button>
 
     <Button
         android:id="@+id/start_again_button"
@@ -83,8 +78,7 @@
         android:layout_marginTop="30dp"
         android:padding="10dp"
         android:text="Restart"
-        android:textColor="@android:color/white" >
-    </Button>
+        android:textColor="@android:color/white"></Button>
 
     <View
         android:id="@+id/divider_buttons"

@@ -25,7 +25,7 @@
         <item name="android:windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-            
+
         <!-- Allows the action mode icons to be shown on top of the Toolbar -->
         <item name="windowActionModeOverlay">true</item>
     </style>

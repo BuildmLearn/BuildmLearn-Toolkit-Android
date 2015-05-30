@@ -61,10 +61,10 @@ public class TemplateAdapter extends BaseAdapter {
 
         ((TextView) view.findViewById(R.id.title)).setText(template.getTitle());
         ((TextView) view.findViewById(R.id.description)).setText(template.getDescription());
-        ((ImageView)view.findViewById(R.id.image)).setImageResource(template.getImage());
+        ((ImageView) view.findViewById(R.id.image)).setImageResource(template.getImage());
 
         int color = colors[i % colors.length].getColor();
-        ((CardView)view.findViewById(R.id.card_view)).setCardBackgroundColor(color);
+        ((CardView) view.findViewById(R.id.card_view)).setCardBackgroundColor(color);
 
         return view;
     }
@@ -75,7 +75,9 @@ public class TemplateAdapter extends BaseAdapter {
         ORANGE("#F77400"),
         RED("#F53B3C");
 
-        private @ColorRes int color;
+        private
+        @ColorRes
+        int color;
 
         ListColor(String colorCode) {
             this.color = Color.parseColor(colorCode);
