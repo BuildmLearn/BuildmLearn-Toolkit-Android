@@ -1,31 +1,40 @@
 package org.buildmlearn.toolkit.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import org.buildmlearn.toolkit.R;
-import org.buildmlearn.toolkit.constant.Constants;
+import org.buildmlearn.toolkit.ToolkitApplication;
 import org.buildmlearn.toolkit.utilities.ZipUtils;
 
 import java.io.IOException;
 
-public class TestActivity extends ActionBarActivity {
+public class TestActivity extends AppCompatActivity {
+
+    ToolkitApplication toolkit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
-        ZipUtils.copyAssets(this, "FlashCardTemplateApp_v2.0.apk", Constants.BUILD_M_LEARN_PATH);
+
+        toolkit = (ToolkitApplication)getApplicationContext();
+
+
+        Log.d(getClass().getName(),toolkit.getProjectDir());
+
+        ZipUtils.copyAssets(this, "FlashCardTemplateApp_v2.0.apk", toolkit.getApkDir());
 
         try {
-            ZipUtils.unZip(Constants.BUILD_M_LEARN_PATH + "FlashCardTemplateApp_v2.0.apk", Constants.UNZIP + "FlashCardTemplateApp_v2.0");
+            ZipUtils.unZip(toolkit.getApkDir()+ "FlashCardTemplateApp_v2.0.apk", toolkit.getUnZipDir() + "FlashCardTemplateApp_v2.0");
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        ZipUtils.zipFileAtPath(Constants.UNZIP + "FlashCardTemplateApp_v2.0", Constants.BUILD_M_LEARN_PATH + "/FlashCardTemplateApp_v2.1110.apk");
+        ZipUtils.zipFileAtPath(toolkit.getUnZipDir() + "FlashCardTemplateApp_v2.0", toolkit.getApkDir() + "/FlashCardTemplateApp_v2.1110.apk");
     }
 
     @Override
