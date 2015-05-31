@@ -40,6 +40,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.constant.Constants;
 
 public class TFTQuizFragment extends Fragment {
 
@@ -49,6 +50,14 @@ public class TFTQuizFragment extends Fragment {
     private GlobalData gd;
     private View view;
     private FragmentActivity faActivity;
+
+    public static Fragment newInstance(String path) {
+        TFTQuizFragment fragment = new TFTQuizFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(Constants.SIMULATOR_FILE_PATH, path);
+        fragment.setArguments(bundle);
+        return fragment;
+    }
 
     @Nullable
     @Override
@@ -60,7 +69,7 @@ public class TFTQuizFragment extends Fragment {
         gd = GlobalData.getInstance();
         reInitialize();
         // gd.ReadContent(TFTQuizFragment.this);
-        gd.readXml(getActivity(), "template_assets/quiz_content.xml");
+        gd.readXml(getArguments().getString(Constants.SIMULATOR_FILE_PATH));
         TextView quizAuthor = (TextView) view.findViewById(R.id.tv_author);
         TextView quizTitle = (TextView) view.findViewById(R.id.tv_apptitle);
 

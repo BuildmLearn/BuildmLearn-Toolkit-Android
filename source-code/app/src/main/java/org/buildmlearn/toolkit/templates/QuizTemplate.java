@@ -1,5 +1,6 @@
 package org.buildmlearn.toolkit.templates;
 
+import android.app.Fragment;
 import android.content.Context;
 import android.view.View;
 import android.widget.BaseAdapter;
@@ -12,6 +13,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.model.TemplateInterface;
+import org.buildmlearn.toolkit.quiztemplate.TFTQuizFragment;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -242,6 +244,11 @@ public class QuizTemplate implements TemplateInterface {
 
         return itemElements;
 
+    }
+
+    @Override
+    public Fragment getSimulatorFragment(String filePathWithName) {
+        return TFTQuizFragment.newInstance(filePathWithName);
     }
 
     private void checkButton(ArrayList<RadioButton> buttons, ArrayList<EditText> options, int id, Context context) {

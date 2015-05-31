@@ -41,6 +41,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.constant.Constants;
 
 public class ScoreFragment extends Fragment {
 
@@ -73,7 +74,7 @@ public class ScoreFragment extends Fragment {
 
             @Override
             public void onClick(View arg0) {
-                getActivity().getFragmentManager().beginTransaction().replace(R.id.container, new TFTQuizFragment(), TFTQuizFragment.TAG).addToBackStack(null).commit();
+                getActivity().getFragmentManager().beginTransaction().replace(R.id.container, TFTQuizFragment.newInstance(getActivity().getIntent().getStringExtra(Constants.SIMULATOR_FILE_PATH)), TFTQuizFragment.TAG).addToBackStack(null).commit();
             }
         });
 
@@ -82,7 +83,7 @@ public class ScoreFragment extends Fragment {
 
             @Override
             public void onClick(View arg0) {
-                // TODO: Show simulator finish screen
+                getActivity().finish();
             }
         });
 

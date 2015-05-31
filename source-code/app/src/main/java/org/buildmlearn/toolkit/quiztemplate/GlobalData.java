@@ -41,6 +41,7 @@ import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -181,7 +182,7 @@ public class GlobalData {
 
     }
 
-    public void readXml(Context myContext, String fileName) {
+    public void readXml(String filePath) {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
         dbf.setValidating(false);
@@ -190,9 +191,10 @@ public class GlobalData {
         DocumentBuilder db;
         Document doc;
         try {
+            File fXmlFile = new File(filePath);
             model = new ArrayList<QuestionModel>();
             db = dbf.newDocumentBuilder();
-            doc = db.parse(myContext.getAssets().open(fileName));
+            doc = db.parse(fXmlFile);
             doc.normalize();
             iQuizTitle = doc.getElementsByTagName("title").item(0)
                     .getChildNodes().item(0).getNodeValue();

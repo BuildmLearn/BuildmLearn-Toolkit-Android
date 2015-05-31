@@ -2,6 +2,7 @@ package org.buildmlearn.toolkit.activity;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -27,6 +28,7 @@ import org.buildmlearn.toolkit.ToolkitApplication;
 import org.buildmlearn.toolkit.constant.Constants;
 import org.buildmlearn.toolkit.model.Template;
 import org.buildmlearn.toolkit.model.TemplateInterface;
+import org.buildmlearn.toolkit.simulator.Simulator;
 import org.buildmlearn.toolkit.utilities.FileUtils;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
@@ -209,11 +211,14 @@ public class TemplateEditor extends AppCompatActivity {
                 }).show();
                 break;
             case R.id.action_simulate:
+                startSimulator();
                 break;
         }
 
         return super.onOptionsItemSelected(item);
     }
+
+
 
     public void restoreSelectedView() {
         if (selectedView != null) {
@@ -256,7 +261,7 @@ public class TemplateEditor extends AppCompatActivity {
         invalidateOptionsMenu();
     }
 
-    private void saveProject() {
+    private String saveProject() {
 
         EditText authorEditText = ((EditText) findViewById(R.id.author_name));
         EditText titleEditText = ((EditText) findViewById(R.id.template_title));
@@ -294,13 +299,34 @@ public class TemplateEditor extends AppCompatActivity {
                 doc.appendChild(rootElement);
                 Element dataElement = doc.createElement("data");
                 rootElement.appendChild(dataElement);
+                if(selectedTemplate.getItems(doc).size() == 0) {
+                    Toast.makeText(this, "Unable to perform action: No Data", Toast.LENGTH_SHORT).show();
+                    return null;
+                }
                 for (Element item : selectedTemplate.getItems(doc)) {
                     dataElement.appendChild(item);
                 }
-                FileUtils.saveXmlFile(toolkit.getSavedDir() , title + " by " + author +".buildmlearn", doc);
+                String saveFileName = title + " by " + author + ".buildmlearn";
+                saveFileName = saveFileName.replaceAll(" ", "-");
+                FileUtils.saveXmlFile(toolkit.getSavedDir(), saveFileName, doc);
+                return toolkit.getSavedDir()+ saveFileName;
             } catch (ParserConfigurationException e) {
                 e.printStackTrace();
             }
         }
+        return null;
+    }
+
+    private void startSimulator() {
+        String filePath = saveProject();
+        if(filePath == null || filePath.equals("")) {
+            Toast.makeText(this, "Build unsuccessful", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        Intent simulatorIntent = new Intent(getApplicationContext(), Simulator.class);
+        simulatorIntent.putExtra(Constants.TEMPLATE_ID, templateId);
+        simulatorIntent.putExtra(Constants.SIMULATOR_FILE_PATH, filePath);
+        startActivity(simulatorIntent);
+
     }
 }

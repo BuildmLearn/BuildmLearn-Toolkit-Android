@@ -1,5 +1,6 @@
 package org.buildmlearn.toolkit.model;
 
+import android.app.Fragment;
 import android.content.Context;
 import android.widget.BaseAdapter;
 
@@ -29,5 +30,7 @@ public interface TemplateInterface extends Serializable {
     void deleteItem(int position);
 
     ArrayList<Element> getItems(Document doc);
+
+    Fragment getSimulatorFragment(String filePathWithName);
 
 }
