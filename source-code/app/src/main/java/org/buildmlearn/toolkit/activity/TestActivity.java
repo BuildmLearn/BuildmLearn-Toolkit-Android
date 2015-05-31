@@ -8,7 +8,7 @@ import android.view.MenuItem;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.ToolkitApplication;
-import org.buildmlearn.toolkit.utilities.ZipUtils;
+import org.buildmlearn.toolkit.utilities.FileUtils;
 
 import java.io.IOException;
 
@@ -26,15 +26,15 @@ public class TestActivity extends AppCompatActivity {
 
         Log.d(getClass().getName(),toolkit.getProjectDir());
 
-        ZipUtils.copyAssets(this, "FlashCardTemplateApp_v2.0.apk", toolkit.getApkDir());
+        FileUtils.copyAssets(this, "FlashCardTemplateApp_v2.0.apk", toolkit.getApkDir());
 
         try {
-            ZipUtils.unZip(toolkit.getApkDir()+ "FlashCardTemplateApp_v2.0.apk", toolkit.getUnZipDir() + "FlashCardTemplateApp_v2.0");
+            FileUtils.unZip(toolkit.getApkDir() + "FlashCardTemplateApp_v2.0.apk", toolkit.getUnZipDir() + "FlashCardTemplateApp_v2.0");
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        ZipUtils.zipFileAtPath(toolkit.getUnZipDir() + "FlashCardTemplateApp_v2.0", toolkit.getApkDir() + "/FlashCardTemplateApp_v2.1110.apk");
+        FileUtils.zipFileAtPath(toolkit.getUnZipDir() + "FlashCardTemplateApp_v2.0", toolkit.getApkDir() + "/FlashCardTemplateApp_v2.1110.apk");
     }
 
     @Override

@@ -23,24 +23,18 @@ import com.afollestad.materialdialogs.ThemeSingleton;
 import com.cocosw.bottomsheet.BottomSheet;
 
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.ToolkitApplication;
 import org.buildmlearn.toolkit.constant.Constants;
 import org.buildmlearn.toolkit.model.Template;
 import org.buildmlearn.toolkit.model.TemplateInterface;
+import org.buildmlearn.toolkit.utilities.FileUtils;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import java.io.StringWriter;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 
 public class TemplateEditor extends AppCompatActivity {
 
@@ -53,13 +47,14 @@ public class TemplateEditor extends AppCompatActivity {
     private int selectedPosition = -1;
     private boolean showTemplateSelectedMenu;
     private View selectedView = null;
+    private ToolkitApplication toolkit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_template_editor);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
-
+        toolkit = (ToolkitApplication)getApplicationContext();
         templateId = getIntent().getIntExtra(Constants.TEMPLATE_ID, -1);
         if (templateId == -1) {
             Toast.makeText(this, "Invalid template ID, closing Template Editor activity", Toast.LENGTH_LONG).show();
@@ -302,16 +297,8 @@ public class TemplateEditor extends AppCompatActivity {
                 for (Element item : selectedTemplate.getItems(doc)) {
                     dataElement.appendChild(item);
                 }
-                Transformer transformer = TransformerFactory.newInstance().newTransformer();
-                StreamResult result = new StreamResult(new StringWriter());
-                DOMSource source = new DOMSource(doc);
-                transformer.transform(source, result);
-                Log.d(selectedTemplate.getTitle(), result.getWriter().toString());
+                FileUtils.saveXmlFile(toolkit.getSavedDir() , title + " by " + author +".buildmlearn", doc);
             } catch (ParserConfigurationException e) {
-                e.printStackTrace();
-            } catch (TransformerConfigurationException e) {
-                e.printStackTrace();
-            } catch (TransformerException e) {
                 e.printStackTrace();
             }
         }

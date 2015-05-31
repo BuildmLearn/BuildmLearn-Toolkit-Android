@@ -3,6 +3,8 @@ package org.buildmlearn.toolkit.utilities;
 import android.content.Context;
 import android.content.res.AssetManager;
 
+import org.w3c.dom.Document;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -15,10 +17,17 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
 /**
  * Created by Abhishek on 23-05-2015.
  */
-public class ZipUtils {
+public class FileUtils {
 
     private final static String TAG = "ZIP_UTIL";
     private final static int BUFFER_SIZE = 2048;
@@ -187,5 +196,27 @@ public class ZipUtils {
         while ((read = in.read(buffer)) != -1) {
             out.write(buffer, 0, read);
         }
+    }
+
+    public static boolean saveXmlFile(String destinationFolder, String fileName, Document doc) {
+
+        File f = new File(destinationFolder);
+        if (!f.isDirectory()) {
+            f.mkdirs();
+        }
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transformer;
+        try {
+            transformer = transformerFactory.newTransformer();
+            DOMSource source = new DOMSource(doc);
+            StreamResult result = new StreamResult(new File(destinationFolder + fileName));
+            transformer.transform(source, result);
+            return true;
+        } catch (TransformerConfigurationException e) {
+            e.printStackTrace();
+        } catch (TransformerException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }
