@@ -1,6 +1,7 @@
 package org.buildmlearn.toolkit.activity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.ThemeSingleton;
+import com.cocosw.bottomsheet.BottomSheet;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.constant.Constants;
@@ -199,11 +201,19 @@ public class TemplateEditor extends AppCompatActivity {
                 selectedTemplate.editItem(this, selectedPosition);
                 restoreSelectedView();
                 break;
-            case R.id.action_simulate:
-
-                break;
             case R.id.action_save:
-                saveProject();
+                new BottomSheet.Builder(this).sheet(R.menu.bottom_sheet_template).listener(new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        switch (id) {
+                            case R.id.save_project:
+                               saveProject();
+                                break;
+                        }
+                    }
+                }).show();
+                break;
+            case R.id.action_simulate:
                 break;
         }
 

@@ -9,8 +9,6 @@
         <item name="colorButtonNormal">@color/primary_900</item>
         <item name="android:textColorLink">?attr/colorAccent</item>
         <item name="activatedBackgroundIndicator">@drawable/activated_background</item>
-        <!--<item name="colorControlNormal">#c5c5c5</item>-->
-
     </style>
 
     <style name="AppTheme" parent="Base.AppTheme">

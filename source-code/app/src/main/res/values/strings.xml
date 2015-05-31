@@ -68,4 +68,10 @@
     <string name="menu_simulate">Simulate</string>
     <string name="menu_delete_template_item">Delete</string>
     <string name="menu_edit_template_item">Edit</string>
+
+    <!-- Bottom Sheet-->
+    <string name="bottom_sheet_share_apk">Share APK</string>
+    <string name="bottom_sheet_publish"> Publish to BuildmLearn Store</string>
+    <string name="bottom_sheet_save_apk">Save APK</string>
+    <string name="bottom_sheet_save_project">Save Project</string>
 </resources>
