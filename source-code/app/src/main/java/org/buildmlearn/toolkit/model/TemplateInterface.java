@@ -19,6 +19,8 @@ public interface TemplateInterface extends Serializable {
 
     BaseAdapter currentTemplateEditorAdapter();
 
+    BaseAdapter loadProjectTemplateEditor(Context context, ArrayList<Element> data);
+
     String onAttach();
 
     String getTitle();

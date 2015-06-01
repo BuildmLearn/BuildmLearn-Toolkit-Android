@@ -11,9 +11,11 @@ public class SavedProject {
     private String date;
     private String type;
     private String author;
+    private String fullPath;
 
-    public SavedProject(String fileName, long date, String type) {
+    public SavedProject(String fileName, long date, String type, String fullPath) {
 
+        this.fullPath = fullPath;
         this.date = formatDate(date);
         this.type = type;
         String[] data = fileName.split("-by-");
@@ -68,5 +70,9 @@ public class SavedProject {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public String getFullPath() {
+        return fullPath;
     }
 }

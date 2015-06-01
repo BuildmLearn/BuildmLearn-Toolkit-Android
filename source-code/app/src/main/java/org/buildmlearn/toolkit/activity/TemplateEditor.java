@@ -33,6 +33,13 @@ import org.buildmlearn.toolkit.utilities.FileUtils;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -56,7 +63,7 @@ public class TemplateEditor extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_template_editor);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
-        toolkit = (ToolkitApplication)getApplicationContext();
+        toolkit = (ToolkitApplication) getApplicationContext();
         templateId = getIntent().getIntExtra(Constants.TEMPLATE_ID, -1);
         if (templateId == -1) {
             Toast.makeText(this, "Invalid template ID, closing Template Editor activity", Toast.LENGTH_LONG).show();
@@ -65,7 +72,12 @@ public class TemplateEditor extends AppCompatActivity {
 
 
         if (savedInstanceState == null) {
-            setUpTemplateEditor();
+            String path = getIntent().getStringExtra(Constants.PROJECT_FILE_PATH);
+            if (path == null) {
+                setUpTemplateEditor();
+            } else {
+                parseSavedFile(path);
+            }
         } else {
             restoreTemplateEditor(savedInstanceState);
         }
@@ -139,7 +151,6 @@ public class TemplateEditor extends AppCompatActivity {
         try {
             Object templateObject = templateClass.newInstance();
             selectedTemplate = (TemplateInterface) templateObject;
-            Toast.makeText(this, selectedTemplate.onAttach(), Toast.LENGTH_LONG).show();
             populateListView(selectedTemplate.newTemplateEditorAdapter(this));
             setUpActionBar(selectedTemplate.getTitle());
         } catch (InstantiationException e) {
@@ -208,7 +219,7 @@ public class TemplateEditor extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int id) {
                         switch (id) {
                             case R.id.save_project:
-                               saveProject();
+                                saveProject();
                                 break;
                         }
                     }
@@ -221,7 +232,6 @@ public class TemplateEditor extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 
 
     public void restoreSelectedView() {
@@ -303,7 +313,7 @@ public class TemplateEditor extends AppCompatActivity {
                 doc.appendChild(rootElement);
                 Element dataElement = doc.createElement("data");
                 rootElement.appendChild(dataElement);
-                if(selectedTemplate.getItems(doc).size() == 0) {
+                if (selectedTemplate.getItems(doc).size() == 0) {
                     Toast.makeText(this, "Unable to perform action: No Data", Toast.LENGTH_SHORT).show();
                     return null;
                 }
@@ -313,7 +323,7 @@ public class TemplateEditor extends AppCompatActivity {
                 String saveFileName = title + " by " + author + ".buildmlearn";
                 saveFileName = saveFileName.replaceAll(" ", "-");
                 FileUtils.saveXmlFile(toolkit.getSavedDir(), saveFileName, doc);
-                return toolkit.getSavedDir()+ saveFileName;
+                return toolkit.getSavedDir() + saveFileName;
             } catch (ParserConfigurationException e) {
                 e.printStackTrace();
             }
@@ -323,7 +333,7 @@ public class TemplateEditor extends AppCompatActivity {
 
     private void startSimulator() {
         String filePath = saveProject();
-        if(filePath == null || filePath.equals("")) {
+        if (filePath == null || filePath.equals("")) {
             Toast.makeText(this, "Build unsuccessful", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -331,6 +341,50 @@ public class TemplateEditor extends AppCompatActivity {
         simulatorIntent.putExtra(Constants.TEMPLATE_ID, templateId);
         simulatorIntent.putExtra(Constants.SIMULATOR_FILE_PATH, filePath);
         startActivity(simulatorIntent);
+
+    }
+
+    private void parseSavedFile(String path) {
+
+        try {
+            File fXmlFile = new File(path);
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            Document doc;
+            doc = dBuilder.parse(fXmlFile);
+            doc.getDocumentElement().normalize();
+            NodeList nList = doc.getElementsByTagName("item");
+            ArrayList<Element> items = new ArrayList<>();
+            for (int i = 0; i < nList.getLength(); i++) {
+                Node nodeItem = nList.item(i);
+                if (nodeItem.getNodeType() == Node.ELEMENT_NODE) {
+                    items.add((Element) nodeItem);
+                }
+            }
+
+            Log.d(TAG, "Activity Created");
+            Template[] templates = Template.values();
+            template = templates[templateId];
+            Class templateClass = template.getTemplateClass();
+
+            Object templateObject = templateClass.newInstance();
+            selectedTemplate = (TemplateInterface) templateObject;
+            populateListView(selectedTemplate.loadProjectTemplateEditor(this, items));
+            setUpActionBar(selectedTemplate.getTitle());
+
+
+        } catch (SAXException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
 
     }
 }

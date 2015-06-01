@@ -16,6 +16,7 @@ import org.buildmlearn.toolkit.model.TemplateInterface;
 import org.buildmlearn.toolkit.quiztemplate.TFTQuizFragment;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 
 import java.util.ArrayList;
 
@@ -42,6 +43,24 @@ public class QuizTemplate implements TemplateInterface {
 
     @Override
     public BaseAdapter currentTemplateEditorAdapter() {
+        return mAdapter;
+    }
+
+    @Override
+    public BaseAdapter loadProjectTemplateEditor(Context context, ArrayList<Element> data) {
+        quizData = new ArrayList<>();
+        for (Element item : data) {
+            String question = item.getElementsByTagName("question").item(0).getTextContent();
+            NodeList options = item.getElementsByTagName("option");
+            ArrayList<String> answers = new ArrayList<>();
+            for (int i = 0; i < options.getLength(); i++) {
+                answers.add(options.item(i).getTextContent());
+            }
+            int answer = Integer.parseInt(item.getElementsByTagName("answer").item(0).getTextContent());
+            quizData.add(new QuizModel(question, answers, answer));
+
+        }
+        mAdapter = new QuizAdapter(context, quizData);
         return mAdapter;
     }
 

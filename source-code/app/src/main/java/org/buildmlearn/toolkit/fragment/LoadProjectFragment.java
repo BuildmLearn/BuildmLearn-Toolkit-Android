@@ -1,6 +1,7 @@
 package org.buildmlearn.toolkit.fragment;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,11 +10,15 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.ToolkitApplication;
+import org.buildmlearn.toolkit.activity.TemplateEditor;
 import org.buildmlearn.toolkit.adapter.SavedProjectAdapter;
+import org.buildmlearn.toolkit.constant.Constants;
 import org.buildmlearn.toolkit.model.SavedProject;
+import org.buildmlearn.toolkit.model.Template;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
@@ -61,7 +66,7 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                 Document doc = dBuilder.parse(fXmlFile);
                 doc.getDocumentElement().normalize();
                 Log.d("Files", "Root element :" + doc.getDocumentElement().getAttribute("type"));
-                savedProjects.add(new SavedProject(fXmlFile.getName(), fXmlFile.lastModified(), doc.getDocumentElement().getAttribute("type")));
+                savedProjects.add(new SavedProject(fXmlFile.getName(), fXmlFile.lastModified(), doc.getDocumentElement().getAttribute("type"), fXmlFile.getAbsolutePath()));
             } catch (ParserConfigurationException e) {
                 e.printStackTrace();
             } catch (SAXException e) {
@@ -92,7 +97,18 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+        SavedProject project = savedProjects.get(position);
+        Template[] templates = Template.values();
+        for(int i=0; i<templates.length; i++) {
+            if (project.getType().equals(getString(templates[i].getType()))) {
+                Intent intent = new Intent(getActivity(), TemplateEditor.class);
+                intent.putExtra(Constants.TEMPLATE_ID, i);
+                intent.putExtra(Constants.PROJECT_FILE_PATH, project.getFullPath());
+                startActivity(intent);
+                return;
+            }
+        }
+        Toast.makeText(getActivity(), "Invalid project file", Toast.LENGTH_SHORT).show();
     }
 
     public void setEmptyText(CharSequence emptyText) {
