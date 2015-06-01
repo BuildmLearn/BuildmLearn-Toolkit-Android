@@ -222,11 +222,24 @@ public class TemplateEditor extends AppCompatActivity {
                                 break;
                             case R.id.share_apk:
                                 Uri fileUri = Uri.fromFile(new File(toolkit.getApkDir() + "FlashCardTemplateApp_v2.0.apk"));
-                                Intent shareIntent = new Intent();
-                                shareIntent.setAction(Intent.ACTION_SEND);
-                                shareIntent.putExtra(Intent.EXTRA_STREAM, fileUri);
-                                shareIntent.setType("application/vnd.android.package-archive");
-                                startActivity(Intent.createChooser(shareIntent, getString(R.string.bottom_sheet_share_apk)));
+                                try {
+                                    ArrayList<Uri> uris = new ArrayList<Uri>();
+                                    Intent sendIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
+                                    sendIntent.setType("application/vnd.android.package-archive");
+                                    uris.add(fileUri);
+                                    sendIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
+                                    startActivity(Intent.createChooser(sendIntent, null));
+
+
+                                } catch (Exception e) {
+
+                                    ArrayList<Uri> uris = new ArrayList<Uri>();
+                                    Intent sendIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
+                                    sendIntent.setType("application/zip");
+                                    uris.add(fileUri);
+                                    sendIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
+                                    startActivity(Intent.createChooser(sendIntent, null));
+                                }
                                 break;
                         }
                     }
