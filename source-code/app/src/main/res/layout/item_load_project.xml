@@ -22,7 +22,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginLeft="16dp">
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp">
 
 
             <view
@@ -34,7 +35,7 @@
 
             <view
                 android:id="@+id/subtitle"
-                style="@style/TextView.Body1"
+                style="@style/TextView.Body1.Thin"
                 class="org.buildmlearn.toolkit.views.TextViewPlus"
                 android:paddingBottom="16dp"
                 android:paddingTop="8dp"

@@ -11,7 +11,7 @@ import org.buildmlearn.toolkit.templates.QuizTemplate;
  */
 public enum Template {
 
-    BASIC_M_LEARNING(R.string.basic_m_learning_title, R.string.basic_m_learning_description, R.drawable.basic_m_learning, QuizTemplate.class);
+    BASIC_M_LEARNING(R.string.basic_m_learning_title, R.string.basic_m_learning_description, R.drawable.basic_m_learning, R.string.quiz_type, QuizTemplate.class);
 //    LEARN_SPELLING(R.string.learn_spellings_title, R.string.learn_spellings_description, R.drawable.basic_m_learning),
 //    QUIZ(R.string.quiz_title, R.string.quiz_description, R.drawable.basic_m_learning),
 //    FLASH_CARD(R.string.flash_card_title, R.string.flash_card_description, R.drawable.basic_m_learning);
@@ -25,12 +25,15 @@ public enum Template {
     private
     @StringRes
     int description;
+    @StringRes
+    int type;
     private Class<? extends TemplateInterface> templateClass;
 
-    Template(@StringRes int title, @StringRes int description, @DrawableRes int image, Class<? extends TemplateInterface> templateClass) {
+    Template(@StringRes int title, @StringRes int description, @DrawableRes int image, @StringRes int type, Class<? extends TemplateInterface> templateClass) {
         this.image = image;
         this.title = title;
         this.description = description;
+        this.type = type;
         this.templateClass = templateClass;
     }
 
@@ -48,5 +51,9 @@ public enum Template {
 
     public Class<? extends TemplateInterface> getTemplateClass() {
         return templateClass;
+    }
+
+    public int getType() {
+        return type;
     }
 }

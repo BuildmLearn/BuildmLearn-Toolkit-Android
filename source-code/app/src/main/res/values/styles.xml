@@ -88,6 +88,14 @@
         <item name="customFont">roboto_medium.ttf</item>
     </style>
 
+    <style name="TextView.Body1.Thin" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/black_secondary_text</item>
+        <item name="android:textSize">@dimen/cardview_body_text_size</item>
+        <item name="customFont">roboto_light.ttf</item>
+    </style>
+
     <style name="TextView.Title" parent="TextAppearance.AppCompat.Title">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>

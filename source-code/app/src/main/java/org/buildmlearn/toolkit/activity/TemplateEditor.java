@@ -81,6 +81,7 @@ public class TemplateEditor extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         outState.putSerializable(Constants.TEMPLATE_OBJECT, selectedTemplate);
+        outState.putInt(Constants.TEMPLATE_ID, templateId);
         super.onSaveInstanceState(outState);
     }
 
@@ -151,8 +152,11 @@ public class TemplateEditor extends AppCompatActivity {
     private void restoreTemplateEditor(Bundle savedInstanceState) {
         Log.d(TAG, "Activity Restored");
         selectedTemplate = (TemplateInterface) savedInstanceState.getSerializable(Constants.TEMPLATE_OBJECT);
+        templateId = savedInstanceState.getInt(Constants.TEMPLATE_ID);
+        Template[] templates = Template.values();
+        template = templates[templateId];
         if (selectedTemplate == null) {
-            Toast.makeText(this, "Unable to restore Activity state, finsihing Template Editor activity", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Unable to restore Activity state, finishing Template Editor activity", Toast.LENGTH_LONG).show();
             finish();
         } else {
             Toast.makeText(this, selectedTemplate.onAttach(), Toast.LENGTH_LONG).show();
@@ -281,7 +285,7 @@ public class TemplateEditor extends AppCompatActivity {
                 Document doc = docBuilder.newDocument();
                 Element rootElement = doc.createElement("buildmlearn_application");
                 Attr attr = doc.createAttribute("type");
-                attr.setValue(selectedTemplate.getTitle());
+                attr.setValue(getResources().getString(template.getType()));
                 rootElement.setAttributeNode(attr);
 
                 Element authorElement = doc.createElement("author");

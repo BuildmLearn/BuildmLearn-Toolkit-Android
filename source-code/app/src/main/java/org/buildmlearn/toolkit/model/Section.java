@@ -8,6 +8,7 @@ import android.support.annotation.StringRes;
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.activity.TestActivity;
 import org.buildmlearn.toolkit.fragment.HomeFragment;
+import org.buildmlearn.toolkit.fragment.LoadProjectFragment;
 import org.buildmlearn.toolkit.fragment.TestFragment;
 import org.buildmlearn.toolkit.simulator.Simulator;
 
@@ -17,7 +18,7 @@ import org.buildmlearn.toolkit.simulator.Simulator;
 public enum Section {
 
     HOME(HomeFragment.class, R.string.menu_home, R.drawable.menu_home, false),
-    OPEN_PROJECT(TestFragment.class, R.string.menu_load_project, R.drawable.menu_open, false),
+    OPEN_PROJECT(LoadProjectFragment.class, R.string.menu_load_project, R.drawable.menu_open, false),
     UPLOAD(TestFragment.class, R.string.menu_my_uploads, R.drawable.menu_upload, false),
     DRAFTS(TestFragment.class, R.string.menu_drafts, R.drawable.menu_drafts, false),
     DIVIDER(),
