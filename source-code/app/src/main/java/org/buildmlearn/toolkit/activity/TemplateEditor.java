@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -218,6 +219,14 @@ public class TemplateEditor extends AppCompatActivity {
                         switch (id) {
                             case R.id.save_project:
                                 saveProject();
+                                break;
+                            case R.id.share_apk:
+                                Uri fileUri = Uri.fromFile(new File(toolkit.getApkDir() + "FlashCardTemplateApp_v2.0.apk"));
+                                Intent shareIntent = new Intent();
+                                shareIntent.setAction(Intent.ACTION_SEND);
+                                shareIntent.putExtra(Intent.EXTRA_STREAM, fileUri);
+                                shareIntent.setType("application/vnd.android.package-archive");
+                                startActivity(Intent.createChooser(shareIntent, getString(R.string.bottom_sheet_share_apk)));
                                 break;
                         }
                     }
