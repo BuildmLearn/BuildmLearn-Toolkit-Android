@@ -43,8 +43,14 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
 
         String path = mToolkit.getSavedDir();
         Log.d("Files", "Path: " + path);
+
+
         File f = new File(path);
         File file[] = f.listFiles();
+        if (file == null) {
+            return;
+        }
+
         Log.d("Files", "Size: " + file.length);
         for (int i = 0; i < file.length; i++) {
             File fXmlFile = new File(file[i].getAbsolutePath());
@@ -64,16 +70,13 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                 e.printStackTrace();
             }
         }
-
-        mAdapter = new SavedProjectAdapter(getActivity(), savedProjects);
-
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_loadproject, container, false);
+        mAdapter = new SavedProjectAdapter(getActivity(), savedProjects);
         mListView = (AbsListView) view.findViewById(android.R.id.list);
         mListView.setAdapter(mAdapter);
         mListView.setOnItemClickListener(this);
@@ -84,6 +87,7 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        setEmptyText("No saved projects found");
     }
 
     @Override

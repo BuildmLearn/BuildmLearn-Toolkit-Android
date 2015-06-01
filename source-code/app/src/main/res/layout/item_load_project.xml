@@ -31,6 +31,8 @@
                 style="@style/TextView.Title.Thin"
                 class="org.buildmlearn.toolkit.views.TextViewPlus"
                 android:paddingTop="16dp"
+                android:ellipsize="end"
+                android:singleLine="true"
                 android:text="Biology Quiz" />
 
             <view
@@ -38,6 +40,8 @@
                 style="@style/TextView.Body1.Thin"
                 class="org.buildmlearn.toolkit.views.TextViewPlus"
                 android:paddingBottom="16dp"
+                android:ellipsize="end"
+                android:singleLine="true"
                 android:paddingTop="8dp"
                 android:text="Quiz  26th Feb 1993" />
         </LinearLayout>
