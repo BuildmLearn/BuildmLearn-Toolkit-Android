@@ -22,6 +22,8 @@
     <string name="buildmlearn_store_text">BuildmLearn store is a app store where teachers submit mobile applications created using BuildmLearn Toolkit. Thus, this store is a distribution medium for apps created using the BuildmLearn Toolkit.</string>
     <string name="buildmlearn_store_title">BuildmLearn Store</string>
     <string name="goto_store">Goto Store</string>
+    <string name="no_item">No items</string>
+    <string name="add_item_help">Click Add button to start adding items</string>
 
     <!-- Quiz Template-->
 
@@ -76,4 +78,5 @@
     <string name="bottom_sheet_publish"> Publish to BuildmLearn Store</string>
     <string name="bottom_sheet_save_apk">Save APK</string>
     <string name="bottom_sheet_save_project">Save Project</string>
+
 </resources>

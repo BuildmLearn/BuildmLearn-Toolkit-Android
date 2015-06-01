@@ -15,11 +15,38 @@
     <ListView
         android:id="@+id/template_editor_listview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
         android:divider="@android:color/transparent" />
+
+    <LinearLayout
+        android:id="@+id/empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/template_editor_listview">
+
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_icon_afb" />
+
+        <view
+            android:id="@+id/title"
+            style="@style/TextView.Empty"
+            class="org.buildmlearn.toolkit.views.TextViewPlus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/md_simplelist_icon_margin"
+            android:text="@string/add_item_help" />
+    </LinearLayout>
 
     <com.getbase.floatingactionbutton.AddFloatingActionButton
         android:id="@+id/button_add_item"

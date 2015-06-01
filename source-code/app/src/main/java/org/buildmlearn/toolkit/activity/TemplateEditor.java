@@ -86,8 +86,10 @@ public class TemplateEditor extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 selectedTemplate.addItem(TemplateEditor.this);
+                hideEmptyView();
             }
         });
+
     }
 
     @Override
@@ -104,7 +106,7 @@ public class TemplateEditor extends AppCompatActivity {
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View templateHeader = inflater.inflate(R.layout.listview_header_template, templateEdtiorList, false);
         templateEdtiorList.addHeaderView(templateHeader, null, false);
-        templateEdtiorList.setAdapter(adapter);
+        setAdapter(adapter);
 
         templateEdtiorList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -141,6 +143,7 @@ public class TemplateEditor extends AppCompatActivity {
             throw new AssertionError();
         }
         actionBar.setTitle(selectedTemplate.getTitle());
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     private void setUpTemplateEditor() {
@@ -178,11 +181,6 @@ public class TemplateEditor extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        Log.d(TAG, "onCreateOptionsMenu");
-//        getMenuInflater().inflate(R.menu.menu_template_editor, menu);
-//        showTemplateSelectedMenu = false;
-
         return true;
     }
 
@@ -227,6 +225,9 @@ public class TemplateEditor extends AppCompatActivity {
                 break;
             case R.id.action_simulate:
                 startSimulator();
+                break;
+            case android.R.id.home:
+                onBackPressed();
                 break;
         }
 
@@ -353,6 +354,10 @@ public class TemplateEditor extends AppCompatActivity {
             Document doc;
             doc = dBuilder.parse(fXmlFile);
             doc.getDocumentElement().normalize();
+            Element authorElement = (Element) doc.getElementsByTagName("author").item(0);
+            Element nameElement = (Element) authorElement.getElementsByTagName("name").item(0);
+            String name = nameElement.getTextContent();
+            String title = doc.getElementsByTagName("title").item(0).getTextContent();
             NodeList nList = doc.getElementsByTagName("item");
             ArrayList<Element> items = new ArrayList<>();
             for (int i = 0; i < nList.getLength(); i++) {
@@ -371,6 +376,7 @@ public class TemplateEditor extends AppCompatActivity {
             selectedTemplate = (TemplateInterface) templateObject;
             populateListView(selectedTemplate.loadProjectTemplateEditor(this, items));
             setUpActionBar(selectedTemplate.getTitle());
+            updateHeaderDetails(name, title);
 
 
         } catch (SAXException e) {
@@ -386,5 +392,31 @@ public class TemplateEditor extends AppCompatActivity {
         }
 
 
+    }
+
+    private void updateHeaderDetails(String name, String title) {
+        EditText authorEditText = ((EditText) findViewById(R.id.author_name));
+        EditText titleEditText = ((EditText) findViewById(R.id.template_title));
+        authorEditText.setText(name);
+        titleEditText.setText(title);
+    }
+
+    private void setAdapter(BaseAdapter adapter) {
+        templateEdtiorList.setAdapter(adapter);
+        setEmptyView();
+    }
+
+    private void setEmptyView() {
+
+        if (templateEdtiorList.getAdapter().getCount() == 1) {
+            findViewById(R.id.empty).setVisibility(View.VISIBLE);
+        } else {
+            findViewById(R.id.empty).setVisibility(View.GONE);
+        }
+    }
+
+
+    private void hideEmptyView() {
+        findViewById(R.id.empty).setVisibility(View.GONE);
     }
 }

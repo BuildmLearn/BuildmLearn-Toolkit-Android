@@ -6,6 +6,9 @@
         <item name="colorPrimary">@color/color_primary</item>
         <item name="colorPrimaryDark">@color/color_primary_dark</item>
         <item name="colorAccent">@color/color_accent</item>
+        <item name="android:background">@color/color_primary_dark</item>
+        <item name="android:windowBackground">@color/window_background</item>
+        <item name="android:colorBackground">@color/color_primary_dark</item>
         <item name="colorButtonNormal">@color/primary_900</item>
         <item name="android:textColorLink">?attr/colorAccent</item>
         <item name="activatedBackgroundIndicator">@drawable/activated_background</item>
@@ -88,6 +91,7 @@
         <item name="customFont">roboto_medium.ttf</item>
     </style>
 
+
     <style name="TextView.Body1.Thin" parent="TextAppearance.AppCompat.Body1">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -117,6 +121,14 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/white_hint_text_disabled</item>
         <item name="android:textSize">@dimen/caption</item>
+        <item name="customFont">roboto_regular.ttf</item>
+    </style>
+
+    <style name="TextView.Empty" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/black_secondary_text</item>
+        <item name="android:textSize">@dimen/empty</item>
         <item name="customFont">roboto_regular.ttf</item>
     </style>
 

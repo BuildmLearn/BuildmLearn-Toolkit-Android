@@ -4,6 +4,7 @@
     <color name="color_primary_dark">#303F9F</color>
     <color name="color_selected">#9E9E9E</color>
     <color name="color_selected_dark">#616161</color>
+    <color name="window_background">#eeeeee</color>
     <color name="primary_400">#5C6BC0</color>
     <color name="primary_800">#283593</color>
     <color name="primary_900">#1A237E</color>

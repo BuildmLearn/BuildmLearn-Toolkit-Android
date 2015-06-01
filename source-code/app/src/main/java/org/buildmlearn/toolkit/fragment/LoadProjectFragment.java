@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.buildmlearn.toolkit.R;
@@ -81,25 +80,22 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_loadproject, container, false);
-        mAdapter = new SavedProjectAdapter(getActivity(), savedProjects);
-        mListView = (AbsListView) view.findViewById(android.R.id.list);
-        mListView.setAdapter(mAdapter);
-        mListView.setOnItemClickListener(this);
-        setEmptyText("No saved projects found");
         return view;
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        setEmptyText("No saved projects found");
+        mAdapter = new SavedProjectAdapter(getActivity(), savedProjects);
+        mListView = (AbsListView) view.findViewById(android.R.id.list);
+        setAdapter(mAdapter);
+        mListView.setOnItemClickListener(this);
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         SavedProject project = savedProjects.get(position);
         Template[] templates = Template.values();
-        for(int i=0; i<templates.length; i++) {
+        for (int i = 0; i < templates.length; i++) {
             if (project.getType().equals(getString(templates[i].getType()))) {
                 Intent intent = new Intent(getActivity(), TemplateEditor.class);
                 intent.putExtra(Constants.TEMPLATE_ID, i);
@@ -111,11 +107,17 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
         Toast.makeText(getActivity(), "Invalid project file", Toast.LENGTH_SHORT).show();
     }
 
-    public void setEmptyText(CharSequence emptyText) {
-        View emptyView = mListView.getEmptyView();
+    private void setAdapter(SavedProjectAdapter adapter) {
+        mListView.setAdapter(adapter);
+        setEmptyText();
+    }
 
-        if (emptyView instanceof TextView) {
-            ((TextView) emptyView).setText(emptyText);
+    private void setEmptyText() {
+
+        if (mListView.getAdapter().getCount() == 0) {
+            getView().findViewById(R.id.empty).setVisibility(View.VISIBLE);
+        } else {
+            getView().findViewById(R.id.empty).setVisibility(View.GONE);
         }
     }
 
