@@ -26,4 +26,9 @@
 
     <!-- Quiz Template-->
     <color name="quiz_template_blue_background">#255593</color>
+
+    <!-- Info Template-->
+
+    <color name="info_template_blue_background">#255593</color>
+
 </resources>

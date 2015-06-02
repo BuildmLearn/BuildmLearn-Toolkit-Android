@@ -1,0 +1,54 @@
+<buildmlearn_application type="InfoTemplate">
+<author>
+<name>Neha Dhanwani</name>
+<email></email>
+</author>
+<title>Favorite Movies</title>
+<description/>
+<version>1</version>
+ <data>
+<item>
+        <item_title>50 First Dates</item_title>
+        <item_description>Adam Sandler's perfect comic timing mixed with Drew Barrymore's beauty makes 50 First Dates a cute rom-com. The storyline is simple: Henry falls in love with Lucy and does everything to win her. Love sparks off until he discovers that Lucy suffers from short term memory loss, devastated, but madly in love with her, Henry tries everything to make this relationship work.</item_description>
+</item>
+<item>
+        <item_title>P.S. I Love You</item_title>
+        <item_description>Based on a Cecelia Ahern's novel P.S. I Love You, the film version revolves around Holly ( Hilary Swank) and her dead husband Gerry (played by Gerard Butler). Gerry leaves Holly a series of letters to help her get over his death and start a new life. Along with her two friends Denise ( Lisa Kudrow) and Sharon ( Gina Gershon), Gerry's letters help Holly find new love and her dream job. The movie captures beautiful landscapes of Ireland and switches from Holly's present life to her past (where she met Gerry, the hilarious karaoke sessions and how he won her heart).</item_description>
+</item>
+<item>
+        <item_title>Casablanca</item_title>
+        <item_description>A love story set in 1942, Casablanca captures love in its most raw form. Based on a play, Everybody Comes To Rick's, the movie talks about a man who has to choose between the love of his life and duty. Set against the backdrop of World War II, the film stars Humphrey Bogart, Ingrid Bergman, and Paul Henreid. The black and white film is a classic love story and has some unforgettable moments, which still remain etched in the minds of romantics.</item_description>
+</item>
+<item>
+        <item_title>A Walk To Remember</item_title>
+        <item_description>Based on Nicholas Sparks' bestseller, this movie talks about how a college hero falls in love with a social outcast. Taking tuitions from her, he promises her that it will be easy not to fall in love with her. But cupid strikes and Landon (Shane West) falls in love with Jamie ( Mandy Moore), only to find out that she suffers from leukemia. How he holds her hand through her last days and makes her live to the fullest makes up this tear jerking love story.</item_description>
+</item>
+<item>
+        <item_title>One Fine Day</item_title>
+        <item_description>Directed by Michael Hoffman, One Fine Day is a wonderful rom-com starring the beautiful Michelle Pfeiffer as Melanie and the handsome George Clooney as Jack. Melanie and Jack are single parents. They are brought together under unpredictable circumstances by their children and they both try to sort things out while also running around for their work purposes. While trying to finish their jobs and also trying to take care of their kids, they realise that they have fallen in love. The impeccable performances by Pfeiffer and Clooney make it a pleasurable watch. </item_description>
+</item>
+<item>
+        <item_title>Love Story</item_title>
+        <item_description>Eric Segal's book became a phenomenon with all romantics and eventually it was made into a movie. Ali MacGraw and Ryan O'Neal brought the characters of Jennifer and Oliver to life in this tragic love story, where the rich boy abandons his lavish lifestyle to get married to the girl of his dreams. But Jenny suffers from cancer and the newly weds face a financial crunch. 'Love means never having to say you're sorry', became one of the most repeated lines of all times.</item_description>
+</item>
+<item>
+        <item_title>Titanic</item_title>
+        <item_description>Titanic has been a blockbuster to beat them all. Topping most lists when it comes to romance, the sizzling chemistry between Leonardo DiCaprio and Kate Winslet and the way they depicted love between the not-very-well-to-do-but-clever boy and the rich girl was unforgettable. Winning the highest number of Academy Awards, this movie has left a deep imprint in the minds of everybody who have known love. The scene where Jack and Rose pretend to fly at the bow of the ship and the theme song, My Heart Will Go On, has made this film a cult romance.</item_description>
+</item>
+<item>
+        <item_title>Twilight</item_title>
+        <item_description>Love story for today's generations, Twilight speaks about how a normal girl finds herself attracted to the most handsome guy in school. As she falls 'irresistibly and irrevocably' in love with him, she finds out that he is a vampire. Based on the book series by Stephanie Meyer, the Twilight Saga became a rage with youngsters all over the world. Robert Pattinson and Kristen Stewart's real life chemistry was reflected on screen also as they became the hottest couple in Hollywood.</item_description>
+</item>
+<item>
+        <item_title>Serendipity</item_title>
+        <item_description>Jonathan (John Cussack) and Sara ( Kate Beckinsale) fall in love at first sight. But both leave their love to fate and part ways to check if they are destined to meet again or not. After many years, when they are both with their respective partners, they meet each other again and realise how much they love each other. Sara's famous one liner, 'You just need to have faith in destiny' made many go weak in the knees. John's smart moves and Kate's sexy beauty made many swoon over them and made Serendipity an ultimate romantic hit.</item_description>
+</item>
+<item>
+        <item_title>Love Actually</item_title>
+        <item_description>This movie captures 10 different love stories with a big cast. Spanning all classes and ages, this movie shows that love cannot be bound by anything. Falling in and out of love, these characters play their parts perfectly. The different love stories made this movie a hit as they were easily relatable to the audience and all actors played their parts with supreme ease. As the story progresses, the characters and stories get interlinked.</item_description>
+</item>
+</data>
+</buildmlearn_application>
+
+
+
