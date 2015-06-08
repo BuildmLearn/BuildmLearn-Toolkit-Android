@@ -55,4 +55,12 @@ dependencies {
     compile('com.crashlytics.sdk.android:crashlytics:2.3.1@aar') {
         transitive = true;
     }
+    compile files('libs/core-1.51.0.0.jar')
+    compile files('libs/kellinwood-logging-android-1.4.jar')
+    compile files('libs/kellinwood-logging-lib-1.1.jar')
+    compile files('libs/kellinwood-logging-log4j-1.0.jar')
+    compile files('libs/prov-1.51.0.0.jar')
+    compile files('libs/zipio-lib-1.8.jar')
+    compile files('libs/zipsigner-lib-1.17.jar')
+    compile files('libs/zipsigner-lib-optional-1.16.jar')
 }
