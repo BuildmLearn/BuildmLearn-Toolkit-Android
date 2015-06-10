@@ -57,10 +57,13 @@ public class ToolkitApplication extends Application {
     private boolean checkExternalStorage() {
 
         boolean result = false;
-        File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/BuildmLearn/");
+        File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/BuildmLearn123/");
         if (!f.isDirectory()) {
             result = f.mkdirs();
             f.delete();
+        }
+        if(result) {
+            new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/BuildmLearn/");
         }
         return result;
     }
