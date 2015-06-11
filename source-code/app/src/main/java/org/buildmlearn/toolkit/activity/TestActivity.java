@@ -26,12 +26,7 @@ public class TestActivity extends AppCompatActivity {
 
 
         Log.d(getClass().getName(), toolkit.getProjectDir());
-
-
-
-        String inputFile = toolkit.getApkDir() + "quiz_template.apk";
-        String outputFile = toolkit.getApkDir() + "post.apk";
-        String keyPath = toolkit.getApkDir() + "TestKeyStore.jks";
+        
         String password = getString(R.string.key_password);
         String aliasPassword = getString(R.string.alias_password);
         String alias = getString(R.string.alias_name);
