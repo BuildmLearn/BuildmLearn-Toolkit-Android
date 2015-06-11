@@ -23,10 +23,6 @@ public class TestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_test);
 
         toolkit = (ToolkitApplication) getApplicationContext();
-
-
-        Log.d(getClass().getName(), toolkit.getProjectDir());
-        
         String password = getString(R.string.key_password);
         String aliasPassword = getString(R.string.alias_password);
         String alias = getString(R.string.alias_name);
