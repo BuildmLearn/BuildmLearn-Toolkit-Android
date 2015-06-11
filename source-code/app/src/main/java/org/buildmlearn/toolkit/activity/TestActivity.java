@@ -6,8 +6,11 @@ import android.util.Log;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.ToolkitApplication;
+import org.buildmlearn.toolkit.model.KeyStoreDetails;
 import org.buildmlearn.toolkit.utilities.FileUtils;
 import org.buildmlearn.toolkit.utilities.SignerThread;
+
+import java.io.IOException;
 
 
 public class TestActivity extends AppCompatActivity {
@@ -24,26 +27,26 @@ public class TestActivity extends AppCompatActivity {
 
         Log.d(getClass().getName(), toolkit.getProjectDir());
 
-//        FileUtils.copyAssets(this, "app_debug.apk", toolkit.getApkDir());
-//        FileUtils.copyAssets(this, "key", toolkit.getApkDir());
-//
-//        String inputFile = toolkit.getApkDir() + "app_debug.apk";
-//        String outputFile = toolkit.getApkDir() + "post.apk";
-//        String keyPath = toolkit.getApkDir() + "key";
-//        String password = "xxxxxxxxx";
-//        String alias = "xxxxxxxxx";
-//
-//
-//        SignerThread thread = new SignerThread(getApplicationContext(), inputFile, outputFile, keyPath, password, alias, password);
-//        thread.start();
 
-//        try {
-//            FileUtils.unZip(toolkit.getApkDir() + "FlashCardTemplateApp_v2.0.apk", toolkit.getUnZipDir() + "FlashCardTemplateApp_v2.0");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
 
-        FileUtils.zipFileAtPath(toolkit.getUnZipDir() + "FlashCardTemplateApp_v2.0", toolkit.getApkDir() + "/FlashCardTemplateApp_v2.1110.apk");
+        String inputFile = toolkit.getApkDir() + "quiz_template.apk";
+        String outputFile = toolkit.getApkDir() + "post.apk";
+        String keyPath = toolkit.getApkDir() + "TestKeyStore.jks";
+        String password = getString(R.string.key_password);
+        String aliasPassword = getString(R.string.alias_password);
+        String alias = getString(R.string.alias_name);
+
+        KeyStoreDetails details = new KeyStoreDetails("TestKeyStore.jks", password, alias, aliasPassword);
+        String assetsApk = "quiz_template.apk";
+        String finalApk = toolkit.getApkDir() + "final.apk";
+
+
+
+
+        SignerThread thread = new SignerThread(getApplicationContext(), assetsApk, finalApk,details);
+        thread.start();
+
+
     }
 
 }

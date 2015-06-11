@@ -270,6 +270,16 @@ public class QuizTemplate implements TemplateInterface {
         return TFTQuizFragment.newInstance(filePathWithName);
     }
 
+    @Override
+    public String getAssetsFilePath() {
+        return "assets/quiz_content.xml";
+    }
+
+    @Override
+    public String getApkFilePath() {
+        return "quiz_template.apk";
+    }
+
     private void checkButton(ArrayList<RadioButton> buttons, ArrayList<EditText> options, int id, Context context) {
         for (RadioButton button : buttons) {
             if (button.getId() == id) {
