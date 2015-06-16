@@ -31,9 +31,6 @@ public class TestActivity extends AppCompatActivity {
         String assetsApk = "quiz_template.apk";
         String finalApk = toolkit.getApkDir() + "final.apk";
 
-
-
-
         SignerThread thread = new SignerThread(getApplicationContext(), assetsApk, finalApk,details);
         thread.start();
 

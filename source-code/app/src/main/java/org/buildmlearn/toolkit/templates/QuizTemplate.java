@@ -28,10 +28,8 @@ public class QuizTemplate implements TemplateInterface {
 
     transient private QuizAdapter mAdapter;
     private ArrayList<QuizModel> quizData;
-    private int count;
 
     public QuizTemplate() {
-        count = 0;
         this.quizData = new ArrayList<>();
     }
 
@@ -76,10 +74,9 @@ public class QuizTemplate implements TemplateInterface {
 
     @Override
     public void addItem(final Context context) {
-        boolean wrapInScrollView = true;
         final MaterialDialog dialog = new MaterialDialog.Builder(context)
                 .title(R.string.quiz_new_question_title)
-                .customView(R.layout.quiz_dialog_add_question, wrapInScrollView)
+                .customView(R.layout.quiz_dialog_add_question, true)
                 .positiveText(R.string.quiz_add)
                 .negativeText(R.string.quiz_delete)
                 .build();
@@ -134,7 +131,7 @@ public class QuizTemplate implements TemplateInterface {
 
                 if (isValidated) {
                     dialog.dismiss();
-                    ArrayList<String> answerOptions = new ArrayList<String>();
+                    ArrayList<String> answerOptions = new ArrayList<>();
                     int correctAnswer = 0;
                     for (int i = 0; i < buttons.size(); i++) {
                         if (buttons.get(i).isChecked() && !options.get(i).getText().toString().equals("")) {
@@ -159,10 +156,9 @@ public class QuizTemplate implements TemplateInterface {
     public void editItem(final Context context, final int position) {
         QuizModel data = quizData.get(position);
 
-        boolean wrapInScrollView = true;
         final MaterialDialog dialog = new MaterialDialog.Builder(context)
                 .title(R.string.quiz_edit)
-                .customView(R.layout.quiz_dialog_add_question, wrapInScrollView)
+                .customView(R.layout.quiz_dialog_add_question, true)
                 .positiveText(R.string.quiz_add)
                 .negativeText(R.string.quiz_delete)
                 .build();
@@ -224,7 +220,7 @@ public class QuizTemplate implements TemplateInterface {
 
                 if (isValidated) {
                     dialog.dismiss();
-                    ArrayList<String> answerOptions = new ArrayList<String>();
+                    ArrayList<String> answerOptions = new ArrayList<>();
                     int correctAnswer = 0;
                     for (int i = 0; i < buttons.size(); i++) {
                         if (buttons.get(i).isChecked() && !options.get(i).getText().toString().equals("")) {

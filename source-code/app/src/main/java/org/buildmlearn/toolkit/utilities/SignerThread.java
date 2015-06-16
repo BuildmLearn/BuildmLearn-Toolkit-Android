@@ -57,15 +57,15 @@ public class SignerThread extends Thread {
 
         String inputFile = toolkit.getUnZipDir() + TEMP_FOLDER + ".zip";
         try {
-            if (inputFile == null)
-                throw new IllegalArgumentException("Parameter inputFile is null");
-            if (finalApk == null)
+            if (finalApk == null) {
                 throw new IllegalArgumentException("Parameter outputFile is null");
+            }
 
             zipSigner = new ZipSigner();
             zipSigner.setResourceAdapter(new ZipSignerAppResourceAdapter(context.getResources()));
 
-            File keystoreFile = new File(toolkit.getApkDir() + keyDetails.getAssetsPath());
+            File keystoreFile;
+            keystoreFile = new File(toolkit.getApkDir() + keyDetails.getAssetsPath());
 
             char[] keyPass = keyDetails.getPassword().toCharArray();
             char[] aliasPass = keyDetails.getAliasPassword().toCharArray();
@@ -80,18 +80,16 @@ public class SignerThread extends Thread {
                 Log.d(TAG, "Signing Complete");
             }
 
-        } catch (AutoKeyException x) {
-            Log.d(TAG, "Exception: " + x.getMessage());
-        } catch (UnrecoverableKeyException x) {
+        } catch (AutoKeyException | UnrecoverableKeyException x) {
             Log.d(TAG, "Exception: " + x.getMessage());
         } catch (Throwable t) {
 
-            String tname = t.getClass().getName();
-            int pos = tname.lastIndexOf('.');
+            String tName = t.getClass().getName();
+            int pos = tName.lastIndexOf('.');
             if (pos >= 0) {
-                tname = tname.substring(pos + 1);
+                tName = tName.substring(pos + 1);
             }
-            Log.d(TAG, "Exception: " + tname + ": " + t.getMessage());
+            Log.d(TAG, "Exception: " + tName + ": " + t.getMessage());
         }
     }
 
