@@ -36,6 +36,18 @@
     <string name="title_activity_simulator">Simulator</string>
     <string name="title_activity_template">Template</string>
 
+
+    <!-- Info Template-->
+    <string name="info_template_word">Word</string>
+    <string name="info_template_word_hint">Enter word</string>
+    <string name="info_template_meaning">Meaning</string>
+    <string name="info_template_meaning_hint">Enter meaning</string>
+    <string name="info_template_edit">Edit</string>
+    <string name="info_template_add">Add</string>
+    <string name="info_template_delete">Delete</string>
+    <string name="info_add_new_title">Add Word-Meaning</string>
+
+
     <!-- Template Resources-->
     <string name="basic_m_learning_title">Basic mLearning</string>
     <string name="basic_m_learning_description">Create app displaying clickable list of textual information</string>
