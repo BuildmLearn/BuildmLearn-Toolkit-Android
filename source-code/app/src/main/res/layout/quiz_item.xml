@@ -82,16 +82,29 @@
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
                 android:text="@string/quiz_edit"
-                android:textColor="@color/color_primary" />
+                android:textAllCaps="true"
+                android:textColor="@color/color_primary"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/quiz_item_delete"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
                 android:text="@string/quiz_delete"
-                android:textColor="@color/color_primary" />
+                android:textAllCaps="true"
+                android:textColor="@color/color_primary"
+
+                android:textSize="14sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </LinearLayout>
