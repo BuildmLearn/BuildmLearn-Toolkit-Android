@@ -27,6 +27,11 @@
 
     <!-- Quiz Template-->
 
+    <string name="dialog_yes">Yes</string>
+    <string name="dialog_no">No</string>
+    <string name="dialog_delete_msg">Are you sure you want to delete this item?</string>
+    <string name="dialog_delete_title">Delete</string>
+
 
     <string name="quiz_template_hello">Hello World, TFTQuizActivity!</string>
     <string name="quiz_template_app_name">Quiz Time</string>
@@ -46,6 +51,7 @@
     <string name="info_template_add">Add</string>
     <string name="info_template_delete">Delete</string>
     <string name="info_add_new_title">Add Word-Meaning</string>
+    <string name="info_delete_item_content">Are you sure you want to delete this item?</string>
 
 
     <!-- Template Resources-->

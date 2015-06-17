@@ -70,8 +70,25 @@ public class InfoAdapter extends BaseAdapter {
         holder.deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                data.remove(position);
-                notifyDataSetChanged();
+
+                final MaterialDialog dialog = new MaterialDialog.Builder(mContext)
+                        .title(R.string.info_template_delete)
+                        .content(R.string.info_delete_item_content)
+                        .positiveText(R.string.dialog_yes)
+                        .negativeText(R.string.dialog_no)
+                        .build();
+
+                dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        data.remove(position);
+                        notifyDataSetChanged();
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.show();
+
             }
         });
 

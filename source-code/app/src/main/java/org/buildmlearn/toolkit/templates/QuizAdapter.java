@@ -122,8 +122,24 @@ public class QuizAdapter extends BaseAdapter {
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                quizData.remove(position);
-                notifyDataSetChanged();
+
+                final MaterialDialog dialog = new MaterialDialog.Builder(context)
+                        .title(R.string.dialog_delete_title)
+                        .content(R.string.dialog_delete_msg)
+                        .positiveText(R.string.dialog_yes)
+                        .negativeText(R.string.dialog_no)
+                        .build();
+
+                dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        quizData.remove(position);
+                        notifyDataSetChanged();
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.show();
             }
         });
         convertView.setTag(holder);

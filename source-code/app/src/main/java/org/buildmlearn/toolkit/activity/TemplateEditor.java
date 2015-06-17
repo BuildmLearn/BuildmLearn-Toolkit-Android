@@ -21,6 +21,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.ThemeSingleton;
 import com.cocosw.bottomsheet.BottomSheet;
 
@@ -205,8 +207,25 @@ public class TemplateEditor extends AppCompatActivity {
 
         switch (id) {
             case R.id.action_delete:
-                selectedTemplate.deleteItem(selectedPosition);
-                restoreSelectedView();
+
+                final MaterialDialog dialog = new MaterialDialog.Builder(this)
+                        .title(R.string.dialog_delete_title)
+                        .content(R.string.dialog_delete_msg)
+                        .positiveText(R.string.dialog_yes)
+                        .negativeText(R.string.dialog_no)
+                        .build();
+
+                dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                        selectedTemplate.deleteItem(selectedPosition);
+                        restoreSelectedView();
+                    }
+                });
+
+                dialog.show();
+
                 break;
             case R.id.action_edit:
                 selectedTemplate.editItem(this, selectedPosition);
@@ -252,8 +271,7 @@ public class TemplateEditor extends AppCompatActivity {
                 onBackPressed();
                 break;
         }
-
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 
 

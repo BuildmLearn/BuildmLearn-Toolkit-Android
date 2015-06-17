@@ -149,6 +149,7 @@ public class InfoTemplate implements TemplateInterface {
     @Override
     public void deleteItem(int position) {
 
+
         infoData.remove(position);
         adapter.notifyDataSetChanged();
 
