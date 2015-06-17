@@ -12,7 +12,7 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/question_icon"
+            android:id="@+id/info_template_edit"
             style="@style/TextView.CircleIcon"
             android:padding="2dp"
             android:layout_gravity="center_vertical"

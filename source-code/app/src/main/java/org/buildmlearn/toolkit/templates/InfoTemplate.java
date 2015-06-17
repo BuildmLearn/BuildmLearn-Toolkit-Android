@@ -89,7 +89,7 @@ public class InfoTemplate implements TemplateInterface {
 
     }
 
-    private boolean validated(Context context, EditText word, EditText meaning) {
+    public static boolean validated(Context context, EditText word, EditText meaning) {
         if (word == null || meaning == null) {
             return false;
         }

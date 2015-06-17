@@ -5,6 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
+import android.widget.ImageView;
+
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.views.TextViewPlus;
@@ -40,11 +45,11 @@ public class InfoAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         InfoTemplateHolder holder;
 
-        if(convertView == null) {
+        if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(mContext);
             convertView = inflater.inflate(R.layout.info_template_item, parent, false);
             holder = new InfoTemplateHolder();
@@ -52,7 +57,7 @@ public class InfoAdapter extends BaseAdapter {
             holder = (InfoTemplateHolder) convertView.getTag();
         }
 
-        holder.word = (TextViewPlus ) convertView.findViewById(R.id.word);
+        holder.word = (TextViewPlus) convertView.findViewById(R.id.word);
         holder.meaning = (TextViewPlus) convertView.findViewById(R.id.meaning);
 
         InfoModel info = getItem(position);
@@ -60,11 +65,64 @@ public class InfoAdapter extends BaseAdapter {
         holder.meaning.setText(info.getMeaning());
         holder.word.setText(info.getWord());
         convertView.setTag(holder);
+
+        holder.deleteButton = (ImageView) convertView.findViewById(R.id.info_template_delete);
+        holder.deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                data.remove(position);
+                notifyDataSetChanged();
+            }
+        });
+
+        holder.editButton = (ImageView) convertView.findViewById(R.id.info_template_edit);
+        holder.editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final MaterialDialog dialog = new MaterialDialog.Builder(mContext)
+                        .title(R.string.info_add_new_title)
+                        .customView(R.layout.info_dialog_add_edit_data, true)
+                        .positiveText(R.string.info_template_add)
+                        .negativeText(R.string.info_template_delete)
+                        .build();
+
+                final InfoModel data = getItem(position);
+
+                final EditText word = (EditText) dialog.findViewById(R.id.info_word);
+                final EditText meaning = (EditText) dialog.findViewById(R.id.info_meaning);
+                word.setText(data.getWord());
+                meaning.setText(data.getMeaning());
+
+                dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        if (InfoTemplate.validated(mContext, word, meaning)) {
+                            String wordText = word.getText().toString();
+                            String meaningText = meaning.getText().toString();
+
+                            data.setWord(wordText);
+                            data.setMeaning(meaningText);
+
+                            notifyDataSetChanged();
+                            dialog.dismiss();
+                        }
+
+                    }
+                });
+
+                dialog.show();
+            }
+        });
+
+
         return convertView;
     }
 
-    public class InfoTemplateHolder{
+    public class InfoTemplateHolder {
         public TextViewPlus word;
         public TextViewPlus meaning;
+        public ImageView editButton;
+        public ImageView deleteButton;
     }
 }
