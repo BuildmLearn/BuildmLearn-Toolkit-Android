@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Toast;
@@ -64,7 +65,7 @@ public class QuizAdapter extends BaseAdapter {
             holder.options.add((TextViewPlus) convertView.findViewById(R.id.answer2));
             holder.options.add((TextViewPlus) convertView.findViewById(R.id.answer3));
             holder.options.add((TextViewPlus) convertView.findViewById(R.id.answer4));
-            holder.questionIcon = (TextViewPlus) convertView.findViewById(R.id.question_icon);
+            holder.questionIcon = (ImageView) convertView.findViewById(R.id.question_icon);
             holder.quizOptionsBox = (LinearLayout) convertView.findViewById(R.id.quiz_options_box);
             holder.delete = (Button) convertView.findViewById(R.id.quiz_item_delete);
             holder.edit = (Button) convertView.findViewById(R.id.quiz_item_edit);
@@ -76,10 +77,10 @@ public class QuizAdapter extends BaseAdapter {
         QuizModel data = getItem(position);
         holder.question.setText(data.getQuestion());
         if (data.isSelected()) {
-            holder.questionIcon.setText("-");
+            holder.questionIcon.setImageResource(R.drawable.collapse);
             holder.quizOptionsBox.setVisibility(View.VISIBLE);
         } else {
-            holder.questionIcon.setText("+");
+            holder.questionIcon.setImageResource(R.drawable.expand);
             holder.quizOptionsBox.setVisibility(View.GONE);
         }
 
@@ -263,7 +264,7 @@ public class QuizAdapter extends BaseAdapter {
 
     public class Holder {
         TextViewPlus question;
-        TextViewPlus questionIcon;
+        ImageView questionIcon;
         ArrayList<TextViewPlus> options;
         LinearLayout quizOptionsBox;
         Button delete;
