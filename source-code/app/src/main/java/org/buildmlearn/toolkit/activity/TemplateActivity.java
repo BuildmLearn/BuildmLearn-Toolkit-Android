@@ -39,8 +39,6 @@ public class TemplateActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), TemplateEditor.class);
                 intent.putExtra(Constants.TEMPLATE_ID, templateId);
                 startActivity(intent);
-                finish();
-
 
             }
         });

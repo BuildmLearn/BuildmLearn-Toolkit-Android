@@ -24,6 +24,9 @@ import org.xml.sax.SAXException;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -65,7 +68,7 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                 Document doc = dBuilder.parse(fXmlFile);
                 doc.getDocumentElement().normalize();
                 Log.d("Files", "Root element :" + doc.getDocumentElement().getAttribute("type"));
-                savedProjects.add(new SavedProject(fXmlFile.getName(), fXmlFile.lastModified(), doc.getDocumentElement().getAttribute("type"), fXmlFile.getAbsolutePath()));
+                savedProjects.add(new SavedProject(fXmlFile, fXmlFile.getName(), fXmlFile.lastModified(), doc.getDocumentElement().getAttribute("type"), fXmlFile.getAbsolutePath()));
             } catch (ParserConfigurationException e) {
                 e.printStackTrace();
             } catch (SAXException e) {
@@ -74,6 +77,14 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                 e.printStackTrace();
             }
         }
+
+        Collections.sort(savedProjects, new Comparator<SavedProject>() {
+            public int compare(SavedProject f1, SavedProject f2) {
+                return Long.valueOf(f1.getFile().lastModified()).compareTo(f2.getFile().lastModified());
+            }
+        });
+
+        Collections.reverse(savedProjects);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package org.buildmlearn.toolkit.model;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 
 /**
@@ -7,14 +8,17 @@ import java.text.SimpleDateFormat;
  */
 public class SavedProject {
 
+    private File file;
+
     private String name;
     private String date;
     private String type;
     private String author;
     private String fullPath;
 
-    public SavedProject(String fileName, long date, String type, String fullPath) {
+    public SavedProject(File file, String fileName, long date, String type, String fullPath) {
 
+        this.file = file;
         this.fullPath = fullPath;
         this.date = formatDate(date);
         this.type = type;
@@ -74,5 +78,13 @@ public class SavedProject {
 
     public String getFullPath() {
         return fullPath;
+    }
+
+    public File getFile() {
+        return file;
+    }
+
+    public void setFile(File file) {
+        this.file = file;
     }
 }
