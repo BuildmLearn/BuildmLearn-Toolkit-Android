@@ -55,6 +55,7 @@ public class TFTFragment extends ListFragment {
         InfoListAdapter adapter = new InfoListAdapter(getActivity());
         setListAdapter(adapter);
         setEmptyText("No Data");
+        getListView().setBackgroundColor(getResources().getColor(R.color.info_template_blue_background));
         adapter.setList(gd.mList);
 
 
@@ -65,26 +66,6 @@ public class TFTFragment extends ListFragment {
 
         getActivity().getFragmentManager().beginTransaction().replace(R.id.container, DetailView.newInstance(position)).addToBackStack(null).commit();
     }
-
-    //
-//    public void ReadIndex(Context myContext) {
-//        try {
-//            br = new BufferedReader(new InputStreamReader(myContext.getAssets()
-//                    .open("index.txt"))); // throwing a FileNotFoundException?
-//            String text;
-//            while ((text = br.readLine()) != null) {
-//                stringList.add(text);
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } finally {
-//            try {
-//                br.close(); // stop reading
-//            } catch (IOException ex) {
-//                ex.printStackTrace();
-//            }
-//        }
-//    }
 
 
 }

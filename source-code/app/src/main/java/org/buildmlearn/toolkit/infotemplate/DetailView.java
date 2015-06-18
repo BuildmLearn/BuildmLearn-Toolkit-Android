@@ -86,6 +86,14 @@ public class DetailView extends Fragment {
         InfoModel model = GlobalData.getInstance().mList.get(position);
         title.setText(model.getInfo_object());
         details.setText(model.getInfo_description());
+        view.findViewById(R.id.info_template_simulator_back_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                getActivity().getFragmentManager().popBackStack();
+
+            }
+        });
         return view;
     }
 }

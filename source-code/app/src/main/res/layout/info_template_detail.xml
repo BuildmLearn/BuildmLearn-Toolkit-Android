@@ -5,6 +5,21 @@
     android:background="@color/info_template_blue_background"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:id="@+id/info_template_simulator_back_button"
+            android:layout_gravity="center_vertical|left"
+            android:src="@drawable/abc_ic_ab_back_mtrl_am_alpha" />
+
+
+    </LinearLayout>
+
     <TextView
         android:id="@+id/titleText"
         android:layout_width="fill_parent"
