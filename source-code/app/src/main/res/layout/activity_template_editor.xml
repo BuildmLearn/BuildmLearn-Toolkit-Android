@@ -30,7 +30,7 @@
         android:orientation="vertical"
         android:layout_alignParentBottom="true"
         android:layout_below="@+id/template_editor_listview">
-        
+
 
         <view
             android:id="@+id/title"
