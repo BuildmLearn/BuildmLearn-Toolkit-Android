@@ -30,13 +30,7 @@
         android:orientation="vertical"
         android:layout_alignParentBottom="true"
         android:layout_below="@+id/template_editor_listview">
-
-
-        <ImageView
-            android:id="@+id/imageView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_icon_afb" />
+        
 
         <view
             android:id="@+id/title"

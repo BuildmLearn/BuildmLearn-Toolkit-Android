@@ -20,7 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                card_view:cardBackgroundColor="@color/color_primary_dark"
+                card_view:cardBackgroundColor="@color/home_color"
                 card_view:cardCornerRadius="@dimen/cardview_default_radius"
                 card_view:cardElevation="@dimen/cardview_default_elevation"
                 card_view:contentPaddingTop="@dimen/cardview_top_padding">
@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/layout_margin"
-                card_view:cardBackgroundColor="@color/color_primary_dark"
+                card_view:cardBackgroundColor="@color/home_color"
                 card_view:cardCornerRadius="@dimen/cardview_default_radius"
                 card_view:cardElevation="@dimen/cardview_default_elevation"
                 card_view:contentPaddingTop="@dimen/cardview_top_padding">

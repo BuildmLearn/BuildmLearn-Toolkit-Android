@@ -5,8 +5,8 @@
         <item name="colorPrimary">@color/color_primary</item>
         <item name="colorPrimaryDark">@color/color_primary_dark</item>
         <item name="colorAccent">@color/color_accent</item>
-        <item name="colorButtonNormal">@color/primary_900</item>
-        <item name="android:colorButtonNormal">@color/primary_900</item>
+        <item name="colorButtonNormal">@color/color_primary_dark</item>
+        <item name="android:colorButtonNormal">@color/color_primary_dark</item>
         <item name="android:windowBackground">@color/window_background</item>
         <item name="android:textColorLink">?attr/colorAccent</item>
     </style>

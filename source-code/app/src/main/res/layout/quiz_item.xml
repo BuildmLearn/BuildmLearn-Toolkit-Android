@@ -11,10 +11,12 @@
         android:layout_gravity="center_vertical"
         android:orientation="horizontal">
 
-        <view
+        <ImageView
             android:id="@+id/question_icon"
             style="@style/TextView.CircleIcon"
-            class="org.buildmlearn.toolkit.views.TextViewPlus"
+            android:adjustViewBounds="true"
+            android:scaleType="center"
+            android:src="@drawable/expand"
             android:layout_gravity="center_vertical" />
 
         <view
