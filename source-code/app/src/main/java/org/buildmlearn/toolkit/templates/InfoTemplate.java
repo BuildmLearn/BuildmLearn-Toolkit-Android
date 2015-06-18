@@ -11,10 +11,10 @@ import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.infotemplate.TFTFragment;
 import org.buildmlearn.toolkit.model.TemplateInterface;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
 
 import java.util.ArrayList;
 
@@ -46,10 +46,10 @@ public class InfoTemplate implements TemplateInterface {
         infoData = new ArrayList<>();
         for (Element item : data) {
             String infoObject = item.getElementsByTagName("item_title").item(0).getTextContent();
-            String infoDescription = item.getElementsByTagName("item_title").item(0).getTextContent();
-            infoData.add(new InfoModel(infoObject,infoDescription));
+            String infoDescription = item.getElementsByTagName("item_description").item(0).getTextContent();
+            infoData.add(new InfoModel(infoObject, infoDescription));
         }
-        adapter = new InfoAdapter(context,infoData);
+        adapter = new InfoAdapter(context, infoData);
         return adapter;
     }
 
@@ -178,7 +178,7 @@ public class InfoTemplate implements TemplateInterface {
 
     @Override
     public Fragment getSimulatorFragment(String filePathWithName) {
-        return null;
+        return TFTFragment.newInstance(filePathWithName);
     }
 
     @Override

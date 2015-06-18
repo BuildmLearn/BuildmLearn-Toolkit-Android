@@ -67,6 +67,14 @@ import org.buildmlearn.toolkit.R;
 
 public class DetailView extends Fragment {
 
+    public static Fragment newInstance(int position) {
+        DetailView fragment = new DetailView();
+        Bundle bundle = new Bundle();
+        bundle.putInt("position", position);
+        fragment.setArguments(bundle);
+        return fragment;
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

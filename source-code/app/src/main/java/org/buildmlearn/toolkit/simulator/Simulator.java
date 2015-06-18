@@ -13,9 +13,6 @@ import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.constant.Constants;
 import org.buildmlearn.toolkit.model.Template;
 import org.buildmlearn.toolkit.model.TemplateInterface;
-import org.buildmlearn.toolkit.quiztemplate.TFTQuizFragment;
-
-;
 
 public class Simulator extends AppCompatActivity {
 
@@ -42,7 +39,7 @@ public class Simulator extends AppCompatActivity {
         } else {
             restoreTemplateEditor(savedInstanceState);
         }
-        getFragmentManager().beginTransaction().replace(R.id.container, selectedTemplate.getSimulatorFragment(getIntent().getStringExtra(Constants.SIMULATOR_FILE_PATH)), TFTQuizFragment.TAG).addToBackStack(null).commit();
+        getFragmentManager().beginTransaction().replace(R.id.container, selectedTemplate.getSimulatorFragment(getIntent().getStringExtra(Constants.SIMULATOR_FILE_PATH)), selectedTemplate.getTitle()).addToBackStack(null).commit();
     }
 
     @Override

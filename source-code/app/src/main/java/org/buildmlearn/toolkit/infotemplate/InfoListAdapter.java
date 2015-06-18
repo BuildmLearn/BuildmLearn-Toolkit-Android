@@ -47,27 +47,26 @@ public class InfoListAdapter extends BaseAdapter {
 		ViewHolder holder = null;
 		if (convertView == null) {
 
-			LayoutInflater inflater = (LayoutInflater) mContext
-					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			LayoutInflater inflater = LayoutInflater.from(mContext);
 			convertView = inflater.inflate(R.layout.info_template_app_list_item, parent,
 					false);
 
 			holder = new ViewHolder();
-			holder.mTv_Info_Object = (TextView) convertView
+			holder.mTvInfoObject = (TextView) convertView
 					.findViewById(R.id.tv_info_object);
 			convertView.setTag(holder);
 
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-		holder.mTv_Info_Object.setTag(R.id.tv_info_object);
-		holder.mTv_Info_Object.setText(mList.get(position).getInfo_object());
+		holder.mTvInfoObject.setTag(R.id.tv_info_object);
+		holder.mTvInfoObject.setText(mList.get(position).getInfo_object());
 
 		return convertView;
 	}
 
 	public class ViewHolder {
-		private TextView mTv_Info_Object;
+		private TextView mTvInfoObject;
 	}
 
 }

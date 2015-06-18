@@ -40,6 +40,7 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -50,156 +51,156 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 public class GlobalData {
-	private static GlobalData instance = null;
-	String mTitle, mAuthor = null;
-	int iSelectedIndex = -1;
-	ArrayList<InfoModel> mList = null;
+    private static GlobalData instance = null;
+    String mTitle, mAuthor = null;
+    int iSelectedIndex = -1;
+    ArrayList<InfoModel> mList = null;
 
-	protected GlobalData() {
-		// Exists only to defeat instantiation.
-	}
+    protected GlobalData() {
+        // Exists only to defeat instantiation.
+    }
 
-	public static GlobalData getInstance() {
-		if (instance == null) {
-			instance = new GlobalData();
-		}
-		return instance;
-	}
+    public static GlobalData getInstance() {
+        if (instance == null) {
+            instance = new GlobalData();
+        }
+        return instance;
+    }
 
-	public void readXmlContent(Context myContext, String fileName) {
-		XmlPullParserFactory factory;
-		XmlPullParser parser;
-		InputStreamReader is;
-		try {
-			factory = XmlPullParserFactory.newInstance();
-			// .setNamespaceAware(true);
-			factory.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
+    public void readXmlContent(Context myContext, String fileName) {
+        XmlPullParserFactory factory;
+        XmlPullParser parser;
+        InputStreamReader is;
+        try {
+            factory = XmlPullParserFactory.newInstance();
+            // .setNamespaceAware(true);
+            factory.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
 
-			parser = factory.newPullParser();
+            parser = factory.newPullParser();
 
-			is = new InputStreamReader(myContext.getAssets().open(fileName));
+            is = new InputStreamReader(myContext.getAssets().open(fileName));
 
-			parser.setInput(is);
-			int eventType = parser.getEventType();
-			InfoModel app = null;
+            parser.setInput(is);
+            int eventType = parser.getEventType();
+            InfoModel app = null;
 
-			while (eventType != XmlPullParser.END_DOCUMENT) {
-				String name = null;
-				switch (eventType) {
-				case XmlPullParser.START_DOCUMENT:
-					mList = new ArrayList<InfoModel>();
-					break;
-				case XmlPullParser.START_TAG:
-					name = parser.getName();
+            while (eventType != XmlPullParser.END_DOCUMENT) {
+                String name = null;
+                switch (eventType) {
+                    case XmlPullParser.START_DOCUMENT:
+                        mList = new ArrayList<InfoModel>();
+                        break;
+                    case XmlPullParser.START_TAG:
+                        name = parser.getName();
 
-					if (name.equalsIgnoreCase("title")) {
-						mTitle = parser.nextText();
-					} else if (name.equalsIgnoreCase("author")) {
-						mAuthor = parser.nextText();
-					} else if (name.equalsIgnoreCase("item")) {
-						app = new InfoModel();
-					} else if (app != null) {
-						if (name.equalsIgnoreCase("item_title")) {
-							app.setInfo_object(parser.nextText());
-						} else if (name.equalsIgnoreCase("item_description")) {
-							app.setInfo_description(parser.nextText());
-						}
-					}
-					break;
-				case XmlPullParser.END_TAG:
-					name = parser.getName();
-					if (name.equalsIgnoreCase("item") && app != null) {
-						mList.add(app);
-						// totalCards = model.size();
-					}
-				}
-				eventType = parser.next();
+                        if (name.equalsIgnoreCase("title")) {
+                            mTitle = parser.nextText();
+                        } else if (name.equalsIgnoreCase("author")) {
+                            mAuthor = parser.nextText();
+                        } else if (name.equalsIgnoreCase("item")) {
+                            app = new InfoModel();
+                        } else if (app != null) {
+                            if (name.equalsIgnoreCase("item_title")) {
+                                app.setInfo_object(parser.nextText());
+                            } else if (name.equalsIgnoreCase("item_description")) {
+                                app.setInfo_description(parser.nextText());
+                            }
+                        }
+                        break;
+                    case XmlPullParser.END_TAG:
+                        name = parser.getName();
+                        if (name.equalsIgnoreCase("item") && app != null) {
+                            mList.add(app);
+                            // totalCards = model.size();
+                        }
+                }
+                eventType = parser.next();
 
-			}
-		} catch (XmlPullParserException e1) {
-			e1.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		// return model;
-		// BuildmLearnModel.getInstance(myContext).setAllAppsList(model);
+            }
+        } catch (XmlPullParserException e1) {
+            e1.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // return model;
+        // BuildmLearnModel.getInstance(myContext).setAllAppsList(model);
 
-	}
+    }
 
-	public void readXml(Context myContext, String fileName) {
-		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+    public void readXml(String filePath) {
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
-		dbf.setValidating(false);
+        dbf.setValidating(false);
 
-		DocumentBuilder db;
-		Document doc;
-		try {
-			mList = new ArrayList<InfoModel>();
-			db = dbf.newDocumentBuilder();
-			doc = db.parse(myContext.getAssets().open(fileName));
-			doc.normalize();
-			/*
+        DocumentBuilder db;
+        Document doc;
+        try {
+            File fXmlFile = new File(filePath);
+            mList = new ArrayList<InfoModel>();
+            db = dbf.newDocumentBuilder();
+            doc = db.parse(fXmlFile);
+            doc.normalize();
+            /*
 			 * NodeList app_nodes = doc
 			 * .getElementsByTagName("buildmlearn_application");
 			 */
-			// NamedNodeMap node = app_nodes.item(0).getAttributes();
-			mTitle = doc.getElementsByTagName("title").item(0).getChildNodes()
-					.item(0).getNodeValue();
-			// NodeList author_nodes = doc.getElementsByTagName("author");
-			// NamedNodeMap node1 = author_nodes.item(0).getAttributes();
-			mAuthor = doc.getElementsByTagName("name").item(0).getChildNodes()
-					.item(0).getNodeValue();
-			;
-			// node1.getNamedItem("name").getNodeValue();
-			NodeList childNodes = doc.getElementsByTagName("item");
-			// Log.e("tag", "childNodes" + childNodes.getLength());
-			for (int i = 0; i < childNodes.getLength(); i++) {
-				InfoModel app = new InfoModel();
+            // NamedNodeMap node = app_nodes.item(0).getAttributes();
+            mTitle = doc.getElementsByTagName("title").item(0).getChildNodes()
+                    .item(0).getNodeValue();
+            // NodeList author_nodes = doc.getElementsByTagName("author");
+            // NamedNodeMap node1 = author_nodes.item(0).getAttributes();
+            mAuthor = doc.getElementsByTagName("name").item(0).getChildNodes()
+                    .item(0).getNodeValue();
+            ;
+            // node1.getNamedItem("name").getNodeValue();
+            NodeList childNodes = doc.getElementsByTagName("item");
+            // Log.e("tag", "childNodes" + childNodes.getLength());
+            for (int i = 0; i < childNodes.getLength(); i++) {
+                InfoModel app = new InfoModel();
 
-				Node child = childNodes.item(i);
+                Node child = childNodes.item(i);
 
-				if (child.getNodeType() == Node.ELEMENT_NODE) {
-					Element element2 = (Element) child;
+                if (child.getNodeType() == Node.ELEMENT_NODE) {
+                    Element element2 = (Element) child;
 
-					app.setInfo_object(getValue("item_title", element2));
-					app.setInfo_description(getValue("item_description", element2));
+                    app.setInfo_object(getValue("item_title", element2));
+                    app.setInfo_description(getValue("item_description", element2));
 
-				}
-				mList.add(app);
+                }
+                mList.add(app);
 
-			}
-		} catch (ParserConfigurationException e) {
-			Log.e("tag", e.getLocalizedMessage());
-			e.printStackTrace();
-		} catch (FileNotFoundException e) {
-			Log.e("tag", e.getLocalizedMessage());
-			e.printStackTrace();
-		} catch (SAXException e) {
-			Log.e("tag", e.getLocalizedMessage());
-			e.printStackTrace();
-		} catch (IOException e) {
-			Log.e("tag", e.getLocalizedMessage());
-			e.printStackTrace();
-		}
+            }
+        } catch (ParserConfigurationException e) {
+            Log.e("tag", e.getLocalizedMessage());
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            Log.e("tag", e.getLocalizedMessage());
+            e.printStackTrace();
+        } catch (SAXException e) {
+            Log.e("tag", e.getLocalizedMessage());
+            e.printStackTrace();
+        } catch (IOException e) {
+            Log.e("tag", e.getLocalizedMessage());
+            e.printStackTrace();
+        }
 
-	}
+    }
 
-	private static String getValue(String tag, Element element) {
-		NodeList nodeList = null;
-		NodeList node1 = element.getElementsByTagName(tag);
-		if (node1 != null && node1.getLength() != 0)
-			nodeList = node1.item(0).getChildNodes();
-		if (nodeList == null)
-			return "";
-		else if (nodeList.getLength() == 0)
-			return "";
-		else {
-			Node node = (Node) nodeList.item(0);
+    private static String getValue(String tag, Element element) {
+        NodeList nodeList = null;
+        NodeList node1 = element.getElementsByTagName(tag);
+        if (node1 != null && node1.getLength() != 0)
+            nodeList = node1.item(0).getChildNodes();
+        if (nodeList == null)
+            return "";
+        else if (nodeList.getLength() == 0)
+            return "";
+        else {
+            Node node = (Node) nodeList.item(0);
 
-			return node.getNodeValue();
-		}
-	}
-
+            return node.getNodeValue();
+        }
+    }
 
 
 }

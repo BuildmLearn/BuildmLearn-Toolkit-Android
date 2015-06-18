@@ -1,8 +1,5 @@
 package org.buildmlearn.toolkit.infotemplate;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-
 public class InfoModel {
 
     private String info_object, info_description;
@@ -22,7 +19,6 @@ public class InfoModel {
     public void setInfo_description(String info_description) {
         this.info_description = info_description;
     }
-
 
 
 }

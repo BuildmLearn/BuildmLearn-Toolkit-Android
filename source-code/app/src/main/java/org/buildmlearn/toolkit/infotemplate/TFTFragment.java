@@ -28,34 +28,42 @@
 
 package org.buildmlearn.toolkit.infotemplate;
 
-import android.annotation.TargetApi;
+import android.app.Fragment;
 import android.app.ListFragment;
-import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 
-@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.constant.Constants;
+
 public class TFTFragment extends ListFragment {
 
+
+    public static Fragment newInstance(String path) {
+        TFTFragment fragment = new TFTFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(Constants.SIMULATOR_FILE_PATH, path);
+        fragment.setArguments(bundle);
+        return fragment;
+    }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         GlobalData gd = GlobalData.getInstance();
-        gd.readXml(getActivity(), "info_content.xml");
+        gd.readXml(getArguments().getString(Constants.SIMULATOR_FILE_PATH));
         InfoListAdapter adapter = new InfoListAdapter(getActivity());
         setListAdapter(adapter);
+        setEmptyText("No Data");
         adapter.setList(gd.mList);
+
 
     }
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
 
-        Intent myIntent = new Intent(getActivity(), DetailView.class);
-        myIntent.putExtra("position", position);
-        startActivity(myIntent);
+        getActivity().getFragmentManager().beginTransaction().replace(R.id.container, DetailView.newInstance(position)).addToBackStack(null).commit();
     }
 
     //
