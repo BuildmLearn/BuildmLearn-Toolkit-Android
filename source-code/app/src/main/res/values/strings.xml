@@ -44,9 +44,9 @@
 
     <!-- Info Template-->
     <string name="info_template_word">Word</string>
-    <string name="info_template_word_hint">Enter word</string>
+    <string name="info_template_word_hint">Enter infoObject</string>
     <string name="info_template_meaning">Meaning</string>
-    <string name="info_template_meaning_hint">Enter meaning</string>
+    <string name="info_template_meaning_hint">Enter infoDescription</string>
     <string name="info_template_edit">Edit</string>
     <string name="info_template_add">Add</string>
     <string name="info_template_delete">Delete</string>

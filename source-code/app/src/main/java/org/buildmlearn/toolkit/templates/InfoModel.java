@@ -1,5 +1,8 @@
 package org.buildmlearn.toolkit.templates;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
 import java.io.Serializable;
 
 /**
@@ -7,27 +10,38 @@ import java.io.Serializable;
  */
 public class InfoModel implements Serializable {
 
-    private String word;
-    private String meaning;
+    private String infoObject;
+    private String infoDescription;
 
-    public InfoModel(String word, String meaning) {
-        this.word = word;
-        this.meaning = meaning;
+    public InfoModel(String infoObject, String meaning) {
+        this.infoObject = infoObject;
+        this.infoDescription = meaning;
     }
 
-    public String getWord() {
-        return word;
+    public String getInfoObject() {
+        return infoObject;
     }
 
-    public String getMeaning() {
-        return meaning;
+    public String getInfoDescription() {
+        return infoDescription;
     }
 
     public void setWord(String word) {
-        this.word = word;
+        this.infoObject = word;
     }
 
-    public void setMeaning(String meaning) {
-        this.meaning = meaning;
+    public void setInfoDescription(String infoDescription) {
+        this.infoDescription = infoDescription;
+    }
+
+    public Element getXml(Document doc) {
+        Element rootElement = doc.createElement("item");
+        Element questionElement = doc.createElement("item_title");
+        questionElement.appendChild(doc.createTextNode(infoObject));
+        rootElement.appendChild(questionElement);
+        Element answerElement = doc.createElement("item_description");
+        answerElement.appendChild(doc.createTextNode(String.valueOf(infoDescription)));
+        rootElement.appendChild(answerElement);
+        return rootElement;
     }
 }

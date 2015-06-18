@@ -57,13 +57,13 @@ public class InfoAdapter extends BaseAdapter {
             holder = (InfoTemplateHolder) convertView.getTag();
         }
 
-        holder.word = (TextViewPlus) convertView.findViewById(R.id.word);
-        holder.meaning = (TextViewPlus) convertView.findViewById(R.id.meaning);
+        holder.word = (TextViewPlus) convertView.findViewById(R.id.info_object);
+        holder.meaning = (TextViewPlus) convertView.findViewById(R.id.info_description);
 
         InfoModel info = getItem(position);
 
-        holder.meaning.setText(info.getMeaning());
-        holder.word.setText(info.getWord());
+        holder.meaning.setText(info.getInfoDescription());
+        holder.word.setText(info.getInfoObject());
         convertView.setTag(holder);
 
         holder.deleteButton = (ImageView) convertView.findViewById(R.id.info_template_delete);
@@ -107,8 +107,8 @@ public class InfoAdapter extends BaseAdapter {
 
                 final EditText word = (EditText) dialog.findViewById(R.id.info_word);
                 final EditText meaning = (EditText) dialog.findViewById(R.id.info_meaning);
-                word.setText(data.getWord());
-                meaning.setText(data.getMeaning());
+                word.setText(data.getInfoObject());
+                meaning.setText(data.getInfoDescription());
 
                 dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -119,7 +119,7 @@ public class InfoAdapter extends BaseAdapter {
                             String meaningText = meaning.getText().toString();
 
                             data.setWord(wordText);
-                            data.setMeaning(meaningText);
+                            data.setInfoDescription(meaningText);
 
                             notifyDataSetChanged();
                             dialog.dismiss();

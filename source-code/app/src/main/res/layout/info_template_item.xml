@@ -26,7 +26,7 @@
 
 
             <view
-                android:id="@+id/word"
+                android:id="@+id/info_object"
                 style="@style/TextView.Title.Thin"
                 class="org.buildmlearn.toolkit.views.TextViewPlus"
                 android:layout_marginLeft="16dp"
@@ -35,13 +35,13 @@
                 android:text="Somedifficultword" />
 
             <view
-                android:id="@+id/meaning"
+                android:id="@+id/info_description"
                 style="@style/TextView.Body1"
                 class="org.buildmlearn.toolkit.views.TextViewPlus"
                 android:layout_marginLeft="16dp"
                 android:paddingBottom="8dp"
                 android:paddingRight="16dp"
-                android:text="This is a long long meaning of some cool word. Made only for BuildmLearn as a pat of GSoC Project." />
+                android:text="This is a long long infoDescription of some cool infoObject. Made only for BuildmLearn as a pat of GSoC Project." />
         </LinearLayout>
 
 

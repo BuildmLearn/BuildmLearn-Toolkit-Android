@@ -14,6 +14,7 @@ import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.model.TemplateInterface;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 
 import java.util.ArrayList;
 
@@ -42,7 +43,14 @@ public class InfoTemplate implements TemplateInterface {
 
     @Override
     public BaseAdapter loadProjectTemplateEditor(Context context, ArrayList<Element> data) {
-        return null;
+        infoData = new ArrayList<>();
+        for (Element item : data) {
+            String infoObject = item.getElementsByTagName("item_title").item(0).getTextContent();
+            String infoDescription = item.getElementsByTagName("item_title").item(0).getTextContent();
+            infoData.add(new InfoModel(infoObject,infoDescription));
+        }
+        adapter = new InfoAdapter(context,infoData);
+        return adapter;
     }
 
     @Override
@@ -121,8 +129,8 @@ public class InfoTemplate implements TemplateInterface {
 
         final EditText word = (EditText) dialog.findViewById(R.id.info_word);
         final EditText meaning = (EditText) dialog.findViewById(R.id.info_meaning);
-        word.setText(data.getWord());
-        meaning.setText(data.getMeaning());
+        word.setText(data.getInfoObject());
+        meaning.setText(data.getInfoDescription());
 
         dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,7 +141,7 @@ public class InfoTemplate implements TemplateInterface {
                     String meaningText = meaning.getText().toString();
 
                     data.setWord(wordText);
-                    data.setMeaning(meaningText);
+                    data.setInfoDescription(meaningText);
 
                     adapter.notifyDataSetChanged();
                     dialog.dismiss();
@@ -157,7 +165,15 @@ public class InfoTemplate implements TemplateInterface {
 
     @Override
     public ArrayList<Element> getItems(Document doc) {
-        return null;
+        ArrayList<Element> itemElements = new ArrayList<>();
+
+
+        for (InfoModel data : infoData) {
+
+            itemElements.add(data.getXml(doc));
+        }
+
+        return itemElements;
     }
 
     @Override
@@ -167,7 +183,7 @@ public class InfoTemplate implements TemplateInterface {
 
     @Override
     public String getAssetsFilePath() {
-        return null;
+        return "assets/info_content.xml";
     }
 
     @Override
