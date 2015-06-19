@@ -29,13 +29,25 @@ public class SignerThread extends Thread {
     private String finalApk;
     private KeyStoreDetails keyDetails;
     String signatureAlgorithm = "SHA1withRSA";
+    private OnSignComplete listener;
+
+    public interface OnSignComplete {
+        void onSuccess();
+
+        void onFail(Exception e);
+    }
+
+    public void setSignerThreadListener(OnSignComplete listener) {
+        this.listener = listener;
+    }
 
     public SignerThread(Context context, String assetsApk, String finalApk, KeyStoreDetails keyDetails) {
+
         this.context = context;
         this.assetsApk = assetsApk;
-        this.finalApk = finalApk;
+        this.finalApk = finalApk.replaceAll("buildmlearn", "apk");
         this.keyDetails = keyDetails;
-        this.toolkit = (ToolkitApplication)context;
+        this.toolkit = (ToolkitApplication) context;
     }
 
     public void run() {
@@ -78,10 +90,14 @@ public class SignerThread extends Thread {
                 Log.d(TAG, "Signing cancelled");
             else {
                 Log.d(TAG, "Signing Complete");
+                listener.onSuccess();
             }
 
         } catch (AutoKeyException | UnrecoverableKeyException x) {
             Log.d(TAG, "Exception: " + x.getMessage());
+            if (listener != null) {
+                listener.onFail(x);
+            }
         } catch (Throwable t) {
 
             String tName = t.getClass().getName();
@@ -90,6 +106,9 @@ public class SignerThread extends Thread {
                 tName = tName.substring(pos + 1);
             }
             Log.d(TAG, "Exception: " + tName + ": " + t.getMessage());
+            if (listener != null) {
+                listener.onFail(null);
+            }
         }
     }
 

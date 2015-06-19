@@ -29,10 +29,12 @@ import com.cocosw.bottomsheet.BottomSheet;
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.ToolkitApplication;
 import org.buildmlearn.toolkit.constant.Constants;
+import org.buildmlearn.toolkit.model.KeyStoreDetails;
 import org.buildmlearn.toolkit.model.Template;
 import org.buildmlearn.toolkit.model.TemplateInterface;
 import org.buildmlearn.toolkit.simulator.Simulator;
 import org.buildmlearn.toolkit.utilities.FileUtils;
+import org.buildmlearn.toolkit.utilities.SignerThread;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -260,6 +262,28 @@ public class TemplateEditor extends AppCompatActivity {
                                     startActivity(Intent.createChooser(sendIntent, null));
                                 }
                                 break;
+                            case R.id.save_apk:
+                                String keyPassword = getString(R.string.key_password);
+                                String aliasName = getString(R.string.alias_name);
+                                String aliaspassword = getString(R.string.alias_password);
+                                KeyStoreDetails keyStoreDetails = new KeyStoreDetails("TestKeyStore.jks", keyPassword, aliasName, aliaspassword);
+                                SignerThread signer = new SignerThread(getApplicationContext(), selectedTemplate.getApkFilePath(), saveProject(), keyStoreDetails);
+
+                                signer.setSignerThreadListener(new SignerThread.OnSignComplete() {
+                                    @Override
+                                    public void onSuccess() {
+                                        Log.d(TAG, "APK generated");
+                                    }
+
+                                    @Override
+                                    public void onFail(Exception e) {
+                                        if(e != null) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                });
+
+                                signer.start();
                         }
                     }
                 }).show();

@@ -188,6 +188,6 @@ public class InfoTemplate implements TemplateInterface {
 
     @Override
     public String getApkFilePath() {
-        return null;
+        return "BasicmLearningApp.apk";
     }
 }

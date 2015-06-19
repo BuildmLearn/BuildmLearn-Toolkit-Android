@@ -273,7 +273,7 @@ public class QuizTemplate implements TemplateInterface {
 
     @Override
     public String getApkFilePath() {
-        return "quiz_template.apk";
+        return "QuizTemplateApp.apk";
     }
 
     private void checkButton(ArrayList<RadioButton> buttons, ArrayList<EditText> options, int id, Context context) {
