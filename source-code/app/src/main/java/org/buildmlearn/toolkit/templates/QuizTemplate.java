@@ -267,8 +267,13 @@ public class QuizTemplate implements TemplateInterface {
     }
 
     @Override
+    public String getAssetsFileName() {
+        return "quiz_content.xml";
+    }
+
+    @Override
     public String getAssetsFilePath() {
-        return "assets/quiz_content.xml";
+        return "assets/";
     }
 
     @Override

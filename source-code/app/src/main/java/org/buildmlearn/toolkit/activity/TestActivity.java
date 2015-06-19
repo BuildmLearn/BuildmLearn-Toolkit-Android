@@ -29,10 +29,10 @@ public class TestActivity extends AppCompatActivity {
 
         KeyStoreDetails details = new KeyStoreDetails("TestKeyStore.jks", password, alias, aliasPassword);
         String assetsApk = "quiz_template.apk";
-        String finalApk = toolkit.getApkDir() + "final.apk";
-
-        SignerThread thread = new SignerThread(getApplicationContext(), assetsApk, finalApk,details);
-        thread.start();
+//        String finalApk = toolkit.getApkDir() + "final.apk";
+//
+//        SignerThread thread = new SignerThread(getApplicationContext(), assetsApk, finalApk,details);
+//        thread.start();
 
 
     }

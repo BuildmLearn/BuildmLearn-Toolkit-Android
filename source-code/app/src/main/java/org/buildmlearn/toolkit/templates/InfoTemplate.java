@@ -182,8 +182,13 @@ public class InfoTemplate implements TemplateInterface {
     }
 
     @Override
+    public String getAssetsFileName() {
+        return "info_content.xml";
+    }
+
+    @Override
     public String getAssetsFilePath() {
-        return "assets/info_content.xml";
+        return "assets/";
     }
 
     @Override

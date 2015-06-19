@@ -7,6 +7,7 @@ import org.buildmlearn.toolkit.ToolkitApplication;
 import org.buildmlearn.toolkit.model.KeyStoreDetails;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.security.UnrecoverableKeyException;
 
@@ -27,6 +28,10 @@ public class SignerThread extends Thread {
     private Context context;
     private String assetsApk;
     private String finalApk;
+    private String assetFileName;
+    private String assetFilePath;
+    private String projectFile;
+
     private KeyStoreDetails keyDetails;
     String signatureAlgorithm = "SHA1withRSA";
     private OnSignComplete listener;
@@ -41,13 +46,15 @@ public class SignerThread extends Thread {
         this.listener = listener;
     }
 
-    public SignerThread(Context context, String assetsApk, String finalApk, KeyStoreDetails keyDetails) {
-
+    public SignerThread(Context context, String assetsApk, String finalApk, KeyStoreDetails keyDetails, String assetFilePath, String assetFileName) {
+        this.projectFile = finalApk;
         this.context = context;
         this.assetsApk = assetsApk;
         this.finalApk = finalApk.replaceAll("buildmlearn", "apk");
         this.keyDetails = keyDetails;
         this.toolkit = (ToolkitApplication) context;
+        this.assetFileName = assetFileName;
+        this.assetFilePath = assetFilePath;
     }
 
     public void run() {
@@ -58,12 +65,43 @@ public class SignerThread extends Thread {
         try {
             FileUtils.unZip(toolkit.getApkDir() + assetsApk, toolkit.getUnZipDir() + TEMP_FOLDER);
         } catch (IOException e) {
+            if (listener != null) {
+                listener.onFail(e);
+            }
+            e.printStackTrace();
+        }
+
+        File folder = new File(toolkit.getUnZipDir() + TEMP_FOLDER + "/" + assetFilePath);
+        boolean success = true;
+        if (!folder.exists()) {
+            success = folder.mkdir();
+        }
+
+        File src = new File(projectFile);
+        File dest = new File(toolkit.getUnZipDir() + TEMP_FOLDER + "/" + assetFilePath + assetFileName);
+
+        try {
+            FileWriter fileWriter = new FileWriter(dest.getAbsoluteFile(), true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        try {
+            FileUtils.copy(src, dest);
+        } catch (IOException e) {
+            if (listener != null) {
+                listener.onFail(e);
+            }
             e.printStackTrace();
         }
 
         try {
             FileUtils.zipFolder(toolkit.getUnZipDir() + TEMP_FOLDER);
         } catch (IOException e) {
+            if (listener != null) {
+                listener.onFail(e);
+            }
             e.printStackTrace();
         }
 

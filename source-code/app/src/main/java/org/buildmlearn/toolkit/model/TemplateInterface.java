@@ -35,6 +35,8 @@ public interface TemplateInterface extends Serializable {
 
     Fragment getSimulatorFragment(String filePathWithName);
 
+    String getAssetsFileName();
+
     String getAssetsFilePath();
 
     String getApkFilePath();
