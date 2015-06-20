@@ -1,8 +1,12 @@
 package org.buildmlearn.toolkit.utilities;
 
+import android.app.NotificationManager;
 import android.content.Context;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+import android.widget.Toast;
 
+import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.ToolkitApplication;
 import org.buildmlearn.toolkit.model.KeyStoreDetails;
 
@@ -129,15 +133,18 @@ public class SignerThread extends Thread {
                     keyDetails.getAlias(), aliasPass, signatureAlgorithm, inputFile, finalApk);
 
 
-            if (toolkit.isExternalStorageAvailable()) {
-
-            }
-
-            if (zipSigner.isCanceled())
+            if (zipSigner.isCanceled()) {
                 Log.d(TAG, "Signing cancelled");
-            else {
+                Toast.makeText(toolkit, "APK file not generated", Toast.LENGTH_SHORT).show();
+            } else {
                 Log.d(TAG, "Signing Complete");
                 listener.onSuccess();
+
+                if (toolkit.isExternalStorageAvailable()) {
+                    showNotification("APK file saved in Downloads folder");
+                } else {
+                    showNotification("SD card not found. APK file saved in internal storage.");
+                }
             }
 
         } catch (AutoKeyException | UnrecoverableKeyException x) {
@@ -157,6 +164,20 @@ public class SignerThread extends Thread {
                 listener.onFail(null);
             }
         }
+    }
+
+    private void showNotification(String description) {
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(toolkit)
+                        .setSmallIcon(R.drawable.ic_stat_toggle_check_box)
+                        .setContentTitle("APK Generated")
+                        .setContentText(description)
+                        .setAutoCancel(true);
+
+        NotificationManager mNotificationManager =
+                (NotificationManager) toolkit.getSystemService(Context.NOTIFICATION_SERVICE);
+// mId allows you to update the notification later on.
+        mNotificationManager.notify(23, mBuilder.build());
     }
 
 }
