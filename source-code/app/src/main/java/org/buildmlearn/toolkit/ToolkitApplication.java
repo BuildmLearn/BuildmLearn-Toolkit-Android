@@ -68,5 +68,11 @@ public class ToolkitApplication extends Application {
         return result;
     }
 
+    public boolean isExternalStorageAvailable() {
+        return isExternalStorageAvailable;
+    }
 
+    public String getDownloadDirectory() {
+        return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
+    }
 }

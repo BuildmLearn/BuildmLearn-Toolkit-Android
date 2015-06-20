@@ -120,9 +120,18 @@ public class SignerThread extends Thread {
             char[] keyPass = keyDetails.getPassword().toCharArray();
             char[] aliasPass = keyDetails.getAliasPassword().toCharArray();
 
+            if (toolkit.isExternalStorageAvailable()) {
+                finalApk = toolkit.getDownloadDirectory() + "/" + finalApk.substring(toolkit.getSavedDir().length());
+                Log.d(TAG, "Final APK: " + finalApk);
+            }
+
             CustomKeySigner.signZip(zipSigner, keystoreFile.getAbsolutePath(), keyPass,
                     keyDetails.getAlias(), aliasPass, signatureAlgorithm, inputFile, finalApk);
 
+
+            if (toolkit.isExternalStorageAvailable()) {
+
+            }
 
             if (zipSigner.isCanceled())
                 Log.d(TAG, "Signing cancelled");
