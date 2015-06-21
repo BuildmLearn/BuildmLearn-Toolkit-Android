@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/project_settings">
+
+        <CheckBoxPreference
+            android:key="@string/key_developer_mode"
+            android:summary="@string/summary_developer_mode"
+            android:title="@string/developer_mode" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/app_settings">
+
+        <com.afollestad.materialdialogs.prefs.MaterialEditTextPreference
+            android:dialogMessage="@string/summary_developer_mode"
+            android:dialogTitle="@string/title_user_name"
+            android:digits="abcdefghijklmnopqrstuvxyzABCDEFGHIJLMNOPRSTUVXYZ "
+            android:key="@string/key_user_name"
+            android:lines="1"
+            android:maxLines="1"
+            android:summary="@string/summary_developer_mode"
+            android:title="@string/your_name" />
+
+        <Preference
+            android:key="@string/key_delete_temporary_files"
+            android:summary="@string/summary_temp_files"
+            android:title="@string/delete_temp_files" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

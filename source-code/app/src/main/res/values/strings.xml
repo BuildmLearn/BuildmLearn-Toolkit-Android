@@ -297,4 +297,21 @@
     <string name="InputFileSameAsOutput">Input and output files are the same. Specify a different name for the output.</string>
     <!-- Error message shown when the key/mode="auto" and the key to use for signing can't be determined.  %s replaced with input filename. -->
     <string name="AutoKeySelectionError">Unable to auto-select key for signing %s</string>
+
+    <!-- Preference Data-->
+
+    <string name="project_settings">Project Settings</string>
+    <string name="key_developer_mode">debug_key</string>
+    <string name="developer_mode">Developer Mode</string>
+    <string name="summary_developer_mode">Developer mode disables publishing of Apk to BuildmLearn Store.</string>
+    <string name="title_user_name">Enter your name</string>
+
+    <string name="key_delete_temporary_files">delete_temp_files</string>
+    <string name="delete_temp_files">Delete Temporary Files</string>
+    <string name="summary_temp_files">Delete temporary generated files to save storage space</string>
+
+    <string name="key_user_name">key_user_name</string>
+    <string name="your_name">Your Name</string>
+    <string name="summary_name">Your name will be used as default author name</string>
+    <string name="app_settings">App Settings</string>
 </resources>
