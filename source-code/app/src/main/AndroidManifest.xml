@@ -22,14 +22,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.TestActivity"
-            android:label="@string/title_activity_test"
-            android:parentActivityName=".activity.HomeActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="org.buildmlearn.toolkit.activity.HomeActivity" />
-        </activity>
-        <activity
             android:name=".simulator.Simulator"
             android:label="@string/title_activity_simulator"
             android:screenOrientation="portrait"
