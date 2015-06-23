@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -62,10 +63,12 @@ public class TemplateEditor extends AppCompatActivity {
     private boolean showTemplateSelectedMenu;
     private View selectedView = null;
     private ToolkitApplication toolkit;
+    private String oldFileName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        oldFileName = null;
         setContentView(R.layout.activity_template_editor);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         toolkit = (ToolkitApplication) getApplicationContext();
@@ -82,6 +85,7 @@ public class TemplateEditor extends AppCompatActivity {
                 setUpTemplateEditor();
             } else {
                 parseSavedFile(path);
+                oldFileName = path;
             }
         } else {
             restoreTemplateEditor(savedInstanceState);
@@ -101,6 +105,7 @@ public class TemplateEditor extends AppCompatActivity {
     protected void onSaveInstanceState(Bundle outState) {
         outState.putSerializable(Constants.TEMPLATE_OBJECT, selectedTemplate);
         outState.putInt(Constants.TEMPLATE_ID, templateId);
+        outState.putString(Constants.PROJECT_FILE_PATH, oldFileName);
         super.onSaveInstanceState(outState);
     }
 
@@ -171,6 +176,7 @@ public class TemplateEditor extends AppCompatActivity {
     private void restoreTemplateEditor(Bundle savedInstanceState) {
         Log.d(TAG, "Activity Restored");
         selectedTemplate = (TemplateInterface) savedInstanceState.getSerializable(Constants.TEMPLATE_OBJECT);
+        oldFileName = savedInstanceState.getString(Constants.PROJECT_FILE_PATH);
         templateId = savedInstanceState.getInt(Constants.TEMPLATE_ID);
         Template[] templates = Template.values();
         template = templates[templateId];
@@ -385,9 +391,13 @@ public class TemplateEditor extends AppCompatActivity {
                 for (Element item : selectedTemplate.getItems(doc)) {
                     dataElement.appendChild(item);
                 }
+
+                File tempFile = new File(oldFileName);
+                tempFile.delete();
                 String saveFileName = title + " by " + author + ".buildmlearn";
                 saveFileName = saveFileName.replaceAll(" ", "-");
                 FileUtils.saveXmlFile(toolkit.getSavedDir(), saveFileName, doc);
+
                 return toolkit.getSavedDir() + saveFileName;
             } catch (ParserConfigurationException e) {
                 e.printStackTrace();
