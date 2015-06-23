@@ -280,7 +280,7 @@ public class TemplateEditor extends AppCompatActivity {
 
                                     @Override
                                     public void onFail(Exception e) {
-                                        if(e != null) {
+                                        if (e != null) {
                                             e.printStackTrace();
                                         }
                                     }
@@ -388,12 +388,16 @@ public class TemplateEditor extends AppCompatActivity {
                 for (Element item : selectedTemplate.getItems(doc)) {
                     dataElement.appendChild(item);
                 }
-
-                File tempFile = new File(oldFileName);
-                tempFile.delete();
+                if (oldFileName != null) {
+                    File tempFile = new File(oldFileName);
+                    tempFile.delete();
+                }
                 String saveFileName = title + " by " + author + ".buildmlearn";
                 saveFileName = saveFileName.replaceAll(" ", "-");
+
+
                 FileUtils.saveXmlFile(toolkit.getSavedDir(), saveFileName, doc);
+
 
                 return toolkit.getSavedDir() + saveFileName;
             } catch (ParserConfigurationException e) {
