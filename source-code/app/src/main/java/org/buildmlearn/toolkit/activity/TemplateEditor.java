@@ -7,7 +7,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -146,7 +145,7 @@ public class TemplateEditor extends AppCompatActivity {
 
     }
 
-    private void setUpActionBar(String title) {
+    private void setUpActionBar() {
         ActionBar actionBar = getSupportActionBar();
         templateEdtiorList = (ListView) findViewById(R.id.template_editor_listview);
         if (actionBar == null) {
@@ -157,7 +156,6 @@ public class TemplateEditor extends AppCompatActivity {
     }
 
     private void setUpTemplateEditor() {
-        Log.d(TAG, "Activity Created");
         Template[] templates = Template.values();
         template = templates[templateId];
         Class templateClass = template.getTemplateClass();
@@ -165,7 +163,7 @@ public class TemplateEditor extends AppCompatActivity {
             Object templateObject = templateClass.newInstance();
             selectedTemplate = (TemplateInterface) templateObject;
             populateListView(selectedTemplate.newTemplateEditorAdapter(this));
-            setUpActionBar(selectedTemplate.getTitle());
+            setUpActionBar();
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -174,7 +172,6 @@ public class TemplateEditor extends AppCompatActivity {
     }
 
     private void restoreTemplateEditor(Bundle savedInstanceState) {
-        Log.d(TAG, "Activity Restored");
         selectedTemplate = (TemplateInterface) savedInstanceState.getSerializable(Constants.TEMPLATE_OBJECT);
         oldFileName = savedInstanceState.getString(Constants.PROJECT_FILE_PATH);
         templateId = savedInstanceState.getInt(Constants.TEMPLATE_ID);
@@ -186,7 +183,7 @@ public class TemplateEditor extends AppCompatActivity {
         } else {
             Toast.makeText(this, selectedTemplate.onAttach(), Toast.LENGTH_LONG).show();
             populateListView(selectedTemplate.currentTemplateEditorAdapter());
-            setUpActionBar(selectedTemplate.getTitle());
+            setUpActionBar();
         }
     }
 
@@ -449,19 +446,13 @@ public class TemplateEditor extends AppCompatActivity {
             Object templateObject = templateClass.newInstance();
             selectedTemplate = (TemplateInterface) templateObject;
             populateListView(selectedTemplate.loadProjectTemplateEditor(this, items));
-            setUpActionBar(selectedTemplate.getTitle());
+            setUpActionBar();
             updateHeaderDetails(name, title);
 
 
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParserConfigurationException e) {
+        } catch (SAXException | IOException | ParserConfigurationException | IllegalAccessException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
 

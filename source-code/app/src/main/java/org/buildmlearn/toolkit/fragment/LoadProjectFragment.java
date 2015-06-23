@@ -24,7 +24,6 @@ import org.xml.sax.SAXException;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -62,7 +61,7 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
         for (int i = 0; i < file.length; i++) {
             File fXmlFile = new File(file[i].getAbsolutePath());
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder dBuilder = null;
+            DocumentBuilder dBuilder;
             try {
                 dBuilder = dbFactory.newDocumentBuilder();
                 Document doc = dBuilder.parse(fXmlFile);
@@ -132,5 +131,52 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
         }
     }
 
+    @Override
+    public void onResume() {
+        if (mAdapter != null) {
 
+            savedProjects.clear();
+
+            String path = mToolkit.getSavedDir();
+            Log.d("Files", "Path: " + path);
+
+
+            File f = new File(path);
+            File file[] = f.listFiles();
+            if (file == null) {
+                return;
+            }
+
+
+            Log.d("Files", "Size: " + file.length);
+            for (int i = 0; i < file.length; i++) {
+                File fXmlFile = new File(file[i].getAbsolutePath());
+                DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+                DocumentBuilder dBuilder;
+                try {
+                    dBuilder = dbFactory.newDocumentBuilder();
+                    Document doc = dBuilder.parse(fXmlFile);
+                    doc.getDocumentElement().normalize();
+                    Log.d("Files", "Root element :" + doc.getDocumentElement().getAttribute("type"));
+                    savedProjects.add(new SavedProject(fXmlFile, fXmlFile.getName(), fXmlFile.lastModified(), doc.getDocumentElement().getAttribute("type"), fXmlFile.getAbsolutePath()));
+                } catch (ParserConfigurationException e) {
+                    e.printStackTrace();
+                } catch (SAXException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            Collections.sort(savedProjects, new Comparator<SavedProject>() {
+                public int compare(SavedProject f1, SavedProject f2) {
+                    return Long.valueOf(f1.getFile().lastModified()).compareTo(f2.getFile().lastModified());
+                }
+            });
+
+            Collections.reverse(savedProjects);
+            mAdapter.notifyDataSetChanged();
+        }
+        super.onResume();
+    }
 }
