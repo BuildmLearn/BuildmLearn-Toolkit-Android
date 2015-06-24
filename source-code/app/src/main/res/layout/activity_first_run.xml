@@ -1,0 +1,63 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:font="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="org.buildmlearn.toolkit.activity.FirstRunActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/first_run_bg" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/logo_70" />
+
+        <org.buildmlearn.toolkit.views.TextViewPlus
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/main_title"
+            android:textColor="@color/white_secondary_text"
+            android:textSize="@dimen/headline_leading"
+            font:customFont="roboto_light.ttf" />
+
+        <org.buildmlearn.toolkit.views.TextViewPlus
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/main_subtitle"
+            android:textColor="@color/white_secondary_text"
+            android:textSize="@dimen/title"
+            font:customFont="roboto_light.ttf" />
+
+        <EditText
+            android:id="@+id/first_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_marginTop="50dp"
+            android:ems="10"
+            android:textColorHint="@color/white_hint_text_disabled"
+            android:gravity="center"
+            android:hint="@string/main_name_hint"
+            android:inputType="textPersonName" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>
