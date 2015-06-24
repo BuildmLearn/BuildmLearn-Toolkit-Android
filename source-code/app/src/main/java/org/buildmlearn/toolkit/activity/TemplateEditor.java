@@ -3,10 +3,12 @@ package org.buildmlearn.toolkit.activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -115,6 +117,10 @@ public class TemplateEditor extends AppCompatActivity {
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View templateHeader = inflater.inflate(R.layout.listview_header_template, templateEdtiorList, false);
         templateEdtiorList.addHeaderView(templateHeader, null, false);
+
+        EditText authorEditText = (EditText) findViewById(R.id.author_name);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        authorEditText.setText(preferences.getString(getString(R.string.key_user_name), ""));
         setAdapter(adapter);
 
         templateEdtiorList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -158,6 +164,7 @@ public class TemplateEditor extends AppCompatActivity {
     private void setUpTemplateEditor() {
         Template[] templates = Template.values();
         template = templates[templateId];
+
         Class templateClass = template.getTemplateClass();
         try {
             Object templateObject = templateClass.newInstance();

@@ -39,7 +39,6 @@
         android:layout_height="wrap_content"
         android:hint="@string/hint_author"
         android:inputType="textPersonName"
-
         android:theme="@style/EditText.Dark" />
 
 

@@ -72,8 +72,8 @@
     <string name="quiz_add">Add</string>
     <string name="quiz_edit">Edit Question</string>
     <string name="quiz_description">Choose this template to create Quiz-like applications</string>
-    <string name="hint_quiz_name">Quiz Name</string>
-    <string name="label_quiz">Quiz Name</string>
+    <string name="hint_quiz_name">Template Name</string>
+    <string name="label_quiz">Template Name</string>
     <string name="hint_author">Name</string>
     <string name="label_author">Author</string>
     <string name="title_activity_template_editor">TemplateEditor</string>
@@ -314,7 +314,6 @@
     <string name="your_name">Your Name</string>
     <string name="summary_name">Your name will be used as default author name</string>
     <string name="app_settings">App Settings</string>
-    <string name="title_activity_first_run">FirstRunActivity</string>
 
     <string name="main_title">BuildmLearn</string>
     <string name="main_subtitle">Toolkit</string>
