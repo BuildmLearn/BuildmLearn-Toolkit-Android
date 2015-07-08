@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="@dimen/cardview_template_height"
+    card_view:cardCornerRadius="@dimen/cardview_default_radius"
+    card_view:cardElevation="@dimen/cardview_default_elevation">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_card" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/info_template_edit"
+                style="@style/TextView.CircleIcon"
+                android:layout_gravity="center_vertical"
+                android:padding="2dp"
+                android:src="@drawable/menu_edit_template_item" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+
+                <view
+                    android:id="@+id/info_object"
+                    style="@style/TextView.Title.Thin"
+                    class="org.buildmlearn.toolkit.views.TextViewPlus"
+                    android:layout_marginLeft="16dp"
+                    android:paddingBottom="8dp"
+                    android:paddingTop="16dp"
+                    android:text="Somedifficultword" />
+
+
+                <view
+                    android:id="@+id/flash_and"
+                    style="@style/TextView.Body1"
+                    class="org.buildmlearn.toolkit.views.TextViewPlus"
+                    android:layout_marginLeft="16dp"
+                    android:paddingBottom="4dp"
+                    android:text="Somedifficultword" />
+
+                <view
+                    android:id="@+id/flash_hint"
+                    style="@style/TextView.Body1"
+                    class="org.buildmlearn.toolkit.views.TextViewPlus"
+                    android:layout_marginLeft="16dp"
+                    android:paddingBottom="8dp"
+                    android:text="Somedifficultword" />
+
+            </LinearLayout>
+
+
+            <ImageView
+                android:id="@+id/info_template_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginRight="16dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside"
+                android:src="@drawable/template_delete" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
