@@ -12,6 +12,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.constant.Constants;
+import org.buildmlearn.toolkit.infotemplate.DetailView;
+import org.buildmlearn.toolkit.quiztemplate.TFTQuizFragment;
 
 public class ScoreFragment extends Fragment {
     GlobalData gd;
@@ -31,6 +34,9 @@ public class ScoreFragment extends Fragment {
 
             @Override
             public void onClick(View arg0) {
+
+                getActivity().getFragmentManager().beginTransaction().replace(R.id.container, StartFragment.newInstance(getActivity().getIntent().getStringExtra(Constants.SIMULATOR_FILE_PATH)), StartFragment.TAG).addToBackStack(null).commit();
+
                 Intent myIntent = new Intent(getActivity(),
                         StartFragment.class);
                 startActivity(myIntent);

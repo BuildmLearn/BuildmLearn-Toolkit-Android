@@ -1,7 +1,6 @@
 package org.buildmlearn.toolkit.flashcardtemplate;
 
 import android.app.Fragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -12,9 +11,22 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.constant.Constants;
 
 public class StartFragment extends Fragment {
+
+    public static final String TAG = "Start Fragment";
+
     GlobalData gd;
+
+    public static Fragment newInstance(String path) {
+        StartFragment fragment = new StartFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(Constants.SIMULATOR_FILE_PATH, path);
+        fragment.setArguments(bundle);
+        return fragment;
+    }
+
 
     @Nullable
     @Override
@@ -36,10 +48,8 @@ public class StartFragment extends Fragment {
 
             @Override
             public void onClick(View arg0) {
-                // TODO: Handle this
-                Intent myIntent = new Intent(arg0.getContext(),
-                        MainFragment.class);
-                startActivity(myIntent);
+                getActivity().getFragmentManager().beginTransaction().replace(R.id.container, new MainFragment()).addToBackStack(null).commit();
+
             }
         });
 

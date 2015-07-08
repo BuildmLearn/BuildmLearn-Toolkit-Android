@@ -1,7 +1,6 @@
 package org.buildmlearn.toolkit.flashcardtemplate;
 
 import android.app.Fragment;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -113,8 +112,9 @@ public class MainFragment extends Fragment implements
                     populateQuestion(iQuestionIndex);
 
                 } else {
-                    Intent myIntent = new Intent(getActivity(), ScoreFragment.class);
-                    startActivity(myIntent);
+
+                    getActivity().getFragmentManager().beginTransaction().replace(R.id.container, new ScoreFragment()).addToBackStack(null).commit();
+
                     reInitialize();
                 }
 
