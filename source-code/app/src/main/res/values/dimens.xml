@@ -51,4 +51,9 @@
     <!-- Template CardView-->
     <dimen name="cardview_template_height">180dp</dimen>
 
+    <!-- Flash card template-->
+
+    <dimen name="card_width">320dp</dimen>
+    <dimen name="card_height">250dp</dimen>
+
 </resources>

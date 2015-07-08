@@ -32,4 +32,8 @@
 
     <color name="info_template_blue_background">#255593</color>
 
+    <color name="Red">#FF0000</color>
+    <color name="Green">#00FF00</color>
+    <color name="BlueBg">#255593</color>
+
 </resources>

@@ -318,4 +318,10 @@
     <string name="main_title">BuildmLearn</string>
     <string name="main_subtitle">Toolkit</string>
     <string name="main_name_hint">Your Name!</string>
+
+
+    <!-- Flash Card Template-->
+
+    <string name="last_msg">This was the last card!</string>
+    <string name="action_info">Info</string>
 </resources>
