@@ -35,7 +35,7 @@ public class StartFragment extends Fragment {
         View view = inflater.inflate(R.layout.flash_simu_start_view, container, false);
 
         gd = GlobalData.getInstance();
-        gd.readXml(getActivity(), "flash_content.xml");
+        gd.readXml(getActivity(), "template_assets/flash_content.xml");
 
         TextView quizAuthor = (TextView) view.findViewById(R.id.tv_author);
         TextView quizTitle = (TextView) view.findViewById(R.id.tv_apptitle);
