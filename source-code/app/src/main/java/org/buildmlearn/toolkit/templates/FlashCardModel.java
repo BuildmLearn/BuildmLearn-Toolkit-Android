@@ -1,6 +1,10 @@
 package org.buildmlearn.toolkit.templates;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
+
+import java.io.ByteArrayOutputStream;
 
 /**
  * Created by abhishek on 11/07/15 at 7:34 PM.
@@ -20,7 +24,13 @@ public class FlashCardModel {
     }
 
     private String convertBitmapToBase64(Bitmap image) {
-        return "";
+
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        image.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+        byte[] byteArray = byteArrayOutputStream.toByteArray();
+        String encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
+
+        return encoded;
 
     }
 
@@ -38,6 +48,12 @@ public class FlashCardModel {
 
     public String getImage() {
         return mImage;
+    }
+
+    public Bitmap getImageBitmap() {
+        byte[] decodedString = Base64.decode(mImage, Base64.DEFAULT);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        return decodedByte;
     }
 }
 
