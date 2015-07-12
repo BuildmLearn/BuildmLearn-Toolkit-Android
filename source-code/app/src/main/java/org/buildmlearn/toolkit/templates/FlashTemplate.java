@@ -136,6 +136,11 @@ public class FlashTemplate implements TemplateInterface {
         return null;
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        
+    }
+
     public Intent makePhotoIntent(String title, Context context) {
 
         Intent galleryIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
