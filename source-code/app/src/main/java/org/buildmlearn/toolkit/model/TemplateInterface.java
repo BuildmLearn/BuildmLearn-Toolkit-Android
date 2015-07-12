@@ -1,7 +1,9 @@
 package org.buildmlearn.toolkit.model;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.widget.BaseAdapter;
 
 import org.w3c.dom.Document;
@@ -25,7 +27,7 @@ public interface TemplateInterface extends Serializable {
 
     String getTitle();
 
-    void addItem(Context context);
+    void addItem(Activity activity);
 
     void editItem(Context context, int position);
 
@@ -40,5 +42,7 @@ public interface TemplateInterface extends Serializable {
     String getAssetsFilePath();
 
     String getApkFilePath();
+
+    void onActivityResult(int requestCode, int resultCode, Intent intent);
 
 }

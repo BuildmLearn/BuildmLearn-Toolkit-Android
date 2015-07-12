@@ -1,7 +1,9 @@
 package org.buildmlearn.toolkit.templates;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
@@ -12,7 +14,6 @@ import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.flashcardtemplate.StartFragment;
-import org.buildmlearn.toolkit.infotemplate.TFTFragment;
 import org.buildmlearn.toolkit.model.TemplateInterface;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -65,9 +66,9 @@ public class InfoTemplate implements TemplateInterface {
     }
 
     @Override
-    public void addItem(final Context context) {
+    public void addItem(final Activity activity) {
 
-        final MaterialDialog dialog = new MaterialDialog.Builder(context)
+        final MaterialDialog dialog = new MaterialDialog.Builder(activity)
                 .title(R.string.info_add_new_title)
                 .customView(R.layout.info_dialog_add_edit_data, true)
                 .positiveText(R.string.info_template_add)
@@ -81,7 +82,7 @@ public class InfoTemplate implements TemplateInterface {
             @Override
             public void onClick(View v) {
 
-                if (validated(context, word, meaning)) {
+                if (validated(activity, word, meaning)) {
                     String wordText = word.getText().toString();
                     String meaningText = meaning.getText().toString();
 
@@ -195,5 +196,10 @@ public class InfoTemplate implements TemplateInterface {
     @Override
     public String getApkFilePath() {
         return "BasicmLearningApp.apk";
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+
     }
 }

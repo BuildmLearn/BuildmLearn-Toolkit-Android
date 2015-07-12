@@ -1,7 +1,9 @@
 package org.buildmlearn.toolkit.templates;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
@@ -73,8 +75,8 @@ public class QuizTemplate implements TemplateInterface {
     }
 
     @Override
-    public void addItem(final Context context) {
-        final MaterialDialog dialog = new MaterialDialog.Builder(context)
+    public void addItem(final Activity activity) {
+        final MaterialDialog dialog = new MaterialDialog.Builder(activity)
                 .title(R.string.quiz_new_question_title)
                 .customView(R.layout.quiz_dialog_add_question, true)
                 .positiveText(R.string.quiz_add)
@@ -97,7 +99,7 @@ public class QuizTemplate implements TemplateInterface {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    checkButton(buttons, options, button.getId(), context);
+                    checkButton(buttons, options, button.getId(), activity);
                 }
             });
         }
@@ -109,7 +111,7 @@ public class QuizTemplate implements TemplateInterface {
                 boolean isValidated = true;
                 int checkedAns = getCheckedAnswer(buttons);
                 if (checkedAns < 0) {
-                    Toast.makeText(context, "Choose a correct option", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity, "Choose a correct option", Toast.LENGTH_SHORT).show();
                     isValidated = false;
                 }
                 if (question.getText().toString().equals("")) {
@@ -125,7 +127,7 @@ public class QuizTemplate implements TemplateInterface {
                     }
                 }
                 if (optionCount < 2) {
-                    Toast.makeText(context, "Minimum two multiple answers are required.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity, "Minimum two multiple answers are required.", Toast.LENGTH_SHORT).show();
                     isValidated = false;
                 }
 
@@ -279,6 +281,11 @@ public class QuizTemplate implements TemplateInterface {
     @Override
     public String getApkFilePath() {
         return "QuizTemplateApp.apk";
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+
     }
 
     private void checkButton(ArrayList<RadioButton> buttons, ArrayList<EditText> options, int id, Context context) {
