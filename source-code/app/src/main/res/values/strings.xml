@@ -54,6 +54,15 @@
     <string name="info_delete_item_content">Are you sure you want to delete this item?</string>
     <string name="info_template">InfoTemplate</string>
 
+    <!-- Flash Card Template-->
+    <string name="flash_card_template">FlashCardsTemplate</string>
+    <string name="flash_photo_source">Select image source</string>
+    <string-array name="flash_photo_source_array">
+        <item>Camers</item>
+        <item>Gallery</item>
+    </string-array>
+    <string name="flash_choose">Choose</string>
+
     <!-- Template Resources-->
     <string name="basic_m_learning_title">Basic mLearning</string>
     <string name="basic_m_learning_description">Create app displaying clickable list of textual information</string>
