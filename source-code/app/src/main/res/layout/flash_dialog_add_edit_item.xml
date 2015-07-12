@@ -10,6 +10,7 @@
         android:layout_marginBottom="10dp">
 
         <ImageView
+            android:id="@+id/banner_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
@@ -29,28 +30,42 @@
     <TextView
         android:id="@+id/textView2"
         style="@style/TextView.Caption.Light"
-        android:text="@string/info_template_word"
+        android:text="@string/flash_templete_question"
         android:textColor="@color/black_secondary_text"/>
 
     <EditText
-        android:id="@+id/info_word"
+        android:id="@+id/flash_question"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/info_template_word_hint"
+        android:hint="@string/flash_template_question_hint"
         android:inputType="textPersonName"/>
 
     <TextView
         style="@style/TextView.Caption.Light"
-        android:text="@string/info_template_meaning"
+        android:text="@string/flash_template_answer"
         android:textColor="@color/black_secondary_text"/>
 
 
     <EditText
-        android:id="@+id/info_meaning"
+        android:id="@+id/flash_answer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/info_template_meaning_hint"
+        android:hint="@string/flash_template_anser_hint"
         android:inputType="textPersonName"/>
+
+    <TextView
+        style="@style/TextView.Caption.Light"
+        android:text="@string/flash_template_hint"
+        android:textColor="@color/black_secondary_text"/>
+
+
+    <EditText
+        android:id="@+id/flash_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/flash_template_hint_hint"
+        android:inputType="textPersonName"/>
+
 
 
 </LinearLayout>

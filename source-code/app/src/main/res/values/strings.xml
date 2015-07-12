@@ -62,6 +62,12 @@
         <item>Gallery</item>
     </string-array>
     <string name="flash_choose">Choose</string>
+    <string name="flash_templete_question">Question</string>
+    <string name="flash_template_answer">Answer</string>
+    <string name="flash_template_hint">Answer Hint</string>
+    <string name="flash_template_question_hint">Enter Question</string>
+    <string name="flash_template_anser_hint">Enter Answer</string>
+    <string name="flash_template_hint_hint">Enter Hint</string>
 
     <!-- Template Resources-->
     <string name="basic_m_learning_title">Basic mLearning</string>
