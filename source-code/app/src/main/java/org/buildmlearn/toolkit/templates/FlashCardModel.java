@@ -5,11 +5,12 @@ import android.graphics.BitmapFactory;
 import android.util.Base64;
 
 import java.io.ByteArrayOutputStream;
+import java.io.Serializable;
 
 /**
  * Created by abhishek on 11/07/15 at 7:34 PM.
  */
-public class FlashCardModel {
+public class FlashCardModel implements Serializable {
 
     private String mQuestion;
     private String mAnswer;

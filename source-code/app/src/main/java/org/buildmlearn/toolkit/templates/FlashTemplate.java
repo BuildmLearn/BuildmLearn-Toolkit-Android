@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -38,6 +39,14 @@ public class FlashTemplate implements TemplateInterface {
     private static final int REQUEST_TAKE_PHOTO = 6677;
     private static final String TAG = "FLASH TEMPLATE";
     transient private Uri mImageUri;
+    transient private ImageView mBannerImage;
+    private boolean mIsPhotoAttached;
+
+    ArrayList<FlashCardModel> mData;
+
+    public FlashTemplate() {
+        mData = new ArrayList<>();
+    }
 
     @Override
     public BaseAdapter newTemplateEditorAdapter(Context context) {
@@ -56,16 +65,19 @@ public class FlashTemplate implements TemplateInterface {
 
     @Override
     public String onAttach() {
-        return null;
+        return "Flash card template";
     }
 
     @Override
     public String getTitle() {
-        return null;
+        return "Flash Template";
     }
 
     @Override
     public void addItem(final Activity activity) {
+
+        mIsPhotoAttached = false;
+
         final MaterialDialog dialog = new MaterialDialog.Builder(activity)
                 .title(R.string.info_add_new_title)
                 .customView(R.layout.flash_dialog_add_edit_item, true)
@@ -73,8 +85,12 @@ public class FlashTemplate implements TemplateInterface {
                 .negativeText(R.string.info_template_delete)
                 .build();
 
-        final EditText word = (EditText) dialog.findViewById(R.id.info_word);
-        final EditText meaning = (EditText) dialog.findViewById(R.id.info_meaning);
+        final EditText question = (EditText) dialog.findViewById(R.id.flash_question);
+        final EditText answer = (EditText) dialog.findViewById(R.id.flash_answer);
+        final EditText answerHint = (EditText) dialog.findViewById(R.id.flash_hint);
+
+
+        mBannerImage = (ImageView) dialog.findViewById(R.id.banner_image);
 
         final ImageView uploadButton = (ImageView) dialog.findViewById(R.id.flash_upload_image);
         uploadButton.setOnTouchListener(new View.OnTouchListener() {
@@ -101,7 +117,24 @@ public class FlashTemplate implements TemplateInterface {
         dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Validate data here
+                String questionText = question.getText().toString();
+                String answerText = answer.getText().toString();
+                String hintText = answerHint.getText().toString();
+
+                if (questionText.isEmpty()) {
+                    Toast.makeText(activity, "Enter question", Toast.LENGTH_SHORT).show();
+                } else if (answerText.isEmpty()) {
+                    Toast.makeText(activity, "Enter answer", Toast.LENGTH_SHORT).show();
+                } else if (hintText.isEmpty()) {
+                    Toast.makeText(activity, "Enter hint", Toast.LENGTH_SHORT).show();
+                } else if (!mIsPhotoAttached) {
+                    Toast.makeText(activity, "Attach an image", Toast.LENGTH_SHORT).show();
+                } else {
+                    dialog.dismiss();
+                    Bitmap bitmap = ((BitmapDrawable) mBannerImage.getDrawable()).getBitmap();
+                    mData.add(new FlashCardModel(questionText, answerText, hintText, bitmap));
+
+                }
 
             }
         });
@@ -149,13 +182,13 @@ public class FlashTemplate implements TemplateInterface {
     public void onActivityResult(Context context, int requestCode, int resultCode, Intent intent) {
         if (requestCode == REQUEST_TAKE_PHOTO && resultCode == Activity.RESULT_OK) {
             Bitmap bitmap = grabImage(context);
-            if(bitmap != null) {
+            if (bitmap != null) {
                 bitmap = getResizedBitmap(bitmap, 300);
                 if (bitmap != null) {
                     Log.d(TAG, "Bitmap not null: From Camera");
                 }
             } else {
-                InputStream stream = null;
+                InputStream stream;
                 try {
                     stream = context.getContentResolver().openInputStream(
                             intent.getData());
@@ -167,6 +200,11 @@ public class FlashTemplate implements TemplateInterface {
                     e.printStackTrace();
                 }
 
+            }
+
+            if (bitmap != null) {
+                mBannerImage.setImageBitmap(bitmap);
+                mIsPhotoAttached = true;
             }
         }
     }
@@ -186,7 +224,7 @@ public class FlashTemplate implements TemplateInterface {
         return Bitmap.createScaledBitmap(image, width, height, true);
     }
 
-    public Bitmap grabImage(Context context) {
+    private Bitmap grabImage(Context context) {
         context.getContentResolver().notifyChange(mImageUri, null);
         ContentResolver cr = context.getContentResolver();
         Bitmap bitmap;
@@ -194,21 +232,18 @@ public class FlashTemplate implements TemplateInterface {
             bitmap = android.provider.MediaStore.Images.Media.getBitmap(cr, mImageUri);
             return bitmap;
         } catch (Exception e) {
-            Toast.makeText(context, "Failed to load", Toast.LENGTH_SHORT).show();
-            Log.d("POST", "Failed to load", e);
+            Log.d(TAG, "Failed to load", e);
         }
         return null;
     }
 
-    public Intent makePhotoIntent(String title, Context context) {
+    private Intent makePhotoIntent(String title, Context context) {
 
         Intent galleryIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         galleryIntent.setType("image/*");
 
-
-
         Intent cameraIntent = new Intent("android.media.action.IMAGE_CAPTURE");
-        File photo = null;
+        File photo;
         mImageUri = null;
         try {
 
@@ -232,7 +267,6 @@ public class FlashTemplate implements TemplateInterface {
     private File createTemporaryFile(Context context, String part, String ext) throws Exception {
 
         ToolkitApplication toolkitApplication = (ToolkitApplication) context.getApplicationContext();
-
 
         File tempDir;
         tempDir = new File(toolkitApplication.getSavedDir() + ".temp/");
