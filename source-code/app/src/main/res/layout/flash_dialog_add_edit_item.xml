@@ -1,7 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginBottom="10dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_card"/>
+
+        <ImageView
+            android:id="@+id/flash_upload_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/upload_button"/>
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/textView2"
+        style="@style/TextView.Caption.Light"
+        android:text="@string/info_template_word"
+        android:textColor="@color/black_secondary_text"/>
+
+    <EditText
+        android:id="@+id/info_word"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/info_template_word_hint"
+        android:inputType="textPersonName"/>
+
+    <TextView
+        style="@style/TextView.Caption.Light"
+        android:text="@string/info_template_meaning"
+        android:textColor="@color/black_secondary_text"/>
+
+
+    <EditText
+        android:id="@+id/info_meaning"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/info_template_meaning_hint"
+        android:inputType="textPersonName"/>
+
 
 </LinearLayout>
