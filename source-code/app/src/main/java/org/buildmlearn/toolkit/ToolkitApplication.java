@@ -7,6 +7,7 @@ import android.widget.Toast;
 import org.buildmlearn.toolkit.constant.Constants;
 
 import java.io.File;
+import java.util.ArrayList;
 
 /**
  * Created by Abhishek on 31-05-2015.
@@ -31,6 +32,19 @@ public class ToolkitApplication extends Application {
         } else {
             Toast.makeText(this, "Not able to read external storage. Phone memory will be used", Toast.LENGTH_SHORT).show();
             dir = getFilesDir().getAbsolutePath();
+        }
+
+        ArrayList<String> paths = new ArrayList<>();
+        paths.add(getProjectDir());
+        paths.add(getApkDir());
+        paths.add(getSavedDir());
+        paths.add(getUnZipDir());
+
+        for (String path : paths) {
+            File f = new File(path);
+            if (!f.isDirectory()) {
+                f.mkdirs();
+            }
         }
 
 
@@ -61,9 +75,6 @@ public class ToolkitApplication extends Application {
         if (!f.isDirectory()) {
             result = f.mkdirs();
             f.delete();
-        }
-        if(result) {
-            new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/BuildmLearn/");
         }
         return result;
     }

@@ -199,7 +199,8 @@ public class InfoTemplate implements TemplateInterface {
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+    public void onActivityResult(Context context, int requestCode, int resultCode, Intent intent) {
 
     }
+
 }

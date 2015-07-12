@@ -284,9 +284,10 @@ public class QuizTemplate implements TemplateInterface {
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+    public void onActivityResult(Context context, int requestCode, int resultCode, Intent intent) {
 
     }
+
 
     private void checkButton(ArrayList<RadioButton> buttons, ArrayList<EditText> options, int id, Context context) {
         for (RadioButton button : buttons) {

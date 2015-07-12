@@ -113,7 +113,7 @@ public class TemplateEditor extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         Log.d(TAG, "On activity result");
-        selectedTemplate.onActivityResult(requestCode, resultCode, intent);
+        selectedTemplate.onActivityResult(this, requestCode, resultCode, intent);
         super.onActivityResult(requestCode, resultCode, intent);
     }
 

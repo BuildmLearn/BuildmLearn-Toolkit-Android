@@ -43,6 +43,6 @@ public interface TemplateInterface extends Serializable {
 
     String getApkFilePath();
 
-    void onActivityResult(int requestCode, int resultCode, Intent intent);
+    void onActivityResult(Context context, int requestCode, int resultCode, Intent intent);
 
 }

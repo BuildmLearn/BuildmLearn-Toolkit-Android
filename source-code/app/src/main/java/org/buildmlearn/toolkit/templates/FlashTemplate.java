@@ -2,8 +2,11 @@ package org.buildmlearn.toolkit.templates;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -24,12 +27,18 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 /**
  * Created by abhishek on 11/07/15 at 7:33 PM.
  */
 public class FlashTemplate implements TemplateInterface {
+    private static final int REQUEST_TAKE_PHOTO = 6677;
+    private static final String TAG = "FLASH TEMPLATE";
+    transient private Uri mImageUri;
+
     @Override
     public BaseAdapter newTemplateEditorAdapter(Context context) {
         return null;
@@ -76,7 +85,7 @@ public class FlashTemplate implements TemplateInterface {
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     uploadButton.setImageResource(R.drawable.upload_button);
                     Intent photoPickerIntent = makePhotoIntent(activity.getString(R.string.flash_photo_source), activity);
-                    activity.startActivityForResult(photoPickerIntent, 1000);
+                    activity.startActivityForResult(photoPickerIntent, REQUEST_TAKE_PHOTO);
                 }
                 return true;
             }
@@ -137,8 +146,58 @@ public class FlashTemplate implements TemplateInterface {
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        
+    public void onActivityResult(Context context, int requestCode, int resultCode, Intent intent) {
+        if (requestCode == REQUEST_TAKE_PHOTO && resultCode == Activity.RESULT_OK) {
+            Bitmap bitmap = grabImage(context);
+            if(bitmap != null) {
+                bitmap = getResizedBitmap(bitmap, 300);
+                if (bitmap != null) {
+                    Log.d(TAG, "Bitmap not null: From Camera");
+                }
+            } else {
+                InputStream stream = null;
+                try {
+                    stream = context.getContentResolver().openInputStream(
+                            intent.getData());
+                    bitmap = BitmapFactory.decodeStream(stream);
+                    if (bitmap != null) {
+                        Log.d(TAG, "Bitmap not null: From Gallery");
+                    }
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }
+    }
+
+    private Bitmap getResizedBitmap(Bitmap image, int maxSize) {
+        int width = image.getWidth();
+        int height = image.getHeight();
+
+        float bitmapRatio = (float) width / (float) height;
+        if (bitmapRatio > 0) {
+            width = maxSize;
+            height = (int) (width / bitmapRatio);
+        } else {
+            height = maxSize;
+            width = (int) (height * bitmapRatio);
+        }
+        return Bitmap.createScaledBitmap(image, width, height, true);
+    }
+
+    public Bitmap grabImage(Context context) {
+        context.getContentResolver().notifyChange(mImageUri, null);
+        ContentResolver cr = context.getContentResolver();
+        Bitmap bitmap;
+        try {
+            bitmap = android.provider.MediaStore.Images.Media.getBitmap(cr, mImageUri);
+            return bitmap;
+        } catch (Exception e) {
+            Toast.makeText(context, "Failed to load", Toast.LENGTH_SHORT).show();
+            Log.d("POST", "Failed to load", e);
+        }
+        return null;
     }
 
     public Intent makePhotoIntent(String title, Context context) {
@@ -147,17 +206,17 @@ public class FlashTemplate implements TemplateInterface {
         galleryIntent.setType("image/*");
 
 
+
         Intent cameraIntent = new Intent("android.media.action.IMAGE_CAPTURE");
         File photo = null;
-        Uri mImageUri = null;
+        mImageUri = null;
         try {
 
             photo = createTemporaryFile(context, "picture", ".jpg");
             mImageUri = Uri.fromFile(photo);
             photo.delete();
         } catch (Exception e) {
-            e.printStackTrace();
-            Log.v("POST", "Can't create file to take picture!");
+            Log.d(TAG, e.getMessage());
             Toast.makeText(context, "Please check SD card! Image shot is impossible!", Toast.LENGTH_SHORT).show();
         }
 
@@ -182,5 +241,6 @@ public class FlashTemplate implements TemplateInterface {
         }
         return File.createTempFile(part, ext, tempDir);
     }
+
 
 }
