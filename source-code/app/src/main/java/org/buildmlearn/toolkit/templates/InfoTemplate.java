@@ -13,7 +13,7 @@ import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.buildmlearn.toolkit.R;
-import org.buildmlearn.toolkit.flashcardtemplate.StartFragment;
+import org.buildmlearn.toolkit.infotemplate.TFTFragment;
 import org.buildmlearn.toolkit.model.TemplateInterface;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -180,7 +180,7 @@ public class InfoTemplate implements TemplateInterface {
 
     @Override
     public Fragment getSimulatorFragment(String filePathWithName) {
-        return StartFragment.newInstance(filePathWithName);
+        return TFTFragment.newInstance(filePathWithName);
     }
 
     @Override

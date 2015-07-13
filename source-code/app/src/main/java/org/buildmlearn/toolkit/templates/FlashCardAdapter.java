@@ -1,12 +1,16 @@
 package org.buildmlearn.toolkit.templates;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.views.TextViewPlus;
 
 import java.util.ArrayList;
 
@@ -35,12 +39,43 @@ public class FlashCardAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
+
+
         return position;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        return null;
+
+        LayoutInflater mInflater;
+        mInflater = LayoutInflater.from(mContext);
+        Holder holder;
+        if (convertView == null) {
+            convertView = mInflater.inflate(R.layout.flash_template_item, parent, false);
+            holder = new Holder();
+
+            holder.question = (TextViewPlus) convertView.findViewById(R.id.flash_item_question);
+            holder.answer = (TextViewPlus) convertView.findViewById(R.id.flash_item_answer);
+            holder.hint = (TextViewPlus) convertView.findViewById(R.id.flash_item_hint);
+            holder.image = (ImageView) convertView.findViewById(R.id.flash_item_image);
+
+            holder.delete = (Button) convertView.findViewById(R.id.quiz_item_delete);
+            holder.edit = (Button) convertView.findViewById(R.id.quiz_item_edit);
+
+        } else {
+            holder = (Holder) convertView.getTag();
+        }
+
+        FlashCardModel data = getItem(position);
+        holder.answer.setText(data.getAnswer());
+        holder.image.setImageBitmap(data.getImageBitmap());
+        holder.hint.setText(data.getHint());
+        holder.question.setText(data.getQuestion());
+
+
+        convertView.setTag(holder);
+
+        return convertView;
     }
 
     public class Holder {

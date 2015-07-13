@@ -23,6 +23,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.ToolkitApplication;
+import org.buildmlearn.toolkit.flashcardtemplate.StartFragment;
 import org.buildmlearn.toolkit.model.TemplateInterface;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -43,6 +44,7 @@ public class FlashTemplate implements TemplateInterface {
     private boolean mIsPhotoAttached;
 
     ArrayList<FlashCardModel> mData;
+    transient private FlashCardAdapter mAdapter;
 
     public FlashTemplate() {
         mData = new ArrayList<>();
@@ -50,12 +52,14 @@ public class FlashTemplate implements TemplateInterface {
 
     @Override
     public BaseAdapter newTemplateEditorAdapter(Context context) {
-        return null;
+
+        mAdapter = new FlashCardAdapter(context, mData);
+        return mAdapter;
     }
 
     @Override
     public BaseAdapter currentTemplateEditorAdapter() {
-        return null;
+        return mAdapter;
     }
 
     @Override
@@ -133,6 +137,7 @@ public class FlashTemplate implements TemplateInterface {
                     dialog.dismiss();
                     Bitmap bitmap = ((BitmapDrawable) mBannerImage.getDrawable()).getBitmap();
                     mData.add(new FlashCardModel(questionText, answerText, hintText, bitmap));
+                    mAdapter.notifyDataSetChanged();
 
                 }
 
@@ -150,7 +155,8 @@ public class FlashTemplate implements TemplateInterface {
 
     @Override
     public void deleteItem(int position) {
-
+        mData.remove(position);
+        mAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -160,7 +166,7 @@ public class FlashTemplate implements TemplateInterface {
 
     @Override
     public Fragment getSimulatorFragment(String filePathWithName) {
-        return null;
+        return StartFragment.newInstance(filePathWithName);
     }
 
     @Override
@@ -193,6 +199,7 @@ public class FlashTemplate implements TemplateInterface {
                     stream = context.getContentResolver().openInputStream(
                             intent.getData());
                     bitmap = BitmapFactory.decodeStream(stream);
+                    bitmap = getResizedBitmap(bitmap, 300);
                     if (bitmap != null) {
                         Log.d(TAG, "Bitmap not null: From Gallery");
                     }
