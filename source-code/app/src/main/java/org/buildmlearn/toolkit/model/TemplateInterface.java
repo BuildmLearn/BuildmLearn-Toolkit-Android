@@ -29,7 +29,7 @@ public interface TemplateInterface extends Serializable {
 
     void addItem(Activity activity);
 
-    void editItem(Context context, int position);
+    void editItem(Activity activity, int position);
 
     void deleteItem(int position);
 

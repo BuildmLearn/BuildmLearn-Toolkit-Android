@@ -119,8 +119,8 @@ public class InfoTemplate implements TemplateInterface {
     }
 
     @Override
-    public void editItem(final Context context, int position) {
-        final MaterialDialog dialog = new MaterialDialog.Builder(context)
+    public void editItem(final Activity activity, int position) {
+        final MaterialDialog dialog = new MaterialDialog.Builder(activity)
                 .title(R.string.info_add_new_title)
                 .customView(R.layout.info_dialog_add_edit_data, true)
                 .positiveText(R.string.info_template_add)
@@ -138,7 +138,7 @@ public class InfoTemplate implements TemplateInterface {
             @Override
             public void onClick(View v) {
 
-                if (validated(context, word, meaning)) {
+                if (validated(activity, word, meaning)) {
                     String wordText = word.getText().toString();
                     String meaningText = meaning.getText().toString();
 

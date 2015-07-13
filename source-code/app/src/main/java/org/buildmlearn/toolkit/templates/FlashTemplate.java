@@ -121,24 +121,15 @@ public class FlashTemplate implements TemplateInterface {
         dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String questionText = question.getText().toString();
-                String answerText = answer.getText().toString();
-                String hintText = answerHint.getText().toString();
 
-                if (questionText.isEmpty()) {
-                    Toast.makeText(activity, "Enter question", Toast.LENGTH_SHORT).show();
-                } else if (answerText.isEmpty()) {
-                    Toast.makeText(activity, "Enter answer", Toast.LENGTH_SHORT).show();
-                } else if (hintText.isEmpty()) {
-                    Toast.makeText(activity, "Enter hint", Toast.LENGTH_SHORT).show();
-                } else if (!mIsPhotoAttached) {
-                    Toast.makeText(activity, "Attach an image", Toast.LENGTH_SHORT).show();
-                } else {
+                if (validateData(question, answer, answerHint, activity)) {
                     dialog.dismiss();
                     Bitmap bitmap = ((BitmapDrawable) mBannerImage.getDrawable()).getBitmap();
+                    String questionText = question.getText().toString();
+                    String answerText = answer.getText().toString();
+                    String hintText = answerHint.getText().toString();
                     mData.add(new FlashCardModel(questionText, answerText, hintText, bitmap));
                     mAdapter.notifyDataSetChanged();
-
                 }
 
             }
@@ -149,8 +140,91 @@ public class FlashTemplate implements TemplateInterface {
 
 
     @Override
-    public void editItem(Context context, int position) {
+    public void editItem(final Activity activity, int position) {
+        mIsPhotoAttached = true;
 
+        FlashCardModel data = mData.get(position);
+
+        final MaterialDialog dialog = new MaterialDialog.Builder(activity)
+                .title(R.string.info_add_new_title)
+                .customView(R.layout.flash_dialog_add_edit_item, true)
+                .positiveText(R.string.info_template_add)
+                .negativeText(R.string.info_template_delete)
+                .build();
+
+        final EditText question = (EditText) dialog.findViewById(R.id.flash_question);
+        final EditText answer = (EditText) dialog.findViewById(R.id.flash_answer);
+        final EditText answerHint = (EditText) dialog.findViewById(R.id.flash_hint);
+
+        question.setText(data.getQuestion());
+        answer.setText(data.getAnswer());
+        answerHint.setText(data.getHint());
+
+        mBannerImage = (ImageView) dialog.findViewById(R.id.banner_image);
+        mBannerImage.setImageBitmap(data.getImageBitmap());
+
+        final ImageView uploadButton = (ImageView) dialog.findViewById(R.id.flash_upload_image);
+        uploadButton.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    uploadButton.setImageResource(R.drawable.upload_button_presses);
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    uploadButton.setImageResource(R.drawable.upload_button);
+                    Intent photoPickerIntent = makePhotoIntent(activity.getString(R.string.flash_photo_source), activity);
+                    activity.startActivityForResult(photoPickerIntent, REQUEST_TAKE_PHOTO);
+                }
+                return true;
+            }
+        });
+
+        uploadButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (validateData(question, answer, answerHint, activity)) {
+                    dialog.dismiss();
+                    Bitmap bitmap = ((BitmapDrawable) mBannerImage.getDrawable()).getBitmap();
+                    String questionText = question.getText().toString();
+                    String answerText = answer.getText().toString();
+                    String hintText = answerHint.getText().toString();
+                    mData.add(new FlashCardModel(questionText, answerText, hintText, bitmap));
+                    mAdapter.notifyDataSetChanged();
+                }
+
+            }
+        });
+
+        dialog.show();
+    }
+
+    private boolean validateData(EditText question, EditText answer, EditText answerHint, Context context) {
+        String questionText = question.getText().toString();
+        String answerText = answer.getText().toString();
+        String hintText = answerHint.getText().toString();
+
+        if (questionText.isEmpty()) {
+            Toast.makeText(context, "Enter question", Toast.LENGTH_SHORT).show();
+            return false;
+        } else if (answerText.isEmpty()) {
+            Toast.makeText(context, "Enter answer", Toast.LENGTH_SHORT).show();
+            return false;
+        } else if (hintText.isEmpty()) {
+            Toast.makeText(context, "Enter hint", Toast.LENGTH_SHORT).show();
+            return false;
+        } else if (!mIsPhotoAttached) {
+            Toast.makeText(context, "Attach an image", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        return true;
     }
 
     @Override

@@ -155,10 +155,10 @@ public class QuizTemplate implements TemplateInterface {
     }
 
     @Override
-    public void editItem(final Context context, final int position) {
+    public void editItem(final Activity activity, final int position) {
         QuizModel data = quizData.get(position);
 
-        final MaterialDialog dialog = new MaterialDialog.Builder(context)
+        final MaterialDialog dialog = new MaterialDialog.Builder(activity)
                 .title(R.string.quiz_edit)
                 .customView(R.layout.quiz_dialog_add_question, true)
                 .positiveText(R.string.quiz_add)
@@ -188,7 +188,7 @@ public class QuizTemplate implements TemplateInterface {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    checkButton(buttons, options, button.getId(), context);
+                    checkButton(buttons, options, button.getId(), activity);
                 }
             });
         }
@@ -200,7 +200,7 @@ public class QuizTemplate implements TemplateInterface {
                 boolean isValidated = true;
                 int checkedAns = getCheckedAnswer(buttons);
                 if (checkedAns < 0) {
-                    Toast.makeText(context, "Choose a correct option", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity, "Choose a correct option", Toast.LENGTH_SHORT).show();
                     isValidated = false;
                 }
                 if (question.getText().toString().equals("")) {
@@ -216,7 +216,7 @@ public class QuizTemplate implements TemplateInterface {
                     }
                 }
                 if (optionCount < 2) {
-                    Toast.makeText(context, "Minimum two multiple answers are required.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity, "Minimum two multiple answers are required.", Toast.LENGTH_SHORT).show();
                     isValidated = false;
                 }
 
