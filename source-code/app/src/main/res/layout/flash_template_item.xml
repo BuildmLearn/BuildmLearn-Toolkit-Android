@@ -1,87 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView android:id="@+id/card_view"
-                                    xmlns:android="http://schemas.android.com/apk/res/android"
-                                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:minHeight="@dimen/cardview_template_height"
-                                    card_view:cardCornerRadius="@dimen/cardview_default_radius"
-                                    card_view:cardElevation="@dimen/cardview_default_elevation">
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="8dp"
+        android:orientation="horizontal"
+        android:layout_height="match_parent"
+        android:id="@+id/linearLayout"/>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-
-        <ImageView
-            android:id="@+id/flash_item_image"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/bg_card"/>
+        android:layout_weight="1"
+        android:minHeight="@dimen/cardview_template_height"
+        card_view:cardCornerRadius="@dimen/cardview_default_radius"
+        card_view:cardElevation="@dimen/cardview_default_elevation">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="vertical">
+
 
             <ImageView
-                style="@style/TextView.CircleIcon"
-                android:layout_gravity="center_vertical"
-                android:padding="2dp"
-                android:src="@drawable/menu_edit_template_item"/>
+                android:id="@+id/flash_item_image"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bg_card"/>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/flash_item_edit"
+                    style="@style/TextView.CircleIcon"
+                    android:layout_gravity="center_vertical"
+                    android:padding="2dp"
+                    android:src="@drawable/menu_edit_template_item"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
 
-                <view
-                    android:id="@+id/flash_item_question"
-                    style="@style/TextView.Title.Thin"
-                    class="org.buildmlearn.toolkit.views.TextViewPlus"
-                    android:layout_marginLeft="16dp"
-                    android:paddingBottom="8dp"
-                    android:paddingTop="16dp"
-                    android:text="Somedifficultword"/>
+                    <view
+                        android:id="@+id/flash_item_question"
+                        style="@style/TextView.Title.Thin"
+                        class="org.buildmlearn.toolkit.views.TextViewPlus"
+                        android:layout_marginLeft="16dp"
+                        android:paddingBottom="8dp"
+                        android:paddingTop="16dp"
+                        android:text="Somedifficultword"/>
 
 
-                <view
-                    android:id="@+id/flash_item_answer"
-                    style="@style/TextView.Body1"
-                    class="org.buildmlearn.toolkit.views.TextViewPlus"
-                    android:layout_marginLeft="16dp"
-                    android:paddingBottom="4dp"
-                    android:text="Somedifficultword"/>
+                    <view
+                        android:id="@+id/flash_item_answer"
+                        style="@style/TextView.Body1"
+                        class="org.buildmlearn.toolkit.views.TextViewPlus"
+                        android:layout_marginLeft="16dp"
+                        android:paddingBottom="4dp"
+                        android:text="Somedifficultword"/>
 
-                <view
-                    android:id="@+id/flash_item_hint"
-                    style="@style/TextView.Body1"
-                    class="org.buildmlearn.toolkit.views.TextViewPlus"
-                    android:layout_marginLeft="16dp"
-                    android:paddingBottom="8dp"
-                    android:text="Somedifficultword"/>
+                    <view
+                        android:id="@+id/flash_item_hint"
+                        style="@style/TextView.Body1"
+                        class="org.buildmlearn.toolkit.views.TextViewPlus"
+                        android:layout_marginLeft="16dp"
+                        android:paddingBottom="8dp"
+                        android:text="Somedifficultword"/>
+
+                </LinearLayout>
+
+
+                <ImageView
+                    android:id="@+id/flash_template_delete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="16dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/template_delete"/>
+
 
             </LinearLayout>
-
-
-            <ImageView
-                android:id="@+id/info_template_delete"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_marginRight="16dp"
-                android:adjustViewBounds="true"
-                android:scaleType="centerInside"
-                android:src="@drawable/template_delete"/>
-
-
         </LinearLayout>
-    </LinearLayout>
 
-</android.support.v7.widget.CardView>
+    </android.support.v7.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="8dp"
+        android:orientation="horizontal"
+        android:layout_height="match_parent"
+        android:id="@+id/linearLayout2"/>
+</LinearLayout>

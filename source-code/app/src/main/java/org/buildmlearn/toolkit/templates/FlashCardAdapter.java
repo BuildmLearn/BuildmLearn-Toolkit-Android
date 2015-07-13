@@ -8,6 +8,10 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.views.TextViewPlus;
@@ -45,7 +49,7 @@ public class FlashCardAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         LayoutInflater mInflater;
         mInflater = LayoutInflater.from(mContext);
@@ -59,18 +63,50 @@ public class FlashCardAdapter extends BaseAdapter {
             holder.hint = (TextViewPlus) convertView.findViewById(R.id.flash_item_hint);
             holder.image = (ImageView) convertView.findViewById(R.id.flash_item_image);
 
-            holder.delete = (Button) convertView.findViewById(R.id.quiz_item_delete);
-            holder.edit = (Button) convertView.findViewById(R.id.quiz_item_edit);
+            holder.delete = (ImageView) convertView.findViewById(R.id.flash_template_delete);
+            holder.edit = (ImageView) convertView.findViewById(R.id.flash_item_edit);
 
         } else {
             holder = (Holder) convertView.getTag();
         }
 
-        FlashCardModel data = getItem(position);
+        final FlashCardModel data = getItem(position);
         holder.answer.setText(data.getAnswer());
         holder.image.setImageBitmap(data.getImageBitmap());
         holder.hint.setText(data.getHint());
         holder.question.setText(data.getQuestion());
+
+        holder.edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, "Long press to edit this item", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final MaterialDialog dialog = new MaterialDialog.Builder(mContext)
+                        .title(R.string.info_template_delete)
+                        .content(R.string.info_delete_item_content)
+                        .positiveText(R.string.dialog_yes)
+                        .negativeText(R.string.dialog_no)
+                        .build();
+
+                dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mData.remove(position);
+                        notifyDataSetChanged();
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.show();
+
+            }
+        });
 
 
         convertView.setTag(holder);
@@ -83,8 +119,8 @@ public class FlashCardAdapter extends BaseAdapter {
         TextView answer;
         TextView hint;
         ImageView image;
-        Button edit;
-        Button delete;
+        ImageView edit;
+        ImageView delete;
 
     }
 }

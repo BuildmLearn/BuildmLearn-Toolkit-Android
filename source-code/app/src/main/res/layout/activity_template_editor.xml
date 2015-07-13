@@ -1,16 +1,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:fab="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="org.buildmlearn.toolkit.activity.TemplateEditor">
+                xmlns:fab="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="org.buildmlearn.toolkit.activity.TemplateEditor">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         style="@style/Toolbar.Buildmlearn"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:layout_gravity="center_horizontal|top" />
+        android:layout_gravity="center_horizontal|top"/>
 
     <ListView
         android:id="@+id/template_editor_listview"
@@ -19,17 +19,18 @@
         android:layout_below="@+id/toolbar"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
-        android:divider="@android:color/transparent" />
+        android:divider="@android:color/transparent"
+        android:dividerHeight="8dp"/>
 
     <LinearLayout
         android:id="@+id/empty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/template_editor_listview"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:orientation="vertical"
-        android:layout_alignParentBottom="true"
-        android:layout_below="@+id/template_editor_listview">
+        android:orientation="vertical">
 
 
         <view
@@ -39,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/md_simplelist_icon_margin"
-            android:text="@string/add_item_help" />
+            android:text="@string/add_item_help"/>
     </LinearLayout>
 
     <com.getbase.floatingactionbutton.AddFloatingActionButton
@@ -52,5 +53,5 @@
         android:layout_marginRight="@dimen/floating_action_button_padding_bottom_right"
         fab:fab_colorNormal="@color/color_accent"
         fab:fab_colorPressed="@color/floating_action_button_pressed"
-        fab:fab_plusIconColor="@color/floating_action_button_icon" />
+        fab:fab_plusIconColor="@color/floating_action_button_icon"/>
 </RelativeLayout>
