@@ -13,8 +13,6 @@ import android.widget.TextView;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.constant.Constants;
-import org.buildmlearn.toolkit.infotemplate.DetailView;
-import org.buildmlearn.toolkit.quiztemplate.TFTQuizFragment;
 
 public class ScoreFragment extends Fragment {
     GlobalData gd;
@@ -36,10 +34,7 @@ public class ScoreFragment extends Fragment {
             public void onClick(View arg0) {
 
                 getActivity().getFragmentManager().beginTransaction().replace(R.id.container, StartFragment.newInstance(getActivity().getIntent().getStringExtra(Constants.SIMULATOR_FILE_PATH)), StartFragment.TAG).addToBackStack(null).commit();
-
-                Intent myIntent = new Intent(getActivity(),
-                        StartFragment.class);
-                startActivity(myIntent);
+//t
             }
         });
 
@@ -48,19 +43,10 @@ public class ScoreFragment extends Fragment {
 
             @Override
             public void onClick(View arg0) {
-                // android.os.Process.killProcess(android.os.Process.myPid());
+                getActivity().finish();
             }
         });
         return view;
     }
-
-    /**
-     * Called when the activity is first created.
-     */
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-
-    }
-
 
 }

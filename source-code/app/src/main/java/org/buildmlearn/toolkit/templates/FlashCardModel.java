@@ -4,6 +4,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
 import java.io.ByteArrayOutputStream;
 import java.io.Serializable;
 
@@ -55,6 +58,26 @@ public class FlashCardModel implements Serializable {
         byte[] decodedString = Base64.decode(mImage, Base64.DEFAULT);
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
         return decodedByte;
+    }
+
+    public Element getXml(Document doc) {
+        Element rootElement = doc.createElement("item");
+        Element questionElement = doc.createElement("question");
+        questionElement.appendChild(doc.createTextNode(mQuestion));
+        rootElement.appendChild(questionElement);
+
+        Element answerElement = doc.createElement("answer");
+        answerElement.appendChild(doc.createTextNode(String.valueOf(mAnswer)));
+        rootElement.appendChild(answerElement);
+
+        Element hintElement = doc.createElement("hint");
+        hintElement.appendChild(doc.createTextNode(String.valueOf(mHint)));
+        rootElement.appendChild(hintElement);
+
+        Element imageElement = doc.createElement("image");
+        imageElement.appendChild(doc.createTextNode(String.valueOf(mImage)));
+        rootElement.appendChild(imageElement);
+        return rootElement;
     }
 }
 

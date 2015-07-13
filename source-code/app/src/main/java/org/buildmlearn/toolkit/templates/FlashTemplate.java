@@ -235,7 +235,16 @@ public class FlashTemplate implements TemplateInterface {
 
     @Override
     public ArrayList<Element> getItems(Document doc) {
-        return null;
+
+        ArrayList<Element> itemElements = new ArrayList<>();
+
+
+        for (FlashCardModel data : mData) {
+
+            itemElements.add(data.getXml(doc));
+        }
+
+        return itemElements;
     }
 
     @Override
@@ -245,17 +254,17 @@ public class FlashTemplate implements TemplateInterface {
 
     @Override
     public String getAssetsFileName() {
-        return null;
+        return "flash_content.xml";
     }
 
     @Override
     public String getAssetsFilePath() {
-        return null;
+        return "assets/";
     }
 
     @Override
     public String getApkFilePath() {
-        return null;
+        return "FlashCardTemplateApp.apk";
     }
 
     @Override

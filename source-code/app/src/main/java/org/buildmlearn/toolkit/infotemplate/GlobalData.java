@@ -67,65 +67,6 @@ public class GlobalData {
         return instance;
     }
 
-    public void readXmlContent(Context myContext, String fileName) {
-        XmlPullParserFactory factory;
-        XmlPullParser parser;
-        InputStreamReader is;
-        try {
-            factory = XmlPullParserFactory.newInstance();
-            // .setNamespaceAware(true);
-            factory.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
-
-            parser = factory.newPullParser();
-
-            is = new InputStreamReader(myContext.getAssets().open(fileName));
-
-            parser.setInput(is);
-            int eventType = parser.getEventType();
-            InfoModel app = null;
-
-            while (eventType != XmlPullParser.END_DOCUMENT) {
-                String name = null;
-                switch (eventType) {
-                    case XmlPullParser.START_DOCUMENT:
-                        mList = new ArrayList<InfoModel>();
-                        break;
-                    case XmlPullParser.START_TAG:
-                        name = parser.getName();
-
-                        if (name.equalsIgnoreCase("title")) {
-                            mTitle = parser.nextText();
-                        } else if (name.equalsIgnoreCase("author")) {
-                            mAuthor = parser.nextText();
-                        } else if (name.equalsIgnoreCase("item")) {
-                            app = new InfoModel();
-                        } else if (app != null) {
-                            if (name.equalsIgnoreCase("item_title")) {
-                                app.setInfo_object(parser.nextText());
-                            } else if (name.equalsIgnoreCase("item_description")) {
-                                app.setInfo_description(parser.nextText());
-                            }
-                        }
-                        break;
-                    case XmlPullParser.END_TAG:
-                        name = parser.getName();
-                        if (name.equalsIgnoreCase("item") && app != null) {
-                            mList.add(app);
-                            // totalCards = model.size();
-                        }
-                }
-                eventType = parser.next();
-
-            }
-        } catch (XmlPullParserException e1) {
-            e1.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        // return model;
-        // BuildmLearnModel.getInstance(myContext).setAllAppsList(model);
-
-    }
 
     public void readXml(String filePath) {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
