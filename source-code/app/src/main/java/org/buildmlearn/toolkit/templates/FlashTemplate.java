@@ -64,7 +64,18 @@ public class FlashTemplate implements TemplateInterface {
 
     @Override
     public BaseAdapter loadProjectTemplateEditor(Context context, ArrayList<Element> data) {
-        return null;
+
+        mData = new ArrayList<>();
+        for (Element item : data) {
+            String question = item.getElementsByTagName("question").item(0).getTextContent();
+            String answer = item.getElementsByTagName("answer").item(0).getTextContent();
+            String hint = item.getElementsByTagName("hint").item(0).getTextContent();
+            String image = item.getElementsByTagName("image").item(0).getTextContent();
+            mData.add(new FlashCardModel(question, answer, hint, image));
+
+        }
+        mAdapter = new FlashCardAdapter(context, mData);
+        return mAdapter;
     }
 
     @Override
@@ -359,7 +370,7 @@ public class FlashTemplate implements TemplateInterface {
         ToolkitApplication toolkitApplication = (ToolkitApplication) context.getApplicationContext();
 
         File tempDir;
-        tempDir = new File(toolkitApplication.getSavedDir() + ".temp/");
+        tempDir = new File(toolkitApplication.getProjectDir() + ".temp/");
         if (!tempDir.exists()) {
             tempDir.mkdir();
         }

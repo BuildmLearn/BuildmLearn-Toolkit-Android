@@ -27,6 +27,13 @@ public class FlashCardModel implements Serializable {
         mImage = convertBitmapToBase64(image);
     }
 
+    public FlashCardModel(String question, String answer, String hint, String image) {
+        mQuestion = question;
+        mAnswer = answer;
+        mHint = hint;
+        mImage = image;
+    }
+
     private String convertBitmapToBase64(Bitmap image) {
 
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
