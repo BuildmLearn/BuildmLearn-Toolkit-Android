@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/BlueBg" >
+
+    <TextView
+        android:id="@+id/tv_lastword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"
+        android:text="@string/last_word"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/tv_lastword"
+        android:background="@android:color/white" />
+
+    <TextView
+        android:id="@+id/tv_correct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/divider"
+        android:layout_centerInParent="true"
+        android:layout_margin="20dp"
+        android:text="@string/correct"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_wrong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_correct"
+        android:layout_centerInParent="true"
+        android:layout_margin="20dp"
+        android:text="@string/wrong_spelled"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_unanswered"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_wrong"
+        android:layout_centerInParent="true"
+        android:layout_margin="20dp"
+        android:text="@string/unanswered"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
+
+    <View
+        android:id="@+id/divider_screen"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/tv_unanswered"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/white" />
+
+    <Button
+        android:id="@+id/btn_exit"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:onClick="click"
+        android:padding="10dp"
+        android:text="@string/exit"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/btn_restart"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/btn_exit"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:onClick="click"
+        android:padding="10dp"
+        android:text="@string/restart"
+        android:textColor="@android:color/white" />
+
+</RelativeLayout>

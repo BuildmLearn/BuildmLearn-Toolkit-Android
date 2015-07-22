@@ -69,6 +69,31 @@
     <string name="flash_template_anser_hint">Enter Answer</string>
     <string name="flash_template_hint_hint">Enter Hint</string>
 
+    <!-- Spelling Template-->
+
+    <string name="appname">English Words</string>
+    <string name="msg_txt">Press SPEAK when you are ready. You may adjust the speech rate using the slider. Listen to the word as many times before answering. If you are not sure, you can skip the word.</string>
+    <string name="speak">Listen</string>
+    <string name="ready">Spell it!</string>
+    <string name="submit">SUBMIT</string>
+    <string name="enter_spelling">Enter Spelling</string>
+    <string name="msg_successful">Great! You got it right</string>
+    <string name="msg_failure">This is not the correct spelling</string>
+    <string name="nxt_word">Next Word</string>
+    <string name="restart">Restart</string>
+    <string name="exit">Exit</string>
+    <string name="correct">Correct Spelled:</string>
+    <string name="wrong_spelled">Wrong Spelled:</string>
+    <string name="last_word">That was the last word</string>
+    <string name="skip">Skip</string>
+    <string name="unanswered">Unanswered:</string>
+    <string name="you_entered">You Entered</string>
+    <string name="normal">Normal</string>
+    <string name="start">Start</string>
+    <string name="low">Low</string>
+    <string name="high">High</string>
+    <string name="speech_rate">Speech Rate:</string>
+
     <!-- Template Resources-->
     <string name="basic_m_learning_title">Basic mLearning</string>
     <string name="basic_m_learning_description">Create app displaying clickable list of textual information</string>
