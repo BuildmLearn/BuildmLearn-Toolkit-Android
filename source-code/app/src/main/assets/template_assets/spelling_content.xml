@@ -1,0 +1,39 @@
+<buildmlearn_application type="SpellingTemplate">
+<author>
+<name>Ms Annie</name>
+<email>annie@hotmail.com</email>
+</author>
+<title>Biological Spelling puzzle</title>
+<description/>
+<version>1</version>
+<data>
+<item>
+    <word>mosses</word>
+    <meaning>Mosses have weak roots ; thin, delicate leaves and do not have seeds.</meaning>
+</item>
+<item>
+    <word>conifers</word>
+    <meaning>Conifers do not have flowers and their seeds are made in cones.</meaning>
+</item>
+<item>
+    <word>reptiles</word>
+    <meaning>Reptiles are animals that have dry , scaly skin, live mainly on land and lay eggs with soft shells.</meaning> 
+</item>
+<item>
+    <word>photosynthesis</word>
+    <meaning>Photosynthesis is the way in which a plant uses light energy from the sun to make food.</meaning>
+</item>
+<item>
+    <word>invertebrates</word>
+    <meaning>Invertebrates are animals without a backbone.</meaning>
+</item>
+<item>
+    <word>mammals</word>
+    <meaning>Mammals are warm-blooded animals usually with fur or hair , that feed their young with milk from the mother.</meaning>
+</item>
+<item>
+    <word>ferns</word>
+    <meaning>Ferns have strong stem, roots and leaves and do not have seeds.</meaning>
+</item>
+</data>
+</buildmlearn_application>
