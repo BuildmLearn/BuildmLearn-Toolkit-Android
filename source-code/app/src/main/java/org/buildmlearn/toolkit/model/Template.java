@@ -6,6 +6,7 @@ import android.support.annotation.StringRes;
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.templates.FlashTemplate;
 import org.buildmlearn.toolkit.templates.InfoTemplate;
+import org.buildmlearn.toolkit.templates.LearnSpellingTemplate;
 import org.buildmlearn.toolkit.templates.QuizTemplate;
 
 /**
@@ -14,7 +15,7 @@ import org.buildmlearn.toolkit.templates.QuizTemplate;
 public enum Template {
 
     BASIC_M_LEARNING(R.string.basic_m_learning_title, R.string.basic_m_learning_description, R.drawable.basic_m_learning, R.string.info_template, InfoTemplate.class),
-//    LEARN_SPELLING(R.string.learn_spellings_title, R.string.learn_spellings_description, R.drawable.basic_m_learning),
+    LEARN_SPELLING(R.string.learn_spellings_title, R.string.learn_spellings_description, R.drawable.basic_m_learning, R.string.spelling_type, LearnSpellingTemplate.class),
     QUIZ(R.string.quiz_title, R.string.quiz_description, R.drawable.basic_m_learning, R.string.quiz_type, QuizTemplate.class),
     FLASH_CARD(R.string.flash_card_title, R.string.flash_card_description, R.drawable.basic_m_learning, R.string.flash_card_template, FlashTemplate.class);
 

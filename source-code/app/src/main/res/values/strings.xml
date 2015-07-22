@@ -103,6 +103,7 @@
 
     <string name="learn_spellings_title">Learn Spellings</string>
     <string name="learn_spellings_description">Choose this template to create applications for learning to spell words</string>
+    <string name="spelling_type">SpellingTemplate</string>
 
     <string name="quiz_title">Quiz</string>
     <string name="quiz_new_question_title">Add New Question</string>
