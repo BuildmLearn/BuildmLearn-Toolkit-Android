@@ -47,8 +47,8 @@ public class LearnSpellingTemplate implements TemplateInterface {
     public BaseAdapter loadProjectTemplateEditor(Context context, ArrayList<Element> data) {
         mLearnSpellingData = new ArrayList<>();
         for (Element item : data) {
-            String infoObject = item.getElementsByTagName("item_title").item(0).getTextContent();
-            String infoDescription = item.getElementsByTagName("item_description").item(0).getTextContent();
+            String infoObject = item.getElementsByTagName("word").item(0).getTextContent();
+            String infoDescription = item.getElementsByTagName("meaning").item(0).getTextContent();
             mLearnSpellingData.add(new LearnSpellingModel(infoObject, infoDescription));
         }
         adapter = new LearnSpellingAdapter(context, mLearnSpellingData);
