@@ -29,7 +29,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
 package org.buildmlearn.toolkit.learnspelling;
 
 import android.app.Fragment;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
@@ -47,7 +46,6 @@ import java.util.Locale;
 
 public class WordInfoActivity extends Fragment {
 
-    private Intent spellingIntent;
     private boolean isCorrect;
     private int position;
     private TextView mTv_Result, mTv_enteredWord, mTv_word, mTv_description,
@@ -59,6 +57,18 @@ public class WordInfoActivity extends Fragment {
     private String enteredText;
     private View view;
 
+    public static Fragment newInstance(boolean isCorrect, int count, String word) {
+        Fragment fragment = new WordInfoActivity();
+        Bundle bundle = new Bundle();
+        bundle.putBoolean("result", isCorrect);
+        bundle.putInt("index", count);
+        bundle.putString("word", word);
+
+        fragment.setArguments(bundle);
+
+        return fragment;
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -67,10 +77,9 @@ public class WordInfoActivity extends Fragment {
         mManager = DataManager.getInstance();
         mList = mManager.getList();
 
-        spellingIntent = getActivity().getIntent();
-        isCorrect = spellingIntent.getBooleanExtra("result", false);
-        position = spellingIntent.getIntExtra("index", 0);
-        enteredText = spellingIntent.getStringExtra("word");
+        isCorrect = getArguments().getBoolean("result", false);
+        position = getArguments().getInt("index", 0);
+        enteredText = getArguments().getString("word");
         mTv_Result = (TextView) view.findViewById(R.id.tv_result);
         mTv_Word_num = (TextView) view.findViewById(R.id.tv_word_num);
         mTv_word = (TextView) view.findViewById(R.id.tv_word);
@@ -84,14 +93,12 @@ public class WordInfoActivity extends Fragment {
         if (isCorrect) {
             mTv_Result.setText(getString(R.string.msg_successful));
             mTv_Result.setTextColor(Color.GREEN);
-            // convertTextToSpeech(getString(R.string.msg_successful));
             mTv_enteredWord.setVisibility(View.GONE);
         } else {
             mTv_Result.setText(getString(R.string.msg_failure));
             mTv_Result.setTextColor(Color.RED);
             mTv_enteredWord.setText(getString(R.string.you_entered) + " "
                     + enteredText.toLowerCase());
-            // convertTextToSpeech("Wrong");
         }
         textToSpeech = new TextToSpeech(getActivity(),
                 new TextToSpeech.OnInitListener() {
@@ -111,6 +118,18 @@ public class WordInfoActivity extends Fragment {
         mTv_word.setText(mList.get(position).getWord().toLowerCase());
         mTv_description.setText(mList.get(position).getDescription());
 
+
+        view.findViewById(R.id.btn_next).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (position < mList.size() - 1) {
+                    mManager.increaseCount();
+                    getActivity().getFragmentManager().beginTransaction().replace(R.id.container, new SpellingActivity()).addToBackStack(null).commit();
+                } else {
+                    getActivity().getFragmentManager().beginTransaction().replace(R.id.container, new ResultActivity()).addToBackStack(null).commit();
+                }
+            }
+        });
         return view;
     }
 
@@ -119,24 +138,6 @@ public class WordInfoActivity extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         textToSpeech.shutdown();
-    }
-
-    public void doClick(View v) {
-        switch (v.getId()) {
-            case R.id.btn_next:
-                if (position < mList.size() - 1) {
-                    mManager.increaseCount();
-
-                    Intent spellingAgain = new Intent(getActivity(), SpellingActivity.class);
-                    startActivity(spellingAgain);
-                } else {
-
-                    Intent resultIntent = new Intent(getActivity(), ResultActivity.class);
-                    startActivity(resultIntent);
-
-                }
-                break;
-        }
     }
 
     private void convertTextToSpeech(String text) {

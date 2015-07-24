@@ -49,7 +49,6 @@
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:enabled="false"
-            android:onClick="click"
             android:text="@string/ready"
             android:textColor="@android:color/white" />
 
@@ -60,7 +59,6 @@
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:enabled="false"
-            android:onClick="click"
             android:text="@string/skip"
             android:textColor="@android:color/white" />
     </LinearLayout>
@@ -133,7 +131,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
         android:drawableRight="@drawable/ic_action_device_access_volume_on"
-        android:onClick="click"
         android:text="@string/speak"
         android:textColor="@android:color/white" />
 

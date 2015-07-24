@@ -29,7 +29,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
 package org.buildmlearn.toolkit.learnspelling;
 
 import android.app.Fragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -40,12 +39,21 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.constant.Constants;
 
-public class MainActivity extends Fragment {
+public class SpellingMainFragment extends Fragment {
 
     private Button mBtn_Start;
     private DataManager mManager;
     private TextView mTv_Title, mTv_Author;
+
+    public static Fragment newInstance(String path) {
+        SpellingMainFragment fragment = new SpellingMainFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(Constants.SIMULATOR_FILE_PATH, path);
+        fragment.setArguments(bundle);
+        return fragment;
+    }
 
 
     @Nullable
@@ -53,23 +61,21 @@ public class MainActivity extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.spelling_fragment_main, container, false);
-        mBtn_Start = (Button) getActivity().findViewById(R.id.btn_start);
-        mTv_Title = (TextView) getActivity().findViewById(R.id.tv_apptitle);
-        mTv_Author = (TextView) getActivity().findViewById(R.id.tv_author);
+        mBtn_Start = (Button) view.findViewById(R.id.btn_start);
+        mTv_Title = (TextView) view.findViewById(R.id.tv_apptitle);
+        mTv_Author = (TextView) view.findViewById(R.id.tv_author);
 
         mBtn_Start.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Intent spellingsPage = new Intent(getActivity(),
-                        SpellingActivity.class);
-                startActivity(spellingsPage);
+                getActivity().getFragmentManager().beginTransaction().replace(R.id.container, new SpellingActivity()).addToBackStack(null).commit();
             }
         });
 
         mManager = DataManager.getInstance();
         //mManager.readContent(this);
-        mManager.readXml(getActivity(), "spelling_content.xml");
+        mManager.readXml(getActivity(), "template_assets/spelling_content.xml");
         mTv_Title.setText(mManager.getTitle());
         mTv_Author.setText(mManager.getAuthor());
 

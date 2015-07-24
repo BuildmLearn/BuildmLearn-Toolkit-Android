@@ -31,7 +31,6 @@ package org.buildmlearn.toolkit.learnspelling;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.Fragment;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
@@ -84,13 +83,9 @@ public class SpellingActivity extends Fragment implements
         mTv_WordNumber.setText("Word #" + (count + 1) + " of "
                 + mWordList.size());
 
-        return view;
-    }
-
-
-    public void click(View view) {
-        switch (view.getId()) {
-            case R.id.btn_skip:
+        view.findViewById(R.id.btn_skip).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 if (count < mWordList.size() - 1) {
 
                     count++;
@@ -102,23 +97,23 @@ public class SpellingActivity extends Fragment implements
                     mBtn_Skip.setTextColor(Color.WHITE);
                     mBtn_Spell.setTextColor(Color.WHITE);
                 } else {
-                    Intent resultIntent = new Intent(getActivity(), ResultActivity.class);
-                    startActivity(resultIntent);
-
+                    getActivity().getFragmentManager().beginTransaction().replace(R.id.container, new ResultActivity()).addToBackStack(null).commit();
                 }
-                break;
-
-            case R.id.btn_speak:
+            }
+        });
+        view.findViewById(R.id.btn_speak).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 convertTextToSpeech(mWordList.get(count).getWord());
                 mBtn_Spell.setEnabled(true);
                 mBtn_Skip.setEnabled(true);
                 mBtn_Skip.setTextColor(Color.RED);
                 mBtn_Spell.setTextColor(Color.GREEN);
-                // mBtn_Spell.setBackgroundColor(Color.GREEN);
-                // mBtn_Skip.setBackgroundColor(Color.RED);
-                break;
-            case R.id.btn_ready:
-
+            }
+        });
+        view.findViewById(R.id.btn_ready).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 LayoutInflater factory = LayoutInflater.from(getActivity());
                 final View textEntryView = factory.inflate(
                         R.layout.spelling_dialog_spellinginput, null);
@@ -138,12 +133,12 @@ public class SpellingActivity extends Fragment implements
                         submit();
                     }
                 });
+            }
+        });
 
-                break;
-
-        }
-
+        return view;
     }
+
 
     /**
      * Releases the resources used by the TextToSpeech engine. It is good
@@ -199,13 +194,9 @@ public class SpellingActivity extends Fragment implements
             } else {
                 mManager.incrementWrong();
             }
-            Intent wordInfoIntent = new Intent(getActivity(),
-                    WordInfoActivity.class);
-            wordInfoIntent.putExtra("result", isCorrect);
-            wordInfoIntent.putExtra("index", count);
-            wordInfoIntent.putExtra("word", input);
 
-            startActivity(wordInfoIntent);
+            getActivity().getFragmentManager().beginTransaction().replace(R.id.container, WordInfoActivity.newInstance(isCorrect, count, input)).addToBackStack(null).commit();
+
         }
     }
 

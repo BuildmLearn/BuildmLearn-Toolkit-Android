@@ -39,6 +39,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.constant.Constants;
+import org.buildmlearn.toolkit.flashcardtemplate.StartFragment;
 
 import java.util.Locale;
 
@@ -85,6 +87,21 @@ public class ResultActivity extends Fragment {
                 });
 
 
+        view.findViewById(R.id.btn_exit).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().finish();
+            }
+        });
+
+        view.findViewById(R.id.btn_restart).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getFragmentManager().beginTransaction().replace(R.id.container, SpellingMainFragment.newInstance(getActivity().getIntent().getStringExtra(Constants.SIMULATOR_FILE_PATH)), StartFragment.TAG).addToBackStack(null).commit();
+//t
+            }
+        });
+
         return view;
     }
 
@@ -94,8 +111,10 @@ public class ResultActivity extends Fragment {
             case R.id.btn_restart:
                 mDataManager.reset();
                 Intent restartApp = new Intent(getActivity(),
-                        MainActivity.class);
+                        SpellingMainFragment.class);
                 startActivity(restartApp);
+
+
                 break;
             case R.id.btn_exit:
                 mDataManager.reset();

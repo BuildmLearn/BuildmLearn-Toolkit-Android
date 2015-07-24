@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/BlueBg"
-    android:orientation="vertical" >
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/BlueBg"
+                android:orientation="vertical">
 
     <TextView
         android:id="@+id/tv_word_num"
@@ -13,14 +13,14 @@
         android:layout_margin="10dp"
         android:text="Word #"
         android:textColor="@android:color/white"
-        android:textSize="16sp" />
+        android:textSize="16sp"/>
 
     <View
         android:id="@+id/divider"
         android:layout_width="fill_parent"
         android:layout_height="1dp"
         android:layout_below="@id/tv_word_num"
-        android:background="@android:color/white" />
+        android:background="@android:color/white"/>
 
     <TextView
         android:id="@+id/tv_result"
@@ -32,7 +32,7 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="20dp"
-        android:textSize="22sp" />
+        android:textSize="22sp"/>
 
     <View
         android:id="@+id/result_divider"
@@ -40,7 +40,7 @@
         android:layout_height="1dp"
         android:layout_below="@id/tv_result"
         android:layout_margin="10dp"
-        android:background="@android:color/darker_gray" />
+        android:background="@android:color/darker_gray"/>
 
     <TextView
         android:id="@+id/tv_input_word"
@@ -54,7 +54,8 @@
         android:layout_marginTop="20dp"
         android:textColor="#FE2E2E"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"/>
+
     <TextView
         android:id="@+id/tv_word"
         android:layout_width="wrap_content"
@@ -67,7 +68,7 @@
         android:layout_marginTop="20dp"
         android:textColor="@android:color/white"
         android:textSize="22sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/tv_description"
@@ -77,7 +78,7 @@
         android:layout_centerHorizontal="true"
         android:layout_margin="10dp"
         android:textColor="@android:color/white"
-        android:textSize="18sp" />
+        android:textSize="18sp"/>
 
     <Button
         android:id="@+id/btn_next"
@@ -86,8 +87,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
-        android:onClick="doClick"
         android:text="@string/nxt_word"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"/>
 
 </RelativeLayout>
