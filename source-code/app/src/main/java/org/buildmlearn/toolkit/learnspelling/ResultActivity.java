@@ -97,6 +97,7 @@ public class ResultActivity extends Fragment {
         view.findViewById(R.id.btn_restart).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mDataManager.reset();
                 getActivity().getFragmentManager().beginTransaction().replace(R.id.container, SpellingMainFragment.newInstance(getActivity().getIntent().getStringExtra(Constants.SIMULATOR_FILE_PATH)), StartFragment.TAG).addToBackStack(null).commit();
 //t
             }
@@ -105,24 +106,6 @@ public class ResultActivity extends Fragment {
         return view;
     }
 
-
-    public void click(View v) {
-        switch (v.getId()) {
-            case R.id.btn_restart:
-                mDataManager.reset();
-                Intent restartApp = new Intent(getActivity(),
-                        SpellingMainFragment.class);
-                startActivity(restartApp);
-
-
-                break;
-            case R.id.btn_exit:
-                mDataManager.reset();
-                break;
-
-        }
-
-    }
 
     @Override
     public void onStop() {

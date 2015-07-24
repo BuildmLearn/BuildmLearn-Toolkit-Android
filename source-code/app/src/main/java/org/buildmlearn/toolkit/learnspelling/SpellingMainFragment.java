@@ -74,8 +74,7 @@ public class SpellingMainFragment extends Fragment {
         });
 
         mManager = DataManager.getInstance();
-        //mManager.readContent(this);
-        mManager.readXml(getActivity(), "template_assets/spelling_content.xml");
+        mManager.readXml(getArguments().getString(Constants.SIMULATOR_FILE_PATH));
         mTv_Title.setText(mManager.getTitle());
         mTv_Author.setText(mManager.getAuthor());
 

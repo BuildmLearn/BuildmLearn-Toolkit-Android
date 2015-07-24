@@ -28,7 +28,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
 
 package org.buildmlearn.toolkit.learnspelling;
 
-import android.content.Context;
 import android.util.Log;
 
 import org.w3c.dom.Document;
@@ -36,14 +35,10 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
+import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -67,95 +62,7 @@ public class DataManager {
         return instance;
     }
 
-    public void readContent(Context myContext) {
-        reset();
-        try {
-            br = new BufferedReader(new InputStreamReader(myContext.getAssets()
-                    .open("spelling_content.txt"))); // throwing a
-            // FileNotFoundException?
-            mTitle = br.readLine();
-            mAuthor = br.readLine();
-            String text;
-            while ((text = br.readLine()) != null) {
-                if (text.contains("==")) {
-                    String[] spelling = text.split("==");
-                    int startIndex = spelling[0].length() + 2;
-                    String des = text.substring(startIndex);
-                    mList.add(new WordModel(spelling[0], des));
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                br.close(); // stop reading
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        }
-    }
-
-    public void readXmlContent(Context myContext, String fileName) {
-        XmlPullParserFactory factory;
-        XmlPullParser parser;
-        InputStreamReader is;
-        try {
-            factory = XmlPullParserFactory.newInstance();
-            // .setNamespaceAware(true);
-            factory.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
-
-            parser = factory.newPullParser();
-
-            is = new InputStreamReader(myContext.getAssets().open(fileName));
-
-            parser.setInput(is);
-            int eventType = parser.getEventType();
-            WordModel app = null;
-
-            while (eventType != XmlPullParser.END_DOCUMENT) {
-                String name = null;
-                switch (eventType) {
-                    case XmlPullParser.START_DOCUMENT:
-                        mList = new ArrayList<WordModel>();
-                        break;
-                    case XmlPullParser.START_TAG:
-                        name = parser.getName();
-
-                        if (name.equalsIgnoreCase("title")) {
-                            mTitle = parser.nextText();
-                        } else if (name.equalsIgnoreCase("author")) {
-                            mAuthor = parser.nextText();
-                        } else if (name.equalsIgnoreCase("item")) {
-                            app = new WordModel();
-                        } else if (app != null) {
-                            if (name.equalsIgnoreCase("word")) {
-                                app.setWord(parser.nextText());
-                            } else if (name.equalsIgnoreCase("meaning")) {
-                                app.setDescription(parser.nextText());
-                            }
-                        }
-                        break;
-                    case XmlPullParser.END_TAG:
-                        name = parser.getName();
-                        if (name.equalsIgnoreCase("item") && app != null) {
-                            mList.add(app);
-                            // totalCards = model.size();
-                        }
-                }
-                eventType = parser.next();
-
-            }
-        } catch (XmlPullParserException e1) {
-            e1.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        // return model;
-        // BuildmLearnModel.getInstance(myContext).setAllAppsList(model);
-
-    }
-
-    public void readXml(Context myContext, String fileName) {
+    public void readXml(String filePath) {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
         dbf.setValidating(false);
@@ -163,9 +70,10 @@ public class DataManager {
         DocumentBuilder db;
         Document doc;
         try {
-            mList = new ArrayList<WordModel>();
+            mList = new ArrayList<>();
+            File fXmlFile = new File(filePath);
             db = dbf.newDocumentBuilder();
-            doc = db.parse(myContext.getAssets().open(fileName));
+            doc = db.parse(fXmlFile);
             doc.normalize();
             mTitle = doc.getElementsByTagName("title").item(0).getChildNodes()
                     .item(0).getNodeValue();
@@ -187,16 +95,7 @@ public class DataManager {
                 mList.add(app);
 
             }
-        } catch (ParserConfigurationException e) {
-            Log.e("tag", e.getLocalizedMessage());
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            Log.e("tag", e.getLocalizedMessage());
-            e.printStackTrace();
-        } catch (SAXException e) {
-            Log.e("tag", e.getLocalizedMessage());
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (ParserConfigurationException | IOException | SAXException e) {
             Log.e("tag", e.getLocalizedMessage());
             e.printStackTrace();
         }
