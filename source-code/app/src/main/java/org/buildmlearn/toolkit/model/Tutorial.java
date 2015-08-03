@@ -10,17 +10,27 @@ import org.buildmlearn.toolkit.R;
  */
 public enum Tutorial {
     START(R.drawable.splash_stretch_framed, R.string.screen_1_title, R.string.screen_1_desc),
-    FIRST(R.drawable.splash_stretch_framed, R.string.screen_1_title, R.string.screen_1_desc);
+    FIRST(R.drawable.splash_stretch_framed, R.string.screen_1_title, R.string.screen_1_desc),
+    LAST(true);
 
 
     private @DrawableRes int image;
     private @StringRes int title;
     private @StringRes int description;
+    private boolean isLastScreen;
 
     Tutorial(int image, int title, int description) {
         this.image = image;
         this.title = title;
         this.description = description;
+        this.isLastScreen = false;
+    }
+
+    Tutorial(boolean isLastScreen) {
+        this.isLastScreen = true;
+        this.image = 0;
+        this.title = 0;
+        this.description = 0;
     }
 
     public int getImage() {
@@ -33,5 +43,9 @@ public enum Tutorial {
 
     public int getDescription() {
         return description;
+    }
+
+    public boolean isLastScreen() {
+        return isLastScreen;
     }
 }

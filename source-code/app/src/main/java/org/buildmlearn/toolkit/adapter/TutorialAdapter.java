@@ -1,8 +1,8 @@
 package org.buildmlearn.toolkit.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.activity.HomeActivity;
 import org.buildmlearn.toolkit.model.Tutorial;
 
 /**
@@ -46,20 +47,33 @@ public class TutorialAdapter extends PagerAdapter {
         LayoutInflater inflater = (LayoutInflater) container.getContext()
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        View convertView = inflater.inflate(R.layout.tutorial_layout, null);
-        ImageView deviceImage = (ImageView) convertView
-                .findViewById(R.id.device_image);
-        TextView title = (TextView) convertView
-                .findViewById(R.id.tutorial_title);
-        TextView description = (TextView) convertView
-                .findViewById(R.id.tutorial_desc);
-
         Tutorial tutorial = getItem(position);
 
-        deviceImage.setImageResource(tutorial.getImage());
-        title.setText(tutorial.getTitle());
-        description.setText(tutorial.getDescription());
 
+        View convertView;
+        if (tutorial.isLastScreen()) {
+            convertView = inflater.inflate(R.layout.tutorial_layout_finish, null);
+
+            convertView.findViewById(R.id.finish_tutorial_button).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mContext.startActivity(new Intent(mContext, HomeActivity.class));
+                }
+            });
+        } else {
+            convertView = inflater.inflate(R.layout.tutorial_layout, null);
+            ImageView deviceImage = (ImageView) convertView
+                    .findViewById(R.id.device_image);
+            TextView title = (TextView) convertView
+                    .findViewById(R.id.tutorial_title);
+            TextView description = (TextView) convertView
+                    .findViewById(R.id.tutorial_desc);
+
+
+            deviceImage.setImageResource(tutorial.getImage());
+            title.setText(tutorial.getTitle());
+            description.setText(tutorial.getDescription());
+        }
         container.addView(convertView, 0);
 
         return convertView;
