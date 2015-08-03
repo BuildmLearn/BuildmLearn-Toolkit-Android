@@ -369,4 +369,5 @@
     <!-- Tutorial-->
     <string name="screen_1_title">Welcome to BuildmLearn Toolkit</string>
     <string name="screen_1_desc">BuildmLearn Toolkit helps you create mLearning apps without any knowledge about app development</string>
+    <string name="title_activity_tutorial">Tutorial Activity</string>
 </resources>

@@ -28,7 +28,7 @@ public class FirstRunActivity extends AppCompatActivity {
         prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
         if (prefs.getBoolean(FIRST_RUN, false)) {
-            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+            startActivity(new Intent(getApplicationContext(), TutorialActivity.class));
             finish();
         }
         setContentView(R.layout.activity_first_run);
