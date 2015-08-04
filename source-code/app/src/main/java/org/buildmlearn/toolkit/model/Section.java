@@ -6,6 +6,7 @@ import android.support.annotation.DrawableRes;
 import android.support.annotation.StringRes;
 
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.activity.TutorialActivity;
 import org.buildmlearn.toolkit.fragment.HomeFragment;
 import org.buildmlearn.toolkit.fragment.LoadProjectFragment;
 import org.buildmlearn.toolkit.fragment.SettingsFragment;
@@ -20,8 +21,8 @@ public enum Section {
     //    UPLOAD(TestFragment.class, R.string.menu_my_uploads, R.drawable.menu_upload, false),
 //    DRAFTS(TestFragment.class, R.string.menu_drafts, R.drawable.menu_drafts, false),
     DIVIDER(),
-    SETTINGS(SettingsFragment.class, R.string.menu_settings, R.drawable.menu_settings, false);
-//    HOW_TO(TestActivity.class, R.string.menu_how_to, R.drawable.menu_how_to),
+    SETTINGS(SettingsFragment.class, R.string.menu_settings, R.drawable.menu_settings, false),
+    HOW_TO(TutorialActivity.class, R.string.menu_how_to, R.drawable.menu_how_to);
 //    ABOUT_US(TestActivity.class, R.string.menu_about_us, R.drawable.menu_info),
 //    PRIVACY_POLICY(TestActivity.class, R.string.menu_privacy_policy, R.drawable.menu_privacy_policy);
 

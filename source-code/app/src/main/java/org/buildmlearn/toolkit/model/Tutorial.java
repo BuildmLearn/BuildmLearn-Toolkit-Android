@@ -11,6 +11,9 @@ import org.buildmlearn.toolkit.R;
 public enum Tutorial {
     START(R.drawable.splash_stretch_framed, R.string.screen_1_title, R.string.screen_1_desc),
     FIRST(R.drawable.splash_stretch_framed, R.string.screen_1_title, R.string.screen_1_desc),
+    SECOND(R.drawable.splash_stretch_framed, R.string.screen_1_title, R.string.screen_1_desc),
+    THIRD(R.drawable.splash_stretch_framed, R.string.screen_1_title, R.string.screen_1_desc),
+    FOURTH(R.drawable.splash_stretch_framed, R.string.screen_1_title, R.string.screen_1_desc),
     LAST(true);
 
 

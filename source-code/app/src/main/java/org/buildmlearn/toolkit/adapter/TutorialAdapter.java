@@ -2,6 +2,8 @@ package org.buildmlearn.toolkit.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.support.annotation.ColorRes;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +22,7 @@ public class TutorialAdapter extends PagerAdapter {
 
     private Context mContext;
     private Tutorial[] mTutorials;
+    private ListColor[] colors = ListColor.values();
 
     public TutorialAdapter(Context context) {
         mContext = context;
@@ -69,6 +72,9 @@ public class TutorialAdapter extends PagerAdapter {
             TextView description = (TextView) convertView
                     .findViewById(R.id.tutorial_desc);
 
+            int color = colors[position % colors.length].getColor();
+
+            convertView.findViewById(R.id.tutorial_layout).setBackgroundColor(color);
 
             deviceImage.setImageResource(tutorial.getImage());
             title.setText(tutorial.getTitle());
@@ -89,4 +95,24 @@ public class TutorialAdapter extends PagerAdapter {
     public void destroyItem(ViewGroup container, int position, Object object) {
         container.removeView((ViewGroup) object);
     }
+
+    private enum ListColor {
+        BLUE("#29A6D4"),
+        GREEN("#1C7D6C"),
+        ORANGE("#F77400"),
+        RED("#F53B3C");
+
+        private
+        @ColorRes
+        int color;
+
+        ListColor(String colorCode) {
+            this.color = Color.parseColor(colorCode);
+        }
+
+        public int getColor() {
+            return color;
+        }
+    }
+
 }
