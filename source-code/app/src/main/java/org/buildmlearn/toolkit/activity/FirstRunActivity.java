@@ -14,6 +14,7 @@ import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.constant.Constants;
 
 public class FirstRunActivity extends AppCompatActivity {
 
@@ -28,7 +29,7 @@ public class FirstRunActivity extends AppCompatActivity {
         prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
         if (prefs.getBoolean(FIRST_RUN, false)) {
-            startActivity(new Intent(getApplicationContext(), TutorialActivity.class));
+            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
             finish();
         }
         setContentView(R.layout.activity_first_run);
@@ -62,8 +63,9 @@ public class FirstRunActivity extends AppCompatActivity {
                             editor.putString(getString(R.string.key_user_name), name.getText().toString());
                             editor.putBoolean(FIRST_RUN, true);
                             editor.commit();
-
-                            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                            Intent intent = new Intent(getApplicationContext(), TutorialActivity.class);
+                            intent.putExtra(Constants.START_ACTIVITY, true);
+                            startActivity(intent);
                             finish();
                             return true;
                         default:

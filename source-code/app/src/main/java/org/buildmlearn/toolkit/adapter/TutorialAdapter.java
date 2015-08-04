@@ -1,5 +1,6 @@
 package org.buildmlearn.toolkit.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -20,13 +21,15 @@ import org.buildmlearn.toolkit.model.Tutorial;
  */
 public class TutorialAdapter extends PagerAdapter {
 
-    private Context mContext;
+    private Activity mActivity;
     private Tutorial[] mTutorials;
     private ListColor[] colors = ListColor.values();
+    private boolean mStartActivity;
 
-    public TutorialAdapter(Context context) {
-        mContext = context;
+    public TutorialAdapter(Activity activity, boolean startActivity) {
+        mActivity = activity;
         mTutorials = Tutorial.values();
+        this.mStartActivity = startActivity;
     }
 
     @Override
@@ -60,7 +63,10 @@ public class TutorialAdapter extends PagerAdapter {
             convertView.findViewById(R.id.finish_tutorial_button).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mContext.startActivity(new Intent(mContext, HomeActivity.class));
+                    if(mStartActivity) {
+                        mActivity.startActivity(new Intent(mActivity, HomeActivity.class));
+                    }
+                    mActivity.finish();
                 }
             });
         } else {

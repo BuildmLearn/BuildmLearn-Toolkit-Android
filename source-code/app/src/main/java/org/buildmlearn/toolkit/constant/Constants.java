@@ -14,6 +14,7 @@ public class
     public final static String TEMPLATE_OBJECT = "TEMPLATE_OBJECT";
     public final static String SIMULATOR_FILE_PATH = "SIMULATOR_FILE_PATH";
     public final static String PROJECT_FILE_PATH = "PROJECT_FILE_PATH";
+    public final static String START_ACTIVITY = "START_ACTIVITY";
 
 
 }
