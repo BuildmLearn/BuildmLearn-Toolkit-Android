@@ -18,6 +18,7 @@ import org.buildmlearn.toolkit.adapter.SavedProjectAdapter;
 import org.buildmlearn.toolkit.constant.Constants;
 import org.buildmlearn.toolkit.model.SavedProject;
 import org.buildmlearn.toolkit.model.Template;
+import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
@@ -76,6 +77,8 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
             } catch (SAXException e) {
                 e.printStackTrace();
             } catch (IOException e) {
+                e.printStackTrace();
+            } catch (DOMException e) {
                 e.printStackTrace();
             }
         }
@@ -167,6 +170,8 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                 } catch (SAXException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (DOMException e) {
                     e.printStackTrace();
                 }
             }
