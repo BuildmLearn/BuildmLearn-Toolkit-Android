@@ -372,4 +372,5 @@
     <string name="title_activity_tutorial">Tutorial Activity</string>
 
     <string name="screen_finish">Lets Start</string>
+    <string name="title_activity_about_buildm_learn">About BuildmLearn</string>
 </resources>

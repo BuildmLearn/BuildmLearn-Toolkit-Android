@@ -60,6 +60,15 @@
             android:label="@string/title_activity_tutorial"
             android:theme="@style/Buildmlearn.FullScreen">
         </activity>
+        <activity
+            android:name=".activity.AboutBuildmLearn"
+            android:label="@string/title_activity_about_buildm_learn"
+            android:parentActivityName=".activity.HomeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.buildmlearn.toolkit.activity.HomeActivity"/>
+        </activity>
     </application>
 
 </manifest>
