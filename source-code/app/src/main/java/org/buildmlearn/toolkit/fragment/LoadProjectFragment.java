@@ -33,6 +33,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 public class LoadProjectFragment extends Fragment implements AbsListView.OnItemClickListener {
 
+    private static final String TAG = "Load Project Fragment";
     private AbsListView mListView;
 
     private SavedProjectAdapter mAdapter;
@@ -59,6 +60,8 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
 
         Log.d("Files", "Size: " + file.length);
         for (int i = 0; i < file.length; i++) {
+
+            Log.d(TAG, file[i].getAbsolutePath());
             File fXmlFile = new File(file[i].getAbsolutePath());
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder;

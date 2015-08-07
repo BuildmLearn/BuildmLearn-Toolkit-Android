@@ -380,4 +380,5 @@
     <string name="about_para_2">Visit us at http://buildmlearn.org/.</string>
     <string name="about_para_3">Any feedback or suggestions related to BuildmLearn Toolkit are always welcome. Please write to us at buildmlearn@gmail.com.</string>
     <string name="about_para_4"></string>
+    <string name="title_activity_deep_linker">DeepLinkerActivity</string>
 </resources>
