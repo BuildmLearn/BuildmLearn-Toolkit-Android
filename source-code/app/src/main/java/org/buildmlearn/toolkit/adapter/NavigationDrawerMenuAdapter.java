@@ -19,6 +19,8 @@ import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.model.Section;
 
 /**
+ * @brief Adapter used for showing menus in the side panel
+ *
  * Created by Abhishek on 21/04/15.
  */
 public class NavigationDrawerMenuAdapter extends BaseAdapter {

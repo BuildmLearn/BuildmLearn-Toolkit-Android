@@ -15,6 +15,8 @@ import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.model.Template;
 
 /**
+ * @brief Adapter used for showing Templates available in the toolkit
+ *
  * Created by Abhishek on 23-05-2015.
  */
 public class TemplateAdapter extends BaseAdapter {

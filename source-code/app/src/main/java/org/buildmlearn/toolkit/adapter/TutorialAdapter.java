@@ -17,6 +17,8 @@ import org.buildmlearn.toolkit.activity.HomeActivity;
 import org.buildmlearn.toolkit.model.Tutorial;
 
 /**
+ * @brief Adapter used for showing tutorial
+ *
  * Created by abhishek on 03/08/15 at 10:52 PM.
  */
 public class TutorialAdapter extends PagerAdapter {

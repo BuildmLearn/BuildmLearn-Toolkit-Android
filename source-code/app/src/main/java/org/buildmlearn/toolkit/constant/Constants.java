@@ -1,6 +1,8 @@
 package org.buildmlearn.toolkit.constant;
 
 /**
+ * @brief Constants related project directories, preferences and keys
+ * 
  * Created by Abhishek on 21/04/15.
  */
 public class
