@@ -52,6 +52,13 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+/**
+ * @brief Placeholder activity for all the templates
+ *
+ * A placeholder activty in which all the templates are loaded and allows the user to enter respective template
+ * data, generate and save projects, APKs and sharing options.
+ */
+
 public class TemplateEditor extends AppCompatActivity {
 
     private final static String TAG = "TEMPLATE EDITOR";
@@ -66,6 +73,10 @@ public class TemplateEditor extends AppCompatActivity {
     private ToolkitApplication toolkit;
     private String oldFileName;
 
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,6 +113,9 @@ public class TemplateEditor extends AppCompatActivity {
 
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         outState.putSerializable(Constants.TEMPLATE_OBJECT, selectedTemplate);
@@ -110,6 +124,9 @@ public class TemplateEditor extends AppCompatActivity {
         super.onSaveInstanceState(outState);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         Log.d(TAG, "On activity result");
@@ -118,7 +135,13 @@ public class TemplateEditor extends AppCompatActivity {
     }
 
 
-    private void populateListView(final BaseAdapter adapter) {
+    /**
+     * @brief Populates ListView item by setting adapter to ListView. Also inflates Header View.
+     *
+     * Header view contains the editable author name and template title fields.
+     * @param adapter Adapter containing template data
+     */
+    protected void populateListView(final BaseAdapter adapter) {
         if (templateEdtiorList == null) {
             templateEdtiorList = (ListView) findViewById(R.id.template_editor_listview);
         }
@@ -159,7 +182,10 @@ public class TemplateEditor extends AppCompatActivity {
 
     }
 
-    private void setUpActionBar() {
+    /**
+     * @brief Initialization function for setting up action bar
+     */
+    protected void setUpActionBar() {
         ActionBar actionBar = getSupportActionBar();
         templateEdtiorList = (ListView) findViewById(R.id.template_editor_listview);
         if (actionBar == null) {
@@ -169,7 +195,10 @@ public class TemplateEditor extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
-    private void setUpTemplateEditor() {
+    /**
+     * @brief Initialization function when the Temlpate Editor is created.
+     */
+    protected void setUpTemplateEditor() {
         Template[] templates = Template.values();
         template = templates[templateId];
 
@@ -186,7 +215,10 @@ public class TemplateEditor extends AppCompatActivity {
         }
     }
 
-    private void restoreTemplateEditor(Bundle savedInstanceState) {
+    /**
+     * @brief Initialization function when the Temlpate Editor is restored.
+     */
+    protected void restoreTemplateEditor(Bundle savedInstanceState) {
         selectedTemplate = (TemplateInterface) savedInstanceState.getSerializable(Constants.TEMPLATE_OBJECT);
         oldFileName = savedInstanceState.getString(Constants.PROJECT_FILE_PATH);
         templateId = savedInstanceState.getInt(Constants.TEMPLATE_ID);
@@ -202,11 +234,17 @@ public class TemplateEditor extends AppCompatActivity {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         return true;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         Log.d(TAG, "onPrepareOptionsMenu");
@@ -218,6 +256,9 @@ public class TemplateEditor extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -316,7 +357,9 @@ public class TemplateEditor extends AppCompatActivity {
         return true;
     }
 
-
+    /**
+     * @brief Removes selected color from the selected ListView item when switching from edit mode to normal mode
+     */
     public void restoreSelectedView() {
         if (selectedView != null) {
             selectedView.setBackgroundResource(0);
@@ -325,6 +368,11 @@ public class TemplateEditor extends AppCompatActivity {
         restoreColorScheme();
     }
 
+    /**
+     * @brief Changes the color scheme when switching from normal mode to edit mode.
+     *
+     * Edit mode is triggered, when the list item is long pressed.
+     */
     public void changeColorScheme() {
         int primaryColor = getResources().getColor(R.color.color_primary_dark);
         int primaryColorDark = getResources().getColor(R.color.color_selected_dark);
@@ -342,6 +390,11 @@ public class TemplateEditor extends AppCompatActivity {
         invalidateOptionsMenu();
     }
 
+    /**
+     * @brief Restores the color scheme when switching from edit mode to normal mode.
+     *
+     * Edit mode is triggered, when the list item is long pressed.
+     */
     public void restoreColorScheme() {
         int primaryColor = getResources().getColor(R.color.color_primary);
         int primaryColorDark = getResources().getColor(R.color.color_primary_dark);
@@ -358,7 +411,14 @@ public class TemplateEditor extends AppCompatActivity {
         invalidateOptionsMenu();
     }
 
-    private String saveProject() {
+    /**
+     * Converts the current TemplateInterface object into a xml file. Xml file is saved in SAVE
+     * Directory (defined in constants). File name is of the format: <title>_by_<author>.buildmlearn
+     * 
+     * @return Absolute path of the saved file. Null if there is some error.
+     * @brief Saves the current project into a .buildmlearn file.
+     */
+    protected String saveProject() {
 
         EditText authorEditText = ((EditText) findViewById(R.id.author_name));
         EditText titleEditText = ((EditText) findViewById(R.id.template_title));
@@ -422,7 +482,12 @@ public class TemplateEditor extends AppCompatActivity {
         return null;
     }
 
-    private void startSimulator() {
+    /**
+     * @brief Start the simulator activity
+     *
+     * Start the simulator with the fragment returned by the selected template. Simulator is started as a new activity.
+     */
+    protected void startSimulator() {
         String filePath = saveProject();
         if (filePath == null || filePath.equals("")) {
             Toast.makeText(this, "Build unsuccessful", Toast.LENGTH_SHORT).show();
@@ -435,7 +500,14 @@ public class TemplateEditor extends AppCompatActivity {
 
     }
 
-    private void parseSavedFile(String path) {
+    /**
+     * @param path Path of the existing .buildmlearn file
+     * @brief Converts an existing .buildmlearn file to TemplateInterface Object
+     *
+     * This function is used in loading existing files to editor. Reads file at a given path, parse the
+     * file and convert into and convert it into TemplateInterface object.
+     */
+    protected void parseSavedFile(String path) {
 
         try {
             File fXmlFile = new File(path);
@@ -478,19 +550,31 @@ public class TemplateEditor extends AppCompatActivity {
 
     }
 
-    private void updateHeaderDetails(String name, String title) {
+    /**
+     * @param name  Name of the author
+     * @param title Title of the template app
+     * @brief Updates the title and author name in the header view.
+     */
+    protected void updateHeaderDetails(String name, String title) {
         EditText authorEditText = ((EditText) findViewById(R.id.author_name));
         EditText titleEditText = ((EditText) findViewById(R.id.template_title));
         authorEditText.setText(name);
         titleEditText.setText(title);
     }
 
-    private void setAdapter(BaseAdapter adapter) {
+    /**
+     * @param adapter
+     * @brief Sets the adapter to the ListView
+     */
+    protected void setAdapter(BaseAdapter adapter) {
         templateEdtiorList.setAdapter(adapter);
         setEmptyView();
     }
 
-    private void setEmptyView() {
+    /**
+     * @brief Toggles the visibility of empty text if adapter has zero elements
+     */
+    protected void setEmptyView() {
 
         if (templateEdtiorList.getAdapter().getCount() == 1) {
             findViewById(R.id.empty).setVisibility(View.VISIBLE);
