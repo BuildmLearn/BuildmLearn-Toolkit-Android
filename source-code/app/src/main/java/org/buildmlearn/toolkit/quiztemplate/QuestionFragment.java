@@ -48,6 +48,9 @@ import org.buildmlearn.toolkit.R;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @brief Simulator code for Quiz Template
+ */
 public class QuestionFragment extends Fragment {
 
     public final static String TAG = "QUESTION_FRAGMENT";

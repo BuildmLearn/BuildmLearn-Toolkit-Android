@@ -25,30 +25,17 @@ import kellinwood.security.zipsigner.optional.CustomKeySigner;
 public class SignerThread extends Thread {
     private static final String TAG = "SignerThread";
     private static final String TEMP_FOLDER = "hcjb";
-
-    private ToolkitApplication toolkit;
     ZipSigner zipSigner = null;
-
+    String signatureAlgorithm = "SHA1withRSA";
+    private ToolkitApplication toolkit;
     private Context context;
     private String assetsApk;
     private String finalApk;
     private String assetFileName;
     private String assetFilePath;
     private String projectFile;
-
     private KeyStoreDetails keyDetails;
-    String signatureAlgorithm = "SHA1withRSA";
     private OnSignComplete listener;
-
-    public interface OnSignComplete {
-        void onSuccess();
-
-        void onFail(Exception e);
-    }
-
-    public void setSignerThreadListener(OnSignComplete listener) {
-        this.listener = listener;
-    }
 
     public SignerThread(Context context, String assetsApk, String finalApk, KeyStoreDetails keyDetails, String assetFilePath, String assetFileName) {
         this.projectFile = finalApk;
@@ -59,6 +46,10 @@ public class SignerThread extends Thread {
         this.toolkit = (ToolkitApplication) context;
         this.assetFileName = assetFileName;
         this.assetFilePath = assetFilePath;
+    }
+
+    public void setSignerThreadListener(OnSignComplete listener) {
+        this.listener = listener;
     }
 
     public void run() {
@@ -178,6 +169,12 @@ public class SignerThread extends Thread {
                 (NotificationManager) toolkit.getSystemService(Context.NOTIFICATION_SERVICE);
 // mId allows you to update the notification later on.
         mNotificationManager.notify(23, mBuilder.build());
+    }
+
+    public interface OnSignComplete {
+        void onSuccess();
+
+        void onFail(Exception e);
     }
 
 }

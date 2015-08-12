@@ -65,6 +65,9 @@ import android.widget.TextView;
 
 import org.buildmlearn.toolkit.R;
 
+/**
+ * @brief Simulator code for Info Template
+ */
 public class DetailView extends Fragment {
 
     public static Fragment newInstance(int position) {

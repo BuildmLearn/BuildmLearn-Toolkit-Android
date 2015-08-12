@@ -52,6 +52,9 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+/**
+ * @brief Simulator code for Quiz Template
+ */
 public class GlobalData {
     private static GlobalData instance = null;
     String iQuizTitle = null;

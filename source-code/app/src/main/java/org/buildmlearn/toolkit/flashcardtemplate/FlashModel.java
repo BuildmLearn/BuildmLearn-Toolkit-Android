@@ -1,38 +1,42 @@
 package org.buildmlearn.toolkit.flashcardtemplate;
 
+
+/**
+ * @brief Simulator code for Flash Card Template
+ */
 public class FlashModel {
-	String question, answer, hint, base64;
+    String question, answer, hint, base64;
 
 
-	public String getQuestion() {
-		return question;
-	}
+    public String getQuestion() {
+        return question;
+    }
 
-	public void setQuestion(String question) {
-		this.question = question;
-	}
+    public void setQuestion(String question) {
+        this.question = question;
+    }
 
-	public String getAnswer() {
-		return answer;
-	}
+    public String getAnswer() {
+        return answer;
+    }
 
-	public void setAnswer(String answer) {
-		this.answer = answer;
-	}
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
 
-	public String getHint() {
-		return hint;
-	}
+    public String getHint() {
+        return hint;
+    }
 
-	public void setHint(String hint) {
-		this.hint = hint;
-	}
+    public void setHint(String hint) {
+        this.hint = hint;
+    }
 
-	public String getBase64() {
-		return base64;
-	}
+    public String getBase64() {
+        return base64;
+    }
 
-	public void setBase64(String base64) {
-		this.base64 = base64;
-	}
+    public void setBase64(String base64) {
+        this.base64 = base64;
+    }
 }

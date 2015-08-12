@@ -1,12 +1,16 @@
 package org.buildmlearn.toolkit.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import org.buildmlearn.toolkit.R;
+
+/**
+ * @brief Gives brief info about BuildmLearn community and toolkit
+ */
 
 public class AboutBuildmLearn extends AppCompatActivity {
 

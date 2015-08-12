@@ -37,6 +37,9 @@ import android.widget.ListView;
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.constant.Constants;
 
+/**
+ * @brief Simulator code for Info Template
+ */
 public class TFTFragment extends ListFragment {
 
 

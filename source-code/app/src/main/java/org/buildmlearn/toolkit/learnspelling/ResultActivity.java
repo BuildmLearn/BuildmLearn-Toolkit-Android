@@ -29,7 +29,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
 package org.buildmlearn.toolkit.learnspelling;
 
 import android.app.Fragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.Nullable;
@@ -44,6 +43,9 @@ import org.buildmlearn.toolkit.flashcardtemplate.StartFragment;
 
 import java.util.Locale;
 
+/**
+ * @brief Simulator code for Learn Spelling Template
+ */
 public class ResultActivity extends Fragment {
     private TextView mTv_Correct, mTv_Wrong, mTv_Unanswered;
     private DataManager mDataManager;

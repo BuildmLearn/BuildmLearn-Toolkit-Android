@@ -39,11 +39,10 @@ import java.util.ArrayList;
 public class FlashTemplate implements TemplateInterface {
     private static final int REQUEST_TAKE_PHOTO = 6677;
     private static final String TAG = "FLASH TEMPLATE";
+    ArrayList<FlashCardModel> mData;
     transient private Uri mImageUri;
     transient private ImageView mBannerImage;
     private boolean mIsPhotoAttached;
-
-    ArrayList<FlashCardModel> mData;
     transient private FlashCardAdapter mAdapter;
 
     public FlashTemplate() {

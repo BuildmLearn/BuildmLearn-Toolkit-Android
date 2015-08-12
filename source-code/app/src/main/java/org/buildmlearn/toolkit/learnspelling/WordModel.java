@@ -28,31 +28,38 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
 
 package org.buildmlearn.toolkit.learnspelling;
 
+/**
+ * @brief Simulator code for Learn Spelling Template
+ */
 public class WordModel {
 
-	private String mWord;
-	private String mDescription;
-	public WordModel()
-	{
-		
-	}
-	public WordModel(String word,String description)
-	{
-		mWord=word;
-		mDescription=description;
-		
-	}
-	public String getWord() {
-		return mWord;
-	}
-	public void setWord(String mWord) {
-		this.mWord = mWord;
-	}
-	public String getDescription() {
-		return mDescription;
-	}
-	public void setDescription(String mDescription) {
-		this.mDescription = mDescription;
-	}
-	
+    private String mWord;
+    private String mDescription;
+
+    public WordModel() {
+
+    }
+
+    public WordModel(String word, String description) {
+        mWord = word;
+        mDescription = description;
+
+    }
+
+    public String getWord() {
+        return mWord;
+    }
+
+    public void setWord(String mWord) {
+        this.mWord = mWord;
+    }
+
+    public String getDescription() {
+        return mDescription;
+    }
+
+    public void setDescription(String mDescription) {
+        this.mDescription = mDescription;
+    }
+
 }

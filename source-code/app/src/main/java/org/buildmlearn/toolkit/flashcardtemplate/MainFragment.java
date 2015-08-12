@@ -20,6 +20,10 @@ import android.widget.TextView;
 
 import org.buildmlearn.toolkit.R;
 
+
+/**
+ * @brief Simulator code for Flash Card Template
+ */
 public class MainFragment extends Fragment implements
         AnimationListener {
     View answerView, questionView;

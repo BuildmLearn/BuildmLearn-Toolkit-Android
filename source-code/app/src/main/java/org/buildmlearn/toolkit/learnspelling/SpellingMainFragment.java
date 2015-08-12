@@ -41,6 +41,9 @@ import android.widget.TextView;
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.constant.Constants;
 
+/**
+ * @brief Simulator code for Learn Spelling Template
+ */
 public class SpellingMainFragment extends Fragment {
 
     private Button mBtn_Start;

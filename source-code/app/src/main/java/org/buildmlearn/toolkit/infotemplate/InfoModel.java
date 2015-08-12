@@ -1,5 +1,8 @@
 package org.buildmlearn.toolkit.infotemplate;
 
+/**
+ * @brief Simulator code for Info Template
+ */
 public class InfoModel {
 
     private String info_object, info_description;

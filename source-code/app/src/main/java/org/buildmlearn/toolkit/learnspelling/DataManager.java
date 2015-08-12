@@ -45,6 +45,10 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+
+/**
+ * @brief Simulator code for Learn Spelling Template
+ */
 public class DataManager {
     private static DataManager instance = null;
     private String mTitle = null;
@@ -60,6 +64,22 @@ public class DataManager {
             instance = new DataManager();
         }
         return instance;
+    }
+
+    private static String getValue(String tag, Element element) {
+        NodeList nodeList = null;
+        NodeList node1 = element.getElementsByTagName(tag);
+        if (node1 != null && node1.getLength() != 0)
+            nodeList = node1.item(0).getChildNodes();
+        if (nodeList == null)
+            return "";
+        else if (nodeList.getLength() == 0)
+            return "";
+        else {
+            Node node = (Node) nodeList.item(0);
+
+            return node.getNodeValue();
+        }
     }
 
     public void readXml(String filePath) {
@@ -100,22 +120,6 @@ public class DataManager {
             e.printStackTrace();
         }
 
-    }
-
-    private static String getValue(String tag, Element element) {
-        NodeList nodeList = null;
-        NodeList node1 = element.getElementsByTagName(tag);
-        if (node1 != null && node1.getLength() != 0)
-            nodeList = node1.item(0).getChildNodes();
-        if (nodeList == null)
-            return "";
-        else if (nodeList.getLength() == 0)
-            return "";
-        else {
-            Node node = (Node) nodeList.item(0);
-
-            return node.getNodeValue();
-        }
     }
 
     public ArrayList<WordModel> getList() {

@@ -10,6 +10,9 @@ import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.adapter.TutorialAdapter;
 import org.buildmlearn.toolkit.constant.Constants;
 
+/**
+ * @brief Shows the tutorial related to BuildmLearn toolkit usage.
+ */
 public class TutorialActivity extends AppCompatActivity {
 
     private static final String TAG = "Tutorial Activity";

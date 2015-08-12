@@ -43,6 +43,9 @@ import android.widget.TextView;
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.constant.Constants;
 
+/**
+ * @brief Simulator code for Quiz Template
+ */
 public class ScoreFragment extends Fragment {
 
     public final static String TAG = "SCORE_FRAGMENT";

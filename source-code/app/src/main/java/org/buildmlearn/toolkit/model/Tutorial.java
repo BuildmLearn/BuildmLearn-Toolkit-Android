@@ -17,9 +17,15 @@ public enum Tutorial {
     LAST(true);
 
 
-    private @DrawableRes int image;
-    private @StringRes int title;
-    private @StringRes int description;
+    private
+    @DrawableRes
+    int image;
+    private
+    @StringRes
+    int title;
+    private
+    @StringRes
+    int description;
     private boolean isLastScreen;
 
     Tutorial(int image, int title, int description) {

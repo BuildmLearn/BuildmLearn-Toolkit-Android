@@ -2,6 +2,9 @@ package org.buildmlearn.toolkit.quiztemplate;
 
 import java.util.ArrayList;
 
+/**
+ * @brief Simulator code for Quiz Template
+ */
 public class QuestionModel {
 
     private String question, answer;

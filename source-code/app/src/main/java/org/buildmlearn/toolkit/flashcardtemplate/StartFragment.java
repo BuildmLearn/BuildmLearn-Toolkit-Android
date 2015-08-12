@@ -13,6 +13,10 @@ import android.widget.TextView;
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.constant.Constants;
 
+
+/**
+ * @brief Simulator code for Flash Card Template
+ */
 public class StartFragment extends Fragment {
 
     public static final String TAG = "Start Fragment";

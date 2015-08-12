@@ -31,7 +31,6 @@ package org.buildmlearn.toolkit.quiztemplate;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -42,6 +41,9 @@ import android.widget.TextView;
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.constant.Constants;
 
+/**
+ * @brief Simulator code for Quiz Template
+ */
 public class TFTQuizFragment extends Fragment {
 
     public final static String TAG = "QUIZ_FRAGMENT_START";

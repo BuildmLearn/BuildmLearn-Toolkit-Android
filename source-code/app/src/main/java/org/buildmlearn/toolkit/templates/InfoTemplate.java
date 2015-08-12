@@ -32,6 +32,25 @@ public class InfoTemplate implements TemplateInterface {
         infoData = new ArrayList<>();
     }
 
+    public static boolean validated(Context context, EditText word, EditText meaning) {
+        if (word == null || meaning == null) {
+            return false;
+        }
+
+        String wordText = word.getText().toString();
+        String meaningText = meaning.getText().toString();
+
+        if (wordText.equals("")) {
+            Toast.makeText(context, "Enter word", Toast.LENGTH_SHORT).show();
+            return false;
+        } else if (meaningText.equals("")) {
+            Toast.makeText(context, "Enter meaning", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+
+    }
+
     @Override
     public BaseAdapter newTemplateEditorAdapter(Context context) {
         adapter = new InfoAdapter(context, infoData);
@@ -96,25 +115,6 @@ public class InfoTemplate implements TemplateInterface {
         });
 
         dialog.show();
-
-    }
-
-    public static boolean validated(Context context, EditText word, EditText meaning) {
-        if (word == null || meaning == null) {
-            return false;
-        }
-
-        String wordText = word.getText().toString();
-        String meaningText = meaning.getText().toString();
-
-        if (wordText.equals("")) {
-            Toast.makeText(context, "Enter word", Toast.LENGTH_SHORT).show();
-            return false;
-        } else if (meaningText.equals("")) {
-            Toast.makeText(context, "Enter meaning", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        return true;
 
     }
 

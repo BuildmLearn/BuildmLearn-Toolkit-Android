@@ -16,6 +16,9 @@ import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.adapter.TemplateAdapter;
 import org.buildmlearn.toolkit.constant.Constants;
 
+/**
+ * @brief Template activity show the list of available templates in the toolkit. Templates are defined in Template.java enum file
+ */
 public class TemplateActivity extends AppCompatActivity {
 
 

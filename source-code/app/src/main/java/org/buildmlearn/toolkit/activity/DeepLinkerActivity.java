@@ -3,14 +3,10 @@ package org.buildmlearn.toolkit.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Toast;
 
-import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.constant.Constants;
 import org.buildmlearn.toolkit.model.SavedProject;
 import org.buildmlearn.toolkit.model.Template;
@@ -23,6 +19,14 @@ import java.io.IOException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+
+/**
+ * @brief Activity responsible for handling files opened from file explorer
+ *
+ * This activity is started whenever users opens a .buildmlearn file from file explorer.
+ * This activity is responsible for getting the template type from the file, and passes the template Id and
+ * file path to Template Editor/ activity.
+ */
 
 public class DeepLinkerActivity extends Activity {
 

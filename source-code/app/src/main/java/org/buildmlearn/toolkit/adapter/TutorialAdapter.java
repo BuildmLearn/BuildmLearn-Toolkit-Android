@@ -65,7 +65,7 @@ public class TutorialAdapter extends PagerAdapter {
             convertView.findViewById(R.id.finish_tutorial_button).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(mStartActivity) {
+                    if (mStartActivity) {
                         mActivity.startActivity(new Intent(mActivity, HomeActivity.class));
                     }
                     mActivity.finish();

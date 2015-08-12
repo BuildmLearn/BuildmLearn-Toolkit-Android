@@ -223,7 +223,7 @@ public class FileUtils {
         return false;
     }
 
-    public static void zipFolder(String directoryToZipPath ) throws IOException {
+    public static void zipFolder(String directoryToZipPath) throws IOException {
         File directoryToZip = new File(directoryToZipPath);
 
         List<File> fileList = new ArrayList<File>();

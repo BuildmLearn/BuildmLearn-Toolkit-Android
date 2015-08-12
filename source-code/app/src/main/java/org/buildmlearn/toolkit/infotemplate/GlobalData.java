@@ -28,7 +28,6 @@
 
 package org.buildmlearn.toolkit.infotemplate;
 
-import android.content.Context;
 import android.util.Log;
 
 import org.w3c.dom.Document;
@@ -36,20 +35,19 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+/**
+ * @brief Simulator code for Info Template
+ */
 public class GlobalData {
     private static GlobalData instance = null;
     String mTitle, mAuthor = null;
@@ -67,6 +65,21 @@ public class GlobalData {
         return instance;
     }
 
+    private static String getValue(String tag, Element element) {
+        NodeList nodeList = null;
+        NodeList node1 = element.getElementsByTagName(tag);
+        if (node1 != null && node1.getLength() != 0)
+            nodeList = node1.item(0).getChildNodes();
+        if (nodeList == null)
+            return "";
+        else if (nodeList.getLength() == 0)
+            return "";
+        else {
+            Node node = (Node) nodeList.item(0);
+
+            return node.getNodeValue();
+        }
+    }
 
     public void readXml(String filePath) {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -82,7 +95,7 @@ public class GlobalData {
             doc = db.parse(fXmlFile);
             doc.normalize();
             /*
-			 * NodeList app_nodes = doc
+             * NodeList app_nodes = doc
 			 * .getElementsByTagName("buildmlearn_application");
 			 */
             // NamedNodeMap node = app_nodes.item(0).getAttributes();
@@ -125,22 +138,6 @@ public class GlobalData {
             e.printStackTrace();
         }
 
-    }
-
-    private static String getValue(String tag, Element element) {
-        NodeList nodeList = null;
-        NodeList node1 = element.getElementsByTagName(tag);
-        if (node1 != null && node1.getLength() != 0)
-            nodeList = node1.item(0).getChildNodes();
-        if (nodeList == null)
-            return "";
-        else if (nodeList.getLength() == 0)
-            return "";
-        else {
-            Node node = (Node) nodeList.item(0);
-
-            return node.getNodeValue();
-        }
     }
 
 

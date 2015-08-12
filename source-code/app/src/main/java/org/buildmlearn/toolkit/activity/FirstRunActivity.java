@@ -16,6 +16,9 @@ import com.daimajia.androidanimations.library.YoYo;
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.constant.Constants;
 
+/**
+ * @brief Shown on application first launch.
+ */
 public class FirstRunActivity extends AppCompatActivity {
 
     private static final String FIRST_RUN = "first_run";

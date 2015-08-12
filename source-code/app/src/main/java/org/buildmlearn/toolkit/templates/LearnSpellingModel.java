@@ -22,12 +22,12 @@ public class LearnSpellingModel implements Serializable {
         return mWord;
     }
 
-    public String getMeaning() {
-        return mMeaning;
-    }
-
     public void setWord(String word) {
         this.mWord = word;
+    }
+
+    public String getMeaning() {
+        return mMeaning;
     }
 
     public void setMeaning(String meaning) {

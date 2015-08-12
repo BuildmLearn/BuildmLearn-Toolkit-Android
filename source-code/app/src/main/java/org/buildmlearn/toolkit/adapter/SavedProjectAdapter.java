@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 /**
- *
  * @brief Adapter used for showing saved projects in a list
  *
  * Created by Abhishek on 01-06-2015.
@@ -49,21 +48,20 @@ public class SavedProjectAdapter extends BaseAdapter {
         LayoutInflater mInflater;
         mInflater = LayoutInflater.from(mContext);
         ProjectHolder holder;
-        if(convertView == null) {
+        if (convertView == null) {
             convertView = mInflater.inflate(R.layout.item_load_project, parent, false);
             holder = new ProjectHolder();
-            holder.projectName = (TextViewPlus)convertView.findViewById(R.id.title);
-            holder.projectIcon = (TextViewPlus)convertView.findViewById(R.id.icon);
-            holder.details = (TextViewPlus)convertView.findViewById(R.id.subtitle);
-        }
-        else {
+            holder.projectName = (TextViewPlus) convertView.findViewById(R.id.title);
+            holder.projectIcon = (TextViewPlus) convertView.findViewById(R.id.icon);
+            holder.details = (TextViewPlus) convertView.findViewById(R.id.subtitle);
+        } else {
             holder = (ProjectHolder) convertView.getTag();
         }
 
         SavedProject projectData = getItem(position);
-        holder.details.setText("Modified: " + projectData.getDate() +", Author: " + projectData.getAuthor());
+        holder.details.setText("Modified: " + projectData.getDate() + ", Author: " + projectData.getAuthor());
         holder.projectName.setText(projectData.getName());
-        holder.projectIcon.setText(projectData.getName().substring(0,1).toUpperCase(Locale.US));
+        holder.projectIcon.setText(projectData.getName().substring(0, 1).toUpperCase(Locale.US));
         convertView.setTag(holder);
         return convertView;
     }

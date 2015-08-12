@@ -26,12 +26,12 @@ public class InfoModel implements Serializable {
         return infoDescription;
     }
 
-    public void setWord(String word) {
-        this.infoObject = word;
-    }
-
     public void setInfoDescription(String infoDescription) {
         this.infoDescription = infoDescription;
+    }
+
+    public void setWord(String word) {
+        this.infoObject = word;
     }
 
     public Element getXml(Document doc) {

@@ -44,6 +44,9 @@ import org.buildmlearn.toolkit.R;
 import java.util.ArrayList;
 import java.util.Locale;
 
+/**
+ * @brief Simulator code for Learn Spelling Template
+ */
 public class WordInfoActivity extends Fragment {
 
     private boolean isCorrect;

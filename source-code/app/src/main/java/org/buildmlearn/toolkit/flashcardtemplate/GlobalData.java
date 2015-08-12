@@ -52,6 +52,9 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+/**
+ * @brief Simulator code for Flash Card Template
+ */
 public class GlobalData {
     private static GlobalData instance = null;
     String iQuizTitle = null;
@@ -74,6 +77,22 @@ public class GlobalData {
             instance = new GlobalData();
         }
         return instance;
+    }
+
+    private static String getValue(String tag, Element element) {
+        NodeList nodeList = null;
+        NodeList node1 = element.getElementsByTagName(tag);
+        if (node1 != null && node1.getLength() != 0)
+            nodeList = node1.item(0).getChildNodes();
+        if (nodeList == null)
+            return "";
+        else if (nodeList.getLength() == 0)
+            return "";
+        else {
+            Node node = (Node) nodeList.item(0);
+
+            return node.getNodeValue();
+        }
     }
 
     public void ReadContent(Context myContext) {
@@ -177,7 +196,7 @@ public class GlobalData {
             doc = db.parse(fXmlFile);
             doc.normalize();
             /*
-			 * NodeList app_nodes = doc
+             * NodeList app_nodes = doc
 			 * .getElementsByTagName("buildmlearn_application");
 			 */
             // NamedNodeMap node = app_nodes.item(0).getAttributes();
@@ -225,21 +244,5 @@ public class GlobalData {
             e.printStackTrace();
         }
 
-    }
-
-    private static String getValue(String tag, Element element) {
-        NodeList nodeList = null;
-        NodeList node1 = element.getElementsByTagName(tag);
-        if (node1 != null && node1.getLength() != 0)
-            nodeList = node1.item(0).getChildNodes();
-        if (nodeList == null)
-            return "";
-        else if (nodeList.getLength() == 0)
-            return "";
-        else {
-            Node node = (Node) nodeList.item(0);
-
-            return node.getNodeValue();
-        }
     }
 }

@@ -136,10 +136,10 @@ public class TemplateEditor extends AppCompatActivity {
 
 
     /**
+     * @param adapter Adapter containing template data
      * @brief Populates ListView item by setting adapter to ListView. Also inflates Header View.
      *
      * Header view contains the editable author name and template title fields.
-     * @param adapter Adapter containing template data
      */
     protected void populateListView(final BaseAdapter adapter) {
         if (templateEdtiorList == null) {
@@ -414,7 +414,7 @@ public class TemplateEditor extends AppCompatActivity {
     /**
      * Converts the current TemplateInterface object into a xml file. Xml file is saved in SAVE
      * Directory (defined in constants). File name is of the format: <title>_by_<author>.buildmlearn
-     * 
+     *
      * @return Absolute path of the saved file. Null if there is some error.
      * @brief Saves the current project into a .buildmlearn file.
      */
