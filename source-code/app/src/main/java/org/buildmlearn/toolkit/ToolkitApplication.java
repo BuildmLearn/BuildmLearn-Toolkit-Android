@@ -10,6 +10,9 @@ import java.io.File;
 import java.util.ArrayList;
 
 /**
+ * @brief Extended Application class
+ *
+ *
  * Created by Abhishek on 31-05-2015.
  */
 public class ToolkitApplication extends Application {
@@ -50,24 +53,43 @@ public class ToolkitApplication extends Application {
 
     }
 
+    /**
+     * @brief Returns directory for BuildmLearn toolkit  manually created files.
+     * @return folder path
+     */
     public String getProjectDir() {
         return dir + Constants.BUILD_M_LEARN_PATH;
 
     }
 
+    /**
+     * @brief Returns folder path for saved projects
+     * @return Folder path
+     */
     public String getSavedDir() {
         return dir + Constants.SAVED_DIR;
     }
 
+    /**
+     * @brief Returns folder path for unzipped apks
+     * @return Folder path
+     */
     public String getUnZipDir() {
         return dir + Constants.UNZIP;
     }
 
+    /**
+     * @brief Returns folder path for storing generated apks
+     * @return Folder path
+     */
     public String getApkDir() {
         return dir + Constants.APK_DIR;
     }
 
-
+    /**
+     * @brief Checks if external storage is present for storing data
+     * @return true if external storage is present, else false
+     */
     private boolean checkExternalStorage() {
 
         boolean result = false;
@@ -83,6 +105,10 @@ public class ToolkitApplication extends Application {
         return isExternalStorageAvailable;
     }
 
+    /**
+     * @brief Returns folder path for Download directory
+     * @return Folder path
+     */
     public String getDownloadDirectory() {
         return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
     }

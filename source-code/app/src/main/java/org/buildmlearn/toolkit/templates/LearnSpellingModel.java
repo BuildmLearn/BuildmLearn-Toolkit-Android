@@ -6,6 +6,8 @@ import org.w3c.dom.Element;
 import java.io.Serializable;
 
 /**
+ * @brief Model class for Learn Spelling Template Editor data
+ *
  * Created by abhishek on 17/06/15 at 9:49 PM.
  */
 public class LearnSpellingModel implements Serializable {

@@ -1,5 +1,8 @@
 package org.buildmlearn.toolkit.utilities;
 
+/**
+ * @brief Model class for storing Alias data for keystore.
+ */
 public class Alias {
 
     long id;

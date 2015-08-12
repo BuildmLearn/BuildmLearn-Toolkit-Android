@@ -34,6 +34,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 /**
+ * @brief Flash Card template code implementing methods of TemplateInterface
+ *
  * Created by abhishek on 11/07/15 at 7:33 PM.
  */
 public class FlashTemplate implements TemplateInterface {

@@ -7,7 +7,7 @@ import org.buildmlearn.toolkit.R;
 import kellinwood.security.zipsigner.ResourceAdapter;
 
 /**
- * Provides internationalized progress and error strings to the zipsigner-lib API.
+ * @brief Provides internationalized progress and error strings to the zipsigner-lib API.
  */
 public class ZipSignerAppResourceAdapter implements ResourceAdapter {
 

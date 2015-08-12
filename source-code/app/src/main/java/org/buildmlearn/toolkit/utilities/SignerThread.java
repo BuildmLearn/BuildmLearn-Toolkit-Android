@@ -22,6 +22,10 @@ import kellinwood.security.zipsigner.optional.CustomKeySigner;
 /**
  * Created by Abhishek on 10-06-2015.
  */
+
+/**
+ * @brief Class for signing a unsigned apk file using a given keystore and credentials.
+ */
 public class SignerThread extends Thread {
     private static final String TAG = "SignerThread";
     private static final String TEMP_FOLDER = "hcjb";

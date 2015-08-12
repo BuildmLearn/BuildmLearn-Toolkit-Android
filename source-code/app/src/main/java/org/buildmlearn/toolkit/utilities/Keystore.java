@@ -3,6 +3,10 @@ package org.buildmlearn.toolkit.utilities;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * @brief Model class for storing Keystore details
+ */
 public class Keystore {
 
     long id;

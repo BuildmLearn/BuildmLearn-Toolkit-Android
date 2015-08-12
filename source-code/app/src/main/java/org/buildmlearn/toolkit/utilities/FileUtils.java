@@ -28,6 +28,8 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 /**
+ * @brief Helper functions related to String manipulation.
+ *
  * Created by Abhishek on 23-05-2015.
  */
 public class FileUtils {
@@ -36,85 +38,13 @@ public class FileUtils {
     private final static int BUFFER_SIZE = 2048;
 
 
-    public static boolean zipFileAtPath(String sourcePath, String zipFilePath) {
-        // ArrayList<String> contentList = new ArrayList<String>();
-        final int BUFFER = 2048;
-
-
-        File sourceFile = new File(sourcePath);
-        try {
-            BufferedInputStream origin = null;
-            FileOutputStream dest = new FileOutputStream(zipFilePath);
-            ZipOutputStream out = new ZipOutputStream(new BufferedOutputStream(
-                    dest));
-            if (sourceFile.isDirectory()) {
-                zipSubFolder(out, sourceFile, sourceFile.getParent().length());
-            } else {
-                byte data[] = new byte[BUFFER];
-                FileInputStream fi = new FileInputStream(sourcePath);
-                origin = new BufferedInputStream(fi, BUFFER);
-                ZipEntry entry = new ZipEntry(getLastPathComponent(sourcePath));
-                out.putNextEntry(entry);
-                int count;
-                while ((count = origin.read(data, 0, BUFFER)) != -1) {
-                    out.write(data, 0, count);
-                }
-            }
-            out.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-        return true;
-    }
-
-/*
- *
- * Zips a subfolder
- *
- */
-
-    private static void zipSubFolder(ZipOutputStream out, File folder,
-                                     int basePathLength) throws IOException {
-
-        final int BUFFER = 2048;
-
-        File[] fileList = folder.listFiles();
-        BufferedInputStream origin = null;
-        for (File file : fileList) {
-            if (file.isDirectory()) {
-                zipSubFolder(out, file, basePathLength);
-            } else {
-                byte data[] = new byte[BUFFER];
-                String unmodifiedFilePath = file.getPath();
-                String relativePath = unmodifiedFilePath
-                        .substring(basePathLength);
-                FileInputStream fi = new FileInputStream(unmodifiedFilePath);
-                origin = new BufferedInputStream(fi, BUFFER);
-                ZipEntry entry = new ZipEntry(relativePath);
-                out.putNextEntry(entry);
-                int count;
-                while ((count = origin.read(data, 0, BUFFER)) != -1) {
-                    out.write(data, 0, count);
-                }
-                origin.close();
-            }
-        }
-    }
-
-    /*
-     * gets the last path component
+    /**
+     * @brief Unzips a compressed file (.zip, .apk)
      *
-     * Example: getLastPathComponent("downloads/example/fileToZip");
-     * Result: "fileToZip"
+     * @param zipFilePath Path of the source zip file
+     * @param destinationFolder Destination folder for stroing the uncompresses files.
+     * @throws IOException Exception thrown in case of some error.
      */
-    public static String getLastPathComponent(String filePath) {
-        String[] segments = filePath.split("/");
-        String lastPathComponent = segments[segments.length - 1];
-        return lastPathComponent;
-    }
-
-
     public static void unZip(String zipFilePath, String destinationFolder) throws IOException {
         int size;
         byte[] buffer = new byte[BUFFER_SIZE];
@@ -169,6 +99,12 @@ public class FileUtils {
         }
     }
 
+    /**
+     * @brief Copies a file from assets folder to a folder on device memory
+     * @param context Application context
+     * @param assetFileName Name of the file stored in assets
+     * @param destinationDirectory Destination folder for saving the file
+     */
     public static void copyAssets(Context context, String assetFileName, String destinationDirectory) {
         AssetManager assetManager = context.getAssets();
         InputStream in;
@@ -201,6 +137,13 @@ public class FileUtils {
         }
     }
 
+    /**
+     * @brief Converts a given Document object to xml format file
+     * @param destinationFolder Destination folder for saving the file
+     * @param fileName Destination file name
+     * @param doc Document object to be converted to xml formatted file
+     * @return Returns true if successfully converted
+     */
     public static boolean saveXmlFile(String destinationFolder, String fileName, Document doc) {
 
         File f = new File(destinationFolder);
@@ -223,6 +166,11 @@ public class FileUtils {
         return false;
     }
 
+    /**
+     * @brief Archives a folder into .zip compressed file
+     * @param directoryToZipPath Source folder to be converted.
+     * @throws IOException
+     */
     public static void zipFolder(String directoryToZipPath) throws IOException {
         File directoryToZip = new File(directoryToZipPath);
 
@@ -234,6 +182,11 @@ public class FileUtils {
         System.out.println("---Done");
     }
 
+    /**
+     * @brief Add all the files in a given folder into a list
+     * @param dir Source directory
+     * @param fileList Referenced list. Files are added to this list
+     */
     public static void getAllFiles(File dir, List<File> fileList) {
         try {
             File[] files = dir.listFiles();
@@ -251,7 +204,7 @@ public class FileUtils {
         }
     }
 
-    public static void writeZipFile(File directoryToZip, List<File> fileList) {
+    private static void writeZipFile(File directoryToZip, List<File> fileList) {
 
         try {
             FileOutputStream fos = new FileOutputStream(directoryToZip.getAbsolutePath() + ".zip");
@@ -272,7 +225,7 @@ public class FileUtils {
         }
     }
 
-    public static void addToZip(File directoryToZip, File file, ZipOutputStream zos) throws FileNotFoundException,
+    private static void addToZip(File directoryToZip, File file, ZipOutputStream zos) throws FileNotFoundException,
             IOException {
 
         FileInputStream fis = new FileInputStream(file);
@@ -295,6 +248,12 @@ public class FileUtils {
         fis.close();
     }
 
+    /**
+     * @brief Copies the content from one file to another
+     * @param src Source file
+     * @param dst Destination file
+     * @throws IOException Exception thrown in case of error
+     */
     public static void copy(File src, File dst) throws IOException {
         InputStream in = new FileInputStream(src);
         OutputStream out = new FileOutputStream(dst);

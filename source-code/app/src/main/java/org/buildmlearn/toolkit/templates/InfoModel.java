@@ -6,6 +6,8 @@ import org.w3c.dom.Element;
 import java.io.Serializable;
 
 /**
+ * @brief Model class for Info Template Editor data
+ *
  * Created by abhishek on 17/06/15 at 9:49 PM.
  */
 public class InfoModel implements Serializable {
