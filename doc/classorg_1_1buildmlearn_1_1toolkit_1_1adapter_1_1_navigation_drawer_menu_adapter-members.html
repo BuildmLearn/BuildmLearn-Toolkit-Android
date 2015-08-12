@@ -8,6 +8,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -42,6 +50,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -68,6 +77,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_navigation_drawer_menu_adapter.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -82,11 +106,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><b>org</b></li><li class="navelem"><b>buildmlearn</b></li><li class="navelem"><b>toolkit</b></li><li class="navelem"><b>adapter</b></li><li class="navelem"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_navigation_drawer_menu_adapter.html">NavigationDrawerMenuAdapter</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">org.buildmlearn.toolkit.adapter.NavigationDrawerMenuAdapter Member List</div>  </div>
@@ -95,17 +114,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>This is the complete list of members for <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_navigation_drawer_menu_adapter.html">org.buildmlearn.toolkit.adapter.NavigationDrawerMenuAdapter</a>, including all inherited members.</p>
 <table class="directory">
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>getCount</b>() (defined in <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_navigation_drawer_menu_adapter.html">org.buildmlearn.toolkit.adapter.NavigationDrawerMenuAdapter</a>)</td><td class="entry"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_navigation_drawer_menu_adapter.html">org.buildmlearn.toolkit.adapter.NavigationDrawerMenuAdapter</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>getItem</b>(int position) (defined in <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_navigation_drawer_menu_adapter.html">org.buildmlearn.toolkit.adapter.NavigationDrawerMenuAdapter</a>)</td><td class="entry"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_navigation_drawer_menu_adapter.html">org.buildmlearn.toolkit.adapter.NavigationDrawerMenuAdapter</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>getItemId</b>(int position) (defined in <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_navigation_drawer_menu_adapter.html">org.buildmlearn.toolkit.adapter.NavigationDrawerMenuAdapter</a>)</td><td class="entry"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_navigation_drawer_menu_adapter.html">org.buildmlearn.toolkit.adapter.NavigationDrawerMenuAdapter</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>getView</b>(int position, View convertView, ViewGroup parent) (defined in <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_navigation_drawer_menu_adapter.html">org.buildmlearn.toolkit.adapter.NavigationDrawerMenuAdapter</a>)</td><td class="entry"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_navigation_drawer_menu_adapter.html">org.buildmlearn.toolkit.adapter.NavigationDrawerMenuAdapter</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_navigation_drawer_menu_adapter.html#a05a59638b45d17d3852db05405de25c1">getCount</a>()</td><td class="entry"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_navigation_drawer_menu_adapter.html">org.buildmlearn.toolkit.adapter.NavigationDrawerMenuAdapter</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_navigation_drawer_menu_adapter.html#a5a1da2dcdb45463a2e24f39f4dc111b9">getItem</a>(int position)</td><td class="entry"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_navigation_drawer_menu_adapter.html">org.buildmlearn.toolkit.adapter.NavigationDrawerMenuAdapter</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_navigation_drawer_menu_adapter.html#af4eeb5996c4511df23d9c08f35d2738a">getItemId</a>(int position)</td><td class="entry"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_navigation_drawer_menu_adapter.html">org.buildmlearn.toolkit.adapter.NavigationDrawerMenuAdapter</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_navigation_drawer_menu_adapter.html#afb2f8f5d68ab2fe433550cc122479be4">getView</a>(int position, View convertView, ViewGroup parent)</td><td class="entry"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_navigation_drawer_menu_adapter.html">org.buildmlearn.toolkit.adapter.NavigationDrawerMenuAdapter</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>NavigationDrawerMenuAdapter</b>(Context context, LayoutInflater inflater) (defined in <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_navigation_drawer_menu_adapter.html">org.buildmlearn.toolkit.adapter.NavigationDrawerMenuAdapter</a>)</td><td class="entry"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_navigation_drawer_menu_adapter.html">org.buildmlearn.toolkit.adapter.NavigationDrawerMenuAdapter</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.10
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.10 </li>
+  </ul>
+</div>
 </body>
 </html>

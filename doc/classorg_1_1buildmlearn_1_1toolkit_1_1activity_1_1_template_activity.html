@@ -8,6 +8,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -42,6 +50,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -68,6 +77,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_template_activity.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -82,11 +106,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><b>org</b></li><li class="navelem"><b>buildmlearn</b></li><li class="navelem"><b>toolkit</b></li><li class="navelem"><b>activity</b></li><li class="navelem"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_template_activity.html">TemplateActivity</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -96,6 +115,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">org.buildmlearn.toolkit.activity.TemplateActivity Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Template activity show the list of available templates in the toolkit. Templates are defined in <a class="el" href="_template_8java_source.html">Template.java</a> enum file.  
+ <a href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_template_activity.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for org.buildmlearn.toolkit.activity.TemplateActivity:</div>
 <div class="dyncontent">
@@ -107,28 +129,96 @@ Inheritance diagram for org.buildmlearn.toolkit.activity.TemplateActivity:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa4a2a52e7548ca9b54a353420f79ff75"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa4a2a52e7548ca9b54a353420f79ff75"></a>
-boolean&#160;</td><td class="memItemRight" valign="bottom"><b>onCreateOptionsMenu</b> (Menu menu)</td></tr>
+<tr class="memitem:aa4a2a52e7548ca9b54a353420f79ff75"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_template_activity.html#aa4a2a52e7548ca9b54a353420f79ff75">onCreateOptionsMenu</a> (Menu menu)</td></tr>
 <tr class="separator:aa4a2a52e7548ca9b54a353420f79ff75"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a93ae9651ee39cf090f15caac413e9892"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a93ae9651ee39cf090f15caac413e9892"></a>
-boolean&#160;</td><td class="memItemRight" valign="bottom"><b>onOptionsItemSelected</b> (MenuItem item)</td></tr>
+<tr class="memitem:a93ae9651ee39cf090f15caac413e9892"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_template_activity.html#a93ae9651ee39cf090f15caac413e9892">onOptionsItemSelected</a> (MenuItem item)</td></tr>
 <tr class="separator:a93ae9651ee39cf090f15caac413e9892"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a0bef4534d603cda941537d9527010576"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0bef4534d603cda941537d9527010576"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>onCreate</b> (Bundle savedInstanceState)</td></tr>
+<tr class="memitem:a0bef4534d603cda941537d9527010576"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_template_activity.html#a0bef4534d603cda941537d9527010576">onCreate</a> (Bundle savedInstanceState)</td></tr>
 <tr class="separator:a0bef4534d603cda941537d9527010576"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Template activity show the list of available templates in the toolkit. Templates are defined in <a class="el" href="_template_8java_source.html">Template.java</a> enum file. </p>
+
+<p>Definition at line <a class="el" href="_template_activity_8java_source.html#l00022">22</a> of file <a class="el" href="_template_activity_8java_source.html">TemplateActivity.java</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a0bef4534d603cda941537d9527010576"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void org.buildmlearn.toolkit.activity.TemplateActivity.onCreate </td>
+          <td>(</td>
+          <td class="paramtype">Bundle&#160;</td>
+          <td class="paramname"><em>savedInstanceState</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_template_activity_8java_source.html#l00028">28</a> of file <a class="el" href="_template_activity_8java_source.html">TemplateActivity.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa4a2a52e7548ca9b54a353420f79ff75"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean org.buildmlearn.toolkit.activity.TemplateActivity.onCreateOptionsMenu </td>
+          <td>(</td>
+          <td class="paramtype">Menu&#160;</td>
+          <td class="paramname"><em>menu</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_template_activity_8java_source.html#l00056">56</a> of file <a class="el" href="_template_activity_8java_source.html">TemplateActivity.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a93ae9651ee39cf090f15caac413e9892"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean org.buildmlearn.toolkit.activity.TemplateActivity.onOptionsItemSelected </td>
+          <td>(</td>
+          <td class="paramtype">MenuItem&#160;</td>
+          <td class="paramname"><em>item</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_template_activity_8java_source.html#l00066">66</a> of file <a class="el" href="_template_activity_8java_source.html">TemplateActivity.java</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>/Users/abhishek/Cloned/BuildmLearn-Toolkit-Android/source-code/app/src/main/java/org/buildmlearn/toolkit/activity/TemplateActivity.java</li>
+<li>/Users/abhishek/Cloned/BuildmLearn-Toolkit-Android/source-code/app/src/main/java/org/buildmlearn/toolkit/activity/<a class="el" href="_template_activity_8java_source.html">TemplateActivity.java</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.10
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>org</b></li><li class="navelem"><b>buildmlearn</b></li><li class="navelem"><b>toolkit</b></li><li class="navelem"><b>activity</b></li><li class="navelem"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_template_activity.html">TemplateActivity</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.10 </li>
+  </ul>
+</div>
 </body>
 </html>

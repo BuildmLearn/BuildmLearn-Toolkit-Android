@@ -8,6 +8,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -42,6 +50,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -81,15 +90,31 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="#index_d"><span>d</span></a></li>
       <li><a href="#index_e"><span>e</span></a></li>
       <li><a href="#index_g"><span>g</span></a></li>
+      <li><a href="#index_i"><span>i</span></a></li>
       <li><a href="#index_n"><span>n</span></a></li>
       <li><a href="#index_o"><span>o</span></a></li>
       <li><a href="#index_p"><span>p</span></a></li>
       <li><a href="#index_r"><span>r</span></a></li>
       <li><a href="#index_s"><span>s</span></a></li>
-      <li class="current"><a href="#index_u"><span>u</span></a></li>
+      <li><a href="#index_u"><span>u</span></a></li>
+      <li class="current"><a href="#index_z"><span>z</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('functions.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -118,6 +143,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>changeColorScheme()
 : <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_template_editor.html#a579696858455696ea2bac7bea2dccbd0">org.buildmlearn.toolkit.activity.TemplateEditor</a>
 </li>
+<li>copy()
+: <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1_file_utils.html#a22131f5eeefec02f52908ab439ab528b">org.buildmlearn.toolkit.utilities.FileUtils</a>
+</li>
+<li>copyAssets()
+: <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1_file_utils.html#a40211ea6f81fcdd275cb33047c67c01a">org.buildmlearn.toolkit.utilities.FileUtils</a>
+</li>
 <li>currentTemplateEditorAdapter()
 : <a class="el" href="interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1_template_interface.html#ae433eedc291006e78b65b0fc4135d560">org.buildmlearn.toolkit.model.TemplateInterface</a>
 , <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1_flash_template.html#a70db96b6e7ec5e339fe106fc15d64860">org.buildmlearn.toolkit.templates.FlashTemplate</a>
@@ -136,6 +167,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1_learn_spelling_template.html#ad8f1904727ddd68bc429ae85fd916a1c">org.buildmlearn.toolkit.templates.LearnSpellingTemplate</a>
 , <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1_quiz_template.html#a71f43dadf52d381b71b0b8d4ce9d52a1">org.buildmlearn.toolkit.templates.QuizTemplate</a>
 </li>
+<li>destroyItem()
+: <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_tutorial_adapter.html#a486ba0a0346f2adf357bf97e57edb9c4">org.buildmlearn.toolkit.adapter.TutorialAdapter</a>
+</li>
 </ul>
 
 
@@ -147,6 +181,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <h3><a class="anchor" id="index_g"></a>- g -</h3><ul>
+<li>getAllFiles()
+: <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1_file_utils.html#aa61e000a3890f6d8b42c1a537f8c2df4">org.buildmlearn.toolkit.utilities.FileUtils</a>
+</li>
+<li>getApkDir()
+: <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1_toolkit_application.html#a976b0d6036419bd9382ffdca98b79fb4">org.buildmlearn.toolkit.ToolkitApplication</a>
+</li>
 <li>getApkFilePath()
 : <a class="el" href="interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1_template_interface.html#a1bca348acb3790aebce645c04a9e0945">org.buildmlearn.toolkit.model.TemplateInterface</a>
 , <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1_flash_template.html#ae0ed657e20c9619afcd89bd624deb888">org.buildmlearn.toolkit.templates.FlashTemplate</a>
@@ -168,6 +208,31 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1_learn_spelling_template.html#a49bf35434b6abe45d04db8ed1f16b9e1">org.buildmlearn.toolkit.templates.LearnSpellingTemplate</a>
 , <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1_quiz_template.html#a7f0008da11aa1e2608a82214c92809e3">org.buildmlearn.toolkit.templates.QuizTemplate</a>
 </li>
+<li>getCount()
+: <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_navigation_drawer_menu_adapter.html#a05a59638b45d17d3852db05405de25c1">org.buildmlearn.toolkit.adapter.NavigationDrawerMenuAdapter</a>
+, <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_saved_project_adapter.html#a143869cd5a7b07ef9891db54b7aadd94">org.buildmlearn.toolkit.adapter.SavedProjectAdapter</a>
+, <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_template_adapter.html#aca56e48f1ee0920f7fdefb5a45399ff8">org.buildmlearn.toolkit.adapter.TemplateAdapter</a>
+, <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_tutorial_adapter.html#a1ea77519e1257a68116ea93bdf4a7618">org.buildmlearn.toolkit.adapter.TutorialAdapter</a>
+</li>
+<li>getDownloadDirectory()
+: <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1_toolkit_application.html#ab9cd5e8da6ff1a82eafee60edb626e0d">org.buildmlearn.toolkit.ToolkitApplication</a>
+</li>
+<li>getItem()
+: <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_navigation_drawer_menu_adapter.html#a5a1da2dcdb45463a2e24f39f4dc111b9">org.buildmlearn.toolkit.adapter.NavigationDrawerMenuAdapter</a>
+, <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_saved_project_adapter.html#ae1b4a43ad80a736a832e74164a538e71">org.buildmlearn.toolkit.adapter.SavedProjectAdapter</a>
+, <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_template_adapter.html#a0a369687833d55da928db3df41b65c39">org.buildmlearn.toolkit.adapter.TemplateAdapter</a>
+</li>
+<li>getItemId()
+: <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_navigation_drawer_menu_adapter.html#af4eeb5996c4511df23d9c08f35d2738a">org.buildmlearn.toolkit.adapter.NavigationDrawerMenuAdapter</a>
+, <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_saved_project_adapter.html#ae1ad9d54393c2f9187c9e5bce00bcea3">org.buildmlearn.toolkit.adapter.SavedProjectAdapter</a>
+, <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_template_adapter.html#af7269011268e606de6d4c841d349149f">org.buildmlearn.toolkit.adapter.TemplateAdapter</a>
+</li>
+<li>getProjectDir()
+: <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1_toolkit_application.html#a3ae286df3a66b894f4bff0c4da53ceff">org.buildmlearn.toolkit.ToolkitApplication</a>
+</li>
+<li>getSavedDir()
+: <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1_toolkit_application.html#a5f6a7d373de5d6d2c7cfacc9e6c86f47">org.buildmlearn.toolkit.ToolkitApplication</a>
+</li>
 <li>getSimulatorFragment()
 : <a class="el" href="interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1_template_interface.html#a9b7f8c39a34918a8832eec6b1eb1f3c0">org.buildmlearn.toolkit.model.TemplateInterface</a>
 , <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1_flash_template.html#ac30d95d8c0304ba6ca3735c2e97fd410">org.buildmlearn.toolkit.templates.FlashTemplate</a>
@@ -181,6 +246,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1_info_template.html#aeff54c9ca6a2925582e01d6fffea0b71">org.buildmlearn.toolkit.templates.InfoTemplate</a>
 , <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1_learn_spelling_template.html#a06f51659532ed7300478ad233aa3e8b7">org.buildmlearn.toolkit.templates.LearnSpellingTemplate</a>
 , <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1_quiz_template.html#a69f511c03a64a4945ffb41339666fcaa">org.buildmlearn.toolkit.templates.QuizTemplate</a>
+</li>
+<li>getUnZipDir()
+: <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1_toolkit_application.html#a4f504e66f421dfc2f9dfd6810c2a86cb">org.buildmlearn.toolkit.ToolkitApplication</a>
+</li>
+<li>getView()
+: <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_navigation_drawer_menu_adapter.html#afb2f8f5d68ab2fe433550cc122479be4">org.buildmlearn.toolkit.adapter.NavigationDrawerMenuAdapter</a>
+, <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_saved_project_adapter.html#a80768fbb566b6f75f2e8c699122dcbc2">org.buildmlearn.toolkit.adapter.SavedProjectAdapter</a>
+, <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_template_adapter.html#aa56bb0fb4cc820bb38099719ee72faa6">org.buildmlearn.toolkit.adapter.TemplateAdapter</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_i"></a>- i -</h3><ul>
+<li>instantiateItem()
+: <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_tutorial_adapter.html#a61e4fd5e541db4d32b4888a2e73b129e">org.buildmlearn.toolkit.adapter.TutorialAdapter</a>
+</li>
+<li>isViewFromObject()
+: <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_tutorial_adapter.html#ae8d4ccac4b3da95a24e581b25dd03646">org.buildmlearn.toolkit.adapter.TutorialAdapter</a>
 </li>
 </ul>
 
@@ -197,6 +280,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <h3><a class="anchor" id="index_o"></a>- o -</h3><ul>
+<li>onActivityCreated()
+: <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1_navigation_drawer_fragment.html#a734263415ae5341ea1cb5b4b2a469581">org.buildmlearn.toolkit.fragment.NavigationDrawerFragment</a>
+</li>
 <li>onActivityResult()
 : <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_template_editor.html#a8dd35a4525cae8911df21beed169de02">org.buildmlearn.toolkit.activity.TemplateEditor</a>
 , <a class="el" href="interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1_template_interface.html#a9c506bf3776973765d4d1e8d6954e95b">org.buildmlearn.toolkit.model.TemplateInterface</a>
@@ -206,29 +292,74 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1_quiz_template.html#a23bf444a6527a4be8b416f1d04a4912e">org.buildmlearn.toolkit.templates.QuizTemplate</a>
 </li>
 <li>onAttach()
-: <a class="el" href="interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1_template_interface.html#af511bc9b58d176182a53397494d14238">org.buildmlearn.toolkit.model.TemplateInterface</a>
+: <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1_navigation_drawer_fragment.html#ab5f8207c0919a7add76e3de6ea407ae0">org.buildmlearn.toolkit.fragment.NavigationDrawerFragment</a>
+, <a class="el" href="interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1_template_interface.html#af511bc9b58d176182a53397494d14238">org.buildmlearn.toolkit.model.TemplateInterface</a>
 , <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1_flash_template.html#ada55d7e95306576dd3a2f30183c3fc1e">org.buildmlearn.toolkit.templates.FlashTemplate</a>
 , <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1_info_template.html#ada0d67fc9e941bb29703a19467216a92">org.buildmlearn.toolkit.templates.InfoTemplate</a>
 , <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1_learn_spelling_template.html#ab644415ca83560eecd107a9d2a22e65b">org.buildmlearn.toolkit.templates.LearnSpellingTemplate</a>
 , <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1_quiz_template.html#a775355616317bb56fd8adf0962d7e05b">org.buildmlearn.toolkit.templates.QuizTemplate</a>
 </li>
+<li>onConfigurationChanged()
+: <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1_navigation_drawer_fragment.html#aa216d0cfc2c54c3cd6c9f91cb005cea1">org.buildmlearn.toolkit.fragment.NavigationDrawerFragment</a>
+</li>
 <li>onCreate()
-: <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_template_editor.html#abe4f4b6fa4f8ca3bc10f9c01e3b81f73">org.buildmlearn.toolkit.activity.TemplateEditor</a>
+: <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_about_buildm_learn.html#af8c59cecea3366aea895a28331d01e9b">org.buildmlearn.toolkit.activity.AboutBuildmLearn</a>
+, <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_deep_linker_activity.html#a7737f816c7d10e707b4788bf5ae2f591">org.buildmlearn.toolkit.activity.DeepLinkerActivity</a>
+, <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_first_run_activity.html#a847a7bc25bdbd77b2a7bc90cd3ca38bb">org.buildmlearn.toolkit.activity.FirstRunActivity</a>
+, <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_home_activity.html#a84a92cce3842759b4e3c18ecefbe2ced">org.buildmlearn.toolkit.activity.HomeActivity</a>
+, <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_template_activity.html#a0bef4534d603cda941537d9527010576">org.buildmlearn.toolkit.activity.TemplateActivity</a>
+, <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_template_editor.html#abe4f4b6fa4f8ca3bc10f9c01e3b81f73">org.buildmlearn.toolkit.activity.TemplateEditor</a>
+, <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_tutorial_activity.html#ab43b5a679eb9d2c706841cb2d4c2a704">org.buildmlearn.toolkit.activity.TutorialActivity</a>
+, <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1_home_fragment.html#a183d132e866fbc3af61341c95323be94">org.buildmlearn.toolkit.fragment.HomeFragment</a>
+, <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1_load_project_fragment.html#aa3475b8770215affec67dd109da8e9cb">org.buildmlearn.toolkit.fragment.LoadProjectFragment</a>
+, <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1_navigation_drawer_fragment.html#a7a9c297215fb754ea5bd3745233cec21">org.buildmlearn.toolkit.fragment.NavigationDrawerFragment</a>
+, <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1simulator_1_1_simulator.html#aa1564faa9391f86b07b713365af01ee8">org.buildmlearn.toolkit.simulator.Simulator</a>
 </li>
 <li>onCreateOptionsMenu()
-: <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_template_editor.html#a9ce2150056a19a2bbd3222f061e1d4b2">org.buildmlearn.toolkit.activity.TemplateEditor</a>
+: <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_about_buildm_learn.html#aae36faad42229bef35356768eb2456ea">org.buildmlearn.toolkit.activity.AboutBuildmLearn</a>
+, <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_template_activity.html#aa4a2a52e7548ca9b54a353420f79ff75">org.buildmlearn.toolkit.activity.TemplateActivity</a>
+, <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_template_editor.html#a9ce2150056a19a2bbd3222f061e1d4b2">org.buildmlearn.toolkit.activity.TemplateEditor</a>
+, <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1_navigation_drawer_fragment.html#a23412cd6598c10cee64ff60848cc6771">org.buildmlearn.toolkit.fragment.NavigationDrawerFragment</a>
+, <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1simulator_1_1_simulator.html#aa4b646ec6491ad85b3c96e35c6efcd6b">org.buildmlearn.toolkit.simulator.Simulator</a>
+</li>
+<li>onCreateView()
+: <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1_home_fragment.html#a80599e92f595260551a0d5753021ebfc">org.buildmlearn.toolkit.fragment.HomeFragment</a>
+, <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1_load_project_fragment.html#a00df408d1104d5e9da684300c7d1a373">org.buildmlearn.toolkit.fragment.LoadProjectFragment</a>
+, <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1_navigation_drawer_fragment.html#a960b71d9ccecc621b4a5506f38a105cf">org.buildmlearn.toolkit.fragment.NavigationDrawerFragment</a>
 </li>
 <li>onDestroy()
 : <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1_spelling_activity.html#a733cf45defffb845f8537d561c78c066">org.buildmlearn.toolkit.learnspelling.SpellingActivity</a>
 </li>
+<li>onDetach()
+: <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1_home_fragment.html#a914cfd284407c1daa41b81396c45ef34">org.buildmlearn.toolkit.fragment.HomeFragment</a>
+, <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1_navigation_drawer_fragment.html#af5ec3253d086d2733aea3a595061c389">org.buildmlearn.toolkit.fragment.NavigationDrawerFragment</a>
+</li>
+<li>onItemClick()
+: <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1_load_project_fragment.html#ab3fd6e093c178f367cf3403496d30fd5">org.buildmlearn.toolkit.fragment.LoadProjectFragment</a>
+</li>
+<li>onNavigationDrawerItemSelected()
+: <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_home_activity.html#af75c80f626f8c3a7141c046108ff229f">org.buildmlearn.toolkit.activity.HomeActivity</a>
+</li>
 <li>onOptionsItemSelected()
-: <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_template_editor.html#a619c591e1af2eba8188da92a021bc222">org.buildmlearn.toolkit.activity.TemplateEditor</a>
+: <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_about_buildm_learn.html#adb420eeaf2bf93bff38b52f19bc16b31">org.buildmlearn.toolkit.activity.AboutBuildmLearn</a>
+, <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_template_activity.html#a93ae9651ee39cf090f15caac413e9892">org.buildmlearn.toolkit.activity.TemplateActivity</a>
+, <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_template_editor.html#a619c591e1af2eba8188da92a021bc222">org.buildmlearn.toolkit.activity.TemplateEditor</a>
+, <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1_navigation_drawer_fragment.html#a68eb844e52918f108a9145c9fd9e1bee">org.buildmlearn.toolkit.fragment.NavigationDrawerFragment</a>
+, <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1simulator_1_1_simulator.html#aaa92074738110f36217c7fa33d920fb1">org.buildmlearn.toolkit.simulator.Simulator</a>
 </li>
 <li>onPrepareOptionsMenu()
 : <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_template_editor.html#a4113877eb08f8665000bd3eb733737ef">org.buildmlearn.toolkit.activity.TemplateEditor</a>
 </li>
+<li>onResume()
+: <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1_load_project_fragment.html#af7ebf8d42c3c401e7fcad1fa3850001c">org.buildmlearn.toolkit.fragment.LoadProjectFragment</a>
+</li>
 <li>onSaveInstanceState()
 : <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_template_editor.html#a6f0e3399d8b62597bfed2bb402d44ae0">org.buildmlearn.toolkit.activity.TemplateEditor</a>
+, <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1_navigation_drawer_fragment.html#a3ecc348d09897125baff9673c4145a55">org.buildmlearn.toolkit.fragment.NavigationDrawerFragment</a>
+, <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1simulator_1_1_simulator.html#a56b9664eb7326624e8933961d3e0c535">org.buildmlearn.toolkit.simulator.Simulator</a>
+</li>
+<li>onViewCreated()
+: <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1_load_project_fragment.html#a486509578e69cb110ec10c53c6c813c6">org.buildmlearn.toolkit.fragment.LoadProjectFragment</a>
 </li>
 </ul>
 
@@ -252,6 +383,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>restoreTemplateEditor()
 : <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_template_editor.html#a957831b300058bc26fbfc187517962a8">org.buildmlearn.toolkit.activity.TemplateEditor</a>
+, <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1simulator_1_1_simulator.html#a5df030ae2efb3c7cd3b2597867fceaf4">org.buildmlearn.toolkit.simulator.Simulator</a>
 </li>
 </ul>
 
@@ -259,6 +391,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <h3><a class="anchor" id="index_s"></a>- s -</h3><ul>
 <li>saveProject()
 : <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_template_editor.html#aaec7f80eb29a74505a25bed11c20c29d">org.buildmlearn.toolkit.activity.TemplateEditor</a>
+</li>
+<li>saveXmlFile()
+: <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1_file_utils.html#a37f577c0b56f2ffc56824657ac220fb7">org.buildmlearn.toolkit.utilities.FileUtils</a>
 </li>
 <li>setAdapter()
 : <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_template_editor.html#a5c1e35aa985ed2199d9795ad1ab03e0d">org.buildmlearn.toolkit.activity.TemplateEditor</a>
@@ -274,6 +409,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>setUpTemplateEditor()
 : <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_template_editor.html#a064ac90668a94f32256938cb08fe896e">org.buildmlearn.toolkit.activity.TemplateEditor</a>
+, <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1simulator_1_1_simulator.html#a7bcd184d22530dd1683487621e6dd5bf">org.buildmlearn.toolkit.simulator.Simulator</a>
+</li>
+<li>showGlobalContextActionBar()
+: <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1_navigation_drawer_fragment.html#a082efc992fd2f9af81579c038f1c1bd0">org.buildmlearn.toolkit.fragment.NavigationDrawerFragment</a>
 </li>
 <li>startSimulator()
 : <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_template_editor.html#a0f4842fdb6b28f218c6f2ac5c69e62e1">org.buildmlearn.toolkit.activity.TemplateEditor</a>
@@ -282,16 +421,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <h3><a class="anchor" id="index_u"></a>- u -</h3><ul>
+<li>unZip()
+: <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1_file_utils.html#a3985505c7367639777e7829b87fa625b">org.buildmlearn.toolkit.utilities.FileUtils</a>
+</li>
 <li>updateHeaderDetails()
 : <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_template_editor.html#a3d785b7595c43249fc5a73e4f69daf41">org.buildmlearn.toolkit.activity.TemplateEditor</a>
 </li>
 </ul>
+
+
+<h3><a class="anchor" id="index_z"></a>- z -</h3><ul>
+<li>zipFolder()
+: <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1_file_utils.html#aa79713cc1d17fbf9b7294c60e851b774">org.buildmlearn.toolkit.utilities.FileUtils</a>
+</li>
+</ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.10
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.10 </li>
+  </ul>
+</div>
 </body>
 </html>

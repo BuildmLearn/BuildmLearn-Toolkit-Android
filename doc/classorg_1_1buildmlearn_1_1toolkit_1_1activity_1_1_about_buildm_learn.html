@@ -8,6 +8,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -42,6 +50,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -68,6 +77,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_about_buildm_learn.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -82,11 +106,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><b>org</b></li><li class="navelem"><b>buildmlearn</b></li><li class="navelem"><b>toolkit</b></li><li class="navelem"><b>activity</b></li><li class="navelem"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_about_buildm_learn.html">AboutBuildmLearn</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -96,6 +115,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">org.buildmlearn.toolkit.activity.AboutBuildmLearn Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Gives brief info about BuildmLearn community and toolkit.  
+ <a href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_about_buildm_learn.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for org.buildmlearn.toolkit.activity.AboutBuildmLearn:</div>
 <div class="dyncontent">
@@ -107,28 +129,96 @@ Inheritance diagram for org.buildmlearn.toolkit.activity.AboutBuildmLearn:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aae36faad42229bef35356768eb2456ea"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aae36faad42229bef35356768eb2456ea"></a>
-boolean&#160;</td><td class="memItemRight" valign="bottom"><b>onCreateOptionsMenu</b> (Menu menu)</td></tr>
+<tr class="memitem:aae36faad42229bef35356768eb2456ea"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_about_buildm_learn.html#aae36faad42229bef35356768eb2456ea">onCreateOptionsMenu</a> (Menu menu)</td></tr>
 <tr class="separator:aae36faad42229bef35356768eb2456ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb420eeaf2bf93bff38b52f19bc16b31"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adb420eeaf2bf93bff38b52f19bc16b31"></a>
-boolean&#160;</td><td class="memItemRight" valign="bottom"><b>onOptionsItemSelected</b> (MenuItem item)</td></tr>
+<tr class="memitem:adb420eeaf2bf93bff38b52f19bc16b31"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_about_buildm_learn.html#adb420eeaf2bf93bff38b52f19bc16b31">onOptionsItemSelected</a> (MenuItem item)</td></tr>
 <tr class="separator:adb420eeaf2bf93bff38b52f19bc16b31"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:af8c59cecea3366aea895a28331d01e9b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af8c59cecea3366aea895a28331d01e9b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>onCreate</b> (Bundle savedInstanceState)</td></tr>
+<tr class="memitem:af8c59cecea3366aea895a28331d01e9b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_about_buildm_learn.html#af8c59cecea3366aea895a28331d01e9b">onCreate</a> (Bundle savedInstanceState)</td></tr>
 <tr class="separator:af8c59cecea3366aea895a28331d01e9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Gives brief info about BuildmLearn community and toolkit. </p>
+
+<p>Definition at line <a class="el" href="_about_buildm_learn_8java_source.html#l00015">15</a> of file <a class="el" href="_about_buildm_learn_8java_source.html">AboutBuildmLearn.java</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="af8c59cecea3366aea895a28331d01e9b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void org.buildmlearn.toolkit.activity.AboutBuildmLearn.onCreate </td>
+          <td>(</td>
+          <td class="paramtype">Bundle&#160;</td>
+          <td class="paramname"><em>savedInstanceState</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_about_buildm_learn_8java_source.html#l00020">20</a> of file <a class="el" href="_about_buildm_learn_8java_source.html">AboutBuildmLearn.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aae36faad42229bef35356768eb2456ea"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean org.buildmlearn.toolkit.activity.AboutBuildmLearn.onCreateOptionsMenu </td>
+          <td>(</td>
+          <td class="paramtype">Menu&#160;</td>
+          <td class="paramname"><em>menu</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_about_buildm_learn_8java_source.html#l00034">34</a> of file <a class="el" href="_about_buildm_learn_8java_source.html">AboutBuildmLearn.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="adb420eeaf2bf93bff38b52f19bc16b31"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean org.buildmlearn.toolkit.activity.AboutBuildmLearn.onOptionsItemSelected </td>
+          <td>(</td>
+          <td class="paramtype">MenuItem&#160;</td>
+          <td class="paramname"><em>item</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_about_buildm_learn_8java_source.html#l00044">44</a> of file <a class="el" href="_about_buildm_learn_8java_source.html">AboutBuildmLearn.java</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>/Users/abhishek/Cloned/BuildmLearn-Toolkit-Android/source-code/app/src/main/java/org/buildmlearn/toolkit/activity/AboutBuildmLearn.java</li>
+<li>/Users/abhishek/Cloned/BuildmLearn-Toolkit-Android/source-code/app/src/main/java/org/buildmlearn/toolkit/activity/<a class="el" href="_about_buildm_learn_8java_source.html">AboutBuildmLearn.java</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.10
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>org</b></li><li class="navelem"><b>buildmlearn</b></li><li class="navelem"><b>toolkit</b></li><li class="navelem"><b>activity</b></li><li class="navelem"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1_about_buildm_learn.html">AboutBuildmLearn</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.10 </li>
+  </ul>
+</div>
 </body>
 </html>

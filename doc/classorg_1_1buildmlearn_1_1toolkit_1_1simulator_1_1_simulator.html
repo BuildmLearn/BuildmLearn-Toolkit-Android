@@ -8,6 +8,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -42,6 +50,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -68,6 +77,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('classorg_1_1buildmlearn_1_1toolkit_1_1simulator_1_1_simulator.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -82,11 +106,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><b>org</b></li><li class="navelem"><b>buildmlearn</b></li><li class="navelem"><b>toolkit</b></li><li class="navelem"><b>simulator</b></li><li class="navelem"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1simulator_1_1_simulator.html">Simulator</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -96,6 +115,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">org.buildmlearn.toolkit.simulator.Simulator Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>This activity acts as a placeholder for <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1simulator_1_1_simulator.html" title="This activity acts as a placeholder for Simulator fragment. Contains a Nexus 6 frame in which the fra...">Simulator</a> fragment. Contains a Nexus 6 frame in which the fragments are laodded.  
+ <a href="classorg_1_1buildmlearn_1_1toolkit_1_1simulator_1_1_simulator.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for org.buildmlearn.toolkit.simulator.Simulator:</div>
 <div class="dyncontent">
@@ -107,31 +129,132 @@ Inheritance diagram for org.buildmlearn.toolkit.simulator.Simulator:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa4b646ec6491ad85b3c96e35c6efcd6b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa4b646ec6491ad85b3c96e35c6efcd6b"></a>
-boolean&#160;</td><td class="memItemRight" valign="bottom"><b>onCreateOptionsMenu</b> (Menu menu)</td></tr>
+<tr class="memitem:aa4b646ec6491ad85b3c96e35c6efcd6b"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1simulator_1_1_simulator.html#aa4b646ec6491ad85b3c96e35c6efcd6b">onCreateOptionsMenu</a> (Menu menu)</td></tr>
 <tr class="separator:aa4b646ec6491ad85b3c96e35c6efcd6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa92074738110f36217c7fa33d920fb1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaa92074738110f36217c7fa33d920fb1"></a>
-boolean&#160;</td><td class="memItemRight" valign="bottom"><b>onOptionsItemSelected</b> (MenuItem item)</td></tr>
+<tr class="memitem:aaa92074738110f36217c7fa33d920fb1"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1simulator_1_1_simulator.html#aaa92074738110f36217c7fa33d920fb1">onOptionsItemSelected</a> (MenuItem item)</td></tr>
 <tr class="separator:aaa92074738110f36217c7fa33d920fb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:aa1564faa9391f86b07b713365af01ee8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa1564faa9391f86b07b713365af01ee8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>onCreate</b> (Bundle savedInstanceState)</td></tr>
+<tr class="memitem:aa1564faa9391f86b07b713365af01ee8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1simulator_1_1_simulator.html#aa1564faa9391f86b07b713365af01ee8">onCreate</a> (Bundle savedInstanceState)</td></tr>
 <tr class="separator:aa1564faa9391f86b07b713365af01ee8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a56b9664eb7326624e8933961d3e0c535"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a56b9664eb7326624e8933961d3e0c535"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>onSaveInstanceState</b> (Bundle outState)</td></tr>
+<tr class="memitem:a7bcd184d22530dd1683487621e6dd5bf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7bcd184d22530dd1683487621e6dd5bf"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1simulator_1_1_simulator.html#a7bcd184d22530dd1683487621e6dd5bf">setUpTemplateEditor</a> ()</td></tr>
+<tr class="memdesc:a7bcd184d22530dd1683487621e6dd5bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches the instance from the Template Enum for given template object. <br /></td></tr>
+<tr class="separator:a7bcd184d22530dd1683487621e6dd5bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5df030ae2efb3c7cd3b2597867fceaf4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5df030ae2efb3c7cd3b2597867fceaf4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1simulator_1_1_simulator.html#a5df030ae2efb3c7cd3b2597867fceaf4">restoreTemplateEditor</a> (Bundle savedInstanceState)</td></tr>
+<tr class="memdesc:a5df030ae2efb3c7cd3b2597867fceaf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restores simulator state on configuration change. <br /></td></tr>
+<tr class="separator:a5df030ae2efb3c7cd3b2597867fceaf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56b9664eb7326624e8933961d3e0c535"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1simulator_1_1_simulator.html#a56b9664eb7326624e8933961d3e0c535">onSaveInstanceState</a> (Bundle outState)</td></tr>
 <tr class="separator:a56b9664eb7326624e8933961d3e0c535"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This activity acts as a placeholder for <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1simulator_1_1_simulator.html" title="This activity acts as a placeholder for Simulator fragment. Contains a Nexus 6 frame in which the fra...">Simulator</a> fragment. Contains a Nexus 6 frame in which the fragments are laodded. </p>
+
+<p>Definition at line <a class="el" href="_simulator_8java_source.html#l00021">21</a> of file <a class="el" href="_simulator_8java_source.html">Simulator.java</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="aa1564faa9391f86b07b713365af01ee8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void org.buildmlearn.toolkit.simulator.Simulator.onCreate </td>
+          <td>(</td>
+          <td class="paramtype">Bundle&#160;</td>
+          <td class="paramname"><em>savedInstanceState</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_simulator_8java_source.html#l00032">32</a> of file <a class="el" href="_simulator_8java_source.html">Simulator.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa4b646ec6491ad85b3c96e35c6efcd6b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean org.buildmlearn.toolkit.simulator.Simulator.onCreateOptionsMenu </td>
+          <td>(</td>
+          <td class="paramtype">Menu&#160;</td>
+          <td class="paramname"><em>menu</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_simulator_8java_source.html#l00056">56</a> of file <a class="el" href="_simulator_8java_source.html">Simulator.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aaa92074738110f36217c7fa33d920fb1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean org.buildmlearn.toolkit.simulator.Simulator.onOptionsItemSelected </td>
+          <td>(</td>
+          <td class="paramtype">MenuItem&#160;</td>
+          <td class="paramname"><em>item</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_simulator_8java_source.html#l00066">66</a> of file <a class="el" href="_simulator_8java_source.html">Simulator.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a56b9664eb7326624e8933961d3e0c535"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void org.buildmlearn.toolkit.simulator.Simulator.onSaveInstanceState </td>
+          <td>(</td>
+          <td class="paramtype">Bundle&#160;</td>
+          <td class="paramname"><em>outState</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_simulator_8java_source.html#l00120">120</a> of file <a class="el" href="_simulator_8java_source.html">Simulator.java</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>/Users/abhishek/Cloned/BuildmLearn-Toolkit-Android/source-code/app/src/main/java/org/buildmlearn/toolkit/simulator/Simulator.java</li>
+<li>/Users/abhishek/Cloned/BuildmLearn-Toolkit-Android/source-code/app/src/main/java/org/buildmlearn/toolkit/simulator/<a class="el" href="_simulator_8java_source.html">Simulator.java</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.10
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>org</b></li><li class="navelem"><b>buildmlearn</b></li><li class="navelem"><b>toolkit</b></li><li class="navelem"><b>simulator</b></li><li class="navelem"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1simulator_1_1_simulator.html">Simulator</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.10 </li>
+  </ul>
+</div>
 </body>
 </html>

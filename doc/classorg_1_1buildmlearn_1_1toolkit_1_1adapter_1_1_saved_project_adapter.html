@@ -8,6 +8,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -42,6 +50,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -68,6 +77,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_saved_project_adapter.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -82,11 +106,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><b>org</b></li><li class="navelem"><b>buildmlearn</b></li><li class="navelem"><b>toolkit</b></li><li class="navelem"><b>adapter</b></li><li class="navelem"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_saved_project_adapter.html">SavedProjectAdapter</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
@@ -118,31 +137,121 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8a42e7c094f6ce608a5bfb1e5e79a11f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8a42e7c094f6ce608a5bfb1e5e79a11f"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>SavedProjectAdapter</b> (Context mContext, ArrayList&lt; <a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1model_1_1_saved_project.html">SavedProject</a> &gt; data)</td></tr>
 <tr class="separator:a8a42e7c094f6ce608a5bfb1e5e79a11f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a143869cd5a7b07ef9891db54b7aadd94"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a143869cd5a7b07ef9891db54b7aadd94"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getCount</b> ()</td></tr>
+<tr class="memitem:a143869cd5a7b07ef9891db54b7aadd94"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_saved_project_adapter.html#a143869cd5a7b07ef9891db54b7aadd94">getCount</a> ()</td></tr>
 <tr class="separator:a143869cd5a7b07ef9891db54b7aadd94"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1b4a43ad80a736a832e74164a538e71"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae1b4a43ad80a736a832e74164a538e71"></a>
-<a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1model_1_1_saved_project.html">SavedProject</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getItem</b> (int i)</td></tr>
+<tr class="memitem:ae1b4a43ad80a736a832e74164a538e71"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1model_1_1_saved_project.html">SavedProject</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_saved_project_adapter.html#ae1b4a43ad80a736a832e74164a538e71">getItem</a> (int i)</td></tr>
 <tr class="separator:ae1b4a43ad80a736a832e74164a538e71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1ad9d54393c2f9187c9e5bce00bcea3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae1ad9d54393c2f9187c9e5bce00bcea3"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><b>getItemId</b> (int i)</td></tr>
+<tr class="memitem:ae1ad9d54393c2f9187c9e5bce00bcea3"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_saved_project_adapter.html#ae1ad9d54393c2f9187c9e5bce00bcea3">getItemId</a> (int i)</td></tr>
 <tr class="separator:ae1ad9d54393c2f9187c9e5bce00bcea3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a80768fbb566b6f75f2e8c699122dcbc2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a80768fbb566b6f75f2e8c699122dcbc2"></a>
-View&#160;</td><td class="memItemRight" valign="bottom"><b>getView</b> (int position, View convertView, ViewGroup parent)</td></tr>
+<tr class="memitem:a80768fbb566b6f75f2e8c699122dcbc2"><td class="memItemLeft" align="right" valign="top">View&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_saved_project_adapter.html#a80768fbb566b6f75f2e8c699122dcbc2">getView</a> (int position, View convertView, ViewGroup parent)</td></tr>
 <tr class="separator:a80768fbb566b6f75f2e8c699122dcbc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Adapter used for showing saved projects in a list. </p>
 <p>Created by Abhishek on 01-06-2015. </p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
-<li>/Users/abhishek/Cloned/BuildmLearn-Toolkit-Android/source-code/app/src/main/java/org/buildmlearn/toolkit/adapter/SavedProjectAdapter.java</li>
+
+<p>Definition at line <a class="el" href="_saved_project_adapter_8java_source.html#l00021">21</a> of file <a class="el" href="_saved_project_adapter_8java_source.html">SavedProjectAdapter.java</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a143869cd5a7b07ef9891db54b7aadd94"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int org.buildmlearn.toolkit.adapter.SavedProjectAdapter.getCount </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_saved_project_adapter_8java_source.html#l00035">35</a> of file <a class="el" href="_saved_project_adapter_8java_source.html">SavedProjectAdapter.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae1b4a43ad80a736a832e74164a538e71"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1model_1_1_saved_project.html">SavedProject</a> org.buildmlearn.toolkit.adapter.SavedProjectAdapter.getItem </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_saved_project_adapter_8java_source.html#l00043">43</a> of file <a class="el" href="_saved_project_adapter_8java_source.html">SavedProjectAdapter.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae1ad9d54393c2f9187c9e5bce00bcea3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long org.buildmlearn.toolkit.adapter.SavedProjectAdapter.getItemId </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_saved_project_adapter_8java_source.html#l00051">51</a> of file <a class="el" href="_saved_project_adapter_8java_source.html">SavedProjectAdapter.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a80768fbb566b6f75f2e8c699122dcbc2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">View org.buildmlearn.toolkit.adapter.SavedProjectAdapter.getView </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">View&#160;</td>
+          <td class="paramname"><em>convertView</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ViewGroup&#160;</td>
+          <td class="paramname"><em>parent</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_saved_project_adapter_8java_source.html#l00059">59</a> of file <a class="el" href="_saved_project_adapter_8java_source.html">SavedProjectAdapter.java</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>/Users/abhishek/Cloned/BuildmLearn-Toolkit-Android/source-code/app/src/main/java/org/buildmlearn/toolkit/adapter/<a class="el" href="_saved_project_adapter_8java_source.html">SavedProjectAdapter.java</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.10
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>org</b></li><li class="navelem"><b>buildmlearn</b></li><li class="navelem"><b>toolkit</b></li><li class="navelem"><b>adapter</b></li><li class="navelem"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_saved_project_adapter.html">SavedProjectAdapter</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.10 </li>
+  </ul>
+</div>
 </body>
 </html>

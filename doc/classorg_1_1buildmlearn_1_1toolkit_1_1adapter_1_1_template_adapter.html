@@ -8,6 +8,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -42,6 +50,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -68,6 +77,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_template_adapter.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -82,11 +106,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><b>org</b></li><li class="navelem"><b>buildmlearn</b></li><li class="navelem"><b>toolkit</b></li><li class="navelem"><b>adapter</b></li><li class="navelem"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_template_adapter.html">TemplateAdapter</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
@@ -113,31 +132,121 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a12a3a1aa862a0430af201161d1a9228e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a12a3a1aa862a0430af201161d1a9228e"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>TemplateAdapter</b> (Context context, int count)</td></tr>
 <tr class="separator:a12a3a1aa862a0430af201161d1a9228e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca56e48f1ee0920f7fdefb5a45399ff8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aca56e48f1ee0920f7fdefb5a45399ff8"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getCount</b> ()</td></tr>
+<tr class="memitem:aca56e48f1ee0920f7fdefb5a45399ff8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_template_adapter.html#aca56e48f1ee0920f7fdefb5a45399ff8">getCount</a> ()</td></tr>
 <tr class="separator:aca56e48f1ee0920f7fdefb5a45399ff8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a369687833d55da928db3df41b65c39"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0a369687833d55da928db3df41b65c39"></a>
-<a class="el" href="enumorg_1_1buildmlearn_1_1toolkit_1_1model_1_1_template.html">Template</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getItem</b> (int i)</td></tr>
+<tr class="memitem:a0a369687833d55da928db3df41b65c39"><td class="memItemLeft" align="right" valign="top"><a class="el" href="enumorg_1_1buildmlearn_1_1toolkit_1_1model_1_1_template.html">Template</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_template_adapter.html#a0a369687833d55da928db3df41b65c39">getItem</a> (int i)</td></tr>
 <tr class="separator:a0a369687833d55da928db3df41b65c39"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af7269011268e606de6d4c841d349149f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af7269011268e606de6d4c841d349149f"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><b>getItemId</b> (int i)</td></tr>
+<tr class="memitem:af7269011268e606de6d4c841d349149f"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_template_adapter.html#af7269011268e606de6d4c841d349149f">getItemId</a> (int i)</td></tr>
 <tr class="separator:af7269011268e606de6d4c841d349149f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa56bb0fb4cc820bb38099719ee72faa6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa56bb0fb4cc820bb38099719ee72faa6"></a>
-View&#160;</td><td class="memItemRight" valign="bottom"><b>getView</b> (int i, View view, ViewGroup viewGroup)</td></tr>
+<tr class="memitem:aa56bb0fb4cc820bb38099719ee72faa6"><td class="memItemLeft" align="right" valign="top">View&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_template_adapter.html#aa56bb0fb4cc820bb38099719ee72faa6">getView</a> (int i, View view, ViewGroup viewGroup)</td></tr>
 <tr class="separator:aa56bb0fb4cc820bb38099719ee72faa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Adapter used for showing Templates available in the toolkit. </p>
 <p>Created by Abhishek on 23-05-2015. </p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
-<li>/Users/abhishek/Cloned/BuildmLearn-Toolkit-Android/source-code/app/src/main/java/org/buildmlearn/toolkit/adapter/TemplateAdapter.java</li>
+
+<p>Definition at line <a class="el" href="_template_adapter_8java_source.html#l00022">22</a> of file <a class="el" href="_template_adapter_8java_source.html">TemplateAdapter.java</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="aca56e48f1ee0920f7fdefb5a45399ff8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int org.buildmlearn.toolkit.adapter.TemplateAdapter.getCount </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_template_adapter_8java_source.html#l00039">39</a> of file <a class="el" href="_template_adapter_8java_source.html">TemplateAdapter.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0a369687833d55da928db3df41b65c39"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="enumorg_1_1buildmlearn_1_1toolkit_1_1model_1_1_template.html">Template</a> org.buildmlearn.toolkit.adapter.TemplateAdapter.getItem </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_template_adapter_8java_source.html#l00047">47</a> of file <a class="el" href="_template_adapter_8java_source.html">TemplateAdapter.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af7269011268e606de6d4c841d349149f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long org.buildmlearn.toolkit.adapter.TemplateAdapter.getItemId </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_template_adapter_8java_source.html#l00055">55</a> of file <a class="el" href="_template_adapter_8java_source.html">TemplateAdapter.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa56bb0fb4cc820bb38099719ee72faa6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">View org.buildmlearn.toolkit.adapter.TemplateAdapter.getView </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">View&#160;</td>
+          <td class="paramname"><em>view</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ViewGroup&#160;</td>
+          <td class="paramname"><em>viewGroup</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_template_adapter_8java_source.html#l00063">63</a> of file <a class="el" href="_template_adapter_8java_source.html">TemplateAdapter.java</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>/Users/abhishek/Cloned/BuildmLearn-Toolkit-Android/source-code/app/src/main/java/org/buildmlearn/toolkit/adapter/<a class="el" href="_template_adapter_8java_source.html">TemplateAdapter.java</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.10
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>org</b></li><li class="navelem"><b>buildmlearn</b></li><li class="navelem"><b>toolkit</b></li><li class="navelem"><b>adapter</b></li><li class="navelem"><a class="el" href="classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1_template_adapter.html">TemplateAdapter</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.10 </li>
+  </ul>
+</div>
 </body>
 </html>
