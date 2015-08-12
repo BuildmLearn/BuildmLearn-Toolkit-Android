@@ -4,6 +4,8 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 
 /**
+ * @brief Model class for holding the details of a Saved File
+ *
  * Created by Abhishek on 01-06-2015.
  */
 public class SavedProject {

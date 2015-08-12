@@ -10,6 +10,8 @@ import org.buildmlearn.toolkit.templates.LearnSpellingTemplate;
 import org.buildmlearn.toolkit.templates.QuizTemplate;
 
 /**
+ * @brief Enum for the templates that are included into toolkit application.
+ *
  * Created by Abhishek on 23-05-2015.
  */
 public enum Template {

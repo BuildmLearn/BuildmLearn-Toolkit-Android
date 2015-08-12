@@ -28,21 +28,33 @@ public class SavedProjectAdapter extends BaseAdapter {
         this.data = data;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int getCount() {
         return data.size();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public SavedProject getItem(int i) {
         return data.get(i);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public long getItemId(int i) {
         return i;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater mInflater;

@@ -17,6 +17,8 @@ import org.buildmlearn.toolkit.views.TextViewPlus;
 import java.util.ArrayList;
 
 /**
+ * @brief Adapter for displaying Info Template Editor data.
+ *
  * Created by abhishek on 17/06/15 at 9:48 PM.
  */
 public class InfoAdapter extends BaseAdapter {

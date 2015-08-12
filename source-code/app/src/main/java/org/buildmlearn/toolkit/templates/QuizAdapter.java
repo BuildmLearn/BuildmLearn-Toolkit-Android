@@ -21,6 +21,8 @@ import org.buildmlearn.toolkit.views.TextViewPlus;
 import java.util.ArrayList;
 
 /**
+ * @brief Adapter for displaying Quiz Template Editor data.
+ *
  * Created by abhishek on 28/5/15.
  */
 public class QuizAdapter extends BaseAdapter {

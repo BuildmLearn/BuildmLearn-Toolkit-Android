@@ -63,7 +63,7 @@ public interface TemplateInterface extends Serializable {
 
     /**
      * @param position Position of the item to be removed
-     * @bried Remove an item form template data list
+     * @brief Remove an item form template data list
      */
     void deleteItem(int position);
 
@@ -73,7 +73,7 @@ public interface TemplateInterface extends Serializable {
     /**
      * @param filePathWithName Path of the generated .buildmlearn file
      * @return
-     * @bried Returns a fragment required for the Simulator Activity.
+     * @brief Returns a fragment required for the Simulator Activity.
      *
      * Returns a fragment required for the Simulator Activity.
      * **Dev Note: File Path should be used to populate data from actual .buildmlearn file in the Simulator.
@@ -104,7 +104,7 @@ public interface TemplateInterface extends Serializable {
      * @param requestCode
      * @param resultCode
      * @param intent
-     * @bried Called whenever onActivityResult is called in Template Editor. Can be used to perform action related to intent and callbacks.
+     * @brief Called whenever onActivityResult is called in Template Editor. Can be used to perform action related to intent and callbacks.
      */
     void onActivityResult(Context context, int requestCode, int resultCode, Intent intent);
 

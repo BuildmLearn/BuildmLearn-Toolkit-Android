@@ -18,6 +18,8 @@ import org.buildmlearn.toolkit.views.TextViewPlus;
 import java.util.ArrayList;
 
 /**
+ * @brief Adapter for displaying Flash Card Template Editor data.
+ *
  * Created by abhishek on 12/07/15 at 11:56 PM.
  */
 public class FlashCardAdapter extends BaseAdapter {

@@ -32,21 +32,33 @@ public class TemplateAdapter extends BaseAdapter {
         this.count = count;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int getCount() {
         return templates.length;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Template getItem(int i) {
         return templates[i];
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public long getItemId(int i) {
         return i;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
 

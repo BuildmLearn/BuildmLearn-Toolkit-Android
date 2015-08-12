@@ -36,6 +36,9 @@ public class HomeActivity extends AppCompatActivity
     private CharSequence mTitle;
     private Section currentSection;
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +59,9 @@ public class HomeActivity extends AppCompatActivity
 
     }
 
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         Section[] menuItem = Section.values();

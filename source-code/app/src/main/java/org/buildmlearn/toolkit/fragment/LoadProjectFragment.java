@@ -32,6 +32,9 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+/**
+ * @brief Fragment used for loading existing projects into a list.
+ */
 public class LoadProjectFragment extends Fragment implements AbsListView.OnItemClickListener {
 
     private static final String TAG = "Load Project Fragment";
@@ -41,7 +44,9 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
     private ToolkitApplication mToolkit;
     private ArrayList<SavedProject> savedProjects;
 
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,6 +97,9 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
         Collections.reverse(savedProjects);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -99,6 +107,9 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
         return view;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         mAdapter = new SavedProjectAdapter(getActivity(), savedProjects);
@@ -107,6 +118,9 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
         mListView.setOnItemClickListener(this);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         SavedProject project = savedProjects.get(position);
@@ -137,6 +151,9 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void onResume() {
         if (mAdapter != null) {

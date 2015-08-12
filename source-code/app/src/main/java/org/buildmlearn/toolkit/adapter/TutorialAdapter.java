@@ -34,6 +34,9 @@ public class TutorialAdapter extends PagerAdapter {
         this.mStartActivity = startActivity;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int getCount() {
         return mTutorials.length;
@@ -48,7 +51,9 @@ public class TutorialAdapter extends PagerAdapter {
         return position;
     }
 
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Object instantiateItem(ViewGroup container, final int position) {
 
@@ -93,12 +98,17 @@ public class TutorialAdapter extends PagerAdapter {
         return convertView;
     }
 
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean isViewFromObject(View view, Object object) {
         return view == ((View) object);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
         container.removeView((ViewGroup) object);

@@ -29,7 +29,9 @@ import javax.xml.parsers.ParserConfigurationException;
  */
 
 public class DeepLinkerActivity extends Activity {
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

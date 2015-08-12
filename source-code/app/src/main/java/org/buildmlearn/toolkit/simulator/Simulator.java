@@ -14,6 +14,10 @@ import org.buildmlearn.toolkit.constant.Constants;
 import org.buildmlearn.toolkit.model.Template;
 import org.buildmlearn.toolkit.model.TemplateInterface;
 
+/**
+ * @brief This activity acts as a placeholder for Simulator fragment.
+ * Contains a Nexus 6 frame in which the fragments are laodded
+ */
 public class Simulator extends AppCompatActivity {
 
     private static final String TAG = "SIMULATOR";
@@ -21,6 +25,9 @@ public class Simulator extends AppCompatActivity {
     private TemplateInterface selectedTemplate;
     private Template template;
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +49,9 @@ public class Simulator extends AppCompatActivity {
         getFragmentManager().beginTransaction().replace(R.id.container, selectedTemplate.getSimulatorFragment(getIntent().getStringExtra(Constants.SIMULATOR_FILE_PATH)), selectedTemplate.getTitle()).addToBackStack(null).commit();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -49,6 +59,9 @@ public class Simulator extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -66,8 +79,10 @@ public class Simulator extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void setUpTemplateEditor() {
-        Log.d(TAG, "Activity Created");
+    /**
+     * @brief Fetches the instance from the Template Enum for given template object
+     */
+    protected void setUpTemplateEditor() {
         Template[] templates = Template.values();
         template = templates[templateId];
         Class templateClass = template.getTemplateClass();
@@ -83,7 +98,10 @@ public class Simulator extends AppCompatActivity {
         }
     }
 
-    private void restoreTemplateEditor(Bundle savedInstanceState) {
+    /**
+     * @brief Restores simulator state on configuration change
+     */
+    protected void restoreTemplateEditor(Bundle savedInstanceState) {
         Log.d(TAG, "Activity Restored");
         selectedTemplate = (TemplateInterface) savedInstanceState.getSerializable(Constants.TEMPLATE_OBJECT);
         if (selectedTemplate == null) {
@@ -95,6 +113,9 @@ public class Simulator extends AppCompatActivity {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         outState.putSerializable(Constants.TEMPLATE_OBJECT, selectedTemplate);

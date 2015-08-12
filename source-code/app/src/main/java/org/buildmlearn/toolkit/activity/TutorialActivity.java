@@ -20,6 +20,9 @@ public class TutorialActivity extends AppCompatActivity {
     private ViewPager mPager;
     private CirclePageIndicator mIndicator;
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

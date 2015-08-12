@@ -44,21 +44,30 @@ public class NavigationDrawerMenuAdapter extends BaseAdapter {
         currentSectionBackgroundColor = context.getResources().getColor(R.color.translucent_grey);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int getCount() {
         return sections.length;
     }
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Section getItem(int position) {
         return sections[position];
     }
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public long getItemId(int position) {
         return position;
     }
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 

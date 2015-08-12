@@ -26,6 +26,9 @@ public class FirstRunActivity extends AppCompatActivity {
     private EditText name;
     private SharedPreferences prefs;
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

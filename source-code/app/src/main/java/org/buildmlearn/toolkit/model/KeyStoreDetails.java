@@ -1,6 +1,8 @@
 package org.buildmlearn.toolkit.model;
 
 /**
+ * @brief Model class for holding the details of keystore file.
+ *
  * Created by abhishek on 11/06/15 at 2:19 PM.
  */
 public class KeyStoreDetails {

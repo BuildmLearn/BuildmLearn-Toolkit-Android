@@ -13,6 +13,8 @@ import org.buildmlearn.toolkit.fragment.LoadProjectFragment;
 import org.buildmlearn.toolkit.fragment.SettingsFragment;
 
 /**
+ * @brief Enum for navigation drawer menus
+ *
  * Created by Abhishek on 08-05-2015.
  */
 public enum Section {
