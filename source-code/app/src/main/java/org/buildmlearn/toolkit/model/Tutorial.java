@@ -11,11 +11,12 @@ import org.buildmlearn.toolkit.R;
  * Created by abhishek on 03/08/15 at 10:53 PM.
  */
 public enum Tutorial {
-    START(R.drawable.splash_stretch_framed, R.string.screen_1_title, R.string.screen_1_desc),
-    FIRST(R.drawable.splash_stretch_framed, R.string.screen_1_title, R.string.screen_1_desc),
-    SECOND(R.drawable.splash_stretch_framed, R.string.screen_1_title, R.string.screen_1_desc),
-    THIRD(R.drawable.splash_stretch_framed, R.string.screen_1_title, R.string.screen_1_desc),
-    FOURTH(R.drawable.splash_stretch_framed, R.string.screen_1_title, R.string.screen_1_desc),
+    START(R.drawable.app_splash_screen_framed, R.string.screen_1_title, R.string.screen_1_desc),
+    FIRST(R.drawable.main_screen_framed, R.string.screen_2_title, R.string.screen_2_desc),
+    SECOND(R.drawable.template_list_framed, R.string.screen_3_title, R.string.screen_3_desc),
+    THIRD(R.drawable.quiz_template_framed, R.string.screen_4_title, R.string.screen_4_desc),
+    FOURTH(R.drawable.simulator_without_any_template_framed, R.string.screen_5_title, R.string.screen_5_desc),
+    FIFTH(R.drawable.load_saved_projects_framed, R.string.screen_6_title, R.string.screen_6_desc),
     LAST(true);
 
 

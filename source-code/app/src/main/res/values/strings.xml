@@ -371,6 +371,22 @@
     <string name="screen_1_desc">BuildmLearn Toolkit helps you create mLearning apps without any knowledge about app development</string>
     <string name="title_activity_tutorial">Tutorial Activity</string>
 
+    <string name="screen_2_title">Make mLearning Apps</string>
+    <string name="screen_2_desc">Press the big pink button to get started with building app.</string>
+
+    <string name="screen_3_title">Various Templates</string>
+    <string name="screen_3_desc">Templates allows creation of various types of apps like spelling and dictation, quiz etc.</string>
+
+    <string name="screen_4_title">InBuilt Editing Features</string>
+    <string name="screen_4_desc">Toolkit editor allows various file operations like save projects, publish Apks, simulate app</string>
+
+    <string name="screen_5_title">Simulator Support</string>
+    <string name="screen_5_desc">BuildmLearn toolkit comes with a Nexus 6 simulator on which you can test app inside toolkit</string>
+
+    <string name="screen_6_title">Load Saved Projects</string>
+    <string name="screen_6_desc">You can open any saved project created using android or desktop toolkit</string>
+
+
     <string name="screen_finish">Lets Start</string>
     <string name="title_activity_about_buildm_learn">About BuildmLearn</string>
 
@@ -380,5 +396,5 @@
     <string name="about_para_2">Visit us at http://buildmlearn.org/.</string>
     <string name="about_para_3">Any feedback or suggestions related to BuildmLearn Toolkit are always welcome. Please write to us at buildmlearn@gmail.com.</string>
     <string name="about_para_4"></string>
-    <string name="title_activity_deep_linker">DeepLinkerActivity</string>
+    <string name="title_activity_deep_linker">BuildmLearn Tookit</string>
 </resources>
