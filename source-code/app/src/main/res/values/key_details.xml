@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="key_password"></string>
-    <string name="alias_name"></string>
-    <string name="alias_password"></string>
+    <string name="key_password">helloworld</string>
+    <string name="alias_name">buildmlearn toolkit</string>
+    <string name="alias_password">buildmlearn</string>
 
 </resources>
