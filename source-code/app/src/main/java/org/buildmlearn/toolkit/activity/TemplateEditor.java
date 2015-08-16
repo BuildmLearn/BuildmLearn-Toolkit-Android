@@ -54,7 +54,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 /**
  * @brief Placeholder activity for all the templates
- *
+ * <p/>
  * A placeholder activty in which all the templates are loaded and allows the user to enter respective template
  * data, generate and save projects, APKs and sharing options.
  */
@@ -72,6 +72,7 @@ public class TemplateEditor extends AppCompatActivity {
     private View selectedView = null;
     private ToolkitApplication toolkit;
     private String oldFileName;
+    private MaterialDialog mApkGenerationDialog;
 
 
     /**
@@ -138,7 +139,7 @@ public class TemplateEditor extends AppCompatActivity {
     /**
      * @param adapter Adapter containing template data
      * @brief Populates ListView item by setting adapter to ListView. Also inflates Header View.
-     *
+     * <p/>
      * Header view contains the editable author name and template title fields.
      */
     protected void populateListView(final BaseAdapter adapter) {
@@ -323,7 +324,7 @@ public class TemplateEditor extends AppCompatActivity {
                                 break;
                             case R.id.save_apk:
                                 String savedFilePath = saveProject();
-                                if(savedFilePath == null || savedFilePath.length() == 0){
+                                if (savedFilePath == null || savedFilePath.length() == 0) {
                                     return;
                                 }
                                 String keyPassword = getString(R.string.key_password);
@@ -332,16 +333,26 @@ public class TemplateEditor extends AppCompatActivity {
                                 KeyStoreDetails keyStoreDetails = new KeyStoreDetails("TestKeyStore.jks", keyPassword, aliasName, aliaspassword);
                                 SignerThread signer = new SignerThread(getApplicationContext(), selectedTemplate.getApkFilePath(), saveProject(), keyStoreDetails, selectedTemplate.getAssetsFilePath(), selectedTemplate.getAssetsFileName());
 
+                                mApkGenerationDialog = new MaterialDialog.Builder(TemplateEditor.this)
+                                        .title(R.string.apk_progress_dialog)
+                                        .content(R.string.apk_msg)
+                                        .progress(true, 0)
+                                        .show();
+
                                 signer.setSignerThreadListener(new SignerThread.OnSignComplete() {
                                     @Override
                                     public void onSuccess() {
                                         Log.d(TAG, "APK generated");
+                                        mApkGenerationDialog.dismiss();
+
                                     }
 
                                     @Override
                                     public void onFail(Exception e) {
                                         if (e != null) {
                                             e.printStackTrace();
+                                            mApkGenerationDialog.dismiss();
+                                            Toast.makeText(TemplateEditor.this, "Build unsuccessful", Toast.LENGTH_SHORT).show();
                                         }
                                     }
                                 });
@@ -374,7 +385,7 @@ public class TemplateEditor extends AppCompatActivity {
 
     /**
      * @brief Changes the color scheme when switching from normal mode to edit mode.
-     *
+     * <p/>
      * Edit mode is triggered, when the list item is long pressed.
      */
     public void changeColorScheme() {
@@ -396,7 +407,7 @@ public class TemplateEditor extends AppCompatActivity {
 
     /**
      * @brief Restores the color scheme when switching from edit mode to normal mode.
-     *
+     * <p/>
      * Edit mode is triggered, when the list item is long pressed.
      */
     public void restoreColorScheme() {
@@ -488,7 +499,7 @@ public class TemplateEditor extends AppCompatActivity {
 
     /**
      * @brief Start the simulator activity
-     *
+     * <p/>
      * Start the simulator with the fragment returned by the selected template. Simulator is started as a new activity.
      */
     protected void startSimulator() {
@@ -507,7 +518,7 @@ public class TemplateEditor extends AppCompatActivity {
     /**
      * @param path Path of the existing .buildmlearn file
      * @brief Converts an existing .buildmlearn file to TemplateInterface Object
-     *
+     * <p/>
      * This function is used in loading existing files to editor. Reads file at a given path, parse the
      * file and convert into and convert it into TemplateInterface object.
      */

@@ -411,4 +411,6 @@
         <item>Chemistry</item>
     </string-array>
     <string name="title_activity_upload">Upload Application</string>
+    <string name="apk_progress_dialog">Generating Apk</string>
+    <string name="apk_msg">Inserting data into Apk</string>
 </resources>
