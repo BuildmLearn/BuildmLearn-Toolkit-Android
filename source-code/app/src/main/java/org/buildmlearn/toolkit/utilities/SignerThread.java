@@ -133,7 +133,7 @@ public class SignerThread extends Thread {
                 Toast.makeText(toolkit, "APK file not generated", Toast.LENGTH_SHORT).show();
             } else {
                 Log.d(TAG, "Signing Complete");
-                listener.onSuccess();
+                listener.onSuccess(finalApk);
 
                 if (toolkit.isExternalStorageAvailable()) {
                     showNotification("APK file saved in Downloads folder");
@@ -176,7 +176,7 @@ public class SignerThread extends Thread {
     }
 
     public interface OnSignComplete {
-        void onSuccess();
+        void onSuccess(String path);
 
         void onFail(Exception e);
     }

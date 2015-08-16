@@ -336,14 +336,27 @@ public class TemplateEditor extends AppCompatActivity {
                                 mApkGenerationDialog = new MaterialDialog.Builder(TemplateEditor.this)
                                         .title(R.string.apk_progress_dialog)
                                         .content(R.string.apk_msg)
+                                        .cancelable(false)
                                         .progress(true, 0)
                                         .show();
 
                                 signer.setSignerThreadListener(new SignerThread.OnSignComplete() {
                                     @Override
-                                    public void onSuccess() {
+                                    public void onSuccess(final String path) {
                                         Log.d(TAG, "APK generated");
                                         mApkGenerationDialog.dismiss();
+
+                                        runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                mApkGenerationDialog = new MaterialDialog.Builder(TemplateEditor.this)
+                                                        .title("Apk Generated")
+                                                        .content("Apk file saved at " + path)
+                                                        .positiveText("okay")
+                                                        .show();
+                                            }
+                                        });
+
 
                                     }
 
