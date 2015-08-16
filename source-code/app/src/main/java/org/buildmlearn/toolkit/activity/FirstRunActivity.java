@@ -10,11 +10,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.crashlytics.android.Crashlytics;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.constant.Constants;
+
+import io.fabric.sdk.android.Fabric;
 
 /**
  * @brief Shown on application first launch.
@@ -32,6 +35,7 @@ public class FirstRunActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
         prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
         if (prefs.getBoolean(FIRST_RUN, false)) {

@@ -20,9 +20,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.adapter.NavigationDrawerMenuAdapter;
+import org.buildmlearn.toolkit.constant.Constants;
 import org.buildmlearn.toolkit.model.Section;
 
 /**
@@ -108,6 +110,9 @@ public class NavigationDrawerFragment extends Fragment {
         mDrawerListView = (ListView) inflater.inflate(
                 R.layout.fragment_navigation_drawer, container, false);
         View menuHeaderView = inflater.inflate(R.layout.listview_header_navigation_drawer, mDrawerListView, false);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        TextView name = (TextView) menuHeaderView.findViewById(R.id.name);
+        name.setText("Welcome " + prefs.getString(getString(R.string.key_user_name), ""));
         mDrawerListView.addHeaderView(menuHeaderView, null, false);
         mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

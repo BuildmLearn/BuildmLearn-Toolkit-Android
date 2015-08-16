@@ -43,7 +43,7 @@ public class HomeActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Fabric.with(this, new Crashlytics());
+
 
         setContentView(R.layout.activity_home);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
@@ -75,7 +75,6 @@ public class HomeActivity extends AppCompatActivity
                     startActivity(intent);
 
                 } catch (ClassNotFoundException e) {
-                    Toast.makeText(this, e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }
             }
