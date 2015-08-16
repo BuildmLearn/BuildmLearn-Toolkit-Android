@@ -56,6 +56,13 @@
                         android:text="@string/main_subtitle"
                         android:textColor="@color/black_secondary_text"
                         android:textSize="@dimen/title"/>
+
+                    <TextView
+                        android:id="@+id/app_version"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black_secondary_text"
+                        android:textSize="@dimen/caption"/>
                 </LinearLayout>
 
             </LinearLayout>
