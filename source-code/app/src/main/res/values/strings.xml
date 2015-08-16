@@ -410,4 +410,5 @@
         <item>History</item>
         <item>Chemistry</item>
     </string-array>
+    <string name="title_activity_upload">Upload Application</string>
 </resources>
