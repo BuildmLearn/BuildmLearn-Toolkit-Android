@@ -397,4 +397,17 @@
     <string name="about_para_3">Any feedback or suggestions related to BuildmLearn Toolkit are always welcome. Please write to us at buildmlearn@gmail.com.</string>
     <string name="about_para_4"></string>
     <string name="title_activity_deep_linker">BuildmLearn Tookit</string>
+
+    <string-array name="project_categories">
+        <item>Science</item>
+        <item>Math</item>
+        <item>Physics</item>
+        <item>Literature</item>
+        <item>English</item>
+        <item>Geography</item>
+        <item>Social Studies</item>
+        <item>Language</item>
+        <item>History</item>
+        <item>Chemistry</item>
+    </string-array>
 </resources>
