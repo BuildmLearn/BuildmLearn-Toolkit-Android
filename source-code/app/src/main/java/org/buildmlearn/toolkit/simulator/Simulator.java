@@ -55,7 +55,7 @@ public class Simulator extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_simulator, menu);
+//        getMenuInflater().inflate(R.menu.menu_simulator, menu);
         return true;
     }
 
@@ -69,12 +69,7 @@ public class Simulator extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        } else if (id == android.R.id.home) {
-            onBackPressed();
-        }
+        onBackPressed();
 
         return super.onOptionsItemSelected(item);
     }
