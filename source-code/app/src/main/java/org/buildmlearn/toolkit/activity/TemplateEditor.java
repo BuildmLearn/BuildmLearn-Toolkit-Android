@@ -302,27 +302,7 @@ public class TemplateEditor extends AppCompatActivity {
                                 saveProject();
                                 break;
                             case R.id.share_apk:
-                                Uri fileUri = Uri.fromFile(new File(toolkit.getApkDir() + "FlashCardTemplateApp_v2.0.apk"));
-                                try {
-                                    ArrayList<Uri> uris = new ArrayList<Uri>();
-                                    Intent sendIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
-                                    sendIntent.setType("application/vnd.android.package-archive");
-                                    uris.add(fileUri);
-                                    sendIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
-                                    startActivity(Intent.createChooser(sendIntent, null));
 
-
-                                } catch (Exception e) {
-
-                                    ArrayList<Uri> uris = new ArrayList<Uri>();
-                                    Intent sendIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
-                                    sendIntent.setType("application/zip");
-                                    uris.add(fileUri);
-                                    sendIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
-                                    startActivity(Intent.createChooser(sendIntent, null));
-                                }
-                                break;
-                            case R.id.save_apk:
                                 String savedFilePath = saveProject();
                                 if (savedFilePath == null || savedFilePath.length() == 0) {
                                     return;
@@ -332,6 +312,65 @@ public class TemplateEditor extends AppCompatActivity {
                                 String aliaspassword = getString(R.string.alias_password);
                                 KeyStoreDetails keyStoreDetails = new KeyStoreDetails("TestKeyStore.jks", keyPassword, aliasName, aliaspassword);
                                 SignerThread signer = new SignerThread(getApplicationContext(), selectedTemplate.getApkFilePath(), saveProject(), keyStoreDetails, selectedTemplate.getAssetsFilePath(), selectedTemplate.getAssetsFileName());
+
+                                mApkGenerationDialog = new MaterialDialog.Builder(TemplateEditor.this)
+                                        .title(R.string.apk_progress_dialog)
+                                        .content(R.string.apk_msg)
+                                        .cancelable(false)
+                                        .progress(true, 0)
+                                        .show();
+
+                                signer.setSignerThreadListener(new SignerThread.OnSignComplete() {
+                                    @Override
+                                    public void onSuccess(final String path) {
+                                        Log.d(TAG, "APK generated");
+                                        mApkGenerationDialog.dismiss();
+
+                                        Uri fileUri = Uri.fromFile(new File(path));
+                                        try {
+                                            ArrayList<Uri> uris = new ArrayList<Uri>();
+                                            Intent sendIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
+                                            sendIntent.setType("application/vnd.android.package-archive");
+                                            uris.add(fileUri);
+                                            sendIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
+                                            startActivity(Intent.createChooser(sendIntent, null));
+
+
+                                        } catch (Exception e) {
+
+                                            ArrayList<Uri> uris = new ArrayList<Uri>();
+                                            Intent sendIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
+                                            sendIntent.setType("application/zip");
+                                            uris.add(fileUri);
+                                            sendIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
+                                            startActivity(Intent.createChooser(sendIntent, null));
+                                        }
+                                        
+                                    }
+
+                                    @Override
+                                    public void onFail(Exception e) {
+                                        if (e != null) {
+                                            e.printStackTrace();
+                                            mApkGenerationDialog.dismiss();
+                                            Toast.makeText(TemplateEditor.this, "Build unsuccessful", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+
+                                signer.start();
+
+                                break;
+                            case R.id.save_apk:
+                                savedFilePath = saveProject();
+                                if (savedFilePath == null || savedFilePath.length() == 0) {
+                                    return;
+                                }
+                                keyPassword = getString(R.string.key_password);
+                                aliasName = getString(R.string.alias_name);
+                                aliaspassword = getString(R.string.alias_password);
+                                keyStoreDetails = new KeyStoreDetails("TestKeyStore.jks", keyPassword, aliasName, aliaspassword);
+                                signer = new SignerThread(getApplicationContext(), selectedTemplate.getApkFilePath(), saveProject(), keyStoreDetails, selectedTemplate.getAssetsFilePath(), selectedTemplate.getAssetsFileName());
 
                                 mApkGenerationDialog = new MaterialDialog.Builder(TemplateEditor.this)
                                         .title(R.string.apk_progress_dialog)
