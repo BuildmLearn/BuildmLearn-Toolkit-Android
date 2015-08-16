@@ -322,6 +322,10 @@ public class TemplateEditor extends AppCompatActivity {
                                 }
                                 break;
                             case R.id.save_apk:
+                                String savedFilePath = saveProject();
+                                if(savedFilePath == null || savedFilePath.length() == 0){
+                                    return;
+                                }
                                 String keyPassword = getString(R.string.key_password);
                                 String aliasName = getString(R.string.alias_name);
                                 String aliaspassword = getString(R.string.alias_password);
