@@ -84,7 +84,6 @@ public class Simulator extends AppCompatActivity {
         try {
             Object templateObject = templateClass.newInstance();
             selectedTemplate = (TemplateInterface) templateObject;
-            Toast.makeText(this, selectedTemplate.onAttach(), Toast.LENGTH_LONG).show();
 
         } catch (InstantiationException e) {
             e.printStackTrace();
@@ -102,9 +101,6 @@ public class Simulator extends AppCompatActivity {
         if (selectedTemplate == null) {
             Toast.makeText(this, "Unable to restore Activity state, finsihing Template Editor activity", Toast.LENGTH_LONG).show();
             finish();
-        } else {
-            Toast.makeText(this, selectedTemplate.onAttach(), Toast.LENGTH_LONG).show();
-
         }
     }
 

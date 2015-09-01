@@ -226,10 +226,8 @@ public class TemplateEditor extends AppCompatActivity {
         Template[] templates = Template.values();
         template = templates[templateId];
         if (selectedTemplate == null) {
-            Toast.makeText(this, "Unable to restore Activity state, finishing Template Editor activity", Toast.LENGTH_LONG).show();
             finish();
         } else {
-            Toast.makeText(this, selectedTemplate.onAttach(), Toast.LENGTH_LONG).show();
             populateListView(selectedTemplate.currentTemplateEditorAdapter());
             setUpActionBar();
         }
@@ -345,7 +343,7 @@ public class TemplateEditor extends AppCompatActivity {
                                             sendIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
                                             startActivity(Intent.createChooser(sendIntent, null));
                                         }
-                                        
+
                                     }
 
                                     @Override

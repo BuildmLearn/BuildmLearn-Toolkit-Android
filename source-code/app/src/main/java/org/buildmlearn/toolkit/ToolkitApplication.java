@@ -2,7 +2,6 @@ package org.buildmlearn.toolkit;
 
 import android.app.Application;
 import android.os.Environment;
-import android.widget.Toast;
 
 import org.buildmlearn.toolkit.constant.Constants;
 
@@ -29,11 +28,9 @@ public class ToolkitApplication extends Application {
     public void onCreate() {
         super.onCreate();
         if (checkExternalStorage()) {
-            Toast.makeText(this, "External storage available", Toast.LENGTH_SHORT).show();
             isExternalStorageAvailable = true;
             dir = Environment.getExternalStorageDirectory().getAbsolutePath();
         } else {
-            Toast.makeText(this, "Not able to read external storage. Phone memory will be used", Toast.LENGTH_SHORT).show();
             dir = getFilesDir().getAbsolutePath();
         }
 
