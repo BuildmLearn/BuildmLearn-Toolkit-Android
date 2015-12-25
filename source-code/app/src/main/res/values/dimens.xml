@@ -56,4 +56,6 @@
     <dimen name="card_width">320dp</dimen>
     <dimen name="card_height">250dp</dimen>
 
+    <dimen name="material_navigation_drawer_right_margin">56dp</dimen>
+
 </resources>

@@ -194,5 +194,12 @@
 
     <style name="EditText"></style>
 
+    <style name="NoActionBarThemeTransparentStatusBar" parent="@style/AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark</item>
+        <item name="android:windowBackground">@color/color_primary</item>
+    </style>
 
 </resources>

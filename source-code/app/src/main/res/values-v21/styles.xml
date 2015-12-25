@@ -17,4 +17,13 @@
         <item name="android:textStyle">normal</item>
     </style>
 
+    <style name="NoActionBarThemeTransparentStatusBar" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowSharedElementsUseOverlay">false</item>
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryDark">@color/color_primary</item>
+    </style>
+
 </resources>
