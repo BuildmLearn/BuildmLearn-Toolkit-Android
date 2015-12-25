@@ -16,13 +16,14 @@ import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.activity.TemplateEditor;
 import org.buildmlearn.toolkit.views.TextViewPlus;
 
 import java.util.ArrayList;
 
 /**
  * @brief Adapter for displaying Quiz Template Editor data.
- *
+ * <p/>
  * Created by abhishek on 28/5/15.
  */
 public class QuizAdapter extends BaseAdapter {
@@ -139,6 +140,8 @@ public class QuizAdapter extends BaseAdapter {
                         quizData.remove(position);
                         notifyDataSetChanged();
                         dialog.dismiss();
+
+                        ((TemplateEditor) context).restoreSelectedView();
                     }
                 });
 

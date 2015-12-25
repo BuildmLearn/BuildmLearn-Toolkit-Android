@@ -13,6 +13,7 @@ import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.activity.TemplateEditor;
 import org.buildmlearn.toolkit.views.TextViewPlus;
 
 import java.util.ArrayList;
@@ -101,6 +102,8 @@ public class FlashCardAdapter extends BaseAdapter {
                         mData.remove(position);
                         notifyDataSetChanged();
                         dialog.dismiss();
+
+                        ((TemplateEditor) mContext).restoreSelectedView();
                     }
                 });
 
