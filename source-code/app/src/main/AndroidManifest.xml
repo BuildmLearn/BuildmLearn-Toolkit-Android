@@ -86,14 +86,6 @@
                 <data android:pathPattern=".*\\.buildmlearn" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activity.UploadActivity"
-            android:label="@string/title_activity_upload"
-            android:parentActivityName=".activity.TemplateEditor" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="org.buildmlearn.toolkit.activity.TemplateEditor" />
-        </activity>
     </application>
 
 </manifest>
