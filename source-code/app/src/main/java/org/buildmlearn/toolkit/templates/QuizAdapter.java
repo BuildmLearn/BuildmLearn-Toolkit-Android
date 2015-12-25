@@ -103,7 +103,7 @@ public class QuizAdapter extends BaseAdapter {
         holder.questionIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (expandedPostion >= 0 && expandedPostion != position) {
+                if (expandedPostion >= 0 && expandedPostion != position && getItem(expandedPostion) != null) {
                     getItem(expandedPostion).setIsSelected(false);
                 }
                 if (getItem(position).isSelected()) {
@@ -142,6 +142,7 @@ public class QuizAdapter extends BaseAdapter {
                         dialog.dismiss();
 
                         ((TemplateEditor) context).restoreSelectedView();
+                        expandedPostion = -1;
                     }
                 });
 
