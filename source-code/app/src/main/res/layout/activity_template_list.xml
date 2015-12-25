@@ -5,11 +5,7 @@
     android:layout_height="match_parent"
     tools:context="org.buildmlearn.toolkit.fragment.TestFragment">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        style="@style/Toolbar.Buildmlearn"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize" />
+    <include layout="@layout/toolbar_layout"/>
 
     <ListView
         android:id="@android:id/list"
