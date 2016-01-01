@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="130dp">
-
+    android:layout_height="@dimen/navigation_drawer_header_height"
+    android:paddingBottom="@dimen/layout_margin">
 
     <ImageView
         android:id="@+id/imageView"
@@ -16,21 +16,21 @@
         android:id="@+id/imageView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/name"
         android:layout_centerHorizontal="true"
         android:adjustViewBounds="true"
-        android:src="@drawable/logo_70"
-        android:layout_above="@+id/name"/>
+        android:src="@drawable/logo_70" />
 
     <TextView
+        android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="8dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="8dp"
         android:textColor="@color/white_primary_text"
-        android:textSize="@dimen/sub_title"
-        android:id="@+id/name"/>
+        android:textSize="@dimen/sub_title" />
 
 
 </RelativeLayout>

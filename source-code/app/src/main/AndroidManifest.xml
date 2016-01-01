@@ -19,7 +19,7 @@
         <activity
             android:name=".activity.HomeActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/NoActionBarThemeTransparentStatusBar" >
         </activity>
         <activity
             android:name=".simulator.Simulator"
@@ -85,14 +85,6 @@
                 <data android:host="*" />
                 <data android:pathPattern=".*\\.buildmlearn" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".activity.UploadActivity"
-            android:label="@string/title_activity_upload"
-            android:parentActivityName=".activity.TemplateEditor" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="org.buildmlearn.toolkit.activity.TemplateEditor" />
         </activity>
     </application>
 

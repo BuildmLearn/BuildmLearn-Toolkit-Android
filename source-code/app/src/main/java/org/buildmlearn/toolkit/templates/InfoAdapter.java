@@ -12,13 +12,14 @@ import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.activity.TemplateEditor;
 import org.buildmlearn.toolkit.views.TextViewPlus;
 
 import java.util.ArrayList;
 
 /**
  * @brief Adapter for displaying Info Template Editor data.
- *
+ * <p/>
  * Created by abhishek on 17/06/15 at 9:48 PM.
  */
 public class InfoAdapter extends BaseAdapter {
@@ -86,6 +87,8 @@ public class InfoAdapter extends BaseAdapter {
                         data.remove(position);
                         notifyDataSetChanged();
                         dialog.dismiss();
+
+                        ((TemplateEditor) mContext).restoreSelectedView();
                     }
                 });
 

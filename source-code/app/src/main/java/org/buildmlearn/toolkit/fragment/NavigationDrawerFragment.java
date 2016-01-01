@@ -99,6 +99,19 @@ public class NavigationDrawerFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         // Indicate that this fragment would like to influence the set of actions in the action bar.
         setHasOptionsMenu(true);
+
+        setLayoutParamsForListView();
+    }
+
+    private void setLayoutParamsForListView() {
+        int deviceWidth = getResources().getDisplayMetrics().widthPixels;
+        int dimen56 = getResources().getDimensionPixelSize(R.dimen.material_navigation_drawer_right_margin);
+        int widthOfNavDrawer = deviceWidth - dimen56;
+        if (widthOfNavDrawer > 5 * dimen56)
+            widthOfNavDrawer = 5 * dimen56;
+        ViewGroup.LayoutParams params = mDrawerListView.getLayoutParams();
+        params.width = widthOfNavDrawer;
+        mDrawerListView.setLayoutParams(params);
     }
 
     /**

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
@@ -25,7 +26,7 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.afollestad.materialdialogs.ThemeSingleton;
+import com.afollestad.materialdialogs.internal.ThemeSingleton;
 import com.cocosw.bottomsheet.BottomSheet;
 
 import org.buildmlearn.toolkit.R;
@@ -442,9 +443,9 @@ public class TemplateEditor extends AppCompatActivity {
         int primaryColor = getResources().getColor(R.color.color_primary_dark);
         int primaryColorDark = getResources().getColor(R.color.color_selected_dark);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(primaryColor));
-        ThemeSingleton.get().positiveColor = primaryColor;
-        ThemeSingleton.get().neutralColor = primaryColor;
-        ThemeSingleton.get().negativeColor = primaryColor;
+        ThemeSingleton.get().positiveColor = ColorStateList.valueOf(primaryColor);
+        ThemeSingleton.get().neutralColor = ColorStateList.valueOf(primaryColor);
+        ThemeSingleton.get().negativeColor = ColorStateList.valueOf(primaryColor);
         ThemeSingleton.get().widgetColor = primaryColor;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(primaryColorDark);
@@ -464,9 +465,9 @@ public class TemplateEditor extends AppCompatActivity {
         int primaryColor = getResources().getColor(R.color.color_primary);
         int primaryColorDark = getResources().getColor(R.color.color_primary_dark);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(primaryColor));
-        ThemeSingleton.get().positiveColor = primaryColor;
-        ThemeSingleton.get().neutralColor = primaryColor;
-        ThemeSingleton.get().negativeColor = primaryColor;
+        ThemeSingleton.get().positiveColor = ColorStateList.valueOf(primaryColor);
+        ThemeSingleton.get().neutralColor = ColorStateList.valueOf(primaryColor);
+        ThemeSingleton.get().negativeColor = ColorStateList.valueOf(primaryColor);
         ThemeSingleton.get().widgetColor = primaryColor;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(primaryColorDark);
