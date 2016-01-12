@@ -105,6 +105,15 @@ public class HomeActivity extends AppCompatActivity
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        if(mNavigationDrawerFragment.isDrawerOpen()){
+            mNavigationDrawerFragment.closeDrawer();
+            return;
+        }
+        super.onBackPressed();
+    }
+
 
     public void restoreActionBar() {
         ActionBar actionBar = getSupportActionBar();
