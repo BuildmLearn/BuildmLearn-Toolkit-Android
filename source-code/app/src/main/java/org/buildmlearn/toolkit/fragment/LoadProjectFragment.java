@@ -4,7 +4,10 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -39,7 +42,7 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
 
     private static final String TAG = "Load Project Fragment";
     private AbsListView mListView;
-
+    File file[];
     private SavedProjectAdapter mAdapter;
     private ToolkitApplication mToolkit;
     private ArrayList<SavedProject> savedProjects;
@@ -47,19 +50,20 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
     /**
      * {@inheritDoc}
      */
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        System.out.println("123");
 
         mToolkit = (ToolkitApplication) getActivity().getApplicationContext();
         savedProjects = new ArrayList<>();
-
         String path = mToolkit.getSavedDir();
         Log.d("Files", "Path: " + path);
 
 
         File f = new File(path);
-        File file[] = f.listFiles();
+        file = f.listFiles();
         if (file == null) {
             return;
         }
@@ -116,6 +120,35 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
         mListView = (AbsListView) view.findViewById(android.R.id.list);
         setAdapter(mAdapter);
         mListView.setOnItemClickListener(this);
+        registerForContextMenu(mListView);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        if (v.getId() == android.R.id.list) {
+            MenuInflater inflater = getActivity().getMenuInflater();
+            inflater.inflate(R.menu.menu_savedprojects_list, menu);
+        }
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        switch (item.getItemId()) {
+            case R.id.delete:
+                int position = menuInfo.position;
+                savedProjects.remove(position);
+                if (file[position].delete()) {
+                    Toast.makeText(getActivity(), "Deleted!", Toast.LENGTH_SHORT).show();
+                    mAdapter.notifyDataSetChanged();
+                    setEmptyText();
+                } else
+                    Toast.makeText(getActivity(), "Cannot delete!", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
     }
 
     /**
@@ -123,6 +156,7 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
      */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
         SavedProject project = savedProjects.get(position);
         Template[] templates = Template.values();
         for (int i = 0; i < templates.length; i++) {
@@ -133,8 +167,8 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                 startActivity(intent);
                 return;
             }
+            Toast.makeText(getActivity(), "Invalid project file", Toast.LENGTH_SHORT).show();
         }
-        Toast.makeText(getActivity(), "Invalid project file", Toast.LENGTH_SHORT).show();
     }
 
     private void setAdapter(SavedProjectAdapter adapter) {
