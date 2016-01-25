@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!DOCTYPE PreferenceScreen [<!ELEMENT PreferenceScreen (PreferenceCategory)*><!ATTLIST PreferenceScreenxmlns:android CDATA #REQUIRED><!ELEMENT PreferenceCategory (CheckBoxPreference|com.afollestad.materialdialogs.prefs.MaterialEditTextPreference|Preference)*><!ATTLIST PreferenceCategoryandroid:title CDATA #REQUIRED><!ELEMENT CheckBoxPreference (#PCDATA)><!ATTLIST CheckBoxPreferenceandroid:checked CDATA #IMPLIEDandroid:key CDATA #REQUIREDandroid:summary CDATA #REQUIREDandroid:title CDATA #REQUIRED><!ELEMENT com.afollestad.materialdialogs.prefs.MaterialEditTextPreference (#PCDATA)><!ATTLIST com.afollestad.materialdialogs.prefs.MaterialEditTextPreferenceandroid:dialogMessage CDATA #REQUIREDandroid:dialogTitle CDATA #REQUIREDandroid:digits CDATA #REQUIREDandroid:key CDATA #REQUIREDandroid:lines CDATA #REQUIREDandroid:maxLines CDATA #REQUIREDandroid:summary CDATA #REQUIREDandroid:title CDATA #REQUIRED><!ELEMENT Preference (#PCDATA)><!ATTLIST Preferenceandroid:key CDATA #REQUIREDandroid:summary CDATA #REQUIREDandroid:title CDATA #REQUIRED>]>
+
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory android:title="@string/project_settings">
