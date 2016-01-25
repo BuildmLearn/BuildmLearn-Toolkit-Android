@@ -351,6 +351,15 @@
     <string name="delete_temp_files">Delete Temporary Files</string>
     <string name="summary_temp_files">Delete temporary generated files to save storage space</string>
 
+
+    <string name="key_auto_save">auto_save</string>
+    <string name="summary_auto_save">Save projects Automatically</string>
+
+    <string name="title_auto_save">Auto save Projects</string>
+
+
+
+
     <string name="key_user_name">key_user_name</string>
     <string name="your_name">Your Name</string>
     <string name="summary_name">Your name will be used as default author name</string>

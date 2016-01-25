@@ -1,8 +1,11 @@
 package org.buildmlearn.toolkit.fragment;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
 import android.widget.Toast;
 
 import org.buildmlearn.toolkit.R;
@@ -22,6 +25,20 @@ public class SettingsFragment extends PreferenceFragment {
             @Override
             public boolean onPreferenceClick(Preference preference) {
                 Toast.makeText(SettingsFragment.this.getActivity(), "Deleting temp files", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
+
+        final SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(SettingsFragment.this.getActivity());
+
+        final CheckBoxPreference autoSaveButton = (CheckBoxPreference) findPreference(getString(R.string.key_auto_save));
+        autoSaveButton.setChecked(sp.getBoolean(getResources().getString(R.string.key_auto_save), true));
+        autoSaveButton.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                SharedPreferences.Editor spe = sp.edit();
+                spe.putBoolean(getResources().getString(R.string.key_auto_save), autoSaveButton.isChecked());
+                spe.commit();
                 return true;
             }
         });
