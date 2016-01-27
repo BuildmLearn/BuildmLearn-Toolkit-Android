@@ -35,8 +35,8 @@ public class MainFragment extends Fragment implements
     GlobalData gd = GlobalData.getInstance();
     String flashCardanswer;
     ImageView questionImage;
-    TextView flashCardText, flashcardNumber;
-    TextView questionText;
+    TextView flashcardNumber;
+    TextView questionText, hintText;
     private Animation animation1;
     private Animation animation2;
     private View currentView;
@@ -61,8 +61,8 @@ public class MainFragment extends Fragment implements
         iQuestionIndex = 0;
 
         questionImage = (ImageView) view.findViewById(R.id.questionImage);
-        flashCardText = (TextView) view.findViewById(R.id.flashCardText);
-        questionText = (TextView) view.findViewById(R.id.questionhint);
+        questionText = (TextView) view.findViewById(R.id.flashCardText);
+        hintText = (TextView) view.findViewById(R.id.questionhint);
         flashcardNumber = (TextView) view.findViewById(R.id.flashCardNumber);
 
         flipButton = (Button) view.findViewById(R.id.flip_button);
@@ -141,6 +141,8 @@ public class MainFragment extends Fragment implements
         TextView answerText = (TextView) view.findViewById(R.id.answerText);
         if (mFlash.getQuestion() != null)
             questionText.setText(mFlash.getQuestion());
+        if (mFlash.getHint() != null)
+            hintText.setText(mFlash.getHint());
         if (mFlash.getAnswer() != null) {
             flashCardanswer = mFlash.getAnswer();
             answerText.setText(mFlash.getAnswer());

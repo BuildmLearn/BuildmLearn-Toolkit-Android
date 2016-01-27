@@ -21,6 +21,7 @@
         android:layout_gravity="center"
         android:paddingLeft="10dp"
         android:text="text"
+        android:gravity="center_horizontal"
         android:paddingRight="10dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@android:color/white" />
