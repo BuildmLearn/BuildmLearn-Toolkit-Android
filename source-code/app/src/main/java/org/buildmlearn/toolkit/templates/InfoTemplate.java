@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
@@ -93,7 +95,7 @@ public class InfoTemplate implements TemplateInterface {
                 .title(R.string.info_add_new_title)
                 .customView(R.layout.info_dialog_add_edit_data, true)
                 .positiveText(R.string.info_template_add)
-                .negativeText(R.string.info_template_delete)
+                .negativeText(R.string.info_template_cancel)
                 .build();
 
         final EditText word = (EditText) dialog.findViewById(R.id.info_word);
@@ -103,15 +105,8 @@ public class InfoTemplate implements TemplateInterface {
             @Override
             public void onClick(View v) {
 
-                if (validated(activity, word, meaning)) {
-                    String wordText = word.getText().toString();
-                    String meaningText = meaning.getText().toString();
-
-                    InfoModel temp = new InfoModel(wordText, meaningText);
-                    infoData.add(temp);
-                    adapter.notifyDataSetChanged();
+                if (onAddorEdit(activity, word, meaning, -1))
                     dialog.dismiss();
-                }
 
             }
         });
@@ -121,12 +116,13 @@ public class InfoTemplate implements TemplateInterface {
     }
 
     @Override
-    public void editItem(final Activity activity, int position) {
+    public void editItem(final Activity activity, final int position) {
         final MaterialDialog dialog = new MaterialDialog.Builder(activity)
-                .title(R.string.info_add_new_title)
+                .title(R.string.info_edit_title)
                 .customView(R.layout.info_dialog_add_edit_data, true)
-                .positiveText(R.string.info_template_add)
-                .negativeText(R.string.info_template_delete)
+                .positiveText(R.string.info_template_edit)
+                .neutralText(R.string.info_template_add)
+                .negativeText(R.string.info_template_cancel)
                 .build();
 
         final InfoModel data = infoData.get(position);
@@ -136,20 +132,23 @@ public class InfoTemplate implements TemplateInterface {
         word.setText(data.getInfoObject());
         meaning.setText(data.getInfoDescription());
 
+        //Edit
         dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (validated(activity, word, meaning)) {
-                    String wordText = word.getText().toString();
-                    String meaningText = meaning.getText().toString();
-
-                    data.setWord(wordText);
-                    data.setInfoDescription(meaningText);
-
-                    adapter.notifyDataSetChanged();
+                if (onAddorEdit(activity, word, meaning, position))
                     dialog.dismiss();
-                }
+
+            }
+        });
+        //Add
+        dialog.getActionButton(DialogAction.NEUTRAL).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (onAddorEdit(activity, word, meaning, -1))
+                    dialog.dismiss();
 
             }
         });
@@ -157,6 +156,28 @@ public class InfoTemplate implements TemplateInterface {
         dialog.show();
 
     }
+
+    // Functionality for Add and Edit Card Models
+    // Add  :   position = -1
+    // Edit :   position >=0
+    private boolean onAddorEdit(Activity activity, EditText word, EditText meaning, int position)
+    {
+        if (validated(activity, word, meaning)) {
+            String wordText = word.getText().toString();
+            String meaningText = meaning.getText().toString();
+
+            InfoModel infoModel = new InfoModel(wordText, meaningText);
+            if(position<0)
+                infoData.add(infoModel);
+            else
+                infoData.set(position, infoModel);
+            adapter.notifyDataSetChanged();
+            return true;
+        }
+        return false;
+    }
+
+
 
     @Override
     public void deleteItem(int position) {

@@ -98,7 +98,7 @@ public class FlashTemplate implements TemplateInterface {
                 .title(R.string.info_add_new_title)
                 .customView(R.layout.flash_dialog_add_edit_item, true)
                 .positiveText(R.string.info_template_add)
-                .negativeText(R.string.info_template_delete)
+                .negativeText(R.string.info_template_cancel)
                 .build();
 
         final EditText question = (EditText) dialog.findViewById(R.id.flash_question);
@@ -134,15 +134,8 @@ public class FlashTemplate implements TemplateInterface {
             @Override
             public void onClick(View v) {
 
-                if (validateData(question, answer, answerHint, activity)) {
+                if(onAddorEdit(question, answer, answerHint, activity, -1))
                     dialog.dismiss();
-                    Bitmap bitmap = ((BitmapDrawable) mBannerImage.getDrawable()).getBitmap();
-                    String questionText = question.getText().toString();
-                    String answerText = answer.getText().toString();
-                    String hintText = answerHint.getText().toString();
-                    mData.add(new FlashCardModel(questionText, answerText, hintText, bitmap));
-                    mAdapter.notifyDataSetChanged();
-                }
 
             }
         });
@@ -152,16 +145,17 @@ public class FlashTemplate implements TemplateInterface {
 
 
     @Override
-    public void editItem(final Activity activity, int position) {
+    public void editItem(final Activity activity, final int position) {
         mIsPhotoAttached = true;
 
         FlashCardModel data = mData.get(position);
 
         final MaterialDialog dialog = new MaterialDialog.Builder(activity)
-                .title(R.string.info_add_new_title)
+                .title(R.string.info_edit_title)
                 .customView(R.layout.flash_dialog_add_edit_item, true)
-                .positiveText(R.string.info_template_add)
-                .negativeText(R.string.info_template_delete)
+                .positiveText(R.string.info_template_edit)
+                .neutralText(R.string.info_template_add)
+                .negativeText(R.string.info_template_cancel)
                 .build();
 
         final EditText question = (EditText) dialog.findViewById(R.id.flash_question);
@@ -197,24 +191,45 @@ public class FlashTemplate implements TemplateInterface {
             }
         });
 
+        //Edit
         dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if (validateData(question, answer, answerHint, activity)) {
+                if (onAddorEdit(question, answer, answerHint, activity, position))
                     dialog.dismiss();
-                    Bitmap bitmap = ((BitmapDrawable) mBannerImage.getDrawable()).getBitmap();
-                    String questionText = question.getText().toString();
-                    String answerText = answer.getText().toString();
-                    String hintText = answerHint.getText().toString();
-                    mData.add(new FlashCardModel(questionText, answerText, hintText, bitmap));
-                    mAdapter.notifyDataSetChanged();
-                }
-
+            }
+        });
+        //Add
+        dialog.getActionButton(DialogAction.NEUTRAL).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(onAddorEdit(question, answer, answerHint, activity, -1))
+                    dialog.dismiss();
             }
         });
 
         dialog.show();
+    }
+
+    // Functionality for Add and Edit Card Models
+    // Add  :   position = -1
+    // Edit :   position >=0
+    private boolean onAddorEdit(EditText question, EditText answer, EditText answerHint, Activity activity,int position)
+    {
+        if (validateData(question, answer, answerHint, activity)) {
+            Bitmap bitmap = ((BitmapDrawable) mBannerImage.getDrawable()).getBitmap();
+            String questionText = question.getText().toString();
+            String answerText = answer.getText().toString();
+            String hintText = answerHint.getText().toString();
+            FlashCardModel flashCardModel = new FlashCardModel(questionText, answerText, hintText, bitmap);
+            if(position<0)
+                mData.add(flashCardModel);
+            else
+                mData.set(position, flashCardModel);
+            mAdapter.notifyDataSetChanged();
+            return true;
+        }
+        return false;
     }
 
     private boolean validateData(EditText question, EditText answer, EditText answerHint, Context context) {

@@ -160,8 +160,8 @@ public class QuizAdapter extends BaseAdapter {
         final MaterialDialog dialog = new MaterialDialog.Builder(context)
                 .title(R.string.quiz_edit)
                 .customView(R.layout.quiz_dialog_add_question, wrapInScrollView)
-                .positiveText(R.string.quiz_add)
-                .negativeText(R.string.quiz_delete)
+                .positiveText(R.string.info_template_edit)
+                .negativeText(R.string.info_template_cancel)
                 .build();
 
         final EditText question = (EditText) dialog.findViewById(R.id.quiz_question);
