@@ -91,6 +91,7 @@ public class QuizAdapter extends BaseAdapter {
             if (i < data.getOptions().size()) {
                 int ascii = 65 + i;
                 holder.options.get(i).setText(Character.toString((char) ascii) + ")  " + data.getOptions().get(i));
+                holder.options.get(i).setTextColor(context.getResources().getColor(R.color.black_secondary_text));
                 holder.options.get(i).setVisibility(View.VISIBLE);
             } else {
                 holder.options.get(i).setVisibility(View.GONE);
@@ -160,8 +161,8 @@ public class QuizAdapter extends BaseAdapter {
         final MaterialDialog dialog = new MaterialDialog.Builder(context)
                 .title(R.string.quiz_edit)
                 .customView(R.layout.quiz_dialog_add_question, wrapInScrollView)
-                .positiveText(R.string.quiz_add)
-                .negativeText(R.string.quiz_delete)
+                .positiveText(R.string.info_template_edit)
+                .negativeText(R.string.info_template_cancel)
                 .build();
 
         final EditText question = (EditText) dialog.findViewById(R.id.quiz_question);

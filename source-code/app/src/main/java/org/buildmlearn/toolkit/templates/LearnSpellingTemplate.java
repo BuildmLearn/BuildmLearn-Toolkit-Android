@@ -103,16 +103,8 @@ public class LearnSpellingTemplate implements TemplateInterface {
             @Override
             public void onClick(View v) {
 
-                if (validated(activity, word, meaning)) {
-                    String wordText = word.getText().toString();
-                    String meaningText = meaning.getText().toString();
-
-                    LearnSpellingModel temp = new LearnSpellingModel(wordText, meaningText);
-                    mLearnSpellingData.add(temp);
-                    adapter.notifyDataSetChanged();
+                if (onAddorEdit(activity, word, meaning, -1))
                     dialog.dismiss();
-                }
-
             }
         });
 
@@ -121,12 +113,13 @@ public class LearnSpellingTemplate implements TemplateInterface {
     }
 
     @Override
-    public void editItem(final Activity activity, int position) {
+    public void editItem(final Activity activity, final int position) {
         final MaterialDialog dialog = new MaterialDialog.Builder(activity)
-                .title(R.string.info_add_new_title)
+                .title(R.string.info_edit_title)
                 .customView(R.layout.info_dialog_add_edit_data, true)
-                .positiveText(R.string.info_template_add)
-                .negativeText(R.string.info_template_delete)
+                .positiveText(R.string.info_template_edit)
+                .neutralText(R.string.info_template_add)
+                .negativeText(R.string.info_template_cancel)
                 .build();
 
         final LearnSpellingModel data = mLearnSpellingData.get(position);
@@ -136,26 +129,46 @@ public class LearnSpellingTemplate implements TemplateInterface {
         word.setText(data.getWord());
         meaning.setText(data.getMeaning());
 
+        //Edit
         dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (validated(activity, word, meaning)) {
-                    String wordText = word.getText().toString();
-                    String meaningText = meaning.getText().toString();
-
-                    data.setWord(wordText);
-                    data.setMeaning(meaningText);
-
-                    adapter.notifyDataSetChanged();
+                if (onAddorEdit(activity, word, meaning, position))
                     dialog.dismiss();
-                }
+            }
+        });
+        //Add
+        dialog.getActionButton(DialogAction.NEUTRAL).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                if( onAddorEdit(activity, word, meaning, -1))
+                    dialog.dismiss();
             }
         });
 
         dialog.show();
 
+    }
+
+    // Functionality for Add and Edit Card Models
+    // Add  :   position = -1
+    // Edit :   position >=0
+    private boolean onAddorEdit(Activity activity, EditText word, EditText meaning, int position)
+    {
+        if (validated(activity, word, meaning)) {
+            String wordText = word.getText().toString();
+            String meaningText = meaning.getText().toString();
+            LearnSpellingModel learnSpellingModel = new LearnSpellingModel(wordText, meaningText);
+            if(position<0)
+                mLearnSpellingData.add(learnSpellingModel);
+            else
+                mLearnSpellingData.set(position, learnSpellingModel);
+            adapter.notifyDataSetChanged();
+            return true;
+        }
+        return false;
     }
 
     @Override

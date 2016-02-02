@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
@@ -109,47 +111,8 @@ public class QuizTemplate implements TemplateInterface {
         dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                boolean isValidated = true;
-                int checkedAns = getCheckedAnswer(buttons);
-                if (checkedAns < 0) {
-                    Toast.makeText(activity, "Choose a correct option", Toast.LENGTH_SHORT).show();
-                    isValidated = false;
-                }
-                if (question.getText().toString().equals("")) {
-
-                    question.setError("Question is required");
-                    isValidated = false;
-                }
-
-                int optionCount = 0;
-                for (EditText option : options) {
-                    if (!option.getText().toString().equals("")) {
-                        optionCount++;
-                    }
-                }
-                if (optionCount < 2) {
-                    Toast.makeText(activity, "Minimum two multiple answers are required.", Toast.LENGTH_SHORT).show();
-                    isValidated = false;
-                }
-
-                if (isValidated) {
+                if( onAddorEdit(buttons, options, question, activity, -1))
                     dialog.dismiss();
-                    ArrayList<String> answerOptions = new ArrayList<>();
-                    int correctAnswer = 0;
-                    for (int i = 0; i < buttons.size(); i++) {
-                        if (buttons.get(i).isChecked() && !options.get(i).getText().toString().equals("")) {
-                            correctAnswer = answerOptions.size();
-                            answerOptions.add(options.get(i).getText().toString());
-                        } else if (!options.get(i).getText().toString().equals("")) {
-                            answerOptions.add(options.get(i).getText().toString());
-                        }
-                    }
-                    String questionText = question.getText().toString();
-                    quizData.add(new QuizModel(questionText, answerOptions, correctAnswer));
-                    mAdapter.notifyDataSetChanged();
-                }
-
             }
         });
         dialog.show();
@@ -163,8 +126,8 @@ public class QuizTemplate implements TemplateInterface {
         final MaterialDialog dialog = new MaterialDialog.Builder(activity)
                 .title(R.string.quiz_edit)
                 .customView(R.layout.quiz_dialog_add_question, true)
-                .positiveText(R.string.quiz_add)
-                .negativeText(R.string.quiz_delete)
+                .positiveText(R.string.info_template_edit)
+                .negativeText(R.string.info_template_cancel)
                 .build();
 
         final EditText question = (EditText) dialog.findViewById(R.id.quiz_question);
@@ -198,52 +161,63 @@ public class QuizTemplate implements TemplateInterface {
         dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                boolean isValidated = true;
-                int checkedAns = getCheckedAnswer(buttons);
-                if (checkedAns < 0) {
-                    Toast.makeText(activity, "Choose a correct option", Toast.LENGTH_SHORT).show();
-                    isValidated = false;
-                }
-                if (question.getText().toString().equals("")) {
-
-                    question.setError("Question is required");
-                    isValidated = false;
-                }
-
-                int optionCount = 0;
-                for (EditText option : options) {
-                    if (!option.getText().toString().equals("")) {
-                        optionCount++;
-                    }
-                }
-                if (optionCount < 2) {
-                    Toast.makeText(activity, "Minimum two multiple answers are required.", Toast.LENGTH_SHORT).show();
-                    isValidated = false;
-                }
-
-                if (isValidated) {
+                if( onAddorEdit(buttons, options, question, activity, position))
                     dialog.dismiss();
-                    ArrayList<String> answerOptions = new ArrayList<>();
-                    int correctAnswer = 0;
-                    for (int i = 0; i < buttons.size(); i++) {
-                        if (buttons.get(i).isChecked() && !options.get(i).getText().toString().equals("")) {
-                            correctAnswer = answerOptions.size();
-                            answerOptions.add(options.get(i).getText().toString());
-                        } else if (!options.get(i).getText().toString().equals("")) {
-                            answerOptions.add(options.get(i).getText().toString());
-                        }
-                    }
-                    String questionText = question.getText().toString();
-                    quizData.set(position, new QuizModel(questionText, answerOptions, correctAnswer));
-                    mAdapter.notifyDataSetChanged();
-                }
-
             }
         });
         dialog.show();
     }
 
+    // Functionality for Add and Edit Card Models
+    // Add  :   position = -1
+    // Edit :   position >=0
+    private boolean onAddorEdit(ArrayList<RadioButton> buttons, ArrayList<EditText> options, EditText question, Activity activity,int position)
+    {
+        boolean isValidated = true;
+        int checkedAns = getCheckedAnswer(buttons);
+        if (checkedAns < 0) {
+            Toast.makeText(activity, "Choose a correct option", Toast.LENGTH_SHORT).show();
+            isValidated = false;
+        }
+        if (question.getText().toString().equals("")) {
+
+            question.setError("Question is required");
+            isValidated = false;
+        }
+
+        int optionCount = 0;
+        for (EditText option : options) {
+            if (!option.getText().toString().equals("")) {
+                optionCount++;
+            }
+        }
+        if (optionCount < 2) {
+            Toast.makeText(activity, "Minimum two multiple answers are required.", Toast.LENGTH_SHORT).show();
+            isValidated = false;
+        }
+
+        if (isValidated) {
+            ArrayList<String> answerOptions = new ArrayList<>();
+            int correctAnswer = 0;
+            for (int i = 0; i < buttons.size(); i++) {
+                if (buttons.get(i).isChecked() && !options.get(i).getText().toString().equals("")) {
+                    correctAnswer = answerOptions.size();
+                    answerOptions.add(options.get(i).getText().toString());
+                } else if (!options.get(i).getText().toString().equals("")) {
+                    answerOptions.add(options.get(i).getText().toString());
+                }
+            }
+            String questionText = question.getText().toString();
+            QuizModel quizModel = new QuizModel(questionText, answerOptions, correctAnswer);
+            if(position<0)
+                quizData.add(quizModel);
+            else
+                quizData.set(position, quizModel);
+            mAdapter.notifyDataSetChanged();
+            return true;
+        }
+        return false;
+    }
     @Override
     public void deleteItem(int position) {
         quizData.remove(position);
