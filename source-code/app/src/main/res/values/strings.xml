@@ -50,7 +50,10 @@
     <string name="info_template_edit">Edit</string>
     <string name="info_template_add">Add</string>
     <string name="info_template_delete">Delete</string>
+    <string name="info_template_done">Done</string>
+    <string name="info_template_back">Back</string>
     <string name="info_add_new_title">Add new item</string>
+    <string name="info_edit_title">Edit item</string>
     <string name="info_delete_item_content">Are you sure you want to delete this item?</string>
     <string name="info_template">InfoTemplate</string>
 

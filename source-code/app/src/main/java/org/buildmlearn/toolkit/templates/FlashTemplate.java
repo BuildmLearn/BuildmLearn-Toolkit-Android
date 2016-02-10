@@ -152,16 +152,16 @@ public class FlashTemplate implements TemplateInterface {
 
 
     @Override
-    public void editItem(final Activity activity, int position) {
+    public void editItem(final Activity activity, final int position) {
         mIsPhotoAttached = true;
 
         FlashCardModel data = mData.get(position);
 
         final MaterialDialog dialog = new MaterialDialog.Builder(activity)
-                .title(R.string.info_add_new_title)
+                .title(R.string.info_edit_title)
                 .customView(R.layout.flash_dialog_add_edit_item, true)
-                .positiveText(R.string.info_template_add)
-                .negativeText(R.string.info_template_delete)
+                .positiveText(R.string.info_template_done)
+                .negativeText(R.string.info_template_back)
                 .build();
 
         final EditText question = (EditText) dialog.findViewById(R.id.flash_question);
@@ -207,7 +207,7 @@ public class FlashTemplate implements TemplateInterface {
                     String questionText = question.getText().toString();
                     String answerText = answer.getText().toString();
                     String hintText = answerHint.getText().toString();
-                    mData.add(new FlashCardModel(questionText, answerText, hintText, bitmap));
+                    mData.set(position, new FlashCardModel(questionText, answerText, hintText, bitmap));
                     mAdapter.notifyDataSetChanged();
                 }
 
