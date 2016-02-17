@@ -93,7 +93,7 @@ public class InfoTemplate implements TemplateInterface {
                 .title(R.string.info_add_new_title)
                 .customView(R.layout.info_dialog_add_edit_data, true)
                 .positiveText(R.string.info_template_add)
-                .negativeText(R.string.info_template_delete)
+                .negativeText(R.string.info_template_cancel)
                 .build();
 
         final EditText word = (EditText) dialog.findViewById(R.id.info_word);
@@ -123,10 +123,10 @@ public class InfoTemplate implements TemplateInterface {
     @Override
     public void editItem(final Activity activity, int position) {
         final MaterialDialog dialog = new MaterialDialog.Builder(activity)
-                .title(R.string.info_add_new_title)
+                .title(R.string.info_edit_title)
                 .customView(R.layout.info_dialog_add_edit_data, true)
-                .positiveText(R.string.info_template_add)
-                .negativeText(R.string.info_template_delete)
+                .positiveText(R.string.info_template_ok)
+                .negativeText(R.string.info_template_cancel)
                 .build();
 
         final InfoModel data = infoData.get(position);
