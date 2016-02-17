@@ -98,7 +98,7 @@ public class FlashTemplate implements TemplateInterface {
                 .title(R.string.info_add_new_title)
                 .customView(R.layout.flash_dialog_add_edit_item, true)
                 .positiveText(R.string.info_template_add)
-                .negativeText(R.string.info_template_delete)
+                .negativeText(R.string.info_template_cancel)
                 .build();
 
         final EditText question = (EditText) dialog.findViewById(R.id.flash_question);
@@ -158,10 +158,10 @@ public class FlashTemplate implements TemplateInterface {
         FlashCardModel data = mData.get(position);
 
         final MaterialDialog dialog = new MaterialDialog.Builder(activity)
-                .title(R.string.info_add_new_title)
+                .title(R.string.info_edit_title)
                 .customView(R.layout.flash_dialog_add_edit_item, true)
-                .positiveText(R.string.info_template_add)
-                .negativeText(R.string.info_template_delete)
+                .positiveText(R.string.info_template_ok)
+                .negativeText(R.string.info_template_cancel)
                 .build();
 
         final EditText question = (EditText) dialog.findViewById(R.id.flash_question);
