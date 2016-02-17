@@ -413,4 +413,7 @@
     <string name="title_activity_upload">Upload Application</string>
     <string name="apk_progress_dialog">Generating Apk</string>
     <string name="apk_msg">Inserting data into Apk</string>
+    <string name="info_template_cancel">Cancel</string>
+    <string name="info_edit_title">Edit Item</string>
+    <string name="info_template_ok">Ok</string>
 </resources>
