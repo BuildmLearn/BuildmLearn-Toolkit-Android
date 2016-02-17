@@ -82,7 +82,7 @@ public class QuizTemplate implements TemplateInterface {
                 .title(R.string.quiz_new_question_title)
                 .customView(R.layout.quiz_dialog_add_question, true)
                 .positiveText(R.string.quiz_add)
-                .negativeText(R.string.quiz_delete)
+                .negativeText(R.string.quiz_cancel)
                 .build();
 
         final EditText question = (EditText) dialog.findViewById(R.id.quiz_question);
@@ -163,8 +163,8 @@ public class QuizTemplate implements TemplateInterface {
         final MaterialDialog dialog = new MaterialDialog.Builder(activity)
                 .title(R.string.quiz_edit)
                 .customView(R.layout.quiz_dialog_add_question, true)
-                .positiveText(R.string.quiz_add)
-                .negativeText(R.string.quiz_delete)
+                .positiveText(R.string.quiz_ok)
+                .negativeText(R.string.quiz_cancel)
                 .build();
 
         final EditText question = (EditText) dialog.findViewById(R.id.quiz_question);
