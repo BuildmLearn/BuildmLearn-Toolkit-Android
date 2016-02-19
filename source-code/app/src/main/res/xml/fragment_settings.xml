@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory android:title="@string/project_settings">
@@ -27,7 +28,11 @@
             android:key="@string/key_delete_temporary_files"
             android:summary="@string/summary_temp_files"
             android:title="@string/delete_temp_files" />
-
+        <CheckBoxPreference
+            android:checked="false"
+            android:key="@string/key_auto_save"
+            android:summary="@string/title_auto_save"
+            android:title="@string/summary_auto_save" />
     </PreferenceCategory>
 
 </PreferenceScreen>
