@@ -55,7 +55,7 @@ public class InfoTemplate implements TemplateInterface {
 
     @Override
     public BaseAdapter newTemplateEditorAdapter(Context context) {
-        adapter = new InfoAdapter(context, infoData);
+        adapter = new InfoAdapter(context, infoData, this);
         return adapter;
     }
 
@@ -72,7 +72,7 @@ public class InfoTemplate implements TemplateInterface {
             String infoDescription = item.getElementsByTagName("item_description").item(0).getTextContent();
             infoData.add(new InfoModel(infoObject, infoDescription));
         }
-        adapter = new InfoAdapter(context, infoData);
+        adapter = new InfoAdapter(context, infoData, this);
         return adapter;
     }
 
