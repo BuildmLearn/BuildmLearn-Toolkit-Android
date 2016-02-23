@@ -29,6 +29,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/hint_quiz_name"
             android:textSize="@dimen/headline_leading"
+            android:singleLine="true"
             android:theme="@style/EditText.Dark" />
 
         <view
