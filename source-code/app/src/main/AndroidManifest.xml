@@ -38,6 +38,7 @@
         <activity
             android:name=".activity.TemplateEditor"
             android:label="@string/title_activity_template_editor"
+            android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
 
