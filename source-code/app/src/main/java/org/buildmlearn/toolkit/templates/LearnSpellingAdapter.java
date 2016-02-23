@@ -26,10 +26,12 @@ public class LearnSpellingAdapter extends BaseAdapter {
 
     private Context mContext;
     private ArrayList<LearnSpellingModel> data;
+    private LearnSpellingTemplate template;
 
-    public LearnSpellingAdapter(Context mContext, ArrayList<LearnSpellingModel> data) {
+    public LearnSpellingAdapter(Context mContext, ArrayList<LearnSpellingModel> data, LearnSpellingTemplate template) {
         this.mContext = mContext;
         this.data = data;
+        this.template = template;
     }
 
     @Override
@@ -84,8 +86,7 @@ public class LearnSpellingAdapter extends BaseAdapter {
                 dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        data.remove(position);
-                        notifyDataSetChanged();
+                        template.deleteItem(position);
                         dialog.dismiss();
 
                         ((TemplateEditor) mContext).restoreSelectedView();
@@ -101,39 +102,7 @@ public class LearnSpellingAdapter extends BaseAdapter {
         holder.editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final MaterialDialog dialog = new MaterialDialog.Builder(mContext)
-                        .title(R.string.info_add_new_title)
-                        .customView(R.layout.info_dialog_add_edit_data, true)
-                        .positiveText(R.string.info_template_add)
-                        .negativeText(R.string.info_template_delete)
-                        .build();
-
-                final LearnSpellingModel data = getItem(position);
-
-                final EditText word = (EditText) dialog.findViewById(R.id.info_word);
-                final EditText meaning = (EditText) dialog.findViewById(R.id.info_meaning);
-                word.setText(data.getWord());
-                meaning.setText(data.getMeaning());
-
-                dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        if (InfoTemplate.validated(mContext, word, meaning)) {
-                            String wordText = word.getText().toString();
-                            String meaningText = meaning.getText().toString();
-
-                            data.setWord(wordText);
-                            data.setMeaning(meaningText);
-
-                            notifyDataSetChanged();
-                            dialog.dismiss();
-                        }
-
-                    }
-                });
-
-                dialog.show();
+                template.editItem((TemplateEditor) mContext, position);
             }
         });
 

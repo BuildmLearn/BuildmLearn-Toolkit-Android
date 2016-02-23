@@ -55,7 +55,7 @@ public class LearnSpellingTemplate implements TemplateInterface {
 
     @Override
     public BaseAdapter newTemplateEditorAdapter(Context context) {
-        adapter = new LearnSpellingAdapter(context, mLearnSpellingData);
+        adapter = new LearnSpellingAdapter(context, mLearnSpellingData, this);
         return adapter;
     }
 
@@ -72,7 +72,7 @@ public class LearnSpellingTemplate implements TemplateInterface {
             String infoDescription = item.getElementsByTagName("meaning").item(0).getTextContent();
             mLearnSpellingData.add(new LearnSpellingModel(infoObject, infoDescription));
         }
-        adapter = new LearnSpellingAdapter(context, mLearnSpellingData);
+        adapter = new LearnSpellingAdapter(context, mLearnSpellingData, this);
         return adapter;
     }
 
