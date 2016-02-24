@@ -418,4 +418,6 @@
     <string name="title_activity_upload">Upload Application</string>
     <string name="apk_progress_dialog">Generating Apk</string>
     <string name="apk_msg">Inserting data into Apk</string>
+
+    <string name="templateNameFilter">0123456789QWERTYUIOPLKJHGFDSAZXCVBNMqwertyuioplkjhgfdsazxcvbnm ().,!</string>
 </resources>
