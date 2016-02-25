@@ -14,9 +14,9 @@ import java.util.ArrayList;
 
 /**
  * @brief Interface containing methods for a implementing a template.
- *
+ * <p/>
  * Each template must implement this interface. For using the template, a new enum in Template Enum is required.
- *
+ * <p/>
  * Created by abhishek on 27/5/15.
  */
 public interface TemplateInterface extends Serializable {
@@ -65,7 +65,7 @@ public interface TemplateInterface extends Serializable {
      * @param position Position of the item to be removed
      * @brief Remove an item form template data list
      */
-    void deleteItem(int position);
+    void deleteItem(Activity activity, int position);
 
 
     ArrayList<Element> getItems(Document doc);
@@ -74,7 +74,7 @@ public interface TemplateInterface extends Serializable {
      * @param filePathWithName Path of the generated .buildmlearn file
      * @return
      * @brief Returns a fragment required for the Simulator Activity.
-     *
+     * <p/>
      * Returns a fragment required for the Simulator Activity.
      * **Dev Note: File Path should be used to populate data from actual .buildmlearn file in the Simulator.
      */
@@ -108,4 +108,8 @@ public interface TemplateInterface extends Serializable {
      */
     void onActivityResult(Context context, int requestCode, int resultCode, Intent intent);
 
+    /**
+     * @brief Toggles the visibility of empty text if Array has zero elements
+     */
+    void setEmptyView(Activity activity);
 }

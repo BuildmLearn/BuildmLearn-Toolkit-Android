@@ -109,7 +109,6 @@ public class TemplateEditor extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 selectedTemplate.addItem(TemplateEditor.this);
-                hideEmptyView();
             }
         });
 
@@ -280,7 +279,7 @@ public class TemplateEditor extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         dialog.dismiss();
-                        selectedTemplate.deleteItem(selectedPosition);
+                        selectedTemplate.deleteItem(TemplateEditor.this, selectedPosition);
                         restoreSelectedView();
                     }
                 });
@@ -634,23 +633,6 @@ public class TemplateEditor extends AppCompatActivity {
      */
     protected void setAdapter(BaseAdapter adapter) {
         templateEdtiorList.setAdapter(adapter);
-        setEmptyView();
     }
 
-    /**
-     * @brief Toggles the visibility of empty text if adapter has zero elements
-     */
-    protected void setEmptyView() {
-
-        if (templateEdtiorList.getAdapter().getCount() == 1) {
-            findViewById(R.id.empty).setVisibility(View.VISIBLE);
-        } else {
-            findViewById(R.id.empty).setVisibility(View.GONE);
-        }
-    }
-
-
-    private void hideEmptyView() {
-        findViewById(R.id.empty).setVisibility(View.GONE);
-    }
 }
