@@ -1,8 +1,10 @@
 package org.buildmlearn.toolkit.fragment;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
 import android.widget.Toast;
 
 import org.buildmlearn.toolkit.R;
@@ -12,10 +14,14 @@ import org.buildmlearn.toolkit.R;
  */
 public class SettingsFragment extends PreferenceFragment {
 
+    private Preference prefUsername;
+    private SharedPreferences preferences;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.fragment_settings);
+        preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
         Preference button = findPreference(getString(R.string.key_delete_temporary_files));
         button.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
@@ -25,5 +31,13 @@ public class SettingsFragment extends PreferenceFragment {
                 return true;
             }
         });
+
+        prefUsername = findPreference(getString(R.string.key_user_name));
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        prefUsername.setSummary(preferences.getString(getString(R.string.key_user_name), ""));
     }
 }
