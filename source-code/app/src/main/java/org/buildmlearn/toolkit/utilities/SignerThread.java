@@ -1,7 +1,10 @@
 package org.buildmlearn.toolkit.utilities;
 
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.Toast;
@@ -162,11 +165,17 @@ public class SignerThread extends Thread {
     }
 
     private void showNotification(String description) {
+        Intent intent = new Intent();
+        intent.setAction(android.content.Intent.ACTION_VIEW);
+        File file = new File(finalApk);
+        intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(toolkit)
                         .setSmallIcon(R.drawable.ic_stat_toggle_check_box)
                         .setContentTitle("APK Generated")
                         .setContentText(description)
+                        .setContentIntent(pendingIntent)
                         .setAutoCancel(true);
 
         NotificationManager mNotificationManager =
