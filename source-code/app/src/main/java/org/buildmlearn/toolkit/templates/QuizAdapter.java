@@ -1,6 +1,8 @@
 package org.buildmlearn.toolkit.templates;
 
 import android.content.Context;
+import android.os.Build;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -92,13 +94,14 @@ public class QuizAdapter extends BaseAdapter {
                 int ascii = 65 + i;
                 holder.options.get(i).setText(Character.toString((char) ascii) + ")  " + data.getOptions().get(i));
                 holder.options.get(i).setVisibility(View.VISIBLE);
+                holder.options.get(i).setTextColor(ContextCompat.getColor(context, R.color.black_secondary_text));
             } else {
                 holder.options.get(i).setVisibility(View.GONE);
             }
         }
 
         holder.options.get(data.getCorrectAnswer()).setCustomFont(context, "roboto_medium.ttf");
-        holder.options.get(data.getCorrectAnswer()).setTextColor(context.getResources().getColor(R.color.quiz_correct_answer));
+        holder.options.get(data.getCorrectAnswer()).setTextColor(ContextCompat.getColor(context, R.color.quiz_correct_answer));
 
         holder.questionIcon.setOnClickListener(new View.OnClickListener() {
             @Override
