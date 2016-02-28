@@ -1,15 +1,26 @@
 package org.buildmlearn.toolkit.fragment;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.Toast;
+
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.afollestad.materialdialogs.internal.ThemeSingleton;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.ToolkitApplication;
@@ -40,9 +51,14 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
     private static final String TAG = "Load Project Fragment";
     private AbsListView mListView;
 
+    private boolean showTemplateSelectedMenu;
     private SavedProjectAdapter mAdapter;
     private ToolkitApplication mToolkit;
+    private Activity activity;
     private ArrayList<SavedProject> savedProjects;
+    private View selectedView = null;
+
+    private int selectedPosition = -1;
 
     /**
      * {@inheritDoc}
@@ -50,8 +66,9 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setHasOptionsMenu(true);
         mToolkit = (ToolkitApplication) getActivity().getApplicationContext();
+        activity = getActivity();
         savedProjects = new ArrayList<>();
 
         String path = mToolkit.getSavedDir();
@@ -116,6 +133,26 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
         mListView = (AbsListView) view.findViewById(android.R.id.list);
         setAdapter(mAdapter);
         mListView.setOnItemClickListener(this);
+        mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                if (selectedPosition == position) {
+                    selectedPosition = -1;
+                    view.setBackgroundResource(0);
+                    restoreColorScheme();
+                } else {
+                    if (selectedView != null) {
+                        selectedView.setBackgroundResource(0);
+                    }
+                    selectedView = view;
+                    selectedPosition = position;
+                    Log.d(TAG, "Position: " + selectedPosition);
+                    view.setBackgroundColor(getResources().getColor(R.color.color_divider));
+                    changeColorScheme();
+                }
+                return true;
+            }
+        });
     }
 
     /**
@@ -203,5 +240,117 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
             mAdapter.notifyDataSetChanged();
         }
         super.onResume();
+    }
+
+    /**
+     * @brief Restores the color scheme when switching from edit mode to normal mode.
+     * <p/>
+     * Edit mode is triggered, when the list item is long pressed.
+     */
+    public void restoreColorScheme() {
+        int primaryColor = getResources().getColor(R.color.color_primary);
+        int primaryColorDark = getResources().getColor(R.color.color_primary_dark);
+        ((AppCompatActivity) activity).getSupportActionBar().setBackgroundDrawable(new ColorDrawable(primaryColor));
+        ThemeSingleton.get().positiveColor = ColorStateList.valueOf(primaryColor);
+        ThemeSingleton.get().neutralColor = ColorStateList.valueOf(primaryColor);
+        ThemeSingleton.get().negativeColor = ColorStateList.valueOf(primaryColor);
+        ThemeSingleton.get().widgetColor = primaryColor;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            activity.getWindow().setStatusBarColor(primaryColorDark);
+            activity.getWindow().setNavigationBarColor(primaryColor);
+        }
+        showTemplateSelectedMenu = false;
+        activity.invalidateOptionsMenu();
+    }
+
+    /**
+     * @brief Changes the color scheme when switching from normal mode to edit mode.
+     * <p/>
+     * Edit mode is triggered, when the list item is long pressed.
+     */
+    public void changeColorScheme() {
+        int primaryColor = getResources().getColor(R.color.color_primary_dark);
+        int primaryColorDark = getResources().getColor(R.color.color_selected_dark);
+        ((AppCompatActivity) activity).getSupportActionBar().setBackgroundDrawable(new ColorDrawable(primaryColor));
+        ThemeSingleton.get().positiveColor = ColorStateList.valueOf(primaryColor);
+        ThemeSingleton.get().neutralColor = ColorStateList.valueOf(primaryColor);
+        ThemeSingleton.get().negativeColor = ColorStateList.valueOf(primaryColor);
+        ThemeSingleton.get().widgetColor = primaryColor;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            activity.getWindow().setStatusBarColor(primaryColorDark);
+            activity.getWindow().setNavigationBarColor(primaryColor);
+        }
+
+        showTemplateSelectedMenu = true;
+        activity.invalidateOptionsMenu();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        if (showTemplateSelectedMenu) {
+            activity.getMenuInflater().inflate(R.menu.menu_project_selected, menu);
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        switch (id) {
+            case R.id.action_delete:
+
+                final MaterialDialog dialog = new MaterialDialog.Builder(activity)
+                        .title(R.string.dialog_delete_title)
+                        .content(R.string.dialog_delete_msg)
+                        .positiveText(R.string.dialog_yes)
+                        .negativeText(R.string.dialog_no)
+                        .build();
+
+                dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                        deleteItem(selectedPosition);
+                        restoreSelectedView();
+                    }
+                });
+                dialog.show();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * @brief Removes selected project item
+     */
+    private void deleteItem(int selectedPosition) {
+        SavedProject project = savedProjects.get(selectedPosition);
+        File file = new File(project.getFile().getPath());
+        boolean deleted = file.delete();
+        if (deleted) {
+            savedProjects.remove(selectedPosition);
+            mAdapter.notifyDataSetChanged();
+            setEmptyText();
+            Toast.makeText(activity, "Project Successfully Deleted!", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(activity, "Project Deletion Failed!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    /**
+     * @brief Removes selected color from the selected ListView item when switching from edit mode to normal mode
+     */
+    public void restoreSelectedView() {
+        if (selectedView != null) {
+            selectedView.setBackgroundResource(0);
+        }
+        restoreColorScheme();
     }
 }
