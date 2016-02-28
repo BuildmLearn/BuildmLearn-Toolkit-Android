@@ -35,7 +35,7 @@ import java.util.ArrayList;
 
 /**
  * @brief Flash Card template code implementing methods of TemplateInterface
- *
+ * <p/>
  * Created by abhishek on 11/07/15 at 7:33 PM.
  */
 public class FlashTemplate implements TemplateInterface {
@@ -141,6 +141,7 @@ public class FlashTemplate implements TemplateInterface {
                     String answerText = answer.getText().toString();
                     String hintText = answerHint.getText().toString();
                     mData.add(new FlashCardModel(questionText, answerText, hintText, bitmap));
+                    setEmptyView(activity);
                     mAdapter.notifyDataSetChanged();
                 }
 
@@ -240,8 +241,9 @@ public class FlashTemplate implements TemplateInterface {
     }
 
     @Override
-    public void deleteItem(int position) {
+    public void deleteItem(final Activity activity, int position) {
         mData.remove(position);
+        setEmptyView(activity);
         mAdapter.notifyDataSetChanged();
     }
 
@@ -378,5 +380,16 @@ public class FlashTemplate implements TemplateInterface {
         return File.createTempFile(part, ext, tempDir);
     }
 
+    /**
+     * @brief Toggles the visibility of empty text if Array has zero elements
+     */
+    @Override
+    public void setEmptyView(Activity activity) {
+        if (mData.size() < 1) {
+            activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
+        } else {
+            activity.findViewById(R.id.empty).setVisibility(View.GONE);
+        }
+    }
 
 }

@@ -16,7 +16,7 @@
             style="@style/TextView.CircleIcon"
             android:padding="2dp"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/menu_edit_template_item" />
+            android:src="@drawable/ic_keyboard_arrow_right_black_24dp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -45,15 +45,6 @@
         </LinearLayout>
 
 
-        <ImageView
-            android:id="@+id/info_template_delete"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:adjustViewBounds="true"
-            android:layout_marginRight="16dp"
-            android:scaleType="centerInside"
-            android:src="@drawable/template_delete" />
 
 
     </LinearLayout>
