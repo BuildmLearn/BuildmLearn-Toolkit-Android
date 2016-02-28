@@ -114,6 +114,7 @@ public class NavigationDrawerFragment extends Fragment {
         mDrawerListView.setLayoutParams(params);
     }
 
+
     /**
      * {@inheritDoc}
      */
@@ -221,6 +222,15 @@ public class NavigationDrawerFragment extends Fragment {
                 }
 
                 getActivity().supportInvalidateOptionsMenu(); // calls onPrepareOptionsMenu()
+            }
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+                super.onDrawerStateChanged(newState);
+                SharedPreferences sp = PreferenceManager
+                        .getDefaultSharedPreferences(getActivity());
+                TextView name = (TextView) mFragmentContainerView.findViewById(R.id.name);
+                name.setText("Welcome " + sp.getString(getString(R.string.key_user_name), ""));
             }
         };
 
