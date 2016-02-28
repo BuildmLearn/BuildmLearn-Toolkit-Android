@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 /**
  * @brief Learn Spelling template code implementing methods of TemplateInterface
- *
+ * <p/>
  * Created by abhishek on 16/06/15 at 9:59 PM.
  */
 public class LearnSpellingTemplate implements TemplateInterface {
@@ -110,6 +110,7 @@ public class LearnSpellingTemplate implements TemplateInterface {
                     LearnSpellingModel temp = new LearnSpellingModel(wordText, meaningText);
                     mLearnSpellingData.add(temp);
                     adapter.notifyDataSetChanged();
+                    setEmptyView(activity);
                     dialog.dismiss();
                 }
 
@@ -159,10 +160,11 @@ public class LearnSpellingTemplate implements TemplateInterface {
     }
 
     @Override
-    public void deleteItem(int position) {
+    public void deleteItem(final Activity activity, int position) {
 
 
         mLearnSpellingData.remove(position);
+        setEmptyView(activity);
         adapter.notifyDataSetChanged();
 
     }
@@ -205,4 +207,15 @@ public class LearnSpellingTemplate implements TemplateInterface {
 
     }
 
+    /**
+     * @brief Toggles the visibility of empty text if Array has zero elements
+     */
+    @Override
+    public void setEmptyView(Activity activity) {
+        if (mLearnSpellingData.size() < 1) {
+            activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
+        } else {
+            activity.findViewById(R.id.empty).setVisibility(View.GONE);
+        }
+    }
 }
