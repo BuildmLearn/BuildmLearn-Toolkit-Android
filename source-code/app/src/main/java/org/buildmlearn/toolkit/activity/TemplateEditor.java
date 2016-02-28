@@ -494,7 +494,8 @@ public class TemplateEditor extends AppCompatActivity {
         EditText authorEditText = ((EditText) findViewById(R.id.author_name));
         EditText titleEditText = ((EditText) findViewById(R.id.template_title));
         String author = ((EditText) findViewById(R.id.author_name)).getText().toString();
-        String title = ((EditText) findViewById(R.id.template_title)).getText().toString();
+        String title = ((EditText) findViewById(R.id.template_title)).getText().toString().trim();
+        titleEditText.setText(title);
         if (author.equals("")) {
             authorEditText.setError("Author name is required");
         } else if (title.equals("")) {
