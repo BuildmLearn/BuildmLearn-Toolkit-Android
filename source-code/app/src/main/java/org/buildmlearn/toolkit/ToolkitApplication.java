@@ -87,7 +87,7 @@ public class ToolkitApplication extends Application {
      * @brief Checks if external storage is present for storing data
      * @return true if external storage is present, else false
      */
-    private boolean checkExternalStorage() {
+    public boolean checkExternalStorage() {
 
         boolean result = false;
         File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/BuildmLearn123/");

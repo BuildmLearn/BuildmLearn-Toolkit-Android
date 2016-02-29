@@ -24,7 +24,6 @@ import android.widget.TextView;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.adapter.NavigationDrawerMenuAdapter;
-import org.buildmlearn.toolkit.constant.Constants;
 import org.buildmlearn.toolkit.model.Section;
 
 /**
