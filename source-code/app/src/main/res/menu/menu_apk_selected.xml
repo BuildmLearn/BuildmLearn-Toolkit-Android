@@ -2,10 +2,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="org.buildmlearn.toolkit.fragment.LoadProjectFragment">
+
+    <item
+        android:id="@+id/action_share"
+        android:icon="@drawable/ic_share_white_24dp"
+        android:orderInCategory="1"
+        android:title="@string/bottom_sheet_share_apk"
+        app:showAsAction="ifRoom" />
+
     <item
         android:id="@+id/action_delete"
         android:icon="@drawable/menu_delete_template_item"
-        android:orderInCategory="1"
+        android:orderInCategory="2"
         android:title="@string/menu_delete_template_item"
         app:showAsAction="ifRoom" />
 

@@ -9,6 +9,7 @@ import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.activity.AboutBuildmLearn;
 import org.buildmlearn.toolkit.activity.TutorialActivity;
 import org.buildmlearn.toolkit.fragment.HomeFragment;
+import org.buildmlearn.toolkit.fragment.LoadApkFragment;
 import org.buildmlearn.toolkit.fragment.LoadProjectFragment;
 import org.buildmlearn.toolkit.fragment.SettingsFragment;
 
@@ -23,6 +24,7 @@ public enum Section {
     OPEN_PROJECT(LoadProjectFragment.class, R.string.menu_load_project, R.drawable.menu_open, false),
     //    UPLOAD(TestFragment.class, R.string.menu_my_uploads, R.drawable.menu_upload, false),
 //    DRAFTS(TestFragment.class, R.string.menu_drafts, R.drawable.menu_drafts, false),
+    OPEN_APK(LoadApkFragment.class, R.string.menu_load_apks, R.drawable.ic_android, false),
     DIVIDER(),
     SETTINGS(SettingsFragment.class, R.string.menu_settings, R.drawable.menu_settings, false),
     HOW_TO(TutorialActivity.class, R.string.menu_how_to, R.drawable.menu_how_to),
