@@ -69,6 +69,46 @@
     </RadioGroup>
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/radioGroup1"
+        android:layout_marginTop="20dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Score Card"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="20dp"
+            android:layout_marginBottom="5dp"/>
+        <TextView
+            android:id="@+id/tv_realtimeScore_correct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Total Correct: 0"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="15dp"/>
+        <TextView
+            android:id="@+id/tv_realtimeScore_wrong"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Total Wrong: 0"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="15dp"/>
+        <TextView
+            android:id="@+id/tv_realtimeScore_unanswered"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Unanswered: 0"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="15dp"/>
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/ll"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -81,7 +121,7 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:padding="10dp"
-            android:text="Next"
+            android:text="Skip"
             android:textColor="@android:color/white"></Button>
 
         <Button
@@ -93,6 +133,23 @@
             android:padding="10dp"
             android:text="Submit"
             android:textColor="@android:color/white"></Button>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/next_question_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:textColor="@android:color/white"
+            android:layout_margin="10dp"
+            android:text="Next Question"
+            android:visibility="invisible" />
+
     </LinearLayout>
 
 </RelativeLayout>
