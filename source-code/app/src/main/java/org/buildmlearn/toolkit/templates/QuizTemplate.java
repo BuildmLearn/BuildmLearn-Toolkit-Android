@@ -146,8 +146,7 @@ public class QuizTemplate implements TemplateInterface {
                         }
                     }
                     String questionText = question.getText().toString();
-                    quizData.add(new QuizModel(questionText, answerOptions, correctAnswer));
-                    mAdapter.notifyDataSetChanged();
+                    mAdapter.addItem(new QuizModel(questionText, answerOptions, correctAnswer));
                 }
 
             }
@@ -158,7 +157,7 @@ public class QuizTemplate implements TemplateInterface {
 
     @Override
     public void editItem(final Activity activity, final int position) {
-        QuizModel data = quizData.get(position);
+        final QuizModel data = mAdapter.getItem(position);
 
         final MaterialDialog dialog = new MaterialDialog.Builder(activity)
                 .title(R.string.quiz_edit)
@@ -235,8 +234,7 @@ public class QuizTemplate implements TemplateInterface {
                         }
                     }
                     String questionText = question.getText().toString();
-                    quizData.set(position, new QuizModel(questionText, answerOptions, correctAnswer));
-                    mAdapter.notifyDataSetChanged();
+                    mAdapter.editItem(data, new QuizModel(questionText, answerOptions, correctAnswer));
                 }
 
             }
@@ -246,8 +244,7 @@ public class QuizTemplate implements TemplateInterface {
 
     @Override
     public void deleteItem(int position) {
-        quizData.remove(position);
-        mAdapter.notifyDataSetChanged();
+        mAdapter.deleteItem(mAdapter.getItem(position));
     }
 
     @Override

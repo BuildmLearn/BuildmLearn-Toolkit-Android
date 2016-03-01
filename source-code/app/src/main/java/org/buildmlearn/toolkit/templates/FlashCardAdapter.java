@@ -23,24 +23,31 @@ import java.util.ArrayList;
  *
  * Created by abhishek on 12/07/15 at 11:56 PM.
  */
-public class FlashCardAdapter extends BaseAdapter {
+public class FlashCardAdapter extends BaseAdapter implements TemplateAdapterInterface{
 
     private Context mContext;
+    //Contains all Data
     private ArrayList<FlashCardModel> mData;
+    //Contains filtered Data(Search Purpose). In normal case (mDataFiltered == mData)
+    private ArrayList<FlashCardModel> mDataFiltered;
+
+    private String searchQuery;
+
 
     public FlashCardAdapter(Context context, ArrayList<FlashCardModel> data) {
         mContext = context;
         mData = data;
+        mDataFiltered = mData;
     }
 
     @Override
     public int getCount() {
-        return mData.size();
+        return mDataFiltered.size();
     }
 
     @Override
     public FlashCardModel getItem(int position) {
-        return mData.get(position);
+        return mDataFiltered.get(position);
     }
 
     @Override
@@ -99,8 +106,8 @@ public class FlashCardAdapter extends BaseAdapter {
                 dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        mData.remove(position);
-                        notifyDataSetChanged();
+                        deleteItem(data);
+                        searchFilter();
                         dialog.dismiss();
 
                         ((TemplateEditor) mContext).restoreSelectedView();
@@ -116,6 +123,77 @@ public class FlashCardAdapter extends BaseAdapter {
         convertView.setTag(holder);
 
         return convertView;
+    }
+
+    /**
+     * Delete `flashCardModel` from mData
+     *
+     * @param flashCardModel
+     * @return Whether operation is done Successfully
+     */
+    public boolean deleteItem(FlashCardModel flashCardModel) {
+        int index = mData.indexOf(flashCardModel);
+        if (index>=0) {
+            mData.remove(index);
+            searchFilter();
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Replace `oldFlashCardModel` to `newFlashCardModel` in mData
+     * @param oldFlashCardModel
+     * @param newFlashCardModel
+     * @return Whether operation is done Successfully
+     */
+    public boolean editItem(FlashCardModel oldFlashCardModel, FlashCardModel newFlashCardModel) {
+        int index = mData.indexOf(oldFlashCardModel);
+        if (index>=0) {
+            mData.set(index, newFlashCardModel);
+            searchFilter();
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Add Item to mData
+     * @param flashCardModel
+     */
+    public void addItem(FlashCardModel flashCardModel) {
+        mData.add(flashCardModel);
+        searchFilter();
+    }
+
+    /**
+     * Refresh List according to `searchQuery`
+     */
+    public void searchFilter() {
+        if (searchQuery == null) {
+            mDataFiltered = mData;
+        } else {
+            mDataFiltered = new ArrayList<>();
+            for (FlashCardModel data : mData) {
+                if (data.contains(searchQuery)) {
+                    mDataFiltered.add(data);
+                }
+            }
+        }
+        notifyDataSetChanged();
+    }
+
+    /**
+     * Set `searchQuery`
+     * @param query
+     */
+    @Override
+    public void searchFilter(String query) {
+        if(query.trim().isEmpty())
+            searchQuery = null;
+        else
+            searchQuery = query.trim();
+        searchFilter();
     }
 
     public class Holder {

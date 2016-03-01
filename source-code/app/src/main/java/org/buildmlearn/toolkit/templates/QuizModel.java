@@ -74,4 +74,21 @@ public class QuizModel implements Serializable {
     public void setIsSelected(boolean isSelected) {
         this.isSelected = isSelected;
     }
+
+    /**
+     * Test whether current Model satisfy given query
+     *
+     * @param query
+     * @return
+     */
+    public boolean contains(String query) {
+        query = query.toLowerCase();
+        if(question.toLowerCase().contains(query) )
+            return true;
+        for (String option : options) {
+            if (option.toLowerCase().contains(query))
+                return true;
+        }
+        return false;
+    }
 }

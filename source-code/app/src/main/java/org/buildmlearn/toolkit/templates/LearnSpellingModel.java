@@ -46,4 +46,16 @@ public class LearnSpellingModel implements Serializable {
         rootElement.appendChild(answerElement);
         return rootElement;
     }
+
+    /**
+     * Test whether current Model satisfy given query
+     *
+     * @param query
+     * @return
+     */
+    public boolean contains(String query) {
+        query = query.toLowerCase();
+        return mWord.toLowerCase().contains(query)
+                || mMeaning.toLowerCase().contains(query);
+    }
 }

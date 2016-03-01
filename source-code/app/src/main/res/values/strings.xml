@@ -136,6 +136,9 @@
     <string name="menu_simulate">Simulate</string>
     <string name="menu_delete_template_item">Delete</string>
     <string name="menu_edit_template_item">Edit</string>
+    <string name="menu_search">Search</string>
+    <string name="menu_search_hint_templateseditor">Search...</string>
+
 
     <!-- Bottom Sheet-->
     <string name="bottom_sheet_share_apk">Share APK</string>
@@ -192,6 +195,8 @@
     <string name="MenuManageKeys">My Keys</string>
     <string name="MenuDonate">Donate</string>
     <string name="MenuAbout">About</string>
+    <string name="search_hint_templateseditor">Search...</string>
+
 
     <!-- Manage Keys string values -->
     <string name="MyKeysWebPage">http://sites.google.com/site/zipsigner/signing-with-your-own-keys</string>
@@ -418,4 +423,6 @@
     <string name="title_activity_upload">Upload Application</string>
     <string name="apk_progress_dialog">Generating Apk</string>
     <string name="apk_msg">Inserting data into Apk</string>
+
+
 </resources>
