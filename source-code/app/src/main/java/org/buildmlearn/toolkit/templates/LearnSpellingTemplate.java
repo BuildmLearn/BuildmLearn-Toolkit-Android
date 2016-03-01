@@ -108,8 +108,7 @@ public class LearnSpellingTemplate implements TemplateInterface {
                     String meaningText = meaning.getText().toString();
 
                     LearnSpellingModel temp = new LearnSpellingModel(wordText, meaningText);
-                    mLearnSpellingData.add(temp);
-                    adapter.notifyDataSetChanged();
+                    adapter.addItem(temp);
                     dialog.dismiss();
                 }
 
@@ -122,14 +121,14 @@ public class LearnSpellingTemplate implements TemplateInterface {
 
     @Override
     public void editItem(final Activity activity, int position) {
+
+        final LearnSpellingModel data = adapter.getItem(position);
         final MaterialDialog dialog = new MaterialDialog.Builder(activity)
                 .title(R.string.info_edit_title)
                 .customView(R.layout.info_dialog_add_edit_data, true)
                 .positiveText(R.string.info_template_ok)
                 .negativeText(R.string.info_template_cancel)
                 .build();
-
-        final LearnSpellingModel data = mLearnSpellingData.get(position);
 
         final EditText word = (EditText) dialog.findViewById(R.id.info_word);
         final EditText meaning = (EditText) dialog.findViewById(R.id.info_meaning);
@@ -147,7 +146,7 @@ public class LearnSpellingTemplate implements TemplateInterface {
                     data.setWord(wordText);
                     data.setMeaning(meaningText);
 
-                    adapter.notifyDataSetChanged();
+                    adapter.searchFilter();
                     dialog.dismiss();
                 }
 
@@ -160,11 +159,7 @@ public class LearnSpellingTemplate implements TemplateInterface {
 
     @Override
     public void deleteItem(int position) {
-
-
-        mLearnSpellingData.remove(position);
-        adapter.notifyDataSetChanged();
-
+        adapter.deleteItem(adapter.getItem(position));
     }
 
     @Override

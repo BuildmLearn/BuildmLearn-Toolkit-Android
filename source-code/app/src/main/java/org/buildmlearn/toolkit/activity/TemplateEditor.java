@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -36,6 +37,7 @@ import org.buildmlearn.toolkit.model.KeyStoreDetails;
 import org.buildmlearn.toolkit.model.Template;
 import org.buildmlearn.toolkit.model.TemplateInterface;
 import org.buildmlearn.toolkit.simulator.Simulator;
+import org.buildmlearn.toolkit.templates.TemplateAdapterInterface;
 import org.buildmlearn.toolkit.utilities.FileUtils;
 import org.buildmlearn.toolkit.utilities.KeyboardHelper;
 import org.buildmlearn.toolkit.utilities.SignerThread;
@@ -61,7 +63,7 @@ import javax.xml.parsers.ParserConfigurationException;
  * data, generate and save projects, APKs and sharing options.
  */
 
-public class TemplateEditor extends AppCompatActivity {
+public class TemplateEditor extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
     private final static String TAG = "TEMPLATE EDITOR";
 
@@ -257,6 +259,9 @@ public class TemplateEditor extends AppCompatActivity {
             getMenuInflater().inflate(R.menu.menu_template_item_selected, menu);
         } else {
             getMenuInflater().inflate(R.menu.menu_template_editor, menu);
+            SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+            searchView.setOnQueryTextListener(this);
+            searchView.setQuery("",false);
         }
         return true;
     }
@@ -657,5 +662,17 @@ public class TemplateEditor extends AppCompatActivity {
 
     private void hideEmptyView() {
         findViewById(R.id.empty).setVisibility(View.GONE);
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        TemplateAdapterInterface adapter = (TemplateAdapterInterface) selectedTemplate.currentTemplateEditorAdapter();
+        adapter.searchFilter(newText);
+        return true;
     }
 }

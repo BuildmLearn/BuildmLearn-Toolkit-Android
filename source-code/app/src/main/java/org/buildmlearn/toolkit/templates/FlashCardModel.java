@@ -88,5 +88,18 @@ public class FlashCardModel implements Serializable {
         rootElement.appendChild(imageElement);
         return rootElement;
     }
+
+    /**
+     * Test whether current Model satisfy given query
+     *
+     * @param query
+     * @return
+     */
+    public boolean contains(String query) {
+        query = query.toLowerCase();
+        return mQuestion.toLowerCase().contains(query)
+                || mAnswer.toLowerCase().contains(query)
+                || mHint.toLowerCase().contains(query);
+    }
 }
 

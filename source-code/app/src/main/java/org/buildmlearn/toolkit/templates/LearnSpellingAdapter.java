@@ -22,24 +22,30 @@ import java.util.ArrayList;
  *
  * Created by abhishek on 17/06/15 at 9:48 PM.
  */
-public class LearnSpellingAdapter extends BaseAdapter {
+public class LearnSpellingAdapter extends BaseAdapter implements TemplateAdapterInterface {
 
     private Context mContext;
+    //Contains all Data
     private ArrayList<LearnSpellingModel> data;
+    //Contains filtered Data(Search Purpose). In normal case (mDataFiltered == mData)
+    private ArrayList<LearnSpellingModel> mDataFiltered;
+
+    private String searchQuery;
 
     public LearnSpellingAdapter(Context mContext, ArrayList<LearnSpellingModel> data) {
         this.mContext = mContext;
         this.data = data;
+        mDataFiltered = data;
     }
 
     @Override
     public int getCount() {
-        return data.size();
+        return mDataFiltered.size();
     }
 
     @Override
     public LearnSpellingModel getItem(int position) {
-        return data.get(position);
+        return mDataFiltered.get(position);
     }
 
     @Override
@@ -63,10 +69,10 @@ public class LearnSpellingAdapter extends BaseAdapter {
         holder.word = (TextViewPlus) convertView.findViewById(R.id.info_object);
         holder.meaning = (TextViewPlus) convertView.findViewById(R.id.info_description);
 
-        LearnSpellingModel info = getItem(position);
+        final LearnSpellingModel learnSpellingModel = getItem(position);
 
-        holder.meaning.setText(info.getMeaning());
-        holder.word.setText(info.getWord());
+        holder.meaning.setText(learnSpellingModel.getMeaning());
+        holder.word.setText(learnSpellingModel.getWord());
         convertView.setTag(holder);
 
         holder.deleteButton = (ImageView) convertView.findViewById(R.id.info_template_delete);
@@ -84,8 +90,7 @@ public class LearnSpellingAdapter extends BaseAdapter {
                 dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        data.remove(position);
-                        notifyDataSetChanged();
+                        deleteItem(learnSpellingModel);
                         dialog.dismiss();
 
                         ((TemplateEditor) mContext).restoreSelectedView();
@@ -126,7 +131,7 @@ public class LearnSpellingAdapter extends BaseAdapter {
                             data.setWord(wordText);
                             data.setMeaning(meaningText);
 
-                            notifyDataSetChanged();
+                            searchFilter();
                             dialog.dismiss();
                         }
 
@@ -140,6 +145,62 @@ public class LearnSpellingAdapter extends BaseAdapter {
 
         return convertView;
     }
+
+
+    /**
+     * Delete `model` from `data`
+     * @param model
+     * @return whether operation is done Successfully
+     */
+    public boolean deleteItem(LearnSpellingModel model) {
+        int index = data.indexOf(model);
+        if (index>=0) {
+            data.remove(index);
+            searchFilter();
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Add `model` to `data`
+     * @param model
+     */
+    public void addItem(LearnSpellingModel model) {
+        data.add(model);
+        searchFilter();
+    }
+
+    /**
+     * Refresh List according to `searchQuery`
+     */
+    public void searchFilter() {
+        if (searchQuery == null) {
+            mDataFiltered = data;
+        } else {
+            mDataFiltered = new ArrayList<>();
+            for (LearnSpellingModel model : data) {
+                if (model.contains(searchQuery)) {
+                    mDataFiltered.add(model);
+                }
+            }
+        }
+        notifyDataSetChanged();
+    }
+
+    /**
+     * Set `searchQuery`
+     * @param query
+     */
+    @Override
+    public void searchFilter(String query) {
+        if(query.trim().isEmpty())
+            searchQuery = null;
+        else
+            searchQuery = query.trim();
+        searchFilter();
+    }
+
 
     public class LearnSpellingHolder {
         public TextViewPlus word;

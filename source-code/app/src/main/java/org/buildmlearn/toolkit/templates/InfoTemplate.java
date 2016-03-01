@@ -108,8 +108,7 @@ public class InfoTemplate implements TemplateInterface {
                     String meaningText = meaning.getText().toString();
 
                     InfoModel temp = new InfoModel(wordText, meaningText);
-                    infoData.add(temp);
-                    adapter.notifyDataSetChanged();
+                    adapter.addItem(temp);
                     dialog.dismiss();
                 }
 
@@ -122,14 +121,14 @@ public class InfoTemplate implements TemplateInterface {
 
     @Override
     public void editItem(final Activity activity, int position) {
+
+        final InfoModel data = adapter.getItem(position);
         final MaterialDialog dialog = new MaterialDialog.Builder(activity)
                 .title(R.string.info_edit_title)
                 .customView(R.layout.info_dialog_add_edit_data, true)
                 .positiveText(R.string.info_template_ok)
                 .negativeText(R.string.info_template_cancel)
                 .build();
-
-        final InfoModel data = infoData.get(position);
 
         final EditText word = (EditText) dialog.findViewById(R.id.info_word);
         final EditText meaning = (EditText) dialog.findViewById(R.id.info_meaning);
@@ -147,7 +146,8 @@ public class InfoTemplate implements TemplateInterface {
                     data.setWord(wordText);
                     data.setInfoDescription(meaningText);
 
-                    adapter.notifyDataSetChanged();
+                    //Run Filteration Again
+                    adapter.searchFilter();
                     dialog.dismiss();
                 }
 
@@ -160,11 +160,7 @@ public class InfoTemplate implements TemplateInterface {
 
     @Override
     public void deleteItem(int position) {
-
-
-        infoData.remove(position);
-        adapter.notifyDataSetChanged();
-
+        adapter.deleteItem( adapter.getItem(position));
     }
 
     @Override

@@ -26,26 +26,33 @@ import java.util.ArrayList;
  * <p/>
  * Created by abhishek on 28/5/15.
  */
-public class QuizAdapter extends BaseAdapter {
+public class QuizAdapter extends BaseAdapter implements TemplateAdapterInterface {
 
 
     private Context context;
+    //Contains All Data
     private ArrayList<QuizModel> quizData;
+    //Contains filtered Data(Search Purpose). In normal case (mDataFiltered == mData)
+    private ArrayList<QuizModel> mDataFiltered;
+
+    private String searchQuery;
+
     private int expandedPostion = -1;
 
     public QuizAdapter(Context context, ArrayList<QuizModel> quizData) {
         this.context = context;
         this.quizData = quizData;
+        mDataFiltered = quizData;
     }
 
     @Override
     public int getCount() {
-        return quizData.size();
+        return mDataFiltered.size();
     }
 
     @Override
     public QuizModel getItem(int position) {
-        return quizData.get(position);
+        return mDataFiltered.get(position);
     }
 
     @Override
@@ -77,7 +84,7 @@ public class QuizAdapter extends BaseAdapter {
             holder = (Holder) convertView.getTag();
         }
 
-        QuizModel data = getItem(position);
+        final QuizModel data = getItem(position);
         holder.question.setText(data.getQuestion());
         if (data.isSelected()) {
             holder.questionIcon.setImageResource(R.drawable.collapse);
@@ -137,8 +144,7 @@ public class QuizAdapter extends BaseAdapter {
                 dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        quizData.remove(position);
-                        notifyDataSetChanged();
+                        deleteItem(data);
                         dialog.dismiss();
 
                         ((TemplateEditor) context).restoreSelectedView();
@@ -154,7 +160,7 @@ public class QuizAdapter extends BaseAdapter {
     }
 
     private void editItem(final int position, final Context context) {
-        QuizModel data = getItem(position);
+        final QuizModel data = getItem(position);
 
         boolean wrapInScrollView = true;
         final MaterialDialog dialog = new MaterialDialog.Builder(context)
@@ -232,8 +238,7 @@ public class QuizAdapter extends BaseAdapter {
                         }
                     }
                     String questionText = question.getText().toString();
-                    quizData.set(position, new QuizModel(questionText, answerOptions, correctAnswer));
-                    notifyDataSetChanged();
+                    editItem(data, new QuizModel(questionText, answerOptions, correctAnswer));
                 }
 
             }
@@ -267,6 +272,83 @@ public class QuizAdapter extends BaseAdapter {
         }
         return -1;
     }
+
+
+    /**
+     * Delete `model` from quizData
+     *
+     * @param model
+     * @return Whether operation is done Successfully
+     */
+    public boolean deleteItem(QuizModel model) {
+        int index = quizData.indexOf(model);
+        if (index>=0) {
+            quizData.remove(index);
+            searchFilter();
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Replace `oldModel` to `newModel` in quizData
+     * @param oldModel
+     * @param newModel
+     * @return Whether operation is done Successfully
+     */
+    public boolean editItem(QuizModel oldModel, QuizModel newModel) {
+        int index = quizData.indexOf(oldModel);
+        if (index>=0) {
+            quizData.set(index, newModel);
+            searchFilter();
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Add Item to quizData
+     * @param model
+     */
+    public void addItem(QuizModel model) {
+        quizData.add(model);
+        searchFilter();
+    }
+
+    /**
+     * Refresh List according to `searchQuery`
+     */
+    public void searchFilter() {
+        if (searchQuery == null) {
+            mDataFiltered = quizData;
+        } else {
+            mDataFiltered = new ArrayList<>();
+            for (QuizModel data : quizData) {
+                if (data.contains(searchQuery)) {
+                    mDataFiltered.add(data);
+                }
+            }
+        }
+        notifyDataSetChanged();
+    }
+
+    /**
+     * Set `searchQuery`
+     * @param query
+     */
+    @Override
+    public void searchFilter(String query) {
+        if(query.trim().isEmpty())
+            searchQuery = null;
+        else
+            searchQuery = query.trim();
+        if (expandedPostion >= 0 && getItem(expandedPostion) != null) {
+            getItem(expandedPostion).setIsSelected(false);
+            expandedPostion = -1;
+        }
+        searchFilter();
+    }
+
 
     public class Holder {
         TextViewPlus question;

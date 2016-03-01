@@ -46,4 +46,16 @@ public class InfoModel implements Serializable {
         rootElement.appendChild(answerElement);
         return rootElement;
     }
+
+    /**
+     * Test whether current Model satisfy given query
+     *
+     * @param query
+     * @return
+     */
+    public boolean contains(String query) {
+        query = query.toLowerCase();
+        return infoObject.toLowerCase().contains(query)
+                || infoDescription.toLowerCase().contains(query);
+    }
 }

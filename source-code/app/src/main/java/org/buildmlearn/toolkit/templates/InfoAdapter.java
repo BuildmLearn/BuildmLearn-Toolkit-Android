@@ -22,24 +22,31 @@ import java.util.ArrayList;
  * <p/>
  * Created by abhishek on 17/06/15 at 9:48 PM.
  */
-public class InfoAdapter extends BaseAdapter {
+public class InfoAdapter extends BaseAdapter implements TemplateAdapterInterface {
 
     private Context mContext;
+    //Contains all Data
     private ArrayList<InfoModel> data;
+    //Contains filtered Data(Search Purpose). In normal case (mDataFiltered == data)
+    private ArrayList<InfoModel> mDataFiltered;
+
+    private String searchQuery;
+
 
     public InfoAdapter(Context mContext, ArrayList<InfoModel> data) {
         this.mContext = mContext;
         this.data = data;
+        mDataFiltered = data;
     }
 
     @Override
     public int getCount() {
-        return data.size();
+        return mDataFiltered.size();
     }
 
     @Override
     public InfoModel getItem(int position) {
-        return data.get(position);
+        return mDataFiltered.get(position);
     }
 
     @Override
@@ -63,7 +70,7 @@ public class InfoAdapter extends BaseAdapter {
         holder.word = (TextViewPlus) convertView.findViewById(R.id.info_object);
         holder.meaning = (TextViewPlus) convertView.findViewById(R.id.info_description);
 
-        InfoModel info = getItem(position);
+        final InfoModel info = getItem(position);
 
         holder.meaning.setText(info.getInfoDescription());
         holder.word.setText(info.getInfoObject());
@@ -84,8 +91,7 @@ public class InfoAdapter extends BaseAdapter {
                 dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        data.remove(position);
-                        notifyDataSetChanged();
+                        deleteItem(info);
                         dialog.dismiss();
 
                         ((TemplateEditor) mContext).restoreSelectedView();
@@ -126,7 +132,7 @@ public class InfoAdapter extends BaseAdapter {
                             data.setWord(wordText);
                             data.setInfoDescription(meaningText);
 
-                            notifyDataSetChanged();
+                            searchFilter();
                             dialog.dismiss();
                         }
 
@@ -139,6 +145,61 @@ public class InfoAdapter extends BaseAdapter {
 
 
         return convertView;
+    }
+
+
+    /**
+     * Delete `infoModel` from `data`
+     * @param infoModel
+     * @return whether operation is done Successfully
+     */
+    public boolean deleteItem(InfoModel infoModel) {
+        int index = data.indexOf(infoModel);
+        if (index>=0) {
+            data.remove(index);
+            searchFilter();
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Add Item to `data`
+     * @param infoModel
+     */
+    public void addItem(InfoModel infoModel) {
+        data.add(infoModel);
+        searchFilter();
+    }
+
+    /**
+     * Refresh List according to `searchQuery`
+     */
+    public void searchFilter() {
+        if (searchQuery == null) {
+            mDataFiltered = data;
+        } else {
+            mDataFiltered = new ArrayList<>();
+            for (InfoModel model : data) {
+                if (model.contains(searchQuery)) {
+                    mDataFiltered.add(model);
+                }
+            }
+        }
+        notifyDataSetChanged();
+    }
+
+    /**
+     * Set `searchQuery`
+     * @param query
+     */
+    @Override
+    public void searchFilter(String query) {
+        if(query.trim().isEmpty())
+            searchQuery = null;
+        else
+            searchQuery = query.trim();
+        searchFilter();
     }
 
     public class InfoTemplateHolder {
