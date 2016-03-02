@@ -48,11 +48,16 @@ public class SignerThread extends Thread {
         this.projectFile = finalApk;
         this.context = context;
         this.assetsApk = assetsApk;
-        this.finalApk = finalApk.replaceAll("buildmlearn", "apk");
+        this.finalApk = getFinalApkPath(finalApk);
         this.keyDetails = keyDetails;
         this.toolkit = (ToolkitApplication) context;
         this.assetFileName = assetFileName;
         this.assetFilePath = assetFilePath;
+    }
+
+    private String getFinalApkPath(String buildmlearnPath) {
+        int index = buildmlearnPath.lastIndexOf("buildmlearn");
+        return buildmlearnPath.substring(0,index) + "apk";
     }
 
     public void setSignerThreadListener(OnSignComplete listener) {
