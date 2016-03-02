@@ -37,6 +37,7 @@ import org.buildmlearn.toolkit.model.Template;
 import org.buildmlearn.toolkit.model.TemplateInterface;
 import org.buildmlearn.toolkit.simulator.Simulator;
 import org.buildmlearn.toolkit.utilities.FileUtils;
+import org.buildmlearn.toolkit.utilities.KeyboardHelper;
 import org.buildmlearn.toolkit.utilities.SignerThread;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
@@ -84,6 +85,9 @@ public class TemplateEditor extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         oldFileName = null;
         setContentView(R.layout.activity_template_editor);
+        KeyboardHelper.hideKeyboard(this, findViewById(R.id.toolbar));
+        KeyboardHelper.hideKeyboard(this,findViewById(R.id.template_editor_listview));
+        KeyboardHelper.hideKeyboard(this,findViewById(R.id.empty));
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         toolkit = (ToolkitApplication) getApplicationContext();
         templateId = getIntent().getIntExtra(Constants.TEMPLATE_ID, -1);
@@ -248,6 +252,7 @@ public class TemplateEditor extends AppCompatActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         Log.d(TAG, "onPrepareOptionsMenu");
+        menu.clear();
         if (showTemplateSelectedMenu) {
             getMenuInflater().inflate(R.menu.menu_template_item_selected, menu);
         } else {
