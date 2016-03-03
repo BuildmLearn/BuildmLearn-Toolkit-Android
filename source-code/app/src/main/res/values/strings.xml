@@ -97,6 +97,8 @@
     <string name="high">High</string>
     <string name="speech_rate">Speech Rate:</string>
 
+    <!-- Comprehension Resources-->
+
     <!-- Template Resources-->
     <string name="basic_m_learning_title">Basic mLearning</string>
     <string name="basic_m_learning_description">Create app displaying clickable list of textual information</string>
@@ -111,6 +113,9 @@
     <string name="quiz_title">Quiz</string>
     <string name="quiz_new_question_title">Add New Question</string>
     <string name="quiz_type">QuizTemplate</string>
+
+    <string name="comprehension_title">Comprehension</string>
+    <string name="comprehension_description">Create app displaying comprehension, then showing questions on it.</string>
 
     <string name="quiz_add">Add</string>
     <string name="quiz_delete">Delete</string>
