@@ -14,6 +14,8 @@ import java.util.ArrayList;
  */
 public class ComprehensionModel implements Serializable {
 
+    private static String defaultComprehension = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis sapien et orci consequat feugiat. Praesent viverra hendrerit risus ac semper. Fusce vitae ex ut elit egestas consectetur et vel magna. Aenean non ligula sit amet urna tincidunt porta. Phasellus nec venenatis metus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras faucibus nisi massa, at posuere felis commodo ac. Pellentesque porta egestas turpis eget gravida. Nunc ullamcorper leo nibh, non fermentum sapien feugiat in. Nunc faucibus tristique ipsum, ac placerat risus aliquam sit amet. Sed id enim rutrum massa consectetur faucibus. Mauris rhoncus elit ut pellentesque cursus. Fusce nec nibh nec dui viverra vehicula. Sed lacinia gravida placerat. Fusce sit amet turpis pulvinar, sodales risus vel, scelerisque turpis.";
+    private static String defaultTitle = "Comprehension Title";
     private boolean isComprehension;
     private String comprehension;
     private String title;
@@ -21,8 +23,8 @@ public class ComprehensionModel implements Serializable {
 
     public ComprehensionModel(boolean isComprehension, String comprehension, String title, QuizModel quizModel) {
         this.isComprehension = isComprehension;
-        this.comprehension = comprehension;
-        this.title = title;
+        this.comprehension = comprehension!=null ?comprehension : defaultComprehension;
+        this.title = title!=null ? title: defaultTitle;
         this.quizModel = quizModel;
     }
 
@@ -47,7 +49,7 @@ public class ComprehensionModel implements Serializable {
     }
 
     public void setComprehension(String comprehension) {
-        this.comprehension = comprehension;
+        this.comprehension = comprehension!=null ?comprehension : defaultComprehension;
     }
 
     public Element getXml(Document doc) {
@@ -92,6 +94,6 @@ public class ComprehensionModel implements Serializable {
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        this.title = title!=null ? title: defaultTitle;
     }
 }
