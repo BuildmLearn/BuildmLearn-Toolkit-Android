@@ -18,7 +18,6 @@ import org.buildmlearn.toolkit.comprehensiontemplate.TFTComprehensionFragment;
 import org.buildmlearn.toolkit.model.TemplateInterface;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
 
 import java.util.ArrayList;
 
@@ -46,14 +45,7 @@ public class ComprehensionTemplate implements TemplateInterface {
     public BaseAdapter loadProjectTemplateEditor(Context context, ArrayList<Element> data) {
         ArrayList<ComprehensionModel> quizData = new ArrayList<>();
         for (Element item : data) {
-            String question = item.getElementsByTagName("question").item(0).getTextContent();
-            NodeList options = item.getElementsByTagName("option");
-            ArrayList<String> answers = new ArrayList<>();
-            for (int i = 0; i < options.getLength(); i++) {
-                answers.add(options.item(i).getTextContent());
-            }
-            int answer = Integer.parseInt(item.getElementsByTagName("answer").item(0).getTextContent());
-            quizData.add(new ComprehensionModel(false, null, new QuizModel(question, answers, answer)));
+            quizData.add(ComprehensionModel.getModelFromElement(item));
         }
         mAdapter = new ComprehensionAdapter(context, quizData);
         return mAdapter;
