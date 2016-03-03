@@ -61,8 +61,24 @@ public class ComprehensionTemplate implements TemplateInterface {
         return "Comprehension Template";
     }
 
+    //check if element is the first item as first item should be comprehension
     @Override
     public void addItem(final Activity activity) {
+        if(mAdapter.getCount()==0) {
+            //create a dialog for Comprehension
+            addComprehension(activity);
+        } else {
+            //create a dialog for Quiz Question
+            addQuizItem(activity);
+        }
+    }
+
+    //TODO: create a dialog for posting comprehension
+    public void addComprehension(final Activity activity) {
+
+    }
+
+    public void addQuizItem(final Activity activity) {
         final MaterialDialog dialog = new MaterialDialog.Builder(activity)
           .title(R.string.quiz_new_question_title)
           .customView(R.layout.quiz_dialog_add_question, true)
@@ -140,8 +156,21 @@ public class ComprehensionTemplate implements TemplateInterface {
         dialog.show();
     }
 
+    //check if trying to edit comprehension
     @Override
     public void editItem(final Activity activity, final int position) {
+        if(0==position)
+            editComprehenion(activity, position);
+        else
+            editQuizItem(activity, position);
+    }
+
+    //TODO: create dialog for proper editing of comprehension
+    public void editComprehenion(final Activity activity, final int position) {
+
+    }
+
+    public void editQuizItem(final Activity activity, final int position) {
         ComprehensionModel data = mAdapter.dataList.get(position);
 
         final MaterialDialog dialog = new MaterialDialog.Builder(activity)
@@ -222,16 +251,21 @@ public class ComprehensionTemplate implements TemplateInterface {
                     mAdapter.dataList.set(position, new ComprehensionModel(false, null, new QuizModel(questionText, answerOptions, correctAnswer)));
                     mAdapter.notifyDataSetChanged();
                 }
-
             }
         });
         dialog.show();
     }
 
+    //check if trying to delete comprehension. Can't delete comprehension, just clean it.
     @Override
     public void deleteItem(int position) {
-        mAdapter.dataList.remove(position);
-        mAdapter.notifyDataSetChanged();
+        if(0==position) {
+            //TODO: handle deletion of comprehension properly. Maybe not let them delete it. just clean it. Brainstorm with coffee.
+        }
+        else {
+            mAdapter.dataList.remove(position);
+            mAdapter.notifyDataSetChanged();
+        }
     }
 
     @Override

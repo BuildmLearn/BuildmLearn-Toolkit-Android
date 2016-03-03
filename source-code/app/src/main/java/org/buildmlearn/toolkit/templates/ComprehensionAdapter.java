@@ -52,6 +52,7 @@ public class ComprehensionAdapter extends BaseAdapter {
         return position;
     }
 
+    //TODO: setup different views for comprehension and quiz questions.
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         LayoutInflater mInflater;
@@ -152,6 +153,7 @@ public class ComprehensionAdapter extends BaseAdapter {
         return convertView;
     }
 
+    //TODO: different editing stuff for comprehension and quiz questions.
     private void editItem(final int position, final Context context) {
         ComprehensionModel data = getItem(position);
 
@@ -265,6 +267,7 @@ public class ComprehensionAdapter extends BaseAdapter {
         return -1;
     }
 
+    //TODO: create another holder class for comprehension, also rename this one.
     public class Holder {
         TextViewPlus question;
         ImageView questionIcon;
