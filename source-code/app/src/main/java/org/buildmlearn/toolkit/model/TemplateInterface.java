@@ -44,7 +44,7 @@ public interface TemplateInterface extends Serializable {
 
     /**
      * @return Title as a string
-     * @brief Used to get the title of the templaye. Mainly used to update ActionBar in Template Editor
+     * @brief Used to get the title of the template. Mainly used to update ActionBar in Template Editor
      */
     String getTitle();
 
