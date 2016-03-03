@@ -246,7 +246,7 @@ public class ComprehensionTemplate implements TemplateInterface {
     public ArrayList<Element> getItems(Document doc) {
         ArrayList<Element> itemElements = new ArrayList<>();
         for (ComprehensionModel data : mAdapter.dataList) {
-            itemElements.add(data.getQuizModel().getXml(doc));
+            itemElements.add(data.getXml(doc));
         }
         return itemElements;
     }
