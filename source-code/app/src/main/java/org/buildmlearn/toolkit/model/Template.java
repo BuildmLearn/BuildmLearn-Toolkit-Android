@@ -4,6 +4,7 @@ import android.support.annotation.DrawableRes;
 import android.support.annotation.StringRes;
 
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.templates.ComprehensionTemplate;
 import org.buildmlearn.toolkit.templates.FlashTemplate;
 import org.buildmlearn.toolkit.templates.InfoTemplate;
 import org.buildmlearn.toolkit.templates.LearnSpellingTemplate;
@@ -20,7 +21,7 @@ public enum Template {
     LEARN_SPELLING(R.string.learn_spellings_title, R.string.learn_spellings_description, R.drawable.basic_m_learning, R.string.spelling_type, LearnSpellingTemplate.class),
     QUIZ(R.string.quiz_title, R.string.quiz_description, R.drawable.basic_m_learning, R.string.quiz_type, QuizTemplate.class),
     FLASH_CARD(R.string.flash_card_title, R.string.flash_card_description, R.drawable.basic_m_learning, R.string.flash_card_template, FlashTemplate.class),
-    COMPREHENSION(R.string.comprehension_title, R.string.comprehension_description, R.drawable.basic_m_learning, R.string.flash_card_template, FlashTemplate.class);
+    COMPREHENSION(R.string.comprehension_title, R.string.comprehension_description, R.drawable.basic_m_learning, R.string.comprehension_template, ComprehensionTemplate.class);
 
     @StringRes
     int type;

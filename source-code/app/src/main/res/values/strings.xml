@@ -73,7 +73,6 @@
     <string name="flash_template_hint_hint">Enter Hint</string>
 
     <!-- Spelling Template-->
-
     <string name="appname">English Words</string>
     <string name="msg_txt">Press SPEAK when you are ready. You may adjust the speech rate using the slider. Listen to the word as many times before answering. If you are not sure, you can skip the word.</string>
     <string name="speak">Listen</string>
@@ -98,6 +97,7 @@
     <string name="speech_rate">Speech Rate:</string>
 
     <!-- Comprehension Resources-->
+    <string name="comprehension_template">ComprehensionTemplate</string>
 
     <!-- Template Resources-->
     <string name="basic_m_learning_title">Basic mLearning</string>
