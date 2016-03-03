@@ -19,13 +19,23 @@ public class ComprehensionModel implements Serializable {
     private boolean isComprehension;
     private String comprehension;
     private String title;
+    private int timeInMinute;
     private QuizModel quizModel;
 
-    public ComprehensionModel(boolean isComprehension, String comprehension, String title, QuizModel quizModel) {
+    public ComprehensionModel(boolean isComprehension, String comprehension, String title, int timeInMinute, QuizModel quizModel) {
         this.isComprehension = isComprehension;
         this.comprehension = comprehension!=null ?comprehension : defaultComprehension;
         this.title = title!=null ? title: defaultTitle;
+        this.timeInMinute = timeInMinute;
         this.quizModel = quizModel;
+    }
+
+    public static ComprehensionModel getComprehensionModelForQuizModel(QuizModel quizModel) {
+        return new ComprehensionModel(false, null, null, -1, quizModel);
+    }
+
+    public static ComprehensionModel getComprehensionModelForComprehension(String comprehension, String title, int timeInMinute) {
+        return new ComprehensionModel(true, comprehension, title, timeInMinute, new QuizModel(null, null, -1));
     }
 
     public boolean isComprehension() {
@@ -64,6 +74,9 @@ public class ComprehensionModel implements Serializable {
             Element comprehensionTitleElement = doc.createElement("comprehensionTitle");
             comprehensionTitleElement.appendChild(doc.createTextNode(title));
             rootElement.appendChild(comprehensionTitleElement);
+            Element minuteElement = doc.createElement("timeInMinute");
+            minuteElement.appendChild(doc.createTextNode(timeInMinute + ""));
+            rootElement.appendChild(minuteElement);
         } else {
             Element quizElement = doc.createElement("quiz");
             quizElement.appendChild(quizModel.getXml(doc));
@@ -76,7 +89,8 @@ public class ComprehensionModel implements Serializable {
         if(isComprehension) {
             String comprehension = item.getElementsByTagName("comprehension").item(0).getTextContent();
             String title = item.getElementsByTagName("comprehensionTitle").item(0).getTextContent();
-            return new ComprehensionModel(isComprehension, comprehension, title, new QuizModel(null, null, -1));
+            int timeInMinute = Integer.parseInt(item.getElementsByTagName("timeInMinute").item(0).getTextContent());
+            return ComprehensionModel.getComprehensionModelForComprehension(comprehension, title, timeInMinute);
         } else {
             String question = item.getElementsByTagName("question").item(0).getTextContent();
             NodeList options = item.getElementsByTagName("option");
@@ -85,7 +99,7 @@ public class ComprehensionModel implements Serializable {
                answers.add(options.item(i).getTextContent());
             }
             int answer = Integer.parseInt(item.getElementsByTagName("answer").item(0).getTextContent());
-            return new ComprehensionModel(isComprehension, null, null, new QuizModel(question, answers, answer));
+            return ComprehensionModel.getComprehensionModelForQuizModel(new QuizModel(question, answers, answer));
         }
     }
 
@@ -95,5 +109,13 @@ public class ComprehensionModel implements Serializable {
 
     public void setTitle(String title) {
         this.title = title!=null ? title: defaultTitle;
+    }
+
+    public int getTimeInMinute() {
+        return timeInMinute;
+    }
+
+    public void setTimeInMinute(int timeInMinute) {
+        this.timeInMinute = timeInMinute;
     }
 }
