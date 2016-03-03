@@ -14,8 +14,8 @@ import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.comprehensiontemplate.TFTComprehensionFragment;
 import org.buildmlearn.toolkit.model.TemplateInterface;
-import org.buildmlearn.toolkit.quiztemplate.TFTQuizFragment;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -29,16 +29,11 @@ import java.util.ArrayList;
  */
 public class ComprehensionTemplate implements TemplateInterface {
 
-    transient private QuizAdapter mAdapter;
-    private ArrayList<QuizModel> quizData;
-
-    public ComprehensionTemplate() {
-        this.quizData = new ArrayList<>();
-    }
+    transient private ComprehensionAdapter mAdapter;
 
     @Override
     public BaseAdapter newTemplateEditorAdapter(Context context) {
-        mAdapter = new QuizAdapter(context, quizData);
+        mAdapter = new ComprehensionAdapter(context, new ArrayList<ComprehensionModel>());
         return mAdapter;
     }
 
@@ -49,7 +44,7 @@ public class ComprehensionTemplate implements TemplateInterface {
 
     @Override
     public BaseAdapter loadProjectTemplateEditor(Context context, ArrayList<Element> data) {
-        quizData = new ArrayList<>();
+        ArrayList<ComprehensionModel> quizData = new ArrayList<>();
         for (Element item : data) {
             String question = item.getElementsByTagName("question").item(0).getTextContent();
             NodeList options = item.getElementsByTagName("option");
@@ -58,10 +53,9 @@ public class ComprehensionTemplate implements TemplateInterface {
                 answers.add(options.item(i).getTextContent());
             }
             int answer = Integer.parseInt(item.getElementsByTagName("answer").item(0).getTextContent());
-            quizData.add(new QuizModel(question, answers, answer));
-
+            quizData.add(new ComprehensionModel(false, null, new QuizModel(question, answers, answer)));
         }
-        mAdapter = new QuizAdapter(context, quizData);
+        mAdapter = new ComprehensionAdapter(context, quizData);
         return mAdapter;
     }
 
@@ -145,19 +139,18 @@ public class ComprehensionTemplate implements TemplateInterface {
                         }
                     }
                     String questionText = question.getText().toString();
-                    quizData.add(new QuizModel(questionText, answerOptions, correctAnswer));
+                    mAdapter.dataList.add(new ComprehensionModel(false, null, new QuizModel(questionText, answerOptions, correctAnswer)));
                     mAdapter.notifyDataSetChanged();
                 }
 
             }
         });
         dialog.show();
-
     }
 
     @Override
     public void editItem(final Activity activity, final int position) {
-        QuizModel data = quizData.get(position);
+        ComprehensionModel data = mAdapter.dataList.get(position);
 
         final MaterialDialog dialog = new MaterialDialog.Builder(activity)
           .title(R.string.quiz_edit)
@@ -178,12 +171,12 @@ public class ComprehensionTemplate implements TemplateInterface {
         buttons.add((RadioButton) dialog.findViewById(R.id.quiz_radio_3));
         buttons.add((RadioButton) dialog.findViewById(R.id.quiz_radio_4));
 
-        for (int i = 0; i < data.getOptions().size(); i++) {
-            options.get(i).setText(data.getOptions().get(i));
+        for (int i = 0; i < data.getQuizModel().getOptions().size(); i++) {
+            options.get(i).setText(data.getQuizModel().getOptions().get(i));
         }
 
-        question.setText(data.getQuestion());
-        buttons.get(data.getCorrectAnswer()).setChecked(true);
+        question.setText(data.getQuizModel().getQuestion());
+        buttons.get(data.getQuizModel().getCorrectAnswer()).setChecked(true);
 
         for (final RadioButton button : buttons) {
             button.setOnClickListener(new View.OnClickListener() {
@@ -234,7 +227,7 @@ public class ComprehensionTemplate implements TemplateInterface {
                         }
                     }
                     String questionText = question.getText().toString();
-                    quizData.set(position, new QuizModel(questionText, answerOptions, correctAnswer));
+                    mAdapter.dataList.set(position, new ComprehensionModel(false, null, new QuizModel(questionText, answerOptions, correctAnswer)));
                     mAdapter.notifyDataSetChanged();
                 }
 
@@ -245,33 +238,27 @@ public class ComprehensionTemplate implements TemplateInterface {
 
     @Override
     public void deleteItem(int position) {
-        quizData.remove(position);
+        mAdapter.dataList.remove(position);
         mAdapter.notifyDataSetChanged();
     }
 
     @Override
     public ArrayList<Element> getItems(Document doc) {
-
         ArrayList<Element> itemElements = new ArrayList<>();
-
-
-        for (QuizModel data : quizData) {
-
-            itemElements.add(data.getXml(doc));
+        for (ComprehensionModel data : mAdapter.dataList) {
+            itemElements.add(data.getQuizModel().getXml(doc));
         }
-
         return itemElements;
-
     }
 
     @Override
     public Fragment getSimulatorFragment(String filePathWithName) {
-        return TFTQuizFragment.newInstance(filePathWithName);
+        return TFTComprehensionFragment.newInstance(filePathWithName);
     }
 
     @Override
     public String getAssetsFileName() {
-        return "quiz_content.xml";
+        return "comprehension_content.xml";
     }
 
     @Override
@@ -281,14 +268,13 @@ public class ComprehensionTemplate implements TemplateInterface {
 
     @Override
     public String getApkFilePath() {
-        return "QuizTemplateApp.apk";
+        return "ComprehensionTemplateApp.apk";
     }
 
     @Override
     public void onActivityResult(Context context, int requestCode, int resultCode, Intent intent) {
 
     }
-
 
     private void checkButton(ArrayList<RadioButton> buttons, ArrayList<EditText> options, int id, Context context) {
         for (RadioButton button : buttons) {
