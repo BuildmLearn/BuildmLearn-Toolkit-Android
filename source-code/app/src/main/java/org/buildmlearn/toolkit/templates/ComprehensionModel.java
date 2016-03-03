@@ -22,7 +22,7 @@ public class ComprehensionModel implements Serializable {
     private int timeInMinute;
     private QuizModel quizModel;
 
-    public ComprehensionModel(boolean isComprehension, String comprehension, String title, int timeInMinute, QuizModel quizModel) {
+    private ComprehensionModel(boolean isComprehension, String comprehension, String title, int timeInMinute, QuizModel quizModel) {
         this.isComprehension = isComprehension;
         this.comprehension = comprehension!=null ?comprehension : defaultComprehension;
         this.title = title!=null ? title: defaultTitle;

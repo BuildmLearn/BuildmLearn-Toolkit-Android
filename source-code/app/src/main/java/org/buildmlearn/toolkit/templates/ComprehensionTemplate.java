@@ -147,7 +147,7 @@ public class ComprehensionTemplate implements TemplateInterface {
                         }
                     }
                     String questionText = question.getText().toString();
-                    mAdapter.dataList.add(new ComprehensionModel(false, null, null, new QuizModel(questionText, answerOptions, correctAnswer)));
+                    mAdapter.dataList.add(ComprehensionModel.getComprehensionModelForQuizModel(new QuizModel(questionText, answerOptions, correctAnswer)));
                     mAdapter.notifyDataSetChanged();
                 }
 
@@ -247,7 +247,7 @@ public class ComprehensionTemplate implements TemplateInterface {
                         }
                     }
                     String questionText = question.getText().toString();
-                    mAdapter.dataList.set(position, new ComprehensionModel(false, null, null, new QuizModel(questionText, answerOptions, correctAnswer)));
+                    mAdapter.dataList.set(position,ComprehensionModel.getComprehensionModelForQuizModel(new QuizModel(questionText, answerOptions, correctAnswer)));
                     mAdapter.notifyDataSetChanged();
                 }
             }

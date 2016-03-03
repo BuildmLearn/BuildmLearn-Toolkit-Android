@@ -236,7 +236,7 @@ public class ComprehensionAdapter extends BaseAdapter {
         ComprehensionModel data;
         // if dataList size is 0 that means we are adding a Comprehension not editing it.
         if(dataList.size()==0) {
-            data = new ComprehensionModel(true, null, null, new QuizModel(null, null, 0));
+            data = ComprehensionModel.getComprehensionModelForComprehension(null, null, 0);
         } else {
             data = getItem(position);
         }
@@ -257,7 +257,7 @@ public class ComprehensionAdapter extends BaseAdapter {
             public void onClick(View v) {
                     String title_string = title.getText().toString();
                     String comprehension_string = content.getText().toString();
-                    ComprehensionModel tempmodel = new ComprehensionModel(true, comprehension_string, title_string, new QuizModel(null, null, 0));
+                    ComprehensionModel tempmodel = ComprehensionModel.getComprehensionModelForComprehension(comprehension_string, title_string, 0);
                     if(dataList.size()==0)
                         dataList.add(tempmodel);
                     else
@@ -348,7 +348,7 @@ public class ComprehensionAdapter extends BaseAdapter {
                         }
                     }
                     String questionText = question.getText().toString();
-                    dataList.set(position, new ComprehensionModel(false, null, null, new QuizModel(questionText, answerOptions, correctAnswer)));
+                    dataList.set(position, ComprehensionModel.getComprehensionModelForQuizModel(new QuizModel(questionText, answerOptions, correctAnswer)));
                     notifyDataSetChanged();
                 }
             }
