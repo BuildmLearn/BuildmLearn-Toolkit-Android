@@ -1,0 +1,46 @@
+<buildmlearn_application type="QuizTemplate">
+    <author>
+        <name>Neha Dhanwani</name>
+        <email>dhanwanineha@gmail.com</email>
+    </author>
+    <title>Environmental Science Quiz</title>
+    <description />
+    <version>1</version>
+    <data>
+        <item>
+            <question>Could acid rain be considered to have a...</question>
+            <option>global impact</option>
+            <option>regional impact</option>
+            <option>local impact</option>
+            <answer>2</answer>
+        </item>
+        <item>
+            <question>Why are some pollutants only acting locally?</question>
+            <option>They detoxify before long</option>
+            <option>They are lacking mechanisms for large scale distribution</option>
+            <option>They are not polluting when diluted</option>
+            <answer>2</answer>
+        </item>
+        <item>
+            <question>Which was the first National Park in the world?</question>
+            <option>Yellowstone, USA</option>
+            <option>Abisko, northern Sweden</option>
+            <option>Dovre, central Norway</option>
+            <answer>1</answer>
+        </item>
+        <item>
+            <question>What is an ecological footprint?</question>
+            <option>The area occupied by an Ecco shoe.</option>
+            <option>The area for food, space, fibers and waste for one human being</option>
+            <option>An EU-measurement</option>
+            <answer>2</answer>
+        </item>
+        <item>
+            <question>Is reindeer herding a sustainable strategy?</question>
+            <option>No, it used to be but it is no longer.</option>
+            <option>Yes, the reindeer utilize resources otherwise unused.</option>
+            <option>Yes, reindeer are environmental friendly.</option>
+            <answer>1</answer>
+        </item>
+    </data>
+</buildmlearn_application>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:animateLayoutChanges="true"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/comprehension_icon"
+            style="@style/TextView.CircleIcon"
+            android:adjustViewBounds="true"
+            android:scaleType="center"
+            android:src="@drawable/expand"
+            android:layout_gravity="center_vertical" />
+
+        <view
+            android:id="@+id/comprehension_title"
+            style="@style/TextView.Title.Thin"
+            class="org.buildmlearn.toolkit.views.TextViewPlus"
+            android:layout_marginLeft="16dp"
+            android:paddingBottom="16dp"
+            android:paddingTop="16dp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="72dp"
+        android:background="@color/color_divider">
+    </View>
+
+    <LinearLayout
+        android:id="@+id/comprehension_content_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/translucent_grey"
+        android:orientation="vertical"
+        android:paddingBottom="8dp"
+        android:paddingLeft="72dp"
+        android:paddingTop="16dp">
+
+        <view
+            android:id="@+id/comprehension_content"
+            style="@style/TextView.Title.Thin"
+            class="org.buildmlearn.toolkit.views.TextViewPlus"
+            android:layout_marginLeft="16dp"
+            android:paddingBottom="16dp"
+            android:paddingTop="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/comprehension_edit"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/comprehension_edit"
+                android:textAllCaps="true"
+                android:textColor="@color/color_primary_dark"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/comprehension_clean"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:text="@string/comprehension_reset"
+                android:textAllCaps="true"
+                android:textColor="@color/color_primary"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+      </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

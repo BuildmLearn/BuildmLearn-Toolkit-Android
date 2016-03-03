@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
@@ -73,9 +74,8 @@ public class ComprehensionTemplate implements TemplateInterface {
         }
     }
 
-    //TODO: create a dialog for posting comprehension
     public void addComprehension(final Activity activity) {
-
+        mAdapter.editComprehension(0, activity);
     }
 
     public void addQuizItem(final Activity activity) {
@@ -165,9 +165,8 @@ public class ComprehensionTemplate implements TemplateInterface {
             editQuizItem(activity, position);
     }
 
-    //TODO: create dialog for proper editing of comprehension
     public void editComprehenion(final Activity activity, final int position) {
-
+        mAdapter.editItem(position, activity);
     }
 
     public void editQuizItem(final Activity activity, final int position) {
@@ -260,7 +259,7 @@ public class ComprehensionTemplate implements TemplateInterface {
     @Override
     public void deleteItem(int position) {
         if(0==position) {
-            //TODO: handle deletion of comprehension properly. Maybe not let them delete it. just clean it. Brainstorm with coffee.
+            Log.wtf("ComprehensionTemplate", "Can't remove Comprehension");
         }
         else {
             mAdapter.dataList.remove(position);

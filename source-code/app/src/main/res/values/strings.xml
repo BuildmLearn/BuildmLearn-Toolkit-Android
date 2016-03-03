@@ -31,6 +31,8 @@
     <string name="dialog_no">No</string>
     <string name="dialog_delete_msg">Are you sure you want to delete this item?</string>
     <string name="dialog_delete_title">Delete</string>
+    <string name="dialog_clear_msg">Are you sure you want to clear this item?</string>
+    <string name="dialog_clear_title">Clear</string>
 
 
     <string name="quiz_template_hello">Hello World, TFTQuizActivity!</string>
@@ -116,6 +118,13 @@
 
     <string name="comprehension_title">Comprehension</string>
     <string name="comprehension_description">Create app displaying comprehension, then showing questions on it.</string>
+    <string name="comprehension_edit">Edit</string>
+    <string name="comprehension_add">Add Comprehension</string>
+    <string name="comprehension_reset">Reset</string>
+    <string name="comprehension_dialog_content">Comprehension</string>
+    <string name="comprehension_dialog_title">Title</string>
+    <string name="comprehension_ok">OK</string>
+    <string name="comprehension_cancel">Cancel</string>
 
     <string name="quiz_add">Add</string>
     <string name="quiz_delete">Delete</string>
