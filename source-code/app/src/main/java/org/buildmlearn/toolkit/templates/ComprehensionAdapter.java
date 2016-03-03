@@ -233,7 +233,7 @@ public class ComprehensionAdapter extends BaseAdapter {
                         }
                     }
                     String questionText = question.getText().toString();
-                    dataList.set(position, new ComprehensionModel(false, null, new QuizModel(questionText, answerOptions, correctAnswer)));
+                    dataList.set(position, new ComprehensionModel(false, null, null, new QuizModel(questionText, answerOptions, correctAnswer)));
                     notifyDataSetChanged();
                 }
             }

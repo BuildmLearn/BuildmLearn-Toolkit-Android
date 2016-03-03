@@ -16,11 +16,13 @@ public class ComprehensionModel implements Serializable {
 
     private boolean isComprehension;
     private String comprehension;
+    private String title;
     private QuizModel quizModel;
 
-    public ComprehensionModel(boolean isComprehension, String comprehension, QuizModel quizModel) {
+    public ComprehensionModel(boolean isComprehension, String comprehension, String title, QuizModel quizModel) {
         this.isComprehension = isComprehension;
         this.comprehension = comprehension;
+        this.title = title;
         this.quizModel = quizModel;
     }
 
@@ -57,6 +59,9 @@ public class ComprehensionModel implements Serializable {
             Element comprehensionElement = doc.createElement("comprehension");
             comprehensionElement.appendChild(doc.createTextNode(comprehension));
             rootElement.appendChild(comprehensionElement);
+            Element comprehensionTitleElement = doc.createElement("comprehensionTitle");
+            comprehensionTitleElement.appendChild(doc.createTextNode(title));
+            rootElement.appendChild(comprehensionTitleElement);
         } else {
             Element quizElement = doc.createElement("quiz");
             quizElement.appendChild(quizModel.getXml(doc));
@@ -68,7 +73,8 @@ public class ComprehensionModel implements Serializable {
         boolean isComprehension = (item.getElementsByTagName("isComprehension").item(0).getTextContent()).equals("true");
         if(isComprehension) {
             String comprehension = item.getElementsByTagName("comprehension").item(0).getTextContent();
-            return new ComprehensionModel(isComprehension, comprehension, new QuizModel(null, null, -1));
+            String title = item.getElementsByTagName("comprehensionTitle").item(0).getTextContent();
+            return new ComprehensionModel(isComprehension, comprehension, title, new QuizModel(null, null, -1));
         } else {
             String question = item.getElementsByTagName("question").item(0).getTextContent();
             NodeList options = item.getElementsByTagName("option");
@@ -77,7 +83,15 @@ public class ComprehensionModel implements Serializable {
                answers.add(options.item(i).getTextContent());
             }
             int answer = Integer.parseInt(item.getElementsByTagName("answer").item(0).getTextContent());
-            return new ComprehensionModel(isComprehension, null, new QuizModel(question, answers, answer));
+            return new ComprehensionModel(isComprehension, null, null, new QuizModel(question, answers, answer));
         }
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }
