@@ -123,6 +123,7 @@
     <string name="comprehension_reset">Reset</string>
     <string name="comprehension_dialog_content">Comprehension</string>
     <string name="comprehension_dialog_title">Title</string>
+    <string name="comprehension_dialog_time">Time to Read (minutes)</string>
     <string name="comprehension_ok">OK</string>
     <string name="comprehension_cancel">Cancel</string>
 

@@ -254,12 +254,15 @@ public class ComprehensionAdapter extends BaseAdapter {
         title.setText(data.getTitle());
         final EditText content = (EditText) dialog.findViewById(R.id.comprehension_content_edit_text);
         content.setText(data.getComprehension());
+        final EditText time = (EditText) dialog.findViewById(R.id.comprehension_time_edit_text);
+        time.setText(data.getTimeInMinute()+"");
         dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                     String title_string = title.getText().toString();
                     String comprehension_string = content.getText().toString();
-                    ComprehensionModel tempmodel = ComprehensionModel.getComprehensionModelForComprehension(comprehension_string, title_string, 0);
+                    int comprehension_time = Integer.parseInt(time.getText().toString());
+                    ComprehensionModel tempmodel = ComprehensionModel.getComprehensionModelForComprehension(comprehension_string, title_string, comprehension_time);
                     if(dataList.size()==0)
                         dataList.add(tempmodel);
                     else
