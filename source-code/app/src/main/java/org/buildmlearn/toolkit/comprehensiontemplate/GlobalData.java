@@ -28,7 +28,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
 
 package org.buildmlearn.toolkit.comprehensiontemplate;
 
-import android.content.Context;
 import android.util.Log;
 
 import org.w3c.dom.Document;
@@ -36,15 +35,11 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,13 +48,17 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 /**
- * @brief Simulator code for Quiz Template
+ * @brief Simulator code for Comprehension Template
  */
 public class GlobalData {
     private static GlobalData instance = null;
-    String iQuizTitle = null;
-    String iQuizAuthor = null;
-    ArrayList<QuestionModel> model = null;
+    String iTitle = null;
+    String iAuthor = null;
+    String iPassageTitle = null;
+    String iPassage = null;
+    String iTime = null;
+    ComprehensionModel comprehensionModel = null;
+    ArrayList<QuestionModel> questionModels = null;
 
     BufferedReader br;
 
@@ -97,122 +96,35 @@ public class GlobalData {
         }
     }
 
-    public void ReadContent(Context myContext) {
-        try {
-            br = new BufferedReader(new InputStreamReader(myContext.getAssets()
-                    .open("quiz_content.txt"))); // throwing a
-            // FileNotFoundException?
-            iQuizTitle = br.readLine();
-            iQuizAuthor = br.readLine();
-            String text;
-            while ((text = br.readLine()) != null) {
-                iQuizList.add(text);
-            }
-            total = iQuizList.size();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                br.close(); // stop reading
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        }
-    }
-
-    public void readXmlContent(Context myContext, String fileName) {
-        XmlPullParserFactory factory;
-        XmlPullParser parser;
-        InputStreamReader is;
-        ArrayList<String> mOptions = null;
-        try {
-            factory = XmlPullParserFactory.newInstance();
-            // .setNamespaceAware(true);
-            factory.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
-
-            parser = factory.newPullParser();
-
-            is = new InputStreamReader(myContext.getAssets().open(fileName));
-
-            parser.setInput(is);
-            int eventType = parser.getEventType();
-            QuestionModel app = null;
-
-            while (eventType != XmlPullParser.END_DOCUMENT) {
-                String name = null;
-                switch (eventType) {
-                    case XmlPullParser.START_DOCUMENT:
-                        model = new ArrayList<QuestionModel>();
-                        break;
-                    case XmlPullParser.START_TAG:
-                        name = parser.getName();
-
-                        if (name.equalsIgnoreCase("title")) {
-                            iQuizTitle = parser.nextText();
-                        } else if (name.equalsIgnoreCase("author")) {
-                            iQuizAuthor = parser.nextText();
-                        } else if (name.equalsIgnoreCase("item")) {
-                            app = new QuestionModel();
-                            mOptions = new ArrayList<String>();
-                        } else if (app != null) {
-                            if (name.equalsIgnoreCase("question")) {
-                                app.setQuestion(parser.nextText());
-                            } else if (name.equalsIgnoreCase("option")) {
-                                mOptions.add(parser.nextText());
-                                app.setOptions(mOptions);
-                            } else if (name.equalsIgnoreCase("answer")) {
-                                app.setAnswer(parser.nextText());
-                            }
-                        }
-                        break;
-                    case XmlPullParser.END_TAG:
-                        name = parser.getName();
-                        if (name.equalsIgnoreCase("item") && app != null) {
-                            model.add(app);
-                            total = model.size();
-                        }
-                }
-                eventType = parser.next();
-
-            }
-        } catch (XmlPullParserException e1) {
-            e1.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        // return model;
-        // BuildmLearnModel.getInstance(myContext).setAllAppsList(model);
-
-    }
-
     public void readXml(String filePath) {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-
         dbf.setValidating(false);
-
         ArrayList<String> mOptions = null;
         DocumentBuilder db;
         Document doc;
         try {
             File fXmlFile = new File(filePath);
-            model = new ArrayList<QuestionModel>();
+            questionModels = new ArrayList<QuestionModel>();
             db = dbf.newDocumentBuilder();
             doc = db.parse(fXmlFile);
             doc.normalize();
-            iQuizTitle = doc.getElementsByTagName("title").item(0)
+            iTitle = doc.getElementsByTagName("title").item(0)
                     .getChildNodes().item(0).getNodeValue();
-            iQuizAuthor = doc.getElementsByTagName("name").item(0)
+            iAuthor = doc.getElementsByTagName("name").item(0)
                     .getChildNodes().item(0).getNodeValue();
+            iPassageTitle = doc.getElementsByTagName("comprehensionTitle").item(0)
+                    .getChildNodes().item(0).getNodeValue();
+            iPassage = doc.getElementsByTagName("comprehension").item(0)
+              .getChildNodes().item(0).getNodeValue();
+            iTime = doc.getElementsByTagName("timeInMinute").item(0)
+              .getChildNodes().item(0).getNodeValue();
+
             NodeList childNodes = doc.getElementsByTagName("item");
-            // Log.e("tag", "childNodes" + childNodes.getLength());
             for (int i = 0; i < childNodes.getLength(); i++) {
-                QuestionModel app = new QuestionModel();
-
                 Node child = childNodes.item(i);
-
-                if (child.getNodeType() == Node.ELEMENT_NODE) {
+                if (child.getNodeType() == Node.ELEMENT_NODE && getValue("isComprehension", (Element) child).equals("false")) {
+                    QuestionModel app = new QuestionModel();
                     Element element2 = (Element) child;
-
                     app.setQuestion(getValue("question", element2));
                     mOptions = new ArrayList<String>();
                     NodeList optionNodes = element2
@@ -222,11 +134,10 @@ public class GlobalData {
                     }
                     app.setAnswer(getValue("answer", element2));
                     app.setOptions(mOptions);
+                    questionModels.add(app);
                 }
-                model.add(app);
             }
-            total = model.size();
-
+            total = questionModels.size();
         } catch (ParserConfigurationException e) {
             Log.e("tag", e.getLocalizedMessage());
             e.printStackTrace();
@@ -240,7 +151,5 @@ public class GlobalData {
             Log.e("tag", e.getLocalizedMessage());
             e.printStackTrace();
         }
-
     }
-
 }

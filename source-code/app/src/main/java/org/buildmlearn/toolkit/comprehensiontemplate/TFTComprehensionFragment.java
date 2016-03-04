@@ -42,12 +42,11 @@ import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.constant.Constants;
 
 /**
- * @brief Simulator code for Quiz Template
+ * @brief Simulator code for Comprehension Template
  */
 public class TFTComprehensionFragment extends Fragment {
 
-    public final static String TAG = "QUIZ_FRAGMENT_START";
-
+    public final static String TAG = "COMPREHENSION_FRAGMENT_START";
 
     private GlobalData gd;
     private View view;
@@ -63,29 +62,25 @@ public class TFTComprehensionFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        view = inflater.inflate(R.layout.quiz_template_fragment_start_view, container, false);
-
+        view = inflater.inflate(R.layout.comprehension_template_fragment_start_view, container, false);
         gd = GlobalData.getInstance();
         reInitialize();
-        // gd.ReadContent(TFTComprehensionFragment.this);
         gd.readXml(getArguments().getString(Constants.SIMULATOR_FILE_PATH));
-        TextView quizAuthor = (TextView) view.findViewById(R.id.tv_author);
-        TextView quizTitle = (TextView) view.findViewById(R.id.tv_apptitle);
-
-        quizAuthor.setText(gd.iQuizAuthor);
-        quizTitle.setText(gd.iQuizTitle);
-
+        TextView Author = (TextView) view.findViewById(R.id.tv_author);
+        TextView Title = (TextView) view.findViewById(R.id.tv_apptitle);
+        TextView PassageTitle = (TextView) view.findViewById(R.id.tv_passage_title);
+        TextView Time = (TextView) view.findViewById(R.id.tv_time);
+        Author.setText(gd.iAuthor);
+        Title.setText(gd.iTitle);
+        PassageTitle.setText(gd.iPassageTitle);
+        Time.setText(gd.iTime + "minutes");
         Button startButton = (Button) view.findViewById(R.id.btn_start);
         startButton.setOnClickListener(new OnClickListener() {
-
             @Override
             public void onClick(View arg0) {
-
-                getActivity().getFragmentManager().beginTransaction().replace(R.id.container, new QuestionFragment(), QuestionFragment.TAG).addToBackStack(null).commit();
+                getActivity().getFragmentManager().beginTransaction().replace(R.id.container, new ComprehensionFragment(), ComprehensionFragment.TAG).addToBackStack(null).commit();
             }
         });
-
         return view;
     }
 
@@ -95,5 +90,4 @@ public class TFTComprehensionFragment extends Fragment {
         gd.wrong = 0;
         gd.iQuizList.clear();
     }
-
 }

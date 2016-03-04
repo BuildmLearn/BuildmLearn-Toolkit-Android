@@ -140,7 +140,7 @@ public class QuestionFragment extends Fragment {
                 // Increase the index to next ques
                 iQuestionIndex = iQuestionIndex + 1;
 
-                if (iQuestionIndex < gd.model.size()) {
+                if (iQuestionIndex < gd.questionModels.size()) {
                     populateQuestion(iQuestionIndex);
 
                     iSubmitButton.setEnabled(true);
@@ -173,14 +173,14 @@ public class QuestionFragment extends Fragment {
 
         iQuestion_no_Label.setText("Question #" + String.valueOf(index + 1)
                 + " of " + gd.total);
-        iQuestionLabel.setText(gd.model.get(index).getQuestion());
-        ArrayList<String> options = gd.model.get(index).getOptions();
+        iQuestionLabel.setText(gd.questionModels.get(index).getQuestion());
+        ArrayList<String> options = gd.questionModels.get(index).getOptions();
         for (int i = 0; i < options.size(); i++) {
             iRadButtonList.get(i).setText(options.get(i));
             iRadButtonList.get(i).setVisibility(View.VISIBLE);
         }
         iCurrentCorrectAnswer = Integer
-                .parseInt(gd.model.get(index).getAnswer());
+                .parseInt(gd.questionModels.get(index).getAnswer());
 
     }
 
