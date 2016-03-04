@@ -65,6 +65,7 @@ public class ComprehensionAdapter extends BaseAdapter {
                 comprehensionHolder = new ComprehensionHolder();
                 comprehensionHolder.comprehensionIcon = (ImageView) convertView.findViewById(R.id.comprehension_icon);
                 comprehensionHolder.comprehensionTitle = (TextViewPlus) convertView.findViewById(R.id.comprehension_title);
+                comprehensionHolder.comprehensionTime = (TextViewPlus) convertView.findViewById(R.id.comprehension_time);
                 comprehensionHolder.comprehensionContent = (TextViewPlus) convertView.findViewById(R.id.comprehension_content);
                 comprehensionHolder.comprehensionContentBox = (LinearLayout) convertView.findViewById(R.id.comprehension_content_box);
                 comprehensionHolder.clear = (Button) convertView.findViewById(R.id.comprehension_clean);
@@ -74,6 +75,7 @@ public class ComprehensionAdapter extends BaseAdapter {
             }
             comprehensionHolder.comprehensionTitle.setText(data.getTitle());
             comprehensionHolder.comprehensionContent.setText(data.getComprehension());
+            comprehensionHolder.comprehensionTime.setText(data.getTimeInMinute()+ " min");
             if (data.getQuizModel().isSelected()) {
                 comprehensionHolder.comprehensionIcon.setImageResource(R.drawable.collapse);
                 comprehensionHolder.comprehensionContentBox.setVisibility(View.VISIBLE);
@@ -394,6 +396,7 @@ public class ComprehensionAdapter extends BaseAdapter {
     public class ComprehensionHolder {
         ImageView comprehensionIcon;
         TextViewPlus comprehensionTitle;
+        TextViewPlus comprehensionTime;
         LinearLayout comprehensionContentBox;
         TextViewPlus comprehensionContent;
         Button clear;
