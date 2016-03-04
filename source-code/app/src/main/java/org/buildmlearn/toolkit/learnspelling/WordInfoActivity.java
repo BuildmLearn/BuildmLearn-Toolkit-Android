@@ -83,6 +83,8 @@ public class WordInfoActivity extends Fragment {
         isCorrect = getArguments().getBoolean("result", false);
         position = getArguments().getInt("index", 0);
         enteredText = getArguments().getString("word");
+
+
         mTv_Result = (TextView) view.findViewById(R.id.tv_result);
         mTv_Word_num = (TextView) view.findViewById(R.id.tv_word_num);
         mTv_word = (TextView) view.findViewById(R.id.tv_word);
