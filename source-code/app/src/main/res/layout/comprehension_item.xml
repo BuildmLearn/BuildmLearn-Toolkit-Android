@@ -86,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/comprehension_edit"
                 android:textAllCaps="true"
-                android:textColor="@color/color_primary_dark"
+                android:textColor="@color/color_primary"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 

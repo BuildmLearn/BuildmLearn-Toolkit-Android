@@ -78,8 +78,17 @@ public class ComprehensionModel implements Serializable {
             minuteElement.appendChild(doc.createTextNode(timeInMinute + ""));
             rootElement.appendChild(minuteElement);
         } else {
-            Element quizElement = doc.createElement("quiz");
-            quizElement.appendChild(quizModel.getXml(doc));
+            Element questionElement = doc.createElement("question");
+            questionElement.appendChild(doc.createTextNode(quizModel.getQuestion()));
+            rootElement.appendChild(questionElement);
+            for (String option : quizModel.getOptions()) {
+                Element optionElement = doc.createElement("option");
+                optionElement.appendChild(doc.createTextNode(option));
+                rootElement.appendChild(optionElement);
+            }
+            Element answerElement = doc.createElement("answer");
+            answerElement.appendChild(doc.createTextNode(String.valueOf(quizModel.getCorrectAnswer())));
+            rootElement.appendChild(answerElement);
         }
         return rootElement;
     }
@@ -96,7 +105,7 @@ public class ComprehensionModel implements Serializable {
             NodeList options = item.getElementsByTagName("option");
             ArrayList<String> answers = new ArrayList<>();
             for (int i = 0; i < options.getLength(); i++) {
-               answers.add(options.item(i).getTextContent());
+                answers.add(options.item(i).getTextContent());
             }
             int answer = Integer.parseInt(item.getElementsByTagName("answer").item(0).getTextContent());
             return ComprehensionModel.getComprehensionModelForQuizModel(new QuizModel(question, answers, answer));
