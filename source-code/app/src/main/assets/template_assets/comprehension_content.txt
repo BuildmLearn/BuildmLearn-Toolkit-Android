@@ -1,7 +1,0 @@
-My Quiz
-by Adrian Marcus
-Which is the largest planet?==Mercury==Venus==Earth==Jupiter==3
-This is a test question2, yes a test question?==Option1==Option2==Option3==Option4==2
-This is a test question3, yes a test question?==Option1==Option2==Option3==Option4==3
-This is a test question4, yes a test question?==Option1==Option2==Option3==Option4==3
-This is a test question5, yes a test question?==Option1==Option2==Option3==1

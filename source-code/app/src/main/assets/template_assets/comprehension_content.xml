@@ -1,46 +1,42 @@
-<buildmlearn_application type="QuizTemplate">
+<buildmlearn_application type="ComprehensionTemplate">
     <author>
-        <name>Neha Dhanwani</name>
-        <email>dhanwanineha@gmail.com</email>
+        <name>DG</name>
     </author>
-    <title>Environmental Science Quiz</title>
-    <description />
-    <version>1</version>
+    <title>ESC</title>
     <data>
         <item>
-            <question>Could acid rain be considered to have a...</question>
-            <option>global impact</option>
-            <option>regional impact</option>
-            <option>local impact</option>
+            <isComprehension>true</isComprehension>
+            <comprehension>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis sapien
+                etorci consequat feugiat. Praesent viverra hendrerit risus ac semper. Fusce vitae ex ut
+                elitegestas consectetur et vel magna. Aenean non ligula sit amet urna tincidunt porta.
+                Phasellus nec venenatis metus. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                Cras faucibus nisi massa, at posuere felis commodo ac. Pellentesque porta egestas turpis
+                eget gravida. Nunc ullamcorper leo nibh, non fermentum sapien feugiat in. Nunc faucibus
+                tristique ipsum, ac placerat risus aliquam sit amet. Sed id enim rutrum massa consectetur
+                faucibus. Mauris rhoncus elit ut pellentesque cursus. Fusce nec nibh nec dui viverra
+                vehicula. Sed lacinia gravida placerat. Fusce sit amet turpis pulvinar, sodales risus vel,
+                scelerisque turpis.
+            </comprehension>
+            <comprehensionTitle>lorem random text title</comprehensionTitle>
+            <timeInMinute>11</timeInMinute>
+        </item>
+        <item>
+            <isComprehension>false</isComprehension>
+            <question>jzz</question>
+            <option>jd</option>
+            <option>nd</option>
+            <option>jd</option>
+            <option>js</option>
             <answer>2</answer>
         </item>
         <item>
-            <question>Why are some pollutants only acting locally?</question>
-            <option>They detoxify before long</option>
-            <option>They are lacking mechanisms for large scale distribution</option>
-            <option>They are not polluting when diluted</option>
+            <isComprehension>false</isComprehension>
+            <question>si</question>
+            <option>dnd</option>
+            <option>je</option>
+            <option>nws</option>
+            <option>ns</option>
             <answer>2</answer>
-        </item>
-        <item>
-            <question>Which was the first National Park in the world?</question>
-            <option>Yellowstone, USA</option>
-            <option>Abisko, northern Sweden</option>
-            <option>Dovre, central Norway</option>
-            <answer>1</answer>
-        </item>
-        <item>
-            <question>What is an ecological footprint?</question>
-            <option>The area occupied by an Ecco shoe.</option>
-            <option>The area for food, space, fibers and waste for one human being</option>
-            <option>An EU-measurement</option>
-            <answer>2</answer>
-        </item>
-        <item>
-            <question>Is reindeer herding a sustainable strategy?</question>
-            <option>No, it used to be but it is no longer.</option>
-            <option>Yes, the reindeer utilize resources otherwise unused.</option>
-            <option>Yes, reindeer are environmental friendly.</option>
-            <answer>1</answer>
         </item>
     </data>
 </buildmlearn_application>
