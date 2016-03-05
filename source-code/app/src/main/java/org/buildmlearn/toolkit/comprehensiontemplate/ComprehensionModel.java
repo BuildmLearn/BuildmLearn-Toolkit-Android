@@ -3,7 +3,7 @@ package org.buildmlearn.toolkit.comprehensiontemplate;
 import java.util.ArrayList;
 
 /**
- * @brief Simulator code for Quiz Template
+ * @brief Simulator code for Comprehension Template
  */
 public class ComprehensionModel {
 

@@ -44,7 +44,7 @@ import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.constant.Constants;
 
 /**
- * @brief Simulator code for Quiz Template
+ * @brief Simulator code for Comprehension Template
  */
 public class ScoreFragment extends Fragment {
 

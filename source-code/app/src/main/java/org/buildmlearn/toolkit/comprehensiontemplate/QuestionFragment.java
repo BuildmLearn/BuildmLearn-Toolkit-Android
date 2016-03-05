@@ -49,7 +49,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @brief Simulator code for Quiz Template
+ * @brief Simulator code for Comprehension Template
  */
 public class QuestionFragment extends Fragment {
 
