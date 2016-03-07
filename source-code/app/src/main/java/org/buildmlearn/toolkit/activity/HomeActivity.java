@@ -105,12 +105,4 @@ public class HomeActivity extends AppCompatActivity
         }
     }
 
-
-    public void restoreActionBar() {
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayShowTitleEnabled(true);
-        actionBar.setTitle(mTitle);
-    }
-
-
 }
