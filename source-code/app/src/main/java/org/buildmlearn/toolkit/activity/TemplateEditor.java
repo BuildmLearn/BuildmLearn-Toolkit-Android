@@ -74,6 +74,7 @@ public class TemplateEditor extends AppCompatActivity {
     private ToolkitApplication toolkit;
     private String oldFileName;
     private MaterialDialog mApkGenerationDialog;
+    private boolean flag_selected=true,flag_notselected=true;
 
 
     /**
@@ -248,10 +249,14 @@ public class TemplateEditor extends AppCompatActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         Log.d(TAG, "onPrepareOptionsMenu");
-        if (showTemplateSelectedMenu) {
+        if (showTemplateSelectedMenu && flag_selected) {
             getMenuInflater().inflate(R.menu.menu_template_item_selected, menu);
-        } else {
+            flag_selected = false;
+            flag_notselected = true;
+        } else if(showTemplateSelectedMenu && flag_notselected){
             getMenuInflater().inflate(R.menu.menu_template_editor, menu);
+            flag_notselected = false;
+            flag_selected = true;
         }
         return true;
     }
