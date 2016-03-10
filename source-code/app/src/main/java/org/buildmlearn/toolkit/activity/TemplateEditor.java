@@ -544,8 +544,8 @@ public class TemplateEditor extends AppCompatActivity {
 
                 FileUtils.saveXmlFile(toolkit.getSavedDir(), saveFileName, doc);
 
-
-                return toolkit.getSavedDir() + saveFileName;
+                oldFileName=toolkit.getSavedDir() + saveFileName;
+                return oldFileName;
             } catch (ParserConfigurationException e) {
                 e.printStackTrace();
             }
