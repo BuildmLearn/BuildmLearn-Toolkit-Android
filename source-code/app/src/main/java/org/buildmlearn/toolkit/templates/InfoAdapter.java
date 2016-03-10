@@ -105,7 +105,7 @@ public class InfoAdapter extends BaseAdapter {
                         .title(R.string.info_add_new_title)
                         .customView(R.layout.info_dialog_add_edit_data, true)
                         .positiveText(R.string.info_template_add)
-                        .negativeText(R.string.info_template_delete)
+                        .negativeText(R.string.info_template_cancel)
                         .build();
 
                 final InfoModel data = getItem(position);
