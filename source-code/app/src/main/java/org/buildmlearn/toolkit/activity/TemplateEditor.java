@@ -537,6 +537,7 @@ public class TemplateEditor extends AppCompatActivity {
                 if (oldFileName != null) {
                     File tempFile = new File(oldFileName);
                     tempFile.delete();
+                    oldFileName = null;
                 }
                 String saveFileName = title + " by " + author + ".buildmlearn";
                 saveFileName = saveFileName.replaceAll(" ", "-");
@@ -544,6 +545,7 @@ public class TemplateEditor extends AppCompatActivity {
 
                 FileUtils.saveXmlFile(toolkit.getSavedDir(), saveFileName, doc);
 
+                oldFileName = toolkit.getSavedDir() + saveFileName;
 
                 return toolkit.getSavedDir() + saveFileName;
             } catch (ParserConfigurationException e) {
@@ -552,6 +554,96 @@ public class TemplateEditor extends AppCompatActivity {
         }
         return null;
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (saveDraft()!=null)
+            Toast.makeText(getApplicationContext(),"Saved in Draft!",Toast.LENGTH_SHORT).show();
+
+    }
+
+    /**
+     * Converts the current TemplateInterface object into a xml file. Xml file is saved in DRAFT
+     * Directory (defined in constants). File name is of the format: draft<0-X>.buildmlearn
+     *
+     * @return Absolute path of the saved file. Null if there is some error.
+     * @brief Saves the current project into a .buildmlearn file.
+     */
+    protected String saveDraft() {
+
+        String author = ((EditText) findViewById(R.id.author_name)).getText().toString();
+        String title = ((EditText) findViewById(R.id.template_title)).getText().toString();
+
+
+        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder docBuilder;
+        try {
+
+            docBuilder = docFactory.newDocumentBuilder();
+            Document doc = docBuilder.newDocument();
+            Element rootElement = doc.createElement("buildmlearn_application");
+            Attr attr = doc.createAttribute("type");
+            attr.setValue(getResources().getString(template.getType()));
+            rootElement.setAttributeNode(attr);
+
+            Element authorElement = doc.createElement("author");
+            rootElement.appendChild(authorElement);
+
+            Element nameElement = doc.createElement("name");
+            nameElement.appendChild(doc.createTextNode(author));
+
+            authorElement.appendChild(nameElement);
+
+            Element titleElement = doc.createElement("title");
+            titleElement.appendChild(doc.createTextNode(title));
+            rootElement.appendChild(titleElement);
+
+            doc.appendChild(rootElement);
+            Element dataElement = doc.createElement("data");
+            rootElement.appendChild(dataElement);
+            if (selectedTemplate.getItems(doc).size() == 0) {
+                Toast.makeText(this, "Unable to perform action: No Data", Toast.LENGTH_SHORT).show();
+                return null;
+            }
+            for (Element item : selectedTemplate.getItems(doc)) {
+                dataElement.appendChild(item);
+            }
+
+            int draftFileIndex = 0;
+            File draftDir = new File(toolkit.getDraftDir());
+            String probableFileName = "draft"+draftFileIndex+ ".buildmlearn";
+            File probableFile = new File(draftDir, probableFileName);
+
+            while(probableFile.exists()) {
+                draftFileIndex++;
+                probableFileName = "draft"+draftFileIndex+ ".buildmlearn";
+                probableFile = new File(draftDir, probableFileName);
+            }
+
+            //Create temporary File, if that file content matches with OldContent
+            // Then Don't make Draft
+            File tempFile = new File(toolkit.getDraftDir(), ".temp");
+            File oldFile = null;
+            if (oldFileName!=null)
+                oldFile = new File(oldFileName);
+
+            FileUtils.saveXmlFile(toolkit.getDraftDir(), ".temp", doc);
+            if (oldFile == null || !FileUtils.equalContent(tempFile,oldFile)) {
+                tempFile.renameTo(probableFile);
+                return toolkit.getDraftDir() + probableFileName;
+            } else {
+                File newFile = new File(toolkit.getDraftDir(), ".temp");
+                newFile.delete();
+            }
+            return null;
+
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        }
+    return null;
+    }
+
 
     /**
      * @brief Start the simulator activity
@@ -608,6 +700,11 @@ public class TemplateEditor extends AppCompatActivity {
             Object templateObject = templateClass.newInstance();
             selectedTemplate = (TemplateInterface) templateObject;
             populateListView(selectedTemplate.loadProjectTemplateEditor(this, items));
+            File draftDir = new File(toolkit.getDraftDir());
+            if (fXmlFile.getParentFile().compareTo(draftDir) ==0 ) {
+                //If Draft File
+                fXmlFile.delete();
+            }
             setUpActionBar();
             updateHeaderDetails(name, title);
 
