@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
@@ -44,16 +45,12 @@ public class FirstRunActivity extends AppCompatActivity {
         }
         setContentView(R.layout.activity_first_run);
 
-
         findViewById(R.id.focus_thief).clearFocus();
         YoYo.with(Techniques.BounceInUp)
                 .duration(2700)
                 .playOn(findViewById(R.id.first_name));
 
-
         name = (EditText) findViewById(R.id.first_name);
-
-
         name.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -73,6 +70,8 @@ public class FirstRunActivity extends AppCompatActivity {
                             editor.putString(getString(R.string.key_user_name), name.getText().toString());
                             editor.putBoolean(FIRST_RUN, true);
                             editor.commit();
+//                            SharedPreferences pre = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+//                            Log.d("ABC","NAME : "+pre.getString(getString(R.string.key_user_name)," ")+" NAME TEXT : "+name.getText().toString());
                             Intent intent = new Intent(getApplicationContext(), TutorialActivity.class);
                             intent.putExtra(Constants.START_ACTIVITY, true);
                             startActivity(intent);

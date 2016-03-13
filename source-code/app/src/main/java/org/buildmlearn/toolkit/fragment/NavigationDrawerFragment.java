@@ -222,6 +222,7 @@ public class NavigationDrawerFragment extends Fragment {
 
                 getActivity().supportInvalidateOptionsMenu(); // calls onPrepareOptionsMenu()
             }
+            //
         };
 
         // If the user hasn't 'learned' about the drawer, open it to introduce them to the drawer,
