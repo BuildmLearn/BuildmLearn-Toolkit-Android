@@ -43,6 +43,11 @@ public interface TemplateInterface extends Serializable {
     String onAttach();
 
     /**
+     * @brief Set templateId,that can be used to get Info about current template from enum Template
+     * @param templateId
+     */
+    void setTemplateId(int templateId);
+    /**
      * @return Title as a string
      * @brief Used to get the title of the templaye. Mainly used to update ActionBar in Template Editor
      */
@@ -81,10 +86,11 @@ public interface TemplateInterface extends Serializable {
     Fragment getSimulatorFragment(String filePathWithName);
 
     /**
+     * @param context For obtaining String from StringRes
      * @return Asset file name
      * @brief Name of the xml file congaing template data in the assets folders in the build apk.
      */
-    String getAssetsFileName();
+     String getAssetsFileName(Context context);
 
     /**
      * @return Assets folder path

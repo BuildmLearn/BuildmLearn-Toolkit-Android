@@ -28,4 +28,13 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory android:title="@string/advance_settings">
+
+        <Preference
+            android:key="@string/key_restore_project"
+            android:summary="@string/summary_restore_project"
+            android:title="@string/restore_project" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>

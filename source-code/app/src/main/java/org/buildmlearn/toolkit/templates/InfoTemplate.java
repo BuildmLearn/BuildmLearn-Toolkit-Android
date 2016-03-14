@@ -14,6 +14,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.infotemplate.TFTFragment;
+import org.buildmlearn.toolkit.model.Template;
 import org.buildmlearn.toolkit.model.TemplateInterface;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -29,6 +30,7 @@ public class InfoTemplate implements TemplateInterface {
 
     transient private InfoAdapter adapter;
     private ArrayList<InfoModel> infoData;
+    private int templateId;
 
     public InfoTemplate() {
         infoData = new ArrayList<>();
@@ -79,6 +81,11 @@ public class InfoTemplate implements TemplateInterface {
     @Override
     public String onAttach() {
         return "Info Template";
+    }
+
+    @Override
+    public void setTemplateId(int templateId) {
+        this.templateId = templateId;
     }
 
     @Override
@@ -186,8 +193,9 @@ public class InfoTemplate implements TemplateInterface {
     }
 
     @Override
-    public String getAssetsFileName() {
-        return "info_content.xml";
+    public String getAssetsFileName(Context context) {
+        Template[] templates = Template.values();
+        return  context.getString(templates[templateId].getAssetsName());
     }
 
     @Override

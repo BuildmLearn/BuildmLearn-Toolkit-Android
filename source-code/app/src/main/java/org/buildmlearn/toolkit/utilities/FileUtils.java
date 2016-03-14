@@ -46,6 +46,18 @@ public class FileUtils {
      * @throws IOException Exception thrown in case of some error.
      */
     public static void unZip(String zipFilePath, String destinationFolder) throws IOException {
+        InputStream zipInputStream = new FileInputStream(zipFilePath);
+        unZip(zipInputStream, destinationFolder);
+    }
+
+    /**
+     * @brief Unzips a compressed file (.zip, .apk)
+     *
+     * @param zipInputStream InputStream of Zip file
+     * @param destinationFolder Destination folder for stroing the uncompresses files.
+     * @throws IOException Exception thrown in case of some error.
+     */
+    public static void unZip(InputStream zipInputStream, String destinationFolder) throws IOException {
         int size;
         byte[] buffer = new byte[BUFFER_SIZE];
         try {
@@ -57,7 +69,7 @@ public class FileUtils {
                 f.mkdirs();
             }
 
-            ZipInputStream zin = new ZipInputStream(new BufferedInputStream(new FileInputStream(zipFilePath), BUFFER_SIZE));
+            ZipInputStream zin = new ZipInputStream(new BufferedInputStream(zipInputStream, BUFFER_SIZE));
             try {
                 ZipEntry ze;
                 while ((ze = zin.getNextEntry()) != null) {

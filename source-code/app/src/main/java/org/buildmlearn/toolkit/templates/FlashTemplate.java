@@ -24,6 +24,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.ToolkitApplication;
 import org.buildmlearn.toolkit.flashcardtemplate.StartFragment;
+import org.buildmlearn.toolkit.model.Template;
 import org.buildmlearn.toolkit.model.TemplateInterface;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -46,6 +47,7 @@ public class FlashTemplate implements TemplateInterface {
     transient private ImageView mBannerImage;
     private boolean mIsPhotoAttached;
     transient private FlashCardAdapter mAdapter;
+    private int templateId;
 
     public FlashTemplate() {
         mData = new ArrayList<>();
@@ -82,6 +84,11 @@ public class FlashTemplate implements TemplateInterface {
     @Override
     public String onAttach() {
         return "Flash card template";
+    }
+
+    @Override
+    public void setTemplateId(int templateId) {
+        this.templateId = templateId;
     }
 
     @Override
@@ -265,8 +272,9 @@ public class FlashTemplate implements TemplateInterface {
     }
 
     @Override
-    public String getAssetsFileName() {
-        return "flash_content.xml";
+    public String getAssetsFileName(Context context) {
+        Template[] templates = Template.values();
+        return  context.getString(templates[templateId].getAssetsName());
     }
 
     @Override
