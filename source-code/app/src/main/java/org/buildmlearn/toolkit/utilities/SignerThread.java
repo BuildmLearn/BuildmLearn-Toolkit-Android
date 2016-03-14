@@ -61,6 +61,7 @@ public class SignerThread extends Thread {
 
     public void run() {
 
+
         FileUtils.copyAssets(context, assetsApk, toolkit.getApkDir());
         FileUtils.copyAssets(context, keyDetails.getAssetsPath(), toolkit.getApkDir());
 
@@ -77,6 +78,11 @@ public class SignerThread extends Thread {
         boolean success = true;
         if (!folder.exists()) {
             success = folder.mkdir();
+        } else {
+            //Empty the folder, clean previous assets
+            File[] oldAssets = folder.listFiles();
+            for (File file:oldAssets )
+                file.delete();
         }
 
         File src = new File(projectFile);
