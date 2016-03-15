@@ -104,8 +104,8 @@ public class LearnSpellingTemplate implements TemplateInterface {
             public void onClick(View v) {
 
                 if (validated(activity, word, meaning)) {
-                    String wordText = word.getText().toString();
-                    String meaningText = meaning.getText().toString();
+                    String wordText = word.getText().toString().trim();
+                    String meaningText = meaning.getText().toString().trim();
 
                     LearnSpellingModel temp = new LearnSpellingModel(wordText, meaningText);
                     mLearnSpellingData.add(temp);
