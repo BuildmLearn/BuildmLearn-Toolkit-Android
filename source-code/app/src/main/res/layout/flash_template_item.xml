@@ -44,10 +44,11 @@
 
                 <ImageView
                     android:id="@+id/flash_item_edit"
+                    android:layout_height="20dp"
+                    android:layout_width="20dp"
                     style="@style/TextView.CircleIcon"
                     android:layout_gravity="center_vertical"
-                    android:padding="2dp"
-                    android:src="@drawable/menu_edit_template_item"/>
+                    android:padding="2dp"/>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -83,19 +84,6 @@
                         android:text="Somedifficultword"/>
 
                 </LinearLayout>
-
-
-                <ImageView
-                    android:id="@+id/flash_template_delete"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_marginRight="16dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/template_delete"/>
-
-
             </LinearLayout>
         </LinearLayout>
 

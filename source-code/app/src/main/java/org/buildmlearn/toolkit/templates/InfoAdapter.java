@@ -69,82 +69,11 @@ public class InfoAdapter extends BaseAdapter {
         holder.word.setText(info.getInfoObject());
         convertView.setTag(holder);
 
-        holder.deleteButton = (ImageView) convertView.findViewById(R.id.info_template_delete);
-        holder.deleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                final MaterialDialog dialog = new MaterialDialog.Builder(mContext)
-                        .title(R.string.info_template_delete)
-                        .content(R.string.info_delete_item_content)
-                        .positiveText(R.string.dialog_yes)
-                        .negativeText(R.string.dialog_no)
-                        .build();
-
-                dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        data.remove(position);
-                        notifyDataSetChanged();
-                        dialog.dismiss();
-
-                        ((TemplateEditor) mContext).restoreSelectedView();
-                    }
-                });
-
-                dialog.show();
-
-            }
-        });
-
-        holder.editButton = (ImageView) convertView.findViewById(R.id.info_template_edit);
-        holder.editButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final MaterialDialog dialog = new MaterialDialog.Builder(mContext)
-                        .title(R.string.info_add_new_title)
-                        .customView(R.layout.info_dialog_add_edit_data, true)
-                        .positiveText(R.string.info_template_add)
-                        .negativeText(R.string.info_template_delete)
-                        .build();
-
-                final InfoModel data = getItem(position);
-
-                final EditText word = (EditText) dialog.findViewById(R.id.info_word);
-                final EditText meaning = (EditText) dialog.findViewById(R.id.info_meaning);
-                word.setText(data.getInfoObject());
-                meaning.setText(data.getInfoDescription());
-
-                dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        if (InfoTemplate.validated(mContext, word, meaning)) {
-                            String wordText = word.getText().toString();
-                            String meaningText = meaning.getText().toString();
-
-                            data.setWord(wordText);
-                            data.setInfoDescription(meaningText);
-
-                            notifyDataSetChanged();
-                            dialog.dismiss();
-                        }
-
-                    }
-                });
-
-                dialog.show();
-            }
-        });
-
-
         return convertView;
     }
 
     public class InfoTemplateHolder {
         public TextViewPlus word;
         public TextViewPlus meaning;
-        public ImageView editButton;
-        public ImageView deleteButton;
     }
 }
