@@ -15,7 +15,6 @@
 
         <com.afollestad.materialdialogs.prefs.MaterialEditTextPreference
             android:dialogTitle="@string/title_user_name"
-            android:digits="abcdefghijklmnopqrstuvxyzABCDEFGHIJLMNOPRSTUVXYZ "
             android:key="@string/key_user_name"
             android:lines="1"
             android:maxLines="1"
