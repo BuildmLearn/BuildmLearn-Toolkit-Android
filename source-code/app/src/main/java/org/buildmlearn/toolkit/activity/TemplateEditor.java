@@ -1,13 +1,11 @@
 package org.buildmlearn.toolkit.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.ColorStateList;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
@@ -26,7 +24,6 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.afollestad.materialdialogs.internal.ThemeSingleton;
 import com.cocosw.bottomsheet.BottomSheet;
 
 import org.buildmlearn.toolkit.R;
@@ -38,6 +35,7 @@ import org.buildmlearn.toolkit.model.TemplateInterface;
 import org.buildmlearn.toolkit.simulator.Simulator;
 import org.buildmlearn.toolkit.utilities.FileUtils;
 import org.buildmlearn.toolkit.utilities.KeyboardHelper;
+import org.buildmlearn.toolkit.utilities.Selection;
 import org.buildmlearn.toolkit.utilities.SignerThread;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
@@ -75,7 +73,7 @@ public class TemplateEditor extends AppCompatActivity {
     private ToolkitApplication toolkit;
     private String oldFileName;
     private MaterialDialog mApkGenerationDialog;
-
+    private Activity activity;
 
     /**
      * {@inheritDoc}
@@ -84,10 +82,11 @@ public class TemplateEditor extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         oldFileName = null;
+        activity = this;
         setContentView(R.layout.activity_template_editor);
         KeyboardHelper.hideKeyboard(this, findViewById(R.id.toolbar));
-        KeyboardHelper.hideKeyboard(this,findViewById(R.id.template_editor_listview));
-        KeyboardHelper.hideKeyboard(this,findViewById(R.id.empty));
+        KeyboardHelper.hideKeyboard(this, findViewById(R.id.template_editor_listview));
+        KeyboardHelper.hideKeyboard(this, findViewById(R.id.empty));
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         toolkit = (ToolkitApplication) getApplicationContext();
         templateId = getIntent().getIntExtra(Constants.TEMPLATE_ID, -1);
@@ -171,7 +170,8 @@ public class TemplateEditor extends AppCompatActivity {
                 if (selectedPosition == position - 1) {
                     selectedPosition = -1;
                     view.setBackgroundResource(0);
-                    restoreColorScheme();
+                    Selection.restoreColorScheme(activity, getResources());
+                    showTemplateSelectedMenu = false;
                 } else {
                     if (selectedView != null) {
                         selectedView.setBackgroundResource(0);
@@ -180,12 +180,28 @@ public class TemplateEditor extends AppCompatActivity {
                     selectedPosition = position - 1;
                     Log.d(TAG, "Position: " + selectedPosition);
                     view.setBackgroundColor(getResources().getColor(R.color.color_divider));
-                    changeColorScheme();
+                    Selection.changeColorScheme(activity, getResources());
+                    showTemplateSelectedMenu = true;
                 }
                 return true;
             }
         });
 
+    }
+
+    /**
+     * @brief if any item is selected then it should deselect it,else it will perform the usual normal functionality
+     */
+    @Override
+    public void onBackPressed() {
+        if (selectedPosition != -1) {
+            selectedPosition = -1;
+            selectedView.setBackgroundResource(0);
+            Selection.restoreColorScheme(activity, getResources());
+            showTemplateSelectedMenu = false;
+        } else {
+            super.onBackPressed();
+        }
     }
 
     /**
@@ -286,6 +302,7 @@ public class TemplateEditor extends AppCompatActivity {
                     public void onClick(View v) {
                         dialog.dismiss();
                         selectedTemplate.deleteItem(selectedPosition);
+                        selectedPosition = -1;
                         restoreSelectedView();
                     }
                 });
@@ -435,51 +452,8 @@ public class TemplateEditor extends AppCompatActivity {
         if (selectedView != null) {
             selectedView.setBackgroundResource(0);
         }
-
-        restoreColorScheme();
-    }
-
-    /**
-     * @brief Changes the color scheme when switching from normal mode to edit mode.
-     * <p/>
-     * Edit mode is triggered, when the list item is long pressed.
-     */
-    public void changeColorScheme() {
-        int primaryColor = getResources().getColor(R.color.color_primary_dark);
-        int primaryColorDark = getResources().getColor(R.color.color_selected_dark);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(primaryColor));
-        ThemeSingleton.get().positiveColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().neutralColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().negativeColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().widgetColor = primaryColor;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(primaryColorDark);
-            getWindow().setNavigationBarColor(primaryColor);
-        }
-
-        showTemplateSelectedMenu = true;
-        invalidateOptionsMenu();
-    }
-
-    /**
-     * @brief Restores the color scheme when switching from edit mode to normal mode.
-     * <p/>
-     * Edit mode is triggered, when the list item is long pressed.
-     */
-    public void restoreColorScheme() {
-        int primaryColor = getResources().getColor(R.color.color_primary);
-        int primaryColorDark = getResources().getColor(R.color.color_primary_dark);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(primaryColor));
-        ThemeSingleton.get().positiveColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().neutralColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().negativeColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().widgetColor = primaryColor;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(primaryColorDark);
-            getWindow().setNavigationBarColor(primaryColor);
-        }
+        Selection.restoreColorScheme(activity, getResources());
         showTemplateSelectedMenu = false;
-        invalidateOptionsMenu();
     }
 
     /**

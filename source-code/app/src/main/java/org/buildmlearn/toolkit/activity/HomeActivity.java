@@ -9,15 +9,12 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.widget.Toast;
-
-import com.crashlytics.android.Crashlytics;
 
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.fragment.LoadProjectFragment;
 import org.buildmlearn.toolkit.fragment.NavigationDrawerFragment;
 import org.buildmlearn.toolkit.model.Section;
-
-import io.fabric.sdk.android.Fabric;
+import org.buildmlearn.toolkit.utilities.Selection;
 
 /**
  * @brief Home screen of the application containg all the menus and settings.
@@ -42,7 +39,6 @@ public class HomeActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
 
         setContentView(R.layout.activity_home);
@@ -102,6 +98,21 @@ public class HomeActivity extends AppCompatActivity
 
 
             }
+        }
+    }
+
+    /**
+     * @brief if any item is selected then it should deselect it,else it will perform the usual normal functionality
+     */
+    @Override
+    public void onBackPressed() {
+        if (LoadProjectFragment.selectedPosition != -1) {
+            LoadProjectFragment.selectedPosition = -1;
+            LoadProjectFragment.selectedView.setBackgroundResource(0);
+            Selection.restoreColorScheme(this, getResources());
+            LoadProjectFragment.showTemplateSelectedMenu = false;
+        } else {
+            super.onBackPressed();
         }
     }
 

@@ -3,11 +3,7 @@ package org.buildmlearn.toolkit.fragment;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -20,7 +16,6 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.afollestad.materialdialogs.internal.ThemeSingleton;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.ToolkitApplication;
@@ -29,6 +24,7 @@ import org.buildmlearn.toolkit.adapter.SavedProjectAdapter;
 import org.buildmlearn.toolkit.constant.Constants;
 import org.buildmlearn.toolkit.model.SavedProject;
 import org.buildmlearn.toolkit.model.Template;
+import org.buildmlearn.toolkit.utilities.Selection;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
@@ -49,16 +45,21 @@ import javax.xml.parsers.ParserConfigurationException;
 public class LoadProjectFragment extends Fragment implements AbsListView.OnItemClickListener {
 
     private static final String TAG = "Load Project Fragment";
+    public static boolean showTemplateSelectedMenu;
+    public static View selectedView = null;
+    public static int selectedPosition = -1;
     private AbsListView mListView;
-
-    private boolean showTemplateSelectedMenu;
     private SavedProjectAdapter mAdapter;
     private ToolkitApplication mToolkit;
     private Activity activity;
     private ArrayList<SavedProject> savedProjects;
-    private View selectedView = null;
 
-    private int selectedPosition = -1;
+    public void onDestroy() {
+        super.onDestroy();
+        selectedView = null;
+        selectedPosition = -1;
+
+    }
 
     /**
      * {@inheritDoc}
@@ -139,7 +140,8 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                 if (selectedPosition == position) {
                     selectedPosition = -1;
                     view.setBackgroundResource(0);
-                    restoreColorScheme();
+                    Selection.restoreColorScheme(activity, getResources());
+                    showTemplateSelectedMenu = false;
                 } else {
                     if (selectedView != null) {
                         selectedView.setBackgroundResource(0);
@@ -148,7 +150,8 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                     selectedPosition = position;
                     Log.d(TAG, "Position: " + selectedPosition);
                     view.setBackgroundColor(getResources().getColor(R.color.color_divider));
-                    changeColorScheme();
+                    Selection.changeColorScheme(activity, getResources());
+                    showTemplateSelectedMenu = true;
                 }
                 return true;
             }
@@ -243,49 +246,6 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
     }
 
     /**
-     * @brief Restores the color scheme when switching from edit mode to normal mode.
-     * <p/>
-     * Edit mode is triggered, when the list item is long pressed.
-     */
-    public void restoreColorScheme() {
-        int primaryColor = getResources().getColor(R.color.color_primary);
-        int primaryColorDark = getResources().getColor(R.color.color_primary_dark);
-        ((AppCompatActivity) activity).getSupportActionBar().setBackgroundDrawable(new ColorDrawable(primaryColor));
-        ThemeSingleton.get().positiveColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().neutralColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().negativeColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().widgetColor = primaryColor;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            activity.getWindow().setStatusBarColor(primaryColorDark);
-            activity.getWindow().setNavigationBarColor(primaryColor);
-        }
-        showTemplateSelectedMenu = false;
-        activity.invalidateOptionsMenu();
-    }
-
-    /**
-     * @brief Changes the color scheme when switching from normal mode to edit mode.
-     * <p/>
-     * Edit mode is triggered, when the list item is long pressed.
-     */
-    public void changeColorScheme() {
-        int primaryColor = getResources().getColor(R.color.color_primary_dark);
-        int primaryColorDark = getResources().getColor(R.color.color_selected_dark);
-        ((AppCompatActivity) activity).getSupportActionBar().setBackgroundDrawable(new ColorDrawable(primaryColor));
-        ThemeSingleton.get().positiveColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().neutralColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().negativeColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().widgetColor = primaryColor;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            activity.getWindow().setStatusBarColor(primaryColorDark);
-            activity.getWindow().setNavigationBarColor(primaryColor);
-        }
-
-        showTemplateSelectedMenu = true;
-        activity.invalidateOptionsMenu();
-    }
-
-    /**
      * {@inheritDoc}
      */
     @Override
@@ -349,8 +309,10 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
      */
     public void restoreSelectedView() {
         if (selectedView != null) {
+            selectedPosition = -1;
             selectedView.setBackgroundResource(0);
         }
-        restoreColorScheme();
+        Selection.restoreColorScheme(activity, getResources());
+        showTemplateSelectedMenu = false;
     }
 }
