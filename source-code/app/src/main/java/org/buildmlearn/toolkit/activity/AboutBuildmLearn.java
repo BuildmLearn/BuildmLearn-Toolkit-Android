@@ -26,16 +26,6 @@ public class AboutBuildmLearn extends AppCompatActivity {
 
         String versionName = BuildConfig.VERSION_NAME;
         ((TextView) findViewById(R.id.app_version)).setText("Version: " + versionName);
-
-        // PackageInfo pInfo = null;
-        // try {
-        //     pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
-        //     String version = pInfo.versionName;
-        //     ((TextView)findViewById(R.id.app_version)).setText("Version: " + version);
-        // } catch (PackageManager.NameNotFoundException e) {
-        //     ((TextView)findViewById(R.id.app_version)).setText("Version: 1.0");
-        //     e.printStackTrace();
-        // }
     }
 
 }
