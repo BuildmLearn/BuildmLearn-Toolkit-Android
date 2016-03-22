@@ -20,7 +20,7 @@ import org.buildmlearn.toolkit.model.Section;
 import io.fabric.sdk.android.Fabric;
 
 /**
- * @brief Home screen of the application containg all the menus and settings.
+ * @brief Home screen of the application containing all the menus and settings.
  */
 public class HomeActivity extends AppCompatActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {

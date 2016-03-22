@@ -57,7 +57,7 @@ import javax.xml.parsers.ParserConfigurationException;
 /**
  * @brief Placeholder activity for all the templates
  * <p/>
- * A placeholder activty in which all the templates are loaded and allows the user to enter respective template
+ * A placeholder activity in which all the templates are loaded and allows the user to enter respective template
  * data, generate and save projects, APKs and sharing options.
  */
 
@@ -65,7 +65,7 @@ public class TemplateEditor extends AppCompatActivity {
 
     private final static String TAG = "TEMPLATE EDITOR";
 
-    private ListView templateEdtiorList;
+    private ListView templateEditorList;
     private int templateId;
     private Template template;
     private TemplateInterface selectedTemplate;
@@ -148,19 +148,19 @@ public class TemplateEditor extends AppCompatActivity {
      * Header view contains the editable author name and template title fields.
      */
     protected void populateListView(final BaseAdapter adapter) {
-        if (templateEdtiorList == null) {
-            templateEdtiorList = (ListView) findViewById(R.id.template_editor_listview);
+        if (templateEditorList == null) {
+            templateEditorList = (ListView) findViewById(R.id.template_editor_listview);
         }
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View templateHeader = inflater.inflate(R.layout.listview_header_template, templateEdtiorList, false);
-        templateEdtiorList.addHeaderView(templateHeader, null, false);
+        View templateHeader = inflater.inflate(R.layout.listview_header_template, templateEditorList, false);
+        templateEditorList.addHeaderView(templateHeader, null, false);
 
         EditText authorEditText = (EditText) findViewById(R.id.author_name);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         authorEditText.setText(preferences.getString(getString(R.string.key_user_name), ""));
         setAdapter(adapter);
 
-        templateEdtiorList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        templateEditorList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
@@ -193,7 +193,7 @@ public class TemplateEditor extends AppCompatActivity {
      */
     protected void setUpActionBar() {
         ActionBar actionBar = getSupportActionBar();
-        templateEdtiorList = (ListView) findViewById(R.id.template_editor_listview);
+        templateEditorList = (ListView) findViewById(R.id.template_editor_listview);
         if (actionBar == null) {
             throw new AssertionError();
         }
@@ -638,7 +638,7 @@ public class TemplateEditor extends AppCompatActivity {
      * @brief Sets the adapter to the ListView
      */
     protected void setAdapter(BaseAdapter adapter) {
-        templateEdtiorList.setAdapter(adapter);
+        templateEditorList.setAdapter(adapter);
         setEmptyView();
     }
 
@@ -647,7 +647,7 @@ public class TemplateEditor extends AppCompatActivity {
      */
     protected void setEmptyView() {
 
-        if (templateEdtiorList.getAdapter().getCount() == 1) {
+        if (templateEditorList.getAdapter().getCount() == 1) {
             findViewById(R.id.empty).setVisibility(View.VISIBLE);
         } else {
             findViewById(R.id.empty).setVisibility(View.GONE);
