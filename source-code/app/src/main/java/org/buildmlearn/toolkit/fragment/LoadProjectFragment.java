@@ -3,10 +3,12 @@ package org.buildmlearn.toolkit.fragment;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -58,6 +60,12 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
     private ArrayList<SavedProject> savedProjects;
     private View selectedView = null;
 
+    private SharedPreferences prefs;
+    private static final String PREF_SORT = "sortType";
+    public static final int SORT_TYPE_MODIFIED = 0;
+    public static final int SORT_TYPE_NAME = 1;
+    public static final int SORT_TYPE_AUTHOR = 2;
+
     private int selectedPosition = -1;
 
     /**
@@ -70,6 +78,7 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
         mToolkit = (ToolkitApplication) getActivity().getApplicationContext();
         activity = getActivity();
         savedProjects = new ArrayList<>();
+        prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
         String path = mToolkit.getSavedDir();
         Log.d("Files", "Path: " + path);
@@ -105,13 +114,6 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
             }
         }
 
-        Collections.sort(savedProjects, new Comparator<SavedProject>() {
-            public int compare(SavedProject f1, SavedProject f2) {
-                return Long.valueOf(f1.getFile().lastModified()).compareTo(f2.getFile().lastModified());
-            }
-        });
-
-        Collections.reverse(savedProjects);
     }
 
     /**
@@ -131,7 +133,11 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
     public void onViewCreated(View view, Bundle savedInstanceState) {
         mAdapter = new SavedProjectAdapter(getActivity(), savedProjects);
         mListView = (AbsListView) view.findViewById(android.R.id.list);
+        mAdapter.setSortType(prefs.getInt(PREF_SORT, SORT_TYPE_MODIFIED));
+        mAdapter.sort();
         setAdapter(mAdapter);
+
+
         mListView.setOnItemClickListener(this);
         mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -230,13 +236,7 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                 }
             }
 
-            Collections.sort(savedProjects, new Comparator<SavedProject>() {
-                public int compare(SavedProject f1, SavedProject f2) {
-                    return Long.valueOf(f1.getFile().lastModified()).compareTo(f2.getFile().lastModified());
-                }
-            });
-
-            Collections.reverse(savedProjects);
+            mAdapter.sort();
             mAdapter.notifyDataSetChanged();
         }
         super.onResume();
@@ -291,8 +291,11 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
+        menu.clear();
         if (showTemplateSelectedMenu) {
             activity.getMenuInflater().inflate(R.menu.menu_project_selected, menu);
+        } else {
+            activity.getMenuInflater().inflate(R.menu.menu_project, menu);
         }
     }
 
@@ -306,22 +309,43 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
         switch (id) {
             case R.id.action_delete:
 
-                final MaterialDialog dialog = new MaterialDialog.Builder(activity)
+                final MaterialDialog dialogDelete = new MaterialDialog.Builder(activity)
                         .title(R.string.dialog_delete_title)
                         .content(R.string.dialog_delete_msg)
                         .positiveText(R.string.dialog_yes)
                         .negativeText(R.string.dialog_no)
                         .build();
 
-                dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+                dialogDelete.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        dialog.dismiss();
+                        dialogDelete.dismiss();
                         deleteItem(selectedPosition);
                         restoreSelectedView();
                     }
                 });
-                dialog.show();
+                dialogDelete.show();
+                break;
+            case R.id.action_sort:
+
+                final MaterialDialog dialogSort = new MaterialDialog.Builder(activity)
+                        .title(R.string.dialog_sort_title)
+                        .items(R.array.project_sort)
+                        .itemsCallbackSingleChoice(mAdapter.getSortType(), new MaterialDialog.ListCallbackSingleChoice() {
+                            @Override
+                            public boolean onSelection(MaterialDialog dialog, View itemView, int which, CharSequence text) {
+                                mAdapter.setSortType(which);
+                                SharedPreferences.Editor editor = prefs.edit();
+                                editor.putInt(PREF_SORT, which);
+                                editor.commit();
+                                mAdapter.sort();
+                                mAdapter.notifyDataSetChanged();
+                                return true;
+                            }
+                        })
+                        .build();
+
+                dialogSort.show();
                 break;
         }
         return super.onOptionsItemSelected(item);
