@@ -9,15 +9,12 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.widget.Toast;
-
-import com.crashlytics.android.Crashlytics;
 
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.constant.Constants;
 import org.buildmlearn.toolkit.fragment.NavigationDrawerFragment;
+import org.buildmlearn.toolkit.fragment.SettingsFragment;
 import org.buildmlearn.toolkit.model.Section;
-
-import io.fabric.sdk.android.Fabric;
 
 /**
  * @brief Home screen of the application containg all the menus and settings.
@@ -44,7 +41,6 @@ public class HomeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
 
 
-
         setContentView(R.layout.activity_home);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
 
@@ -56,7 +52,18 @@ public class HomeActivity extends AppCompatActivity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
-
+        if (getIntent().hasExtra(Constants.START_FRAGMENT)) {
+            if (getIntent().getIntExtra(Constants.START_FRAGMENT, 0) == 3) {
+                currentSection.setIsSelected(false);
+                Section[] menuItem = Section.values();
+                Section selectedMenuItem = menuItem[3];
+                selectedMenuItem.setIsSelected(true);
+                currentSection = selectedMenuItem;
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.replace(R.id.container, new SettingsFragment());
+                ft.commit();
+            }
+        }
     }
 
     /**
