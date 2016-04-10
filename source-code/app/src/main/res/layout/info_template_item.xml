@@ -30,6 +30,7 @@
                 style="@style/TextView.Title.Thin"
                 class="org.buildmlearn.toolkit.views.TextViewPlus"
                 android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
                 android:paddingBottom="8dp"
                 android:paddingTop="16dp"
                 android:text="Somedifficultword" />
@@ -39,8 +40,10 @@
                 style="@style/TextView.Body1"
                 class="org.buildmlearn.toolkit.views.TextViewPlus"
                 android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
                 android:paddingBottom="8dp"
                 android:paddingRight="16dp"
+                android:paddingEnd="16dp"
                 android:text="This is a long long infoDescription of some cool infoObject. Made only for BuildmLearn as a pat of GSoC Project." />
         </LinearLayout>
 
@@ -52,6 +55,7 @@
             android:layout_gravity="center"
             android:adjustViewBounds="true"
             android:layout_marginRight="16dp"
+            android:layout_marginEnd="16dp"
             android:scaleType="centerInside"
             android:src="@drawable/template_delete" />
 

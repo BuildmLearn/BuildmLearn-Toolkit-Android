@@ -22,6 +22,7 @@
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
             android:paddingLeft="@dimen/cardview_body_padding_left_right"
+            android:paddingStart="@dimen/cardview_body_padding_left_right"
             android:scaleType="fitEnd" />
 
         <LinearLayout

@@ -24,6 +24,7 @@
             style="@style/TextView.Title.Thin"
             class="org.buildmlearn.toolkit.views.TextViewPlus"
             android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
             android:paddingBottom="16dp"
             android:paddingTop="16dp" />
 
@@ -34,6 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginLeft="72dp"
+        android:layout_marginStart="72dp"
         android:background="@color/color_divider">
 
     </View>
@@ -46,6 +48,7 @@
         android:orientation="vertical"
         android:paddingBottom="8dp"
         android:paddingLeft="72dp"
+        android:paddingStart="72dp"
         android:paddingTop="16dp">
 
         <view
@@ -76,7 +79,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="right"
+            android:gravity="right|end"
             android:orientation="horizontal">
 
             <Button
@@ -85,9 +88,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
                 android:paddingLeft="8dp"
+                android:paddingStart="8dp"
                 android:paddingRight="8dp"
+                android:paddingEnd="8dp"
                 android:text="@string/quiz_edit"
                 android:textAllCaps="true"
                 android:textColor="@color/color_primary"
@@ -100,7 +107,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
                 android:text="@string/quiz_delete"
                 android:textAllCaps="true"
                 android:textColor="@color/color_primary"
