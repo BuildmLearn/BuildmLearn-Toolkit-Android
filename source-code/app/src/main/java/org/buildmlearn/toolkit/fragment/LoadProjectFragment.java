@@ -7,6 +7,7 @@ import android.content.res.ColorStateList;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
@@ -57,7 +59,7 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
     private ToolkitApplication mToolkit;
     private Activity activity;
     private ArrayList<SavedProject> savedProjects;
-    private View selectedView = null;
+
 
     /**
      * {@inheritDoc}
@@ -135,42 +137,61 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
         mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                if (mAdapter.getSelectedPosition() == position) {
-                    mAdapter.setSelectedPosition(-1);
-                    view.setBackgroundResource(0);
+                if(!showTemplateSelectedMenu)
+                    onProjectSelectionClick(view,position);
+                else {
+                    mAdapter.deselectAll();
                     restoreColorScheme();
-                } else {
-                    if (selectedView != null) {
-                        selectedView.setBackgroundResource(0);
-                    }
-                    selectedView = view;
-                    mAdapter.setSelectedPosition(position);
-                    Log.d(TAG, "Position: " + position);
-                    view.setBackgroundColor(getResources().getColor(R.color.color_divider));
-                    changeColorScheme();
                 }
                 return true;
             }
         });
     }
 
+
+    /**
+     * Action to perform when selecting/deselecting project
+     * @param view
+     * @param position
+     */
+    public void onProjectSelectionClick(View view, int position) {
+        if (mAdapter.getSelectedPositions().contains(position)) {
+            mAdapter.deselectPosition(position);
+            if (mAdapter.getSelectedPositions().isEmpty())
+                restoreColorScheme();
+        } else {
+            mAdapter.selectedPosition(position);
+            Log.d(TAG, "Position: " + position);
+            view.setBackgroundColor(getResources().getColor(R.color.color_divider));
+            changeColorScheme();
+        }
+
+    }
     /**
      * {@inheritDoc}
      */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        SavedProject project = savedProjects.get(position);
-        Template[] templates = Template.values();
-        for (int i = 0; i < templates.length; i++) {
-            if (project.getType().equals(getString(templates[i].getType()))) {
-                Intent intent = new Intent(getActivity(), TemplateEditor.class);
-                intent.putExtra(Constants.TEMPLATE_ID, i);
-                intent.putExtra(Constants.PROJECT_FILE_PATH, project.getFullPath());
-                startActivity(intent);
-                return;
+
+        if(showTemplateSelectedMenu) {
+            //Single click for selection, if already in selection mode
+            onProjectSelectionClick(view, position);
+
+        } else {
+
+            SavedProject project = savedProjects.get(position);
+            Template[] templates = Template.values();
+            for (int i = 0; i < templates.length; i++) {
+                if (project.getType().equals(getString(templates[i].getType()))) {
+                    Intent intent = new Intent(getActivity(), TemplateEditor.class);
+                    intent.putExtra(Constants.TEMPLATE_ID, i);
+                    intent.putExtra(Constants.PROJECT_FILE_PATH, project.getFullPath());
+                    startActivity(intent);
+                    return;
+                }
             }
+            Toast.makeText(getActivity(), "Invalid project file", Toast.LENGTH_SHORT).show();
         }
-        Toast.makeText(getActivity(), "Invalid project file", Toast.LENGTH_SHORT).show();
     }
 
     private void setAdapter(SavedProjectAdapter adapter) {
@@ -284,7 +305,7 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
         activity.invalidateOptionsMenu();
     }
 
-     /**
+    /**
      * {@inheritDoc}
      */
     @Override
@@ -316,41 +337,52 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                     @Override
                     public void onClick(View v) {
                         dialog.dismiss();
-                        deleteItem(mAdapter.getSelectedPosition());
-                        restoreSelectedView();
+                        deleteItem(mAdapter.getSelectedPositions());
                     }
                 });
                 dialog.show();
+                break;
+            case R.id.action_select_all:
+                mAdapter.selectAll();
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
 
     /**
-     * @brief Removes selected project item
+     * @brief Removes selected projects item
      */
-    private void deleteItem(int selectedPosition) {
-        SavedProject project = savedProjects.get(selectedPosition);
-        File file = new File(project.getFile().getPath());
-        boolean deleted = file.delete();
-        if (deleted) {
-            savedProjects.remove(selectedPosition);
-            mAdapter.setSelectedPosition(-1);
-            mAdapter.notifyDataSetChanged();
-            setEmptyText();
-            Toast.makeText(activity, "Project Successfully Deleted!", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(activity, "Project Deletion Failed!", Toast.LENGTH_SHORT).show();
+    private void deleteItem(ArrayList<Integer> selectedPositions) {
+
+        ArrayList<SavedProject> selectedProjects = new ArrayList<>();
+        for (Integer selectedPosition : selectedPositions ) {
+            selectedProjects.add(savedProjects.get(selectedPosition));
         }
+
+        boolean success = true;
+
+        for (SavedProject selectedProject : selectedProjects ) {
+
+            File file = new File(selectedProject.getFile().getPath());
+            boolean deleted = file.delete();
+            if (deleted) {
+                savedProjects.remove(selectedProject);
+            } else {
+                success = false;
+            }
+
+        }
+
+        if (success) {
+            Toast.makeText(activity, "Project(s) Successfully Deleted!", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(activity, "Project(s) Deletion Failed!", Toast.LENGTH_SHORT).show();
+        }
+        mAdapter.deselectAll();
+        restoreColorScheme();
+        mAdapter.notifyDataSetChanged();
+        setEmptyText();
+
     }
 
-    /**
-     * @brief Removes selected color from the selected ListView item when switching from edit mode to normal mode
-     */
-    public void restoreSelectedView() {
-        if (selectedView != null) {
-            selectedView.setBackgroundResource(0);
-        }
-        restoreColorScheme();
-    }
 }

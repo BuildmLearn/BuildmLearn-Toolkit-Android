@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.model.SavedProject;
 import org.buildmlearn.toolkit.views.TextViewPlus;
+import org.spongycastle.util.Integers;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -22,12 +23,12 @@ public class SavedProjectAdapter extends BaseAdapter {
 
     private Context mContext;
     private ArrayList<SavedProject> data;
-    private int selectedPosition;
+    private ArrayList<Integer> selectedPositions;
 
     public SavedProjectAdapter(Context mContext, ArrayList<SavedProject> data) {
         this.mContext = mContext;
         this.data = data;
-        selectedPosition = -1;
+        selectedPositions = new ArrayList<>();
     }
 
     /**
@@ -54,13 +55,43 @@ public class SavedProjectAdapter extends BaseAdapter {
         return i;
     }
 
-
-    public void setSelectedPosition(int selectedPosition) {
-        this.selectedPosition = selectedPosition;
+    /**
+     * Add project to selection list
+     * @param selectedPosition
+     */
+    public void selectedPosition(Integer selectedPosition) {
+        selectedPositions.add(selectedPosition);
     }
 
-    public int getSelectedPosition() {
-        return selectedPosition;
+    /**
+     * Remove Project from selection list
+     * @param deselectPosition
+     */
+    public void deselectPosition(Integer deselectPosition) {
+        selectedPositions.remove(deselectPosition);
+        notifyDataSetChanged();
+    }
+
+    /**
+     * Select All projects
+     */
+    public void selectAll() {
+        selectedPositions = new ArrayList<>();
+        for (Integer position = 0; position<data.size(); position++)
+            selectedPositions.add(position);
+        notifyDataSetChanged();
+    }
+
+    /**
+     * Deselect All projects
+     */
+    public void deselectAll() {
+        selectedPositions = new ArrayList<>();
+        notifyDataSetChanged();
+    }
+
+    public ArrayList<Integer> getSelectedPositions() {
+        return selectedPositions;
     }
 
     /**
@@ -81,7 +112,7 @@ public class SavedProjectAdapter extends BaseAdapter {
             holder = (ProjectHolder) convertView.getTag();
         }
 
-        if (selectedPosition == position) {
+        if (selectedPositions.contains(position)) {
             convertView.setBackgroundColor(mContext.getResources().getColor(R.color.color_divider));
         } else {
             convertView.setBackgroundColor(0);
