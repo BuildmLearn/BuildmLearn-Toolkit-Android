@@ -8,5 +8,12 @@
         android:orderInCategory="2"
         android:title="@string/menu_delete_template_item"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_select_all"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_select_all_white_24dp"
+        android:title="@string/menu_select_all"
+        android:orderInCategory="2"
+        />
 
 </menu>
