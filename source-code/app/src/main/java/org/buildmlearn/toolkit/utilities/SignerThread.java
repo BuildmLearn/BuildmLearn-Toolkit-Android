@@ -1,11 +1,13 @@
 package org.buildmlearn.toolkit.utilities;
 
+import android.Manifest;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -14,6 +16,7 @@ import org.buildmlearn.toolkit.ToolkitApplication;
 import org.buildmlearn.toolkit.model.KeyStoreDetails;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.security.UnrecoverableKeyException;
@@ -61,6 +64,12 @@ public class SignerThread extends Thread {
 
     public void run() {
 
+        int permissionCheck = ContextCompat.checkSelfPermission(context,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if(permissionCheck==-1){
+            listener.onFail(new FileNotFoundException());
+            return;
+        }
         FileUtils.copyAssets(context, assetsApk, toolkit.getApkDir());
         FileUtils.copyAssets(context, keyDetails.getAssetsPath(), toolkit.getApkDir());
 
@@ -122,7 +131,7 @@ public class SignerThread extends Thread {
             char[] keyPass = keyDetails.getPassword().toCharArray();
             char[] aliasPass = keyDetails.getAliasPassword().toCharArray();
 
-            if (toolkit.isExternalStorageAvailable()) {
+            if (toolkit.checkExternalStorage()) {
                 finalApk = toolkit.getDownloadDirectory() + "/" + finalApk.substring(toolkit.getSavedDir().length());
                 Log.d(TAG, "Final APK: " + finalApk);
             }
