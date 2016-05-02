@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/BuildmLearn/BuildmLearn-Toolkit-Android.svg)](https://travis-ci.org/BuildmLearn/BuildmLearn-Toolkit-Android)
+
 # BuildmLearn-Toolkit-Android
 
 This repository contains the Android version of the BuildmLearn Toolkit. BuildmLearn Toolkit is an easy-to-use program that helps the users make mobile apps without any knowledge of application development.

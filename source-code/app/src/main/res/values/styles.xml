@@ -44,7 +44,9 @@
         <item name="android:paddingLeft">@dimen/main_menu_padding</item>
         <item name="android:textSize">@dimen/main_menu_text_size</item>
         <item name="android:textColor">@color/black_primary_text</item>
-        <item name="background">@color/abc_background_cache_hint_selector_material_light</item>
+        <item name="background" tools:ignore="PrivateResource">
+            @color/abc_background_cache_hint_selector_material_light
+        </item>
         <item name="android:drawablePadding">@dimen/main_menu_drawable_padding</item>
     </style>
 
@@ -156,7 +158,9 @@
         <item name="android:paddingRight">@dimen/cardview_body_padding_left_right</item>
         <item name="android:paddingBottom">@dimen/cardview_body_padding_bottom</item>
         <item name="android:paddingTop">@dimen/cardview_body_padding_top</item>
-        <item name="android:textColor">@color/abc_primary_text_material_dark</item>
+        <item name="android:textColor" tools:ignore="PrivateResource">
+            @color/abc_primary_text_material_dark
+        </item>
         <item name="android:textSize">@dimen/cardview_body_text_size</item>
         <item name="customFont">roboto_regular.ttf</item>
     </style>
@@ -167,26 +171,34 @@
         <item name="android:paddingLeft">@dimen/cardview_title_padding_left_right</item>
         <item name="android:paddingRight">@dimen/cardview_title_padding_left_right</item>
         <item name="android:paddingTop">@dimen/cardview_title_padding_top</item>
-        <item name="android:textColor">@color/abc_primary_text_material_dark</item>
+        <item name="android:textColor" tools:ignore="PrivateResource">
+            @color/abc_primary_text_material_dark
+        </item>
         <item name="android:textSize">@dimen/cardview_title_text_size</item>
         <item name="customFont">roboto_medium.ttf</item>
     </style>
 
     <style name="Button.Raised" parent="Widget.AppCompat.Button">
-        <item name="android:textColor">@color/abc_secondary_text_material_dark</item>
+        <item name="android:textColor" tools:ignore="PrivateResource">
+            @color/abc_secondary_text_material_dark
+        </item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <!-- EditText-->
     <style name="EditText.Dark">
-        <item name="android:textColor">@color/abc_primary_text_material_dark</item>
+        <item name="android:textColor" tools:ignore="PrivateResource">
+            @color/abc_primary_text_material_dark
+        </item>
         <item name="colorControlNormal">@color/white_hint_text_disabled</item>
         <item name="colorControlActivated">@color/color_accent</item>
         <item name="android:textColorHint">@color/white_hint_text_disabled</item>
     </style>
 
     <style name="EditText.Light">
-        <item name="android:textColor">@color/abc_primary_text_material_dark</item>
+        <item name="android:textColor" tools:ignore="PrivateResource">
+            @color/abc_primary_text_material_dark
+        </item>
         <item name="colorControlNormal">@color/white_hint_text_disabled</item>
         <item name="colorControlActivated">@color/color_accent</item>
         <item name="android:textColorHint">@color/white_hint_text_disabled</item>
