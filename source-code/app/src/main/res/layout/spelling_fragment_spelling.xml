@@ -40,7 +40,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
         android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp" >
+        android:layout_marginStart="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginEnd="5dp" >
 
         <Button
             android:id="@+id/btn_ready"
@@ -70,12 +72,15 @@
         android:layout_above="@id/ll"
         android:layout_marginBottom="20dp"
         android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp" >
+        android:layout_marginStart="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginEnd="5dp" >
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:layout_weight="1"
             android:gravity="start"
             android:text="@string/low"
@@ -95,6 +100,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
+            android:layout_marginEnd="5dp"
             android:layout_weight="1"
             android:gravity="end"
             android:text="@string/high"
@@ -118,7 +124,9 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/sb_speech"
         android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginRight="5dp"
+        android:layout_marginEnd="5dp"
         android:text="@string/speech_rate"
         android:textColor="@android:color/white"
         android:textSize="16sp" />
@@ -131,6 +139,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
         android:drawableRight="@drawable/ic_action_device_access_volume_on"
+        android:drawableEnd="@drawable/ic_action_device_access_volume_on"
         android:text="@string/speak"
         android:textColor="@android:color/white" />
 

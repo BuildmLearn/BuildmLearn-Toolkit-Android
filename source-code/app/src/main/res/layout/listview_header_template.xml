@@ -12,7 +12,9 @@
         android:orientation="vertical"
         android:paddingBottom="25dp"
         android:paddingLeft="72dp"
+        android:paddingStart="72dp"
         android:paddingRight="16dp"
+        android:paddingEnd="16dp"
         android:paddingTop="25dp">
 
         <view
