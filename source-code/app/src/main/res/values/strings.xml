@@ -97,6 +97,11 @@
     <string name="high">High</string>
     <string name="speech_rate">Speech Rate:</string>
 
+    <!-- Video Collection Template-->
+    <string name="video_collection_title">Video Collection</string>
+    <string name="video_collection_template">VideoCollectionTemplate</string>
+    <string name="video_collection_description">Choose this template to create applications for learning from videos</string>
+
     <!-- Template Resources-->
     <string name="basic_m_learning_title">Basic mLearning</string>
     <string name="basic_m_learning_description">Create app displaying clickable list of textual information</string>
