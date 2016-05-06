@@ -7,10 +7,14 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
+import com.squareup.picasso.Picasso;
+
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.views.TextViewPlus;
 
 import java.util.ArrayList;
+
+import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 
 /**
  * @brief Adapter for displaying VideoCollection Template Editor data.
@@ -63,6 +67,15 @@ public class VideoCollectionAdapter extends BaseAdapter {
 
         holder.description.setText(video.getDescription());
         holder.title.setText(video.getTitle());
+
+        Picasso
+                .with(mContext)
+                .load(video.getThumbnail_url())
+                .transform(new RoundedCornersTransformation(10, 10))
+                .fit()
+                .centerCrop()
+                .into(holder.thumb);
+        holder.thumb.setAdjustViewBounds(true);
 
         convertView.setTag(holder);
         return convertView;
