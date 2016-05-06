@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -31,6 +32,24 @@ public class VideoCollectionTemplate implements TemplateInterface {
 
     public VideoCollectionTemplate() {
         videoData = new ArrayList<>();
+    }
+
+    public static boolean validated(Context context, EditText link) {
+        if (link == null) {
+            return false;
+        }
+
+        String linkText = link.getText().toString();
+
+        if (link.equals("")) {
+            Toast.makeText(context, "Enter Link", Toast.LENGTH_SHORT).show();
+            return false;
+        } else if (!(linkText.contains("youtube.com") || linkText.contains("dailymotion.com") || linkText.contains("vimeo.com"))) {
+            Toast.makeText(context, "We only support Youtube, Dailymotion and Vimeo.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+
     }
 
     @Override
@@ -84,6 +103,10 @@ public class VideoCollectionTemplate implements TemplateInterface {
         dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if (validated(activity, link)) {
+                    dialog.dismiss();
+                }
 
             }
         });
