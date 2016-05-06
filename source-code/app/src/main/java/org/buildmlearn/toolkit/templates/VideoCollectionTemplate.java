@@ -20,6 +20,8 @@ import org.buildmlearn.toolkit.infotemplate.TFTFragment;
 import org.buildmlearn.toolkit.model.TemplateInterface;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.jsoup.Jsoup;
+import org.jsoup.select.Elements;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -204,7 +206,6 @@ public class VideoCollectionTemplate implements TemplateInterface {
     public void onActivityResult(Context context, int requestCode, int resultCode, Intent intent) {
 
     }
-
     private class VideoInfoTask extends AsyncTask<String, Integer, String> {
 
         protected String link;
@@ -217,7 +218,28 @@ public class VideoCollectionTemplate implements TemplateInterface {
             String jsonStr = null;
             link = params[1];
             if (link.contains("youtube")) {
+                try {
+                    org.jsoup.nodes.Document document = Jsoup.connect(link)
+                            .timeout(60000)
+                            .userAgent("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.94 Safari/537.36")
+                            .ignoreContentType(true)
+                            .get();
 
+                    Elements titleElem = document.select("meta[property=og:title]");
+                    String title = titleElem.attr("content");
+
+                    Elements descriptionElem = document.select("meta[property=og:description]");
+                    String description = descriptionElem.attr("content");
+
+                    Elements thumbnailElem = document.select("meta[property=og:image]");
+                    String thumbnail_url = thumbnailElem.attr("content");
+
+                    VideoModel temp = new VideoModel(title, description, link, thumbnail_url);
+                    videoData.add(temp);
+
+                } catch (IOException e) {
+                    Toast.makeText(mContext, "Error while fetching video info!", Toast.LENGTH_SHORT);
+                }
             } else {
                 try {
                     final String BASE_URL = params[0];
