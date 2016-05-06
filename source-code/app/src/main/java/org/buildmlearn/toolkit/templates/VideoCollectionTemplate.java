@@ -88,6 +88,31 @@ public class VideoCollectionTemplate implements TemplateInterface {
         return "VideoCollection Template";
     }
 
+    private String convertLink(String link) {
+
+        if (link.contains("youtube")) {
+            return link;
+
+        } else if (link.contains("dailymotion")) {
+            if (!link.contains("www.")) {
+                link = "https://www." + link;
+            } else if (!(link.contains("http:") || link.contains("https:"))) {
+                link = "http" + link;
+            }
+
+            return "http://www.dailymotion.com/services/oembed?url=" + link;
+
+        } else if (link.contains("vimeo")) {
+            if (!(link.contains("http:") || link.contains("https:"))) {
+                link = "http" + link;
+            }
+
+            return "https://vimeo.com/api/oembed.json?url=" + link;
+        }
+
+        return null;
+    }
+
     @Override
     public void addItem(final Activity activity) {
 
@@ -105,6 +130,13 @@ public class VideoCollectionTemplate implements TemplateInterface {
             public void onClick(View v) {
 
                 if (validated(activity, link)) {
+                    String linkText = link.getText().toString();
+                    String convertedLink = convertLink(linkText);
+
+                    progress = new ProgressDialog(activity);
+                    progress.setCancelable(false);
+                    progress.show();
+
                     dialog.dismiss();
                 }
 
