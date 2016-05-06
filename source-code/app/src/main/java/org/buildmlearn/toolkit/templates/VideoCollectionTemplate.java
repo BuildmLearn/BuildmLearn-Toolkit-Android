@@ -5,6 +5,8 @@ import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
@@ -16,9 +18,17 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.infotemplate.TFTFragment;
 import org.buildmlearn.toolkit.model.TemplateInterface;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 
 /**
@@ -136,6 +146,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
                     progress = new ProgressDialog(activity);
                     progress.setCancelable(false);
                     progress.show();
+                    new VideoInfoTask().execute(convertedLink, linkText);
 
                     dialog.dismiss();
                 }
@@ -192,5 +203,82 @@ public class VideoCollectionTemplate implements TemplateInterface {
     @Override
     public void onActivityResult(Context context, int requestCode, int resultCode, Intent intent) {
 
+    }
+
+    private class VideoInfoTask extends AsyncTask<String, Integer, String> {
+
+        protected String link;
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            HttpURLConnection urlConnection = null;
+            BufferedReader reader = null;
+            String jsonStr = null;
+            link = params[1];
+            if (link.contains("youtube")) {
+
+            } else {
+                try {
+                    final String BASE_URL = params[0];
+
+                    Uri builtUri = Uri.parse(BASE_URL).buildUpon().build();
+                    URL url = new URL(builtUri.toString());
+                    urlConnection = (HttpURLConnection) url.openConnection();
+                    urlConnection.setRequestMethod("GET");
+                    urlConnection.connect();
+                    InputStream inputStream = urlConnection.getInputStream();
+                    StringBuffer buffer = new StringBuffer();
+                    if (inputStream == null) {
+                        return null;
+                    }
+                    reader = new BufferedReader(new InputStreamReader(inputStream));
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        buffer.append(line + "\n");
+                    }
+                    if (buffer.length() == 0) {
+                        return null;
+                    }
+                    jsonStr = buffer.toString();
+                } catch (IOException e) {
+                    return null;
+                } finally {
+                    if (urlConnection != null) {
+                        urlConnection.disconnect();
+                    }
+                    if (reader != null) {
+                        try {
+                            reader.close();
+                        } catch (final IOException e) {
+                        }
+                    }
+                }
+
+                return jsonStr;
+            }
+            return "done";
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            if (!result.equals("done")) {
+
+                try {
+                    JSONObject json = new JSONObject(result);
+                    String title = json.getString("title");
+                    String description = json.getString("description");
+                    String thumbnail_url = json.getString("thumbnail_url");
+                    VideoModel temp = new VideoModel(title, description, link, thumbnail_url);
+                    videoData.add(temp);
+
+                } catch (JSONException e) {
+                    Toast.makeText(mContext, "Error while fetching video info!", Toast.LENGTH_SHORT);
+                }
+            }
+            adapter.notifyDataSetChanged();
+            progress.dismiss();
+        }
     }
 }
