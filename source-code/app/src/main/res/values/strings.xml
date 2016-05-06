@@ -101,6 +101,8 @@
     <string name="video_collection_title">Video Collection</string>
     <string name="video_collection_template">VideoCollectionTemplate</string>
     <string name="video_collection_description">Choose this template to create applications for learning from videos</string>
+    <string name="video_collection_template_link">Link</string>
+    <string name="video_collection_template_link_hint">Enter Link</string>
 
     <!-- Template Resources-->
     <string name="basic_m_learning_title">Basic mLearning</string>
