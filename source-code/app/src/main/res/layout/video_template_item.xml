@@ -18,7 +18,9 @@
             android:layout_width="250dp"
             android:layout_height="250dp"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:paddingBottom="8dp"
+            android:paddingTop="16dp" />
 
         <view
             android:id="@+id/titleLabel"
@@ -36,7 +38,7 @@
             android:id="@+id/title"
             style="@style/TextView.Body1"
             class="org.buildmlearn.toolkit.views.TextViewPlus"
-            android:layout_above="@+id/descriptionLabel"
+            android:layout_alignBaseline="@+id/titleLabel"
             android:layout_alignLeft="@+id/description"
             android:paddingBottom="8dp"
             android:paddingRight="16dp"
