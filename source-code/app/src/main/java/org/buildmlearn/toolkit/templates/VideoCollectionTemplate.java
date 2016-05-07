@@ -10,10 +10,12 @@ import android.os.AsyncTask;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.squareup.picasso.Picasso;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.infotemplate.TFTFragment;
@@ -32,6 +34,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+
+import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 
 /**
  * Created by Anupam (opticod) on 4/5/16.
@@ -53,7 +57,33 @@ public class VideoCollectionTemplate implements TemplateInterface {
 
         String linkText = link.getText().toString();
 
-        if (link.equals("")) {
+        if (linkText.equals("")) {
+            Toast.makeText(context, "Enter Link", Toast.LENGTH_SHORT).show();
+            return false;
+        } else if (!(linkText.contains("youtube.com") || linkText.contains("dailymotion.com") || linkText.contains("vimeo.com"))) {
+            Toast.makeText(context, "We only support Youtube, Dailymotion and Vimeo.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+
+    }
+
+    public static boolean validated(Context context, EditText title, EditText description, EditText link) {
+        if (link == null || title == null || description == null) {
+            return false;
+        }
+
+        String titleText = title.getText().toString();
+        String descriptionText = description.getText().toString();
+        String linkText = link.getText().toString();
+
+        if (titleText.equals("")) {
+            Toast.makeText(context, "Enter Title", Toast.LENGTH_SHORT).show();
+            return false;
+        } else if (descriptionText.equals("")) {
+            Toast.makeText(context, "Enter Description", Toast.LENGTH_SHORT).show();
+            return false;
+        } else if (linkText.equals("")) {
             Toast.makeText(context, "Enter Link", Toast.LENGTH_SHORT).show();
             return false;
         } else if (!(linkText.contains("youtube.com") || linkText.contains("dailymotion.com") || linkText.contains("vimeo.com"))) {
@@ -148,7 +178,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
                     progress = new ProgressDialog(activity);
                     progress.setCancelable(false);
                     progress.show();
-                    new VideoInfoTask().execute(convertedLink, linkText);
+                    new VideoInfoTask().execute(convertedLink, linkText, "-1");
 
                     dialog.dismiss();
                 }
@@ -161,7 +191,68 @@ public class VideoCollectionTemplate implements TemplateInterface {
     }
 
     @Override
-    public void editItem(final Activity activity, int position) {
+    public void editItem(final Activity activity, final int position) {
+
+        final MaterialDialog dialog = new MaterialDialog.Builder(activity)
+                .title(R.string.info_edit_title)
+                .customView(R.layout.video_dialog_edit_data, true)
+                .positiveText(R.string.info_template_ok)
+                .negativeText(R.string.info_template_cancel)
+                .build();
+
+        final VideoModel data = videoData.get(position);
+
+        final ImageView thumb = (ImageView) dialog.findViewById(R.id.thumb);
+        final EditText title = (EditText) dialog.findViewById(R.id.video_title);
+        final EditText description = (EditText) dialog.findViewById(R.id.video_description);
+        final EditText link = (EditText) dialog.findViewById(R.id.video_link);
+
+        Picasso
+                .with(mContext)
+                .load(data.getThumbnail_url())
+                .transform(new RoundedCornersTransformation(10, 10))
+                .fit()
+                .centerCrop()
+                .into(thumb);
+
+        thumb.setAdjustViewBounds(true);
+
+        title.setText(data.getTitle());
+        description.setText(data.getDescription());
+        link.setText(data.getLink());
+
+        dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (validated(activity, title, description, link)) {
+
+                    String titleText = title.getText().toString();
+                    String descriptionText = description.getText().toString();
+                    String linkText = link.getText().toString();
+
+                    if (linkText.equals(data.getLink())) {
+                        data.setTitle(titleText);
+                        data.setDescription(descriptionText);
+                        adapter.notifyDataSetChanged();
+
+                    } else {
+                        String convertedLink = convertLink(linkText);
+
+                        progress = new ProgressDialog(activity);
+                        progress.setCancelable(false);
+                        progress.show();
+                        new VideoInfoTask().execute(convertedLink, linkText, String.valueOf(position));
+                    }
+
+                    dialog.dismiss();
+                }
+
+            }
+        });
+
+        dialog.show();
+
     }
 
     @Override
@@ -209,6 +300,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
     private class VideoInfoTask extends AsyncTask<String, Integer, String> {
 
         protected String link;
+        protected String position;
 
         @Override
         protected String doInBackground(String... params) {
@@ -217,6 +309,8 @@ public class VideoCollectionTemplate implements TemplateInterface {
             BufferedReader reader = null;
             String jsonStr = null;
             link = params[1];
+            position = params[2];
+
             if (link.contains("youtube")) {
                 try {
                     org.jsoup.nodes.Document document = Jsoup.connect(link)
@@ -234,8 +328,16 @@ public class VideoCollectionTemplate implements TemplateInterface {
                     Elements thumbnailElem = document.select("meta[property=og:image]");
                     String thumbnail_url = thumbnailElem.attr("content");
 
-                    VideoModel temp = new VideoModel(title, description, link, thumbnail_url);
-                    videoData.add(temp);
+                    if (position.equals("-1")) {
+                        VideoModel temp = new VideoModel(title, description, link, thumbnail_url);
+                        videoData.add(temp);
+                    } else {
+                        VideoModel data = videoData.get(Integer.parseInt(position));
+                        data.setTitle(title);
+                        data.setDescription(description);
+                        data.setLink(link);
+                        data.setThumbnail_url(thumbnail_url);
+                    }
 
                 } catch (IOException e) {
                     Toast.makeText(mContext, "Error while fetching video info!", Toast.LENGTH_SHORT);
@@ -292,8 +394,17 @@ public class VideoCollectionTemplate implements TemplateInterface {
                     String title = json.getString("title");
                     String description = json.getString("description");
                     String thumbnail_url = json.getString("thumbnail_url");
-                    VideoModel temp = new VideoModel(title, description, link, thumbnail_url);
-                    videoData.add(temp);
+
+                    if (position.equals("-1")) {
+                        VideoModel temp = new VideoModel(title, description, link, thumbnail_url);
+                        videoData.add(temp);
+                    } else {
+                        VideoModel data = videoData.get(Integer.parseInt(position));
+                        data.setTitle(title);
+                        data.setDescription(description);
+                        data.setLink(link);
+                        data.setThumbnail_url(thumbnail_url);
+                    }
 
                 } catch (JSONException e) {
                     Toast.makeText(mContext, "Error while fetching video info!", Toast.LENGTH_SHORT);
