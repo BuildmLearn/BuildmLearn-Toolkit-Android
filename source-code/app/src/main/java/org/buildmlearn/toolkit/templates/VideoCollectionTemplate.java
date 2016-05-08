@@ -41,10 +41,33 @@ import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
  * Created by Anupam (opticod) on 4/5/16.
  */
 public class VideoCollectionTemplate implements TemplateInterface {
+
+    private static String YOUTUBE = "youtube";
+    private static String DAILYMOTION = "dailymotion";
+    private static String VIMEO = "vimeo";
+
     transient private VideoCollectionAdapter adapter;
     private ArrayList<VideoModel> videoData;
     private ProgressDialog progress;
     private Context mContext;
+
+    private String JSON_TITLE = "title";
+    private String JSON_DESCRIPTION = "description";
+    private String JSON_THUMBNAIL_URL = "thumbnail_url";
+
+    private String META_PROPERTY_TITLE = "meta[property=og:title]";
+    private String META_PROPERTY_DESCRIPTION = "meta[property=og:description]";
+    private String META_PROPERTY_THUMBNAIL_URL = "meta[property=og:image]";
+    private String META_CONTENT = "content";
+
+    private String USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.94 Safari/537.36";
+    private int TIMEOUT_LIMIT = 60000;
+
+    private String DAILYMOTION_OEMBED_LINK = "http://www.dailymotion.com/services/oembed?url=";
+    private String VIMEO_OEMBED_LINK = "https://vimeo.com/api/oembed.json?url=";
+
+    private String TEMPLATE_NAME = "VideoCollection Template";
+
 
     public VideoCollectionTemplate() {
         videoData = new ArrayList<>();
@@ -58,10 +81,10 @@ public class VideoCollectionTemplate implements TemplateInterface {
         String linkText = link.getText().toString();
 
         if (linkText.equals("")) {
-            Toast.makeText(context, "Enter Link", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.video_collection_template_link_hint, Toast.LENGTH_SHORT).show();
             return false;
-        } else if (!(linkText.contains("youtube.com") || linkText.contains("dailymotion.com") || linkText.contains("vimeo.com"))) {
-            Toast.makeText(context, "We only support Youtube, Dailymotion and Vimeo.", Toast.LENGTH_SHORT).show();
+        } else if (!(linkText.contains(YOUTUBE + ".com") || linkText.contains(DAILYMOTION + ".com") || linkText.contains(VIMEO + ".com"))) {
+            Toast.makeText(context, R.string.video_support_error, Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
@@ -78,16 +101,16 @@ public class VideoCollectionTemplate implements TemplateInterface {
         String linkText = link.getText().toString();
 
         if (titleText.equals("")) {
-            Toast.makeText(context, "Enter Title", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.video_collection_template_title_hint, Toast.LENGTH_SHORT).show();
             return false;
         } else if (descriptionText.equals("")) {
-            Toast.makeText(context, "Enter Description", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.video_collection_template_description_hint, Toast.LENGTH_SHORT).show();
             return false;
         } else if (linkText.equals("")) {
-            Toast.makeText(context, "Enter Link", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.video_collection_template_link_hint, Toast.LENGTH_SHORT).show();
             return false;
-        } else if (!(linkText.contains("youtube.com") || linkText.contains("dailymotion.com") || linkText.contains("vimeo.com"))) {
-            Toast.makeText(context, "We only support Youtube, Dailymotion and Vimeo.", Toast.LENGTH_SHORT).show();
+        } else if (!(linkText.contains(YOUTUBE + ".com") || linkText.contains(DAILYMOTION + ".com") || linkText.contains(VIMEO + ".com"))) {
+            Toast.makeText(context, R.string.video_support_error, Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
@@ -110,10 +133,10 @@ public class VideoCollectionTemplate implements TemplateInterface {
     public BaseAdapter loadProjectTemplateEditor(Context context, ArrayList<Element> data) {
         videoData = new ArrayList<>();
         for (Element item : data) {
-            String videoTitle = item.getElementsByTagName("video_title").item(0).getTextContent();
-            String videoDescription = item.getElementsByTagName("video_description").item(0).getTextContent();
-            String videoLink = item.getElementsByTagName("video_link").item(0).getTextContent();
-            String videoThumbLink = item.getElementsByTagName("video_thumb_link").item(0).getTextContent();
+            String videoTitle = item.getElementsByTagName(VideoModel.TITLE_TAG).item(0).getTextContent();
+            String videoDescription = item.getElementsByTagName(VideoModel.DESCRIPTION_TAG).item(0).getTextContent();
+            String videoLink = item.getElementsByTagName(VideoModel.LINK_TAG).item(0).getTextContent();
+            String videoThumbLink = item.getElementsByTagName(VideoModel.THUMB_LINK_TAG).item(0).getTextContent();
             videoData.add(new VideoModel(videoTitle, videoDescription, videoLink, videoThumbLink));
         }
         adapter = new VideoCollectionAdapter(context, videoData);
@@ -122,34 +145,34 @@ public class VideoCollectionTemplate implements TemplateInterface {
 
     @Override
     public String onAttach() {
-        return "VideoCollection Template";
+        return TEMPLATE_NAME;
     }
 
     @Override
     public String getTitle() {
-        return "VideoCollection Template";
+        return TEMPLATE_NAME;
     }
 
     private String convertLink(String link) {
 
-        if (link.contains("youtube")) {
+        if (link.contains(YOUTUBE)) {
             return link;
 
-        } else if (link.contains("dailymotion")) {
+        } else if (link.contains(DAILYMOTION)) {
             if (!link.contains("www.")) {
                 link = "https://www." + link;
             } else if (!(link.contains("http:") || link.contains("https:"))) {
                 link = "http" + link;
             }
 
-            return "http://www.dailymotion.com/services/oembed?url=" + link;
+            return DAILYMOTION_OEMBED_LINK + link;
 
-        } else if (link.contains("vimeo")) {
+        } else if (link.contains(VIMEO)) {
             if (!(link.contains("http:") || link.contains("https:"))) {
                 link = "http" + link;
             }
 
-            return "https://vimeo.com/api/oembed.json?url=" + link;
+            return VIMEO_OEMBED_LINK + link;
         }
 
         return null;
@@ -297,6 +320,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
     public void onActivityResult(Context context, int requestCode, int resultCode, Intent intent) {
 
     }
+
     private class VideoInfoTask extends AsyncTask<String, Integer, String> {
 
         protected String link;
@@ -311,22 +335,22 @@ public class VideoCollectionTemplate implements TemplateInterface {
             link = params[1];
             position = params[2];
 
-            if (link.contains("youtube")) {
+            if (link.contains(YOUTUBE)) {
                 try {
                     org.jsoup.nodes.Document document = Jsoup.connect(link)
-                            .timeout(60000)
-                            .userAgent("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.94 Safari/537.36")
+                            .timeout(TIMEOUT_LIMIT)
+                            .userAgent(USER_AGENT)
                             .ignoreContentType(true)
                             .get();
 
-                    Elements titleElem = document.select("meta[property=og:title]");
-                    String title = titleElem.attr("content");
+                    Elements titleElem = document.select(META_PROPERTY_TITLE);
+                    String title = titleElem.attr(META_CONTENT);
 
-                    Elements descriptionElem = document.select("meta[property=og:description]");
-                    String description = descriptionElem.attr("content");
+                    Elements descriptionElem = document.select(META_PROPERTY_DESCRIPTION);
+                    String description = descriptionElem.attr(META_CONTENT);
 
-                    Elements thumbnailElem = document.select("meta[property=og:image]");
-                    String thumbnail_url = thumbnailElem.attr("content");
+                    Elements thumbnailElem = document.select(META_PROPERTY_THUMBNAIL_URL);
+                    String thumbnail_url = thumbnailElem.attr(META_CONTENT);
 
                     if (position.equals("-1")) {
                         VideoModel temp = new VideoModel(title, description, link, thumbnail_url);
@@ -340,7 +364,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
                     }
 
                 } catch (IOException e) {
-                    Toast.makeText(mContext, "Error while fetching video info!", Toast.LENGTH_SHORT);
+                    Toast.makeText(mContext, R.string.video_fetching_error, Toast.LENGTH_SHORT).show();
                 }
             } else {
                 try {
@@ -391,9 +415,9 @@ public class VideoCollectionTemplate implements TemplateInterface {
 
                 try {
                     JSONObject json = new JSONObject(result);
-                    String title = json.getString("title");
-                    String description = json.getString("description");
-                    String thumbnail_url = json.getString("thumbnail_url");
+                    String title = json.getString(JSON_TITLE);
+                    String description = json.getString(JSON_DESCRIPTION);
+                    String thumbnail_url = json.getString(JSON_THUMBNAIL_URL);
 
                     if (position.equals("-1")) {
                         VideoModel temp = new VideoModel(title, description, link, thumbnail_url);
@@ -407,7 +431,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
                     }
 
                 } catch (JSONException e) {
-                    Toast.makeText(mContext, "Error while fetching video info!", Toast.LENGTH_SHORT);
+                    Toast.makeText(mContext, R.string.video_fetching_error, Toast.LENGTH_SHORT).show();
                 }
             }
             adapter.notifyDataSetChanged();

@@ -7,10 +7,17 @@ import java.io.Serializable;
 
 /**
  * @brief Model class for VideoCollection Template Editor data
- * <p/>
+ * <p>
  * Created by Anupam (opticod) on 4/5/16.
  */
 public class VideoModel implements Serializable {
+
+    public static String ROOT_TAG = "video";
+    public static String TITLE_TAG = "video_title";
+    public static String DESCRIPTION_TAG = "video_description";
+    public static String LINK_TAG = "video_link";
+    public static String THUMB_LINK_TAG = "video_thumb_link";
+
     private String title;
     private String description;
     private String link;
@@ -56,17 +63,17 @@ public class VideoModel implements Serializable {
     }
 
     public Element getXml(Document doc) {
-        Element rootElement = doc.createElement("video");
-        Element titleElement = doc.createElement("video_title");
+        Element rootElement = doc.createElement(ROOT_TAG);
+        Element titleElement = doc.createElement(TITLE_TAG);
         titleElement.appendChild(doc.createTextNode(title));
         rootElement.appendChild(titleElement);
-        Element descriptionElement = doc.createElement("video_description");
+        Element descriptionElement = doc.createElement(DESCRIPTION_TAG);
         descriptionElement.appendChild(doc.createTextNode(String.valueOf(description)));
         rootElement.appendChild(descriptionElement);
-        Element linkElement = doc.createElement("video_link");
+        Element linkElement = doc.createElement(LINK_TAG);
         linkElement.appendChild(doc.createTextNode(String.valueOf(link)));
         rootElement.appendChild(linkElement);
-        Element videoLinkElement = doc.createElement("video_thumb_link");
+        Element videoLinkElement = doc.createElement(THUMB_LINK_TAG);
         videoLinkElement.appendChild(doc.createTextNode(String.valueOf(thumbnail_url)));
         rootElement.appendChild(videoLinkElement);
         return rootElement;

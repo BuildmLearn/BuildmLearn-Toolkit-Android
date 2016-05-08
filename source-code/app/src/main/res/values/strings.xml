@@ -104,6 +104,7 @@
     <string name="video_collection_template_link">Link</string>
     <string name="video_collection_template_title">Title</string>
     <string name="video_collection_template_description">Description</string>
+    <string name="video_collection_template_title_hint">Enter Title</string>
     <string name="video_collection_template_link_hint">Enter Link</string>
     <string name="video_collection_template_description_hint">Enter Description</string>
     <string name="video_collection_or">OR</string>
@@ -429,4 +430,6 @@
     <string name="title_activity_upload">Upload Application</string>
     <string name="apk_progress_dialog">Generating Apk</string>
     <string name="apk_msg">Inserting data into Apk</string>
+    <string name="video_fetching_error">Error while fetching video info!</string>
+    <string name="video_support_error">We only support Youtube, Dailymotion and Vimeo.</string>
 </resources>

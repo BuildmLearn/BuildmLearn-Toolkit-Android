@@ -58,5 +58,8 @@
 
     <dimen name="material_navigation_drawer_right_margin">56dp</dimen>
     <dimen name="navigation_drawer_header_height">160dp</dimen>
+    <dimen name="thumb_size">250dp</dimen>
+    <dimen name="thumb_padding">8dp</dimen>
+    <dimen name="thumb_paddingTop">16dp</dimen>
 
 </resources>

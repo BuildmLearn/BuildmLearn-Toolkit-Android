@@ -15,12 +15,12 @@
 
         <ImageView
             android:id="@+id/thumb"
-            android:layout_width="250dp"
-            android:layout_height="250dp"
+            android:layout_width="@dimen/thumb_size"
+            android:layout_height="@dimen/thumb_size"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:paddingBottom="8dp"
-            android:paddingTop="16dp" />
+            android:paddingBottom="@dimen/thumb_padding"
+            android:paddingTop="@dimen/thumb_paddingTop" />
 
         <view
             android:id="@+id/titleLabel"
@@ -29,9 +29,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/thumb"
-            android:layout_marginLeft="16dp"
-            android:paddingBottom="8dp"
-            android:paddingTop="16dp"
+            android:layout_marginLeft="@dimen/thumb_paddingTop"
+            android:paddingBottom="@dimen/thumb_padding"
+            android:paddingTop="@dimen/thumb_paddingTop"
             android:text="Title : " />
 
         <view
@@ -40,8 +40,8 @@
             class="org.buildmlearn.toolkit.views.TextViewPlus"
             android:layout_alignBaseline="@+id/titleLabel"
             android:layout_alignLeft="@+id/description"
-            android:paddingBottom="8dp"
-            android:paddingRight="16dp"
+            android:paddingBottom="@dimen/thumb_padding"
+            android:paddingRight="@dimen/thumb_paddingTop"
             android:text="Creative Arts" />
 
         <view
@@ -51,9 +51,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/titleLabel"
-            android:layout_marginLeft="16dp"
-            android:paddingBottom="8dp"
-            android:paddingTop="16dp"
+            android:layout_marginLeft="@dimen/thumb_paddingTop"
+            android:paddingBottom="@dimen/thumb_padding"
+            android:paddingTop="@dimen/thumb_paddingTop"
             android:text="Description : " />
 
         <view
@@ -61,10 +61,10 @@
             style="@style/TextView.Body1"
             class="org.buildmlearn.toolkit.views.TextViewPlus"
             android:layout_alignBaseline="@+id/descriptionLabel"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="@dimen/thumb_paddingTop"
             android:layout_toRightOf="@+id/descriptionLabel"
-            android:paddingBottom="8dp"
-            android:paddingRight="16dp"
+            android:paddingBottom="@dimen/thumb_padding"
+            android:paddingRight="@dimen/thumb_paddingTop"
             android:text="This is a long long videoDescription of some cool videoObject. Made only for BuildmLearn as a pat of GSoC Project." />
     </RelativeLayout>
 

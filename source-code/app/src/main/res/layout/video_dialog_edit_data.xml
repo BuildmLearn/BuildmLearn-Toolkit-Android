@@ -6,10 +6,10 @@
 
     <ImageView
         android:id="@+id/thumb"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="@dimen/thumb_size"
+        android:layout_height="@dimen/thumb_size"
         android:layout_gravity="center_horizontal"
-        android:paddingBottom="8dp" />
+        android:paddingBottom="@dimen/thumb_padding" />
 
     <TextView
         style="@style/TextView.Caption.Light"
