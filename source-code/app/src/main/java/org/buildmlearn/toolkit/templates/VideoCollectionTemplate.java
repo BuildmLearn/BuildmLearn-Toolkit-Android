@@ -20,6 +20,7 @@ import com.squareup.picasso.Picasso;
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.infotemplate.TFTFragment;
 import org.buildmlearn.toolkit.model.TemplateInterface;
+import org.buildmlearn.toolkit.utilities.NetworkUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
@@ -198,10 +199,14 @@ public class VideoCollectionTemplate implements TemplateInterface {
                     String linkText = link.getText().toString();
                     String convertedLink = convertLink(linkText);
 
-                    progress = new ProgressDialog(activity);
-                    progress.setCancelable(false);
-                    progress.show();
-                    new VideoInfoTask().execute(convertedLink, linkText, "-1");
+                    if (NetworkUtils.isNetworkAvailable(mContext)) {
+                        progress = new ProgressDialog(activity);
+                        progress.setCancelable(false);
+                        progress.show();
+                        new VideoInfoTask().execute(convertedLink, linkText, "-1");
+                    } else {
+                        Toast.makeText(mContext, R.string.network_error, Toast.LENGTH_SHORT).show();
+                    }
 
                     dialog.dismiss();
                 }
@@ -262,10 +267,14 @@ public class VideoCollectionTemplate implements TemplateInterface {
                     } else {
                         String convertedLink = convertLink(linkText);
 
-                        progress = new ProgressDialog(activity);
-                        progress.setCancelable(false);
-                        progress.show();
-                        new VideoInfoTask().execute(convertedLink, linkText, String.valueOf(position));
+                        if (NetworkUtils.isNetworkAvailable(mContext)) {
+                            progress = new ProgressDialog(activity);
+                            progress.setCancelable(false);
+                            progress.show();
+                            new VideoInfoTask().execute(convertedLink, linkText, String.valueOf(position));
+                        } else {
+                            Toast.makeText(mContext, R.string.network_error, Toast.LENGTH_SHORT).show();
+                        }
                     }
 
                     dialog.dismiss();
@@ -325,6 +334,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
 
         protected String link;
         protected String position;
+        protected boolean success;
 
         @Override
         protected String doInBackground(String... params) {
@@ -334,6 +344,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
             String jsonStr = null;
             link = params[1];
             position = params[2];
+            success = true;
 
             if (link.contains(YOUTUBE)) {
                 try {
@@ -364,7 +375,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
                     }
 
                 } catch (IOException e) {
-                    Toast.makeText(mContext, R.string.video_fetching_error, Toast.LENGTH_SHORT).show();
+                    success = false;
                 }
             } else {
                 try {
@@ -378,6 +389,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
                     InputStream inputStream = urlConnection.getInputStream();
                     StringBuffer buffer = new StringBuffer();
                     if (inputStream == null) {
+                        success = false;
                         return null;
                     }
                     reader = new BufferedReader(new InputStreamReader(inputStream));
@@ -390,6 +402,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
                     }
                     jsonStr = buffer.toString();
                 } catch (IOException e) {
+                    success = false;
                     return null;
                 } finally {
                     if (urlConnection != null) {
@@ -431,8 +444,11 @@ public class VideoCollectionTemplate implements TemplateInterface {
                     }
 
                 } catch (JSONException e) {
-                    Toast.makeText(mContext, R.string.video_fetching_error, Toast.LENGTH_SHORT).show();
+                    success = false;
                 }
+            }
+            if (success == false) {
+                Toast.makeText(mContext, R.string.video_fetching_error, Toast.LENGTH_SHORT).show();
             }
             adapter.notifyDataSetChanged();
             progress.dismiss();

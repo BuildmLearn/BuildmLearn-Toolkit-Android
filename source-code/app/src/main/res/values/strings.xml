@@ -432,4 +432,5 @@
     <string name="apk_msg">Inserting data into Apk</string>
     <string name="video_fetching_error">Error while fetching video info!</string>
     <string name="video_support_error">We only support Youtube, Dailymotion and Vimeo.</string>
+    <string name="network_error">Network Unavailable! Please try later.</string>
 </resources>
