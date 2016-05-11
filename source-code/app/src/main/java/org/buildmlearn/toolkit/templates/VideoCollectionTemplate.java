@@ -49,8 +49,8 @@ public class VideoCollectionTemplate implements TemplateInterface {
 
     transient private VideoCollectionAdapter adapter;
     private ArrayList<VideoModel> videoData;
-    private ProgressDialog progress;
-    private Context mContext;
+    transient private ProgressDialog progress;
+    transient private Context mContext;
 
     private String JSON_TITLE = "title";
     private String JSON_DESCRIPTION = "description";
@@ -132,6 +132,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
 
     @Override
     public BaseAdapter loadProjectTemplateEditor(Context context, ArrayList<Element> data) {
+        mContext = context;
         videoData = new ArrayList<>();
         for (Element item : data) {
             String videoTitle = item.getElementsByTagName(VideoModel.TITLE_TAG).item(0).getTextContent();
@@ -374,7 +375,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
                         data.setThumbnail_url(thumbnail_url);
                     }
 
-                } catch (IOException e) {
+                } catch (Exception e) {
                     success = false;
                 }
             } else {

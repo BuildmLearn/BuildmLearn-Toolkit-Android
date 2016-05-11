@@ -12,7 +12,7 @@ import java.io.Serializable;
  */
 public class VideoModel implements Serializable {
 
-    public static String ROOT_TAG = "video";
+    public static String ROOT_TAG = "item";
     public static String TITLE_TAG = "video_title";
     public static String DESCRIPTION_TAG = "video_description";
     public static String LINK_TAG = "video_link";
