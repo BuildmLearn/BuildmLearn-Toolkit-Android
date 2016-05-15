@@ -32,7 +32,6 @@
         android:gravity="center"
         android:orientation="vertical">
 
-
         <view
             android:id="@+id/title"
             style="@style/TextView.Empty"

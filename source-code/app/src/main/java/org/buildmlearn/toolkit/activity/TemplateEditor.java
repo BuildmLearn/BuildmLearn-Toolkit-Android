@@ -80,7 +80,8 @@ public class TemplateEditor extends AppCompatActivity {
      * {@inheritDoc}
      */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         oldFileName = null;
         setContentView(R.layout.activity_template_editor);
@@ -296,7 +297,8 @@ public class TemplateEditor extends AppCompatActivity {
                 new BottomSheet.Builder(this).sheet(R.menu.bottom_sheet_template).listener(new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        switch (id) {
+                        switch (id)
+                        {
                             case R.id.save_project:
                                 saveProject();
                                 break;

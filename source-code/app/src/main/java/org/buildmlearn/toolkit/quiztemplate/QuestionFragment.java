@@ -58,14 +58,16 @@ public class QuestionFragment extends Fragment {
     private GlobalData gd;
     private TextView iQuestion_no_Label;
     private TextView iQuestionLabel;
+    private TextView scoreCorrect, scoreWrong, scoreUnanswered;
     private RadioButton iRad1, iRad2, iRad3, iRad0;
-    private Button iSubmitButton, iNextButton;
+    private Button iSubmitButton, iSkipButton, iNextQuestionButton,iNextButton;
     private List<RadioButton> iRadButtonList = new ArrayList<RadioButton>();
     private int iQuestionIndex = 0;
     private int iCurrentCorrectAnswer;
     private RadioGroup iRadioGroup;
     private FragmentActivity faActivity;
     private View view;
+    private int unanswered;
 
     @Nullable
     @Override
@@ -91,58 +93,56 @@ public class QuestionFragment extends Fragment {
         iRadButtonList.add(iRad2);
         iRadButtonList.add(iRad3);
 
+        unanswered = 0;
+
+        scoreCorrect = (TextView) view.findViewById(R.id.tv_realtimeScore_correct);
+        scoreWrong = (TextView) view.findViewById(R.id.tv_realtimeScore_wrong);
+        scoreUnanswered = (TextView) view.findViewById(R.id.tv_realtimeScore_unanswered);
+
         iSubmitButton = (Button) view.findViewById(R.id.submit_button);
         iSubmitButton.setOnClickListener(new OnClickListener() {
-
             @Override
             public void onClick(View arg0) {
                 int selectedAnswer = getSelectedAnswer();
                 if (selectedAnswer == -1) {
-                    Toast.makeText(getActivity(),
-                            "Please select an answer!", Toast.LENGTH_LONG).show();
-                } else if (selectedAnswer != -1
-                        && selectedAnswer == iCurrentCorrectAnswer) {
-                    iRadButtonList.get(iCurrentCorrectAnswer)
-                            .setBackgroundColor(Color.GREEN);
-                    Toast.makeText(getActivity(),
-                            "That's the correct answer!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Please select an answer!", Toast.LENGTH_SHORT).show();
+                } else if (selectedAnswer != -1 && selectedAnswer == iCurrentCorrectAnswer) {
+                    iRadButtonList.get(iCurrentCorrectAnswer).setBackgroundColor(Color.GREEN);
+                    Toast.makeText(getActivity(), "That's the correct answer!", Toast.LENGTH_SHORT).show();
                     gd.correct++;
                     iSubmitButton.setEnabled(false);
-
+                    iNextQuestionButton.setVisibility(View.VISIBLE);
+                    updateRealTimeScore();
                 } else {
-                    iRadButtonList.get(selectedAnswer).setBackgroundColor(
-                            Color.RED);
-                    iRadButtonList.get(iCurrentCorrectAnswer)
-                            .setBackgroundColor(Color.GREEN);
-                    Toast.makeText(getActivity(),
-                            "Sorry, wrong answer!", Toast.LENGTH_LONG).show();
+                    iRadButtonList.get(selectedAnswer).setBackgroundColor(Color.RED);
+                    iRadButtonList.get(iCurrentCorrectAnswer).setBackgroundColor(Color.GREEN);
+                    Toast.makeText(getActivity(), "Sorry, wrong answer!", Toast.LENGTH_SHORT).show();
 
                     iSubmitButton.setEnabled(false);
                     gd.wrong++;
+                    iNextQuestionButton.setVisibility(View.VISIBLE);
+                    updateRealTimeScore();
                     // iSubmitButton.setVisibility(View.GONE);
                     // iNextButton.setVisibility(View.VISIBLE);
-
                 }
             }
         });
 
-        iNextButton = (Button) view.findViewById(R.id.next_button);
-        iNextButton.setOnClickListener(new OnClickListener() {
-
+        // Skip question: i.e. unanswered question.
+        iSkipButton = (Button) view.findViewById(R.id.next_button);
+        iSkipButton.setOnClickListener(new OnClickListener() {
             @Override
-            public void onClick(View arg0) {
-
+            public void onClick(View v)
+            {
+                unanswered++;
                 // set all radios to white
                 for (int i = 0; i < iRadButtonList.size(); i++) {
                     iRadButtonList.get(i).setBackgroundColor(Color.TRANSPARENT);
                 }
-
                 // Increase the index to next ques
                 iQuestionIndex = iQuestionIndex + 1;
-
                 if (iQuestionIndex < gd.model.size()) {
                     populateQuestion(iQuestionIndex);
-
                     iSubmitButton.setEnabled(true);
                     // iNextButton.setVisibility(View.GONE);
                 } else {
@@ -150,8 +150,38 @@ public class QuestionFragment extends Fragment {
                     reInitialize();
                     getActivity().getFragmentManager().beginTransaction().replace(R.id.container, new ScoreFragment(), ScoreFragment.TAG).addToBackStack(null).commit();
                 }
+                updateRealTimeScore();
             }
         });
+
+        // After answerin a question, move to next question.
+        iNextQuestionButton = (Button) view.findViewById(R.id.next_question_button);
+        iNextQuestionButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // set all radios to white
+                for (int i = 0; i < iRadButtonList.size(); i++) {
+                    iRadButtonList.get(i).setBackgroundColor(Color.TRANSPARENT);
+                }
+                iNextQuestionButton.setVisibility(View.INVISIBLE);
+                // Increase the index to next ques
+                iQuestionIndex = iQuestionIndex + 1;
+
+                if (iQuestionIndex < gd.model.size()) {
+                    populateQuestion(iQuestionIndex);
+                    iSubmitButton.setEnabled(true);
+                    // iNextButton.setVisibility(View.GONE);
+                }
+                else
+                {
+                    // if the quiz is over
+                    reInitialize();
+                    getActivity().getFragmentManager().beginTransaction().replace(R.id.container, new ScoreFragment(), ScoreFragment.TAG).addToBackStack(null).commit();
+                }
+            }
+        });
+
+
         // iNextButton.setVisibility(View.GONE);
 
         populateQuestion(iQuestionIndex);
@@ -162,6 +192,12 @@ public class QuestionFragment extends Fragment {
 
     public void radioClick(View v) {
 
+    }
+
+    private void updateRealTimeScore(){
+        scoreCorrect.setText("Total Correct: " + gd.correct);
+        scoreWrong.setText("Total Wrong: " + gd.wrong);
+        scoreUnanswered.setText("Unanswered: " + unanswered);
     }
 
     public void populateQuestion(int index) {
@@ -181,7 +217,6 @@ public class QuestionFragment extends Fragment {
         }
         iCurrentCorrectAnswer = Integer
                 .parseInt(gd.model.get(index).getAnswer());
-
     }
 
     public int getSelectedAnswer() {
