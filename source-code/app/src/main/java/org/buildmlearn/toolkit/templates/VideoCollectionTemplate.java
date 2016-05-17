@@ -323,7 +323,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
 
     @Override
     public String getApkFilePath() {
-        return "BasicmLearningApp.apk";     //TODO: VideoCollectionApp.apk
+        return "VideoCollectionApp.apk";
     }
 
     @Override

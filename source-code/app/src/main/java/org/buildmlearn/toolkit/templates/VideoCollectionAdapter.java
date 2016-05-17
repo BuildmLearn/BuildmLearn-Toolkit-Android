@@ -68,14 +68,16 @@ public class VideoCollectionAdapter extends BaseAdapter {
         holder.description.setText(video.getDescription());
         holder.title.setText(video.getTitle());
 
-        Picasso
-                .with(mContext)
-                .load(video.getThumbnail_url())
-                .transform(new RoundedCornersTransformation(10, 10))
-                .fit()
-                .centerCrop()
-                .into(holder.thumb);
-        holder.thumb.setAdjustViewBounds(true);
+        if (video.getThumbnail_url().length() > 0) {
+            Picasso
+                    .with(mContext)
+                    .load(video.getThumbnail_url())
+                    .transform(new RoundedCornersTransformation(10, 10))
+                    .fit()
+                    .centerCrop()
+                    .into(holder.thumb);
+            holder.thumb.setAdjustViewBounds(true);
+        }
 
         convertView.setTag(holder);
         return convertView;
