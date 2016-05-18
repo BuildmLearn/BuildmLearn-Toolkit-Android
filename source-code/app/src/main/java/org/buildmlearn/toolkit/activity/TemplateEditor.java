@@ -63,7 +63,7 @@ import javax.xml.parsers.ParserConfigurationException;
 public class TemplateEditor extends AppCompatActivity {
 
     private final static String TAG = "TEMPLATE EDITOR";
-
+    private Boolean autosave;
     private ListView templateEdtiorList;
     private int templateId;
     private Template template;
@@ -74,7 +74,8 @@ public class TemplateEditor extends AppCompatActivity {
     private ToolkitApplication toolkit;
     private String oldFileName;
     private MaterialDialog mApkGenerationDialog;
-
+    SharedPreferences preferences;
+    Boolean changed = false;
 
     /**
      * {@inheritDoc}
@@ -87,6 +88,7 @@ public class TemplateEditor extends AppCompatActivity {
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         toolkit = (ToolkitApplication) getApplicationContext();
         templateId = getIntent().getIntExtra(Constants.TEMPLATE_ID, -1);
+        preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         if (templateId == -1) {
             Toast.makeText(this, "Invalid template ID, closing Template Editor activity", Toast.LENGTH_LONG).show();
             finish();
@@ -109,10 +111,11 @@ public class TemplateEditor extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 selectedTemplate.addItem(TemplateEditor.this);
+                changed = true;
                 hideEmptyView();
             }
         });
-
+        autosave = preferences.getBoolean(getString(R.string.key_auto_save).toString(), true);
     }
 
     /**
@@ -152,7 +155,7 @@ public class TemplateEditor extends AppCompatActivity {
         templateEdtiorList.addHeaderView(templateHeader, null, false);
 
         EditText authorEditText = (EditText) findViewById(R.id.author_name);
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+
         authorEditText.setText(preferences.getString(getString(R.string.key_user_name), ""));
         setAdapter(adapter);
 
@@ -214,6 +217,19 @@ public class TemplateEditor extends AppCompatActivity {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
             e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        if (autosave && changed) {
+            if (selectedTemplate.currentTemplateEditorAdapter().getCount() > 0) {
+                if (saveProject() != null) {
+                    Toast.makeText(TemplateEditor.this, "Auto Saved Project!", Toast.LENGTH_SHORT).show();
+                }
+            }
         }
     }
 
@@ -281,6 +297,7 @@ public class TemplateEditor extends AppCompatActivity {
                     public void onClick(View v) {
                         dialog.dismiss();
                         selectedTemplate.deleteItem(selectedPosition);
+                        changed = true;
                         restoreSelectedView();
                     }
                 });
