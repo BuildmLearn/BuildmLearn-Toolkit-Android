@@ -156,14 +156,18 @@ public class TemplateEditor extends AppCompatActivity {
         authorEditText.setText(preferences.getString(getString(R.string.key_user_name), ""));
         setAdapter(adapter);
 
+        templateEdtiorList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(TemplateEditor.this,"Press Long for more options",Toast.LENGTH_SHORT).show();
+            }
+        });
         templateEdtiorList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-
                 if (position == 0) {
                     return false;
                 }
-
                 if (selectedPosition == position - 1) {
                     selectedPosition = -1;
                     view.setBackgroundResource(0);
@@ -181,7 +185,6 @@ public class TemplateEditor extends AppCompatActivity {
                 return true;
             }
         });
-
     }
 
     /**
@@ -299,6 +302,8 @@ public class TemplateEditor extends AppCompatActivity {
                         switch (id) {
                             case R.id.save_project:
                                 saveProject();
+                                Toast.makeText(TemplateEditor.this,"Project Saved.",Toast.LENGTH_SHORT).show();
+                                onBackPressed();
                                 break;
                             case R.id.share_apk:
 
@@ -430,7 +435,6 @@ public class TemplateEditor extends AppCompatActivity {
         if (selectedView != null) {
             selectedView.setBackgroundResource(0);
         }
-
         restoreColorScheme();
     }
 
@@ -441,7 +445,7 @@ public class TemplateEditor extends AppCompatActivity {
      */
     public void changeColorScheme() {
         int primaryColor = getResources().getColor(R.color.color_primary_dark);
-        int primaryColorDark = getResources().getColor(R.color.color_selected_dark);
+        int primaryColorDark = getResources().getColor(R.color.color_primary);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(primaryColor));
         ThemeSingleton.get().positiveColor = ColorStateList.valueOf(primaryColor);
         ThemeSingleton.get().neutralColor = ColorStateList.valueOf(primaryColor);
@@ -449,9 +453,8 @@ public class TemplateEditor extends AppCompatActivity {
         ThemeSingleton.get().widgetColor = primaryColor;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(primaryColorDark);
-            getWindow().setNavigationBarColor(primaryColor);
+//            getWindow().setNavigationBarColor(primaryColor);
         }
-
         showTemplateSelectedMenu = true;
         invalidateOptionsMenu();
     }
@@ -471,7 +474,7 @@ public class TemplateEditor extends AppCompatActivity {
         ThemeSingleton.get().widgetColor = primaryColor;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(primaryColorDark);
-            getWindow().setNavigationBarColor(primaryColor);
+//            getWindow().setNavigationBarColor(primaryColor);
         }
         showTemplateSelectedMenu = false;
         invalidateOptionsMenu();
@@ -536,11 +539,9 @@ public class TemplateEditor extends AppCompatActivity {
                 String saveFileName = title + " by " + author + ".buildmlearn";
                 saveFileName = saveFileName.replaceAll(" ", "-");
 
-
                 FileUtils.saveXmlFile(toolkit.getSavedDir(), saveFileName, doc);
-
-
-                return toolkit.getSavedDir() + saveFileName;
+                oldFileName = toolkit.getSavedDir() + saveFileName;
+                return oldFileName;
             } catch (ParserConfigurationException e) {
                 e.printStackTrace();
             }
@@ -612,8 +613,6 @@ public class TemplateEditor extends AppCompatActivity {
         } catch (InstantiationException e) {
             e.printStackTrace();
         }
-
-
     }
 
     /**
@@ -648,7 +647,6 @@ public class TemplateEditor extends AppCompatActivity {
             findViewById(R.id.empty).setVisibility(View.GONE);
         }
     }
-
 
     private void hideEmptyView() {
         findViewById(R.id.empty).setVisibility(View.GONE);

@@ -3,9 +3,13 @@ package org.buildmlearn.toolkit.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.preference.PreferenceManager;
 import android.support.annotation.ColorRes;
+import android.support.annotation.StringRes;
 import android.support.v4.view.PagerAdapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +31,7 @@ public class TutorialAdapter extends PagerAdapter {
     private Tutorial[] mTutorials;
     private ListColor[] colors = ListColor.values();
     private boolean mStartActivity;
+
 
     public TutorialAdapter(Activity activity, boolean startActivity) {
         mActivity = activity;
@@ -61,12 +66,14 @@ public class TutorialAdapter extends PagerAdapter {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         Tutorial tutorial = getItem(position);
-
+//        prefs = PreferenceManager.getDefaultSharedPreferences(mActivity);
 
         View convertView;
         if (tutorial.isLastScreen()) {
             convertView = inflater.inflate(R.layout.tutorial_layout_finish, null);
 
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(mActivity);
+//            Log.d("ABC","login name : "+prefs.getString(getString(R.string.key_user_name)," "));
             convertView.findViewById(R.id.finish_tutorial_button).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -96,6 +103,10 @@ public class TutorialAdapter extends PagerAdapter {
         container.addView(convertView, 0);
 
         return convertView;
+    }
+
+    public final String getString(@StringRes int resId) {
+        return mActivity.getResources().getString(resId);
     }
 
     /**
