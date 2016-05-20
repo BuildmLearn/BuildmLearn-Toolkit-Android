@@ -1,10 +1,10 @@
 package org.buildmlearn.toolkit.flashcardtemplate;
 
-import android.app.Fragment;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.util.Base64;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -117,7 +117,7 @@ public class MainFragment extends Fragment implements
 
                 } else {
 
-                    getActivity().getFragmentManager().beginTransaction().replace(R.id.container, new ScoreFragment()).addToBackStack(null).commit();
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new ScoreFragment()).addToBackStack(null).commit();
 
                     reInitialize();
                 }

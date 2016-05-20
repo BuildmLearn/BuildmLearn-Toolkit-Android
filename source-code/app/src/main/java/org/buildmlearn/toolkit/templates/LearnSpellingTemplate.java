@@ -1,7 +1,6 @@
 package org.buildmlearn.toolkit.templates;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
@@ -181,7 +180,7 @@ public class LearnSpellingTemplate implements TemplateInterface {
     }
 
     @Override
-    public Fragment getSimulatorFragment(String filePathWithName) {
+    public android.support.v4.app.Fragment getSimulatorFragment(String filePathWithName) {
         return SpellingMainFragment.newInstance(filePathWithName);
     }
 

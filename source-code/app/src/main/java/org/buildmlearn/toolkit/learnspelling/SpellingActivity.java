@@ -30,11 +30,11 @@ package org.buildmlearn.toolkit.learnspelling;
 
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
-import android.app.Fragment;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -100,7 +100,7 @@ public class SpellingActivity extends Fragment implements
                     mBtn_Skip.setTextColor(Color.WHITE);
                     mBtn_Spell.setTextColor(Color.WHITE);
                 } else {
-                    getActivity().getFragmentManager().beginTransaction().replace(R.id.container, new ResultActivity()).addToBackStack(null).commit();
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new ResultActivity()).addToBackStack(null).commit();
                 }
             }
         });
@@ -198,7 +198,7 @@ public class SpellingActivity extends Fragment implements
                 mManager.incrementWrong();
             }
 
-            getActivity().getFragmentManager().beginTransaction().replace(R.id.container, WordInfoActivity.newInstance(isCorrect, count, input)).addToBackStack(null).commit();
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, WordInfoActivity.newInstance(isCorrect, count, input)).addToBackStack(null).commit();
 
         }
     }

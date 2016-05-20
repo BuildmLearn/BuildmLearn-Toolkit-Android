@@ -1,9 +1,9 @@
 package org.buildmlearn.toolkit.templates;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
@@ -181,7 +181,8 @@ public class InfoTemplate implements TemplateInterface {
     }
 
     @Override
-    public Fragment getSimulatorFragment(String filePathWithName) {
+    public android.support.v4.app.Fragment getSimulatorFragment(String filePathWithName) {
+        Log.e("debug", filePathWithName);
         return TFTFragment.newInstance(filePathWithName);
     }
 

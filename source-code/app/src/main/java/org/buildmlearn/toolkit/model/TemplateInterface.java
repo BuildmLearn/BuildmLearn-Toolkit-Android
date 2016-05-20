@@ -1,7 +1,6 @@
 package org.buildmlearn.toolkit.model;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.BaseAdapter;
@@ -78,7 +77,7 @@ public interface TemplateInterface extends Serializable {
      * Returns a fragment required for the Simulator Activity.
      * **Dev Note: File Path should be used to populate data from actual .buildmlearn file in the Simulator.
      */
-    Fragment getSimulatorFragment(String filePathWithName);
+    android.support.v4.app.Fragment getSimulatorFragment(String filePathWithName);
 
     /**
      * @return Asset file name

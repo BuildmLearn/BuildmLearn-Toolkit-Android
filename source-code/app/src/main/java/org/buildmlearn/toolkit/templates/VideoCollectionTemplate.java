@@ -1,7 +1,6 @@
 package org.buildmlearn.toolkit.templates;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -18,9 +17,9 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
 
 import org.buildmlearn.toolkit.R;
-import org.buildmlearn.toolkit.infotemplate.TFTFragment;
 import org.buildmlearn.toolkit.model.TemplateInterface;
 import org.buildmlearn.toolkit.utilities.NetworkUtils;
+import org.buildmlearn.toolkit.videoCollectionTemplate.fragment.SplashFragment;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
@@ -307,8 +306,8 @@ public class VideoCollectionTemplate implements TemplateInterface {
     }
 
     @Override
-    public Fragment getSimulatorFragment(String filePathWithName) {
-        return TFTFragment.newInstance(filePathWithName);       //TODO: Simulator
+    public android.support.v4.app.Fragment getSimulatorFragment(String filePathWithName) {
+        return SplashFragment.newInstance(filePathWithName);
     }
 
     @Override

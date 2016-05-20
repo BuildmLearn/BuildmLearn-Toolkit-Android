@@ -29,9 +29,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
 
 package org.buildmlearn.toolkit.quiztemplate;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -77,7 +77,7 @@ public class ScoreFragment extends Fragment {
 
             @Override
             public void onClick(View arg0) {
-                getActivity().getFragmentManager().beginTransaction().replace(R.id.container, TFTQuizFragment.newInstance(getActivity().getIntent().getStringExtra(Constants.SIMULATOR_FILE_PATH)), TFTQuizFragment.TAG).addToBackStack(null).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, TFTQuizFragment.newInstance(getActivity().getIntent().getStringExtra(Constants.SIMULATOR_FILE_PATH)), TFTQuizFragment.TAG).addToBackStack(null).commit();
             }
         });
 

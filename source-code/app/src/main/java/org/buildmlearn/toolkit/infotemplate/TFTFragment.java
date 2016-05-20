@@ -28,9 +28,9 @@
 
 package org.buildmlearn.toolkit.infotemplate;
 
-import android.app.Fragment;
-import android.app.ListFragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.ListFragment;
 import android.view.View;
 import android.widget.ListView;
 

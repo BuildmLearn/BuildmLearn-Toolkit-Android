@@ -28,10 +28,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
 
 package org.buildmlearn.toolkit.quiztemplate;
 
-import android.app.Fragment;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -148,7 +148,7 @@ public class QuestionFragment extends Fragment {
                 } else {
                     // if the quiz is over
                     reInitialize();
-                    getActivity().getFragmentManager().beginTransaction().replace(R.id.container, new ScoreFragment(), ScoreFragment.TAG).addToBackStack(null).commit();
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new ScoreFragment(), ScoreFragment.TAG).addToBackStack(null).commit();
                 }
             }
         });
