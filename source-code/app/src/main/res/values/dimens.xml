@@ -62,4 +62,24 @@
     <dimen name="thumb_padding">8dp</dimen>
     <dimen name="thumb_paddingTop">16dp</dimen>
 
+    <!-- Video Collection Template-->
+
+    <dimen name="headline_leading_video">32sp</dimen>
+    <dimen name="title_video">20sp</dimen>
+    <dimen name="splash_button_margin_top_video">50dp</dimen>
+    <dimen name="splash_text_margin_video">25dp</dimen>
+    <dimen name="thumb_size_video">100dp</dimen>
+    <dimen name="padding_video">8dp</dimen>
+    <dimen name="paddingTop_video">16dp</dimen>
+    <dimen name="cardHeightLastActivity_video">350dp</dimen>
+    <dimen name="paddingRight_video">5dp</dimen>
+    <dimen name="paddingLittle_video">2dp</dimen>
+    <dimen name="toolbar_height_video">150dp</dimen>
+    <dimen name="medium_margin_video">15dp</dimen>
+    <dimen name="negative_margin_video">-35dp</dimen>
+    <dimen name="toolbar_height_small_video">75dp</dimen>
+    <dimen name="title_size_video">16sp</dimen>
+    <dimen name="web_view_height_video">320dp</dimen>
+
+
 </resources>

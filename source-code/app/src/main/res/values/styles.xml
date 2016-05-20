@@ -214,4 +214,13 @@
         <item name="android:windowBackground">@color/color_primary</item>
     </style>
 
+    <!-- VideoCollection Template Styles -->
+
+    <!-- ToolBar -->
+    <style name="ToolBarStyle_video" parent="Theme.AppCompat">
+        <item name="android:textColorPrimary">@color/black_secondary_text</item>
+        <item name="android:textColorSecondary">@color/black_secondary_text</item>
+        <item name="actionMenuTextColor">@android:color/white</item>
+    </style>
+
 </resources>

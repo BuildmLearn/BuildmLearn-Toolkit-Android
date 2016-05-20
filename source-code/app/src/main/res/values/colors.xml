@@ -36,4 +36,10 @@
     <color name="Green">#00FF00</color>
     <color name="BlueBg">#255593</color>
 
+    <!-- VideoCollectionTemplate Template-->
+
+    <color name="colorPrimary_video">#26C6DA</color>
+    <color name="colorPrimaryDark_video">#00BCD4</color>
+    <color name="colorAccent_video">#3F99A9</color>
+
 </resources>

@@ -433,4 +433,30 @@
     <string name="video_fetching_error">Error while fetching video info!</string>
     <string name="video_support_error">We only support Youtube, Dailymotion and Vimeo.</string>
     <string name="network_error">Network Unavailable! Please try later.</string>
+
+
+    <!-- About VideoCollectionTemplate -->
+
+    <string name="app_name_video">Video Collection</string>
+    <string name="main_title_video">Video Collection</string>
+    <string name="main_subtitle_video">Video Tutorial</string>
+    <string name="enter_video">ENTER</string>
+    <string name="by_video">by</string>
+    <string name="anupam_video" translatable="false">Anupam</string>
+    <string name="title_activity_about_video">About</string>
+    <string name="list_empty_video">List is Empty!</string>
+    <string name="previous_video">PREVIOUS</string>
+    <string name="next_video">NEXT</string>
+    <string name="exit_video">EXIT</string>
+    <string name="restart_video">RESTART</string>
+    <string name="about_us_video">About Us</string>
+    <string name="about_text_video">This application has been developed using the BuildmLearn Toolkit.\n\nTo know more about BuildmLearn Toolkit visit <a href="https://buildmlearn.org/">here</a>.</string>
+    <string name="network_unavailable_video">Network is Unavailable! Please connect to network!</string>
+    <string name="ok_video">OK</string>
+    <string name="video_thumbnail_video">Video Thumbnail</string>
+    <string name="background_image_video">Background Image</string>
+    <string name="buildmlearn_logo_video">BuildmLearn Logo</string>
+    <string name="last_video">That was the last Video!</string>
+    <string name="video_thumbnail">Video Thumbnail</string>
+
 </resources>
