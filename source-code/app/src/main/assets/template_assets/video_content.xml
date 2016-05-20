@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<buildmlearn_application type="VideoCollectionTemplate">
+    <author>
+        <name>Anupam Das</name>
+    </author>
+    <title>Popular Movies App Tutorial</title>
+    <data>
+        <item>
+            <video_title>Popular Movies Promo Video</video_title>
+            <video_description>This app help users to discover the most popular, the highest rated
+                and the highest-grossing movies. It reveals the power of adaptive UI both for phone
+                and tablet devices.It includes various new Lollipop+ features.
+            </video_description>
+            <video_link>https://www.youtube.com/watch?v=STsHnjp1jKk</video_link>
+            <video_thumb_link>https://i.ytimg.com/vi/STsHnjp1jKk/hqdefault.jpg</video_thumb_link>
+        </item>
+        <item>
+            <video_title>Udacity PopularMovies App Demo 1</video_title>
+            <video_description>This app help users to discover the most popular, the highest rated
+                and the highest-grossing movies. It reveals the power of adaptive UI both for phone
+                and tablet devices.It includes various new Lollipop+ features.
+            </video_description>
+            <video_link>https://www.youtube.com/watch?v=YoyXolO2hhU</video_link>
+            <video_thumb_link>https://i.ytimg.com/vi/YoyXolO2hhU/hqdefault.jpg</video_thumb_link>
+        </item>
+        <item>
+            <video_title>Udacity PopularMovies App Demo 2</video_title>
+            <video_description>This app help users to discover the most popular, the highest rated
+                and the highest-grossing movies. It reveals the power of adaptive UI both for phone
+                and tablet devices.It includes various new Lollipop+ features.
+            </video_description>
+            <video_link>https://www.youtube.com/watch?v=uHlaXrYLm6s</video_link>
+            <video_thumb_link>https://i.ytimg.com/vi/uHlaXrYLm6s/hqdefault.jpg</video_thumb_link>
+        </item>
+    </data>
+</buildmlearn_application>
