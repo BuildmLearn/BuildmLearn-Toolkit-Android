@@ -37,6 +37,14 @@
         <item name="windowActionModeOverlay">true</item>
     </style>
 
+    <style name="Buildmlearn.Simulator" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <!-- Allows the action mode icons to be shown on top of the Toolbar -->
+        <item name="windowActionModeOverlay">true</item>
+    </style>
+
     <style name="MainMenuItem" parent="TextAppearance.AppCompat.Body2">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/main_menu_item_height</item>

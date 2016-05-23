@@ -41,5 +41,6 @@
     <color name="colorPrimary_video">#26C6DA</color>
     <color name="colorPrimaryDark_video">#00BCD4</color>
     <color name="colorAccent_video">#3F99A9</color>
+    <color name="background_video">#FAFAFA</color>
 
 </resources>

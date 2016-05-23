@@ -21,7 +21,7 @@
             android:layout_toLeftOf="@+id/imageView4"
             android:layout_toRightOf="@+id/imageView2"
             android:layout_toStartOf="@+id/imageView4"
-            android:background="@color/white_secondary_text">
+            android:background="@color/background_video">
 
 
         </FrameLayout>
