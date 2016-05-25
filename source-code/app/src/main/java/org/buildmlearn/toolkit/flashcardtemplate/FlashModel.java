@@ -4,8 +4,11 @@ package org.buildmlearn.toolkit.flashcardtemplate;
 /**
  * @brief Simulator code for Flash Card Template
  */
-public class FlashModel {
-    String question, answer, hint, base64;
+class FlashModel {
+    private String question;
+    private String answer;
+    private String hint;
+    private String base64;
 
 
     public String getQuestion() {

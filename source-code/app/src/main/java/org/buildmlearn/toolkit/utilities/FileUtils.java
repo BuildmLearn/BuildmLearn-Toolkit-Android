@@ -9,7 +9,6 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,7 +20,6 @@ import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
@@ -45,7 +43,7 @@ public class FileUtils {
      * @param destinationFolder Destination folder for stroing the uncompresses files.
      * @throws IOException Exception thrown in case of some error.
      */
-    public static void unZip(String zipFilePath, String destinationFolder) throws IOException {
+    public static void unZip(String zipFilePath, String destinationFolder) {
         int size;
         byte[] buffer = new byte[BUFFER_SIZE];
         try {
@@ -111,13 +109,12 @@ public class FileUtils {
         OutputStream out;
         try {
             in = assetManager.open(assetFileName);
-            String outPutPath = destinationDirectory;
-            File f = new File(outPutPath);
+            File f = new File(destinationDirectory);
             if (!f.isDirectory()) {
                 f.mkdirs();
             }
 
-            File outFile = new File(outPutPath, assetFileName);
+            File outFile = new File(destinationDirectory, assetFileName);
             out = new FileOutputStream(outFile);
             copyFile(in, out);
             in.close();
@@ -144,7 +141,7 @@ public class FileUtils {
      * @param doc Document object to be converted to xml formatted file
      * @return Returns true if successfully converted
      */
-    public static boolean saveXmlFile(String destinationFolder, String fileName, Document doc) {
+    public static void saveXmlFile(String destinationFolder, String fileName, Document doc) {
 
         File f = new File(destinationFolder);
         if (!f.isDirectory()) {
@@ -157,13 +154,9 @@ public class FileUtils {
             DOMSource source = new DOMSource(doc);
             StreamResult result = new StreamResult(new File(destinationFolder + fileName));
             transformer.transform(source, result);
-            return true;
-        } catch (TransformerConfigurationException e) {
-            e.printStackTrace();
         } catch (TransformerException e) {
             e.printStackTrace();
         }
-        return false;
     }
 
     /**
@@ -174,7 +167,7 @@ public class FileUtils {
     public static void zipFolder(String directoryToZipPath) throws IOException {
         File directoryToZip = new File(directoryToZipPath);
 
-        List<File> fileList = new ArrayList<File>();
+        List<File> fileList = new ArrayList<>();
         System.out.println("---Getting references to all files in: " + directoryToZip.getCanonicalPath());
         getAllFiles(directoryToZip, fileList);
         System.out.println("---Creating zip file");
@@ -187,7 +180,7 @@ public class FileUtils {
      * @param dir Source directory
      * @param fileList Referenced list. Files are added to this list
      */
-    public static void getAllFiles(File dir, List<File> fileList) {
+    private static void getAllFiles(File dir, List<File> fileList) {
         try {
             File[] files = dir.listFiles();
             for (File file : files) {
@@ -218,14 +211,12 @@ public class FileUtils {
 
             zos.close();
             fos.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private static void addToZip(File directoryToZip, File file, ZipOutputStream zos) throws FileNotFoundException,
+    private static void addToZip(File directoryToZip, File file, ZipOutputStream zos) throws
             IOException {
 
         FileInputStream fis = new FileInputStream(file);

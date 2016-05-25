@@ -37,10 +37,9 @@ public class TemplateActivity extends AppCompatActivity {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                int templateId = position;
 
                 Intent intent = new Intent(getApplicationContext(), TemplateEditor.class);
-                intent.putExtra(Constants.TEMPLATE_ID, templateId);
+                intent.putExtra(Constants.TEMPLATE_ID, position);
                 startActivity(intent);
 
             }

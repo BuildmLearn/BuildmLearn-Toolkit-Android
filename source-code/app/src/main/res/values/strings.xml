@@ -2,26 +2,15 @@
     <string name="app_name">BuildmLearn Toolkit</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="action_settings">Settings</string>
     <string name="menu_load_project">Saved Projects</string>
-    <string name="menu_my_uploads">My Uploads</string>
-    <string name="menu_drafts">My Drafts</string>
     <string name="menu_settings">Settings</string>
     <string name="menu_how_to">How to</string>
     <string name="menu_about_us">About BuildmLearn</string>
-    <string name="menu_privacy_policy">Privacy Policy</string>
     <string name="menu_home">Home</string>
-    <string name="title_activity_test">TestActivity</string>
     <string name="buildmlearn_welcome_title">Welcome to BuildmLearn Toolkit</string>
 
-    <string name="hello_world">Hello world!</string>
-
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="buildmlearn_welcome_text">The BuildmLearn Toolkit is an easy-to-use program that helps users make mobile apps without any knowledge of application development.\n\nThe toolkit helps creating mobile application with various functionality and allows teachers to input their custom content.</string>
-    <string name="buildmlearn_store_text">BuildmLearn store is a app store where teachers submit mobile applications created using BuildmLearn Toolkit. Thus, this store is a distribution medium for apps created using the BuildmLearn Toolkit.</string>
-    <string name="buildmlearn_store_title">BuildmLearn Store</string>
-    <string name="goto_store">Goto Store</string>
     <string name="no_item">No items</string>
     <string name="add_item_help">Click Add button to start adding items</string>
 
@@ -33,11 +22,8 @@
     <string name="dialog_delete_title">Delete</string>
 
 
-    <string name="quiz_template_hello">Hello World, TFTQuizActivity!</string>
-    <string name="quiz_template_app_name">Quiz Time</string>
     <string name="quiz_template_start">Start</string>
     <string name="about_us">This application has been developed using the BuildmLearn Toolkit.\n\nTo know more about BuildmLearn Toolkit visit http://buildmlearn.org/</string>
-    <string name="quiz_template_action_info">Info</string>
     <string name="title_activity_simulator">Simulator</string>
     <string name="title_activity_template">Template</string>
 
@@ -47,7 +33,6 @@
     <string name="info_template_word_hint">Enter title</string>
     <string name="info_template_meaning">Meaning</string>
     <string name="info_template_meaning_hint">Enter description</string>
-    <string name="info_template_edit">Edit</string>
     <string name="info_template_add">Add</string>
     <string name="info_template_delete">Delete</string>
     <string name="info_template_ok">OK</string>
@@ -60,11 +45,6 @@
     <!-- Flash Card Template-->
     <string name="flash_card_template">FlashCardsTemplate</string>
     <string name="flash_photo_source">Select image source</string>
-    <string-array name="flash_photo_source_array">
-        <item>Camers</item>
-        <item>Gallery</item>
-    </string-array>
-    <string name="flash_choose">Choose</string>
     <string name="flash_templete_question">Question</string>
     <string name="flash_template_answer">Answer</string>
     <string name="flash_template_hint">Answer Hint</string>
@@ -74,12 +54,10 @@
 
     <!-- Spelling Template-->
 
-    <string name="appname">English Words</string>
     <string name="msg_txt">Press SPEAK when you are ready. You may adjust the speech rate using the slider. Listen to the word as many times before answering. If you are not sure, you can skip the word.</string>
     <string name="speak">Listen</string>
     <string name="ready">Spell it!</string>
     <string name="submit">SUBMIT</string>
-    <string name="enter_spelling">Enter Spelling</string>
     <string name="msg_successful">Great! You got it right</string>
     <string name="msg_failure">This is not the correct spelling</string>
     <string name="nxt_word">Next Word</string>
@@ -151,197 +129,15 @@
 
     <!-- Bottom Sheet-->
     <string name="bottom_sheet_share_apk">Share APK</string>
-    <string name="bottom_sheet_publish"> Publish to BuildmLearn Store</string>
     <string name="bottom_sheet_save_apk">Save APK</string>
     <string name="bottom_sheet_save_project">Save Project</string>
 
-    <string name="InputZipLabel">Input File (zip/apk/jar)</string>
-    <string name="InOutPickButtonLabel">Choose In/Out…</string>
-    <string name="OpenPickButtonLabel">Input…</string>
-    <string name="SaveAsPickButtonLabel">Output…</string>
-    <string name="SignedZipLabel">Signed Output File</string>
-    <string name="KeyModeLabel">Key/mode: </string>
-    <string name="SignatureAlgorithmLabel">Signature Algorithm</string>
-    <string name="SignButtonLabel">Sign The File</string>
-    <string name="BrowserSelectInput">select input</string>
-    <string name="BrowserSelectOutput">select output</string>
-    <string name="BrowserDirectoryModeTitle">Directory Browser</string>
-    <string name="BrowserDirectoryModeMessage">Long press on an item to select it as the target directory.</string>
-    <string name="KeySelectionError">Key Selection Error</string>
-    <string name="KeySelectionMessage">Unable to auto-select key for signing %s</string>
-    <string name="FileSigningSuccess">File signing operation succeeded!</string>
-    <string name="FileSigningCancelled">File signing CANCELED!</string>
-    <string name="ExtStorageIsReadOnly">ERROR: External storage is mounted read-only</string>
-    <string name="SigningWithKey">Signing with key:</string>
-
-    <string name="AboutZipSignerTitle">About</string>
-    <string name="AboutZipSignerBanner">Zip Signer</string>
-    <string name="AboutZipSignerVersionTemplate">Version: %s</string>
-    <string name="AboutZipSignerDescription">Signs zip, apk, and/or jar files.</string>
-    <string name="AboutZipSignerAuthor">Author: Ken Ellinwood</string>
-    <string name="AboutZipSignerCopyright">Copyright 2010-2013. All rights reserved.</string>
-    <string name="AboutFmAttribution">File browser source based on http://www.anddev.org/android_filebrowser__v20-t101.html</string>
-    <string name="AboutFmIconsAttribution">File browser icons obtained from the Tango Icon Gallery, http://tango.freedesktop.org</string>
-
-    <string name="AboutZipSignerDocumentation">Visit the webpage</string>
-    <string name="AboutZipSignerDocUrlPattern">webpage</string>
-    <string name="AboutZipSignerDocUrl">http://sites.google.com/site/zipsigner</string>
-
-    <string name="CloseButtonLabel">Close</string>
-    <string name="CancelButtonLabel">Cancel</string>
-    <string name="OkButtonLabel">OK</string>
-    <string name="FinishButtonLabel">Finish</string>
-    <string name="ContinueAnywayButtonLabel">Continue Anyway</string>
-
-    <string name="SigningZipLabel">Signing %s...</string>
-
     <!--  Built-in file manager string values -->
-    <string name="up_one_level">..</string>
-    <string name="current_dir">.</string>
 
     <!--  menu string values -->
-    <string name="MenuWebSite">Web Site</string>
-    <string name="MenuManageKeys">My Keys</string>
-    <string name="MenuDonate">Donate</string>
-    <string name="MenuAbout">About</string>
 
     <!-- Manage Keys string values -->
-    <string name="MyKeysWebPage">http://sites.google.com/site/zipsigner/signing-with-your-own-keys</string>
-    <string name="MenuRegisterKeystore">Register Keystore</string>
-    <string name="RememberThisPassword">Remember this password</string>
-    <string name="EnterKeystorePassword">Enter Keystore Password</string>
-    <string name="WrongKeystorePassword">Wrong Keystore Password</string>
-    <string name="UnregisterMenuItemLabel">Unregister Keystore</string>
-    <string name="RememberPasswordMenuItemLabel">Remember Password</string>
-    <string name="ForgetPasswordMenuItemLabel">Forget Password</string>
-    <string name="CreateKeyMenuItemLabel">Create Key</string>
-    <string name="RenameKeyMenuItemLabel">Rename</string>
-    <string name="DisplayNameMenuItemLabel">Set Display Name</string>
-    <string name="DeleteKeyMenuItemLabel">Delete</string>
-    <string name="PropertiesMenuItemLabel">Properties</string>
-    <string name="EnterKeyPassword">Enter Key Password</string>
-    <string name="WrongKeyPassword">Wrong Key Password</string>
-    <string name="PasswordIsRemembered">(password remembered)</string>
-    <string name="PasswordIsNotRemembered">(password not remembered)</string>
-    <string name="BrowserSelectKeystore">select keystore file</string>
-    <string name="KeystoreLoadingMessage">Loading keystore file...</string>
 
-    <string name="MenuCreateKeystore">New Keystore</string>
-    <string name="ContinueButtonLabel">Continue</string>
-    <string name="NewKeystoreIntroTitle">Create New Keystore and Key</string>
-    <string name="NewKeystoreIntroP1">
-        The following screens will guide you through the process of creating a new keystore, private-key, and self-signed
-        certificate that can be used to sign apps for publishing on Google Play.  To create a new key in an existing keystore,
-        return to the previous screen and long-press on a keystore entry, then select "Create Key" from the context menu.
-        </string>
-    <string name="NewKeystoreIntroP2">
-        This process creates a JKS keystore by default.  To create a BKS keystore, change the keystore file extension to \'.bks\'
-    </string>
-    <string name="NewKeystoreIntroP3">
-        Don\'t forget the password you choose for your key during this process.  Also, be sure to backup the keystore file.
-        If you ever forget the key password or lose the keystore file, you won\'t be able to publish updates to your apps.
-    </string>
-    <string name="NewKeystoreIntroP4">
-        The default values shown on the following screens will create a suitable key for signing apps.
-    </string>
-    <string name="MenuKeysHelp">Help</string>
-
-    <string name="ManageKeysTitle">My Keys</string>
-    <string name="ManageKeysHelpP1">
-        To create a new keystore, private key, and self-signed certificate, select the \'New Keystore\' menu option.
-    </string>
-    <string name="ManageKeysHelpP2">
-        You can work with an existing keystore by selecting the \'Register Keystore\' menu option.  Keystore files can
-        be in either JKS or BKS format.  Current limitation - only RSA keys can be used to sign files.
-        </string>
-    <string name="ManageKeysHelpP3">
-        You can perform operations on the keystores and keys by long-pressing on items to access the context menus.
-    </string>
-    <string name="ManageKeysHelpP4">
-        The list of keystores and keys will appear in place of this text when you create or register your first keystore.
-    </string>
-
-
-    <string name="KeystorePathBrowse">Change Keystore Directory</string>
-    <string name="NewKeystoreFilenameLabel">New Keystore File</string>
-    <string name="KeystoreFilenameLabel">Keystore File</string>
-    <string name="KeystorePasswordLabel">Keystore Password</string>
-    <string name="SelectKeystoreDir">Select keystore dir</string>
-    <string name="FailedToUpdateKeystoreDir">Failed to update keystore directory</string>
-    <string name="PasswordsDontMatch">Passwords Don\'t Match</string>
-    <string name="PasswordRequired">Password Required</string>
-    <string name="KeyPasswordRequired">A key password is required.</string>
-    <string name="OverwriteKeystoreTitle">Overwrite File?</string>
-    <string name="OverwriteKeystoreFile">%s already exists.  Overwrite?</string>
-
-
-    <string name="KeyNameLabel">Key Name/Alias</string>
-    <string name="KeySizeLabel">Key Size</string>
-
-    <string-array name="KeySizeArray">
-        <item>1024</item>
-        <item>2048</item>
-        <item>3072</item>
-    </string-array>
-
-    <string name="KeyAlgorithmLabel">Key Type</string>
-    <string-array name="KeyAlgorithmArray">
-        <item>RSA</item>
-    </string-array>
-
-    <string name="KeyNameRequiredTitle">Key Name Required</string>
-    <string name="KeyNameRequired">A key name is required.</string>
-
-    <string name="KeyPasswordLabel">Key Password</string>
-    <string name="VerifyPasswordLabel">Verify Password</string>
-
-    <string name="CertParametersTitle">Certificate Info</string>
-    <string name="CertValidityYearsLabel">Validity (years)</string>
-    <string name="CertSignatureAlgorithmLabel">Certificate Signature Algorithm</string>
-
-    <string name="DnInstructions">
-        Please fill in the following information to identify yourself and/or your company.
-        This information is contained in the public certificate paired with the key, and is included in the signatures
-        generated with this key.  You can put whatever you want in the following fields, and leave some blank if desired.
-    </string>
-
-    <string name="CommonNameLabel">Your Name</string>
-    <string name="OrganizationalUnitLabel">Department/Unit</string>
-    <string name="OrganizationLabel">Company/Organization</string>
-    <string name="StreetLabel">Street Address</string>
-    <string name="StateLabel">State/Province</string>
-    <string name="LocalityLabel">City/Locality</string>
-    <string name="CountryLabel">Country Code</string>
-    <string name="InvalidValidity">Invalid validity.</string>
-    <string name="InvalidValidityMessage">Please enter a positive decimal value.</string>
-    <string name="MissingCertInfoTitle">Missing Info</string>
-    <string name="MissingCertInfoMessage">Please fill out at least the \'Your Name\' field.</string>
-    <string name="ShortCertValidityTitle">Validity Warning</string>
-    <string name="ShortCertValidityMessage">Google recommends a certificate validity period of 25 years or more for signing Android apps.</string>
-
-    <string name="KeyTypeLabel">Key Type</string>
-    <string name="KeyFormatLabel">Key Format</string>
-
-    <string name="CreatingKeyProgressMessage">Creating Key and Certificate</string>
-    <string name="SuccessMessage">SUCCESS</string>
-
-    <string name="ConfirmDeleteKeyTitle">Delete %s?</string>
-    <string name="ConfirmDeleteKeyMessage">This will permanently delete the key %s from the keystore file.  Continue?</string>
-    <string name="NameConflictTitle">Key Name Conflict</string>
-    <string name="NameConflictMessage">An entry with name %s already exists in the keystore.</string>
-    <string name="ExpiresLabel">Expires</string>
-    <string name="SubjectDN">Subject DN</string>
-    <string name="CertIsSelfSigned">Certificate is self-signed</string>
-    <string name="IssuerDN">Issuer DN</string>
-    <string name="KeystorePasswordRequired">Keystore password is required</string>
-
-    <string name="BackButtonLabel">Back</string>
-    <string name="MD5FingerprintLabel">MD5</string>
-    <string name="SHA1FingerprintLabel">SHA1</string>
-    <string name="SHA1KeyHashLabel">SHA1 Key Hash</string>
-    <string name="CopyToClipboardMenuItemLabel">Copy To Clipboard</string>
-    <string name="FingerprintsLabel">Fingerprints</string>
-    <string name="FingerprintCopyInstructions">Long-press on a fingerprint to copy its value</string>
 
     <!-- Progress messages -->
     <string name="LoadingCertificateAnKey">Loading certificate and private key</string>
@@ -370,7 +166,6 @@
 
     <string name="key_user_name">key_user_name</string>
     <string name="your_name">Your Name</string>
-    <string name="summary_name">Your name will be used as default author name</string>
     <string name="app_settings">App Settings</string>
 
     <string name="main_title">BuildmLearn</string>
@@ -381,7 +176,6 @@
     <!-- Flash Card Template-->
 
     <string name="last_msg">This was the last card!</string>
-    <string name="action_info">Info</string>
 
     <!-- Tutorial-->
     <string name="screen_1_title">Welcome to BuildmLearn Toolkit</string>
@@ -412,22 +206,8 @@
     <string name="about_para_1">BuildmLearn Toolkit is an easy-to-use program that helps users make mobile apps without any knowledge of application development.</string>
     <string name="about_para_2">Visit us at http://buildmlearn.org/.</string>
     <string name="about_para_3">Any feedback or suggestions related to BuildmLearn Toolkit are always welcome. Please write to us at buildmlearn@gmail.com.</string>
-    <string name="about_para_4"></string>
     <string name="title_activity_deep_linker">BuildmLearn Tookit</string>
 
-    <string-array name="project_categories">
-        <item>Science</item>
-        <item>Math</item>
-        <item>Physics</item>
-        <item>Literature</item>
-        <item>English</item>
-        <item>Geography</item>
-        <item>Social Studies</item>
-        <item>Language</item>
-        <item>History</item>
-        <item>Chemistry</item>
-    </string-array>
-    <string name="title_activity_upload">Upload Application</string>
     <string name="apk_progress_dialog">Generating Apk</string>
     <string name="apk_msg">Inserting data into Apk</string>
     <string name="video_fetching_error">Error while fetching video info!</string>
@@ -437,9 +217,6 @@
 
     <!-- About VideoCollectionTemplate -->
 
-    <string name="app_name_video">Video Collection</string>
-    <string name="main_title_video">Video Collection</string>
-    <string name="main_subtitle_video">Video Tutorial</string>
     <string name="enter_video">ENTER</string>
     <string name="by_video">by</string>
     <string name="anupam_video" translatable="false">Anupam</string>
@@ -447,13 +224,7 @@
     <string name="list_empty_video">List is Empty!</string>
     <string name="previous_video">PREVIOUS</string>
     <string name="next_video">NEXT</string>
-    <string name="exit_video">EXIT</string>
-    <string name="restart_video">RESTART</string>
-    <string name="about_us_video">About Us</string>
     <string name="about_text_video">This application has been developed using the BuildmLearn Toolkit.\n\nTo know more about BuildmLearn Toolkit visit <a href="https://buildmlearn.org/">here</a>.</string>
-    <string name="network_unavailable_video">Network is Unavailable! Please connect to network!</string>
-    <string name="ok_video">OK</string>
-    <string name="video_thumbnail_video">Video Thumbnail</string>
     <string name="background_image_video">Background Image</string>
     <string name="buildmlearn_logo_video">BuildmLearn Logo</string>
     <string name="last_video">That was the last Video!</string>

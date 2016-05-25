@@ -21,10 +21,10 @@ import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
  * <p/>
  * Created by Anupam (opticod) on 4/5/16.
  */
-public class VideoCollectionAdapter extends BaseAdapter {
+class VideoCollectionAdapter extends BaseAdapter {
 
-    private Context mContext;
-    private ArrayList<VideoModel> data;
+    private final Context mContext;
+    private final ArrayList<VideoModel> data;
 
     public VideoCollectionAdapter(Context mContext, ArrayList<VideoModel> data) {
         this.mContext = mContext;

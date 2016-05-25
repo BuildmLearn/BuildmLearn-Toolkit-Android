@@ -5,7 +5,6 @@
 
     <!-- Per the design guidelines, navigation drawers should be between 240dp and 320dp:
          https://developer.android.com/design/patterns/navigation-drawer.html -->
-    <dimen name="navigation_drawer_width">240dp</dimen>
     <!-- Main menu dimensions-->
     <dimen name="main_menu_padding">16dp</dimen>
     <dimen name="main_menu_text_size">14sp</dimen>
@@ -13,15 +12,12 @@
     <dimen name="main_menu_item_height">48dp</dimen>
     <dimen name="layout_margin">8dp</dimen>
     <dimen name="cardview_top_padding">24dp</dimen>
-    <dimen name="cardview_bottom_padding">16dp</dimen>
-    <dimen name="cardview_padding_left_right">16dp</dimen>
     <dimen name="headline">24sp</dimen>
     <dimen name="headline_leading">32sp</dimen>
     <dimen name="title">20sp</dimen>
     <dimen name="sub_title">16sp</dimen>
     <dimen name="caption">12sp</dimen>
     <dimen name="body">14sp</dimen>
-    <dimen name="button">14sp</dimen>
     <dimen name="empty">14sp</dimen>
 
     <!-- Styles-->
@@ -41,12 +37,9 @@
     <dimen name="cardview_title_padding_top">24dp</dimen>
 
     <!-- Button-->
-    <dimen name="button_margin_bottom">24dp</dimen>
-    <dimen name="button_margin_left_right">16dp</dimen>
 
 
     <!-- Button Raised-->
-    <dimen name="button_raised_height">36dp</dimen>
 
     <!-- Template CardView-->
     <dimen name="cardview_template_height">180dp</dimen>
@@ -64,8 +57,6 @@
 
     <!-- Video Collection Template-->
 
-    <dimen name="headline_leading_video">32sp</dimen>
-    <dimen name="title_video">20sp</dimen>
     <dimen name="splash_button_margin_top_video">50dp</dimen>
     <dimen name="splash_text_margin_video">25dp</dimen>
     <dimen name="thumb_size_video">100dp</dimen>

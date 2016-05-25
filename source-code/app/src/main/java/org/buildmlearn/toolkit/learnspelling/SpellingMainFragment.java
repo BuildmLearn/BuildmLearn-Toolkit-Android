@@ -46,10 +46,6 @@ import org.buildmlearn.toolkit.constant.Constants;
  */
 public class SpellingMainFragment extends Fragment {
 
-    private Button mBtn_Start;
-    private DataManager mManager;
-    private TextView mTv_Title, mTv_Author;
-
     public static Fragment newInstance(String path) {
         SpellingMainFragment fragment = new SpellingMainFragment();
         Bundle bundle = new Bundle();
@@ -64,9 +60,9 @@ public class SpellingMainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.spelling_fragment_main, container, false);
-        mBtn_Start = (Button) view.findViewById(R.id.btn_start);
-        mTv_Title = (TextView) view.findViewById(R.id.tv_apptitle);
-        mTv_Author = (TextView) view.findViewById(R.id.tv_author);
+        Button mBtn_Start = (Button) view.findViewById(R.id.btn_start);
+        TextView mTv_Title = (TextView) view.findViewById(R.id.tv_apptitle);
+        TextView mTv_Author = (TextView) view.findViewById(R.id.tv_author);
 
         mBtn_Start.setOnClickListener(new OnClickListener() {
 
@@ -76,7 +72,7 @@ public class SpellingMainFragment extends Fragment {
             }
         });
 
-        mManager = DataManager.getInstance();
+        DataManager mManager = DataManager.getInstance();
         mManager.readXml(getArguments().getString(Constants.SIMULATOR_FILE_PATH));
         mTv_Title.setText(mManager.getTitle());
         mTv_Author.setText(mManager.getAuthor());

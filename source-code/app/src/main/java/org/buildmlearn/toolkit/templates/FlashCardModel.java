@@ -17,10 +17,10 @@ import java.io.Serializable;
  */
 public class FlashCardModel implements Serializable {
 
-    private String mQuestion;
-    private String mAnswer;
-    private String mHint;
-    private String mImage;
+    private final String mQuestion;
+    private final String mAnswer;
+    private final String mHint;
+    private final String mImage;
 
     public FlashCardModel(String question, String answer, String hint, Bitmap image) {
         mQuestion = question;
@@ -41,9 +41,8 @@ public class FlashCardModel implements Serializable {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         image.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
         byte[] byteArray = byteArrayOutputStream.toByteArray();
-        String encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
 
-        return encoded;
+        return Base64.encodeToString(byteArray, Base64.DEFAULT);
 
     }
 
@@ -65,8 +64,7 @@ public class FlashCardModel implements Serializable {
 
     public Bitmap getImageBitmap() {
         byte[] decodedString = Base64.decode(mImage, Base64.DEFAULT);
-        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-        return decodedByte;
+        return BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
     }
 
     public Element getXml(Document doc) {

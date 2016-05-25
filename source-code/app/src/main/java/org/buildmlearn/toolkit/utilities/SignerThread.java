@@ -33,7 +33,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.provider.Settings;
+import android.provider.Settings.Secure;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.Toast;
@@ -70,22 +70,20 @@ import pxb.android.axml.NodeVisitor;
 public class SignerThread extends Thread {
     private static final String TAG = "SignerThread";
     private static final String TEMP_FOLDER = "hcjb";
-    static boolean needRemoveConflict;
-    static boolean needRemoveLib;
-    static String newPackageFullName;
-    static boolean changed;
-    static String NS = "http://schemas.android.com/apk/res/android";
-
-    ZipSigner zipSigner = null;
-    String signatureAlgorithm = "SHA1withRSA";
-    private ToolkitApplication toolkit;
-    private Context context;
-    private String assetsApk;
+    private static final String NS = "http://schemas.android.com/apk/res/android";
+    private static boolean needRemoveConflict;
+    private static boolean needRemoveLib;
+    private static String newPackageFullName;
+    private static boolean changed;
+    private final String signatureAlgorithm = "SHA1withRSA";
+    private final ToolkitApplication toolkit;
+    private final Context context;
+    private final String assetsApk;
+    private final String assetFileName;
+    private final String assetFilePath;
+    private final String projectFile;
+    private final KeyStoreDetails keyDetails;
     private String finalApk;
-    private String assetFileName;
-    private String assetFilePath;
-    private String projectFile;
-    private KeyStoreDetails keyDetails;
     private OnSignComplete listener;
 
     public SignerThread(Context context, String assetsApk, String finalApk, KeyStoreDetails keyDetails, String assetFilePath, String assetFileName) {
@@ -100,7 +98,7 @@ public class SignerThread extends Thread {
     }
 
 
-    public static void modifyManifest(final String[] args) {
+    private static void modifyManifest(final String[] args) {
         try {
             String androidManifestBinXml = args[0];
             needRemoveConflict = args[1].contains("!");
@@ -146,18 +144,11 @@ public class SignerThread extends Thread {
         FileUtils.copyAssets(context, assetsApk, toolkit.getApkDir());
         FileUtils.copyAssets(context, keyDetails.getAssetsPath(), toolkit.getApkDir());
 
-        try {
-            FileUtils.unZip(toolkit.getApkDir() + assetsApk, toolkit.getUnZipDir() + TEMP_FOLDER);
-        } catch (IOException e) {
-            if (listener != null) {
-                listener.onFail(e);
-            }
-            e.printStackTrace();
-        }
+        FileUtils.unZip(toolkit.getApkDir() + assetsApk, toolkit.getUnZipDir() + TEMP_FOLDER);
         try {
             String packageName = "org.buildmlearn.";
-            packageName += Settings.Secure.getString(context.getContentResolver(),
-                    Settings.Secure.ANDROID_ID) + ".";
+            packageName += Secure.getString(context.getContentResolver(),
+                    Secure.ANDROID_ID);
             Calendar rightNow = Calendar.getInstance();
             packageName += String.valueOf(rightNow.getTimeInMillis());
 
@@ -210,7 +201,7 @@ public class SignerThread extends Thread {
                 throw new IllegalArgumentException("Parameter outputFile is null");
             }
 
-            zipSigner = new ZipSigner();
+            ZipSigner zipSigner = new ZipSigner();
             zipSigner.setResourceAdapter(new ZipSignerAppResourceAdapter(context.getResources()));
 
             File keystoreFile;

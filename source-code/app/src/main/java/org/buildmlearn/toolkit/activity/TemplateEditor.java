@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -63,7 +64,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 public class TemplateEditor extends AppCompatActivity {
 
-    private final static String TAG = "TEMPLATE EDITOR";
+    private static final String TAG = "TEMPLATE EDITOR";
 
     private ListView templateEdtiorList;
     private int templateId;
@@ -71,7 +72,7 @@ public class TemplateEditor extends AppCompatActivity {
     private TemplateInterface selectedTemplate;
     private int selectedPosition = -1;
     private boolean showTemplateSelectedMenu;
-    private View selectedView = null;
+    private View selectedView;
     private ToolkitApplication toolkit;
     private String oldFileName;
     private MaterialDialog mApkGenerationDialog;
@@ -147,7 +148,7 @@ public class TemplateEditor extends AppCompatActivity {
      * <p/>
      * Header view contains the editable author name and template title fields.
      */
-    protected void populateListView(final BaseAdapter adapter) {
+    private void populateListView(final BaseAdapter adapter) {
         if (templateEdtiorList == null) {
             templateEdtiorList = (ListView) findViewById(R.id.template_editor_listview);
         }
@@ -157,6 +158,7 @@ public class TemplateEditor extends AppCompatActivity {
 
         EditText authorEditText = (EditText) findViewById(R.id.author_name);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        assert authorEditText != null;
         authorEditText.setText(preferences.getString(getString(R.string.key_user_name), ""));
         setAdapter(adapter);
 
@@ -179,7 +181,7 @@ public class TemplateEditor extends AppCompatActivity {
                     selectedView = view;
                     selectedPosition = position - 1;
                     Log.d(TAG, "Position: " + selectedPosition);
-                    view.setBackgroundColor(getResources().getColor(R.color.color_divider));
+                    view.setBackgroundColor(ContextCompat.getColor(toolkit, R.color.color_divider));
                     changeColorScheme();
                 }
                 return true;
@@ -191,7 +193,7 @@ public class TemplateEditor extends AppCompatActivity {
     /**
      * @brief Initialization function for setting up action bar
      */
-    protected void setUpActionBar() {
+    private void setUpActionBar() {
         ActionBar actionBar = getSupportActionBar();
         templateEdtiorList = (ListView) findViewById(R.id.template_editor_listview);
         if (actionBar == null) {
@@ -204,7 +206,7 @@ public class TemplateEditor extends AppCompatActivity {
     /**
      * @brief Initialization function when the Temlpate Editor is created.
      */
-    protected void setUpTemplateEditor() {
+    private void setUpTemplateEditor() {
         Template[] templates = Template.values();
         template = templates[templateId];
 
@@ -224,7 +226,7 @@ public class TemplateEditor extends AppCompatActivity {
     /**
      * @brief Initialization function when the Temlpate Editor is restored.
      */
-    protected void restoreTemplateEditor(Bundle savedInstanceState) {
+    private void restoreTemplateEditor(Bundle savedInstanceState) {
         selectedTemplate = (TemplateInterface) savedInstanceState.getSerializable(Constants.TEMPLATE_OBJECT);
         oldFileName = savedInstanceState.getString(Constants.PROJECT_FILE_PATH);
         templateId = savedInstanceState.getInt(Constants.TEMPLATE_ID);
@@ -332,7 +334,7 @@ public class TemplateEditor extends AppCompatActivity {
 
                                         Uri fileUri = Uri.fromFile(new File(path));
                                         try {
-                                            ArrayList<Uri> uris = new ArrayList<Uri>();
+                                            ArrayList<Uri> uris = new ArrayList<>();
                                             Intent sendIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
                                             sendIntent.setType("application/vnd.android.package-archive");
                                             uris.add(fileUri);
@@ -342,7 +344,7 @@ public class TemplateEditor extends AppCompatActivity {
 
                                         } catch (Exception e) {
 
-                                            ArrayList<Uri> uris = new ArrayList<Uri>();
+                                            ArrayList<Uri> uris = new ArrayList<>();
                                             Intent sendIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
                                             sendIntent.setType("application/zip");
                                             uris.add(fileUri);
@@ -444,9 +446,9 @@ public class TemplateEditor extends AppCompatActivity {
      * <p/>
      * Edit mode is triggered, when the list item is long pressed.
      */
-    public void changeColorScheme() {
-        int primaryColor = getResources().getColor(R.color.color_primary_dark);
-        int primaryColorDark = getResources().getColor(R.color.color_selected_dark);
+    private void changeColorScheme() {
+        int primaryColor = ContextCompat.getColor(toolkit, R.color.color_primary_dark);
+        int primaryColorDark = ContextCompat.getColor(toolkit, R.color.color_selected_dark);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(primaryColor));
         ThemeSingleton.get().positiveColor = ColorStateList.valueOf(primaryColor);
         ThemeSingleton.get().neutralColor = ColorStateList.valueOf(primaryColor);
@@ -466,9 +468,9 @@ public class TemplateEditor extends AppCompatActivity {
      * <p/>
      * Edit mode is triggered, when the list item is long pressed.
      */
-    public void restoreColorScheme() {
-        int primaryColor = getResources().getColor(R.color.color_primary);
-        int primaryColorDark = getResources().getColor(R.color.color_primary_dark);
+    private void restoreColorScheme() {
+        int primaryColor = ContextCompat.getColor(toolkit, R.color.color_primary);
+        int primaryColorDark = ContextCompat.getColor(toolkit, R.color.color_primary_dark);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(primaryColor));
         ThemeSingleton.get().positiveColor = ColorStateList.valueOf(primaryColor);
         ThemeSingleton.get().neutralColor = ColorStateList.valueOf(primaryColor);
@@ -489,15 +491,19 @@ public class TemplateEditor extends AppCompatActivity {
      * @return Absolute path of the saved file. Null if there is some error.
      * @brief Saves the current project into a .buildmlearn file.
      */
-    protected String saveProject() {
+    private String saveProject() {
 
-        EditText authorEditText = ((EditText) findViewById(R.id.author_name));
-        EditText titleEditText = ((EditText) findViewById(R.id.template_title));
+        EditText authorEditText = (EditText) findViewById(R.id.author_name);
+        EditText titleEditText = (EditText) findViewById(R.id.template_title);
+        assert findViewById(R.id.author_name) != null;
         String author = ((EditText) findViewById(R.id.author_name)).getText().toString();
+        assert findViewById(R.id.template_title) != null;
         String title = ((EditText) findViewById(R.id.template_title)).getText().toString();
         if (author.equals("")) {
+            assert authorEditText != null;
             authorEditText.setError("Author name is required");
         } else if (title.equals("")) {
+            assert titleEditText != null;
             titleEditText.setError("Title is required");
         } else {
 
@@ -558,7 +564,7 @@ public class TemplateEditor extends AppCompatActivity {
      * <p/>
      * Start the simulator with the fragment returned by the selected template. Simulator is started as a new activity.
      */
-    protected void startSimulator() {
+    private void startSimulator() {
         String filePath = saveProject();
         if (filePath == null || filePath.equals("")) {
             Toast.makeText(this, "Build unsuccessful", Toast.LENGTH_SHORT).show();
@@ -578,7 +584,7 @@ public class TemplateEditor extends AppCompatActivity {
      * This function is used in loading existing files to editor. Reads file at a given path, parse the
      * file and convert into and convert it into TemplateInterface object.
      */
-    protected void parseSavedFile(String path) {
+    private void parseSavedFile(String path) {
 
         try {
             File fXmlFile = new File(path);
@@ -612,9 +618,7 @@ public class TemplateEditor extends AppCompatActivity {
             updateHeaderDetails(name, title);
 
 
-        } catch (SAXException | IOException | ParserConfigurationException | IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
+        } catch (SAXException | IOException | ParserConfigurationException | IllegalAccessException | InstantiationException e) {
             e.printStackTrace();
         }
 
@@ -626,10 +630,12 @@ public class TemplateEditor extends AppCompatActivity {
      * @param title Title of the template app
      * @brief Updates the title and author name in the header view.
      */
-    protected void updateHeaderDetails(String name, String title) {
-        EditText authorEditText = ((EditText) findViewById(R.id.author_name));
-        EditText titleEditText = ((EditText) findViewById(R.id.template_title));
+    private void updateHeaderDetails(String name, String title) {
+        EditText authorEditText = (EditText) findViewById(R.id.author_name);
+        EditText titleEditText = (EditText) findViewById(R.id.template_title);
+        assert authorEditText != null;
         authorEditText.setText(name);
+        assert titleEditText != null;
         titleEditText.setText(title);
     }
 
@@ -637,7 +643,7 @@ public class TemplateEditor extends AppCompatActivity {
      * @param adapter
      * @brief Sets the adapter to the ListView
      */
-    protected void setAdapter(BaseAdapter adapter) {
+    private void setAdapter(BaseAdapter adapter) {
         templateEdtiorList.setAdapter(adapter);
         setEmptyView();
     }
@@ -645,7 +651,7 @@ public class TemplateEditor extends AppCompatActivity {
     /**
      * @brief Toggles the visibility of empty text if adapter has zero elements
      */
-    protected void setEmptyView() {
+    private void setEmptyView() {
 
         if (templateEdtiorList.getAdapter().getCount() == 1) {
             findViewById(R.id.empty).setVisibility(View.VISIBLE);

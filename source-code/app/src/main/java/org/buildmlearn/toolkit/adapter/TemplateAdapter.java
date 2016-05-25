@@ -21,15 +21,13 @@ import org.buildmlearn.toolkit.model.Template;
  */
 public class TemplateAdapter extends BaseAdapter {
 
-    private Context context;
-    private int count;
+    private final Context context;
 
-    private Template[] templates = Template.values();
-    private ListColor[] colors = ListColor.values();
+    private final Template[] templates = Template.values();
+    private final ListColor[] colors = ListColor.values();
 
     public TemplateAdapter(Context context, int count) {
         this.context = context;
-        this.count = count;
     }
 
     /**
@@ -92,6 +90,7 @@ public class TemplateAdapter extends BaseAdapter {
 
         private
         @ColorRes
+        final
         int color;
 
         ListColor(String colorCode) {

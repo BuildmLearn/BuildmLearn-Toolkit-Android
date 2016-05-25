@@ -14,13 +14,13 @@ import java.util.ArrayList;
 /**
  * @brief Simulator code for Info Template
  */
-public class InfoListAdapter extends BaseAdapter {
+class InfoListAdapter extends BaseAdapter {
 
-    private Context mContext;
+    private final Context mContext;
     private ArrayList<InfoModel> mList;
 
     public InfoListAdapter(Context context) {
-        mList = new ArrayList<InfoModel>();
+        mList = new ArrayList<>();
         mContext = context;
     }
 

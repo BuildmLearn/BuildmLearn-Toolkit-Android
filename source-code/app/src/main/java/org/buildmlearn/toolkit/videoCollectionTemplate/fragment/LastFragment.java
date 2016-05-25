@@ -20,8 +20,7 @@ public class LastFragment extends Fragment {
     }
 
     public static Fragment newInstance() {
-        LastFragment fragment = new LastFragment();
-        return fragment;
+        return new LastFragment();
     }
 
     @Override

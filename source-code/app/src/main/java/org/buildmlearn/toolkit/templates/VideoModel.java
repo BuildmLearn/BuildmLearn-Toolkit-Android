@@ -12,12 +12,11 @@ import java.io.Serializable;
  */
 public class VideoModel implements Serializable {
 
-    public static String ROOT_TAG = "item";
-    public static String TITLE_TAG = "video_title";
-    public static String DESCRIPTION_TAG = "video_description";
-    public static String LINK_TAG = "video_link";
-    public static String THUMB_LINK_TAG = "video_thumb_link";
-
+    public static final String TITLE_TAG = "video_title";
+    public static final String DESCRIPTION_TAG = "video_description";
+    public static final String LINK_TAG = "video_link";
+    public static final String THUMB_LINK_TAG = "video_thumb_link";
+    private static final String ROOT_TAG = "item";
     private String title;
     private String description;
     private String link;

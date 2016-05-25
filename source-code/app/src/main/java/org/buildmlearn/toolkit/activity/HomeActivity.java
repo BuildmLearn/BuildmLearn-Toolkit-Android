@@ -6,18 +6,12 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.widget.Toast;
-
-import com.crashlytics.android.Crashlytics;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.fragment.NavigationDrawerFragment;
 import org.buildmlearn.toolkit.model.Section;
-
-import io.fabric.sdk.android.Fabric;
 
 /**
  * @brief Home screen of the application containg all the menus and settings.
@@ -25,14 +19,6 @@ import io.fabric.sdk.android.Fabric;
 public class HomeActivity extends AppCompatActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
-    /**
-     * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
-     */
-    private NavigationDrawerFragment mNavigationDrawerFragment;
-
-    /**
-     * Used to store the last screen title. For use in {@link #restoreActionBar()}.
-     */
     private CharSequence mTitle;
     private Section currentSection;
 
@@ -48,7 +34,10 @@ public class HomeActivity extends AppCompatActivity
         setContentView(R.layout.activity_home);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
 
-        mNavigationDrawerFragment = (NavigationDrawerFragment)
+        /*
+      Fragment managing the behaviors, interactions and presentation of the navigation drawer.
+     */
+        NavigationDrawerFragment mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
 
@@ -104,13 +93,5 @@ public class HomeActivity extends AppCompatActivity
             }
         }
     }
-
-
-    public void restoreActionBar() {
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayShowTitleEnabled(true);
-        actionBar.setTitle(mTitle);
-    }
-
 
 }

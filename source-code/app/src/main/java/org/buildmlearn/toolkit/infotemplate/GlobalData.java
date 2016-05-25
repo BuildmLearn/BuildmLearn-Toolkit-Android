@@ -37,7 +37,6 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -50,11 +49,12 @@ import javax.xml.parsers.ParserConfigurationException;
  */
 public class GlobalData {
     private static GlobalData instance = null;
-    String mTitle, mAuthor = null;
     int iSelectedIndex = -1;
     ArrayList<InfoModel> mList = null;
+    private String mTitle;
+    private String mAuthor = null;
 
-    protected GlobalData() {
+    private GlobalData() {
         // Exists only to defeat instantiation.
     }
 
@@ -75,7 +75,7 @@ public class GlobalData {
         else if (nodeList.getLength() == 0)
             return "";
         else {
-            Node node = (Node) nodeList.item(0);
+            Node node = nodeList.item(0);
 
             return node.getNodeValue();
         }
@@ -90,7 +90,7 @@ public class GlobalData {
         Document doc;
         try {
             File fXmlFile = new File(filePath);
-            mList = new ArrayList<InfoModel>();
+            mList = new ArrayList<>();
             db = dbf.newDocumentBuilder();
             doc = db.parse(fXmlFile);
             doc.normalize();
@@ -105,7 +105,6 @@ public class GlobalData {
             // NamedNodeMap node1 = author_nodes.item(0).getAttributes();
             mAuthor = doc.getElementsByTagName("name").item(0).getChildNodes()
                     .item(0).getNodeValue();
-            ;
             // node1.getNamedItem("name").getNodeValue();
             NodeList childNodes = doc.getElementsByTagName("item");
             // Log.e("tag", "childNodes" + childNodes.getLength());
@@ -124,16 +123,10 @@ public class GlobalData {
                 mList.add(app);
 
             }
-        } catch (ParserConfigurationException e) {
-            Log.e("tag", e.getLocalizedMessage());
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
+        } catch (ParserConfigurationException | IOException e) {
             Log.e("tag", e.getLocalizedMessage());
             e.printStackTrace();
         } catch (SAXException e) {
-            Log.e("tag", e.getLocalizedMessage());
-            e.printStackTrace();
-        } catch (IOException e) {
             Log.e("tag", e.getLocalizedMessage());
             e.printStackTrace();
         }

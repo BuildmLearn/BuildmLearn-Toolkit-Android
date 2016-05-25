@@ -26,17 +26,17 @@ import org.buildmlearn.toolkit.R;
  */
 public class MainFragment extends Fragment implements
         AnimationListener {
-    View answerView, questionView;
-    Button flipButton;
-    Button preButton;
-    Button nextButton;
-    boolean isFlipped = false;
-    int iQuestionIndex = 0;
-    GlobalData gd = GlobalData.getInstance();
-    String flashCardanswer;
-    ImageView questionImage;
-    TextView flashcardNumber;
-    TextView questionText, hintText;
+    private final GlobalData gd = GlobalData.getInstance();
+    private View answerView;
+    private View questionView;
+    private Button preButton;
+    private boolean isFlipped = false;
+    private int iQuestionIndex = 0;
+    private String flashCardanswer;
+    private ImageView questionImage;
+    private TextView flashcardNumber;
+    private TextView questionText;
+    private TextView hintText;
     private Animation animation1;
     private Animation animation2;
     private View currentView;
@@ -65,9 +65,9 @@ public class MainFragment extends Fragment implements
         hintText = (TextView) view.findViewById(R.id.questionhint);
         flashcardNumber = (TextView) view.findViewById(R.id.flashCardNumber);
 
-        flipButton = (Button) view.findViewById(R.id.flip_button);
+        Button flipButton = (Button) view.findViewById(R.id.flip_button);
         preButton = (Button) view.findViewById(R.id.pre_button);
-        nextButton = (Button) view.findViewById(R.id.next_button);
+        Button nextButton = (Button) view.findViewById(R.id.next_button);
 
         populateQuestion(iQuestionIndex);
         currentView = questionView;
@@ -128,7 +128,7 @@ public class MainFragment extends Fragment implements
     }
 
 
-    public void populateQuestion(int index) {
+    private void populateQuestion(int index) {
         if (index == 0) {
             preButton.setEnabled(false);
 
@@ -159,7 +159,7 @@ public class MainFragment extends Fragment implements
 
     }
 
-    public void reInitialize() {
+    private void reInitialize() {
         iQuestionIndex = 0;
         gd.model.clear();
     }

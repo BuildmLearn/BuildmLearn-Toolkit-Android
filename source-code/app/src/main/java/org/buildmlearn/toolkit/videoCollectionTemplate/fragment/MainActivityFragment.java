@@ -48,8 +48,7 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
     }
 
     public static Fragment newInstance() {
-        MainActivityFragment fragment = new MainActivityFragment();
-        return fragment;
+        return new MainActivityFragment();
     }
 
     @Override
@@ -100,7 +99,8 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
                         builder.setPositiveButton("OK", null);
                         AlertDialog welcomeAlert = builder.create();
                         welcomeAlert.show();
-                        assert ((TextView) welcomeAlert.findViewById(android.R.id.message)) != null;
+                        assert welcomeAlert.findViewById(android.R.id.message) != null;
+                        assert welcomeAlert.findViewById(android.R.id.message) != null;
                         ((TextView) welcomeAlert.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
                         break;
                 }

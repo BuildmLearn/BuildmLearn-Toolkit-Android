@@ -47,21 +47,19 @@ import java.util.Locale;
  * @brief Simulator code for Learn Spelling Template
  */
 public class ResultActivity extends Fragment {
-    private TextView mTv_Correct, mTv_Wrong, mTv_Unanswered;
     private DataManager mDataManager;
     private TextToSpeech textToSpeech;
     private int unanswered, wrong, correct;
-    private View view;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        view = inflater.inflate(R.layout.spelling_fragment_finish, container, false);
+        View view = inflater.inflate(R.layout.spelling_fragment_finish, container, false);
         mDataManager = DataManager.getInstance();
-        mTv_Correct = (TextView) view.findViewById(R.id.tv_correct);
-        mTv_Wrong = (TextView) view.findViewById(R.id.tv_wrong);
-        mTv_Unanswered = (TextView) view.findViewById(R.id.tv_unanswered);
+        TextView mTv_Correct = (TextView) view.findViewById(R.id.tv_correct);
+        TextView mTv_Wrong = (TextView) view.findViewById(R.id.tv_wrong);
+        TextView mTv_Unanswered = (TextView) view.findViewById(R.id.tv_unanswered);
         correct = mDataManager.getCorrect();
         wrong = mDataManager.getWrong();
         unanswered = mDataManager.getList().size() - correct - wrong;

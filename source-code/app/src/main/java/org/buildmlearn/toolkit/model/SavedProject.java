@@ -10,13 +10,12 @@ import java.text.SimpleDateFormat;
  */
 public class SavedProject {
 
+    private final String fullPath;
     private File file;
-
     private String name;
     private String date;
     private String type;
     private String author;
-    private String fullPath;
 
     public SavedProject(File file, String fileName, long date, String type, String fullPath) {
 

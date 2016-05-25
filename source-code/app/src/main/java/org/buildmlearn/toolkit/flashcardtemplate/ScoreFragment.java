@@ -18,7 +18,6 @@ import org.buildmlearn.toolkit.constant.Constants;
  * @brief Simulator code for Flash Card Template
  */
 public class ScoreFragment extends Fragment {
-    GlobalData gd;
 
 
     @Nullable
@@ -26,7 +25,7 @@ public class ScoreFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.flash_simu_finish, container, false);
-        gd = GlobalData.getInstance();
+        GlobalData gd = GlobalData.getInstance();
         TextView mCardQuizName = (TextView) view.findViewById(R.id.tv_lastcard);
         mCardQuizName.setText(gd.iQuizTitle);
 

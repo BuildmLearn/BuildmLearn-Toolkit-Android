@@ -65,13 +65,12 @@ public class SpellingActivity extends Fragment implements
     private Button mBtn_Spell, mBtn_Skip;
     private EditText mEt_Spelling;
     private SeekBar mSb_SpeechRate;
-    private View view;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        view = inflater.inflate(R.layout.spelling_fragment_spelling, container, false);
+        View view = inflater.inflate(R.layout.spelling_fragment_spelling, container, false);
 
         mBtn_Spell = (Button) view.findViewById(R.id.btn_ready);
 
@@ -181,9 +180,9 @@ public class SpellingActivity extends Fragment implements
         }
     }
 
-    public void submit() {
+    private void submit() {
         String input = mEt_Spelling.getText().toString().trim();
-        if (input == null || input.length() == 0) {
+        if (input.length() == 0) {
             Toast.makeText(getActivity(), "Please enter the spelling",
                     Toast.LENGTH_SHORT).show();
 
@@ -205,8 +204,7 @@ public class SpellingActivity extends Fragment implements
 
     private float getProgressValue(int percent) {
         float temp = ((float) percent / 100);
-        float per = temp * 2;
-        return per;
+        return temp * 2;
     }
 
 

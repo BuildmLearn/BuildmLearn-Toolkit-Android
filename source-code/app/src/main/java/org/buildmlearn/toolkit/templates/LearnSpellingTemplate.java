@@ -33,7 +33,7 @@ public class LearnSpellingTemplate implements TemplateInterface {
         mLearnSpellingData = new ArrayList<>();
     }
 
-    public static boolean validated(Context context, EditText word, EditText meaning) {
+    private static boolean validated(Context context, EditText word, EditText meaning) {
         if (word == null || meaning == null) {
             return false;
         }

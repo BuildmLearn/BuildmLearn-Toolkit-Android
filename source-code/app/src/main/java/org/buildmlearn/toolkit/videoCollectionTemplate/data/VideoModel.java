@@ -10,11 +10,11 @@ import org.w3c.dom.Element;
  * Created by Anupam (opticod) on 12/5/16.
  */
 public class VideoModel implements Parcelable {
-    public static String ROOT_TAG = "item";
-    public static String TITLE_TAG = "video_title";
-    public static String DESCRIPTION_TAG = "video_description";
-    public static String LINK_TAG = "video_link";
-    public static String THUMB_LINK_TAG = "video_thumb_link";
+    private static final String ROOT_TAG = "item";
+    private static final String TITLE_TAG = "video_title";
+    private static final String DESCRIPTION_TAG = "video_description";
+    private static final String LINK_TAG = "video_link";
+    private static final String THUMB_LINK_TAG = "video_thumb_link";
     public final Creator<VideoModel> CREATOR = new Creator<VideoModel>() {
         @Override
         public VideoModel createFromParcel(Parcel parcel) {

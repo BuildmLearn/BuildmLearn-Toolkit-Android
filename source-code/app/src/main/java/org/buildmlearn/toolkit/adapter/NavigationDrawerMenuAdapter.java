@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.v4.content.ContextCompat;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
@@ -25,11 +26,11 @@ import org.buildmlearn.toolkit.model.Section;
  */
 public class NavigationDrawerMenuAdapter extends BaseAdapter {
 
-    private Section[] sections = Section.values();
-    private LayoutInflater inflater;
+    private final Section[] sections = Section.values();
+    private final LayoutInflater inflater;
+    private final Context context;
     private int currentSectionForegroundColor;
     private int currentSectionBackgroundColor;
-    private Context context;
 
     public NavigationDrawerMenuAdapter(Context context, LayoutInflater inflater) {
         this.inflater = inflater;
@@ -37,11 +38,11 @@ public class NavigationDrawerMenuAdapter extends BaseAdapter {
         // Select the primary color to tint the current section
         TypedArray a = context.getTheme().obtainStyledAttributes(new int[]{R.attr.colorPrimary});
         try {
-            currentSectionForegroundColor = a.getColor(0, context.getResources().getColor(R.color.color_primary));
+            currentSectionForegroundColor = a.getColor(0, ContextCompat.getColor(context, R.color.color_primary));
         } finally {
             a.recycle();
         }
-        currentSectionBackgroundColor = context.getResources().getColor(R.color.translucent_grey);
+        currentSectionBackgroundColor = ContextCompat.getColor(context, R.color.translucent_grey);
     }
 
     /**
@@ -82,7 +83,7 @@ public class NavigationDrawerMenuAdapter extends BaseAdapter {
             if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 sectionIcon = context.getDrawable(menu.getIconResId());
             } else {
-                sectionIcon = context.getResources().getDrawable(menu.getIconResId());
+                sectionIcon = ContextCompat.getDrawable(context, menu.getIconResId());
             }
             int backgroundColor;
             if (menu.isSelected()) {
@@ -90,6 +91,7 @@ public class NavigationDrawerMenuAdapter extends BaseAdapter {
 //            sectionTitle.setSpan(new StyleSpan(Typeface.BOLD), 0, sectionTitle.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 sectionTitle.setSpan(new ForegroundColorSpan(currentSectionForegroundColor), 0, sectionTitle.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 // We need to mutate the drawable before applying the ColorFilter, or else all the similar drawable instances will be tinted.
+                assert sectionIcon != null;
                 sectionIcon.mutate().setColorFilter(currentSectionForegroundColor, PorterDuff.Mode.SRC_IN);
                 backgroundColor = currentSectionBackgroundColor;
             } else {

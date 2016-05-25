@@ -22,10 +22,10 @@ import java.util.ArrayList;
  * <p/>
  * Created by abhishek on 17/06/15 at 9:48 PM.
  */
-public class InfoAdapter extends BaseAdapter {
+class InfoAdapter extends BaseAdapter {
 
-    private Context mContext;
-    private ArrayList<InfoModel> data;
+    private final Context mContext;
+    private final ArrayList<InfoModel> data;
 
     public InfoAdapter(Context mContext, ArrayList<InfoModel> data) {
         this.mContext = mContext;

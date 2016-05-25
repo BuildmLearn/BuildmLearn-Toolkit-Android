@@ -42,38 +42,32 @@ import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
  */
 public class VideoCollectionTemplate implements TemplateInterface {
 
-    private static String YOUTUBE = "youtube";
-    private static String DAILYMOTION = "dailymotion";
-    private static String VIMEO = "vimeo";
-
+    private static final String YOUTUBE = "youtube";
+    private static final String DAILYMOTION = "dailymotion";
+    private static final String VIMEO = "vimeo";
+    private final String JSON_TITLE = "title";
+    private final String JSON_DESCRIPTION = "description";
+    private final String JSON_THUMBNAIL_URL = "thumbnail_url";
+    private final String META_PROPERTY_TITLE = "meta[property=og:title]";
+    private final String META_PROPERTY_DESCRIPTION = "meta[property=og:description]";
+    private final String META_PROPERTY_THUMBNAIL_URL = "meta[property=og:image]";
+    private final String META_CONTENT = "content";
+    private final String USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.94 Safari/537.36";
+    private final int TIMEOUT_LIMIT = 60000;
+    private final String DAILYMOTION_OEMBED_LINK = "http://www.dailymotion.com/services/oembed?url=";
+    private final String VIMEO_OEMBED_LINK = "https://vimeo.com/api/oembed.json?url=";
+    private final String TEMPLATE_NAME = "VideoCollection Template";
     transient private VideoCollectionAdapter adapter;
     private ArrayList<VideoModel> videoData;
     transient private ProgressDialog progress;
     transient private Context mContext;
-
-    private String JSON_TITLE = "title";
-    private String JSON_DESCRIPTION = "description";
-    private String JSON_THUMBNAIL_URL = "thumbnail_url";
-
-    private String META_PROPERTY_TITLE = "meta[property=og:title]";
-    private String META_PROPERTY_DESCRIPTION = "meta[property=og:description]";
-    private String META_PROPERTY_THUMBNAIL_URL = "meta[property=og:image]";
-    private String META_CONTENT = "content";
-
-    private String USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.94 Safari/537.36";
-    private int TIMEOUT_LIMIT = 60000;
-
-    private String DAILYMOTION_OEMBED_LINK = "http://www.dailymotion.com/services/oembed?url=";
-    private String VIMEO_OEMBED_LINK = "https://vimeo.com/api/oembed.json?url=";
-
-    private String TEMPLATE_NAME = "VideoCollection Template";
 
 
     public VideoCollectionTemplate() {
         videoData = new ArrayList<>();
     }
 
-    public static boolean validated(Context context, EditText link) {
+    private static boolean validated(Context context, EditText link) {
         if (link == null) {
             return false;
         }
@@ -91,7 +85,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
 
     }
 
-    public static boolean validated(Context context, EditText title, EditText description, EditText link) {
+    private static boolean validated(Context context, EditText title, EditText description, EditText link) {
         if (link == null || title == null || description == null) {
             return false;
         }
@@ -332,9 +326,9 @@ public class VideoCollectionTemplate implements TemplateInterface {
 
     private class VideoInfoTask extends AsyncTask<String, Integer, String> {
 
-        protected String link;
-        protected String position;
-        protected boolean success;
+        String link;
+        String position;
+        boolean success;
 
         @Override
         protected String doInBackground(String... params) {
@@ -387,7 +381,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
                     urlConnection.setRequestMethod("GET");
                     urlConnection.connect();
                     InputStream inputStream = urlConnection.getInputStream();
-                    StringBuffer buffer = new StringBuffer();
+                    StringBuilder buffer = new StringBuilder();
                     if (inputStream == null) {
                         success = false;
                         return null;
@@ -395,7 +389,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
                     reader = new BufferedReader(new InputStreamReader(inputStream));
                     String line;
                     while ((line = reader.readLine()) != null) {
-                        buffer.append(line + "\n");
+                        buffer.append(line).append("\n");
                     }
                     if (buffer.length() == 0) {
                         return null;
@@ -411,7 +405,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
                     if (reader != null) {
                         try {
                             reader.close();
-                        } catch (final IOException e) {
+                        } catch (final IOException ignored) {
                         }
                     }
                 }
@@ -447,7 +441,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
                     success = false;
                 }
             }
-            if (success == false) {
+            if (!success) {
                 Toast.makeText(mContext, R.string.video_fetching_error, Toast.LENGTH_SHORT).show();
             }
             adapter.notifyDataSetChanged();

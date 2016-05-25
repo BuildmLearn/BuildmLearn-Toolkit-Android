@@ -31,6 +31,7 @@ package org.buildmlearn.toolkit.infotemplate;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ListView;
 
@@ -58,7 +59,7 @@ public class TFTFragment extends ListFragment {
         InfoListAdapter adapter = new InfoListAdapter(getActivity());
         setListAdapter(adapter);
         setEmptyText("No Data");
-        getListView().setBackgroundColor(getResources().getColor(R.color.info_template_blue_background));
+        getListView().setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.info_template_blue_background));
         adapter.setList(gd.mList);
 
 

@@ -27,7 +27,7 @@
         android:layout_margin="5dp"
         android:text="TextView"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/white_primary_text"></TextView>
+        android:textColor="@color/white_primary_text" />
 
     <View
         android:layout_width="fill_parent"
@@ -42,6 +42,6 @@
         android:layout_margin="5dp"
         android:text="TextView"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/white_secondary_text"></TextView>
+        android:textColor="@color/white_secondary_text" />
 
 </LinearLayout>

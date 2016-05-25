@@ -76,7 +76,7 @@ public class DataManager {
         else if (nodeList.getLength() == 0)
             return "";
         else {
-            Node node = (Node) nodeList.item(0);
+            Node node = nodeList.item(0);
 
             return node.getNodeValue();
         }

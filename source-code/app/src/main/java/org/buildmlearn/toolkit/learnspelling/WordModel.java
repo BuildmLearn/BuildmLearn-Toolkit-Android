@@ -31,7 +31,7 @@ package org.buildmlearn.toolkit.learnspelling;
 /**
  * @brief Simulator code for Learn Spelling Template
  */
-public class WordModel {
+class WordModel {
 
     private String mWord;
     private String mDescription;

@@ -50,23 +50,18 @@ public class ScoreFragment extends Fragment {
 
     public final static String TAG = "SCORE_FRAGMENT";
 
-    private GlobalData gd;
-    private TextView mTv_correct, mTv_wrong, mTv_unanswered;
-    private FragmentActivity faActivity;
-    private View view;
-
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        faActivity = (FragmentActivity) super.getActivity();
-        view = inflater.inflate(R.layout.quiz_template_fragment_score_view, container, false);
+        FragmentActivity faActivity = super.getActivity();
+        View view = inflater.inflate(R.layout.quiz_template_fragment_score_view, container, false);
 
-        gd = GlobalData.getInstance();
+        GlobalData gd = GlobalData.getInstance();
 
-        mTv_correct = (TextView) view.findViewById(R.id.tv_correct);
-        mTv_wrong = (TextView) view.findViewById(R.id.tv_wrong);
-        mTv_unanswered = (TextView) view.findViewById(R.id.tv_unanswered);
+        TextView mTv_correct = (TextView) view.findViewById(R.id.tv_correct);
+        TextView mTv_wrong = (TextView) view.findViewById(R.id.tv_wrong);
+        TextView mTv_unanswered = (TextView) view.findViewById(R.id.tv_unanswered);
         mTv_correct.setText("Total Correct: " + gd.correct);
         mTv_wrong.setText("Total Wrong: " + gd.wrong);
         int unanswered = gd.total - gd.correct - gd.wrong;

@@ -5,7 +5,6 @@ import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -37,9 +36,7 @@ public class DataUtils {
             result[1] = doc.getElementsByTagName("name").item(0).getChildNodes()
                     .item(0).getNodeValue();
 
-        } catch (ParserConfigurationException | FileNotFoundException | SAXException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         }
         return result;

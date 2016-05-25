@@ -212,7 +212,7 @@
         <item name="android:textColorHint">@color/white_hint_text_disabled</item>
     </style>
 
-    <style name="EditText"></style>
+    <style name="EditText" />
 
     <style name="NoActionBarThemeTransparentStatusBar" parent="@style/AppTheme">
         <item name="windowActionBar">false</item>

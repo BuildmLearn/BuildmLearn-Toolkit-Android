@@ -28,7 +28,6 @@
         android:background="@android:color/white" />
 
     <LinearLayout
-        android:id="@+id/ll_btnlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -60,7 +59,6 @@
     </LinearLayout>
 
     <FrameLayout
-        android:id="@+id/fl"
         android:layout_width="@dimen/card_width"
         android:layout_height="@dimen/card_width"
         android:layout_centerInParent="true"
@@ -68,8 +66,8 @@
 
         <include
             android:id="@+id/questionInMain"
-            android:layout_margin="5dp"
-            layout="@layout/flash_simu_question" />
+            layout="@layout/flash_simu_question"
+            android:layout_margin="5dp" />
 
         <include
             android:id="@+id/answerInMain"

@@ -28,7 +28,6 @@
 
 
     <TextView
-        android:id="@+id/textView2"
         style="@style/TextView.Caption.Light"
         android:text="@string/flash_templete_question"
         android:textColor="@color/black_secondary_text"/>

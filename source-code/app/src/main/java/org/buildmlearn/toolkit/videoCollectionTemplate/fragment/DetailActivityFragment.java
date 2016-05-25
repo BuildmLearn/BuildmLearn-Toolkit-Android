@@ -1,6 +1,5 @@
 package org.buildmlearn.toolkit.videoCollectionTemplate.fragment;
 
-import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -26,7 +25,6 @@ import org.buildmlearn.toolkit.videoCollectionTemplate.data.VideoDb;
 public class DetailActivityFragment extends Fragment implements LoaderCallbacks<Cursor> {
 
     private static final int DETAIL_LOADER = 0;
-    private final ContentValues videoValues;
 
     private View rootView;
     private WebView player;
@@ -35,12 +33,10 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
 
     public DetailActivityFragment() {
         setHasOptionsMenu(true);
-        videoValues = new ContentValues();
     }
 
     public static Fragment newInstance() {
-        DetailActivityFragment fragment = new DetailActivityFragment();
-        return fragment;
+        return new DetailActivityFragment();
     }
 
     @Override

@@ -24,17 +24,21 @@ public enum Template {
     VIDEO_COLLECTION(R.string.video_collection_title, R.string.video_collection_description, R.drawable.video_collection, R.string.video_collection_template, VideoCollectionTemplate.class);
 
     @StringRes
+    final
     int type;
     private
     @DrawableRes
+    final
     int image;
     private
     @StringRes
+    final
     int title;
     private
     @StringRes
+    final
     int description;
-    private Class<? extends TemplateInterface> templateClass;
+    private final Class<? extends TemplateInterface> templateClass;
 
     Template(@StringRes int title, @StringRes int description, @DrawableRes int image, @StringRes int type, Class<? extends TemplateInterface> templateClass) {
         this.image = image;

@@ -15,11 +15,6 @@ import org.buildmlearn.toolkit.constant.Constants;
  */
 public class TutorialActivity extends AppCompatActivity {
 
-    private static final String TAG = "Tutorial Activity";
-    private TutorialAdapter mAdapter;
-    private ViewPager mPager;
-    private CirclePageIndicator mIndicator;
-
     /**
      * {@inheritDoc}
      */
@@ -28,15 +23,15 @@ public class TutorialActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutorial);
 
-        mAdapter = new TutorialAdapter(this, getIntent().getBooleanExtra(Constants.START_ACTIVITY, false));
+        TutorialAdapter mAdapter = new TutorialAdapter(this, getIntent().getBooleanExtra(Constants.START_ACTIVITY, false));
 
-        mPager = (ViewPager) findViewById(R.id.pager);
+        ViewPager mPager = (ViewPager) findViewById(R.id.pager);
         //  mPager.setAdapter(mAdapter);
 
         mPager.setAdapter(mAdapter);
 
 
-        mIndicator = (CirclePageIndicator) findViewById(R.id.indicator);
+        CirclePageIndicator mIndicator = (CirclePageIndicator) findViewById(R.id.indicator);
         mIndicator.setViewPager(mPager);
     }
 

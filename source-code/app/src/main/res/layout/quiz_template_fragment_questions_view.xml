@@ -11,7 +11,7 @@
         android:layout_alignParentTop="true"
         android:layout_margin="10dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@android:color/white"></TextView>
+        android:textColor="@android:color/white" />
 
     <View
         android:id="@+id/divider"
@@ -20,7 +20,7 @@
         android:layout_below="@id/question_no"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:background="#8798AC"></View>
+        android:background="#8798AC" />
 
     <TextView
         android:id="@+id/question_label"
@@ -29,7 +29,7 @@
         android:layout_below="@id/divider"
         android:layout_margin="10dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@android:color/white"></TextView>
+        android:textColor="@android:color/white" />
 
     <RadioGroup
         android:id="@+id/radioGroup1"
@@ -43,14 +43,14 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:textColor="@android:color/white"></RadioButton>
+            android:textColor="@android:color/white" />
 
         <RadioButton
             android:id="@+id/radio1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:textColor="@android:color/white"></RadioButton>
+            android:textColor="@android:color/white" />
 
         <RadioButton
             android:id="@+id/radio2"
@@ -58,14 +58,14 @@
             android:layout_height="wrap_content"
             android:checked="false"
             android:text="RadioButton"
-            android:textColor="@android:color/white"></RadioButton>
+            android:textColor="@android:color/white" />
 
         <RadioButton
             android:id="@+id/radio3"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:textColor="@android:color/white"></RadioButton>
+            android:textColor="@android:color/white" />
     </RadioGroup>
 
     <LinearLayout
@@ -82,7 +82,7 @@
             android:layout_weight="1"
             android:padding="10dp"
             android:text="Next"
-            android:textColor="@android:color/white"></Button>
+            android:textColor="@android:color/white" />
 
         <Button
             android:id="@+id/submit_button"
@@ -92,7 +92,7 @@
             android:layout_weight="1"
             android:padding="10dp"
             android:text="Submit"
-            android:textColor="@android:color/white"></Button>
+            android:textColor="@android:color/white" />
     </LinearLayout>
 
 </RelativeLayout>

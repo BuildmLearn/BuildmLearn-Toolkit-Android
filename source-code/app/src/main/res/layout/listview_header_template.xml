@@ -16,7 +16,6 @@
         android:paddingTop="25dp">
 
         <view
-            android:id="@+id/textView"
             style="@style/TextView.Caption"
             class="org.buildmlearn.toolkit.views.TextViewPlus"
             android:text="@string/label_quiz"
@@ -32,7 +31,6 @@
             android:theme="@style/EditText.Dark" />
 
         <view
-            android:id="@+id/textView2"
             style="@style/TextView.Caption"
             class="org.buildmlearn.toolkit.views.TextViewPlus"
             android:text="@string/label_author"

@@ -23,7 +23,6 @@ public class Simulator extends AppCompatActivity {
     private static final String TAG = "SIMULATOR";
     private int templateId;
     private TemplateInterface selectedTemplate;
-    private Template template;
 
     /**
      * {@inheritDoc}
@@ -34,6 +33,7 @@ public class Simulator extends AppCompatActivity {
         setContentView(R.layout.activity_simulator);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
         templateId = getIntent().getIntExtra(Constants.TEMPLATE_ID, -1);
         if (templateId == -1) {
@@ -78,9 +78,9 @@ public class Simulator extends AppCompatActivity {
     /**
      * @brief Fetches the instance from the Template Enum for given template object
      */
-    protected void setUpTemplateEditor() {
+    private void setUpTemplateEditor() {
         Template[] templates = Template.values();
-        template = templates[templateId];
+        Template template = templates[templateId];
         Class templateClass = template.getTemplateClass();
         try {
             Object templateObject = templateClass.newInstance();
@@ -96,7 +96,7 @@ public class Simulator extends AppCompatActivity {
     /**
      * @brief Restores simulator state on configuration change
      */
-    protected void restoreTemplateEditor(Bundle savedInstanceState) {
+    private void restoreTemplateEditor(Bundle savedInstanceState) {
         Log.d(TAG, "Activity Restored");
         selectedTemplate = (TemplateInterface) savedInstanceState.getSerializable(Constants.TEMPLATE_OBJECT);
         if (selectedTemplate == null) {
