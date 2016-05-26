@@ -87,6 +87,18 @@
     <string name="video_collection_template_description_hint">Enter Description</string>
     <string name="video_collection_or">OR</string>
 
+    <!-- Comprehension Template-->
+    <string name="comprehension_title">Comprehension</string>
+    <string name="comprehension_template">ComprehensionTemplate</string>
+    <string name="comprehension_description">Choose this template to create applications for learning from comprehensions</string>
+    <string name="comprehension_link">Link</string>
+    <string name="comprehension_template_title">Title</string>
+    <string name="comprehension_template_description">Description</string>
+    <string name="comprehension_template_title_hint">Enter Title</string>
+    <string name="comprehension_template_link_hint">Enter Link</string>
+    <string name="comprehension_template_description_hint">Enter Description</string>
+    <string name="comprehension_or">OR</string>
+
     <!-- Template Resources-->
     <string name="basic_m_learning_title">Basic mLearning</string>
     <string name="basic_m_learning_description">Create app displaying clickable list of textual information</string>
