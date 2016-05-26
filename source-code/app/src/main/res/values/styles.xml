@@ -89,7 +89,6 @@
         <item name="customFont">roboto_medium.ttf</item>
     </style>
 
-
     <style name="TextView.Body1.Thin" parent="TextAppearance.AppCompat.Body1">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -112,6 +111,11 @@
         <item name="android:textSize">@dimen/sub_title</item>
         <item name="android:textColor">@color/black_primary_text</item>
         <item name="customFont">roboto_medium.ttf</item>
+    </style>
+
+    <style name="TextView.Title.Thin.WrapWidthHeight" parent="TextView.Title.Thin">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
     </style>
 
     <style name="TextView.Caption" parent="TextAppearance.AppCompat.Caption">

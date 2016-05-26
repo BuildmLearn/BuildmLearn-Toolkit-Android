@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView2"
+        style="@style/TextView.Caption.Light"
+        android:text="@string/comprehension_dialog_title"
+        android:textColor="@color/black_secondary_text" />
+
+    <EditText
+        android:id="@+id/comprehension_title_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/textView3"
+        style="@style/TextView.Caption.Light"
+        android:text="@string/comprehension_dialog_time"
+        android:textColor="@color/black_secondary_text" />
+
+    <EditText
+        android:id="@+id/comprehension_time_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number" />
+
+    <TextView
+        style="@style/TextView.Caption.Light"
+        android:text="@string/comprehension_dialog_content"
+        android:textColor="@color/black_secondary_text" />
+
+    <EditText
+        android:id="@+id/comprehension_content_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine" />
+
+</LinearLayout>

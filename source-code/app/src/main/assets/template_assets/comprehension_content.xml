@@ -1,0 +1,42 @@
+<buildmlearn_application type="ComprehensionTemplate">
+    <author>
+        <name>DG</name>
+    </author>
+    <title>ESC</title>
+    <data>
+        <item>
+            <isComprehension>true</isComprehension>
+            <comprehension>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis sapien
+                etorci consequat feugiat. Praesent viverra hendrerit risus ac semper. Fusce vitae ex ut
+                elitegestas consectetur et vel magna. Aenean non ligula sit amet urna tincidunt porta.
+                Phasellus nec venenatis metus. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                Cras faucibus nisi massa, at posuere felis commodo ac. Pellentesque porta egestas turpis
+                eget gravida. Nunc ullamcorper leo nibh, non fermentum sapien feugiat in. Nunc faucibus
+                tristique ipsum, ac placerat risus aliquam sit amet. Sed id enim rutrum massa consectetur
+                faucibus. Mauris rhoncus elit ut pellentesque cursus. Fusce nec nibh nec dui viverra
+                vehicula. Sed lacinia gravida placerat. Fusce sit amet turpis pulvinar, sodales risus vel,
+                scelerisque turpis.
+            </comprehension>
+            <comprehensionTitle>lorem random text title</comprehensionTitle>
+            <timeInMinute>11</timeInMinute>
+        </item>
+        <item>
+            <isComprehension>false</isComprehension>
+            <question>jzz</question>
+            <option>jd</option>
+            <option>nd</option>
+            <option>jd</option>
+            <option>js</option>
+            <answer>2</answer>
+        </item>
+        <item>
+            <isComprehension>false</isComprehension>
+            <question>si</question>
+            <option>dnd</option>
+            <option>je</option>
+            <option>nws</option>
+            <option>ns</option>
+            <answer>2</answer>
+        </item>
+    </data>
+</buildmlearn_application>
