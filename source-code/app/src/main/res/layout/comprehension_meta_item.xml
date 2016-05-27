@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center_vertical|center_horizontal"
+        android:orientation="horizontal">
+
+        <view
+            android:id="@+id/title"
+            style="@style/TextView.Title.Bold"
+            class="org.buildmlearn.toolkit.views.TextViewPlus"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="1"
+            android:paddingBottom="8dp"
+            android:paddingTop="16dp"
+            android:text="English Tutorial" />
+
+        <view
+            android:id="@+id/timer"
+            style="@style/TextView.Title.Thin"
+            class="org.buildmlearn.toolkit.views.TextViewPlus"
+            android:layout_marginRight="16dp"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:paddingBottom="8dp"
+            android:paddingTop="16dp"
+            android:text="180 sec" />
+
+    </LinearLayout>
+
+    <view
+        android:id="@+id/passage"
+        style="@style/TextView.Body1"
+        class="org.buildmlearn.toolkit.views.TextViewPlus"
+        android:layout_marginLeft="16dp"
+        android:paddingBottom="8dp"
+        android:paddingRight="16dp"
+        android:text="This is a long long passage of some cool meta details. Made only for BuildmLearn as a pat of GSoC Project." />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@color/color_divider" />
+
+</LinearLayout>
