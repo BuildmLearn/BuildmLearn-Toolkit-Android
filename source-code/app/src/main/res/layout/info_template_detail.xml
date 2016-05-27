@@ -15,7 +15,7 @@
             android:layout_marginLeft="16dp"
             android:id="@+id/info_template_simulator_back_button"
             android:layout_gravity="center_vertical|left"
-            android:src="@drawable/abc_ic_ab_back_mtrl_am_alpha" />
+            android:src="@drawable/abc_ic_ab_back_material" />
 
 
     </LinearLayout>
