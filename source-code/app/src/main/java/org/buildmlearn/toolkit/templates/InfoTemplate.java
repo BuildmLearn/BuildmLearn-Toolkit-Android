@@ -60,8 +60,23 @@ public class InfoTemplate implements TemplateInterface {
     }
 
     @Override
+    public BaseAdapter newMetaEditorAdapter(Context context) {
+        return null;
+    }
+
+    @Override
     public BaseAdapter currentTemplateEditorAdapter() {
         return adapter;
+    }
+
+    @Override
+    public BaseAdapter currentMetaEditorAdapter() {
+        return null;
+    }
+
+    @Override
+    public BaseAdapter loadProjectMetaEditor(Context context, Document doc) {
+        return null;
     }
 
     @Override
@@ -117,6 +132,11 @@ public class InfoTemplate implements TemplateInterface {
         });
 
         dialog.show();
+
+    }
+
+    @Override
+    public void addMetaData(Activity activity) {
 
     }
 

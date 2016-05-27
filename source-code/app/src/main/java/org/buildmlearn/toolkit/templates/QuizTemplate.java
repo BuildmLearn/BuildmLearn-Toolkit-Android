@@ -43,8 +43,23 @@ public class QuizTemplate implements TemplateInterface {
     }
 
     @Override
+    public BaseAdapter newMetaEditorAdapter(Context context) {
+        return null;
+    }
+
+    @Override
     public BaseAdapter currentTemplateEditorAdapter() {
         return mAdapter;
+    }
+
+    @Override
+    public BaseAdapter currentMetaEditorAdapter() {
+        return null;
+    }
+
+    @Override
+    public BaseAdapter loadProjectMetaEditor(Context context, Document doc) {
+        return null;
     }
 
     @Override
@@ -152,6 +167,11 @@ public class QuizTemplate implements TemplateInterface {
             }
         });
         dialog.show();
+
+    }
+
+    @Override
+    public void addMetaData(Activity activity) {
 
     }
 

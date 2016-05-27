@@ -28,10 +28,25 @@ public interface TemplateInterface extends Serializable {
     BaseAdapter newTemplateEditorAdapter(Context context);
 
     /**
+     * @param context Application context
+     * @return BaseAdapter inherited Object
+     * @brief Called from Template Editor when template editor is started for creating a new meta details of template project.
+     */
+    BaseAdapter newMetaEditorAdapter(Context context);
+
+    /**
      * @return BaseAdapter inherited Object
      * @brief This function is used to get the adapter (containing template data) for a existing/current template project.
      */
     BaseAdapter currentTemplateEditorAdapter();
+
+    /**
+     * @return BaseAdapter inherited Object
+     * @brief This function is used to get the meta adapter (containing template meta details) for a existing/current template project.
+     */
+    BaseAdapter currentMetaEditorAdapter();
+
+    BaseAdapter loadProjectMetaEditor(Context context, Document doc);
 
     BaseAdapter loadProjectTemplateEditor(Context context, ArrayList<Element> data);
 
@@ -52,6 +67,13 @@ public interface TemplateInterface extends Serializable {
      * @brief Add an item to template data
      */
     void addItem(Activity activity);
+
+    /**
+     *
+     * @param activity Current Activity
+     * @brief Add MetaData to template data
+     */
+    void addMetaData(Activity activity);
 
     /**
      * @param activity Current activity

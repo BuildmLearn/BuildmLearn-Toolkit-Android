@@ -67,6 +67,7 @@ public class TemplateEditor extends AppCompatActivity {
     private static final String TAG = "TEMPLATE EDITOR";
 
     private ListView templateEdtiorList;
+    private ListView templateMetaList;
     private int templateId;
     private Template template;
     private TemplateInterface selectedTemplate;
@@ -88,6 +89,7 @@ public class TemplateEditor extends AppCompatActivity {
         setContentView(R.layout.activity_template_editor);
         KeyboardHelper.hideKeyboard(this, findViewById(R.id.toolbar));
         KeyboardHelper.hideKeyboard(this,findViewById(R.id.template_editor_listview));
+        KeyboardHelper.hideKeyboard(this, findViewById(R.id.template_meta_listview));
         KeyboardHelper.hideKeyboard(this,findViewById(R.id.empty));
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         toolkit = (ToolkitApplication) getApplicationContext();
@@ -113,7 +115,11 @@ public class TemplateEditor extends AppCompatActivity {
         findViewById(R.id.button_add_item).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedTemplate.addItem(TemplateEditor.this);
+                if (templateId == 5 && selectedTemplate.currentMetaEditorAdapter().isEmpty()) {
+                    selectedTemplate.addMetaData(TemplateEditor.this);
+                } else {
+                    selectedTemplate.addItem(TemplateEditor.this);
+                }
                 hideEmptyView();
             }
         });
@@ -141,6 +147,50 @@ public class TemplateEditor extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, intent);
     }
 
+    /**
+     * @param adapter Adapter containing template meta data
+     * @brief Populates meta ListView item by setting adapter to ListView.
+     */
+    private void populateMetaView(final BaseAdapter adapter) {
+        if (templateMetaList == null) {
+            templateMetaList = (ListView) findViewById(R.id.template_meta_listview);
+        }
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View templateHeader = inflater.inflate(R.layout.listview_header_template, templateMetaList, false);
+        templateMetaList.addHeaderView(templateHeader, null, false);
+
+        EditText authorEditText = (EditText) findViewById(R.id.author_name);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        assert authorEditText != null;
+        authorEditText.setText(preferences.getString(getString(R.string.key_user_name), ""));
+        setAdapterMeta(adapter);
+
+        templateMetaList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+                if (position == 0) {
+                    return false;
+                }
+
+                if (selectedPosition == position - 1) {
+                    selectedPosition = -1;
+                    view.setBackgroundResource(0);
+                    restoreColorScheme();
+                } else {
+                    if (selectedView != null) {
+                        selectedView.setBackgroundResource(0);
+                    }
+                    selectedView = view;
+                    selectedPosition = position - 1;
+                    Log.d(TAG, "Position: " + selectedPosition);
+                    view.setBackgroundColor(ContextCompat.getColor(toolkit, R.color.color_divider));
+                    changeColorScheme();
+                }
+                return true;
+            }
+        });
+    }
 
     /**
      * @param adapter Adapter containing template data
@@ -152,14 +202,17 @@ public class TemplateEditor extends AppCompatActivity {
         if (templateEdtiorList == null) {
             templateEdtiorList = (ListView) findViewById(R.id.template_editor_listview);
         }
-        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View templateHeader = inflater.inflate(R.layout.listview_header_template, templateEdtiorList, false);
-        templateEdtiorList.addHeaderView(templateHeader, null, false);
+        if (templateId != 5) {
+            LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View templateHeader = inflater.inflate(R.layout.listview_header_template, templateEdtiorList, false);
+            templateEdtiorList.addHeaderView(templateHeader, null, false);
 
-        EditText authorEditText = (EditText) findViewById(R.id.author_name);
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        assert authorEditText != null;
-        authorEditText.setText(preferences.getString(getString(R.string.key_user_name), ""));
+            EditText authorEditText = (EditText) findViewById(R.id.author_name);
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            assert authorEditText != null;
+            authorEditText.setText(preferences.getString(getString(R.string.key_user_name), ""));
+
+        }
         setAdapter(adapter);
 
         templateEdtiorList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -215,6 +268,7 @@ public class TemplateEditor extends AppCompatActivity {
             Object templateObject = templateClass.newInstance();
             selectedTemplate = (TemplateInterface) templateObject;
             populateListView(selectedTemplate.newTemplateEditorAdapter(this));
+            populateMetaView(selectedTemplate.newMetaEditorAdapter(this));
             setUpActionBar();
         } catch (InstantiationException e) {
             e.printStackTrace();
@@ -236,6 +290,7 @@ public class TemplateEditor extends AppCompatActivity {
             finish();
         } else {
             populateListView(selectedTemplate.currentTemplateEditorAdapter());
+            populateMetaView(selectedTemplate.currentMetaEditorAdapter());
             setUpActionBar();
         }
     }
@@ -614,6 +669,7 @@ public class TemplateEditor extends AppCompatActivity {
             Object templateObject = templateClass.newInstance();
             selectedTemplate = (TemplateInterface) templateObject;
             populateListView(selectedTemplate.loadProjectTemplateEditor(this, items));
+            populateMetaView(selectedTemplate.loadProjectMetaEditor(this, doc));
             setUpActionBar();
             updateHeaderDetails(name, title);
 
@@ -645,6 +701,15 @@ public class TemplateEditor extends AppCompatActivity {
      */
     private void setAdapter(BaseAdapter adapter) {
         templateEdtiorList.setAdapter(adapter);
+        setEmptyView();
+    }
+
+    /**
+     * @param adapter
+     * @brief Sets the adapter to the ListView
+     */
+    private void setAdapterMeta(BaseAdapter adapter) {
+        templateMetaList.setAdapter(adapter);
         setEmptyView();
     }
 
