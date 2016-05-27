@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView2"
+        style="@style/TextView.Caption.Light"
+        android:text="@string/comprehension_meta_title"
+        android:textColor="@color/black_secondary_text" />
+
+    <EditText
+        android:id="@+id/meta_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/comprehension_meta_title_of_passage"
+        android:inputType="textPersonName" />
+
+    <TextView
+        style="@style/TextView.Caption.Light"
+        android:text="@string/comprehension_meta_passage"
+        android:textColor="@color/black_secondary_text" />
+
+    <EditText
+        android:id="@+id/meta_passage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/comprehension_meta_enter_passage"
+        android:inputType="textMultiLine" />
+
+    <TextView
+        style="@style/TextView.Caption.Light"
+        android:text="@string/or"
+        android:textColor="@color/black_secondary_text" />
+
+    <Button
+        android:id="@+id/upload"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="30sp"
+        android:layout_margin="5sp"
+        android:background="#cfd8dc"
+        android:padding="5sp"
+        android:text="@string/upload" />
+
+    <TextView
+        style="@style/TextView.Caption.Light"
+        android:text="@string/timer"
+        android:textColor="@color/black_secondary_text" />
+
+    <EditText
+        android:id="@+id/meta_timer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/time_hint"
+        android:inputType="number" />
+
+</LinearLayout>

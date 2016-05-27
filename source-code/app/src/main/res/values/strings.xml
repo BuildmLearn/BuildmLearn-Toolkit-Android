@@ -241,5 +241,16 @@
     <string name="buildmlearn_logo_video">BuildmLearn Logo</string>
     <string name="last_video">That was the last Video!</string>
     <string name="video_thumbnail">Video Thumbnail</string>
+    <string name="comprehension_add_meta_title">Add Meta Details</string>
+    <string name="comprehension_meta_title">Title</string>
+    <string name="comprehension_meta_title_of_passage">Title of Passage</string>
+    <string name="comprehension_meta_passage">Passage</string>
+    <string name="comprehension_meta_enter_passage">Enter Passage or Upload a file</string>
+    <string name="or">OR</string>
+    <string name="upload">UPLOAD</string>
+    <string name="timer">Timer</string>
+    <string name="time_hint">Enter Time in Sec</string>
+    <string name="comprehension_template_passage_hint">Enter Passage</string>
+    <string name="comprehension_template_timer_hint">Enter time</string>
 
 </resources>
