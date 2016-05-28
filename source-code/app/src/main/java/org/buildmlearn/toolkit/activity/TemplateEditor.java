@@ -173,7 +173,7 @@ public class TemplateEditor extends AppCompatActivity {
                     return false;
                 }
 
-                if (selectedPosition == position - 1) {
+                if (selectedPosition == -2) {
                     selectedPosition = -1;
                     view.setBackgroundResource(0);
                     restoreColorScheme();
@@ -182,7 +182,7 @@ public class TemplateEditor extends AppCompatActivity {
                         selectedView.setBackgroundResource(0);
                     }
                     selectedView = view;
-                    selectedPosition = position - 1;
+                    selectedPosition = -2;
                     Log.d(TAG, "Position: " + selectedPosition);
                     view.setBackgroundColor(ContextCompat.getColor(toolkit, R.color.color_divider));
                     changeColorScheme();
@@ -219,6 +219,7 @@ public class TemplateEditor extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
+                position++;
                 if (position == 0) {
                     return false;
                 }
@@ -268,7 +269,9 @@ public class TemplateEditor extends AppCompatActivity {
             Object templateObject = templateClass.newInstance();
             selectedTemplate = (TemplateInterface) templateObject;
             populateListView(selectedTemplate.newTemplateEditorAdapter(this));
-            populateMetaView(selectedTemplate.newMetaEditorAdapter(this));
+            if (templateId == 5) {
+                populateMetaView(selectedTemplate.newMetaEditorAdapter(this));
+            }
             setUpActionBar();
         } catch (InstantiationException e) {
             e.printStackTrace();
@@ -290,7 +293,9 @@ public class TemplateEditor extends AppCompatActivity {
             finish();
         } else {
             populateListView(selectedTemplate.currentTemplateEditorAdapter());
-            populateMetaView(selectedTemplate.currentMetaEditorAdapter());
+            if (templateId == 5) {
+                populateMetaView(selectedTemplate.currentMetaEditorAdapter());
+            }
             setUpActionBar();
         }
     }
@@ -669,7 +674,9 @@ public class TemplateEditor extends AppCompatActivity {
             Object templateObject = templateClass.newInstance();
             selectedTemplate = (TemplateInterface) templateObject;
             populateListView(selectedTemplate.loadProjectTemplateEditor(this, items));
-            populateMetaView(selectedTemplate.loadProjectMetaEditor(this, doc));
+            if (templateId == 5) {
+                populateMetaView(selectedTemplate.loadProjectMetaEditor(this, doc));
+            }
             setUpActionBar();
             updateHeaderDetails(name, title);
 

@@ -252,5 +252,6 @@
     <string name="time_hint">Enter Time in Sec</string>
     <string name="comprehension_template_passage_hint">Enter Passage</string>
     <string name="comprehension_template_timer_hint">Enter time</string>
+    <string name="comprehension_edit_meta_title">Edit Meta Details</string>
 
 </resources>
