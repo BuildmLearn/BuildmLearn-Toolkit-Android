@@ -92,6 +92,7 @@ class QuizAdapter extends BaseAdapter {
             if (i < data.getOptions().size()) {
                 int ascii = 65 + i;
                 holder.options.get(i).setText(Character.toString((char) ascii) + ")  " + data.getOptions().get(i));
+                holder.options.get(i).setTextColor(ContextCompat.getColor(context, R.color.black_secondary_text));
                 holder.options.get(i).setVisibility(View.VISIBLE);
             } else {
                 holder.options.get(i).setVisibility(View.GONE);
