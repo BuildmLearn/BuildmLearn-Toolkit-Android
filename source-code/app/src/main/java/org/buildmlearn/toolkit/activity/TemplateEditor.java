@@ -1,16 +1,21 @@
 package org.buildmlearn.toolkit.activity;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.preference.PreferenceManager;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -67,7 +72,14 @@ import javax.xml.parsers.ParserConfigurationException;
 public class TemplateEditor extends AppCompatActivity {
 
     private static final String TAG = "TEMPLATE EDITOR";
-
+    private static final int PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE_RESULT = 100;
+    private final Handler handlerToast = new Handler() {
+        public void handleMessage(Message message) {
+            if (message.arg1 == -1) {
+                Toast.makeText(TemplateEditor.this, "Build unsuccessful", Toast.LENGTH_SHORT).show();
+            }
+        }
+    };
     private ListView templateEdtiorList;
     private ListView templateMetaList;
     private int templateId;
@@ -79,7 +91,6 @@ public class TemplateEditor extends AppCompatActivity {
     private ToolkitApplication toolkit;
     private String oldFileName;
     private MaterialDialog mApkGenerationDialog;
-
 
     /**
      * {@inheritDoc}
@@ -126,6 +137,14 @@ public class TemplateEditor extends AppCompatActivity {
             }
         });
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE_RESULT);
+            }
+        }
     }
 
     /**
@@ -451,7 +470,9 @@ public class TemplateEditor extends AppCompatActivity {
                                         if (e != null) {
                                             e.printStackTrace();
                                             mApkGenerationDialog.dismiss();
-                                            Toast.makeText(TemplateEditor.this, "Build unsuccessful", Toast.LENGTH_SHORT).show();
+                                            Message message = handlerToast.obtainMessage();
+                                            message.arg1 = -1;
+                                            handlerToast.sendMessage(message);
                                         }
                                     }
                                 });
@@ -502,7 +523,9 @@ public class TemplateEditor extends AppCompatActivity {
                                         if (e != null) {
                                             e.printStackTrace();
                                             mApkGenerationDialog.dismiss();
-                                            Toast.makeText(TemplateEditor.this, "Build unsuccessful", Toast.LENGTH_SHORT).show();
+                                            Message message = handlerToast.obtainMessage();
+                                            message.arg1 = -1;
+                                            handlerToast.sendMessage(message);
                                         }
                                     }
                                 });
@@ -767,7 +790,6 @@ public class TemplateEditor extends AppCompatActivity {
             findViewById(R.id.empty).setVisibility(View.GONE);
         }
     }
-
 
     private void hideEmptyView() {
         findViewById(R.id.empty).setVisibility(View.GONE);
