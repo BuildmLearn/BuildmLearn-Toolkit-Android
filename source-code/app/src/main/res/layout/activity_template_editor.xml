@@ -13,19 +13,10 @@
         android:layout_gravity="center_horizontal|top"/>
 
     <ListView
-        android:id="@+id/template_meta_listview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbar"
-        android:layout_gravity="center_vertical"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="8dp"/>
-
-    <ListView
         android:id="@+id/template_editor_listview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/template_meta_listview"
+        android:layout_below="@+id/toolbar"
         android:layout_gravity="center_vertical"
         android:divider="@android:color/transparent"
         android:dividerHeight="8dp"/>

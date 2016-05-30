@@ -3,6 +3,7 @@ package org.buildmlearn.toolkit.templates;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
@@ -258,7 +259,7 @@ public class ComprehensionTemplate implements TemplateInterface {
         dialog.findViewById(R.id.upload).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FileDialog fileDialog = new FileDialog(mContext);
+                FileDialog fileDialog = new FileDialog(activity);
                 fileDialog.setFileEndsWith(".txt");
                 fileDialog.addFileListener(new FileDialog.FileSelectListener() {
                     public void fileSelected(File file) {
@@ -313,7 +314,7 @@ public class ComprehensionTemplate implements TemplateInterface {
             dialog.findViewById(R.id.upload).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    FileDialog fileDialog = new FileDialog(mContext);
+                    FileDialog fileDialog = new FileDialog(activity);
                     fileDialog.setFileEndsWith(".txt");
                     fileDialog.addFileListener(new FileDialog.FileSelectListener() {
                         public void fileSelected(File file) {
@@ -494,11 +495,20 @@ public class ComprehensionTemplate implements TemplateInterface {
      */
     @Override
     public void setEmptyView(Activity activity) {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && metaData.size() > 0) {
+            activity.findViewById(R.id.shadow_meta).setVisibility(View.VISIBLE);
+        }
         if (comprehensionData.size() < 1 && metaData.size() < 1) {
+            activity.findViewById(R.id.shadow_meta).setVisibility(View.GONE);
             ((TextViewPlus) activity.findViewById(R.id.empty_view_text)).setText(R.string.meta_add_help);
             activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
         } else if (comprehensionData.size() < 1) {
             ((TextViewPlus) activity.findViewById(R.id.empty_view_text)).setText(R.string.add_item_help);
+            activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
+        } else if (metaData.size() < 1) {
+            activity.findViewById(R.id.shadow_meta).setVisibility(View.GONE);
+            ((TextViewPlus) activity.findViewById(R.id.empty_view_text)).setText(R.string.meta_add_help);
             activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
         } else {
             activity.findViewById(R.id.empty).setVisibility(View.GONE);

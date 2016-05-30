@@ -3,7 +3,6 @@ package org.buildmlearn.toolkit.utilities;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 
 import org.buildmlearn.toolkit.ToolkitApplication;
@@ -25,8 +24,8 @@ public class FileDialog {
     private ListenerList<FileSelectListener> fileListenerList = new ListenerList<>();
     private String fileEndsWith;
 
-    public FileDialog(Context mContext) {
-        this.activity = (Activity) mContext;
+    public FileDialog(Activity activity) {
+        this.activity = activity;
         loadFileList(new ToolkitApplication().getDir());
     }
 

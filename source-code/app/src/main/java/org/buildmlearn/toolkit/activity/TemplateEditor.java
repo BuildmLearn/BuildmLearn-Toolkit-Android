@@ -102,7 +102,6 @@ public class TemplateEditor extends AppCompatActivity {
         setContentView(R.layout.activity_template_editor);
         KeyboardHelper.hideKeyboard(this, findViewById(R.id.toolbar));
         KeyboardHelper.hideKeyboard(this,findViewById(R.id.template_editor_listview));
-        KeyboardHelper.hideKeyboard(this, findViewById(R.id.template_meta_listview));
         KeyboardHelper.hideKeyboard(this,findViewById(R.id.empty));
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         toolkit = (ToolkitApplication) getApplicationContext();
@@ -175,23 +174,14 @@ public class TemplateEditor extends AppCompatActivity {
         if (templateMetaList == null) {
             templateMetaList = (ListView) findViewById(R.id.template_meta_listview);
         }
-        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View templateHeader = inflater.inflate(R.layout.listview_header_template, templateMetaList, false);
-        templateMetaList.addHeaderView(templateHeader, null, false);
 
-        EditText authorEditText = (EditText) findViewById(R.id.author_name);
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        assert authorEditText != null;
-        authorEditText.setText(preferences.getString(getString(R.string.key_user_name), ""));
         setAdapterMeta(adapter);
 
         templateMetaList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
-                if (position == 0) {
-                    return false;
-                }
+                Log.e(getClass().getName(), " " + position);
 
                 if (selectedPosition == -2) {
                     selectedPosition = -1;
@@ -235,7 +225,6 @@ public class TemplateEditor extends AppCompatActivity {
         if (templateEdtiorList == null) {
             templateEdtiorList = (ListView) findViewById(R.id.template_editor_listview);
         }
-        if (templateId != 5) {
             LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View templateHeader = inflater.inflate(R.layout.listview_header_template, templateEdtiorList, false);
             templateEdtiorList.addHeaderView(templateHeader, null, false);
@@ -245,17 +234,13 @@ public class TemplateEditor extends AppCompatActivity {
             assert authorEditText != null;
             authorEditText.setText(preferences.getString(getString(R.string.key_user_name), ""));
 
-        }
         setAdapter(adapter);
 
         templateEdtiorList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
-                if (templateId == 5) {
-                    position++;
-                }
-
+                Log.e(getClass().getName(), " " + position);
                 if (position == 0) {
                     return false;
                 }
