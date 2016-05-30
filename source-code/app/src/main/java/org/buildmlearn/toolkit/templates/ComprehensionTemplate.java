@@ -106,7 +106,7 @@ public class ComprehensionTemplate implements TemplateInterface {
 
         String title = doc.getElementsByTagName(ComprehensionMetaModel.TITLE_TAG).item(0).getTextContent();
         String passage = doc.getElementsByTagName(ComprehensionMetaModel.PASSAGE_TAG).item(0).getTextContent();
-        long timer = Long.parseLong(doc.getElementsByTagName(ComprehensionMetaModel.TITLE_TAG).item(0).getTextContent());
+        long timer = Long.parseLong(doc.getElementsByTagName(ComprehensionMetaModel.TIMER_TAG).item(0).getTextContent());
         metaData.add(new ComprehensionMetaModel(title, passage, timer));
         metaAdapter = new ComprehensionMetaAdapter(context, metaData);
 

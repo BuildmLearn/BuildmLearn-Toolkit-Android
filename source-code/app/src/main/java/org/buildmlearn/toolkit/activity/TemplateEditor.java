@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
@@ -177,7 +178,7 @@ public class TemplateEditor extends AppCompatActivity {
                 if (selectedPosition == -2) {
                     selectedPosition = -1;
                     if (view instanceof CardView) {
-                        view.setBackgroundResource(R.color.white_primary_text);
+                        ((CardView) view).setCardBackgroundColor(Color.WHITE);
                     } else {
                         view.setBackgroundResource(0);
                     }
@@ -185,7 +186,7 @@ public class TemplateEditor extends AppCompatActivity {
                 } else {
                     if (selectedView != null) {
                         if (view instanceof CardView) {
-                            view.setBackgroundResource(R.color.white_primary_text);
+                            ((CardView) view).setCardBackgroundColor(Color.WHITE);
                         } else {
                             view.setBackgroundResource(0);
                         }
@@ -193,7 +194,12 @@ public class TemplateEditor extends AppCompatActivity {
                     selectedView = view;
                     selectedPosition = -2;
                     Log.d(TAG, "Position: " + selectedPosition);
-                    view.setBackgroundColor(ContextCompat.getColor(toolkit, R.color.color_divider));
+
+                    if (view instanceof CardView) {
+                        ((CardView) view).setCardBackgroundColor(Color.LTGRAY);
+                    } else {
+                        view.setBackgroundColor(ContextCompat.getColor(toolkit, R.color.color_divider));
+                    }
                     changeColorScheme();
                 }
                 return true;
@@ -239,7 +245,7 @@ public class TemplateEditor extends AppCompatActivity {
                 if (selectedPosition == position - 1) {
                     selectedPosition = -1;
                     if (view instanceof CardView) {
-                        view.setBackgroundResource(R.color.white_primary_text);
+                        ((CardView) view).setCardBackgroundColor(Color.WHITE);
                     } else {
                         view.setBackgroundResource(0);
                     }
@@ -247,7 +253,7 @@ public class TemplateEditor extends AppCompatActivity {
                 } else {
                     if (selectedView != null) {
                         if (view instanceof CardView) {
-                            view.setBackgroundResource(R.color.white_primary_text);
+                            ((CardView) view).setCardBackgroundColor(Color.WHITE);
                         } else {
                             view.setBackgroundResource(0);
                         }
@@ -255,7 +261,11 @@ public class TemplateEditor extends AppCompatActivity {
                     selectedView = view;
                     selectedPosition = position - 1;
                     Log.d(TAG, "Position: " + selectedPosition);
-                    view.setBackgroundColor(ContextCompat.getColor(toolkit, R.color.color_divider));
+                    if (view instanceof CardView) {
+                        ((CardView) view).setCardBackgroundColor(Color.LTGRAY);
+                    } else {
+                        view.setBackgroundColor(ContextCompat.getColor(toolkit, R.color.color_divider));
+                    }
                     changeColorScheme();
                 }
                 return true;

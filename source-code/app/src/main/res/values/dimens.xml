@@ -72,6 +72,8 @@
     <dimen name="title_size_video">16sp</dimen>
     <dimen name="web_view_height_video">320dp</dimen>
     <dimen name="card_margin">16dp</dimen>
+    <dimen name="card_elevation">1dp</dimen>
+    <dimen name="card_radius">4dp</dimen>
 
 
 </resources>

@@ -12,9 +12,9 @@ import java.io.Serializable;
 public class ComprehensionMetaModel implements Serializable {
 
     public static final String ROOT_TAG = "meta_details";
-    public static final String TITLE_TAG = "title";
-    public static final String PASSAGE_TAG = "passage";
-    public static final String TIMER_TAG = "timer";
+    public static final String TITLE_TAG = "meta_title";
+    public static final String PASSAGE_TAG = "meta_passage";
+    public static final String TIMER_TAG = "meta_timer";
 
     private String title;
     private String passage;
