@@ -9,6 +9,7 @@
         <item name="android:colorButtonNormal">@color/color_primary_dark</item>
         <item name="android:windowBackground">@color/window_background</item>
         <item name="android:textColorLink">?attr/colorAccent</item>
+        <item name="android:navigationBarColor">@color/color_primary</item>
     </style>
 
     <style name="Button.Raised" parent="Widget.AppCompat.Button">

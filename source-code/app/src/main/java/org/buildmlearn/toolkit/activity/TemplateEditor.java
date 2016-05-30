@@ -13,6 +13,7 @@ import android.preference.PreferenceManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -175,11 +176,19 @@ public class TemplateEditor extends AppCompatActivity {
 
                 if (selectedPosition == -2) {
                     selectedPosition = -1;
-                    view.setBackgroundResource(0);
+                    if (view instanceof CardView) {
+                        view.setBackgroundResource(R.color.white_primary_text);
+                    } else {
+                        view.setBackgroundResource(0);
+                    }
                     restoreColorScheme();
                 } else {
                     if (selectedView != null) {
-                        selectedView.setBackgroundResource(0);
+                        if (view instanceof CardView) {
+                            view.setBackgroundResource(R.color.white_primary_text);
+                        } else {
+                            view.setBackgroundResource(0);
+                        }
                     }
                     selectedView = view;
                     selectedPosition = -2;
@@ -219,18 +228,29 @@ public class TemplateEditor extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
-                position++;
+                if (templateId == 5) {
+                    position++;
+                }
+
                 if (position == 0) {
                     return false;
                 }
 
                 if (selectedPosition == position - 1) {
                     selectedPosition = -1;
-                    view.setBackgroundResource(0);
+                    if (view instanceof CardView) {
+                        view.setBackgroundResource(R.color.white_primary_text);
+                    } else {
+                        view.setBackgroundResource(0);
+                    }
                     restoreColorScheme();
                 } else {
                     if (selectedView != null) {
-                        selectedView.setBackgroundResource(0);
+                        if (view instanceof CardView) {
+                            view.setBackgroundResource(R.color.white_primary_text);
+                        } else {
+                            view.setBackgroundResource(0);
+                        }
                     }
                     selectedView = view;
                     selectedPosition = position - 1;

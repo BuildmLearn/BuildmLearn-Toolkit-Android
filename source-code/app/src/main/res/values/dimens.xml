@@ -71,6 +71,7 @@
     <dimen name="toolbar_height_small_video">75dp</dimen>
     <dimen name="title_size_video">16sp</dimen>
     <dimen name="web_view_height_video">320dp</dimen>
+    <dimen name="card_margin">16dp</dimen>
 
 
 </resources>
