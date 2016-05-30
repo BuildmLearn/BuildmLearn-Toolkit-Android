@@ -56,6 +56,7 @@ public class InfoTemplate implements TemplateInterface {
     @Override
     public BaseAdapter newTemplateEditorAdapter(Context context) {
         adapter = new InfoAdapter(context, infoData);
+        setEmptyView((Activity) context);
         return adapter;
     }
 
@@ -88,6 +89,7 @@ public class InfoTemplate implements TemplateInterface {
             infoData.add(new InfoModel(infoObject, infoDescription));
         }
         adapter = new InfoAdapter(context, infoData);
+        setEmptyView((Activity) context);
         return adapter;
     }
 
@@ -125,6 +127,7 @@ public class InfoTemplate implements TemplateInterface {
                     InfoModel temp = new InfoModel(wordText, meaningText);
                     infoData.add(temp);
                     adapter.notifyDataSetChanged();
+                    setEmptyView(activity);
                     dialog.dismiss();
                 }
 
@@ -179,10 +182,11 @@ public class InfoTemplate implements TemplateInterface {
     }
 
     @Override
-    public void deleteItem(int position) {
+    public void deleteItem(Activity activity, int position) {
 
 
         infoData.remove(position);
+        setEmptyView(activity);
         adapter.notifyDataSetChanged();
 
     }
@@ -226,4 +230,15 @@ public class InfoTemplate implements TemplateInterface {
 
     }
 
+    /**
+     * @brief Toggles the visibility of empty text if Array has zero elements
+     */
+    @Override
+    public void setEmptyView(Activity activity) {
+        if (infoData.size() < 1) {
+            activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
+        } else {
+            activity.findViewById(R.id.empty).setVisibility(View.GONE);
+        }
+    }
 }

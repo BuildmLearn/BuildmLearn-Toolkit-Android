@@ -55,6 +55,7 @@ public class LearnSpellingTemplate implements TemplateInterface {
     @Override
     public BaseAdapter newTemplateEditorAdapter(Context context) {
         adapter = new LearnSpellingAdapter(context, mLearnSpellingData);
+        setEmptyView((Activity) context);
         return adapter;
     }
 
@@ -87,6 +88,7 @@ public class LearnSpellingTemplate implements TemplateInterface {
             mLearnSpellingData.add(new LearnSpellingModel(infoObject, infoDescription));
         }
         adapter = new LearnSpellingAdapter(context, mLearnSpellingData);
+        setEmptyView((Activity) context);
         return adapter;
     }
 
@@ -124,6 +126,7 @@ public class LearnSpellingTemplate implements TemplateInterface {
                     LearnSpellingModel temp = new LearnSpellingModel(wordText, meaningText);
                     mLearnSpellingData.add(temp);
                     adapter.notifyDataSetChanged();
+                    setEmptyView(activity);
                     dialog.dismiss();
                 }
 
@@ -178,10 +181,11 @@ public class LearnSpellingTemplate implements TemplateInterface {
     }
 
     @Override
-    public void deleteItem(int position) {
+    public void deleteItem(Activity activity, int position) {
 
 
         mLearnSpellingData.remove(position);
+        setEmptyView(activity);
         adapter.notifyDataSetChanged();
 
     }
@@ -224,4 +228,15 @@ public class LearnSpellingTemplate implements TemplateInterface {
 
     }
 
+    /**
+     * @brief Toggles the visibility of empty text if Array has zero elements
+     */
+    @Override
+    public void setEmptyView(Activity activity) {
+        if (mLearnSpellingData.size() < 1) {
+            activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
+        } else {
+            activity.findViewById(R.id.empty).setVisibility(View.GONE);
+        }
+    }
 }

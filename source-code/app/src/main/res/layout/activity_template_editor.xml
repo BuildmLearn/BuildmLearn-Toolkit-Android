@@ -42,7 +42,7 @@
 
 
         <view
-            android:id="@+id/title"
+            android:id="@+id/empty_view_text"
             style="@style/TextView.Empty"
             class="org.buildmlearn.toolkit.views.TextViewPlus"
             android:layout_width="wrap_content"

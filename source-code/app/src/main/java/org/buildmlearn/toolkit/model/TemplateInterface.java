@@ -83,10 +83,11 @@ public interface TemplateInterface extends Serializable {
     void editItem(Activity activity, int position);
 
     /**
+     * @param activity Current Activity
      * @param position Position of the item to be removed
      * @brief Remove an item form template data list
      */
-    void deleteItem(int position);
+    void deleteItem(Activity activity, int position);
 
 
     ArrayList<Element> getItems(Document doc);
@@ -129,4 +130,8 @@ public interface TemplateInterface extends Serializable {
      */
     void onActivityResult(Context context, int requestCode, int resultCode, Intent intent);
 
+    /**
+     * @brief Toggles the visibility of empty text if Array has zero elements
+     */
+    void setEmptyView(Activity activity);
 }

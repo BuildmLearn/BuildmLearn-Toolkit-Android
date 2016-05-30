@@ -115,6 +115,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
     public BaseAdapter newTemplateEditorAdapter(Context context) {
         mContext = context;
         adapter = new VideoCollectionAdapter(context, videoData);
+        setEmptyView((Activity) context);
         return adapter;
     }
 
@@ -150,6 +151,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
             videoData.add(new VideoModel(videoTitle, videoDescription, videoLink, videoThumbLink));
         }
         adapter = new VideoCollectionAdapter(context, videoData);
+        setEmptyView((Activity) context);
         return adapter;
     }
 
@@ -273,6 +275,8 @@ public class VideoCollectionTemplate implements TemplateInterface {
                     String descriptionText = description.getText().toString();
                     String linkText = link.getText().toString();
 
+                    setEmptyView(activity);
+
                     if (linkText.equals(data.getLink())) {
                         data.setTitle(titleText);
                         data.setDescription(descriptionText);
@@ -302,8 +306,9 @@ public class VideoCollectionTemplate implements TemplateInterface {
     }
 
     @Override
-    public void deleteItem(int position) {
+    public void deleteItem(Activity activity, int position) {
         videoData.remove(position);
+        setEmptyView(activity);
         adapter.notifyDataSetChanged();
     }
 
@@ -342,6 +347,18 @@ public class VideoCollectionTemplate implements TemplateInterface {
     @Override
     public void onActivityResult(Context context, int requestCode, int resultCode, Intent intent) {
 
+    }
+
+    /**
+     * @brief Toggles the visibility of empty text if Array has zero elements
+     */
+    @Override
+    public void setEmptyView(Activity activity) {
+        if (videoData.size() < 1) {
+            activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
+        } else {
+            activity.findViewById(R.id.empty).setVisibility(View.GONE);
+        }
     }
 
     private class VideoInfoTask extends AsyncTask<String, Integer, String> {

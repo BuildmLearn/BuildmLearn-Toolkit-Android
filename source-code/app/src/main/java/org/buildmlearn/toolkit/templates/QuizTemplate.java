@@ -39,6 +39,7 @@ public class QuizTemplate implements TemplateInterface {
     @Override
     public BaseAdapter newTemplateEditorAdapter(Context context) {
         mAdapter = new QuizAdapter(context, quizData);
+        setEmptyView((Activity) context);
         return mAdapter;
     }
 
@@ -77,6 +78,7 @@ public class QuizTemplate implements TemplateInterface {
 
         }
         mAdapter = new QuizAdapter(context, quizData);
+        setEmptyView((Activity) context);
         return mAdapter;
     }
 
@@ -161,6 +163,7 @@ public class QuizTemplate implements TemplateInterface {
                     }
                     String questionText = question.getText().toString();
                     quizData.add(new QuizModel(questionText, answerOptions, correctAnswer));
+                    setEmptyView(activity);
                     mAdapter.notifyDataSetChanged();
                 }
 
@@ -264,8 +267,9 @@ public class QuizTemplate implements TemplateInterface {
     }
 
     @Override
-    public void deleteItem(int position) {
+    public void deleteItem(Activity activity, int position) {
         quizData.remove(position);
+        setEmptyView(activity);
         mAdapter.notifyDataSetChanged();
     }
 
@@ -336,4 +340,15 @@ public class QuizTemplate implements TemplateInterface {
         return -1;
     }
 
+    /**
+     * @brief Toggles the visibility of empty text if Array has zero elements
+     */
+    @Override
+    public void setEmptyView(Activity activity) {
+        if (quizData.size() < 1) {
+            activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
+        } else {
+            activity.findViewById(R.id.empty).setVisibility(View.GONE);
+        }
+    }
 }

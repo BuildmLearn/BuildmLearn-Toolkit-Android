@@ -15,6 +15,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.model.TemplateInterface;
 import org.buildmlearn.toolkit.videoCollectionTemplate.fragment.SplashFragment;
+import org.buildmlearn.toolkit.views.TextViewPlus;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -72,6 +73,7 @@ public class ComprehensionTemplate implements TemplateInterface {
     public BaseAdapter newMetaEditorAdapter(Context context) {
         mContext = context;
         metaAdapter = new ComprehensionMetaAdapter(context, metaData);
+        setEmptyView((Activity) context);
         return metaAdapter;
     }
 
@@ -109,6 +111,7 @@ public class ComprehensionTemplate implements TemplateInterface {
         long timer = Long.parseLong(doc.getElementsByTagName(ComprehensionMetaModel.TIMER_TAG).item(0).getTextContent());
         metaData.add(new ComprehensionMetaModel(title, passage, timer));
         metaAdapter = new ComprehensionMetaAdapter(context, metaData);
+        setEmptyView((Activity) context);
 
         return metaAdapter;
 
@@ -221,6 +224,7 @@ public class ComprehensionTemplate implements TemplateInterface {
                     }
                     String questionText = question.getText().toString();
                     comprehensionData.add(new ComprehensionModel(questionText, answerOptions, correctAnswer));
+                    setEmptyView(activity);
                     adapter.notifyDataSetChanged();
                 }
 
@@ -254,6 +258,7 @@ public class ComprehensionTemplate implements TemplateInterface {
                     long timerLong = Long.parseLong(timer.getText().toString());
                     ComprehensionMetaModel temp = new ComprehensionMetaModel(titleText, passageText, timerLong);
                     metaData.add(temp);
+                    setEmptyView(activity);
                     metaAdapter.notifyDataSetChanged();
                     dialog.dismiss();
                 }
@@ -393,12 +398,14 @@ public class ComprehensionTemplate implements TemplateInterface {
     }
 
     @Override
-    public void deleteItem(int position) {
+    public void deleteItem(Activity activity, int position) {
         if (position == -2) {
             metaData.remove(0);
+            setEmptyView(activity);
             metaAdapter.notifyDataSetChanged();
         } else {
             comprehensionData.remove(position);
+            setEmptyView(activity);
             adapter.notifyDataSetChanged();
         }
     }
@@ -442,5 +449,21 @@ public class ComprehensionTemplate implements TemplateInterface {
     @Override
     public void onActivityResult(Context context, int requestCode, int resultCode, Intent intent) {
 
+    }
+
+    /**
+     * @brief Toggles the visibility of empty text if Array has zero elements
+     */
+    @Override
+    public void setEmptyView(Activity activity) {
+        if (comprehensionData.size() < 1 && metaData.size() < 1) {
+            ((TextViewPlus) activity.findViewById(R.id.empty_view_text)).setText(R.string.meta_add_help);
+            activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
+        } else if (comprehensionData.size() < 1) {
+            ((TextViewPlus) activity.findViewById(R.id.empty_view_text)).setText(R.string.add_item_help);
+            activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
+        } else {
+            activity.findViewById(R.id.empty).setVisibility(View.GONE);
+        }
     }
 }

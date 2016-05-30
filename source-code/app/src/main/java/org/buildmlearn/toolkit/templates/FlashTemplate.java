@@ -54,6 +54,7 @@ public class FlashTemplate implements TemplateInterface {
     public BaseAdapter newTemplateEditorAdapter(Context context) {
 
         mAdapter = new FlashCardAdapter(context, mData);
+        setEmptyView((Activity) context);
         return mAdapter;
     }
 
@@ -90,6 +91,7 @@ public class FlashTemplate implements TemplateInterface {
 
         }
         mAdapter = new FlashCardAdapter(context, mData);
+        setEmptyView((Activity) context);
         return mAdapter;
     }
 
@@ -155,6 +157,7 @@ public class FlashTemplate implements TemplateInterface {
                     String answerText = answer.getText().toString();
                     String hintText = answerHint.getText().toString();
                     mData.add(new FlashCardModel(questionText, answerText, hintText, bitmap));
+                    setEmptyView(activity);
                     mAdapter.notifyDataSetChanged();
                 }
 
@@ -259,8 +262,9 @@ public class FlashTemplate implements TemplateInterface {
     }
 
     @Override
-    public void deleteItem(int position) {
+    public void deleteItem(Activity activity, int position) {
         mData.remove(position);
+        setEmptyView(activity);
         mAdapter.notifyDataSetChanged();
     }
 
@@ -397,5 +401,16 @@ public class FlashTemplate implements TemplateInterface {
         return File.createTempFile(part, ext, tempDir);
     }
 
+    /**
+     * @brief Toggles the visibility of empty text if Array has zero elements
+     */
+    @Override
+    public void setEmptyView(Activity activity) {
+        if (mData.size() < 1) {
+            activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
+        } else {
+            activity.findViewById(R.id.empty).setVisibility(View.GONE);
+        }
+    }
 
 }
