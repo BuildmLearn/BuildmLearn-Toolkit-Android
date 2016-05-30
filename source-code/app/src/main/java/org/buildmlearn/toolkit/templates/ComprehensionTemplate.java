@@ -402,6 +402,10 @@ public class ComprehensionTemplate implements TemplateInterface {
     public ArrayList<Element> getItems(Document doc) {
         ArrayList<Element> itemElements = new ArrayList<>();
 
+        for (ComprehensionMetaModel data : metaData) {
+            itemElements.add(data.getXml(doc));
+        }
+
         for (ComprehensionModel data : comprehensionData) {
 
             itemElements.add(data.getXml(doc));
