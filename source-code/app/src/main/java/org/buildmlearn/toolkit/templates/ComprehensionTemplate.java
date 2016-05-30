@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
@@ -14,12 +15,19 @@ import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.model.TemplateInterface;
+import org.buildmlearn.toolkit.utilities.FileDialog;
 import org.buildmlearn.toolkit.videoCollectionTemplate.fragment.SplashFragment;
 import org.buildmlearn.toolkit.views.TextViewPlus;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 /**
@@ -247,6 +255,21 @@ public class ComprehensionTemplate implements TemplateInterface {
         final EditText passage = (EditText) dialog.findViewById(R.id.meta_passage);
         final EditText timer = (EditText) dialog.findViewById(R.id.meta_timer);
 
+        dialog.findViewById(R.id.upload).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FileDialog fileDialog = new FileDialog(mContext);
+                fileDialog.setFileEndsWith(".txt");
+                fileDialog.addFileListener(new FileDialog.FileSelectListener() {
+                    public void fileSelected(File file) {
+                        ((TextView) dialog.findViewById(R.id.file_name)).setText(file.toString());
+                        ((TextView) dialog.findViewById(R.id.meta_passage)).setText(readFile(file));
+                    }
+                });
+                fileDialog.showDialog();
+            }
+        });
+
         dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -286,6 +309,21 @@ public class ComprehensionTemplate implements TemplateInterface {
             title.setText(data.getTitle());
             passage.setText(data.getPassage());
             timer.setText(String.valueOf(data.getTime()));
+
+            dialog.findViewById(R.id.upload).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    FileDialog fileDialog = new FileDialog(mContext);
+                    fileDialog.setFileEndsWith(".txt");
+                    fileDialog.addFileListener(new FileDialog.FileSelectListener() {
+                        public void fileSelected(File file) {
+                            ((TextView) dialog.findViewById(R.id.file_name)).setText(file.toString());
+                            ((TextView) dialog.findViewById(R.id.meta_passage)).setText(readFile(file));
+                        }
+                    });
+                    fileDialog.showDialog();
+                }
+            });
 
             dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -465,5 +503,23 @@ public class ComprehensionTemplate implements TemplateInterface {
         } else {
             activity.findViewById(R.id.empty).setVisibility(View.GONE);
         }
+    }
+
+    private String readFile(File file) {
+        try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                sb.append(line).append("\n");
+            }
+            reader.close();
+            return sb.toString();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 }

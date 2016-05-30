@@ -51,6 +51,14 @@ public class ToolkitApplication extends Application {
     }
 
     /**
+     * @brief Returns external storage directory.
+     * @return folder file
+     */
+    public File getDir() {
+        return Environment.getExternalStorageDirectory();
+    }
+
+    /**
      * @brief Returns directory for BuildmLearn toolkit  manually created files.
      * @return folder path
      */
