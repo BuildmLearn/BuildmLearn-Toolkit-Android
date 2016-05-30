@@ -394,8 +394,13 @@ public class ComprehensionTemplate implements TemplateInterface {
 
     @Override
     public void deleteItem(int position) {
-        comprehensionData.remove(position);
-        adapter.notifyDataSetChanged();
+        if (position == -2) {
+            metaData.remove(0);
+            metaAdapter.notifyDataSetChanged();
+        } else {
+            comprehensionData.remove(position);
+            adapter.notifyDataSetChanged();
+        }
     }
 
     @Override

@@ -185,10 +185,10 @@ public class TemplateEditor extends AppCompatActivity {
                     restoreColorScheme();
                 } else {
                     if (selectedView != null) {
-                        if (view instanceof CardView) {
-                            ((CardView) view).setCardBackgroundColor(Color.WHITE);
+                        if (selectedView instanceof CardView) {
+                            ((CardView) selectedView).setCardBackgroundColor(Color.WHITE);
                         } else {
-                            view.setBackgroundResource(0);
+                            selectedView.setBackgroundResource(0);
                         }
                     }
                     selectedView = view;
@@ -252,10 +252,10 @@ public class TemplateEditor extends AppCompatActivity {
                     restoreColorScheme();
                 } else {
                     if (selectedView != null) {
-                        if (view instanceof CardView) {
-                            ((CardView) view).setCardBackgroundColor(Color.WHITE);
+                        if (selectedView instanceof CardView) {
+                            ((CardView) selectedView).setCardBackgroundColor(Color.WHITE);
                         } else {
-                            view.setBackgroundResource(0);
+                            selectedView.setBackgroundResource(0);
                         }
                     }
                     selectedView = view;
@@ -378,6 +378,7 @@ public class TemplateEditor extends AppCompatActivity {
                     public void onClick(View v) {
                         dialog.dismiss();
                         selectedTemplate.deleteItem(selectedPosition);
+                        selectedPosition = -1;
                         restoreSelectedView();
                     }
                 });
@@ -387,6 +388,7 @@ public class TemplateEditor extends AppCompatActivity {
                 break;
             case R.id.action_edit:
                 selectedTemplate.editItem(this, selectedPosition);
+                selectedPosition = -1;
                 restoreSelectedView();
                 break;
             case R.id.action_save:
@@ -525,7 +527,11 @@ public class TemplateEditor extends AppCompatActivity {
      */
     public void restoreSelectedView() {
         if (selectedView != null) {
+            if (selectedView instanceof CardView) {
+                ((CardView) selectedView).setCardBackgroundColor(Color.WHITE);
+            } else {
             selectedView.setBackgroundResource(0);
+            }
         }
 
         restoreColorScheme();
