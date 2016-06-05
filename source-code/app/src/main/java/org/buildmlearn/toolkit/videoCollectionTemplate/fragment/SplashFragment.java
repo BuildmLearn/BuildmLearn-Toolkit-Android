@@ -13,6 +13,7 @@ import org.buildmlearn.toolkit.videoCollectionTemplate.Constants;
 import org.buildmlearn.toolkit.videoCollectionTemplate.data.DataUtils;
 import org.buildmlearn.toolkit.videoCollectionTemplate.data.FetchXMLTask;
 import org.buildmlearn.toolkit.videoCollectionTemplate.data.VideoDb;
+import org.buildmlearn.toolkit.views.TextViewPlus;
 
 /**
  * Created by Anupam (opticod) on 21/5/16.
@@ -32,7 +33,7 @@ public class SplashFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_splash_video, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_splash, container, false);
 
         final Activity mActivity = getActivity();
         final String result[] = DataUtils.read_Title_Author();
@@ -41,6 +42,7 @@ public class SplashFragment extends Fragment {
 
         title.setText(result[0]);
         author_name.setText(result[1]);
+        ((TextViewPlus) rootView.findViewById(R.id.intro_text)).setText(getResources().getString(R.string.video_collection_title));
 
         rootView.findViewById(R.id.enter).setOnClickListener(new View.OnClickListener() {
             @Override

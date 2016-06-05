@@ -25,6 +25,10 @@ public class ComprehensionModel implements Serializable {
         this.isSelected = false;
     }
 
+    public ComprehensionModel() {
+
+    }
+
     public String getQuestion() {
         return question;
     }

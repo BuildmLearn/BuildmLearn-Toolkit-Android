@@ -27,9 +27,6 @@ public class LastFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.activity_last_video, container, false);
-//
-//        getActivity().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_home_white_24dp);
 
         rootView.findViewById(R.id.restart).setOnClickListener(new View.OnClickListener() {
             @Override

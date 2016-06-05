@@ -15,9 +15,9 @@ import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.comprehensionTemplate.fragment.SplashFragment;
 import org.buildmlearn.toolkit.model.TemplateInterface;
 import org.buildmlearn.toolkit.utilities.FileDialog;
-import org.buildmlearn.toolkit.videoCollectionTemplate.fragment.SplashFragment;
 import org.buildmlearn.toolkit.views.TextViewPlus;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -467,7 +467,7 @@ public class ComprehensionTemplate implements TemplateInterface {
 
     @Override
     public android.support.v4.app.Fragment getSimulatorFragment(String filePathWithName) {
-        return SplashFragment.newInstance(filePathWithName);  //TODO:: Simulator
+        return SplashFragment.newInstance(filePathWithName);
     }
 
     @Override
@@ -482,7 +482,7 @@ public class ComprehensionTemplate implements TemplateInterface {
 
     @Override
     public String getApkFilePath() {
-        return "VideoCollectionApp.apk";        //TODO:: ComprehensionApp.apk
+        return "ComprehensionApp.apk";
     }
 
     @Override
