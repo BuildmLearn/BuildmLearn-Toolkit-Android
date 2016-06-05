@@ -75,5 +75,21 @@
     <dimen name="card_elevation">1dp</dimen>
     <dimen name="card_radius">4dp</dimen>
 
+    <!-- Comprehension Template-->
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="comprehension_nav_header_vertical_spacing">16dp</dimen>
+    <dimen name="comprehension_nav_header_height">160dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="comprehension_activity_horizontal_margin">16dp</dimen>
+    <dimen name="comprehension_activity_vertical_margin">16dp</dimen>
+
+    <dimen name="comprehension_headline_leading">32sp</dimen>
+    <dimen name="comprehension_title">20sp</dimen>
+    <dimen name="comprehension_splash_button_margin_top">50dp</dimen>
+    <dimen name="comprehension_splash_text_margin">25dp</dimen>
+    <dimen name="comprehension_paddingTop">16dp</dimen>
+    <dimen name="comprehension_cardHeightLastActivity">350dp</dimen>
+    <dimen name="comprehension_toolbar_height_small">75dp</dimen>
 
 </resources>

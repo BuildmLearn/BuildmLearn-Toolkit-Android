@@ -99,6 +99,29 @@
     <string name="comprehension_template_description_hint">Enter Description</string>
     <string name="comprehension_or">OR</string>
 
+    <string name="comprehension_navigation_drawer_open">Open navigation drawer</string>
+    <string name="comprehension_navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="comprehension_app_name">Comprehension</string>
+    <string name="comprehension_main_title">Comprehension</string>
+    <string name="comprehension_main_subtitle">English Tutorial</string>
+    <string name="comprehension_enter">ENTER</string>
+    <string name="comprehension_by">by</string>
+    <string name="comprehension_anupam" translatable="false">Anupam</string>
+    <string name="comprehension_title_activity_about">About</string>
+    <string name="comprehension_previous">PREVIOUS</string>
+    <string name="comprehension_next">NEXT</string>
+    <string name="comprehension_exit">EXIT</string>
+    <string name="comprehension_restart">RESTART</string>
+    <string name="comprehension_about_us">About Us</string>
+    <string name="comprehension_about_text">This application has been developed using the BuildmLearn Toolkit.\n\nTo know more about BuildmLearn Toolkit visit <a href="https://buildmlearn.org/">here</a>.</string>
+    <string name="comprehension_ok">OK</string>
+    <string name="comprehension_background_image">Background Image</string>
+    <string name="comprehension_buildmlearn_logo">BuildmLearn Logo</string>
+    <string name="comprehension_go_to_questions">GO TO QUESTIONS</string>
+    <string name="comprehension_passage_title">Passage :</string>
+    <string name="comprehension_completed_message">Hurrah! You have completed the Comprehension.</string>
+
     <!-- Template Resources-->
     <string name="basic_m_learning_title">Basic mLearning</string>
     <string name="basic_m_learning_description">Create app displaying clickable list of textual information</string>
