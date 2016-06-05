@@ -29,6 +29,7 @@
             android:src="@drawable/logo_70" />
 
         <org.buildmlearn.toolkit.views.TextViewPlus
+            android:id="@+id/intro_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/splash_text_margin_video"
