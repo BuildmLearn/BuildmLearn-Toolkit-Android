@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<buildmlearn_application type="ComprehensionTemplate">
+    <author>
+        <name>Anupam</name>
+    </author>
+    <title>English Tutorial</title>
+    <data>
+        <meta_details>
+            <meta_title>Comprehension Practise</meta_title>
+            <meta_passage>Dream of the Rarebit Fiend was a newspaper comic strip by American cartoonist Winsor McCay, begun September 10, 1904, that depicted fantastic bizarre dreams. It was McCay's second successful strip after Little Sammy Sneeze secured him a position on the cartoon staff of the New York Herald. Rarebit Fiend was printed in the Evening Telegram, a newspaper published by the Herald. The strip had no continuity or recurring characters.
+            </meta_passage>
+            <meta_timer>180</meta_timer>
+        </meta_details>
+        <item>
+            <question>What was the position secured by the Little Sammy Sneeze?</question>
+            <option>2nd</option>
+            <option>1st</option>
+            <option>3rd</option>
+            <option>4th</option>
+            <answer>1</answer>
+        </item>
+        <item>
+            <question>What was the pen name of McCay?</question>
+            <option>Sammy</option>
+            <option>BB</option>
+            <option>Silas</option>
+            <option>Aapeli</option>
+            <answer>2</answer>
+        </item>
+    </data>
+</buildmlearn_application>
