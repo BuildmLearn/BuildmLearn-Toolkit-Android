@@ -26,7 +26,6 @@ import org.w3c.dom.NodeList;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -525,8 +524,6 @@ public class ComprehensionTemplate implements TemplateInterface {
             }
             reader.close();
             return sb.toString();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

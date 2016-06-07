@@ -10,6 +10,7 @@ import org.buildmlearn.toolkit.ToolkitApplication;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -87,11 +88,9 @@ public class FileDialog {
             if (fileList1 == null) {
                 return;
             }
-            for (String file : fileList1) {
-                r.add(file);
-            }
+            Collections.addAll(r, fileList1);
         }
-        fileList = r.toArray(new String[]{});
+        fileList = r.toArray(new String[r.size()]);
     }
 
     private File getChosenFile(String fileChosen) {
@@ -109,14 +108,14 @@ public class FileDialog {
 }
 
 class ListenerList<L> {
-    private List<L> listenerList = new ArrayList<L>();
+    private List<L> listenerList = new ArrayList<>();
 
     public void add(L listener) {
         listenerList.add(listener);
     }
 
     public void fireEvent(FireHandler<L> fireHandler) {
-        List<L> copy = new ArrayList<L>(listenerList);
+        List<L> copy = new ArrayList<>(listenerList);
         for (L l : copy) {
             fireHandler.fireEvent(l);
         }

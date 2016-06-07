@@ -156,7 +156,7 @@ public class SignerThread extends Thread {
 
         FileUtils.unZip(toolkit.getApkDir() + assetsApk, toolkit.getUnZipDir() + TEMP_FOLDER);
         try {
-            String packageName = "org.buildmlearn.";
+            String packageName = "org.buildmlearn.app";
             packageName += Secure.getString(context.getContentResolver(),
                     Secure.ANDROID_ID);
             Calendar rightNow = Calendar.getInstance();
