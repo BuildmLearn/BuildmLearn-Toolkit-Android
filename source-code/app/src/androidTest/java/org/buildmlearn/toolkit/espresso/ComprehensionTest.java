@@ -5,12 +5,17 @@ import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.test.InstrumentationRegistry;
+import android.os.Build;
 import android.support.test.annotation.UiThreadTest;
 import android.support.test.espresso.UiController;
 import android.support.test.espresso.ViewAction;
+import android.support.test.espresso.action.ViewActions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.support.test.uiautomator.UiDevice;
+import android.support.test.uiautomator.UiObject;
+import android.support.test.uiautomator.UiObjectNotFoundException;
+import android.support.test.uiautomator.UiSelector;
 import android.support.v7.widget.AppCompatTextView;
 import android.test.suitebuilder.annotation.LargeTest;
 import android.view.View;
@@ -22,12 +27,14 @@ import org.buildmlearn.toolkit.activity.TemplateEditor;
 import org.buildmlearn.toolkit.constant.Constants;
 import org.hamcrest.Matcher;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.io.File;
 
+import static android.support.test.InstrumentationRegistry.getInstrumentation;
 import static android.support.test.espresso.Espresso.closeSoftKeyboard;
 import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
@@ -52,6 +59,7 @@ import static org.hamcrest.core.IsInstanceOf.instanceOf;
  * Created by anupam (opticod) on 7/6/16.
  */
 
+@Ignore
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 public class ComprehensionTest {
@@ -60,13 +68,34 @@ public class ComprehensionTest {
             new ActivityTestRule<TemplateEditor>(TemplateEditor.class) {
                 @Override
                 protected Intent getActivityIntent() {
-                    Context targetContext = InstrumentationRegistry.getInstrumentation()
+                    Context targetContext = getInstrumentation()
                             .getTargetContext();
                     Intent result = new Intent(targetContext, TemplateEditor.class);
                     result.putExtra(Constants.TEMPLATE_ID, 5);
                     return result;
                 }
             };
+
+    public static void sleep() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void allowPermissionsIfNeeded() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            UiDevice device = UiDevice.getInstance(getInstrumentation());
+            UiObject allowPermissions = device.findObject(new UiSelector().text("Allow"));
+            if (allowPermissions.exists()) {
+                try {
+                    allowPermissions.click();
+                } catch (UiObjectNotFoundException e) {
+                }
+            }
+        }
+    }
 
     @UiThreadTest
     @Before
@@ -103,11 +132,12 @@ public class ComprehensionTest {
         closeSoftKeyboard();
         onView(withId(R.id.meta_title)).perform(typeText(passTitle));
         closeSoftKeyboard();
-        onView(withId(R.id.meta_passage)).perform(typeText(passage));
-        closeSoftKeyboard();
+        onView(withId(R.id.meta_passage)).perform(typeText(passage), ViewActions.closeSoftKeyboard());
         sleep();
-        onView(withId(R.id.meta_timer)).perform(scrollTo()).perform(click()).perform(typeText(timer));
-        closeSoftKeyboard();
+        onView(withId(R.id.meta_timer)).perform(scrollTo());
+        sleep();
+        onView(withId(R.id.meta_timer)).perform(click()).perform(typeText(timer), ViewActions.closeSoftKeyboard());
+        sleep();
         onView(withResourceName("buttonDefaultPositive")).perform(click());
 
     }
@@ -121,9 +151,8 @@ public class ComprehensionTest {
         closeSoftKeyboard();
         onView(withId(R.id.meta_title)).perform(replaceText(passTitle));
         closeSoftKeyboard();
-        onView(withId(R.id.meta_passage)).perform(replaceText(passage));
-        closeSoftKeyboard();
-        closeSoftKeyboard();
+        onView(withId(R.id.meta_passage)).perform(replaceText(passage), ViewActions.closeSoftKeyboard());
+        sleep();
         onView(withResourceName("buttonDefaultPositive")).perform(click());
 
     }
@@ -134,12 +163,18 @@ public class ComprehensionTest {
         onView(withId(R.id.button_add_item)).perform(click());
         onView(withId(R.id.quiz_question)).perform(typeText(question));
         closeSoftKeyboard();
-        onView(withId(R.id.quiz_option_1)).perform(scrollTo()).perform(click()).perform(typeText("A"));
+        sleep();
+        onView(withId(R.id.quiz_option_1)).perform(scrollTo());
+        onView(withId(R.id.quiz_option_1)).perform(typeText("A"));
         closeSoftKeyboard();
-        onView(withId(R.id.quiz_option_2)).perform(scrollTo()).perform(click()).perform(typeText("B"));
+        sleep();
+        onView(withId(R.id.quiz_option_2)).perform(scrollTo());
+        onView(withId(R.id.quiz_option_2)).perform(typeText("B"));
         closeSoftKeyboard();
+        sleep();
         onView(withId(R.id.quiz_radio_2)).perform(scrollTo()).perform(click());
         closeSoftKeyboard();
+        sleep();
         onView(withResourceName("buttonDefaultPositive")).perform(click());
 
     }
@@ -223,23 +258,16 @@ public class ComprehensionTest {
 
     }
 
-    public void sleep() {
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
     @Test
     public void testAllSerially() {
+        allowPermissionsIfNeeded();
         toolbarTitle();
         addTemplate();
         addMetaDetails();
         addQuestions();
         editMetaDetails();
-        //editQuestions();
-        //checkSimulator();
-        //saveAPK();
+        editQuestions();
+        checkSimulator();
+        saveAPK();
     }
 }
