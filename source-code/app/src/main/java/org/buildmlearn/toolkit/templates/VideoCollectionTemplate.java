@@ -43,6 +43,7 @@ import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 public class VideoCollectionTemplate implements TemplateInterface {
 
     private static final String YOUTUBE = "youtube";
+    private static final String YOUTUBE_SHORT = "youtu.be";
     private static final String DAILYMOTION = "dailymotion";
     private static final String VIMEO = "vimeo";
     private final String JSON_TITLE = "title";
@@ -77,7 +78,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
         if (linkText.equals("")) {
             Toast.makeText(context, R.string.video_collection_template_link_hint, Toast.LENGTH_SHORT).show();
             return false;
-        } else if (!(linkText.contains(YOUTUBE + ".com") || linkText.contains(DAILYMOTION + ".com") || linkText.contains(VIMEO + ".com"))) {
+        } else if (!(linkText.contains(YOUTUBE + ".com") || linkText.contains(YOUTUBE_SHORT) || linkText.contains(DAILYMOTION + ".com") || linkText.contains(VIMEO + ".com"))) {
             Toast.makeText(context, R.string.video_support_error, Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -103,7 +104,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
         } else if (linkText.equals("")) {
             Toast.makeText(context, R.string.video_collection_template_link_hint, Toast.LENGTH_SHORT).show();
             return false;
-        } else if (!(linkText.contains(YOUTUBE + ".com") || linkText.contains(DAILYMOTION + ".com") || linkText.contains(VIMEO + ".com"))) {
+        } else if (!(linkText.contains(YOUTUBE + ".com") || linkText.contains(YOUTUBE_SHORT) || linkText.contains(DAILYMOTION + ".com") || linkText.contains(VIMEO + ".com"))) {
             Toast.makeText(context, R.string.video_support_error, Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -168,20 +169,30 @@ public class VideoCollectionTemplate implements TemplateInterface {
     private String convertLink(String link) {
 
         if (link.contains(YOUTUBE)) {
+            if (!link.contains("www.")) {
+                link = "https://www." + link;
+            } else if (!(link.contains("http:") || link.contains("https:"))) {
+                link = "https://" + link;
+            }
+            return link;
+
+        } else if (link.contains(YOUTUBE_SHORT)) {
+            int pos = link.indexOf("youtu.be/");
+            link = "https://www.youtube.com/watch?v=" + link.substring(pos + 9);
             return link;
 
         } else if (link.contains(DAILYMOTION)) {
             if (!link.contains("www.")) {
                 link = "https://www." + link;
             } else if (!(link.contains("http:") || link.contains("https:"))) {
-                link = "http" + link;
+                link = "https://" + link;
             }
 
             return DAILYMOTION_OEMBED_LINK + link;
 
         } else if (link.contains(VIMEO)) {
             if (!(link.contains("http:") || link.contains("https:"))) {
-                link = "http" + link;
+                link = "https://" + link;
             }
 
             return VIMEO_OEMBED_LINK + link;
@@ -376,10 +387,11 @@ public class VideoCollectionTemplate implements TemplateInterface {
             link = params[1];
             position = params[2];
             success = true;
+            final String BASE_URL = params[0];
 
-            if (link.contains(YOUTUBE)) {
+            if (BASE_URL.contains(YOUTUBE + ".com")) {
                 try {
-                    org.jsoup.nodes.Document document = Jsoup.connect(link)
+                    org.jsoup.nodes.Document document = Jsoup.connect(BASE_URL)
                             .timeout(TIMEOUT_LIMIT)
                             .userAgent(USER_AGENT)
                             .ignoreContentType(true)
@@ -395,7 +407,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
                     String thumbnail_url = thumbnailElem.attr(META_CONTENT);
 
                     if (position.equals("-1")) {
-                        VideoModel temp = new VideoModel(title, description, link, thumbnail_url);
+                        VideoModel temp = new VideoModel(title, description, BASE_URL, thumbnail_url);
                         videoData.add(temp);
                     } else {
                         VideoModel data = videoData.get(Integer.parseInt(position));
@@ -410,7 +422,6 @@ public class VideoCollectionTemplate implements TemplateInterface {
                 }
             } else {
                 try {
-                    final String BASE_URL = params[0];
 
                     Uri builtUri = Uri.parse(BASE_URL).buildUpon().build();
                     URL url = new URL(builtUri.toString());
@@ -455,6 +466,13 @@ public class VideoCollectionTemplate implements TemplateInterface {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
+
+            if (result == null) {
+                Toast.makeText(mContext, R.string.video_fetching_error, Toast.LENGTH_SHORT).show();
+                progress.dismiss();
+                return;
+            }
+
             if (!result.equals("done")) {
 
                 try {
