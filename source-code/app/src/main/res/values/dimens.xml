@@ -82,6 +82,7 @@
     <dimen name="card_elevation">.8dp</dimen>
     <dimen name="card_radius">3.2dp</dimen>
     <dimen name="card_thumb_size">143dp</dimen>
+    <dimen name="web_view_negative_margin">-5.72dip</dimen>
 
     <!-- Comprehension Template-->
 

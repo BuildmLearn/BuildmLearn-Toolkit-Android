@@ -137,6 +137,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
             player.getSettings().setAllowFileAccess(true);
             player.getSettings().setLoadWithOverviewMode(true);
             player.getSettings().setUseWideViewPort(true);
+            player.getSettings().setTextZoom(140);
 
             String link = data.getString(Constants.COL_LINK);
             if (link.contains("youtube.com")) {
@@ -144,8 +145,8 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
                 int pos = link.indexOf("watch?v=");
                 String videoId = link.substring(pos + 8);
 
-                String playVideo = "<html><body>" +
-                        " <iframe class=\"player\" type=\"text/html\" width=\"1000\" height=\"850\" src=\"http://www.youtube.com/embed/" + videoId + "\">" +
+                String playVideo = "<html><body style=\"margin: 0; padding: 0\">" +
+                        " <iframe class=\"player\" type=\"text/html\" width=\"100%\" height=\"850\" src=\"http://www.youtube.com/embed/" + videoId + "\">" +
                         "</body></html>";
 
                 player.loadData(playVideo, "text/html", "utf-8");
@@ -172,8 +173,8 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
                 }
                 String videoId = link.substring(pos + 1);
 
-                String playVideo = "<html><body>" +
-                        " <iframe class=\"player\" type=\"text/html\" width=\"1000\" height=\"850\" src=\"http://www.dailymotion.com/embed/video/" + videoId + "\">" +
+                String playVideo = "<html><body style=\"margin: 0; padding: 0\">" +
+                        " <iframe class=\"player\" type=\"text/html\" width=\"100%\" height=\"850\" src=\"http://www.dailymotion.com/embed/video/" + videoId + "\">" +
                         "</body></html>";
 
                 player.loadData(playVideo, "text/html", "utf-8");
