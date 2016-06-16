@@ -11,11 +11,10 @@ import android.widget.ImageView;
 import com.squareup.picasso.Picasso;
 
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.utilities.RoundedTransformation;
 import org.buildmlearn.toolkit.views.TextViewPlus;
 
 import java.util.ArrayList;
-
-import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 
 /**
  * @brief Adapter for displaying VideoCollection Template Editor data.
@@ -72,7 +71,7 @@ class VideoCollectionAdapter extends BaseAdapter {
             Picasso
                     .with(mContext)
                     .load(video.getThumbnail_url())
-                    .transform(new RoundedCornersTransformation(20, 20))
+                    .transform(new RoundedTransformation(20, 20))
                     .fit()
                     .centerCrop()
                     .into(holder.thumb);

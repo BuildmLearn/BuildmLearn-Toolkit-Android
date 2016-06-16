@@ -19,6 +19,7 @@ import com.squareup.picasso.Picasso;
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.model.TemplateInterface;
 import org.buildmlearn.toolkit.utilities.NetworkUtils;
+import org.buildmlearn.toolkit.utilities.RoundedTransformation;
 import org.buildmlearn.toolkit.videoCollectionTemplate.fragment.SplashFragment;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -34,8 +35,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-
-import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 
 /**
  * Created by Anupam (opticod) on 4/5/16.
@@ -265,7 +264,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
         Picasso
                 .with(mContext)
                 .load(data.getThumbnail_url())
-                .transform(new RoundedCornersTransformation(10, 10))
+                .transform(new RoundedTransformation(10, 10))
                 .fit()
                 .centerCrop()
                 .into(thumb);
