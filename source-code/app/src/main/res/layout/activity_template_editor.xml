@@ -18,8 +18,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar"
         android:layout_gravity="center_vertical"
+        android:clipToPadding="false"
         android:divider="@android:color/transparent"
-        android:dividerHeight="8dp"/>
+        android:dividerHeight="8dp"
+        android:paddingBottom="@dimen/cardview_padding_last_bottom"/>
 
     <LinearLayout
         android:id="@+id/empty"

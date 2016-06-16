@@ -35,6 +35,7 @@
     <dimen name="cardview_title_text_size">24sp</dimen>
     <dimen name="cardview_title_padding_left_right">16dp</dimen>
     <dimen name="cardview_title_padding_top">24dp</dimen>
+    <dimen name="cardview_padding_last_bottom">38dp</dimen>
 
     <!-- Button-->
 
