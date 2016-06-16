@@ -86,7 +86,7 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
         Toolbar maintoolbar = (Toolbar) rootView.findViewById(R.id.toolbar_main);
         final String result[] = DataUtils.read_Title_Author();
         maintoolbar.setTitle(result[0]);
-        maintoolbar.inflateMenu(R.menu.menu_main);
+        maintoolbar.inflateMenu(R.menu.menu_main_white);
         maintoolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {

@@ -10,11 +10,14 @@
     <dimen name="main_menu_text_size">14sp</dimen>
     <dimen name="main_menu_drawable_padding">16dp</dimen>
     <dimen name="main_menu_item_height">48dp</dimen>
+    <dimen name="button_enter_simulator">48dp</dimen>
     <dimen name="layout_margin">8dp</dimen>
     <dimen name="cardview_top_padding">24dp</dimen>
     <dimen name="headline">24sp</dimen>
     <dimen name="headline_leading">32sp</dimen>
+    <dimen name="headline_leading_simulator">26sp</dimen>
     <dimen name="title">20sp</dimen>
+    <dimen name="title_simulator">16.36sp</dimen>
     <dimen name="sub_title">16sp</dimen>
     <dimen name="caption">12sp</dimen>
     <dimen name="body">14sp</dimen>
@@ -59,24 +62,25 @@
 
     <!-- Video Collection Template-->
 
-    <dimen name="splash_button_margin_top_video">50dp</dimen>
-    <dimen name="splash_text_margin_video">25dp</dimen>
-    <dimen name="thumb_size_video">100dp</dimen>
-    <dimen name="padding_video">8dp</dimen>
-    <dimen name="paddingTop_video">16dp</dimen>
-    <dimen name="cardHeightLastActivity_video">350dp</dimen>
-    <dimen name="paddingRight_video">5dp</dimen>
-    <dimen name="paddingLittle_video">2dp</dimen>
-    <dimen name="toolbar_height_video">150dp</dimen>
-    <dimen name="medium_margin_video">15dp</dimen>
-    <dimen name="negative_margin_video">-35dp</dimen>
-    <dimen name="toolbar_height_small_video">75dp</dimen>
-    <dimen name="title_size_video">16sp</dimen>
-    <dimen name="web_view_height_video">320dp</dimen>
-    <dimen name="card_margin">16dp</dimen>
-    <dimen name="card_elevation">1dp</dimen>
-    <dimen name="card_radius">4dp</dimen>
-    <dimen name="card_thumb_size">175dp</dimen>
+    <dimen name="splash_button_margin_top_video">41dp</dimen>
+    <dimen name="splash_text_margin_video">20.45dp</dimen>
+    <dimen name="thumb_size_video">81.8dp</dimen>
+    <dimen name="padding_video">6.54dp</dimen>
+    <dimen name="paddingTop_video">13dp</dimen>
+    <dimen name="cardHeightLastActivity_video">286dp</dimen>
+    <dimen name="paddingRight_video">4dp</dimen>
+    <dimen name="paddingLittle_video">1.6dp</dimen>
+    <dimen name="toolbar_height_video">122.7dp</dimen>
+    <dimen name="toolbar_height_video_detail">39.2dp</dimen>
+    <dimen name="medium_margin_video">12dp</dimen>
+    <dimen name="negative_margin_video">-28.6dp</dimen>
+    <dimen name="toolbar_height_small_video">61.36dp</dimen>
+    <dimen name="title_size_video">13sp</dimen>
+    <dimen name="web_view_height_video">261dp</dimen>
+    <dimen name="card_margin">13dp</dimen>
+    <dimen name="card_elevation">.8dp</dimen>
+    <dimen name="card_radius">3.2dp</dimen>
+    <dimen name="card_thumb_size">143dp</dimen>
 
     <!-- Comprehension Template-->
 

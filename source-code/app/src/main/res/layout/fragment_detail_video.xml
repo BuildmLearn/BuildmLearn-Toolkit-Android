@@ -1,60 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_centerHorizontal="true"
-    tools:context=".videoCollectionTemplate.fragment.DetailActivityFragment">
+    android:orientation="vertical">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        tools:context=".videoCollectionTemplate.fragment.DetailActivityFragment">
 
-        <WebView
-            android:id="@+id/player"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/web_view_height_video" />
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/player"
-            android:layout_marginEnd="@dimen/paddingTop_video"
-            android:layout_marginLeft="@dimen/paddingTop_video"
-            android:layout_marginRight="@dimen/paddingTop_video"
-            android:layout_marginStart="@dimen/paddingTop_video"
-            android:layout_marginTop="@dimen/splash_text_margin_video"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:textStyle="bold" />
+            <WebView
+                android:id="@+id/player"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/web_view_height_video" />
 
-        <TextView
-            android:id="@+id/description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/title"
-            android:layout_margin="@dimen/paddingTop_video" />
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/player"
+                android:paddingBottom="@dimen/paddingTop_video"
+                android:paddingLeft="@dimen/paddingTop_video"
+                android:paddingRight="@dimen/paddingTop_video"
+                android:paddingTop="@dimen/paddingTop_video"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/description"
-            android:background="@android:color/transparent"
-            android:text="@string/next_video"
-            android:textColor="@color/colorAccent_video" />
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title"
+                android:paddingBottom="@dimen/paddingTop_video"
+                android:paddingLeft="@dimen/paddingTop_video"
+                android:paddingRight="@dimen/paddingTop_video"
+                android:textAppearance="?android:textAppearanceSmall" />
 
-        <Button
-            android:id="@+id/previous"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/description"
-            android:layout_toLeftOf="@+id/next"
-            android:layout_toStartOf="@+id/next"
-            android:background="@android:color/transparent"
-            android:text="@string/previous_video"
-            android:textColor="@color/black_secondary_text" />
-    </RelativeLayout>
-</ScrollView>
+            <Button
+                android:id="@+id/next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/description"
+                android:background="@android:color/transparent"
+                android:paddingBottom="@dimen/paddingTop_video"
+                android:paddingLeft="@dimen/paddingTop_video"
+                android:paddingRight="@dimen/paddingTop_video"
+                android:paddingTop="@dimen/paddingTop_video"
+                android:text="@string/next_video"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:textColor="@color/colorAccent_video" />
+
+            <Button
+                android:id="@+id/previous"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/description"
+                android:layout_toLeftOf="@+id/next"
+                android:layout_toStartOf="@+id/next"
+                android:background="@android:color/transparent"
+                android:paddingBottom="@dimen/paddingTop_video"
+                android:paddingLeft="@dimen/paddingTop_video"
+                android:paddingRight="@dimen/paddingTop_video"
+                android:paddingTop="@dimen/paddingTop_video"
+                android:text="@string/previous_video"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:textColor="@color/black_secondary_text" />
+        </RelativeLayout>
+    </ScrollView>
+</LinearLayout>
