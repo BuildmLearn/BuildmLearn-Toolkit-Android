@@ -54,6 +54,7 @@
     <dimen name="thumb_size">250dp</dimen>
     <dimen name="thumb_padding">8dp</dimen>
     <dimen name="thumb_paddingTop">16dp</dimen>
+    <dimen name="thumb_paddingRight">18dp</dimen>
 
     <!-- Video Collection Template-->
 
@@ -74,6 +75,7 @@
     <dimen name="card_margin">16dp</dimen>
     <dimen name="card_elevation">1dp</dimen>
     <dimen name="card_radius">4dp</dimen>
+    <dimen name="card_thumb_size">175dp</dimen>
 
     <!-- Comprehension Template-->
 

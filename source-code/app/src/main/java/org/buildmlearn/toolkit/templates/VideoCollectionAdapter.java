@@ -1,6 +1,7 @@
 package org.buildmlearn.toolkit.templates;
 
 import android.content.Context;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,15 +65,14 @@ class VideoCollectionAdapter extends BaseAdapter {
         holder.description = (TextViewPlus) convertView.findViewById(R.id.description);
 
         VideoModel video = getItem(position);
-
-        holder.description.setText(video.getDescription());
-        holder.title.setText(video.getTitle());
+        holder.description.setText(Html.fromHtml("<b>" + "Description :  " + "</b> " + video.getDescription()));
+        holder.title.setText(Html.fromHtml("<b>" + "Title :  " + "</b> " + video.getTitle()));
 
         if (video.getThumbnail_url().length() > 0) {
             Picasso
                     .with(mContext)
                     .load(video.getThumbnail_url())
-                    .transform(new RoundedCornersTransformation(10, 10))
+                    .transform(new RoundedCornersTransformation(20, 20))
                     .fit()
                     .centerCrop()
                     .into(holder.thumb);
