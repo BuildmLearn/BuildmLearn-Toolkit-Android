@@ -1,5 +1,6 @@
 package org.buildmlearn.toolkit.videoCollectionTemplate.fragment;
 
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -53,6 +54,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
         rootView = inflater.inflate(R.layout.fragment_detail_video, container, false);
 
         db = new VideoDb(getActivity());
+        db.open();
         Toolbar maintoolbar = (Toolbar) rootView.findViewById(R.id.toolbar_main);
         maintoolbar.setTitle(getString(R.string.video_collection_title));
         maintoolbar.inflateMenu(R.menu.menu_main_white);
@@ -61,6 +63,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
         maintoolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 getActivity().getSupportFragmentManager().beginTransaction().replace(((ViewGroup) getView().getParent()).getId(), MainActivityFragment.newInstance()).addToBackStack(null).commit();
             }
         });
@@ -104,7 +107,6 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
                     return new CursorLoader(getActivity(), null, Constants.VIDEO_COLUMNS, null, null, null) {
                         @Override
                         public Cursor loadInBackground() {
-                            db.open();
                             return db.getVideoCursorById(Integer.parseInt(video_Id));
                         }
                     };
@@ -184,10 +186,6 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
                 @Override
                 public void onClick(View v) {
 
-                    if (!db.isOpen()) {
-                        db.open();
-                    }
-
                     long numColumns = db.getCount();
 
                     long nextVideoId = Integer.parseInt(video_Id) + 1;
@@ -232,7 +230,6 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
                 });
             }
         }
-        db.close();
     }
 
     @Override
@@ -254,4 +251,11 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
             player.onResume();
         }
     }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        db.close();
+    }
+
 }
