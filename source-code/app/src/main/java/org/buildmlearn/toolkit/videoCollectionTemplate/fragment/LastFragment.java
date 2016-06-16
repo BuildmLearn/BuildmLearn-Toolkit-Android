@@ -4,6 +4,7 @@ import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,6 +48,18 @@ public class LastFragment extends Fragment {
                 getActivity().finish();
             }
         });
+
+        Toolbar maintoolbar = (Toolbar) rootView.findViewById(R.id.toolbar_main);
+        maintoolbar.setTitle(getString(R.string.video_collection_title));
+        maintoolbar.setNavigationIcon(R.drawable.ic_home_white_24dp);
+
+        maintoolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(((ViewGroup) getView().getParent()).getId(), MainActivityFragment.newInstance()).addToBackStack(null).commit();
+            }
+        });
+
 
         return rootView;
     }
