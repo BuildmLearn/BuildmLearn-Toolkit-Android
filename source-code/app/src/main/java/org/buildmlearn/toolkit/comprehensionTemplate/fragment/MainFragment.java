@@ -87,34 +87,6 @@ public class MainFragment extends Fragment implements NavigationView.OnNavigatio
         db.open();
         db.resetCount();
 
-        Menu m = navigationView.getMenu();
-        SubMenu topChannelMenu = m.addSubMenu("Questions");
-        long numQues = db.getCountQuestions();
-
-        for (int i = 1; i <= numQues; i++) {
-            topChannelMenu.add(String.format(Locale.getDefault(), "Question %1$d", i));
-            topChannelMenu.getItem(i - 1).setIcon(R.drawable.ic_assignment_black_24dp);
-            final int finalI = i;
-            topChannelMenu.getItem(i - 1).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-                @Override
-                public boolean onMenuItemClick(MenuItem item) {
-
-                    Bundle arguments = new Bundle();
-                    arguments.putString(Intent.EXTRA_TEXT, String.valueOf(finalI));
-
-                    Fragment frag = QuestionFragment.newInstance();
-                    frag.setArguments(arguments);
-                    getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(((ViewGroup) getView().getParent()).getId(), frag).addToBackStack(null).commit();
-                    return false;
-                }
-            });
-        }
-
-        MenuItem mi = m.getItem(m.size() - 1);
-        mi.setTitle(mi.getTitle());
-
         Cursor cursor = db.getMetaCursor();
         cursor.moveToFirst();
         String title = cursor.getString(Constants.COL_TITLE);
@@ -124,7 +96,8 @@ public class MainFragment extends Fragment implements NavigationView.OnNavigatio
         final TextView timer = (TextView) rootView.findViewById(R.id.timer);
         assert timer != null;
         timer.setText(String.valueOf(time));
-        new CountDownTimer(time * 1000, 1000) {
+
+        final CountDownTimer countDownTimer = new CountDownTimer(time * 1000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 long min = millisUntilFinished / 60000;
@@ -145,6 +118,34 @@ public class MainFragment extends Fragment implements NavigationView.OnNavigatio
             }
         }.start();
 
+        Menu m = navigationView.getMenu();
+        SubMenu topChannelMenu = m.addSubMenu("Questions");
+        long numQues = db.getCountQuestions();
+
+        for (int i = 1; i <= numQues; i++) {
+            topChannelMenu.add(String.format(Locale.getDefault(), "Question %1$d", i));
+            topChannelMenu.getItem(i - 1).setIcon(R.drawable.ic_assignment_black_24dp);
+            final int finalI = i;
+            topChannelMenu.getItem(i - 1).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+
+                    Bundle arguments = new Bundle();
+                    arguments.putString(Intent.EXTRA_TEXT, String.valueOf(finalI));
+                    countDownTimer.cancel();
+                    Fragment frag = QuestionFragment.newInstance();
+                    frag.setArguments(arguments);
+                    getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(((ViewGroup) getView().getParent()).getId(), frag).addToBackStack(null).commit();
+                    return false;
+                }
+            });
+        }
+
+        MenuItem mi = m.getItem(m.size() - 1);
+        mi.setTitle(mi.getTitle());
+
         ((TextView) rootView.findViewById(R.id.passage)).setText(passage);
         rootView.findViewById(R.id.go_to_ques).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -152,7 +153,7 @@ public class MainFragment extends Fragment implements NavigationView.OnNavigatio
 
                 Bundle arguments = new Bundle();
                 arguments.putString(Intent.EXTRA_TEXT, "1");
-
+                countDownTimer.cancel();
                 Fragment frag = QuestionFragment.newInstance();
                 frag.setArguments(arguments);
                 getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
