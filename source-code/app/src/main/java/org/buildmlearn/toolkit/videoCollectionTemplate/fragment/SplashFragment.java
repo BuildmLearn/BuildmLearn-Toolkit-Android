@@ -58,6 +58,7 @@ public class SplashFragment extends Fragment {
         db.deleteAll();
 
         long numColumns = db.getCount();
+        db.close();
         if (numColumns == 0) {
             FetchXMLTask xmlTask = new FetchXMLTask(getActivity());
             xmlTask.execute(Constants.XMLFileName);
