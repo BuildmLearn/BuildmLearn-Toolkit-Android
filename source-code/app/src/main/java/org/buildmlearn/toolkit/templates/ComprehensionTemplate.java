@@ -57,7 +57,10 @@ public class ComprehensionTemplate implements TemplateInterface {
         String passageText = passage.getText().toString();
         String timerText = timer.getText().toString();
 
-        if (titleText.equals("")) {
+        if (timerText.length() > 9) {
+            Toast.makeText(context, R.string.comprehension_template_timer_correct_hint, Toast.LENGTH_SHORT).show();
+            return false;
+        } else if (titleText.equals("")) {
             Toast.makeText(context, R.string.comprehension_template_title_hint, Toast.LENGTH_SHORT).show();
             return false;
         } else if (passageText.equals("")) {

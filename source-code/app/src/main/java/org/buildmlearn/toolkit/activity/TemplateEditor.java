@@ -636,7 +636,7 @@ public class TemplateEditor extends AppCompatActivity {
                 doc.appendChild(rootElement);
                 Element dataElement = doc.createElement("data");
                 rootElement.appendChild(dataElement);
-                if (selectedTemplate.getItems(doc).size() == 0) {
+                if (selectedTemplate.getItems(doc).size() == 0 || (selectedTemplate.getItems(doc).size() < 2 && templateId == 5)) {
                     Toast.makeText(this, "Unable to perform action: No Data", Toast.LENGTH_SHORT).show();
                     return null;
                 }

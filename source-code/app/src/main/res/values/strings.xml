@@ -95,6 +95,7 @@
     <string name="comprehension_template_title">Title</string>
     <string name="comprehension_template_description">Description</string>
     <string name="comprehension_template_title_hint">Enter Title</string>
+    <string name="comprehension_template_timer_correct_hint">Max time :: 999,999,999 </string>
     <string name="comprehension_template_link_hint">Enter Link</string>
     <string name="comprehension_template_description_hint">Enter Description</string>
     <string name="comprehension_or">OR</string>
