@@ -1,6 +1,7 @@
 package org.buildmlearn.toolkit.comprehensionTemplate.fragment;
 
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -48,6 +49,7 @@ public class SplashFragment extends Fragment {
         rootView.findViewById(R.id.enter).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 getActivity().getSupportFragmentManager().beginTransaction().replace(((ViewGroup) getView().getParent()).getId(), MainFragment.newInstance()).addToBackStack(null).commit();
             }
         });
@@ -57,6 +59,7 @@ public class SplashFragment extends Fragment {
         db.deleteAll();
 
         long numColumns = db.getCountQuestions();
+        db.close();
         if (numColumns == 0) {
             FetchXMLTask xmlTask = new FetchXMLTask(getActivity());
             xmlTask.execute(Constants.XMLFileName);

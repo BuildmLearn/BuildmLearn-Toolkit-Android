@@ -34,6 +34,7 @@ import java.util.Locale;
 public class MainFragment extends Fragment implements NavigationView.OnNavigationItemSelectedListener {
 
     private View rootView;
+    private ComprehensionDb db;
 
     public MainFragment() {
     }
@@ -82,7 +83,7 @@ public class MainFragment extends Fragment implements NavigationView.OnNavigatio
         navigationView.setNavigationItemSelectedListener(this);
 
 
-        ComprehensionDb db = new ComprehensionDb(getActivity());
+        db = new ComprehensionDb(getActivity());
         db.open();
         db.resetCount();
 
@@ -144,8 +145,6 @@ public class MainFragment extends Fragment implements NavigationView.OnNavigatio
             }
         }.start();
 
-        db.close();
-
         ((TextView) rootView.findViewById(R.id.passage)).setText(passage);
         rootView.findViewById(R.id.go_to_ques).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -168,9 +167,10 @@ public class MainFragment extends Fragment implements NavigationView.OnNavigatio
 
     @Override
     public void onDestroyView() {
+        super.onDestroyView();
+        db.close();
         ViewGroup mContainer = (ViewGroup) getActivity().findViewById(R.id.container);
         mContainer.removeAllViews();
-        super.onDestroyView();
     }
 
     @Override
