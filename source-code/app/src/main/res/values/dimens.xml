@@ -87,18 +87,19 @@
     <!-- Comprehension Template-->
 
     <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="comprehension_nav_header_vertical_spacing">16dp</dimen>
-    <dimen name="comprehension_nav_header_height">160dp</dimen>
+    <dimen name="comprehension_nav_header_vertical_spacing">13dp</dimen>
+    <dimen name="comprehension_nav_header_height">131dp</dimen>
     <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="comprehension_activity_horizontal_margin">16dp</dimen>
-    <dimen name="comprehension_activity_vertical_margin">16dp</dimen>
+    <dimen name="comprehension_activity_horizontal_margin">13dp</dimen>
+    <dimen name="comprehension_activity_vertical_margin">13dp</dimen>
 
-    <dimen name="comprehension_headline_leading">32sp</dimen>
-    <dimen name="comprehension_title">20sp</dimen>
-    <dimen name="comprehension_splash_button_margin_top">50dp</dimen>
-    <dimen name="comprehension_splash_text_margin">25dp</dimen>
-    <dimen name="comprehension_paddingTop">16dp</dimen>
-    <dimen name="comprehension_cardHeightLastActivity">350dp</dimen>
-    <dimen name="comprehension_toolbar_height_small">75dp</dimen>
+    <dimen name="comprehension_headline_leading">26sp</dimen>
+    <dimen name="comprehension_title">16.36sp</dimen>
+    <dimen name="comprehension_splash_button_margin_top">41dp</dimen>
+    <dimen name="comprehension_splash_text_margin">20.45dp</dimen>
+    <dimen name="comprehension_paddingTop">13dp</dimen>
+    <dimen name="comprehension_cardHeightLastActivity">286.36dp</dimen>
+    <dimen name="comprehension_toolbar_height_small">61.36dp</dimen>
+    <dimen name="activity_vertical_margin_simulator">13dp</dimen>
 
 </resources>

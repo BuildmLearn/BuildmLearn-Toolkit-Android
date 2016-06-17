@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/activity_vertical_margin"
-    android:layout_marginTop="60dp"
-    android:paddingTop="@dimen/activity_horizontal_margin"
+    android:layout_marginBottom="@dimen/activity_vertical_margin_simulator"
+    android:layout_marginTop="49dp"
+    android:paddingTop="@dimen/activity_vertical_margin_simulator"
     tools:context=".comprehensionTemplate.fragment.QuestionFragment"
     tools:showIn="@layout/comprehension_app_bar_question">
 
@@ -14,8 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         card_view:cardBackgroundColor="#FFFFFF"
-        card_view:cardCornerRadius="4dp"
-        card_view:cardElevation="4dp"
+        card_view:cardCornerRadius="3.27dp"
+        card_view:cardElevation="3.27dp"
         card_view:cardUseCompatPadding="false">
 
         <RelativeLayout
@@ -26,11 +26,11 @@
                 android:id="@+id/question_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/activity_vertical_margin"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                android:textAppearance="?android:textAppearanceMedium"
+                android:paddingBottom="@dimen/activity_vertical_margin_simulator"
+                android:paddingLeft="@dimen/activity_vertical_margin_simulator"
+                android:paddingRight="@dimen/activity_vertical_margin_simulator"
+                android:paddingTop="@dimen/activity_vertical_margin_simulator"
+                android:textAppearance="?android:textAppearanceSmall"
                 android:textStyle="bold" />
 
             <TextView
@@ -38,11 +38,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/question_title"
-                android:paddingBottom="@dimen/activity_vertical_margin"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                android:textAppearance="?android:textAppearanceMedium" />
+                android:paddingBottom="@dimen/activity_vertical_margin_simulator"
+                android:paddingLeft="@dimen/activity_vertical_margin_simulator"
+                android:paddingRight="@dimen/activity_vertical_margin_simulator"
+                android:paddingTop="@dimen/activity_vertical_margin_simulator"
+                android:textAppearance="?android:textAppearanceSmall" />
 
             <RadioGroup
                 android:id="@+id/radio_group"
@@ -56,11 +56,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/comprehension_splash_button_margin_top"
-                    android:paddingBottom="@dimen/activity_vertical_margin"
-                    android:paddingLeft="@dimen/activity_horizontal_margin"
-                    android:paddingRight="@dimen/activity_horizontal_margin"
-                    android:paddingTop="@dimen/activity_vertical_margin"
-                    android:textAppearance="?android:textAppearanceMedium"
+                    android:paddingBottom="@dimen/activity_vertical_margin_simulator"
+                    android:paddingLeft="@dimen/activity_vertical_margin_simulator"
+                    android:paddingRight="@dimen/activity_vertical_margin_simulator"
+                    android:paddingTop="@dimen/activity_vertical_margin_simulator"
+                    android:textAppearance="?android:textAppearanceSmall"
                     android:visibility="gone" />
 
                 <RadioButton
@@ -68,11 +68,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/comprehension_splash_button_margin_top"
-                    android:paddingBottom="@dimen/activity_vertical_margin"
-                    android:paddingLeft="@dimen/activity_horizontal_margin"
-                    android:paddingRight="@dimen/activity_horizontal_margin"
-                    android:paddingTop="@dimen/activity_vertical_margin"
-                    android:textAppearance="?android:textAppearanceMedium"
+                    android:paddingBottom="@dimen/activity_vertical_margin_simulator"
+                    android:paddingLeft="@dimen/activity_vertical_margin_simulator"
+                    android:paddingRight="@dimen/activity_vertical_margin_simulator"
+                    android:paddingTop="@dimen/activity_vertical_margin_simulator"
+                    android:textAppearance="?android:textAppearanceSmall"
                     android:visibility="gone" />
 
                 <RadioButton
@@ -80,11 +80,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/comprehension_splash_button_margin_top"
-                    android:paddingBottom="@dimen/activity_vertical_margin"
-                    android:paddingLeft="@dimen/activity_horizontal_margin"
-                    android:paddingRight="@dimen/activity_horizontal_margin"
-                    android:paddingTop="@dimen/activity_vertical_margin"
-                    android:textAppearance="?android:textAppearanceMedium"
+                    android:paddingBottom="@dimen/activity_vertical_margin_simulator"
+                    android:paddingLeft="@dimen/activity_vertical_margin_simulator"
+                    android:paddingRight="@dimen/activity_vertical_margin_simulator"
+                    android:paddingTop="@dimen/activity_vertical_margin_simulator"
+                    android:textAppearance="?android:textAppearanceSmall"
                     android:visibility="gone" />
 
                 <RadioButton
@@ -93,11 +93,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/comprehension_toolbar_height_small"
                     android:layout_marginLeft="@dimen/comprehension_splash_button_margin_top"
-                    android:paddingBottom="@dimen/activity_vertical_margin"
-                    android:paddingLeft="@dimen/activity_horizontal_margin"
-                    android:paddingRight="@dimen/activity_horizontal_margin"
-                    android:paddingTop="@dimen/activity_vertical_margin"
-                    android:textAppearance="?android:textAppearanceMedium"
+                    android:paddingBottom="@dimen/activity_vertical_margin_simulator"
+                    android:paddingLeft="@dimen/activity_vertical_margin_simulator"
+                    android:paddingRight="@dimen/activity_vertical_margin_simulator"
+                    android:paddingTop="@dimen/activity_vertical_margin_simulator"
+                    android:textAppearance="?android:textAppearanceSmall"
                     android:visibility="gone" />
             </RadioGroup>
 
@@ -109,11 +109,11 @@
                 android:layout_alignParentRight="true"
                 android:background="@android:color/transparent"
                 android:paddingBottom="@dimen/headline_leading"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_vertical_margin_simulator"
+                android:paddingRight="@dimen/activity_vertical_margin_simulator"
+                android:paddingTop="@dimen/activity_vertical_margin_simulator"
                 android:text="@string/comprehension_next"
-                android:textAppearance="?android:textAppearanceMedium"
+                android:textAppearance="?android:textAppearanceSmall"
                 android:textColor="@color/colorAccent_comprehension" />
 
             <Button
@@ -124,12 +124,12 @@
                 android:layout_toLeftOf="@+id/next"
                 android:layout_toStartOf="@+id/next"
                 android:background="@android:color/transparent"
-                android:paddingBottom="@dimen/headline_leading"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_vertical_margin"
+                android:paddingBottom="@dimen/headline_leading_simulator"
+                android:paddingLeft="@dimen/activity_vertical_margin_simulator"
+                android:paddingRight="@dimen/activity_vertical_margin_simulator"
+                android:paddingTop="@dimen/activity_vertical_margin_simulator"
                 android:text="@string/comprehension_previous"
-                android:textAppearance="?android:textAppearanceMedium"
+                android:textAppearance="?android:textAppearanceSmall"
                 android:textColor="@color/black_secondary_text" />
 
         </RelativeLayout>
