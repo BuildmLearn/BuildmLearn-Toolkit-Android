@@ -3,7 +3,6 @@ package org.buildmlearn.toolkit.templates;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
@@ -13,7 +12,7 @@ import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.buildmlearn.toolkit.R;
-import org.buildmlearn.toolkit.infotemplate.TFTFragment;
+import org.buildmlearn.toolkit.infoTemplate.fragment.SplashFragment;
 import org.buildmlearn.toolkit.model.TemplateInterface;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -206,8 +205,7 @@ public class InfoTemplate implements TemplateInterface {
 
     @Override
     public android.support.v4.app.Fragment getSimulatorFragment(String filePathWithName) {
-        Log.e("debug", filePathWithName);
-        return TFTFragment.newInstance(filePathWithName);
+        return SplashFragment.newInstance(filePathWithName);
     }
 
     @Override
