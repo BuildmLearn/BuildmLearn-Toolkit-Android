@@ -100,7 +100,7 @@
                     android:paddingRight="@dimen/paddingTop_info"
                     android:paddingStart="@dimen/paddingTop_info"
                     android:paddingTop="@dimen/paddingTop_info"
-                    android:text="@string/exit"
+                    android:text="@string/exit_info"
                     android:textAppearance="?android:textAppearanceSmall"
                     android:textColor="@color/colorAccent_video" />
 

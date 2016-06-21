@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.infoTemplate.Constants;
+import org.buildmlearn.toolkit.infoTemplate.data.DataUtils;
 import org.buildmlearn.toolkit.infoTemplate.data.InfoContract;
 import org.buildmlearn.toolkit.infoTemplate.data.InfoDb;
 
@@ -56,7 +57,8 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
         db = new InfoDb(getContext());
         db.open();
         Toolbar maintoolbar = (Toolbar) rootView.findViewById(R.id.toolbar_main);
-        maintoolbar.setTitle(getString(R.string.video_collection_title));
+        String result[] = DataUtils.read_Title_Author();
+        maintoolbar.setTitle(result[0]);
         maintoolbar.inflateMenu(R.menu.menu_main_white);
         maintoolbar.setNavigationIcon(R.drawable.ic_home_white_24dp);
 
