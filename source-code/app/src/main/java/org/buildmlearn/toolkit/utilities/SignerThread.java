@@ -78,7 +78,6 @@ public class SignerThread extends Thread {
     private static boolean needRemoveLib;
     private static String newPackageFullName;
     private static boolean changed;
-    private final String signatureAlgorithm = "SHA1withRSA";
     private final ToolkitApplication toolkit;
     private final Context context;
     private final String assetsApk;
@@ -225,6 +224,7 @@ public class SignerThread extends Thread {
                 Log.d(TAG, "Final APK: " + finalApk);
             }
 
+            String signatureAlgorithm = "SHA1withRSA";
             CustomKeySigner.signZip(zipSigner, keystoreFile.getAbsolutePath(), keyPass,
                     keyDetails.getAlias(), aliasPass, signatureAlgorithm, inputFile, finalApk);
 

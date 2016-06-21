@@ -45,17 +45,6 @@ public class VideoCollectionTemplate implements TemplateInterface {
     private static final String YOUTUBE_SHORT = "youtu.be";
     private static final String DAILYMOTION = "dailymotion";
     private static final String VIMEO = "vimeo";
-    private final String JSON_TITLE = "title";
-    private final String JSON_DESCRIPTION = "description";
-    private final String JSON_THUMBNAIL_URL = "thumbnail_url";
-    private final String META_PROPERTY_TITLE = "meta[property=og:title]";
-    private final String META_PROPERTY_DESCRIPTION = "meta[property=og:description]";
-    private final String META_PROPERTY_THUMBNAIL_URL = "meta[property=og:image]";
-    private final String META_CONTENT = "content";
-    private final String USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.94 Safari/537.36";
-    private final int TIMEOUT_LIMIT = 60000;
-    private final String DAILYMOTION_OEMBED_LINK = "http://www.dailymotion.com/services/oembed?url=";
-    private final String VIMEO_OEMBED_LINK = "https://vimeo.com/api/oembed.json?url=";
     private final String TEMPLATE_NAME = "VideoCollection Template";
     transient private VideoCollectionAdapter adapter;
     private ArrayList<VideoModel> videoData;
@@ -187,6 +176,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
                 link = "https://" + link;
             }
 
+            String DAILYMOTION_OEMBED_LINK = "http://www.dailymotion.com/services/oembed?url=";
             return DAILYMOTION_OEMBED_LINK + link;
 
         } else if (link.contains(VIMEO)) {
@@ -194,6 +184,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
                 link = "https://" + link;
             }
 
+            String VIMEO_OEMBED_LINK = "https://vimeo.com/api/oembed.json?url=";
             return VIMEO_OEMBED_LINK + link;
         }
 
@@ -390,18 +381,24 @@ public class VideoCollectionTemplate implements TemplateInterface {
 
             if (BASE_URL.contains(YOUTUBE + ".com")) {
                 try {
+                    int TIMEOUT_LIMIT = 60000;
+                    String USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.94 Safari/537.36";
                     org.jsoup.nodes.Document document = Jsoup.connect(BASE_URL)
                             .timeout(TIMEOUT_LIMIT)
                             .userAgent(USER_AGENT)
                             .ignoreContentType(true)
                             .get();
 
+                    String META_PROPERTY_TITLE = "meta[property=og:title]";
                     Elements titleElem = document.select(META_PROPERTY_TITLE);
+                    String META_CONTENT = "content";
                     String title = titleElem.attr(META_CONTENT);
 
+                    String META_PROPERTY_DESCRIPTION = "meta[property=og:description]";
                     Elements descriptionElem = document.select(META_PROPERTY_DESCRIPTION);
                     String description = descriptionElem.attr(META_CONTENT);
 
+                    String META_PROPERTY_THUMBNAIL_URL = "meta[property=og:image]";
                     Elements thumbnailElem = document.select(META_PROPERTY_THUMBNAIL_URL);
                     String thumbnail_url = thumbnailElem.attr(META_CONTENT);
 
@@ -476,8 +473,11 @@ public class VideoCollectionTemplate implements TemplateInterface {
 
                 try {
                     JSONObject json = new JSONObject(result);
+                    String JSON_TITLE = "title";
                     String title = json.getString(JSON_TITLE);
+                    String JSON_DESCRIPTION = "description";
                     String description = json.getString(JSON_DESCRIPTION);
+                    String JSON_THUMBNAIL_URL = "thumbnail_url";
                     String thumbnail_url = json.getString(JSON_THUMBNAIL_URL);
 
                     if (position.equals("-1")) {

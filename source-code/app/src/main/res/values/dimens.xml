@@ -72,15 +72,11 @@
     <dimen name="paddingRight_video">4dp</dimen>
     <dimen name="paddingLittle_video">1.6dp</dimen>
     <dimen name="toolbar_height_video">122.7dp</dimen>
-    <dimen name="toolbar_height_video_detail">39.2dp</dimen>
     <dimen name="medium_margin_video">12dp</dimen>
     <dimen name="negative_margin_video">-28.6dp</dimen>
     <dimen name="toolbar_height_small_video">61.36dp</dimen>
     <dimen name="title_size_video">13sp</dimen>
     <dimen name="web_view_height_video">261dp</dimen>
-    <dimen name="card_margin">13dp</dimen>
-    <dimen name="card_elevation">.8dp</dimen>
-    <dimen name="card_radius">3.2dp</dimen>
     <dimen name="card_thumb_size">143dp</dimen>
     <dimen name="web_view_negative_margin">-5.72dip</dimen>
 
@@ -90,28 +86,18 @@
     <dimen name="comprehension_nav_header_vertical_spacing">13dp</dimen>
     <dimen name="comprehension_nav_header_height">131dp</dimen>
     <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="comprehension_activity_horizontal_margin">13dp</dimen>
-    <dimen name="comprehension_activity_vertical_margin">13dp</dimen>
 
-    <dimen name="comprehension_headline_leading">26sp</dimen>
-    <dimen name="comprehension_title">16.36sp</dimen>
     <dimen name="comprehension_splash_button_margin_top">41dp</dimen>
-    <dimen name="comprehension_splash_text_margin">20.45dp</dimen>
     <dimen name="comprehension_paddingTop">13dp</dimen>
     <dimen name="comprehension_cardHeightLastActivity">286.36dp</dimen>
     <dimen name="comprehension_toolbar_height_small">61.36dp</dimen>
     <dimen name="activity_vertical_margin_simulator">13dp</dimen>
 
     <!-- Info Template-->
-    <dimen name="headline_leading_info">26.18sp</dimen>
-    <dimen name="title_info">16.36sp</dimen>
-    <dimen name="splash_button_margin_top_info">57.27dp</dimen>
-    <dimen name="splash_text_margin_info">20.45dp</dimen>
     <dimen name="padding_info">6.54dp</dimen>
     <dimen name="paddingTop_info">13dp</dimen>
     <dimen name="toolbar_height_info">122.72dp</dimen>
     <dimen name="medium_margin_info">12.2dp</dimen>
     <dimen name="negative_margin_info">-28.63dp</dimen>
-    <dimen name="extra_margin_info">122.72dp</dimen>
 
 </resources>

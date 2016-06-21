@@ -19,7 +19,6 @@ import org.buildmlearn.toolkit.model.Section;
 public class HomeActivity extends AppCompatActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
-    private CharSequence mTitle;
     private Section currentSection;
 
     /**
@@ -39,7 +38,7 @@ public class HomeActivity extends AppCompatActivity
      */
         NavigationDrawerFragment mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
-        mTitle = getTitle();
+        CharSequence mTitle = getTitle();
 
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(

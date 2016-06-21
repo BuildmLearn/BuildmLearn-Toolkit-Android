@@ -24,8 +24,6 @@
 
     <!-- Info Template-->
 
-    <color name="info_template_blue_background">#255593</color>
-
     <color name="BlueBg">#255593</color>
 
     <!-- VideoCollectionTemplate Template-->
@@ -37,7 +35,5 @@
     <color name="colorPrimary_comprehension">#26C6DA</color>
     <color name="colorPrimaryDark_comprehension">#00BCD4</color>
     <color name="colorAccent_comprehension">#3F99A9</color>
-    <color name="white_secondary_text_comprehension">#B3FFFFFF</color>
-    <color name="black_secondary_text_comprehension">#8a000000</color>
 
 </resources>
