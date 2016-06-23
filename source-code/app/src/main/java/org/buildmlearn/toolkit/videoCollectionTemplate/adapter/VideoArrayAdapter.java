@@ -2,6 +2,7 @@ package org.buildmlearn.toolkit.videoCollectionTemplate.adapter;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -79,7 +80,7 @@ public class VideoArrayAdapter extends CursorAdapter {
         viewHolder.title.setText(title);
 
         String description = cursor.getString(Constants.COL_DESCRIPTION);
-        viewHolder.description.setText(description);
+        viewHolder.description.setText(Html.fromHtml(description));
 
     }
 

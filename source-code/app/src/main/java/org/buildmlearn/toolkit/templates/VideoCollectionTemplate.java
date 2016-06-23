@@ -394,9 +394,12 @@ public class VideoCollectionTemplate implements TemplateInterface {
                     String META_CONTENT = "content";
                     String title = titleElem.attr(META_CONTENT);
 
-                    String META_PROPERTY_DESCRIPTION = "meta[property=og:description]";
-                    Elements descriptionElem = document.select(META_PROPERTY_DESCRIPTION);
-                    String description = descriptionElem.attr(META_CONTENT);
+                    org.jsoup.nodes.Element inputElements = document.getElementById("watch-description-text");
+                    String description = inputElements.html();
+
+                    //String META_PROPERTY_DESCRIPTION = "meta[property=og:description]";
+                    //Elements descriptionElem = document.select(META_PROPERTY_DESCRIPTION);
+                    //String description = descriptionElem.attr(META_CONTENT);
 
                     String META_PROPERTY_THUMBNAIL_URL = "meta[property=og:image]";
                     Elements thumbnailElem = document.select(META_PROPERTY_THUMBNAIL_URL);

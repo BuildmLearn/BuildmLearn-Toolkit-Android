@@ -161,7 +161,7 @@ public class ComprehensionAdapter extends BaseAdapter {
                 .title(R.string.quiz_edit)
                 .customView(R.layout.quiz_dialog_add_question, wrapInScrollView)
                 .positiveText(R.string.quiz_add)
-                .negativeText(R.string.quiz_delete)
+                .negativeText(R.string.quiz_cancel)
                 .build();
 
         final EditText question = (EditText) dialog.findViewById(R.id.quiz_question);

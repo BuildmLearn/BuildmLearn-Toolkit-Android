@@ -10,6 +10,7 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -126,7 +127,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
             String description = data.getString(Constants.COL_DESCRIPTION);
 
             ((TextView) rootView.findViewById(R.id.description))
-                    .setText(description);
+                    .setText(Html.fromHtml(description));
 
             player = (WebView) rootView.findViewById(R.id.player);
 
