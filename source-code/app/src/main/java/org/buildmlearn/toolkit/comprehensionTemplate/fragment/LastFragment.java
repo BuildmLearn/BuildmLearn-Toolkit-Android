@@ -5,12 +5,17 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.Toolbar;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.comprehensionTemplate.Constants;
 import org.buildmlearn.toolkit.comprehensionTemplate.data.ComprehensionDb;
 
 import java.util.Locale;
@@ -40,6 +45,35 @@ public class LastFragment extends Fragment {
         cursor.moveToFirst();
 
         int stat[] = db.getStatistics();
+
+        Toolbar maintoolbar = (Toolbar) rootView.findViewById(R.id.toolbar_main);
+        Cursor meta = db.getMetaCursor();
+        meta.moveToFirst();
+        String title = meta.getString(Constants.COL_TITLE);
+        maintoolbar.setTitle(title);
+        maintoolbar.inflateMenu(R.menu.menu_main_white);
+
+        maintoolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.action_about:
+                        AlertDialog.Builder builder =
+                                new AlertDialog.Builder(getActivity());
+                        builder.setTitle(String.format("%1$s", getString(R.string.comprehension_about_us)));
+                        builder.setMessage(getResources().getText(R.string.comprehension_about_text));
+                        builder.setPositiveButton("OK", null);
+                        AlertDialog welcomeAlert = builder.create();
+                        welcomeAlert.show();
+                        assert welcomeAlert.findViewById(android.R.id.message) != null;
+                        assert welcomeAlert.findViewById(android.R.id.message) != null;
+                        ((TextView) welcomeAlert.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
+                        break;
+                }
+                return true;
+            }
+        });
+
         db.close();
 
         ((TextView) rootView.findViewById(R.id.correct)).setText(String.format(Locale.getDefault(), "Total Correct : %1$d", stat[0]));
@@ -65,6 +99,7 @@ public class LastFragment extends Fragment {
                 getActivity().finish();
             }
         });
+
 
         return rootView;
     }

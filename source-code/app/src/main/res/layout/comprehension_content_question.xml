@@ -108,7 +108,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
                 android:background="@android:color/transparent"
-                android:paddingBottom="@dimen/headline_leading"
+                android:paddingBottom="@dimen/headline_leading_simulator"
                 android:paddingLeft="@dimen/activity_vertical_margin_simulator"
                 android:paddingRight="@dimen/activity_vertical_margin_simulator"
                 android:paddingTop="@dimen/activity_vertical_margin_simulator"
