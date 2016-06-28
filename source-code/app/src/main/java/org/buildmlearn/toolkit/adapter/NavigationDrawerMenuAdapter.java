@@ -100,10 +100,8 @@ public class NavigationDrawerMenuAdapter extends BaseAdapter {
             tv.setText(sectionTitle);
             tv.setCompoundDrawablesWithIntrinsicBounds(sectionIcon, null, null, null);
             tv.setBackgroundColor(backgroundColor);
-        } else if (menu.getType() == Section.SECTION_DIVIDER) {
-            if (convertView == null) {
+        } else if (menu.getType() == Section.SECTION_DIVIDER && convertView == null) {
                 convertView = inflater.inflate(R.layout.item_section_divider, parent, false);
-            }
         }
         return convertView;
     }

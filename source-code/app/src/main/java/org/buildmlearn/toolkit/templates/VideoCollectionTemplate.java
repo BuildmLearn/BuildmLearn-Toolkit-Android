@@ -20,7 +20,7 @@ import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.model.TemplateInterface;
 import org.buildmlearn.toolkit.utilities.NetworkUtils;
 import org.buildmlearn.toolkit.utilities.RoundedTransformation;
-import org.buildmlearn.toolkit.videoCollectionTemplate.fragment.SplashFragment;
+import org.buildmlearn.toolkit.videocollectiontemplate.fragment.SplashFragment;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;

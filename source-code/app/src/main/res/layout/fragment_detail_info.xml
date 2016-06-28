@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        tools:context=".infoTemplate.fragment.DetailActivityFragment">
+        tools:context=".infotemplate.fragment.DetailActivityFragment">
 
         <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"

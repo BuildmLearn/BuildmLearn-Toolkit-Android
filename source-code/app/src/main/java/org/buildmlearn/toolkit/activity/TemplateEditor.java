@@ -135,14 +135,12 @@ public class TemplateEditor extends AppCompatActivity {
             }
         });
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                     != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(this,
                         new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
                         PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE_RESULT);
             }
-        }
     }
 
     /**
@@ -525,6 +523,8 @@ public class TemplateEditor extends AppCompatActivity {
             case android.R.id.home:
                 onBackPressed();
                 break;
+            default: //do nothing
+                break;
         }
         return true;
     }
@@ -602,10 +602,10 @@ public class TemplateEditor extends AppCompatActivity {
         String author = ((EditText) findViewById(R.id.author_name)).getText().toString();
         assert findViewById(R.id.template_title) != null;
         String title = ((EditText) findViewById(R.id.template_title)).getText().toString();
-        if (author.equals("")) {
+        if ("".equals(author)) {
             assert authorEditText != null;
             authorEditText.setError("Author name is required");
-        } else if (title.equals("")) {
+        } else if ("".equals(title)) {
             assert titleEditText != null;
             titleEditText.setError("Title is required");
         } else {

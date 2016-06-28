@@ -65,9 +65,6 @@ public class NavigationDrawerFragment extends Fragment {
 
     private int selectedSectionMenu = 0;
 
-    public NavigationDrawerFragment() {
-    }
-
     /**
      * {@inheritDoc}
      */
@@ -246,10 +243,8 @@ public class NavigationDrawerFragment extends Fragment {
             mDrawerListView.setItemChecked(position, true);
         }
 
-        if (mDrawerLayout == null || !isDrawerOpen()) {
-            if (mCallbacks != null) {
+        if ((mDrawerLayout == null || !isDrawerOpen()) && mCallbacks != null) {
                 mCallbacks.onNavigationDrawerItemSelected(position);
-            }
         }
         if (mDrawerLayout != null) {
             mDrawerLayout.closeDrawer(mFragmentContainerView);

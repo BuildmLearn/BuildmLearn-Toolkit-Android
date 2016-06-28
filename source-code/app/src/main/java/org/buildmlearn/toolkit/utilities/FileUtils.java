@@ -32,7 +32,6 @@ import javax.xml.transform.stream.StreamResult;
  */
 public class FileUtils {
 
-    private final static String TAG = "ZIP_UTIL";
     private final static int BUFFER_SIZE = 2048;
 
 
@@ -69,10 +68,8 @@ public class FileUtils {
                     } else {
 
                         File parentDir = unzipFile.getParentFile();
-                        if (null != parentDir) {
-                            if (!parentDir.isDirectory()) {
+                        if (null != parentDir && !parentDir.isDirectory()) {
                                 parentDir.mkdirs();
-                            }
                         }
 
                         FileOutputStream out = new FileOutputStream(unzipFile, false);

@@ -38,7 +38,6 @@ public class HomeActivity extends AppCompatActivity
      */
         NavigationDrawerFragment mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
-        CharSequence mTitle = getTitle();
 
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(

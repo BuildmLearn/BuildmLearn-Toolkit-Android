@@ -26,7 +26,7 @@ public class TemplateAdapter extends BaseAdapter {
     private final Template[] templates = Template.values();
     private final ListColor[] colors = ListColor.values();
 
-    public TemplateAdapter(Context context, int count) {
+    public TemplateAdapter(Context context) {
         this.context = context;
     }
 

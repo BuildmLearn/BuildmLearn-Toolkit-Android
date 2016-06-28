@@ -11,11 +11,10 @@ import java.io.Serializable;
  */
 public class ComprehensionMetaModel implements Serializable {
 
-    public static final String ROOT_TAG = "meta_details";
     public static final String TITLE_TAG = "meta_title";
     public static final String PASSAGE_TAG = "meta_passage";
     public static final String TIMER_TAG = "meta_timer";
-
+    private static final String ROOT_TAG = "meta_details";
     private String title;
     private String passage;
     private long time;

@@ -79,8 +79,8 @@ public class SavedProjectAdapter extends BaseAdapter {
     }
 
     public class ProjectHolder {
-        TextViewPlus projectName;
-        TextViewPlus projectIcon;
-        TextViewPlus details;
+        public TextViewPlus projectName;
+        public TextViewPlus projectIcon;
+        public TextViewPlus details;
     }
 }

@@ -25,7 +25,7 @@ import java.util.ArrayList;
 /**
  * Created by Anupam (opticod) on 26/5/16.
  */
-public class ComprehensionAdapter extends BaseAdapter {
+class ComprehensionAdapter extends BaseAdapter {
 
 
     private final Context context;

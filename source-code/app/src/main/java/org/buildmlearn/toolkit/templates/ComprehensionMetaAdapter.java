@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * <p/>
  * Created by Anupam (opticod) on 26/5/16.
  */
-public class ComprehensionMetaAdapter extends BaseAdapter {
+class ComprehensionMetaAdapter extends BaseAdapter {
 
     private final Context mContext;
     private final ArrayList<ComprehensionMetaModel> data;

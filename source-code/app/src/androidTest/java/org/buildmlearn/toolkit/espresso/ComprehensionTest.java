@@ -64,7 +64,7 @@ import static org.hamcrest.core.IsInstanceOf.instanceOf;
 @LargeTest
 public class ComprehensionTest {
     @Rule
-    public ActivityTestRule<TemplateEditor> mActivityRule =
+    public final ActivityTestRule<TemplateEditor> mActivityRule =
             new ActivityTestRule<TemplateEditor>(TemplateEditor.class) {
                 @Override
                 protected Intent getActivityIntent() {
@@ -204,7 +204,7 @@ public class ComprehensionTest {
         onView(withText("Save APK")).perform(click());
 
         Intent intent = new Intent();
-        intent.setAction(android.content.Intent.ACTION_VIEW);
+        intent.setAction(Intent.ACTION_VIEW);
         String finalApk = getText(allOf(withResourceName("content"), is(instanceOf(AppCompatTextView.class))));
         finalApk = finalApk.substring(18, finalApk.length());
         File file = new File(finalApk);
@@ -212,7 +212,7 @@ public class ComprehensionTest {
         mActivityRule.getActivity().startActivity(intent);
     }
 
-    String getText(final Matcher<View> matcher) {
+    private String getText(final Matcher<View> matcher) {
         final String[] stringHolder = {null};
         onView(matcher).perform(new ViewAction() {
             @Override

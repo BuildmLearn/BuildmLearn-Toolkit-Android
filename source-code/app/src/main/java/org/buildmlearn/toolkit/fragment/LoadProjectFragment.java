@@ -311,6 +311,8 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                 });
                 dialog.show();
                 break;
+            default: //do nothing
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

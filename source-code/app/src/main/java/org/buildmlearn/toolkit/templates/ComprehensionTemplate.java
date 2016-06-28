@@ -15,7 +15,7 @@ import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.buildmlearn.toolkit.R;
-import org.buildmlearn.toolkit.comprehensionTemplate.fragment.SplashFragment;
+import org.buildmlearn.toolkit.comprehensiontemplate.fragment.SplashFragment;
 import org.buildmlearn.toolkit.model.TemplateInterface;
 import org.buildmlearn.toolkit.utilities.FileDialog;
 import org.buildmlearn.toolkit.views.TextViewPlus;
@@ -36,11 +36,10 @@ import java.util.ArrayList;
 public class ComprehensionTemplate implements TemplateInterface {
 
     private final String TEMPLATE_NAME = "Comprehension Template";
-
+    private final ArrayList<ComprehensionMetaModel> metaData;
     transient private ComprehensionAdapter adapter;
     transient private ComprehensionMetaAdapter metaAdapter;
     private ArrayList<ComprehensionModel> comprehensionData;
-    private ArrayList<ComprehensionMetaModel> metaData;
     transient private Context mContext;
 
     public ComprehensionTemplate() {

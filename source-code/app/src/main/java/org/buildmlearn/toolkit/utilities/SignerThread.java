@@ -124,17 +124,10 @@ public class SignerThread extends Thread {
                 FileOutputStream fos = new FileOutputStream(androidManifestBinXml);
                 fos.write(modified);
                 fos.close();
-            } else {
-                System.exit(2);
             }
         } catch (Exception e) {
             e.printStackTrace();
-            System.exit(1);
         }
-    }
-
-    static void LOG(String s) {
-        System.err.println(s);
     }
 
     public void setSignerThreadListener(OnSignComplete listener) {
@@ -171,16 +164,16 @@ public class SignerThread extends Thread {
 
 
         File folder = new File(toolkit.getUnZipDir() + TEMP_FOLDER + "/" + assetFilePath);
-        boolean success = true;
+
         if (!folder.exists()) {
-            success = folder.mkdir();
+            folder.mkdir();
         }
 
         File src = new File(projectFile);
         File dest = new File(toolkit.getUnZipDir() + TEMP_FOLDER + "/" + assetFilePath + assetFileName);
 
         try {
-            FileWriter fileWriter = new FileWriter(dest.getAbsoluteFile(), true);
+            new FileWriter(dest.getAbsoluteFile(), true);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -264,7 +257,7 @@ public class SignerThread extends Thread {
 
     private void showNotification(String description) {
         Intent intent = new Intent();
-        intent.setAction(android.content.Intent.ACTION_VIEW);
+        intent.setAction(Intent.ACTION_VIEW);
         File file = new File(finalApk);
         intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
@@ -288,11 +281,11 @@ public class SignerThread extends Thread {
         void onFail(Exception e);
     }
 
-    static class MyNodeVisitor extends NodeVisitor {
-        static String level = "";
-        static String oldPackageName;
-        boolean didLogNodeName = false;
-        String nodeName = "";
+    public static class MyNodeVisitor extends NodeVisitor {
+        public static String level = "";
+        public static String oldPackageName;
+        public boolean didLogNodeName = false;
+        public String nodeName = "";
 
         MyNodeVisitor(NodeVisitor nv, String nodeName) {
             super(nv);

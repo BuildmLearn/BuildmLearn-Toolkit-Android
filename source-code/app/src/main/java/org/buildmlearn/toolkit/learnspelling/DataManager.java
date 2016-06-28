@@ -36,7 +36,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -53,7 +52,6 @@ public class DataManager {
     private static DataManager instance = null;
     private String mTitle = null;
     private String mAuthor = null;
-    private BufferedReader br;
     private ArrayList<WordModel> mList = null;
     private int countIndex = 0;
     private int countCorrect = 0;

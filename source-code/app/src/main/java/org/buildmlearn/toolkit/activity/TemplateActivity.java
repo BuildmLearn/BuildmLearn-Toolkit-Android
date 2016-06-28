@@ -30,7 +30,7 @@ public class TemplateActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
-        ListAdapter mAdapter = new TemplateAdapter(this, 6);
+        ListAdapter mAdapter = new TemplateAdapter(this);
         AbsListView mListView = (AbsListView) findViewById(android.R.id.list);
         mListView.setAdapter(mAdapter);
 

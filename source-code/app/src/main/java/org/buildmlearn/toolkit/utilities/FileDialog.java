@@ -20,9 +20,9 @@ public class FileDialog {
 
     private static final String PARENT_DIR = "..";
     private final Activity activity;
+    private final ListenerList<FileSelectListener> fileListenerList = new ListenerList<>();
     private String[] fileList;
     private File currentPath;
-    private ListenerList<FileSelectListener> fileListenerList = new ListenerList<>();
     private String fileEndsWith;
 
     public FileDialog(Activity activity) {
@@ -30,7 +30,7 @@ public class FileDialog {
         loadFileList(new ToolkitApplication().getDir());
     }
 
-    public Dialog createFileDialog() {
+    private Dialog createFileDialog() {
         Dialog dialog;
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 
@@ -108,7 +108,7 @@ public class FileDialog {
 }
 
 class ListenerList<L> {
-    private List<L> listenerList = new ArrayList<>();
+    private final List<L> listenerList = new ArrayList<>();
 
     public void add(L listener) {
         listenerList.add(listener);

@@ -16,10 +16,6 @@ import java.util.ArrayList;
  */
 public class ToolkitApplication extends Application {
 
-    private String projectDir;
-    private String toolkitDir;
-    private String apkDir;
-
     private String dir;
     private boolean isExternalStorageAvailable = false;
 
