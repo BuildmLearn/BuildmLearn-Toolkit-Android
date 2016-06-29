@@ -19,13 +19,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.utilities.OnSwipeTouchListener;
 
 
 /**
  * @brief Simulator code for Flash Card Template
  */
-public class MainFragment extends Fragment implements
-        AnimationListener {
+public class MainFragment extends Fragment implements AnimationListener {
     View answerView, questionView;
     Button flipButton;
     Button preButton;
@@ -71,6 +71,36 @@ public class MainFragment extends Fragment implements
 
         populateQuestion(iQuestionIndex);
         currentView = questionView;
+
+        questionImage.setOnTouchListener(new OnSwipeTouchListener(this.getActivity()) {
+            public void onSwipeRight() {
+                currentView.clearAnimation();
+                currentView.setAnimation(animation1);
+                currentView.startAnimation(animation1);
+            }
+
+            public void onSwipeLeft() {
+                currentView.clearAnimation();
+                currentView.setAnimation(animation1);
+                currentView.startAnimation(animation1);
+            }
+        });
+
+        answerView.setOnTouchListener(new OnSwipeTouchListener(this.getActivity())
+        {
+            public void onSwipeRight() {
+                //Toast.makeText(getActivity().getApplicationContext(), "right", Toast.LENGTH_SHORT).show();
+                currentView.clearAnimation();
+                currentView.setAnimation(animation1);
+                currentView.startAnimation(animation1);
+            }
+            public void onSwipeLeft() {
+                //Toast.makeText(getActivity().getApplicationContext(), "left", Toast.LENGTH_SHORT).show();
+                currentView.clearAnimation();
+                currentView.setAnimation(animation1);
+                currentView.startAnimation(animation1);
+            }
+        });
 
         flipButton.setOnClickListener(new OnClickListener() {
 
