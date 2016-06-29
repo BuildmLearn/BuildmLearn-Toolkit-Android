@@ -13,12 +13,12 @@ Glosarry
 | [X]/model | Contains KeyStoreDetails, SavedProject, TemplateInfos, Tutorial, etc  |
 | [X]/utilities | Contains various utilities including SignerThread  |
 | [X]/views | Contains text-view font support for old-backed SDKs  |
-| [X]/infoTemplate | Contains simulator's code for Info Template  |
+| [X]/infotemplate | Contains simulator's code for Info Template  |
 | [X]/learnspelling | Contains simulator's code for learnspelling Template  |
 | [X]/flashcardtemplate | Contains simulator's code for FlashCard Template  |
 | [X]/quiztemplate | Contains simulator's code for Quiz Template  |
-| [X]/videoCollectionTemplate | Contains simulator's code for FlashCard Template  |
-| [X]/comprehensionTemplate | Contains simulator's code for Comprehension Template  |
+| [X]/videocollectiontemplate | Contains simulator's code for FlashCard Template  |
+| [X]/comprehensiontemplate | Contains simulator's code for Comprehension Template  |
 | [X]/[?]/adapter | Contains simulator's adapter for [?] Template  |
 | [X]/[?]/data  | Contains simulator's SQLiteDatabase code for [?] Template |
 | [X]/[?]/fragment | Contains simulator's fragment for [?] Template  |

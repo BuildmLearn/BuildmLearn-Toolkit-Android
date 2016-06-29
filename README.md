@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/BuildmLearn/BuildmLearn-Toolkit-Android.svg)](https://travis-ci.org/BuildmLearn/BuildmLearn-Toolkit-Android)
+[![Build Status](https://travis-ci.org/BuildmLearn/BuildmLearn-Toolkit-Android.svg)](https://travis-ci.org/BuildmLearn/BuildmLearn-Toolkit-Android) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/05c83f4ecad84cc0a2e57d7ea39df41f)](https://www.codacy.com/app/anupam/BuildmLearn-Toolkit-Android?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=BuildmLearn/BuildmLearn-Toolkit-Android&amp;utm_campaign=Badge_Grade)
 
 # BuildmLearn-Toolkit-Android
 
@@ -25,12 +25,12 @@ Glosarry
 | [X]/model | Contains KeyStoreDetails, SavedProject, TemplateInfos, Tutorial, etc  |
 | [X]/utilities | Contains various utilities including SignerThread  |
 | [X]/views | Contains text-view font support for old-backed SDKs  |
-| [X]/infoTemplate | Contains simulator's code for Info Template  |
+| [X]/infotemplate | Contains simulator's code for Info Template  |
 | [X]/learnspelling | Contains simulator's code for learnspelling Template  |
 | [X]/flashcardtemplate | Contains simulator's code for FlashCard Template  |
 | [X]/quiztemplate | Contains simulator's code for Quiz Template  |
-| [X]/videoCollectionTemplate | Contains simulator's code for FlashCard Template  |
-| [X]/comprehensionTemplate | Contains simulator's code for Comprehension Template  |
+| [X]/videocollectiontemplate | Contains simulator's code for FlashCard Template  |
+| [X]/comprehensiontemplate | Contains simulator's code for Comprehension Template  |
 | [X]/[?]/adapter | Contains simulator's adapter for [?] Template  |
 | [X]/[?]/data  | Contains simulator's SQLiteDatabase code for [?] Template |
 | [X]/[?]/fragment | Contains simulator's fragment for [?] Template  |
@@ -44,6 +44,10 @@ All dependencies are defined in ```source-code/app/build.gradle```. Import the p
 ```
 
 The result apk file will be placed in ```source-code/app/build/outputs/apk/```.
+
+#Contribution policy
+
+All contributions should be done in **bug-fixes** branch. PRs must pass build check on Travis-CI.
 
 # License for use and distribution
 

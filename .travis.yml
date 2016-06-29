@@ -1,7 +1,5 @@
 before_install: cd source-code
-branches:
-  only:
-    - new-features
+
 language: android
 sudo: true
 jdk: oraclejdk8
@@ -38,7 +36,7 @@ before_script:
   - adb shell input keyevent 82 &
 
 script:
-  - travis_wait 30 ./gradlew check connectedAndroidTest
+  - ./gradlew check connectedAndroidTest
 
 notifications:
   email:
@@ -47,4 +45,3 @@ notifications:
       - anupam.das.bwn@gmail.com
   on_success: always
   on_failure: always
-
