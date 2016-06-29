@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_main"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/simulator_detail_toolbar"
+        android:background="@color/colorPrimary_video"
+        android:minHeight="?attr/actionBarSize"
+        app:theme="@style/ToolBarStyle_video_heading"
+        app:titleTextAppearance="@style/Toolbar.TitleText" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/shadow_toolbar"
+        android:backgroundTint="@color/color_divider"
+        android:visibility="gone" />
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        tools:context=".infotemplate.fragment.DetailActivityFragment">
+
+        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardBackgroundColor="#FFFFFF"
+            card_view:cardCornerRadius="3.27dp"
+            card_view:cardElevation="3.27dp"
+            card_view:cardUseCompatPadding="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="@dimen/paddingTop_info"
+                    android:paddingLeft="@dimen/paddingTop_info"
+                    android:paddingRight="@dimen/paddingTop_info"
+                    android:paddingStart="@dimen/paddingTop_info"
+                    android:paddingTop="20.45dp"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:textColor="@color/black_secondary_text"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/title"
+                    android:paddingBottom="@dimen/paddingTop_info"
+                    android:paddingEnd="@dimen/paddingTop_info"
+                    android:paddingLeft="@dimen/paddingTop_info"
+                    android:paddingRight="@dimen/paddingTop_info"
+                    android:paddingStart="@dimen/paddingTop_info"
+                    android:paddingTop="@dimen/paddingTop_info"
+                    android:textAppearance="?android:textAppearanceSmall" />
+
+                <Button
+                    android:id="@+id/next"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/description"
+                    android:background="@android:color/transparent"
+                    android:paddingBottom="@dimen/paddingTop_info"
+                    android:paddingEnd="@dimen/paddingTop_info"
+                    android:paddingLeft="@dimen/paddingTop_info"
+                    android:paddingRight="@dimen/paddingTop_info"
+                    android:paddingStart="@dimen/paddingTop_info"
+                    android:paddingTop="@dimen/paddingTop_info"
+                    android:text="@string/next_info"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:textColor="@color/colorAccent_video" />
+
+                <Button
+                    android:id="@+id/exit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/description"
+                    android:background="@android:color/transparent"
+                    android:paddingBottom="@dimen/paddingTop_info"
+                    android:paddingEnd="@dimen/paddingTop_info"
+                    android:paddingLeft="@dimen/paddingTop_info"
+                    android:paddingRight="@dimen/paddingTop_info"
+                    android:paddingStart="@dimen/paddingTop_info"
+                    android:paddingTop="@dimen/paddingTop_info"
+                    android:text="@string/exit_info"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:textColor="@color/colorAccent_video" />
+
+
+                <Button
+                    android:id="@+id/previous"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/description"
+                    android:layout_toLeftOf="@+id/next"
+                    android:layout_toStartOf="@+id/next"
+                    android:background="@android:color/transparent"
+                    android:paddingBottom="@dimen/paddingTop_info"
+                    android:paddingEnd="@dimen/paddingTop_info"
+                    android:paddingLeft="@dimen/paddingTop_info"
+                    android:paddingRight="@dimen/paddingTop_info"
+                    android:paddingStart="@dimen/paddingTop_info"
+                    android:paddingTop="@dimen/paddingTop_info"
+                    android:text="@string/previous_info"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:textColor="@color/black_secondary_text" />
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+    </ScrollView>
+</LinearLayout>

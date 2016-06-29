@@ -23,10 +23,10 @@ import java.util.ArrayList;
  *
  * Created by abhishek on 12/07/15 at 11:56 PM.
  */
-public class FlashCardAdapter extends BaseAdapter {
+class FlashCardAdapter extends BaseAdapter {
 
-    private Context mContext;
-    private ArrayList<FlashCardModel> mData;
+    private final Context mContext;
+    private final ArrayList<FlashCardModel> mData;
 
     public FlashCardAdapter(Context context, ArrayList<FlashCardModel> data) {
         mContext = context;

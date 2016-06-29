@@ -1,6 +1,7 @@
 package org.buildmlearn.toolkit.templates;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,11 +27,11 @@ import java.util.ArrayList;
  * <p/>
  * Created by abhishek on 28/5/15.
  */
-public class QuizAdapter extends BaseAdapter {
+class QuizAdapter extends BaseAdapter {
 
 
-    private Context context;
-    private ArrayList<QuizModel> quizData;
+    private final Context context;
+    private final ArrayList<QuizModel> quizData;
     private int expandedPostion = -1;
 
     public QuizAdapter(Context context, ArrayList<QuizModel> quizData) {
@@ -91,6 +92,7 @@ public class QuizAdapter extends BaseAdapter {
             if (i < data.getOptions().size()) {
                 int ascii = 65 + i;
                 holder.options.get(i).setText(Character.toString((char) ascii) + ")  " + data.getOptions().get(i));
+                holder.options.get(i).setTextColor(ContextCompat.getColor(context, R.color.black_secondary_text));
                 holder.options.get(i).setVisibility(View.VISIBLE);
             } else {
                 holder.options.get(i).setVisibility(View.GONE);
@@ -98,7 +100,7 @@ public class QuizAdapter extends BaseAdapter {
         }
 
         holder.options.get(data.getCorrectAnswer()).setCustomFont(context, "roboto_medium.ttf");
-        holder.options.get(data.getCorrectAnswer()).setTextColor(context.getResources().getColor(R.color.quiz_correct_answer));
+        holder.options.get(data.getCorrectAnswer()).setTextColor(ContextCompat.getColor(context, R.color.quiz_correct_answer));
 
         holder.questionIcon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -221,7 +223,7 @@ public class QuizAdapter extends BaseAdapter {
 
                 if (isValidated) {
                     dialog.dismiss();
-                    ArrayList<String> answerOptions = new ArrayList<String>();
+                    ArrayList<String> answerOptions = new ArrayList<>();
                     int correctAnswer = 0;
                     for (int i = 0; i < buttons.size(); i++) {
                         if (buttons.get(i).isChecked() && !options.get(i).getText().toString().equals("")) {

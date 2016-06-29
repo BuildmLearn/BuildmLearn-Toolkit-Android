@@ -1,7 +1,6 @@
 package org.buildmlearn.toolkit.templates;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
@@ -41,7 +40,7 @@ import java.util.ArrayList;
 public class FlashTemplate implements TemplateInterface {
     private static final int REQUEST_TAKE_PHOTO = 6677;
     private static final String TAG = "FLASH TEMPLATE";
-    ArrayList<FlashCardModel> mData;
+    private ArrayList<FlashCardModel> mData;
     transient private Uri mImageUri;
     transient private ImageView mBannerImage;
     private boolean mIsPhotoAttached;
@@ -55,12 +54,28 @@ public class FlashTemplate implements TemplateInterface {
     public BaseAdapter newTemplateEditorAdapter(Context context) {
 
         mAdapter = new FlashCardAdapter(context, mData);
+        setEmptyView((Activity) context);
         return mAdapter;
+    }
+
+    @Override
+    public BaseAdapter newMetaEditorAdapter(Context context) {
+        return null;
     }
 
     @Override
     public BaseAdapter currentTemplateEditorAdapter() {
         return mAdapter;
+    }
+
+    @Override
+    public BaseAdapter currentMetaEditorAdapter() {
+        return null;
+    }
+
+    @Override
+    public BaseAdapter loadProjectMetaEditor(Context context, Document doc) {
+        return null;
     }
 
     @Override
@@ -76,6 +91,7 @@ public class FlashTemplate implements TemplateInterface {
 
         }
         mAdapter = new FlashCardAdapter(context, mData);
+        setEmptyView((Activity) context);
         return mAdapter;
     }
 
@@ -141,6 +157,7 @@ public class FlashTemplate implements TemplateInterface {
                     String answerText = answer.getText().toString();
                     String hintText = answerHint.getText().toString();
                     mData.add(new FlashCardModel(questionText, answerText, hintText, bitmap));
+                    setEmptyView(activity);
                     mAdapter.notifyDataSetChanged();
                 }
 
@@ -148,6 +165,11 @@ public class FlashTemplate implements TemplateInterface {
         });
 
         dialog.show();
+    }
+
+    @Override
+    public void addMetaData(Activity activity) {
+
     }
 
 
@@ -240,8 +262,9 @@ public class FlashTemplate implements TemplateInterface {
     }
 
     @Override
-    public void deleteItem(int position) {
+    public void deleteItem(Activity activity, int position) {
         mData.remove(position);
+        setEmptyView(activity);
         mAdapter.notifyDataSetChanged();
     }
 
@@ -260,7 +283,7 @@ public class FlashTemplate implements TemplateInterface {
     }
 
     @Override
-    public Fragment getSimulatorFragment(String filePathWithName) {
+    public android.support.v4.app.Fragment getSimulatorFragment(String filePathWithName) {
         return StartFragment.newInstance(filePathWithName);
     }
 
@@ -378,5 +401,16 @@ public class FlashTemplate implements TemplateInterface {
         return File.createTempFile(part, ext, tempDir);
     }
 
+    /**
+     * @brief Toggles the visibility of empty text if Array has zero elements
+     */
+    @Override
+    public void setEmptyView(Activity activity) {
+        if (mData.size() < 1) {
+            activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
+        } else {
+            activity.findViewById(R.id.empty).setVisibility(View.GONE);
+        }
+    }
 
 }

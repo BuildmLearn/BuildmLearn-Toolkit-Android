@@ -1,7 +1,6 @@
 package org.buildmlearn.toolkit.templates;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
@@ -13,7 +12,7 @@ import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.buildmlearn.toolkit.R;
-import org.buildmlearn.toolkit.infotemplate.TFTFragment;
+import org.buildmlearn.toolkit.infotemplate.fragment.SplashFragment;
 import org.buildmlearn.toolkit.model.TemplateInterface;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -56,12 +55,28 @@ public class InfoTemplate implements TemplateInterface {
     @Override
     public BaseAdapter newTemplateEditorAdapter(Context context) {
         adapter = new InfoAdapter(context, infoData);
+        setEmptyView((Activity) context);
         return adapter;
+    }
+
+    @Override
+    public BaseAdapter newMetaEditorAdapter(Context context) {
+        return null;
     }
 
     @Override
     public BaseAdapter currentTemplateEditorAdapter() {
         return adapter;
+    }
+
+    @Override
+    public BaseAdapter currentMetaEditorAdapter() {
+        return null;
+    }
+
+    @Override
+    public BaseAdapter loadProjectMetaEditor(Context context, Document doc) {
+        return null;
     }
 
     @Override
@@ -73,6 +88,7 @@ public class InfoTemplate implements TemplateInterface {
             infoData.add(new InfoModel(infoObject, infoDescription));
         }
         adapter = new InfoAdapter(context, infoData);
+        setEmptyView((Activity) context);
         return adapter;
     }
 
@@ -110,6 +126,7 @@ public class InfoTemplate implements TemplateInterface {
                     InfoModel temp = new InfoModel(wordText, meaningText);
                     infoData.add(temp);
                     adapter.notifyDataSetChanged();
+                    setEmptyView(activity);
                     dialog.dismiss();
                 }
 
@@ -117,6 +134,11 @@ public class InfoTemplate implements TemplateInterface {
         });
 
         dialog.show();
+
+    }
+
+    @Override
+    public void addMetaData(Activity activity) {
 
     }
 
@@ -159,10 +181,11 @@ public class InfoTemplate implements TemplateInterface {
     }
 
     @Override
-    public void deleteItem(int position) {
+    public void deleteItem(Activity activity, int position) {
 
 
         infoData.remove(position);
+        setEmptyView(activity);
         adapter.notifyDataSetChanged();
 
     }
@@ -181,8 +204,8 @@ public class InfoTemplate implements TemplateInterface {
     }
 
     @Override
-    public Fragment getSimulatorFragment(String filePathWithName) {
-        return TFTFragment.newInstance(filePathWithName);
+    public android.support.v4.app.Fragment getSimulatorFragment(String filePathWithName) {
+        return SplashFragment.newInstance(filePathWithName);
     }
 
     @Override
@@ -205,4 +228,15 @@ public class InfoTemplate implements TemplateInterface {
 
     }
 
+    /**
+     * @brief Toggles the visibility of empty text if Array has zero elements
+     */
+    @Override
+    public void setEmptyView(Activity activity) {
+        if (infoData.size() < 1) {
+            activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
+        } else {
+            activity.findViewById(R.id.empty).setVisibility(View.GONE);
+        }
+    }
 }

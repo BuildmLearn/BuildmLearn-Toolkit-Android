@@ -20,8 +20,8 @@ import java.util.Locale;
  */
 public class SavedProjectAdapter extends BaseAdapter {
 
-    private Context mContext;
-    private ArrayList<SavedProject> data;
+    private final Context mContext;
+    private final ArrayList<SavedProject> data;
 
     public SavedProjectAdapter(Context mContext, ArrayList<SavedProject> data) {
         this.mContext = mContext;
@@ -79,8 +79,8 @@ public class SavedProjectAdapter extends BaseAdapter {
     }
 
     public class ProjectHolder {
-        TextViewPlus projectName;
-        TextViewPlus projectIcon;
-        TextViewPlus details;
+        public TextViewPlus projectName;
+        public TextViewPlus projectIcon;
+        public TextViewPlus details;
     }
 }

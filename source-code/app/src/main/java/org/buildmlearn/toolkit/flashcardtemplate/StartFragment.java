@@ -1,8 +1,8 @@
 package org.buildmlearn.toolkit.flashcardtemplate;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -21,8 +21,6 @@ public class StartFragment extends Fragment {
 
     public static final String TAG = "Start Fragment";
 
-    GlobalData gd;
-
     public static Fragment newInstance(String path) {
         StartFragment fragment = new StartFragment();
         Bundle bundle = new Bundle();
@@ -38,7 +36,7 @@ public class StartFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.flash_simu_start_view, container, false);
 
-        gd = GlobalData.getInstance();
+        GlobalData gd = GlobalData.getInstance();
         gd.readXml(getArguments().getString(Constants.SIMULATOR_FILE_PATH));
 
         TextView quizAuthor = (TextView) view.findViewById(R.id.tv_author);
@@ -52,7 +50,7 @@ public class StartFragment extends Fragment {
 
             @Override
             public void onClick(View arg0) {
-                getActivity().getFragmentManager().beginTransaction().replace(R.id.container, new MainFragment()).addToBackStack(null).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new MainFragment()).addToBackStack(null).commit();
 
             }
         });

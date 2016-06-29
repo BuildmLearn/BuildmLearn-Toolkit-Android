@@ -1,6 +1,5 @@
 package org.buildmlearn.toolkit.fragment;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,18 +15,6 @@ import org.buildmlearn.toolkit.activity.TemplateActivity;
  */
 public class HomeFragment extends Fragment {
 
-
-    public HomeFragment() {
-        // Required empty public constructor
-    }
-    /**
-     * @copydoc android.app.Fragment.onCreate(Bundle savedInstanceState)
-     */
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
     /**
      * {@inheritDoc}
      */
@@ -43,13 +30,6 @@ public class HomeFragment extends Fragment {
             }
         });
         return view;
-    }
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void onDetach() {
-        super.onDetach();
     }
 
 

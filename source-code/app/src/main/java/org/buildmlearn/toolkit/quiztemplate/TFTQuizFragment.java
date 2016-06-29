@@ -28,9 +28,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
 
 package org.buildmlearn.toolkit.quiztemplate;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -50,7 +50,6 @@ public class TFTQuizFragment extends Fragment {
 
 
     private GlobalData gd;
-    private View view;
 
     public static Fragment newInstance(String path) {
         TFTQuizFragment fragment = new TFTQuizFragment();
@@ -64,7 +63,7 @@ public class TFTQuizFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        view = inflater.inflate(R.layout.quiz_template_fragment_start_view, container, false);
+        View view = inflater.inflate(R.layout.quiz_template_fragment_start_view, container, false);
 
         gd = GlobalData.getInstance();
         reInitialize();
@@ -82,7 +81,7 @@ public class TFTQuizFragment extends Fragment {
             @Override
             public void onClick(View arg0) {
 
-                getActivity().getFragmentManager().beginTransaction().replace(R.id.container, new QuestionFragment(), QuestionFragment.TAG).addToBackStack(null).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new QuestionFragment(), QuestionFragment.TAG).addToBackStack(null).commit();
             }
         });
 

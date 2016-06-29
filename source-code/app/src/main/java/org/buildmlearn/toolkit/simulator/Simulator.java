@@ -1,6 +1,8 @@
 package org.buildmlearn.toolkit.simulator;
 
 import android.os.Bundle;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -23,7 +25,6 @@ public class Simulator extends AppCompatActivity {
     private static final String TAG = "SIMULATOR";
     private int templateId;
     private TemplateInterface selectedTemplate;
-    private Template template;
 
     /**
      * {@inheritDoc}
@@ -34,6 +35,7 @@ public class Simulator extends AppCompatActivity {
         setContentView(R.layout.activity_simulator);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
         templateId = getIntent().getIntExtra(Constants.TEMPLATE_ID, -1);
         if (templateId == -1) {
@@ -46,7 +48,8 @@ public class Simulator extends AppCompatActivity {
         } else {
             restoreTemplateEditor(savedInstanceState);
         }
-        getFragmentManager().beginTransaction().replace(R.id.container, selectedTemplate.getSimulatorFragment(getIntent().getStringExtra(Constants.SIMULATOR_FILE_PATH)), selectedTemplate.getTitle()).addToBackStack(null).commit();
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, selectedTemplate.getSimulatorFragment(getIntent().getStringExtra(Constants.SIMULATOR_FILE_PATH)), selectedTemplate.getTitle()).addToBackStack(null).commit();
     }
 
     /**
@@ -67,8 +70,6 @@ public class Simulator extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
         onBackPressed();
 
         return super.onOptionsItemSelected(item);
@@ -77,9 +78,9 @@ public class Simulator extends AppCompatActivity {
     /**
      * @brief Fetches the instance from the Template Enum for given template object
      */
-    protected void setUpTemplateEditor() {
+    private void setUpTemplateEditor() {
         Template[] templates = Template.values();
-        template = templates[templateId];
+        Template template = templates[templateId];
         Class templateClass = template.getTemplateClass();
         try {
             Object templateObject = templateClass.newInstance();
@@ -95,7 +96,7 @@ public class Simulator extends AppCompatActivity {
     /**
      * @brief Restores simulator state on configuration change
      */
-    protected void restoreTemplateEditor(Bundle savedInstanceState) {
+    private void restoreTemplateEditor(Bundle savedInstanceState) {
         Log.d(TAG, "Activity Restored");
         selectedTemplate = (TemplateInterface) savedInstanceState.getSerializable(Constants.TEMPLATE_OBJECT);
         if (selectedTemplate == null) {
@@ -111,6 +112,25 @@ public class Simulator extends AppCompatActivity {
     protected void onSaveInstanceState(Bundle outState) {
         outState.putSerializable(Constants.TEMPLATE_OBJECT, selectedTemplate);
         super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        int count = getSupportFragmentManager().getBackStackEntryCount();
+        if (count == 1) {
+            finish();
+        }
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer != null) {
+            if (drawer.isDrawerOpen(GravityCompat.START)) {
+                drawer.closeDrawer(GravityCompat.START);
+            } else {
+                super.onBackPressed();
+            }
+        } else {
+            super.onBackPressed();
+        }
     }
 
 }

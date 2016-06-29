@@ -57,7 +57,6 @@
         android:textSize="20sp" />
 
     <View
-        android:id="@+id/divider_screen"
         android:layout_width="fill_parent"
         android:layout_height="1dp"
         android:layout_below="@id/tv_unanswered"
@@ -71,7 +70,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
-        android:onClick="click"
         android:padding="10dp"
         android:text="@string/exit"
         android:textColor="@android:color/white" />
@@ -83,7 +81,6 @@
         android:layout_above="@id/btn_exit"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
-        android:onClick="click"
         android:padding="10dp"
         android:text="@string/restart"
         android:textColor="@android:color/white" />

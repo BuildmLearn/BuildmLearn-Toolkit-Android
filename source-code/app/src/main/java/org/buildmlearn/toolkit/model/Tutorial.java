@@ -22,14 +22,17 @@ public enum Tutorial {
 
     private
     @DrawableRes
+    final
     int image;
     private
     @StringRes
+    final
     int title;
     private
     @StringRes
+    final
     int description;
-    private boolean isLastScreen;
+    private final boolean isLastScreen;
 
     Tutorial(int image, int title, int description) {
         this.image = image;

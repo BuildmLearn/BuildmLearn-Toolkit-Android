@@ -1,17 +1,25 @@
 package org.buildmlearn.toolkit.activity;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.preference.PreferenceManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -37,6 +45,7 @@ import org.buildmlearn.toolkit.model.Template;
 import org.buildmlearn.toolkit.model.TemplateInterface;
 import org.buildmlearn.toolkit.simulator.Simulator;
 import org.buildmlearn.toolkit.utilities.FileUtils;
+import org.buildmlearn.toolkit.utilities.KeyboardHelper;
 import org.buildmlearn.toolkit.utilities.SignerThread;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
@@ -62,19 +71,26 @@ import javax.xml.parsers.ParserConfigurationException;
 
 public class TemplateEditor extends AppCompatActivity {
 
-    private final static String TAG = "TEMPLATE EDITOR";
-
+    private static final String TAG = "TEMPLATE EDITOR";
+    private static final int PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE_RESULT = 100;
+    private final Handler handlerToast = new Handler() {
+        public void handleMessage(Message message) {
+            if (message.arg1 == -1) {
+                Toast.makeText(TemplateEditor.this, "Build unsuccessful", Toast.LENGTH_SHORT).show();
+            }
+        }
+    };
     private ListView templateEdtiorList;
+    private ListView templateMetaList;
     private int templateId;
     private Template template;
     private TemplateInterface selectedTemplate;
     private int selectedPosition = -1;
     private boolean showTemplateSelectedMenu;
-    private View selectedView = null;
+    private View selectedView;
     private ToolkitApplication toolkit;
     private String oldFileName;
     private MaterialDialog mApkGenerationDialog;
-
 
     /**
      * {@inheritDoc}
@@ -84,6 +100,9 @@ public class TemplateEditor extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         oldFileName = null;
         setContentView(R.layout.activity_template_editor);
+        KeyboardHelper.hideKeyboard(this, findViewById(R.id.toolbar));
+        KeyboardHelper.hideKeyboard(this,findViewById(R.id.template_editor_listview));
+        KeyboardHelper.hideKeyboard(this,findViewById(R.id.empty));
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         toolkit = (ToolkitApplication) getApplicationContext();
         templateId = getIntent().getIntExtra(Constants.TEMPLATE_ID, -1);
@@ -108,11 +127,20 @@ public class TemplateEditor extends AppCompatActivity {
         findViewById(R.id.button_add_item).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedTemplate.addItem(TemplateEditor.this);
-                hideEmptyView();
+                if (templateId == 5 && selectedTemplate.currentMetaEditorAdapter().isEmpty()) {
+                    selectedTemplate.addMetaData(TemplateEditor.this);
+                } else {
+                    selectedTemplate.addItem(TemplateEditor.this);
+                }
             }
         });
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE_RESULT);
+            }
     }
 
     /**
@@ -136,6 +164,54 @@ public class TemplateEditor extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, intent);
     }
 
+    /**
+     * @param adapter Adapter containing template meta data
+     * @brief Populates meta ListView item by setting adapter to ListView.
+     */
+    private void populateMetaView(final BaseAdapter adapter) {
+        if (templateMetaList == null) {
+            templateMetaList = (ListView) findViewById(R.id.template_meta_listview);
+        }
+
+        setAdapterMeta(adapter);
+
+        templateMetaList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Log.e(getClass().getName(), " " + position);
+
+                if (selectedPosition == -2) {
+                    selectedPosition = -1;
+                    if (view instanceof CardView) {
+                        ((CardView) view).setCardBackgroundColor(Color.WHITE);
+                    } else {
+                        view.setBackgroundResource(0);
+                    }
+                    restoreColorScheme();
+                } else {
+                    if (selectedView != null) {
+                        if (selectedView instanceof CardView) {
+                            ((CardView) selectedView).setCardBackgroundColor(Color.WHITE);
+                        } else {
+                            selectedView.setBackgroundResource(0);
+                        }
+                    }
+                    selectedView = view;
+                    selectedPosition = -2;
+                    Log.d(TAG, "Position: " + selectedPosition);
+
+                    if (view instanceof CardView) {
+                        ((CardView) view).setCardBackgroundColor(Color.LTGRAY);
+                    } else {
+                        view.setBackgroundColor(ContextCompat.getColor(toolkit, R.color.color_divider));
+                    }
+                    changeColorScheme();
+                }
+                return true;
+            }
+        });
+    }
 
     /**
      * @param adapter Adapter containing template data
@@ -143,39 +219,54 @@ public class TemplateEditor extends AppCompatActivity {
      * <p/>
      * Header view contains the editable author name and template title fields.
      */
-    protected void populateListView(final BaseAdapter adapter) {
+    private void populateListView(final BaseAdapter adapter) {
         if (templateEdtiorList == null) {
             templateEdtiorList = (ListView) findViewById(R.id.template_editor_listview);
         }
-        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View templateHeader = inflater.inflate(R.layout.listview_header_template, templateEdtiorList, false);
-        templateEdtiorList.addHeaderView(templateHeader, null, false);
+            LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View templateHeader = inflater.inflate(R.layout.listview_header_template, templateEdtiorList, false);
+            templateEdtiorList.addHeaderView(templateHeader, null, false);
 
-        EditText authorEditText = (EditText) findViewById(R.id.author_name);
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        authorEditText.setText(preferences.getString(getString(R.string.key_user_name), ""));
+            EditText authorEditText = (EditText) findViewById(R.id.author_name);
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            assert authorEditText != null;
+            authorEditText.setText(preferences.getString(getString(R.string.key_user_name), ""));
+
         setAdapter(adapter);
 
         templateEdtiorList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
+                Log.e(getClass().getName(), " " + position);
                 if (position == 0) {
                     return false;
                 }
 
                 if (selectedPosition == position - 1) {
                     selectedPosition = -1;
-                    view.setBackgroundResource(0);
+                    if (view instanceof CardView) {
+                        ((CardView) view).setCardBackgroundColor(Color.WHITE);
+                    } else {
+                        view.setBackgroundResource(0);
+                    }
                     restoreColorScheme();
                 } else {
                     if (selectedView != null) {
-                        selectedView.setBackgroundResource(0);
+                        if (selectedView instanceof CardView) {
+                            ((CardView) selectedView).setCardBackgroundColor(Color.WHITE);
+                        } else {
+                            selectedView.setBackgroundResource(0);
+                        }
                     }
                     selectedView = view;
                     selectedPosition = position - 1;
                     Log.d(TAG, "Position: " + selectedPosition);
-                    view.setBackgroundColor(getResources().getColor(R.color.color_divider));
+                    if (view instanceof CardView) {
+                        ((CardView) view).setCardBackgroundColor(Color.LTGRAY);
+                    } else {
+                        view.setBackgroundColor(ContextCompat.getColor(toolkit, R.color.color_divider));
+                    }
                     changeColorScheme();
                 }
                 return true;
@@ -187,7 +278,7 @@ public class TemplateEditor extends AppCompatActivity {
     /**
      * @brief Initialization function for setting up action bar
      */
-    protected void setUpActionBar() {
+    private void setUpActionBar() {
         ActionBar actionBar = getSupportActionBar();
         templateEdtiorList = (ListView) findViewById(R.id.template_editor_listview);
         if (actionBar == null) {
@@ -200,7 +291,7 @@ public class TemplateEditor extends AppCompatActivity {
     /**
      * @brief Initialization function when the Temlpate Editor is created.
      */
-    protected void setUpTemplateEditor() {
+    private void setUpTemplateEditor() {
         Template[] templates = Template.values();
         template = templates[templateId];
 
@@ -209,6 +300,9 @@ public class TemplateEditor extends AppCompatActivity {
             Object templateObject = templateClass.newInstance();
             selectedTemplate = (TemplateInterface) templateObject;
             populateListView(selectedTemplate.newTemplateEditorAdapter(this));
+            if (templateId == 5) {
+                populateMetaView(selectedTemplate.newMetaEditorAdapter(this));
+            }
             setUpActionBar();
         } catch (InstantiationException e) {
             e.printStackTrace();
@@ -220,7 +314,7 @@ public class TemplateEditor extends AppCompatActivity {
     /**
      * @brief Initialization function when the Temlpate Editor is restored.
      */
-    protected void restoreTemplateEditor(Bundle savedInstanceState) {
+    private void restoreTemplateEditor(Bundle savedInstanceState) {
         selectedTemplate = (TemplateInterface) savedInstanceState.getSerializable(Constants.TEMPLATE_OBJECT);
         oldFileName = savedInstanceState.getString(Constants.PROJECT_FILE_PATH);
         templateId = savedInstanceState.getInt(Constants.TEMPLATE_ID);
@@ -230,6 +324,9 @@ public class TemplateEditor extends AppCompatActivity {
             finish();
         } else {
             populateListView(selectedTemplate.currentTemplateEditorAdapter());
+            if (templateId == 5) {
+                populateMetaView(selectedTemplate.currentMetaEditorAdapter());
+            }
             setUpActionBar();
         }
     }
@@ -248,6 +345,7 @@ public class TemplateEditor extends AppCompatActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         Log.d(TAG, "onPrepareOptionsMenu");
+        menu.clear();
         if (showTemplateSelectedMenu) {
             getMenuInflater().inflate(R.menu.menu_template_item_selected, menu);
         } else {
@@ -280,7 +378,8 @@ public class TemplateEditor extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         dialog.dismiss();
-                        selectedTemplate.deleteItem(selectedPosition);
+                        selectedTemplate.deleteItem(TemplateEditor.this, selectedPosition);
+                        selectedPosition = -1;
                         restoreSelectedView();
                     }
                 });
@@ -290,6 +389,7 @@ public class TemplateEditor extends AppCompatActivity {
                 break;
             case R.id.action_edit:
                 selectedTemplate.editItem(this, selectedPosition);
+                selectedPosition = -1;
                 restoreSelectedView();
                 break;
             case R.id.action_save:
@@ -327,7 +427,7 @@ public class TemplateEditor extends AppCompatActivity {
 
                                         Uri fileUri = Uri.fromFile(new File(path));
                                         try {
-                                            ArrayList<Uri> uris = new ArrayList<Uri>();
+                                            ArrayList<Uri> uris = new ArrayList<>();
                                             Intent sendIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
                                             sendIntent.setType("application/vnd.android.package-archive");
                                             uris.add(fileUri);
@@ -337,7 +437,7 @@ public class TemplateEditor extends AppCompatActivity {
 
                                         } catch (Exception e) {
 
-                                            ArrayList<Uri> uris = new ArrayList<Uri>();
+                                            ArrayList<Uri> uris = new ArrayList<>();
                                             Intent sendIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
                                             sendIntent.setType("application/zip");
                                             uris.add(fileUri);
@@ -352,7 +452,9 @@ public class TemplateEditor extends AppCompatActivity {
                                         if (e != null) {
                                             e.printStackTrace();
                                             mApkGenerationDialog.dismiss();
-                                            Toast.makeText(TemplateEditor.this, "Build unsuccessful", Toast.LENGTH_SHORT).show();
+                                            Message message = handlerToast.obtainMessage();
+                                            message.arg1 = -1;
+                                            handlerToast.sendMessage(message);
                                         }
                                     }
                                 });
@@ -403,7 +505,9 @@ public class TemplateEditor extends AppCompatActivity {
                                         if (e != null) {
                                             e.printStackTrace();
                                             mApkGenerationDialog.dismiss();
-                                            Toast.makeText(TemplateEditor.this, "Build unsuccessful", Toast.LENGTH_SHORT).show();
+                                            Message message = handlerToast.obtainMessage();
+                                            message.arg1 = -1;
+                                            handlerToast.sendMessage(message);
                                         }
                                     }
                                 });
@@ -419,6 +523,8 @@ public class TemplateEditor extends AppCompatActivity {
             case android.R.id.home:
                 onBackPressed();
                 break;
+            default: //do nothing
+                break;
         }
         return true;
     }
@@ -428,7 +534,11 @@ public class TemplateEditor extends AppCompatActivity {
      */
     public void restoreSelectedView() {
         if (selectedView != null) {
+            if (selectedView instanceof CardView) {
+                ((CardView) selectedView).setCardBackgroundColor(Color.WHITE);
+            } else {
             selectedView.setBackgroundResource(0);
+            }
         }
 
         restoreColorScheme();
@@ -439,9 +549,9 @@ public class TemplateEditor extends AppCompatActivity {
      * <p/>
      * Edit mode is triggered, when the list item is long pressed.
      */
-    public void changeColorScheme() {
-        int primaryColor = getResources().getColor(R.color.color_primary_dark);
-        int primaryColorDark = getResources().getColor(R.color.color_selected_dark);
+    private void changeColorScheme() {
+        int primaryColor = ContextCompat.getColor(toolkit, R.color.color_primary_dark);
+        int primaryColorDark = ContextCompat.getColor(toolkit, R.color.color_selected_dark);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(primaryColor));
         ThemeSingleton.get().positiveColor = ColorStateList.valueOf(primaryColor);
         ThemeSingleton.get().neutralColor = ColorStateList.valueOf(primaryColor);
@@ -461,9 +571,9 @@ public class TemplateEditor extends AppCompatActivity {
      * <p/>
      * Edit mode is triggered, when the list item is long pressed.
      */
-    public void restoreColorScheme() {
-        int primaryColor = getResources().getColor(R.color.color_primary);
-        int primaryColorDark = getResources().getColor(R.color.color_primary_dark);
+    private void restoreColorScheme() {
+        int primaryColor = ContextCompat.getColor(toolkit, R.color.color_primary);
+        int primaryColorDark = ContextCompat.getColor(toolkit, R.color.color_primary_dark);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(primaryColor));
         ThemeSingleton.get().positiveColor = ColorStateList.valueOf(primaryColor);
         ThemeSingleton.get().neutralColor = ColorStateList.valueOf(primaryColor);
@@ -484,15 +594,19 @@ public class TemplateEditor extends AppCompatActivity {
      * @return Absolute path of the saved file. Null if there is some error.
      * @brief Saves the current project into a .buildmlearn file.
      */
-    protected String saveProject() {
+    private String saveProject() {
 
-        EditText authorEditText = ((EditText) findViewById(R.id.author_name));
-        EditText titleEditText = ((EditText) findViewById(R.id.template_title));
+        EditText authorEditText = (EditText) findViewById(R.id.author_name);
+        EditText titleEditText = (EditText) findViewById(R.id.template_title);
+        assert findViewById(R.id.author_name) != null;
         String author = ((EditText) findViewById(R.id.author_name)).getText().toString();
+        assert findViewById(R.id.template_title) != null;
         String title = ((EditText) findViewById(R.id.template_title)).getText().toString();
-        if (author.equals("")) {
+        if ("".equals(author)) {
+            assert authorEditText != null;
             authorEditText.setError("Author name is required");
-        } else if (title.equals("")) {
+        } else if ("".equals(title)) {
+            assert titleEditText != null;
             titleEditText.setError("Title is required");
         } else {
 
@@ -522,7 +636,7 @@ public class TemplateEditor extends AppCompatActivity {
                 doc.appendChild(rootElement);
                 Element dataElement = doc.createElement("data");
                 rootElement.appendChild(dataElement);
-                if (selectedTemplate.getItems(doc).size() == 0) {
+                if (selectedTemplate.getItems(doc).size() == 0 || (selectedTemplate.getItems(doc).size() < 2 && templateId == 5)) {
                     Toast.makeText(this, "Unable to perform action: No Data", Toast.LENGTH_SHORT).show();
                     return null;
                 }
@@ -553,7 +667,7 @@ public class TemplateEditor extends AppCompatActivity {
      * <p/>
      * Start the simulator with the fragment returned by the selected template. Simulator is started as a new activity.
      */
-    protected void startSimulator() {
+    private void startSimulator() {
         String filePath = saveProject();
         if (filePath == null || filePath.equals("")) {
             Toast.makeText(this, "Build unsuccessful", Toast.LENGTH_SHORT).show();
@@ -573,7 +687,7 @@ public class TemplateEditor extends AppCompatActivity {
      * This function is used in loading existing files to editor. Reads file at a given path, parse the
      * file and convert into and convert it into TemplateInterface object.
      */
-    protected void parseSavedFile(String path) {
+    private void parseSavedFile(String path) {
 
         try {
             File fXmlFile = new File(path);
@@ -603,13 +717,14 @@ public class TemplateEditor extends AppCompatActivity {
             Object templateObject = templateClass.newInstance();
             selectedTemplate = (TemplateInterface) templateObject;
             populateListView(selectedTemplate.loadProjectTemplateEditor(this, items));
+            if (templateId == 5) {
+                populateMetaView(selectedTemplate.loadProjectMetaEditor(this, doc));
+            }
             setUpActionBar();
             updateHeaderDetails(name, title);
 
 
-        } catch (SAXException | IOException | ParserConfigurationException | IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
+        } catch (SAXException | IOException | ParserConfigurationException | IllegalAccessException | InstantiationException e) {
             e.printStackTrace();
         }
 
@@ -621,10 +736,12 @@ public class TemplateEditor extends AppCompatActivity {
      * @param title Title of the template app
      * @brief Updates the title and author name in the header view.
      */
-    protected void updateHeaderDetails(String name, String title) {
-        EditText authorEditText = ((EditText) findViewById(R.id.author_name));
-        EditText titleEditText = ((EditText) findViewById(R.id.template_title));
+    private void updateHeaderDetails(String name, String title) {
+        EditText authorEditText = (EditText) findViewById(R.id.author_name);
+        EditText titleEditText = (EditText) findViewById(R.id.template_title);
+        assert authorEditText != null;
         authorEditText.setText(name);
+        assert titleEditText != null;
         titleEditText.setText(title);
     }
 
@@ -632,25 +749,16 @@ public class TemplateEditor extends AppCompatActivity {
      * @param adapter
      * @brief Sets the adapter to the ListView
      */
-    protected void setAdapter(BaseAdapter adapter) {
+    private void setAdapter(BaseAdapter adapter) {
         templateEdtiorList.setAdapter(adapter);
-        setEmptyView();
     }
 
     /**
-     * @brief Toggles the visibility of empty text if adapter has zero elements
+     * @param adapter
+     * @brief Sets the adapter to the ListView
      */
-    protected void setEmptyView() {
-
-        if (templateEdtiorList.getAdapter().getCount() == 1) {
-            findViewById(R.id.empty).setVisibility(View.VISIBLE);
-        } else {
-            findViewById(R.id.empty).setVisibility(View.GONE);
-        }
+    private void setAdapterMeta(BaseAdapter adapter) {
+        templateMetaList.setAdapter(adapter);
     }
 
-
-    private void hideEmptyView() {
-        findViewById(R.id.empty).setVisibility(View.GONE);
-    }
 }

@@ -1,0 +1,83 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:font="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".videocollectiontemplate.fragment.SplashFragment">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/background_image_video"
+        android:scaleType="centerCrop"
+        android:src="@drawable/first_run_bg" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/buildmlearn_logo_video"
+            android:scaleType="centerCrop"
+            android:src="@drawable/logo_70" />
+
+        <org.buildmlearn.toolkit.views.TextViewPlus
+            android:id="@+id/intro_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/splash_text_margin_video"
+            android:gravity="center_horizontal"
+            android:text="@string/main_title"
+            android:textColor="@color/white_secondary_text"
+            android:textSize="@dimen/headline_leading_simulator"
+            font:customFont="roboto_light.ttf" />
+
+        <org.buildmlearn.toolkit.views.TextViewPlus
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/main_subtitle"
+            android:textColor="@color/white_secondary_text"
+            android:textSize="@dimen/title_simulator"
+            font:customFont="roboto_light.ttf" />
+
+        <org.buildmlearn.toolkit.views.TextViewPlus
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/by_video"
+            android:textColor="@color/white_secondary_text"
+            android:textSize="@dimen/title_simulator"
+            font:customFont="roboto_light.ttf" />
+
+        <org.buildmlearn.toolkit.views.TextViewPlus
+            android:id="@+id/author_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/anupam_video"
+            android:textColor="@color/white_secondary_text"
+            android:textSize="@dimen/title_simulator"
+            font:customFont="roboto_light.ttf" />
+
+        <Button
+            android:id="@+id/enter"
+            android:layout_width="@dimen/button_enter_simulator"
+            android:layout_height="@dimen/button_enter_simulator"
+            android:layout_marginTop="@dimen/splash_button_margin_top_video"
+            android:background="@android:color/transparent"
+            android:drawableTop="@drawable/ic_input_white_48dp"
+            android:text="@string/enter_video"
+            android:textColor="@color/white_secondary_text" />
+
+    </LinearLayout>
+
+</RelativeLayout>

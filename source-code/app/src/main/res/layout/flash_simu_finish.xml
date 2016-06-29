@@ -56,7 +56,6 @@
         android:textColor="@android:color/white"/>
 
     <View
-        android:id="@+id/divider_screen"
         android:layout_width="fill_parent"
         android:layout_height="1dp"
         android:layout_above="@id/btn_restart"

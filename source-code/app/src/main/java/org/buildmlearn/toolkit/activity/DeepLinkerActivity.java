@@ -59,11 +59,7 @@ public class DeepLinkerActivity extends Activity {
             }
             Toast.makeText(this, "Invalid project file", Toast.LENGTH_SHORT).show();
             finish();
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (ParserConfigurationException | IOException | SAXException e) {
             e.printStackTrace();
         }
     }

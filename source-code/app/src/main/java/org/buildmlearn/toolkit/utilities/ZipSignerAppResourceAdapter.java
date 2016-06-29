@@ -9,9 +9,9 @@ import kellinwood.security.zipsigner.ResourceAdapter;
 /**
  * @brief Provides internationalized progress and error strings to the zipsigner-lib API.
  */
-public class ZipSignerAppResourceAdapter implements ResourceAdapter {
+class ZipSignerAppResourceAdapter implements ResourceAdapter {
 
-    Resources resources;
+    private final Resources resources;
 
     public ZipSignerAppResourceAdapter(Resources resources) {
         this.resources = resources;

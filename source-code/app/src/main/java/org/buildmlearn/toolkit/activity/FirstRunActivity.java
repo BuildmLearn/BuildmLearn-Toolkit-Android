@@ -72,7 +72,7 @@ public class FirstRunActivity extends AppCompatActivity {
 
                             editor.putString(getString(R.string.key_user_name), name.getText().toString());
                             editor.putBoolean(FIRST_RUN, true);
-                            editor.commit();
+                            editor.apply();
                             Intent intent = new Intent(getApplicationContext(), TutorialActivity.class);
                             intent.putExtra(Constants.START_ACTIVITY, true);
                             startActivity(intent);

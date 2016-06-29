@@ -1,7 +1,6 @@
 package org.buildmlearn.toolkit.model;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.BaseAdapter;
@@ -29,10 +28,25 @@ public interface TemplateInterface extends Serializable {
     BaseAdapter newTemplateEditorAdapter(Context context);
 
     /**
+     * @param context Application context
+     * @return BaseAdapter inherited Object
+     * @brief Called from Template Editor when template editor is started for creating a new meta details of template project.
+     */
+    BaseAdapter newMetaEditorAdapter(Context context);
+
+    /**
      * @return BaseAdapter inherited Object
      * @brief This function is used to get the adapter (containing template data) for a existing/current template project.
      */
     BaseAdapter currentTemplateEditorAdapter();
+
+    /**
+     * @return BaseAdapter inherited Object
+     * @brief This function is used to get the meta adapter (containing template meta details) for a existing/current template project.
+     */
+    BaseAdapter currentMetaEditorAdapter();
+
+    BaseAdapter loadProjectMetaEditor(Context context, Document doc);
 
     BaseAdapter loadProjectTemplateEditor(Context context, ArrayList<Element> data);
 
@@ -55,6 +69,13 @@ public interface TemplateInterface extends Serializable {
     void addItem(Activity activity);
 
     /**
+     *
+     * @param activity Current Activity
+     * @brief Add MetaData to template data
+     */
+    void addMetaData(Activity activity);
+
+    /**
      * @param activity Current activity
      * @param position Position of the item in the template data list
      * @brief Called to edit an item in the template data
@@ -62,10 +83,11 @@ public interface TemplateInterface extends Serializable {
     void editItem(Activity activity, int position);
 
     /**
+     * @param activity Current Activity
      * @param position Position of the item to be removed
      * @brief Remove an item form template data list
      */
-    void deleteItem(int position);
+    void deleteItem(Activity activity, int position);
 
 
     ArrayList<Element> getItems(Document doc);
@@ -78,7 +100,7 @@ public interface TemplateInterface extends Serializable {
      * Returns a fragment required for the Simulator Activity.
      * **Dev Note: File Path should be used to populate data from actual .buildmlearn file in the Simulator.
      */
-    Fragment getSimulatorFragment(String filePathWithName);
+    android.support.v4.app.Fragment getSimulatorFragment(String filePathWithName);
 
     /**
      * @return Asset file name
@@ -108,4 +130,8 @@ public interface TemplateInterface extends Serializable {
      */
     void onActivityResult(Context context, int requestCode, int resultCode, Intent intent);
 
+    /**
+     * @brief Toggles the visibility of empty text if Array has zero elements
+     */
+    void setEmptyView(Activity activity);
 }

@@ -22,10 +22,10 @@ import java.util.ArrayList;
  *
  * Created by abhishek on 17/06/15 at 9:48 PM.
  */
-public class LearnSpellingAdapter extends BaseAdapter {
+class LearnSpellingAdapter extends BaseAdapter {
 
-    private Context mContext;
-    private ArrayList<LearnSpellingModel> data;
+    private final Context mContext;
+    private final ArrayList<LearnSpellingModel> data;
 
     public LearnSpellingAdapter(Context mContext, ArrayList<LearnSpellingModel> data) {
         this.mContext = mContext;

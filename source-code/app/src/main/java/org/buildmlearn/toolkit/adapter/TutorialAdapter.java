@@ -23,10 +23,10 @@ import org.buildmlearn.toolkit.model.Tutorial;
  */
 public class TutorialAdapter extends PagerAdapter {
 
-    private Activity mActivity;
-    private Tutorial[] mTutorials;
-    private ListColor[] colors = ListColor.values();
-    private boolean mStartActivity;
+    private final Activity mActivity;
+    private final Tutorial[] mTutorials;
+    private final ListColor[] colors = ListColor.values();
+    private final boolean mStartActivity;
 
     public TutorialAdapter(Activity activity, boolean startActivity) {
         mActivity = activity;
@@ -43,7 +43,7 @@ public class TutorialAdapter extends PagerAdapter {
     }
 
 
-    public Tutorial getItem(int position) {
+    private Tutorial getItem(int position) {
         return mTutorials[position];
     }
 
@@ -103,7 +103,7 @@ public class TutorialAdapter extends PagerAdapter {
      */
     @Override
     public boolean isViewFromObject(View view, Object object) {
-        return view == ((View) object);
+        return view == object;
     }
 
     /**
@@ -122,6 +122,7 @@ public class TutorialAdapter extends PagerAdapter {
 
         private
         @ColorRes
+        final
         int color;
 
         ListColor(String colorCode) {

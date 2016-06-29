@@ -1,7 +1,6 @@
 package org.buildmlearn.toolkit.templates;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
@@ -34,7 +33,7 @@ public class LearnSpellingTemplate implements TemplateInterface {
         mLearnSpellingData = new ArrayList<>();
     }
 
-    public static boolean validated(Context context, EditText word, EditText meaning) {
+    private static boolean validated(Context context, EditText word, EditText meaning) {
         if (word == null || meaning == null) {
             return false;
         }
@@ -56,12 +55,28 @@ public class LearnSpellingTemplate implements TemplateInterface {
     @Override
     public BaseAdapter newTemplateEditorAdapter(Context context) {
         adapter = new LearnSpellingAdapter(context, mLearnSpellingData);
+        setEmptyView((Activity) context);
         return adapter;
+    }
+
+    @Override
+    public BaseAdapter newMetaEditorAdapter(Context context) {
+        return null;
     }
 
     @Override
     public BaseAdapter currentTemplateEditorAdapter() {
         return adapter;
+    }
+
+    @Override
+    public BaseAdapter currentMetaEditorAdapter() {
+        return null;
+    }
+
+    @Override
+    public BaseAdapter loadProjectMetaEditor(Context context, Document doc) {
+        return null;
     }
 
     @Override
@@ -73,6 +88,7 @@ public class LearnSpellingTemplate implements TemplateInterface {
             mLearnSpellingData.add(new LearnSpellingModel(infoObject, infoDescription));
         }
         adapter = new LearnSpellingAdapter(context, mLearnSpellingData);
+        setEmptyView((Activity) context);
         return adapter;
     }
 
@@ -110,6 +126,7 @@ public class LearnSpellingTemplate implements TemplateInterface {
                     LearnSpellingModel temp = new LearnSpellingModel(wordText, meaningText);
                     mLearnSpellingData.add(temp);
                     adapter.notifyDataSetChanged();
+                    setEmptyView(activity);
                     dialog.dismiss();
                 }
 
@@ -117,6 +134,11 @@ public class LearnSpellingTemplate implements TemplateInterface {
         });
 
         dialog.show();
+
+    }
+
+    @Override
+    public void addMetaData(Activity activity) {
 
     }
 
@@ -159,10 +181,11 @@ public class LearnSpellingTemplate implements TemplateInterface {
     }
 
     @Override
-    public void deleteItem(int position) {
+    public void deleteItem(Activity activity, int position) {
 
 
         mLearnSpellingData.remove(position);
+        setEmptyView(activity);
         adapter.notifyDataSetChanged();
 
     }
@@ -181,7 +204,7 @@ public class LearnSpellingTemplate implements TemplateInterface {
     }
 
     @Override
-    public Fragment getSimulatorFragment(String filePathWithName) {
+    public android.support.v4.app.Fragment getSimulatorFragment(String filePathWithName) {
         return SpellingMainFragment.newInstance(filePathWithName);
     }
 
@@ -205,4 +228,15 @@ public class LearnSpellingTemplate implements TemplateInterface {
 
     }
 
+    /**
+     * @brief Toggles the visibility of empty text if Array has zero elements
+     */
+    @Override
+    public void setEmptyView(Activity activity) {
+        if (mLearnSpellingData.size() < 1) {
+            activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
+        } else {
+            activity.findViewById(R.id.empty).setVisibility(View.GONE);
+        }
+    }
 }
