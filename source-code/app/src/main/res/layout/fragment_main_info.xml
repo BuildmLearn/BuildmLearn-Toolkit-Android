@@ -1,0 +1,66 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".infotemplate.fragment.MainActivityFragment">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_main"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbar_height_info"
+            android:background="@color/colorPrimary_video"
+            android:minHeight="?attr/actionBarSize"
+            app:theme="@style/ToolBarStyle_video_heading" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar_main"
+            android:layout_marginEnd="@dimen/medium_margin_info"
+            android:layout_marginLeft="@dimen/medium_margin_info"
+            android:layout_marginRight="@dimen/medium_margin_info"
+            android:layout_marginStart="@dimen/medium_margin_info"
+            android:layout_marginTop="@dimen/negative_margin_info"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ListView xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:id="@+id/list_view_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingBottom="@dimen/paddingTop_info"
+                        android:paddingTop="@dimen/paddingTop_info" />
+
+                    <TextView
+                        android:id="@+id/empty"
+                        style="@style/TextAppearance.AppCompat.Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.4"
+                        android:background="@android:color/background_light"
+                        android:enabled="true"
+                        android:gravity="center"
+                        android:paddingBottom="@dimen/paddingTop_info"
+                        android:paddingTop="@dimen/paddingTop_info"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+    </RelativeLayout>
+</FrameLayout>

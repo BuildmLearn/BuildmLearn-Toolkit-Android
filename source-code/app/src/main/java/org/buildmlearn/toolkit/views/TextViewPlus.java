@@ -36,17 +36,16 @@ public class TextViewPlus extends TextView {
         a.recycle();
     }
 
-    public boolean setCustomFont(Context ctx, String asset) {
+    public void setCustomFont(Context ctx, String asset) {
         Typeface tf;
         try {
             tf = Typeface.createFromAsset(ctx.getAssets(), asset);
         } catch (Exception e) {
 //            Log.e("TextViewPlus Error", "Could not get typeface: "+e.getMessage());
-            return false;
+            return;
         }
 
         setTypeface(tf);
-        return true;
     }
 
     @Override

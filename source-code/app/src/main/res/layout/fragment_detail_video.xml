@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_main"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/simulator_detail_toolbar"
+        android:background="@color/colorPrimary_video"
+        android:minHeight="?attr/actionBarSize"
+        app:theme="@style/ToolBarStyle_video_heading"
+        app:titleTextAppearance="@style/Toolbar.TitleText" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/shadow_toolbar"
+        android:backgroundTint="@color/color_divider"
+        android:visibility="gone" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".videocollectiontemplate.fragment.DetailActivityFragment">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <WebView
+                android:id="@+id/player"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/web_view_height_video"
+                android:layout_marginEnd="@dimen/web_view_negative_margin"
+                android:layout_marginRight="@dimen/web_view_negative_margin" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/player"
+                android:paddingBottom="@dimen/paddingTop_video"
+                android:paddingLeft="@dimen/paddingTop_video"
+                android:paddingRight="@dimen/paddingTop_video"
+                android:paddingTop="@dimen/paddingTop_video"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title"
+                android:autoLink="web"
+                android:paddingBottom="@dimen/paddingTop_video"
+                android:paddingLeft="@dimen/paddingTop_video"
+                android:paddingRight="@dimen/paddingTop_video"
+                android:textAppearance="?android:textAppearanceSmall" />
+
+            <Button
+                android:id="@+id/next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/description"
+                android:background="@android:color/transparent"
+                android:paddingBottom="@dimen/paddingTop_video"
+                android:paddingLeft="@dimen/paddingTop_video"
+                android:paddingRight="@dimen/paddingTop_video"
+                android:paddingTop="@dimen/paddingTop_video"
+                android:text="@string/next_video"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:textColor="@color/colorAccent_video" />
+
+            <Button
+                android:id="@+id/previous"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/description"
+                android:layout_toLeftOf="@+id/next"
+                android:layout_toStartOf="@+id/next"
+                android:background="@android:color/transparent"
+                android:paddingBottom="@dimen/paddingTop_video"
+                android:paddingLeft="@dimen/paddingTop_video"
+                android:paddingRight="@dimen/paddingTop_video"
+                android:paddingTop="@dimen/paddingTop_video"
+                android:text="@string/previous_video"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:textColor="@color/black_secondary_text" />
+        </RelativeLayout>
+    </ScrollView>
+</LinearLayout>

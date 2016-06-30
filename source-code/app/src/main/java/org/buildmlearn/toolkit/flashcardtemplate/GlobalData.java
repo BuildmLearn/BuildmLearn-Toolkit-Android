@@ -42,7 +42,6 @@ import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -57,18 +56,15 @@ import javax.xml.parsers.ParserConfigurationException;
  */
 public class GlobalData {
     private static GlobalData instance = null;
+    private final List<String> iQuizList = new ArrayList<>();
     String iQuizTitle = null;
     String iQuizAuthor = null;
     int totalCards = 0;
-
-    BufferedReader br;
-    List<String> iQuizList = new ArrayList<String>();
-
     ArrayList<FlashModel> model = null;
-
     int iSelectedIndex = -1;
+    private BufferedReader br;
 
-    protected GlobalData() {
+    private GlobalData() {
         // Exists only to defeat instantiation.
     }
 
@@ -89,7 +85,7 @@ public class GlobalData {
         else if (nodeList.getLength() == 0)
             return "";
         else {
-            Node node = (Node) nodeList.item(0);
+            Node node = nodeList.item(0);
 
             return node.getNodeValue();
         }
@@ -136,10 +132,10 @@ public class GlobalData {
             FlashModel app = null;
 
             while (eventType != XmlPullParser.END_DOCUMENT) {
-                String name = null;
+                String name;
                 switch (eventType) {
                     case XmlPullParser.START_DOCUMENT:
-                        model = new ArrayList<FlashModel>();
+                        model = new ArrayList<>();
                         break;
                     case XmlPullParser.START_TAG:
                         name = parser.getName();
@@ -172,10 +168,8 @@ public class GlobalData {
                 eventType = parser.next();
 
             }
-        } catch (XmlPullParserException e1) {
+        } catch (XmlPullParserException | IOException e1) {
             e1.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
 
     }
@@ -190,7 +184,7 @@ public class GlobalData {
 
 
         try {
-            model = new ArrayList<FlashModel>();
+            model = new ArrayList<>();
             File fXmlFile = new File(filePath);
             db = dbf.newDocumentBuilder();
             doc = db.parse(fXmlFile);
@@ -206,7 +200,6 @@ public class GlobalData {
             // NamedNodeMap node1 = author_nodes.item(0).getAttributes();
             iQuizAuthor = doc.getElementsByTagName("name").item(0)
                     .getChildNodes().item(0).getNodeValue();
-            ;
             // node1.getNamedItem("name").getNodeValue();
             NodeList childNodes = doc.getElementsByTagName("item");
             // Log.e("tag", "childNodes" + childNodes.getLength());
@@ -230,16 +223,10 @@ public class GlobalData {
             totalCards = model.size();
 
             Log.d("tag", "totalCards" + totalCards);
-        } catch (ParserConfigurationException e) {
-            Log.e("tag", e.getLocalizedMessage());
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
+        } catch (ParserConfigurationException | IOException e) {
             Log.e("tag", e.getLocalizedMessage());
             e.printStackTrace();
         } catch (SAXException e) {
-            Log.e("tag", e.getLocalizedMessage());
-            e.printStackTrace();
-        } catch (IOException e) {
             Log.e("tag", e.getLocalizedMessage());
             e.printStackTrace();
         }

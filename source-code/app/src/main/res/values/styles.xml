@@ -37,6 +37,14 @@
         <item name="windowActionModeOverlay">true</item>
     </style>
 
+    <style name="Buildmlearn.Simulator" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <!-- Allows the action mode icons to be shown on top of the Toolbar -->
+        <item name="windowActionModeOverlay">true</item>
+    </style>
+
     <style name="MainMenuItem" parent="TextAppearance.AppCompat.Body2">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/main_menu_item_height</item>
@@ -44,7 +52,9 @@
         <item name="android:paddingLeft">@dimen/main_menu_padding</item>
         <item name="android:textSize">@dimen/main_menu_text_size</item>
         <item name="android:textColor">@color/black_primary_text</item>
-        <item name="background">@color/abc_background_cache_hint_selector_material_light</item>
+        <item name="background" tools:ignore="PrivateResource">
+            @color/abc_background_cache_hint_selector_material_light
+        </item>
         <item name="android:drawablePadding">@dimen/main_menu_drawable_padding</item>
     </style>
 
@@ -106,6 +116,14 @@
         <item name="customFont">roboto_light.ttf</item>
     </style>
 
+    <style name="TextView.Title.Bold" parent="TextAppearance.AppCompat.Title">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/black_primary_text</item>
+        <item name="android:textSize">@dimen/title</item>
+        <item name="customFont">roboto_medium.ttf</item>
+    </style>
+
     <style name="TextView.Title.Thin" parent="TextAppearance.AppCompat.Body2">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -156,7 +174,9 @@
         <item name="android:paddingRight">@dimen/cardview_body_padding_left_right</item>
         <item name="android:paddingBottom">@dimen/cardview_body_padding_bottom</item>
         <item name="android:paddingTop">@dimen/cardview_body_padding_top</item>
-        <item name="android:textColor">@color/abc_primary_text_material_dark</item>
+        <item name="android:textColor" tools:ignore="PrivateResource">
+            @color/abc_primary_text_material_dark
+        </item>
         <item name="android:textSize">@dimen/cardview_body_text_size</item>
         <item name="customFont">roboto_regular.ttf</item>
     </style>
@@ -167,32 +187,40 @@
         <item name="android:paddingLeft">@dimen/cardview_title_padding_left_right</item>
         <item name="android:paddingRight">@dimen/cardview_title_padding_left_right</item>
         <item name="android:paddingTop">@dimen/cardview_title_padding_top</item>
-        <item name="android:textColor">@color/abc_primary_text_material_dark</item>
+        <item name="android:textColor" tools:ignore="PrivateResource">
+            @color/abc_primary_text_material_dark
+        </item>
         <item name="android:textSize">@dimen/cardview_title_text_size</item>
         <item name="customFont">roboto_medium.ttf</item>
     </style>
 
     <style name="Button.Raised" parent="Widget.AppCompat.Button">
-        <item name="android:textColor">@color/abc_secondary_text_material_dark</item>
+        <item name="android:textColor" tools:ignore="PrivateResource">
+            @color/abc_secondary_text_material_dark
+        </item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <!-- EditText-->
     <style name="EditText.Dark">
-        <item name="android:textColor">@color/abc_primary_text_material_dark</item>
+        <item name="android:textColor" tools:ignore="PrivateResource">
+            @color/abc_primary_text_material_dark
+        </item>
         <item name="colorControlNormal">@color/white_hint_text_disabled</item>
         <item name="colorControlActivated">@color/color_accent</item>
         <item name="android:textColorHint">@color/white_hint_text_disabled</item>
     </style>
 
     <style name="EditText.Light">
-        <item name="android:textColor">@color/abc_primary_text_material_dark</item>
+        <item name="android:textColor" tools:ignore="PrivateResource">
+            @color/abc_primary_text_material_dark
+        </item>
         <item name="colorControlNormal">@color/white_hint_text_disabled</item>
         <item name="colorControlActivated">@color/color_accent</item>
         <item name="android:textColorHint">@color/white_hint_text_disabled</item>
     </style>
 
-    <style name="EditText"></style>
+    <style name="EditText" />
 
     <style name="NoActionBarThemeTransparentStatusBar" parent="@style/AppTheme">
         <item name="windowActionBar">false</item>
@@ -201,5 +229,28 @@
         <item name="colorPrimaryDark">@color/color_primary_dark</item>
         <item name="android:windowBackground">@color/color_primary</item>
     </style>
+
+    <!-- VideoCollection Template Styles -->
+
+    <!-- ToolBar -->
+    <style name="ToolBarStyle_video" parent="Theme.AppCompat">
+        <item name="android:textColorPrimary">@color/black_secondary_text</item>
+        <item name="android:textColorSecondary">@color/black_secondary_text</item>
+        <item name="actionMenuTextColor">@android:color/white</item>
+    </style>
+
+    <style name="ToolBarStyle_video_heading" parent="Theme.AppCompat">
+        <item name="android:textColorPrimary">@color/white_primary_text</item>
+        <item name="android:textColorSecondary">@color/white_secondary_text</item>
+        <item name="actionMenuTextColor">@android:color/white</item>
+    </style>
+
+    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

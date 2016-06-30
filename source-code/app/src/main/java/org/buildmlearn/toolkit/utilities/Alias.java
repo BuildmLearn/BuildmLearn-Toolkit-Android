@@ -3,15 +3,15 @@ package org.buildmlearn.toolkit.utilities;
 /**
  * @brief Model class for storing Alias data for keystore.
  */
-public class Alias {
+class Alias {
 
-    long id;
-    Keystore keystore;
-    String name;
-    String displayName;
-    String password;
-    boolean selected;
-    boolean rememberPassword;
+    private long id;
+    private Keystore keystore;
+    private String name;
+    private String displayName;
+    private String password;
+    private boolean selected;
+    private boolean rememberPassword;
 
     public long getId() {
         return id;
@@ -76,9 +76,8 @@ public class Alias {
 
         Alias alias = (Alias) o;
 
-        if (id != alias.id) return false;
+        return id == alias.id;
 
-        return true;
     }
 
     @Override

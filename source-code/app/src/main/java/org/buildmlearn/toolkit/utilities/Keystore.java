@@ -9,12 +9,11 @@ import java.util.List;
  */
 public class Keystore {
 
-    long id;
-    String path;
-    String password;
-    boolean rememberPassword;
-
-    List<Alias> aliases = new ArrayList<Alias>();
+    private final List<Alias> aliases = new ArrayList<>();
+    private long id;
+    private String path;
+    private String password;
+    private boolean rememberPassword;
 
     public long getId() {
         return id;
@@ -63,9 +62,8 @@ public class Keystore {
 
         Keystore keystore = (Keystore) o;
 
-        if (id != keystore.id) return false;
+        return id == keystore.id;
 
-        return true;
     }
 
     @Override

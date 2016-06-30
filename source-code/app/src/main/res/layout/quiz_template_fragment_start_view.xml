@@ -26,7 +26,7 @@
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@android:color/white"
-        android:textStyle="bold"></TextView>
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tv_author"
@@ -37,7 +37,7 @@
         android:layout_margin="10dp"
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@android:color/white"></TextView>
+        android:textColor="@android:color/white" />
 
     <Button
         android:id="@+id/btn_start"
@@ -49,6 +49,6 @@
         android:paddingRight="15dp"
         android:text="@string/quiz_template_start"
         android:textAppearance="@android:style/TextAppearance.Large"
-        android:textColor="@android:color/white"></Button>
+        android:textColor="@android:color/white" />
 
 </RelativeLayout>

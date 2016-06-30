@@ -8,45 +8,64 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/color_primary"
-        android:orientation="vertical"
-        android:paddingBottom="25dp"
-        android:paddingLeft="72dp"
-        android:paddingRight="16dp"
-        android:paddingTop="25dp">
+        android:orientation="vertical">
 
-        <view
-            android:id="@+id/textView"
-            style="@style/TextView.Caption"
-            class="org.buildmlearn.toolkit.views.TextViewPlus"
-            android:text="@string/label_quiz"
-            android:textColor="@color/color_accent" />
-
-        <EditText
-            android:id="@+id/template_title"
-            style="@style/EditText.Dark"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_quiz_name"
-            android:textSize="@dimen/headline_leading"
-            android:theme="@style/EditText.Dark" />
+            android:background="@color/color_primary"
+            android:orientation="vertical"
+            android:paddingBottom="25dp"
+            android:paddingLeft="72dp"
+            android:paddingRight="16dp"
+            android:paddingTop="25dp">
 
-        <view
-            android:id="@+id/textView2"
-            style="@style/TextView.Caption"
-            class="org.buildmlearn.toolkit.views.TextViewPlus"
-            android:text="@string/label_author"
-            android:textColor="@color/color_accent" />
+            <view
+                style="@style/TextView.Caption"
+                class="org.buildmlearn.toolkit.views.TextViewPlus"
+                android:text="@string/label_quiz"
+                android:textColor="@color/color_accent" />
 
-        <EditText
-            android:id="@+id/author_name"
-            style="@style/EditText.Dark"
+            <EditText
+                android:id="@+id/template_title"
+                style="@style/EditText.Dark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_quiz_name"
+                android:textSize="@dimen/headline_leading"
+                android:theme="@style/EditText.Dark" />
+
+            <view
+                style="@style/TextView.Caption"
+                class="org.buildmlearn.toolkit.views.TextViewPlus"
+                android:text="@string/label_author"
+                android:textColor="@color/color_accent" />
+
+            <EditText
+                android:id="@+id/author_name"
+                style="@style/EditText.Dark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_author"
+                android:inputType="textPersonName"
+                android:theme="@style/EditText.Dark" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/shadow_meta"
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
+            android:background="@drawable/shadow_toolbar"
+            android:backgroundTint="@color/color_divider"
+            android:visibility="gone" />
+
+        <ListView
+            android:id="@+id/template_meta_listview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_author"
-            android:inputType="textPersonName"
-            android:theme="@style/EditText.Dark" />
-
+            android:layout_gravity="center_vertical"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="8dp" />
 
     </LinearLayout>
 </FrameLayout>

@@ -2,13 +2,9 @@
 <resources>
     <color name="color_primary">#2196F3</color>
     <color name="color_primary_dark">#1976D2</color>
-    <color name="color_selected">#9E9E9E</color>
     <color name="color_selected_dark">#616161</color>
     <color name="window_background">#eeeeee</color>
     <color name="home_color">#1E88E5</color>
-    <color name="primary_400">#42A5F5</color>
-    <color name="primary_800">#1565C0</color>
-    <color name="primary_900">#0D47A1</color>
     <color name="color_accent">#FF4081</color>
     <color name="white_hint_text_disabled">#4DFFFFFF</color>
     <color name="white_primary_text">#FFF</color>
@@ -16,8 +12,6 @@
     <color name="black_hint_text_disabled">#42000000</color>
     <color name="black_primary_text">#de000000</color>
     <color name="black_secondary_text">#8a000000</color>
-    <color name="floating_action_button_icon">#b3ffffff</color>
-    <color name="floating_action_button_pressed">#ff80ab</color>
     <color name="color_divider">#1E000000</color>
     <color name="main_menu_background">#fffafafa</color>
     <color name="translucent_grey">#0c000000</color>
@@ -30,10 +24,16 @@
 
     <!-- Info Template-->
 
-    <color name="info_template_blue_background">#255593</color>
-
-    <color name="Red">#FF0000</color>
-    <color name="Green">#00FF00</color>
     <color name="BlueBg">#255593</color>
+
+    <!-- VideoCollectionTemplate Template-->
+
+    <color name="colorPrimary_video">#26C6DA</color>
+    <color name="colorAccent_video">#3F99A9</color>
+    <color name="background_video">#FAFAFA</color>
+
+    <color name="colorPrimary_comprehension">#26C6DA</color>
+    <color name="colorPrimaryDark_comprehension">#00BCD4</color>
+    <color name="colorAccent_comprehension">#3F99A9</color>
 
 </resources>

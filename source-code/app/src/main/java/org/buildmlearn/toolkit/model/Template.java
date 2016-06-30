@@ -4,10 +4,12 @@ import android.support.annotation.DrawableRes;
 import android.support.annotation.StringRes;
 
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.templates.ComprehensionTemplate;
 import org.buildmlearn.toolkit.templates.FlashTemplate;
 import org.buildmlearn.toolkit.templates.InfoTemplate;
 import org.buildmlearn.toolkit.templates.LearnSpellingTemplate;
 import org.buildmlearn.toolkit.templates.QuizTemplate;
+import org.buildmlearn.toolkit.templates.VideoCollectionTemplate;
 
 /**
  * @brief Enum for the templates that are included into toolkit application.
@@ -16,23 +18,29 @@ import org.buildmlearn.toolkit.templates.QuizTemplate;
  */
 public enum Template {
 
-    BASIC_M_LEARNING(R.string.basic_m_learning_title, R.string.basic_m_learning_description, R.drawable.basic_m_learning, R.string.info_template, InfoTemplate.class),
+    BASIC_M_LEARNING(R.string.basic_m_learning_title, R.string.basic_m_learning_description, R.drawable.info_template, R.string.info_template, InfoTemplate.class),
     LEARN_SPELLING(R.string.learn_spellings_title, R.string.learn_spellings_description, R.drawable.basic_m_learning, R.string.spelling_type, LearnSpellingTemplate.class),
     QUIZ(R.string.quiz_title, R.string.quiz_description, R.drawable.basic_m_learning, R.string.quiz_type, QuizTemplate.class),
-    FLASH_CARD(R.string.flash_card_title, R.string.flash_card_description, R.drawable.basic_m_learning, R.string.flash_card_template, FlashTemplate.class);
+    FLASH_CARD(R.string.flash_card_title, R.string.flash_card_description, R.drawable.basic_m_learning, R.string.flash_card_template, FlashTemplate.class),
+    VIDEO_COLLECTION(R.string.video_collection_title, R.string.video_collection_description, R.drawable.video_collection, R.string.video_collection_template, VideoCollectionTemplate.class),
+    COMPREHENSION(R.string.comprehension_title, R.string.comprehension_description, R.drawable.comprehension, R.string.comprehension_template, ComprehensionTemplate.class);
 
     @StringRes
+    final
     int type;
     private
     @DrawableRes
+    final
     int image;
     private
     @StringRes
+    final
     int title;
     private
     @StringRes
+    final
     int description;
-    private Class<? extends TemplateInterface> templateClass;
+    private final Class<? extends TemplateInterface> templateClass;
 
     Template(@StringRes int title, @StringRes int description, @DrawableRes int image, @StringRes int type, Class<? extends TemplateInterface> templateClass) {
         this.image = image;

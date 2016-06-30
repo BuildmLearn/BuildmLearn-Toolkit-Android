@@ -28,11 +28,11 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
 
 package org.buildmlearn.toolkit.learnspelling;
 
-import android.app.Fragment;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,14 +51,9 @@ public class WordInfoActivity extends Fragment {
 
     private boolean isCorrect;
     private int position;
-    private TextView mTv_Result, mTv_enteredWord, mTv_word, mTv_description,
-            mTv_Word_num;
     private DataManager mManager;
     private ArrayList<WordModel> mList;
-    private Button mBtn_Next;
     private TextToSpeech textToSpeech;
-    private String enteredText;
-    private View view;
 
     public static Fragment newInstance(boolean isCorrect, int count, String word) {
         Fragment fragment = new WordInfoActivity();
@@ -76,20 +71,20 @@ public class WordInfoActivity extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        view = inflater.inflate(R.layout.spelling_fragment_word_info, container, false);
+        View view = inflater.inflate(R.layout.spelling_fragment_word_info, container, false);
         mManager = DataManager.getInstance();
         mList = mManager.getList();
 
         isCorrect = getArguments().getBoolean("result", false);
         position = getArguments().getInt("index", 0);
-        enteredText = getArguments().getString("word");
-        mTv_Result = (TextView) view.findViewById(R.id.tv_result);
-        mTv_Word_num = (TextView) view.findViewById(R.id.tv_word_num);
-        mTv_word = (TextView) view.findViewById(R.id.tv_word);
-        mTv_enteredWord = (TextView) view.findViewById(R.id.tv_input_word);
+        String enteredText = getArguments().getString("word");
+        TextView mTv_Result = (TextView) view.findViewById(R.id.tv_result);
+        TextView mTv_Word_num = (TextView) view.findViewById(R.id.tv_word_num);
+        TextView mTv_word = (TextView) view.findViewById(R.id.tv_word);
+        TextView mTv_enteredWord = (TextView) view.findViewById(R.id.tv_input_word);
 
-        mTv_description = (TextView) view.findViewById(R.id.tv_description);
-        mBtn_Next = (Button) view.findViewById(R.id.btn_next);
+        TextView mTv_description = (TextView) view.findViewById(R.id.tv_description);
+        Button mBtn_Next = (Button) view.findViewById(R.id.btn_next);
         if (position == mList.size() - 1) {
             mBtn_Next.setText("Finish");
         }
@@ -127,9 +122,9 @@ public class WordInfoActivity extends Fragment {
             public void onClick(View v) {
                 if (position < mList.size() - 1) {
                     mManager.increaseCount();
-                    getActivity().getFragmentManager().beginTransaction().replace(R.id.container, new SpellingActivity()).addToBackStack(null).commit();
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new SpellingActivity()).addToBackStack(null).commit();
                 } else {
-                    getActivity().getFragmentManager().beginTransaction().replace(R.id.container, new ResultActivity()).addToBackStack(null).commit();
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new ResultActivity()).addToBackStack(null).commit();
                 }
             }
         });

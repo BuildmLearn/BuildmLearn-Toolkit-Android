@@ -28,10 +28,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
 
 package org.buildmlearn.toolkit.learnspelling;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,21 +47,19 @@ import java.util.Locale;
  * @brief Simulator code for Learn Spelling Template
  */
 public class ResultActivity extends Fragment {
-    private TextView mTv_Correct, mTv_Wrong, mTv_Unanswered;
     private DataManager mDataManager;
     private TextToSpeech textToSpeech;
     private int unanswered, wrong, correct;
-    private View view;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        view = inflater.inflate(R.layout.spelling_fragment_finish, container, false);
+        View view = inflater.inflate(R.layout.spelling_fragment_finish, container, false);
         mDataManager = DataManager.getInstance();
-        mTv_Correct = (TextView) view.findViewById(R.id.tv_correct);
-        mTv_Wrong = (TextView) view.findViewById(R.id.tv_wrong);
-        mTv_Unanswered = (TextView) view.findViewById(R.id.tv_unanswered);
+        TextView mTv_Correct = (TextView) view.findViewById(R.id.tv_correct);
+        TextView mTv_Wrong = (TextView) view.findViewById(R.id.tv_wrong);
+        TextView mTv_Unanswered = (TextView) view.findViewById(R.id.tv_unanswered);
         correct = mDataManager.getCorrect();
         wrong = mDataManager.getWrong();
         unanswered = mDataManager.getList().size() - correct - wrong;
@@ -100,7 +98,7 @@ public class ResultActivity extends Fragment {
             @Override
             public void onClick(View v) {
                 mDataManager.reset();
-                getActivity().getFragmentManager().beginTransaction().replace(R.id.container, SpellingMainFragment.newInstance(getActivity().getIntent().getStringExtra(Constants.SIMULATOR_FILE_PATH)), StartFragment.TAG).addToBackStack(null).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, SpellingMainFragment.newInstance(getActivity().getIntent().getStringExtra(Constants.SIMULATOR_FILE_PATH)), StartFragment.TAG).addToBackStack(null).commit();
 //t
             }
         });

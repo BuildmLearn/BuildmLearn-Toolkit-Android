@@ -28,10 +28,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
 
 package org.buildmlearn.toolkit.quiztemplate;
 
-import android.app.Fragment;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,37 +54,32 @@ import java.util.List;
 public class QuestionFragment extends Fragment {
 
     public final static String TAG = "QUESTION_FRAGMENT";
-
+    private final List<RadioButton> iRadButtonList = new ArrayList<>();
     private GlobalData gd;
     private TextView iQuestion_no_Label;
     private TextView iQuestionLabel;
-    private RadioButton iRad1, iRad2, iRad3, iRad0;
-    private Button iSubmitButton, iNextButton;
-    private List<RadioButton> iRadButtonList = new ArrayList<RadioButton>();
+    private Button iSubmitButton;
     private int iQuestionIndex = 0;
     private int iCurrentCorrectAnswer;
-    private RadioGroup iRadioGroup;
-    private FragmentActivity faActivity;
-    private View view;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        faActivity = (FragmentActivity) super.getActivity();
-        view = inflater.inflate(R.layout.quiz_template_fragment_questions_view, container, false);
+        FragmentActivity faActivity = super.getActivity();
+        View view = inflater.inflate(R.layout.quiz_template_fragment_questions_view, container, false);
 
         gd = GlobalData.getInstance();
 
         iQuestion_no_Label = (TextView) view.findViewById(R.id.question_no);
         iQuestionLabel = (TextView) view.findViewById(R.id.question_label);
 
-        iRad0 = (RadioButton) view.findViewById(R.id.radio0);
-        iRad1 = (RadioButton) view.findViewById(R.id.radio1);
-        iRad2 = (RadioButton) view.findViewById(R.id.radio2);
-        iRad3 = (RadioButton) view.findViewById(R.id.radio3);
+        RadioButton iRad0 = (RadioButton) view.findViewById(R.id.radio0);
+        RadioButton iRad1 = (RadioButton) view.findViewById(R.id.radio1);
+        RadioButton iRad2 = (RadioButton) view.findViewById(R.id.radio2);
+        RadioButton iRad3 = (RadioButton) view.findViewById(R.id.radio3);
 
-        iRadioGroup = (RadioGroup) view.findViewById(R.id.radioGroup1);
+        RadioGroup iRadioGroup = (RadioGroup) view.findViewById(R.id.radioGroup1);
 
         iRadButtonList.add(iRad0);
         iRadButtonList.add(iRad1);
@@ -100,8 +95,7 @@ public class QuestionFragment extends Fragment {
                 if (selectedAnswer == -1) {
                     Toast.makeText(getActivity(),
                             "Please select an answer!", Toast.LENGTH_LONG).show();
-                } else if (selectedAnswer != -1
-                        && selectedAnswer == iCurrentCorrectAnswer) {
+                } else if (selectedAnswer == iCurrentCorrectAnswer) {
                     iRadButtonList.get(iCurrentCorrectAnswer)
                             .setBackgroundColor(Color.GREEN);
                     Toast.makeText(getActivity(),
@@ -126,7 +120,7 @@ public class QuestionFragment extends Fragment {
             }
         });
 
-        iNextButton = (Button) view.findViewById(R.id.next_button);
+        Button iNextButton = (Button) view.findViewById(R.id.next_button);
         iNextButton.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -148,7 +142,7 @@ public class QuestionFragment extends Fragment {
                 } else {
                     // if the quiz is over
                     reInitialize();
-                    getActivity().getFragmentManager().beginTransaction().replace(R.id.container, new ScoreFragment(), ScoreFragment.TAG).addToBackStack(null).commit();
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new ScoreFragment(), ScoreFragment.TAG).addToBackStack(null).commit();
                 }
             }
         });
@@ -160,11 +154,7 @@ public class QuestionFragment extends Fragment {
     }
 
 
-    public void radioClick(View v) {
-
-    }
-
-    public void populateQuestion(int index) {
+    private void populateQuestion(int index) {
         for (int i = 0; i < iRadButtonList.size(); i++) {
             iRadButtonList.get(i).setBackgroundColor(Color.TRANSPARENT);
             iRadButtonList.get(i).setChecked(false);
@@ -184,7 +174,7 @@ public class QuestionFragment extends Fragment {
 
     }
 
-    public int getSelectedAnswer() {
+    private int getSelectedAnswer() {
         int selected = -1;
         for (int i = 0; i < iRadButtonList.size(); i++) {
             if (iRadButtonList.get(i).isChecked()) {
@@ -194,7 +184,7 @@ public class QuestionFragment extends Fragment {
         return selected;
     }
 
-    public void reInitialize() {
+    private void reInitialize() {
 
         iQuestionIndex = 0;
         gd.iQuizList.clear();

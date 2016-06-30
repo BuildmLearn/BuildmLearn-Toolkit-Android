@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/thumb"
+        android:layout_width="@dimen/thumb_size_video"
+        android:layout_height="@dimen/thumb_size_video"
+        android:layout_centerVertical="true"
+        android:layout_margin="@dimen/padding_video"
+        android:contentDescription="@string/video_thumbnail" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/thumb"
+        android:layout_toEndOf="@+id/thumb"
+        android:layout_toRightOf="@+id/thumb"
+        android:maxLines="2"
+        android:paddingEnd="@dimen/padding_video"
+        android:paddingLeft="@dimen/padding_video"
+        android:paddingRight="@dimen/padding_video"
+        android:paddingStart="@dimen/padding_video"
+        android:textSize="@dimen/title_size_video"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title"
+        android:layout_toEndOf="@+id/thumb"
+        android:layout_toRightOf="@+id/thumb"
+        android:maxLines="3"
+        android:paddingEnd="@dimen/paddingRight_video"
+        android:paddingLeft="@dimen/padding_video"
+        android:paddingRight="@dimen/paddingRight_video"
+        android:paddingStart="@dimen/padding_video"
+        android:paddingTop="@dimen/paddingLittle_video" />
+
+</RelativeLayout>

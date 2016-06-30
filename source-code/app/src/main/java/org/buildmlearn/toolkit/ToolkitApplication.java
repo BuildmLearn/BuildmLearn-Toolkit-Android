@@ -16,10 +16,6 @@ import java.util.ArrayList;
  */
 public class ToolkitApplication extends Application {
 
-    private String projectDir;
-    private String toolkitDir;
-    private String apkDir;
-
     private String dir;
     private boolean isExternalStorageAvailable = false;
 
@@ -48,6 +44,14 @@ public class ToolkitApplication extends Application {
         }
 
 
+    }
+
+    /**
+     * @brief Returns external storage directory.
+     * @return folder file
+     */
+    public File getDir() {
+        return Environment.getExternalStorageDirectory();
     }
 
     /**
@@ -87,7 +91,7 @@ public class ToolkitApplication extends Application {
      * @brief Checks if external storage is present for storing data
      * @return true if external storage is present, else false
      */
-    private boolean checkExternalStorage() {
+    public boolean checkExternalStorage() {
 
         boolean result = false;
         File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/BuildmLearn123/");

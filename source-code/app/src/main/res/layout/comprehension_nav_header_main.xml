@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/comprehension_nav_header_height"
+    android:background="@drawable/comprehension_side_nav_bar"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin_simulator"
+    android:paddingLeft="@dimen/activity_vertical_margin_simulator"
+    android:paddingRight="@dimen/activity_vertical_margin_simulator"
+    android:paddingTop="@dimen/activity_vertical_margin_simulator"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/comprehension_buildmlearn_logo"
+        android:paddingTop="@dimen/comprehension_nav_header_vertical_spacing"
+        android:src="@drawable/logo_70" />
+
+</LinearLayout>

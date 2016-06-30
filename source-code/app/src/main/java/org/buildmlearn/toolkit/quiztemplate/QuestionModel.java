@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * @brief Simulator code for Quiz Template
  */
-public class QuestionModel {
+class QuestionModel {
 
     private String question, answer;
     private ArrayList<String> options;

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/thumb"
+        android:layout_width="@dimen/thumb_size"
+        android:layout_height="@dimen/thumb_size"
+        android:layout_gravity="center_horizontal"
+        android:paddingBottom="@dimen/thumb_padding" />
+
+    <TextView
+        style="@style/TextView.Caption.Light"
+        android:text="@string/video_collection_template_title"
+        android:textColor="@color/black_secondary_text" />
+
+    <EditText
+        android:id="@+id/video_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/info_template_word_hint"
+        android:inputType="textPersonName" />
+
+    <TextView
+        style="@style/TextView.Caption.Light"
+        android:text="@string/video_collection_template_description"
+        android:textColor="@color/black_secondary_text" />
+
+    <EditText
+        android:id="@+id/video_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/video_collection_template_description_hint"
+        android:inputType="textPersonName" />
+
+    <TextView
+        style="@style/TextView.Caption.Light"
+        android:gravity="center"
+        android:text="@string/video_collection_or"
+        android:textColor="@color/black_secondary_text" />
+
+    <TextView
+        style="@style/TextView.Caption.Light"
+        android:text="@string/video_collection_template_link"
+        android:textColor="@color/black_secondary_text" />
+
+    <EditText
+        android:id="@+id/video_link"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/video_collection_template_link_hint"
+        android:inputType="textPersonName" />
+
+</LinearLayout>

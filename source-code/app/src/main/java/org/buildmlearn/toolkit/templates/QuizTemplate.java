@@ -1,7 +1,6 @@
 package org.buildmlearn.toolkit.templates;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
@@ -40,12 +39,28 @@ public class QuizTemplate implements TemplateInterface {
     @Override
     public BaseAdapter newTemplateEditorAdapter(Context context) {
         mAdapter = new QuizAdapter(context, quizData);
+        setEmptyView((Activity) context);
         return mAdapter;
+    }
+
+    @Override
+    public BaseAdapter newMetaEditorAdapter(Context context) {
+        return null;
     }
 
     @Override
     public BaseAdapter currentTemplateEditorAdapter() {
         return mAdapter;
+    }
+
+    @Override
+    public BaseAdapter currentMetaEditorAdapter() {
+        return null;
+    }
+
+    @Override
+    public BaseAdapter loadProjectMetaEditor(Context context, Document doc) {
+        return null;
     }
 
     @Override
@@ -63,6 +78,7 @@ public class QuizTemplate implements TemplateInterface {
 
         }
         mAdapter = new QuizAdapter(context, quizData);
+        setEmptyView((Activity) context);
         return mAdapter;
     }
 
@@ -147,12 +163,18 @@ public class QuizTemplate implements TemplateInterface {
                     }
                     String questionText = question.getText().toString();
                     quizData.add(new QuizModel(questionText, answerOptions, correctAnswer));
+                    setEmptyView(activity);
                     mAdapter.notifyDataSetChanged();
                 }
 
             }
         });
         dialog.show();
+
+    }
+
+    @Override
+    public void addMetaData(Activity activity) {
 
     }
 
@@ -245,8 +267,9 @@ public class QuizTemplate implements TemplateInterface {
     }
 
     @Override
-    public void deleteItem(int position) {
+    public void deleteItem(Activity activity, int position) {
         quizData.remove(position);
+        setEmptyView(activity);
         mAdapter.notifyDataSetChanged();
     }
 
@@ -266,7 +289,7 @@ public class QuizTemplate implements TemplateInterface {
     }
 
     @Override
-    public Fragment getSimulatorFragment(String filePathWithName) {
+    public android.support.v4.app.Fragment getSimulatorFragment(String filePathWithName) {
         return TFTQuizFragment.newInstance(filePathWithName);
     }
 
@@ -317,4 +340,15 @@ public class QuizTemplate implements TemplateInterface {
         return -1;
     }
 
+    /**
+     * @brief Toggles the visibility of empty text if Array has zero elements
+     */
+    @Override
+    public void setEmptyView(Activity activity) {
+        if (quizData.size() < 1) {
+            activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
+        } else {
+            activity.findViewById(R.id.empty).setVisibility(View.GONE);
+        }
+    }
 }

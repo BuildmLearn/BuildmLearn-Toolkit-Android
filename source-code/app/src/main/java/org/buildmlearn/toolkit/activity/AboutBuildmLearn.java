@@ -5,8 +5,6 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.TextView;
 
 import org.buildmlearn.toolkit.R;
@@ -27,12 +25,14 @@ public class AboutBuildmLearn extends AppCompatActivity {
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        PackageInfo pInfo = null;
+        PackageInfo pInfo;
         try {
             pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
             String version = pInfo.versionName;
+            assert findViewById(R.id.app_version) != null;
             ((TextView)findViewById(R.id.app_version)).setText("Version: " + version);
         } catch (PackageManager.NameNotFoundException e) {
+            assert findViewById(R.id.app_version) != null;
             ((TextView)findViewById(R.id.app_version)).setText("Version: 1.0");
             e.printStackTrace();
         }

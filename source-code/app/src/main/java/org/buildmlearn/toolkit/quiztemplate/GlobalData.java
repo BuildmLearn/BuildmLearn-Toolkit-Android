@@ -42,7 +42,6 @@ import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -57,20 +56,17 @@ import javax.xml.parsers.ParserConfigurationException;
  */
 public class GlobalData {
     private static GlobalData instance = null;
+    final List<String> iQuizList = new ArrayList<>();
     String iQuizTitle = null;
     String iQuizAuthor = null;
     ArrayList<QuestionModel> model = null;
-
-    BufferedReader br;
-
-    List<String> iQuizList = new ArrayList<String>();
     int correct = 0;
     int wrong = 0;
     int total = 0;
-
     int iSelectedIndex = -1;
+    private BufferedReader br;
 
-    protected GlobalData() {
+    private GlobalData() {
         // Exists only to defeat instantiation.
     }
 
@@ -139,10 +135,10 @@ public class GlobalData {
             QuestionModel app = null;
 
             while (eventType != XmlPullParser.END_DOCUMENT) {
-                String name = null;
+                String name;
                 switch (eventType) {
                     case XmlPullParser.START_DOCUMENT:
-                        model = new ArrayList<QuestionModel>();
+                        model = new ArrayList<>();
                         break;
                     case XmlPullParser.START_TAG:
                         name = parser.getName();
@@ -153,7 +149,7 @@ public class GlobalData {
                             iQuizAuthor = parser.nextText();
                         } else if (name.equalsIgnoreCase("item")) {
                             app = new QuestionModel();
-                            mOptions = new ArrayList<String>();
+                            mOptions = new ArrayList<>();
                         } else if (app != null) {
                             if (name.equalsIgnoreCase("question")) {
                                 app.setQuestion(parser.nextText());
@@ -175,10 +171,8 @@ public class GlobalData {
                 eventType = parser.next();
 
             }
-        } catch (XmlPullParserException e1) {
+        } catch (XmlPullParserException | IOException e1) {
             e1.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
         // return model;
         // BuildmLearnModel.getInstance(myContext).setAllAppsList(model);
@@ -190,12 +184,12 @@ public class GlobalData {
 
         dbf.setValidating(false);
 
-        ArrayList<String> mOptions = null;
+        ArrayList<String> mOptions;
         DocumentBuilder db;
         Document doc;
         try {
             File fXmlFile = new File(filePath);
-            model = new ArrayList<QuestionModel>();
+            model = new ArrayList<>();
             db = dbf.newDocumentBuilder();
             doc = db.parse(fXmlFile);
             doc.normalize();
@@ -214,7 +208,7 @@ public class GlobalData {
                     Element element2 = (Element) child;
 
                     app.setQuestion(getValue("question", element2));
-                    mOptions = new ArrayList<String>();
+                    mOptions = new ArrayList<>();
                     NodeList optionNodes = element2
                             .getElementsByTagName("option");
                     for (int j = 0; j < optionNodes.getLength(); j++) {
@@ -227,16 +221,10 @@ public class GlobalData {
             }
             total = model.size();
 
-        } catch (ParserConfigurationException e) {
-            Log.e("tag", e.getLocalizedMessage());
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
+        } catch (ParserConfigurationException | IOException e) {
             Log.e("tag", e.getLocalizedMessage());
             e.printStackTrace();
         } catch (SAXException e) {
-            Log.e("tag", e.getLocalizedMessage());
-            e.printStackTrace();
-        } catch (IOException e) {
             Log.e("tag", e.getLocalizedMessage());
             e.printStackTrace();
         }

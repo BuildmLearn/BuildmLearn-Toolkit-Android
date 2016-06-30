@@ -5,23 +5,23 @@
 
     <!-- Per the design guidelines, navigation drawers should be between 240dp and 320dp:
          https://developer.android.com/design/patterns/navigation-drawer.html -->
-    <dimen name="navigation_drawer_width">240dp</dimen>
     <!-- Main menu dimensions-->
     <dimen name="main_menu_padding">16dp</dimen>
     <dimen name="main_menu_text_size">14sp</dimen>
     <dimen name="main_menu_drawable_padding">16dp</dimen>
     <dimen name="main_menu_item_height">48dp</dimen>
+    <dimen name="button_enter_simulator">48dp</dimen>
+    <dimen name="simulator_detail_toolbar">48dp</dimen>
     <dimen name="layout_margin">8dp</dimen>
     <dimen name="cardview_top_padding">24dp</dimen>
-    <dimen name="cardview_bottom_padding">16dp</dimen>
-    <dimen name="cardview_padding_left_right">16dp</dimen>
     <dimen name="headline">24sp</dimen>
     <dimen name="headline_leading">32sp</dimen>
+    <dimen name="headline_leading_simulator">26sp</dimen>
     <dimen name="title">20sp</dimen>
+    <dimen name="title_simulator">16.36sp</dimen>
     <dimen name="sub_title">16sp</dimen>
     <dimen name="caption">12sp</dimen>
     <dimen name="body">14sp</dimen>
-    <dimen name="button">14sp</dimen>
     <dimen name="empty">14sp</dimen>
 
     <!-- Styles-->
@@ -34,19 +34,17 @@
     <dimen name="cardview_body_padding_top">16dp</dimen>
     <dimen name="cardview_body_padding_bottom">24dp</dimen>
     <dimen name="cardview_body_text_size">14sp</dimen>
-
+    <dimen name="cardview_margin">24dp</dimen>
     <!-- CardView Title-->
     <dimen name="cardview_title_text_size">24sp</dimen>
     <dimen name="cardview_title_padding_left_right">16dp</dimen>
     <dimen name="cardview_title_padding_top">24dp</dimen>
+    <dimen name="cardview_padding_last_bottom">38dp</dimen>
 
     <!-- Button-->
-    <dimen name="button_margin_bottom">24dp</dimen>
-    <dimen name="button_margin_left_right">16dp</dimen>
 
 
     <!-- Button Raised-->
-    <dimen name="button_raised_height">36dp</dimen>
 
     <!-- Template CardView-->
     <dimen name="cardview_template_height">180dp</dimen>
@@ -58,5 +56,48 @@
 
     <dimen name="material_navigation_drawer_right_margin">56dp</dimen>
     <dimen name="navigation_drawer_header_height">160dp</dimen>
+    <dimen name="thumb_size">250dp</dimen>
+    <dimen name="thumb_padding">8dp</dimen>
+    <dimen name="thumb_paddingTop">16dp</dimen>
+    <dimen name="thumb_paddingRight">18dp</dimen>
+
+    <!-- Video Collection Template-->
+
+    <dimen name="splash_button_margin_top_video">41dp</dimen>
+    <dimen name="splash_text_margin_video">20.45dp</dimen>
+    <dimen name="thumb_size_video">81.8dp</dimen>
+    <dimen name="padding_video">6.54dp</dimen>
+    <dimen name="paddingTop_video">13dp</dimen>
+    <dimen name="cardHeightLastActivity_video">286dp</dimen>
+    <dimen name="paddingRight_video">4dp</dimen>
+    <dimen name="paddingLittle_video">1.6dp</dimen>
+    <dimen name="toolbar_height_video">122.7dp</dimen>
+    <dimen name="medium_margin_video">12dp</dimen>
+    <dimen name="negative_margin_video">-28.6dp</dimen>
+    <dimen name="toolbar_height_small_video">61.36dp</dimen>
+    <dimen name="title_size_video">13sp</dimen>
+    <dimen name="web_view_height_video">261dp</dimen>
+    <dimen name="card_thumb_size">143dp</dimen>
+    <dimen name="web_view_negative_margin">-5.72dip</dimen>
+
+    <!-- Comprehension Template-->
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="comprehension_nav_header_vertical_spacing">13dp</dimen>
+    <dimen name="comprehension_nav_header_height">131dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+
+    <dimen name="comprehension_splash_button_margin_top">41dp</dimen>
+    <dimen name="comprehension_paddingTop">13dp</dimen>
+    <dimen name="comprehension_cardHeightLastActivity">286.36dp</dimen>
+    <dimen name="comprehension_toolbar_height_small">61.36dp</dimen>
+    <dimen name="activity_vertical_margin_simulator">13dp</dimen>
+
+    <!-- Info Template-->
+    <dimen name="padding_info">6.54dp</dimen>
+    <dimen name="paddingTop_info">13dp</dimen>
+    <dimen name="toolbar_height_info">122.72dp</dimen>
+    <dimen name="medium_margin_info">12.2dp</dimen>
+    <dimen name="negative_margin_info">-28.63dp</dimen>
 
 </resources>
