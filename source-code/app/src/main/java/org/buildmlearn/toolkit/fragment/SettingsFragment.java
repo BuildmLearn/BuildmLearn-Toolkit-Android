@@ -33,11 +33,14 @@ public class SettingsFragment extends PreferenceFragment {
         });
 
         prefUsername = findPreference(getString(R.string.key_user_name));
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
+        prefUsername.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                prefUsername.setSummary((String)newValue);
+                return true;
+            }
+        });
         prefUsername.setSummary(preferences.getString(getString(R.string.key_user_name), ""));
     }
+
 }
