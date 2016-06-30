@@ -145,6 +145,9 @@ public class NavigationDrawerFragment extends Fragment {
         });
         NavigationDrawerMenuAdapter adapter = new NavigationDrawerMenuAdapter(getActivity().getApplicationContext(), inflater);
         menus = Section.values();
+        for (int i = 0; i < menus.length; i++) {
+            menus[i].setIsSelected(false);
+        }
         if (menus.length > 0) {
             menus[selectedSectionMenu].setIsSelected(true);
         }
