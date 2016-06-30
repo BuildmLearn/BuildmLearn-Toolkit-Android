@@ -83,6 +83,7 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
 
+                <data android:mimeType="*/*" />
                 <data android:scheme="file" />
                 <data android:host="*" />
                 <data android:pathPattern=".*\\.buildmlearn" />
