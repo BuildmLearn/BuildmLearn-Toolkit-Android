@@ -16,7 +16,8 @@ import java.util.ArrayList;
  */
 public class ToolkitApplication extends Application {
 
-    private String dir;
+    private static String dir;
+
     private boolean isExternalStorageAvailable = false;
 
 
@@ -75,7 +76,7 @@ public class ToolkitApplication extends Application {
      * @brief Returns folder path for unzipped apks
      * @return Folder path
      */
-    public String getUnZipDir() {
+    public static String getUnZipDir() {
         return dir + Constants.UNZIP;
     }
 
