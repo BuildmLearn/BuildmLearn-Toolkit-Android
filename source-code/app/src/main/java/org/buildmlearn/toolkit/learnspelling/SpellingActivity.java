@@ -66,6 +66,8 @@ public class SpellingActivity extends Fragment implements
     private EditText mEt_Spelling;
     private SeekBar mSb_SpeechRate;
 
+    private static final float MIN_SPEECH_RATE = 0.01f;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -204,7 +206,11 @@ public class SpellingActivity extends Fragment implements
 
     private float getProgressValue(int percent) {
         float temp = ((float) percent / 100);
-        return temp * 2;
+        float speechRate = temp * 2;
+
+        if (speechRate < MIN_SPEECH_RATE)
+            speechRate = MIN_SPEECH_RATE;
+        return speechRate;
     }
 
 
