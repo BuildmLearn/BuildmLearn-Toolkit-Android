@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,8 +59,6 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
     private Activity activity;
     private ArrayList<SavedProject> savedProjects;
     private View selectedView = null;
-
-    private int selectedPosition = -1;
 
     /**
      * {@inheritDoc}
@@ -130,8 +129,8 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
         mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                if (selectedPosition == position) {
-                    selectedPosition = -1;
+                if (mAdapter.getSelectedPosition() == position) {
+                    mAdapter.setSelectedPosition(-1);
                     view.setBackgroundResource(0);
                     restoreColorScheme();
                 } else {
@@ -139,9 +138,9 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                         selectedView.setBackgroundResource(0);
                     }
                     selectedView = view;
-                    selectedPosition = position;
-                    Log.d(TAG, "Position: " + selectedPosition);
                     view.setBackgroundColor(ContextCompat.getColor(mToolkit, R.color.color_divider));
+                    mAdapter.setSelectedPosition(position);
+                    Log.d(TAG, "Position: " + position);
                     changeColorScheme();
                 }
                 return true;
@@ -273,12 +272,12 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
         activity.invalidateOptionsMenu();
     }
 
-    /**
+     /**
      * {@inheritDoc}
      */
     @Override
-    public void onPrepareOptionsMenu(Menu menu) {
-        super.onPrepareOptionsMenu(menu);
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
         if (showTemplateSelectedMenu) {
             activity.getMenuInflater().inflate(R.menu.menu_project_selected, menu);
         }
@@ -305,7 +304,7 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                     @Override
                     public void onClick(View v) {
                         dialog.dismiss();
-                        deleteItem(selectedPosition);
+                        deleteItem(mAdapter.getSelectedPosition());
                         restoreSelectedView();
                     }
                 });
@@ -326,6 +325,7 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
         boolean deleted = file.delete();
         if (deleted) {
             savedProjects.remove(selectedPosition);
+            mAdapter.setSelectedPosition(-1);
             mAdapter.notifyDataSetChanged();
             setEmptyText();
             Toast.makeText(activity, "Project Successfully Deleted!", Toast.LENGTH_SHORT).show();

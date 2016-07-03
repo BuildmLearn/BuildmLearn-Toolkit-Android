@@ -22,10 +22,12 @@ public class SavedProjectAdapter extends BaseAdapter {
 
     private final Context mContext;
     private final ArrayList<SavedProject> data;
+    private int selectedPosition;
 
     public SavedProjectAdapter(Context mContext, ArrayList<SavedProject> data) {
         this.mContext = mContext;
         this.data = data;
+        selectedPosition = -1;
     }
 
     /**
@@ -52,6 +54,15 @@ public class SavedProjectAdapter extends BaseAdapter {
         return i;
     }
 
+
+    public void setSelectedPosition(int selectedPosition) {
+        this.selectedPosition = selectedPosition;
+    }
+
+    public int getSelectedPosition() {
+        return selectedPosition;
+    }
+
     /**
      * {@inheritDoc}
      */
@@ -68,6 +79,12 @@ public class SavedProjectAdapter extends BaseAdapter {
             holder.details = (TextViewPlus) convertView.findViewById(R.id.subtitle);
         } else {
             holder = (ProjectHolder) convertView.getTag();
+        }
+
+        if (selectedPosition == position) {
+            convertView.setBackgroundColor(mContext.getResources().getColor(R.color.color_divider));
+        } else {
+            convertView.setBackgroundColor(0);
         }
 
         SavedProject projectData = getItem(position);
