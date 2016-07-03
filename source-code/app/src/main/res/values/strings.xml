@@ -25,6 +25,11 @@
     <string name="dialog_delete_all_title">Delete All</string>
 
 
+    <!-- Restore Dialog-->
+
+    <string name="dialog_restore_title">Restore Project</string>
+    <string name="dialog_restore_failed">Unable to restore Project from given apk</string>
+    <string name="dialog_restore_fileerror">Unable to load given apk</string>
 
     <!-- Quiz Template-->
 
@@ -125,6 +130,14 @@
     <string name="comprehension_passage_title">Passage :</string>
     <string name="comprehension_completed_message">Hurrah! You have completed the Comprehension.</string>
 
+    <!-- Assets Filename -->
+    <string name="spelling_assets_name">spelling_content.xml</string>
+    <string name="quiz_assets_name">quiz_content.xml</string>
+    <string name="flash_assets_name">flash_content.xml</string>
+    <string name="info_assets_name">info_content.xml</string>
+    <string name="video_assets_name">video_content.xml</string>
+    <string name="comprehension_assets_name">comprehension_content.xml</string>
+
     <!-- Template Resources-->
     <string name="basic_m_learning_title">Basic mLearning</string>
     <string name="basic_m_learning_description">Create app displaying clickable list of textual information</string>
@@ -135,6 +148,7 @@
     <string name="learn_spellings_title">Learn Spellings</string>
     <string name="learn_spellings_description">Choose this template to create applications for learning to spell words</string>
     <string name="spelling_type">SpellingTemplate</string>
+
 
     <string name="quiz_title">Quiz</string>
     <string name="quiz_new_question_title">Add New Question</string>
@@ -203,9 +217,14 @@
     <string name="delete_temp_files">Delete Temporary Files</string>
     <string name="summary_temp_files">Delete temporary generated files to save storage space</string>
 
+    <string name="key_restore_project">restore_project</string>
+    <string name="restore_project">Restore Project</string>
+    <string name="summary_restore_project">Restore Project back from apk</string>
+
     <string name="key_user_name">key_user_name</string>
     <string name="your_name">Your Name</string>
     <string name="app_settings">App Settings</string>
+    <string name="advance_settings">Advance Settings</string>
 
     <string name="main_title">BuildmLearn</string>
     <string name="main_subtitle">Toolkit</string>
@@ -248,6 +267,7 @@
     <string name="title_activity_deep_linker">BuildmLearn Tookit</string>
 
     <string name="apk_progress_dialog">Generating Apk</string>
+    <string name="restore_progress_dialog">Restoring</string>
     <string name="apk_msg">Inserting data into Apk</string>
     <string name="video_fetching_error">Error while fetching video info!</string>
     <string name="video_support_error">We only support Youtube, Dailymotion and Vimeo.</string>
@@ -284,4 +304,5 @@
     <string name="meta_add_help">Click Add button to start adding meta details</string>
     <string name="restart_comprehension">RESTART</string>
 
+    <string name="restore_msg">Restoring data from Apk</string>
 </resources>

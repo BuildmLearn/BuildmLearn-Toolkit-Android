@@ -151,7 +151,11 @@ public class SignerThread extends Thread {
         FileUtils.copyAssets(context, assetsApk, toolkit.getApkDir());
         FileUtils.copyAssets(context, keyDetails.getAssetsPath(), toolkit.getApkDir());
 
-        FileUtils.unZip(toolkit.getApkDir() + assetsApk, toolkit.getUnZipDir() + TEMP_FOLDER);
+        try {
+            FileUtils.unZip(toolkit.getApkDir() + assetsApk, toolkit.getUnZipDir() + TEMP_FOLDER);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         try {
             String packageName = "org.buildmlearn.app";
             packageName += Secure.getString(context.getContentResolver(),
@@ -172,6 +176,11 @@ public class SignerThread extends Thread {
 
         if (!folder.exists()) {
             folder.mkdir();
+        } else {
+            //Empty the folder, clean previous assets
+            File[] oldAssets = folder.listFiles();
+            for (File file : oldAssets)
+                file.delete();
         }
 
         File src = new File(projectFile);

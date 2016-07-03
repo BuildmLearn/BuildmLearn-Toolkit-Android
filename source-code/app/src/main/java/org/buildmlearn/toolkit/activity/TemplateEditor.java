@@ -299,6 +299,7 @@ public class TemplateEditor extends AppCompatActivity {
         try {
             Object templateObject = templateClass.newInstance();
             selectedTemplate = (TemplateInterface) templateObject;
+            selectedTemplate.setTemplateId(templateId);
             populateListView(selectedTemplate.newTemplateEditorAdapter(this));
             if (templateId == 5) {
                 populateMetaView(selectedTemplate.newMetaEditorAdapter(this));
@@ -410,7 +411,7 @@ public class TemplateEditor extends AppCompatActivity {
                                 String aliasName = getString(R.string.alias_name);
                                 String aliaspassword = getString(R.string.alias_password);
                                 KeyStoreDetails keyStoreDetails = new KeyStoreDetails("TestKeyStore.jks", keyPassword, aliasName, aliaspassword);
-                                SignerThread signer = new SignerThread(getApplicationContext(), selectedTemplate.getApkFilePath(), saveProject(), keyStoreDetails, selectedTemplate.getAssetsFilePath(), selectedTemplate.getAssetsFileName());
+                                SignerThread signer = new SignerThread(getApplicationContext(), selectedTemplate.getApkFilePath(), saveProject(), keyStoreDetails, selectedTemplate.getAssetsFilePath(), selectedTemplate.getAssetsFileName(TemplateEditor.this));
 
                                 mApkGenerationDialog = new MaterialDialog.Builder(TemplateEditor.this)
                                         .title(R.string.apk_progress_dialog)
@@ -471,7 +472,7 @@ public class TemplateEditor extends AppCompatActivity {
                                 aliasName = getString(R.string.alias_name);
                                 aliaspassword = getString(R.string.alias_password);
                                 keyStoreDetails = new KeyStoreDetails("TestKeyStore.jks", keyPassword, aliasName, aliaspassword);
-                                signer = new SignerThread(getApplicationContext(), selectedTemplate.getApkFilePath(), saveProject(), keyStoreDetails, selectedTemplate.getAssetsFilePath(), selectedTemplate.getAssetsFileName());
+                                signer = new SignerThread(getApplicationContext(), selectedTemplate.getApkFilePath(), saveProject(), keyStoreDetails, selectedTemplate.getAssetsFilePath(), selectedTemplate.getAssetsFileName(TemplateEditor.this));
 
                                 mApkGenerationDialog = new MaterialDialog.Builder(TemplateEditor.this)
                                         .title(R.string.apk_progress_dialog)

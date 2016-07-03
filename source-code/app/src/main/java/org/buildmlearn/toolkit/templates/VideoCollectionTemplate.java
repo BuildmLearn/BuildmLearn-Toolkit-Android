@@ -17,6 +17,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
 
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.model.Template;
 import org.buildmlearn.toolkit.model.TemplateInterface;
 import org.buildmlearn.toolkit.utilities.NetworkUtils;
 import org.buildmlearn.toolkit.utilities.RoundedTransformation;
@@ -50,6 +51,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
     private ArrayList<VideoModel> videoData;
     transient private ProgressDialog progress;
     transient private Context mContext;
+    private int templateId;
 
 
     public VideoCollectionTemplate() {
@@ -331,8 +333,14 @@ public class VideoCollectionTemplate implements TemplateInterface {
     }
 
     @Override
-    public String getAssetsFileName() {
-        return "video_content.xml";
+    public void setTemplateId(int templateId) {
+        this.templateId = templateId;
+    }
+
+    @Override
+    public String getAssetsFileName(Context context) {
+        Template[] templates = Template.values();
+        return context.getString(templates[templateId].getAssetsName());
     }
 
     @Override

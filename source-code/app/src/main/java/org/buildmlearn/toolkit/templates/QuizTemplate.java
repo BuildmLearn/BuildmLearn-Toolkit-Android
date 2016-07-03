@@ -13,6 +13,7 @@ import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.model.Template;
 import org.buildmlearn.toolkit.model.TemplateInterface;
 import org.buildmlearn.toolkit.quiztemplate.TFTQuizFragment;
 import org.w3c.dom.Document;
@@ -31,6 +32,7 @@ public class QuizTemplate implements TemplateInterface {
 
     transient private QuizAdapter mAdapter;
     private ArrayList<QuizModel> quizData;
+    private int templateId;
 
     public QuizTemplate() {
         this.quizData = new ArrayList<>();
@@ -85,6 +87,11 @@ public class QuizTemplate implements TemplateInterface {
     @Override
     public String onAttach() {
         return "Quiz Template";
+    }
+
+    @Override
+    public void setTemplateId(int templateId) {
+        this.templateId = templateId;
     }
 
     @Override
@@ -294,8 +301,9 @@ public class QuizTemplate implements TemplateInterface {
     }
 
     @Override
-    public String getAssetsFileName() {
-        return "quiz_content.xml";
+    public String getAssetsFileName(Context context) {
+        Template[] templates = Template.values();
+        return context.getString(templates[templateId].getAssetsName());
     }
 
     @Override
