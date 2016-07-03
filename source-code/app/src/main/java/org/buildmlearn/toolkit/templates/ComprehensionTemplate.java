@@ -16,6 +16,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.comprehensiontemplate.fragment.SplashFragment;
+import org.buildmlearn.toolkit.model.Template;
 import org.buildmlearn.toolkit.model.TemplateInterface;
 import org.buildmlearn.toolkit.utilities.FileDialog;
 import org.buildmlearn.toolkit.views.TextViewPlus;
@@ -41,6 +42,7 @@ public class ComprehensionTemplate implements TemplateInterface {
     transient private ComprehensionMetaAdapter metaAdapter;
     private ArrayList<ComprehensionModel> comprehensionData;
     transient private Context mContext;
+    private int templateId;
 
     public ComprehensionTemplate() {
         comprehensionData = new ArrayList<>();
@@ -472,8 +474,14 @@ public class ComprehensionTemplate implements TemplateInterface {
     }
 
     @Override
-    public String getAssetsFileName() {
-        return "comprehension_content.xml";
+    public void setTemplateId(int templateId) {
+        this.templateId = templateId;
+    }
+
+    @Override
+    public String getAssetsFileName(Context context) {
+        Template[] templates = Template.values();
+        return context.getString(templates[templateId].getAssetsName());
     }
 
     @Override

@@ -18,12 +18,12 @@ import org.buildmlearn.toolkit.templates.VideoCollectionTemplate;
  */
 public enum Template {
 
-    BASIC_M_LEARNING(R.string.basic_m_learning_title, R.string.basic_m_learning_description, R.drawable.info_template, R.string.info_template, InfoTemplate.class),
-    LEARN_SPELLING(R.string.learn_spellings_title, R.string.learn_spellings_description, R.drawable.basic_m_learning, R.string.spelling_type, LearnSpellingTemplate.class),
-    QUIZ(R.string.quiz_title, R.string.quiz_description, R.drawable.basic_m_learning, R.string.quiz_type, QuizTemplate.class),
-    FLASH_CARD(R.string.flash_card_title, R.string.flash_card_description, R.drawable.basic_m_learning, R.string.flash_card_template, FlashTemplate.class),
-    VIDEO_COLLECTION(R.string.video_collection_title, R.string.video_collection_description, R.drawable.video_collection, R.string.video_collection_template, VideoCollectionTemplate.class),
-    COMPREHENSION(R.string.comprehension_title, R.string.comprehension_description, R.drawable.comprehension, R.string.comprehension_template, ComprehensionTemplate.class);
+    BASIC_M_LEARNING(R.string.basic_m_learning_title, R.string.basic_m_learning_description, R.drawable.basic_m_learning, R.string.info_template, InfoTemplate.class, R.string.info_assets_name),
+    LEARN_SPELLING(R.string.learn_spellings_title, R.string.learn_spellings_description, R.drawable.basic_m_learning, R.string.spelling_type, LearnSpellingTemplate.class, R.string.spelling_assets_name),
+    QUIZ(R.string.quiz_title, R.string.quiz_description, R.drawable.basic_m_learning, R.string.quiz_type, QuizTemplate.class, R.string.quiz_assets_name),
+    FLASH_CARD(R.string.flash_card_title, R.string.flash_card_description, R.drawable.basic_m_learning, R.string.flash_card_template, FlashTemplate.class, R.string.flash_assets_name),
+    VIDEO_COLLECTION(R.string.video_collection_title, R.string.video_collection_description, R.drawable.video_collection, R.string.video_collection_template, VideoCollectionTemplate.class, R.string.video_assets_name),
+    COMPREHENSION(R.string.comprehension_title, R.string.comprehension_description, R.drawable.comprehension, R.string.comprehension_template, ComprehensionTemplate.class, R.string.comprehension_assets_name);
 
     @StringRes
     final
@@ -42,12 +42,18 @@ public enum Template {
     int description;
     private final Class<? extends TemplateInterface> templateClass;
 
-    Template(@StringRes int title, @StringRes int description, @DrawableRes int image, @StringRes int type, Class<? extends TemplateInterface> templateClass) {
+    private
+    @StringRes
+    final
+    int assetsName;
+
+    Template(@StringRes int title, @StringRes int description, @DrawableRes int image, @StringRes int type, Class<? extends TemplateInterface> templateClass, @StringRes int assetsName) {
         this.image = image;
         this.title = title;
         this.description = description;
         this.type = type;
         this.templateClass = templateClass;
+        this.assetsName = assetsName;
     }
 
     public int getImage() {
@@ -68,5 +74,9 @@ public enum Template {
 
     public int getType() {
         return type;
+    }
+
+    public int getAssetsName() {
+        return assetsName;
     }
 }
