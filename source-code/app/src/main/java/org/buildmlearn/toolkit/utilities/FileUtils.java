@@ -9,11 +9,13 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -130,6 +132,54 @@ public class FileUtils {
             out.write(buffer, 0, read);
         }
     }
+
+    //Compare to File for Equal Contents
+    public static boolean equalContent(File file1, File file2) {
+        //Indenitifier with 1 suffix corresponds for file1
+        byte[] buffer1 = new byte[BUFFER_SIZE];
+        byte[] buffer2 = new byte[BUFFER_SIZE];
+        int read1 = -1;
+        int read2 = -1;
+        InputStream is1 = null;
+        InputStream is2 = null;
+        try {
+            is1 = new FileInputStream(file1);
+            is2 = new FileInputStream(file2);
+
+            while ((read1 = is1.read(buffer1)) != -1) {
+                read2 = is2.read(buffer2);
+                if (read1 != read2)
+                    return false;   //Different Buffer Length
+
+                if (!Arrays.equals(buffer1, buffer2))
+                    return false;
+            }
+            //Final Read
+            read2 = is2.read(buffer2);
+            if (read2 != -1)
+                return false;   //File2 closed
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return false;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+
+            try {
+                if(is1!=null)
+                        is1.close();
+                if(is2!=null)
+                    is2.close();
+            } catch (IOException e) {
+
+            }
+
+        }
+        return true;
+    }
+
+
 
     /**
      * @brief Converts a given Document object to xml format file

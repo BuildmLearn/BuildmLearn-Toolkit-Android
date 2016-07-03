@@ -73,6 +73,15 @@ public class ToolkitApplication extends Application {
     }
 
     /**
+     * @brief Returns folder path for saved projects
+     * @return Folder path
+     */
+    public String getDraftDir() {
+        return dir + Constants.DRAFT_DIR;
+    }
+
+
+    /**
      * @brief Returns folder path for unzipped apks
      * @return Folder path
      */
