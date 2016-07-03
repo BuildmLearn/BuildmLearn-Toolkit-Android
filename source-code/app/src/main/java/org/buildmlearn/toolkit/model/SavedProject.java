@@ -14,6 +14,7 @@ public class SavedProject {
     private File file;
     private String name;
     private String date;
+    private String time;
     private String type;
     private String author;
 
@@ -22,6 +23,7 @@ public class SavedProject {
         this.file = file;
         this.fullPath = fullPath;
         this.date = formatDate(date);
+        this.time = formatTime(date);
         this.type = type;
         String[] data = fileName.split("-by-");
         try {
@@ -45,6 +47,11 @@ public class SavedProject {
         return sdf.format(time);
     }
 
+    private String formatTime(long time) {
+        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm a");
+        return sdf.format(time);
+    }
+
     public String getName() {
         return name;
     }
@@ -55,6 +62,10 @@ public class SavedProject {
 
     public String getDate() {
         return date;
+    }
+
+    public String getTime() {
+        return time;
     }
 
     public void setDate(long date) {

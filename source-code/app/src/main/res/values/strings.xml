@@ -4,6 +4,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="menu_load_project">Saved Projects</string>
     <string name="menu_settings">Settings</string>
+    <string name="menu_drafts">My Drafts</string>
     <string name="menu_how_to">How to</string>
     <string name="menu_about_us">About BuildmLearn</string>
     <string name="menu_home">Home</string>
@@ -13,6 +14,17 @@
     <string name="buildmlearn_welcome_text">The BuildmLearn Toolkit is an easy-to-use program that helps users make mobile apps without any knowledge of application development.\n\nThe toolkit helps creating mobile application with various functionality and allows teachers to input their custom content.</string>
     <string name="no_item">No items</string>
     <string name="add_item_help">Click Add button to start adding items</string>
+    <string name="dialog_draft_title">Draft</string>
+
+    <!-- Draft -->
+    <string name="dialog_draft_msg">Do you want to save Project as Draft?</string>
+    <string name="dialog_draft_error">Error in Saving Draft</string>
+    <string name="draft_deleted">Draft Successfully Deleted!</string>
+    <string name="draft_deleted_failed">Draft Deletion Failed!</string>
+    <string name="dialog_delete_all_msg">Are you sure you clear you Draft?</string>
+    <string name="dialog_delete_all_title">Delete All</string>
+
+
 
     <!-- Quiz Template-->
 
@@ -151,6 +163,7 @@
     <string name="menu_save_template">Save Template</string>
     <string name="menu_simulate">Simulate</string>
     <string name="menu_delete_template_item">Delete</string>
+    <string name="menu_delete_all_template_items">Delete All</string>
     <string name="menu_edit_template_item">Edit</string>
 
     <!-- Bottom Sheet-->
