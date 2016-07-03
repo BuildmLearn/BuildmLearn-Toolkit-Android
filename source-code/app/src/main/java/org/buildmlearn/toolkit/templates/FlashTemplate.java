@@ -181,7 +181,7 @@ public class FlashTemplate implements TemplateInterface {
 
 
     @Override
-    public void editItem(final Activity activity, int position) {
+    public void editItem(final Activity activity, final int position) {
         mIsPhotoAttached = true;
 
         FlashCardModel data = mData.get(position);
@@ -236,7 +236,7 @@ public class FlashTemplate implements TemplateInterface {
                     String questionText = question.getText().toString();
                     String answerText = answer.getText().toString();
                     String hintText = answerHint.getText().toString();
-                    mData.add(new FlashCardModel(questionText, answerText, hintText, bitmap));
+                    mData.set(position, new FlashCardModel(questionText, answerText, hintText, bitmap));
                     mAdapter.notifyDataSetChanged();
                 }
 
