@@ -189,7 +189,7 @@ public class SpellingActivity extends Fragment implements
         } else {
             mAlert.dismiss();
             boolean isCorrect = false;
-            if (mEt_Spelling.getText().toString()
+            if (mEt_Spelling.getText().toString().trim()
                     .equalsIgnoreCase(mWordList.get(count).getWord())) {
                 isCorrect = true;
                 mManager.incrementCorrect();
