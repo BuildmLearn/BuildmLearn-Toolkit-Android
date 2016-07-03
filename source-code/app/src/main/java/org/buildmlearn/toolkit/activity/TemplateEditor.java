@@ -654,10 +654,9 @@ public class TemplateEditor extends AppCompatActivity {
 
 
                 FileUtils.saveXmlFile(toolkit.getSavedDir(), saveFileName, doc);
-
                 oldFileName = toolkit.getSavedDir() + saveFileName;
-
-                return toolkit.getSavedDir() + saveFileName;
+                Toast.makeText(this, "Project Successfully Saved!", Toast.LENGTH_SHORT).show();
+                return oldFileName;
             } catch (ParserConfigurationException e) {
                 e.printStackTrace();
             }
