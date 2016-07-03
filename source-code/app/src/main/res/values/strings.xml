@@ -174,11 +174,19 @@
 
     <!-- Menu Strings-->
 
+    <string name="menu_project_sort">Sort</string>
     <string name="menu_save_template">Save Template</string>
     <string name="menu_simulate">Simulate</string>
     <string name="menu_delete_template_item">Delete</string>
     <string name="menu_delete_all_template_items">Delete All</string>
     <string name="menu_edit_template_item">Edit</string>
+
+    <!-- Dialog Sort -->
+
+    <string name="dialog_sort_title">Sort By</string>
+    <string name="dialog_sort_modified">Last Modified Time</string>
+    <string name="dialog_sort_name">Project Name</string>
+    <string name="dialog_sort_author">Author Name</string>
 
     <!-- Bottom Sheet-->
     <string name="bottom_sheet_share_apk">Share APK</string>
