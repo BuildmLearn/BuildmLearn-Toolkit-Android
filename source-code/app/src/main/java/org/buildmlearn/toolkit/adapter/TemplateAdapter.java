@@ -87,7 +87,8 @@ public class TemplateAdapter extends BaseAdapter {
         ORANGE("#F77400"),
         RED("#F53B3C"),
         GRAYISH("#78909C"),
-        PURPLE("#AB47BC");
+        PURPLE("#AB47BC"),
+        YELLOW("#F9A01E");
 
         private
         @ColorRes

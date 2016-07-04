@@ -5,6 +5,7 @@ import android.support.annotation.StringRes;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.templates.ComprehensionTemplate;
+import org.buildmlearn.toolkit.templates.DictationTemplate;
 import org.buildmlearn.toolkit.templates.FlashTemplate;
 import org.buildmlearn.toolkit.templates.InfoTemplate;
 import org.buildmlearn.toolkit.templates.LearnSpellingTemplate;
@@ -23,7 +24,8 @@ public enum Template {
     QUIZ(R.string.quiz_title, R.string.quiz_description, R.drawable.basic_m_learning, R.string.quiz_type, QuizTemplate.class, R.string.quiz_assets_name),
     FLASH_CARD(R.string.flash_card_title, R.string.flash_card_description, R.drawable.basic_m_learning, R.string.flash_card_template, FlashTemplate.class, R.string.flash_assets_name),
     VIDEO_COLLECTION(R.string.video_collection_title, R.string.video_collection_description, R.drawable.video_collection, R.string.video_collection_template, VideoCollectionTemplate.class, R.string.video_assets_name),
-    COMPREHENSION(R.string.comprehension_title, R.string.comprehension_description, R.drawable.comprehension, R.string.comprehension_template, ComprehensionTemplate.class, R.string.comprehension_assets_name);
+    COMPREHENSION(R.string.comprehension_title, R.string.comprehension_description, R.drawable.comprehension, R.string.comprehension_template, ComprehensionTemplate.class, R.string.comprehension_assets_name),
+    DICTATION(R.string.dictation_title, R.string.dictation_description, R.drawable.comprehension, R.string.dictation_template, DictationTemplate.class, R.string.dictation_assets_name);
 
     @StringRes
     final
