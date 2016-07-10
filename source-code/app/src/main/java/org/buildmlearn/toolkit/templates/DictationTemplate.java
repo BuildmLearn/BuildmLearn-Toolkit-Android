@@ -13,10 +13,10 @@ import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.dictationtemplate.fragment.SplashFragment;
 import org.buildmlearn.toolkit.model.Template;
 import org.buildmlearn.toolkit.model.TemplateInterface;
 import org.buildmlearn.toolkit.utilities.FileDialog;
-import org.buildmlearn.toolkit.videocollectiontemplate.fragment.SplashFragment;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -242,7 +242,7 @@ public class DictationTemplate implements TemplateInterface {
 
     @Override
     public android.support.v4.app.Fragment getSimulatorFragment(String filePathWithName) {
-        return SplashFragment.newInstance(filePathWithName); //TODO:: Dictation Simulator
+        return SplashFragment.newInstance(filePathWithName);
     }
 
     @Override
@@ -263,7 +263,7 @@ public class DictationTemplate implements TemplateInterface {
 
     @Override
     public String getApkFilePath() {
-        return "DictationApp.apk";  //TODO:: Dictation App
+        return "DictationApp.apk";
     }
 
     @Override
