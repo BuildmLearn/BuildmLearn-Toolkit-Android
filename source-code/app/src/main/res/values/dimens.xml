@@ -100,4 +100,18 @@
     <dimen name="medium_margin_info">12.2dp</dimen>
     <dimen name="negative_margin_info">-28.63dp</dimen>
 
+    <!-- Dictation Template Simulator-->
+    <dimen name="headline_leading_dict">27.79sp</dimen>
+    <dimen name="title_dict">17.37sp</dimen>
+    <dimen name="splash_button_margin_top_dict">60.8dp</dimen>
+    <dimen name="splash_text_margin_dict">21.71dp</dimen>
+    <dimen name="padding_dict">6.94dp</dimen>
+    <dimen name="paddingTop_dict">13.89dp</dimen>
+    <dimen name="toolbar_height_dict">130.3dp</dimen>
+    <dimen name="medium_margin_dict">13dp</dimen>
+    <dimen name="negative_margin_dict">-30.4dp</dimen>
+    <dimen name="extra_margin_dict">130.3dp</dimen>
+    <dimen name="toolbar_height_small_dict">47.77dp</dimen>
+
+    <!--Simulator's dimens are .86868686 times smaller-->
 </resources>

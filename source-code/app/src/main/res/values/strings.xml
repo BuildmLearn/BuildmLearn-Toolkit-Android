@@ -334,4 +334,30 @@
 
     <string name="restore_msg">Restoring data from Apk</string>
     <string name="expandbutton">expandButton</string>
+
+    <!-- About DictationTemplate -->
+    <string name="app_name_dict">Dictation</string>
+    <string name="main_title_dict">Dictation App</string>
+    <string name="enter_dict">ENTER</string>
+    <string name="by_dict">by</string>
+    <string name="anupam_dict" translatable="false">Anupam</string>
+    <string name="title_activity_about_dict">About</string>
+    <string name="list_empty_dict">List is Empty!</string>
+    <string name="exit_dict">EXIT</string>
+    <string name="about_us_dict">About Us</string>
+    <string name="about_text_dict">This application has been developed using the BuildmLearn Toolkit.\n\nTo know more about BuildmLearn Toolkit visit <a href="https://buildmlearn.org/">here</a>.</string>
+    <string name="ok_dict">OK</string>
+    <string name="dict_thumbnail">Dict Thumbnail</string>
+    <string name="background_image_dict">Background Image</string>
+    <string name="buildmlearn_logo_dict">BuildmLearn Logo</string>
+    <string name="main_subtitle_dict">First Dictation</string>
+    <string name="fast_dict">FAST</string>
+    <string name="medium_dict">MEDIUM</string>
+    <string name="slow_dict">SLOW</string>
+    <string name="select_speed_dict">SELECT SPEED</string>
+    <string name="back_dict">BACK</string>
+    <string name="submit_dict">SUBMIT</string>
+    <string name="hint_passage_dict">Click the Sound Icon to recite. And enter the passage that you hear.</string>
+    <string name="restart_dict">RESTART</string>
+    <string name="sound_icon_dict">Sound Icon</string>
 </resources>
