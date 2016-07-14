@@ -808,6 +808,7 @@ public class TemplateEditor extends AppCompatActivity {
 
             Object templateObject = templateClass.newInstance();
             selectedTemplate = (TemplateInterface) templateObject;
+            selectedTemplate.setTemplateId(templateId);
             populateListView(selectedTemplate.loadProjectTemplateEditor(this, items));
             if (templateId == 5) {
                 populateMetaView(selectedTemplate.loadProjectMetaEditor(this, doc));
