@@ -1,12 +1,14 @@
 package org.buildmlearn.toolkit.dictationtemplate.fragment;
 
 import android.app.FragmentManager;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
+import android.speech.tts.UtteranceProgressListener;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.CursorLoader;
@@ -42,6 +44,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
     private String dict_Id;
     private DictDb db;
     private TextToSpeech tts;
+    private ProgressDialog progress;
 
     public DetailActivityFragment() {
         setHasOptionsMenu(true);
@@ -143,6 +146,11 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
                 rootView.findViewById(R.id.ico_speak).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        progress = new ProgressDialog(getActivity());
+                        progress.setCancelable(false);
+                        progress.setMessage("Loading TTS Engine...");
+                        progress.show();
+
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                             String utteranceId = passage.hashCode() + "";
                             tts.speak(passage, TextToSpeech.QUEUE_FLUSH, null, utteranceId);
@@ -220,6 +228,26 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
                 }
             }
         });
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) {
+            tts.setOnUtteranceProgressListener(new UtteranceProgressListener() {
+                @Override
+                public void onStart(String utteranceId) {
+                    progress.dismiss();
+                }
+
+                @Override
+                public void onDone(String utteranceId) {
+
+                }
+
+                @Override
+                public void onError(String utteranceId) {
+
+                }
+            });
+        }
+
         SharedPreferences prefs = getActivity().getSharedPreferences("Radio", getContext().MODE_PRIVATE);
         float rate = prefs.getInt("radio_b", 1);
         if (rate == 0) {

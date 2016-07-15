@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:descendantFocusability="blocksDescendants"
-    android:paddingBottom="@dimen/medium_margin_video"
     android:paddingLeft="@dimen/cardview_margin"
     android:paddingRight="@dimen/cardview_margin">
 
