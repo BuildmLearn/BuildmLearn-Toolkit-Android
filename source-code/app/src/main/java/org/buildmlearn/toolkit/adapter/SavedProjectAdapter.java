@@ -7,13 +7,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import org.buildmlearn.toolkit.R;
-import org.buildmlearn.toolkit.fragment.LoadProjectFragment;
 import org.buildmlearn.toolkit.model.SavedProject;
 import org.buildmlearn.toolkit.views.TextViewPlus;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Locale;
 
 /**
@@ -26,7 +23,6 @@ public class SavedProjectAdapter extends BaseAdapter {
     private final Context mContext;
     private final ArrayList<SavedProject> data;
     private int selectedPosition;
-    private int sortType;
 
     public SavedProjectAdapter(Context mContext, ArrayList<SavedProject> data) {
         this.mContext = mContext;
@@ -58,13 +54,12 @@ public class SavedProjectAdapter extends BaseAdapter {
         return i;
     }
 
+    public int getSelectedPosition() {
+        return selectedPosition;
+    }
 
     public void setSelectedPosition(int selectedPosition) {
         this.selectedPosition = selectedPosition;
-    }
-
-    public int getSelectedPosition() {
-        return selectedPosition;
     }
 
     /**
@@ -97,44 +92,6 @@ public class SavedProjectAdapter extends BaseAdapter {
         holder.projectIcon.setText(projectData.getName().substring(0, 1).toUpperCase(Locale.US));
         convertView.setTag(holder);
         return convertView;
-    }
-
-    public void setSortType(int sortType) {
-        this.sortType = sortType;
-    }
-
-    public int getSortType() {
-        return sortType;
-    }
-
-    public void sort() {
-        Comparator<SavedProject> comparator = null;
-        switch (sortType) {
-            case LoadProjectFragment.SORT_TYPE_MODIFIED :
-                comparator = new Comparator<SavedProject>() {
-                    public int compare(SavedProject f1, SavedProject f2) {
-                        //f1 Modified later than f2
-                        return Long.valueOf(f2.getFile().lastModified()).compareTo(f1.getFile().lastModified());
-                    }
-                };
-                break;
-            case LoadProjectFragment.SORT_TYPE_NAME :
-                comparator = new Comparator<SavedProject>() {
-                    public int compare(SavedProject f1, SavedProject f2) {
-                        return f1.getName().compareToIgnoreCase(f2.getName());
-                    }
-                };
-                break;
-            case LoadProjectFragment.SORT_TYPE_AUTHOR :
-                comparator = new Comparator<SavedProject>() {
-                    public int compare(SavedProject f1, SavedProject f2) {
-                        return f1.getAuthor().compareToIgnoreCase(f2.getAuthor());
-                    }
-                };
-                break;
-
-        }
-        Collections.sort(data, comparator);
     }
 
     public class ProjectHolder {
