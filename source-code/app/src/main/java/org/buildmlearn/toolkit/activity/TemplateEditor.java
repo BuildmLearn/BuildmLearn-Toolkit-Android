@@ -127,7 +127,7 @@ public class TemplateEditor extends AppCompatActivity {
         findViewById(R.id.button_add_item).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (templateId == 5 && selectedTemplate.currentMetaEditorAdapter().isEmpty()) {
+                if ((templateId == 5 || templateId == 7) && selectedTemplate.currentMetaEditorAdapter().isEmpty()) {
                     selectedTemplate.addMetaData(TemplateEditor.this);
                 } else {
                     selectedTemplate.addItem(TemplateEditor.this);
@@ -301,7 +301,7 @@ public class TemplateEditor extends AppCompatActivity {
             selectedTemplate = (TemplateInterface) templateObject;
             selectedTemplate.setTemplateId(templateId);
             populateListView(selectedTemplate.newTemplateEditorAdapter(this));
-            if (templateId == 5) {
+            if (templateId == 5 || templateId == 7) {
                 populateMetaView(selectedTemplate.newMetaEditorAdapter(this));
             }
             setUpActionBar();
@@ -325,7 +325,7 @@ public class TemplateEditor extends AppCompatActivity {
             finish();
         } else {
             populateListView(selectedTemplate.currentTemplateEditorAdapter());
-            if (templateId == 5) {
+            if (templateId == 5 || templateId == 7) {
                 populateMetaView(selectedTemplate.currentMetaEditorAdapter());
             }
             setUpActionBar();
@@ -637,7 +637,7 @@ public class TemplateEditor extends AppCompatActivity {
                 doc.appendChild(rootElement);
                 Element dataElement = doc.createElement("data");
                 rootElement.appendChild(dataElement);
-                if (selectedTemplate.getItems(doc).size() == 0 || (selectedTemplate.getItems(doc).size() < 2 && templateId == 5)) {
+                if (selectedTemplate.getItems(doc).size() == 0 || (selectedTemplate.getItems(doc).size() < 2 && (templateId == 5 || templateId == 7))) {
                     Toast.makeText(this, "Unable to perform action: No Data", Toast.LENGTH_SHORT).show();
                     return null;
                 }
@@ -810,7 +810,7 @@ public class TemplateEditor extends AppCompatActivity {
             selectedTemplate = (TemplateInterface) templateObject;
             selectedTemplate.setTemplateId(templateId);
             populateListView(selectedTemplate.loadProjectTemplateEditor(this, items));
-            if (templateId == 5) {
+            if (templateId == 5 || templateId == 7) {
                 populateMetaView(selectedTemplate.loadProjectMetaEditor(this, doc));
             }
             File draftDir = new File(toolkit.getDraftDir());

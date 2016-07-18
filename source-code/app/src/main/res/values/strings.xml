@@ -149,6 +149,25 @@
     <string name="dictation_passage_title">Passage :</string>
     <string name="dictation_completed_message">Hurrah! You have completed the Dictation.</string>
 
+    <!-- MatchTheFollowing Template-->
+    <string name="match_title">Match</string>
+    <string name="match_template">MatchTemplate</string>
+    <string name="match_description">Choose this template to create applications for practising match the following.</string>
+    <string name="match_template_title_hint">Enter Title</string>
+    <string name="match_template_passage_hint">Enter Passage</string>
+
+    <string name="match_navigation_drawer_open">Open navigation drawer</string>
+    <string name="match_navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="match_previous">PREVIOUS</string>
+    <string name="match_next">NEXT</string>
+    <string name="match_about_us">About Us</string>
+    <string name="match_about_text">This application has been developed using the BuildmLearn Toolkit.\n\nTo know more about BuildmLearn Toolkit visit <a href="https://buildmlearn.org/">here</a>.</string>
+    <string name="match_buildmlearn_logo">BuildmLearn Logo</string>
+    <string name="match_go_to_questions">GO TO QUESTIONS</string>
+    <string name="match_passage_title">Passage :</string>
+    <string name="match_completed_message">Hurrah! You have completed the Match the Following.</string>
+
     <!-- Assets Filename -->
     <string name="spelling_assets_name">spelling_content.xml</string>
     <string name="quiz_assets_name">quiz_content.xml</string>
@@ -157,6 +176,7 @@
     <string name="video_assets_name">video_content.xml</string>
     <string name="comprehension_assets_name">comprehension_content.xml</string>
     <string name="dictation_assets_name">dictation_content.xml</string>
+    <string name="match_assets_name">match_content.xml</string>
 
     <!-- Template Resources-->
     <string name="basic_m_learning_title">Basic mLearning</string>
@@ -360,4 +380,19 @@
     <string name="hint_passage_dict">Click the Sound Icon to recite. And enter the passage that you hear.</string>
     <string name="restart_dict">RESTART</string>
     <string name="sound_icon_dict">Sound Icon</string>
+    <string name="divider">Divider</string>
+    <string name="first_list_title">First List Title</string>
+    <string name="enter_first_list_title">Enter First List Title</string>
+    <string name="second_list_title">Second List Title</string>
+    <string name="enter_second_list_title">Enter Second List Title</string>
+    <string name="match_first_list_title">Enter First List Title</string>
+    <string name="match_second_list_title">Enter Second List Title</string>
+    <string name="match_dialog_add_title">Enter two matching topics below</string>
+    <string name="first_list_item_match">First List Item</string>
+    <string name="second_list_item_match">Second List Item</string>
+    <string name="enter_first_list_item_match">Enter First List Item</string>
+    <string name="enter_second_list_item_match">Enter Second List Item</string>
+    <string name="match_dialog_edit_title">Edit two matching topics below</string>
+    <string name="meta_title">Title</string>
+    <string name="meta_title_match_hint">Enter Title</string>
 </resources>
