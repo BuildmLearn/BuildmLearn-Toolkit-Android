@@ -342,7 +342,7 @@ public class MatchTemplate implements TemplateInterface {
 
     @Override
     public String getApkFilePath() {
-        return "MatchApp.apk";   //TODO :: APK
+        return "MatchApp.apk";
     }
 
     @Override
