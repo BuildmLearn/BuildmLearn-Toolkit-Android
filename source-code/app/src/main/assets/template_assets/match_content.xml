@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<buildmlearn_application type="MatchTemplate">
+    <author>
+        <name>Anupam</name>
+    </author>
+    <title>Country Match</title>
+    <data>
+        <meta_details>
+            <meta_title>Match the countries</meta_title>
+            <meta_first_list_title>Country</meta_first_list_title>
+            <meta_second_list_title>Capital</meta_second_list_title>
+        </meta_details>
+        <item>
+            <first_list_item>India</first_list_item>
+            <second_list_item>New Delhi</second_list_item>
+        </item>
+        <item>
+            <first_list_item>Bangladesh</first_list_item>
+            <second_list_item>Dhaka</second_list_item>
+        </item>
+        <item>
+            <first_list_item>Malaysia</first_list_item>
+            <second_list_item>Kuala Lumpur</second_list_item>
+        </item>
+        <item>
+            <first_list_item>Pakistan</first_list_item>
+            <second_list_item>Islamabad</second_list_item>
+        </item>
+        <item>
+            <first_list_item>Portugal</first_list_item>
+            <second_list_item>Lisbon</second_list_item>
+        </item>
+        <item>
+            <first_list_item>Syria</first_list_item>
+            <second_list_item>Damascus</second_list_item>
+        </item>
+    </data>
+</buildmlearn_application>
