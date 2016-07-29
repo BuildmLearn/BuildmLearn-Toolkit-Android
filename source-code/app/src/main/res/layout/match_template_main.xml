@@ -1,0 +1,75 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical"
+    tools:context=".matchtemplate.fragment.MainFragment">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_main"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/simulator_detail_toolbar"
+        android:background="@color/colorPrimary_video"
+        android:minHeight="?attr/actionBarSize"
+        app:theme="@style/ToolBarStyle_video_heading"
+        app:titleTextAppearance="@style/Toolbar.TitleText" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/shadow_toolbar"
+        android:backgroundTint="@color/color_divider"
+        android:visibility="gone" />
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="3.47dp"
+        card_view:cardElevation="3.47dp"
+        card_view:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ListView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/list_view_match_A"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:divider="#ADFF2F"
+                android:dividerHeight="1dp"
+                android:scrollbars="none"
+                android:textAppearance="?android:textAppearanceSmall" />
+
+            <ListView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/list_view_match_B"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="-3.47dp"
+                android:layout_marginRight="-3.47dp"
+                android:layout_weight="1"
+                android:divider="#ADFF2F"
+                android:dividerHeight="1dp"
+                android:scrollbars="none"
+                android:textAppearance="?android:textAppearanceSmall" />
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:alpha="0.4"
+                android:background="@android:color/background_light"
+                android:enabled="true"
+                android:gravity="center"
+                android:paddingBottom="@dimen/paddingTop_match"
+                android:paddingTop="@dimen/paddingTop_match"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>
