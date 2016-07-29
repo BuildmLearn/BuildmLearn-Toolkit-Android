@@ -113,5 +113,17 @@
     <dimen name="extra_margin_dict">130.3dp</dimen>
     <dimen name="toolbar_height_small_dict">47.77dp</dimen>
 
+    <!--Match Template-->
+
+    <dimen name="headline_leading_match">27.79sp</dimen>
+    <dimen name="title_match">17.37sp</dimen>
+    <dimen name="splash_button_margin_top_match">60.8dp</dimen>
+    <dimen name="splash_text_margin_match">21.71dp</dimen>
+    <dimen name="paddingTop_match">13.89dp</dimen>
+    <dimen name="toolbar_height_match">130.3dp</dimen>
+    <dimen name="medium_margin_match">13.03dp</dimen>
+    <dimen name="negative_margin_match">-52.12dp</dimen>
+    <dimen name="extra_margin_match">65.15dp</dimen>
+
     <!--Simulator's dimens are .86868686 times smaller-->
 </resources>

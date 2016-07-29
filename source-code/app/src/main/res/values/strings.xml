@@ -380,6 +380,9 @@
     <string name="hint_passage_dict">Click the Sound Icon to recite. And enter the passage that you hear.</string>
     <string name="restart_dict">RESTART</string>
     <string name="sound_icon_dict">Sound Icon</string>
+
+    <!--Match Template -->
+
     <string name="divider">Divider</string>
     <string name="first_list_title">First List Title</string>
     <string name="enter_first_list_title">Enter First List Title</string>
@@ -395,4 +398,26 @@
     <string name="match_dialog_edit_title">Edit two matching topics below</string>
     <string name="meta_title">Title</string>
     <string name="meta_title_match_hint">Enter Title</string>
+
+
+    <string name="main_title_match">Match the following App</string>
+    <string name="enter_match">ENTER</string>
+    <string name="by_match">by</string>
+    <string name="anupam_match" translatable="false">Anupam</string>
+    <string name="title_activity_about_match">About</string>
+    <string name="previous_match">PREVIOUS</string>
+    <string name="about_us_match">About Us</string>
+    <string name="about_text_match">This application has been developed using the BuildmLearn Toolkit.\n\nTo know more about BuildmLearn Toolkit visit <a href="https://buildmlearn.org/">here</a>.</string>
+    <string name="ok_match">OK</string>
+    <string name="background_image_match">Background Image</string>
+    <string name="buildmlearn_logo_match">BuildmLearn Logo</string>
+    <string name="main_subtitle_match">Country-Capital Match</string>
+    <string name="check_answers_match">CHECK ANSWERS</string>
+    <string name="try_again_match">TRY AGAIN</string>
+    <string name="first_list_up_match">First List Up</string>
+    <string name="first_list_down_match">First List Down</string>
+    <string name="second_list_up_match">Second List Up</string>
+    <string name="separator_match">Separator</string>
+    <string name="second_list_down_match">Second List Down</string>
+
 </resources>
