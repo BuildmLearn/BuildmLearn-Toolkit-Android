@@ -13,7 +13,7 @@ import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.buildmlearn.toolkit.R;
-import org.buildmlearn.toolkit.comprehensiontemplate.fragment.SplashFragment;
+import org.buildmlearn.toolkit.matchtemplate.fragment.SplashFragment;
 import org.buildmlearn.toolkit.model.Template;
 import org.buildmlearn.toolkit.model.TemplateInterface;
 import org.buildmlearn.toolkit.views.TextViewPlus;
@@ -321,7 +321,7 @@ public class MatchTemplate implements TemplateInterface {
 
     @Override
     public android.support.v4.app.Fragment getSimulatorFragment(String filePathWithName) {
-        return SplashFragment.newInstance(filePathWithName);  //TODO :: Simulator
+        return SplashFragment.newInstance(filePathWithName);
     }
 
     @Override
