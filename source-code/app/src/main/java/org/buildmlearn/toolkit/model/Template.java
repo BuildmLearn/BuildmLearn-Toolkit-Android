@@ -21,7 +21,7 @@ import org.buildmlearn.toolkit.templates.VideoCollectionTemplate;
 public enum Template {
 
     BASIC_M_LEARNING(R.string.basic_m_learning_title, R.string.basic_m_learning_description, R.drawable.info_template, R.string.info_template, InfoTemplate.class, R.string.info_assets_name),
-    LEARN_SPELLING(R.string.learn_spellings_title, R.string.learn_spellings_description, R.drawable.basic_m_learning, R.string.spelling_type, LearnSpellingTemplate.class, R.string.spelling_assets_name),
+    LEARN_SPELLING(R.string.learn_spellings_title, R.string.learn_spellings_description, R.drawable.spelling, R.string.spelling_type, LearnSpellingTemplate.class, R.string.spelling_assets_name),
     QUIZ(R.string.quiz_title, R.string.quiz_description, R.drawable.basic_m_learning, R.string.quiz_type, QuizTemplate.class, R.string.quiz_assets_name),
     FLASH_CARD(R.string.flash_card_title, R.string.flash_card_description, R.drawable.basic_m_learning, R.string.flash_card_template, FlashTemplate.class, R.string.flash_assets_name),
     VIDEO_COLLECTION(R.string.video_collection_title, R.string.video_collection_description, R.drawable.video_collection, R.string.video_collection_template, VideoCollectionTemplate.class, R.string.video_assets_name),

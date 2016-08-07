@@ -12,7 +12,7 @@ import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.buildmlearn.toolkit.R;
-import org.buildmlearn.toolkit.learnspelling.SpellingMainFragment;
+import org.buildmlearn.toolkit.learnspelling.fragment.SplashFragment;
 import org.buildmlearn.toolkit.model.Template;
 import org.buildmlearn.toolkit.model.TemplateInterface;
 import org.w3c.dom.Document;
@@ -212,7 +212,7 @@ public class LearnSpellingTemplate implements TemplateInterface {
 
     @Override
     public android.support.v4.app.Fragment getSimulatorFragment(String filePathWithName) {
-        return SpellingMainFragment.newInstance(filePathWithName);
+        return SplashFragment.newInstance(filePathWithName);
     }
 
     @Override
