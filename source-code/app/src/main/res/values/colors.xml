@@ -49,4 +49,13 @@
     <color name="item_correct_match">#ADFF2F</color>
     <color name="item_wrong_match">#FF4500</color>
 
+    <!--Spell Template-->
+
+    <color name="colorPrimary_spell">#26C6DA</color>
+    <color name="colorPrimaryDark_spell">#00BCD4</color>
+    <color name="colorAccent_spell">#3F99A9</color>
+    <color name="white_primary_text_spell">#FFF</color>
+    <color name="white_secondary_text_spell">#B3FFFFFF</color>
+    <color name="black_secondary_text_spell">#8a000000</color>
+
 </resources>

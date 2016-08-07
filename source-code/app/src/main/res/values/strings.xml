@@ -99,6 +99,37 @@
     <string name="high">High</string>
     <string name="speech_rate">Speech Rate:</string>
 
+    <string name="navigation_drawer_open_spell">Open navigation drawer</string>
+    <string name="navigation_drawer_close_spell">Close navigation drawer</string>
+
+    <string name="app_name_spell">Learn Spellings</string>
+    <string name="main_title_spell">Learn Spellings</string>
+    <string name="main_subtitle_spell">Biological Spelling Puzzle</string>
+    <string name="enter_spell">ENTER</string>
+    <string name="by_spell">by</string>
+    <string name="anupam_spell" translatable="false">Anupam</string>
+    <string name="title_activity_about_spell">About</string>
+    <string name="next_spell">NEXT</string>
+    <string name="exit_spell">EXIT</string>
+    <string name="restart_spell">RESTART</string>
+    <string name="about_us_spell">About Us</string>
+    <string name="about_text_spell">This application has been developed using the BuildmLearn Toolkit.\n\nTo know more about BuildmLearn Toolkit visit <a href="https://buildmlearn.org/">here</a>.</string>
+    <string name="ok_spell">OK</string>
+    <string name="background_image_spell">Background Image</string>
+    <string name="buildmlearn_logo_spell">BuildmLearn Logo</string>
+    <string name="completed_message_spell">Hurrah! You have completed.</string>
+    <string name="spell_it_spell">SPELL IT</string>
+    <string name="skip_spell">SKIP</string>
+    <string name="listen_spell">LISTEN</string>
+    <string name="submit_spell">SUBMIT</string>
+    <string name="enter_spelling">Enter Spelling</string>
+    <string name="high_spell">High</string>
+    <string name="normal_spell">Normal</string>
+    <string name="low_spell">Low</string>
+    <string name="speech_rate_spell">Speech Rate :</string>
+    <string name="intro_text_spell">Press SPEAK when you are ready. You may adjust the speech rate using the slider. Listen to the words as many times before answering. If you are not sure, you can skip the word.</string>
+
+
     <!-- Video Collection Template-->
     <string name="video_collection_title">Video Collection</string>
     <string name="video_collection_template">VideoCollectionTemplate</string>

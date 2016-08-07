@@ -125,5 +125,26 @@
     <dimen name="negative_margin_match">-52.12dp</dimen>
     <dimen name="extra_margin_match">65.15dp</dimen>
 
+    <!--Spell Template-->
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="nav_header_vertical_spacing_spell">13.89dp</dimen>
+    <dimen name="nav_header_height_spell">138dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin_spell">13.89dp</dimen>
+    <dimen name="activity_vertical_margin_spell">13.89dp</dimen>
+
+    <dimen name="headline_leading_spell">27.79sp</dimen>
+    <dimen name="title_spell">17.37sp</dimen>
+    <dimen name="splash_button_margin_top_spell">43.43dp</dimen>
+    <dimen name="splash_text_margin_spell">21.71dp</dimen>
+    <dimen name="paddingTop_spell">13.89dp</dimen>
+    <dimen name="cardHeightLastActivity_spell">304dp</dimen>
+    <dimen name="toolbar_height_spell">130.3dp</dimen>
+    <dimen name="medium_margin_spell">13.89dp</dimen>
+    <dimen name="negative_margin_tablet_spell">-52.12dp</dimen>
+    <dimen name="extra_margin_spell">130.3dp</dimen>
+    <dimen name="splash_button_margin_top_tablet_spell">173.73dp</dimen>
+
     <!--Simulator's dimens are .86868686 times smaller-->
 </resources>
