@@ -76,6 +76,29 @@
     <string name="flash_template_anser_hint">Enter Answer</string>
     <string name="flash_template_hint_hint">Enter Hint</string>
 
+    <string name="navigation_drawer_open_flash">Open navigation drawer</string>
+    <string name="navigation_drawer_close_flash">Close navigation drawer</string>
+
+    <string name="app_name_flash">Learn with FlashCards</string>
+    <string name="main_title_flash">Learn with FlashCards</string>
+    <string name="main_subtitle_flash">Flashcards on Solar System</string>
+    <string name="enter_flash">ENTER</string>
+    <string name="by_flash">by</string>
+    <string name="anupam_flash" translatable="false">Anupam</string>
+    <string name="title_activity_about_flash">About</string>
+    <string name="next_flash">NEXT</string>
+    <string name="exit_flash">EXIT</string>
+    <string name="restart_flash">RESTART</string>
+    <string name="about_us_flash">About Us</string>
+    <string name="about_text_flash">This application has been developed using the BuildmLearn Toolkit.\n\nTo know more about BuildmLearn Toolkit visit <a href="https://buildmlearn.org/">here</a>.</string>
+    <string name="ok_flash">OK</string>
+    <string name="background_image_flash">Background Image</string>
+    <string name="buildmlearn_logo_flash">BuildmLearn Logo</string>
+    <string name="completed_message_flash">Hurrah! You have completed.\nThat was the last card!</string>
+    <string name="previous_flash">PREVIOUS</string>
+    <string name="flip_flash">FLIP</string>
+    <string name="backdrop_image_flash">Backdrop image</string>
+
     <!-- Spelling Template-->
 
     <string name="msg_txt">Press SPEAK when you are ready. You may adjust the speech rate using the slider. Listen to the word as many times before answering. If you are not sure, you can skip the word.</string>

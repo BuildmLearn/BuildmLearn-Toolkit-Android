@@ -61,6 +61,28 @@
     <dimen name="thumb_paddingTop">16dp</dimen>
     <dimen name="thumb_paddingRight">18dp</dimen>
 
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="nav_header_vertical_spacing_flash">13.89dp</dimen>
+    <dimen name="nav_header_height_flash">138.9dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin_flash">13.89dp</dimen>
+    <dimen name="activity_vertical_margin_flash">13.89dp</dimen>
+    <dimen name="headline_leading_flash">27.79sp</dimen>
+    <dimen name="title_flash">17.37sp</dimen>
+    <dimen name="splash_button_margin_top_flash">43.43dp</dimen>
+    <dimen name="splash_text_margin_flash">21.71dp</dimen>
+    <dimen name="paddingTop_flash">13.89dp</dimen>
+    <dimen name="cardHeightLastActivity_flash">304.04dp</dimen>
+    <dimen name="toolbar_height_flash">130.3dp</dimen>
+    <dimen name="medium_margin_flash">13.03dp</dimen>
+    <dimen name="negative_margin_tablet_flash">-52.12dp</dimen>
+    <dimen name="extra_margin_flash">130dp</dimen>
+    <dimen name="splash_button_margin_top_tablet_flash">173.73dp</dimen>
+    <dimen name="margin_mini_flash">3.47dp</dimen>
+    <dimen name="material_button_height_flash">41.69dp</dimen>
+    <dimen name="margin_large_flash">13.89dp</dimen>
+    <dimen name="font_small_flash">13.89sp</dimen>
+
     <!-- Video Collection Template-->
 
     <dimen name="splash_button_margin_top_video">41dp</dimen>
