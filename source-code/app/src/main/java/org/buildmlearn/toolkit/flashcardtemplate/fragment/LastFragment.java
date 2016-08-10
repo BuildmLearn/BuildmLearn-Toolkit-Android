@@ -1,6 +1,5 @@
-package org.buildmlearn.toolkit.learnspelling.fragment;
+package org.buildmlearn.toolkit.flashcardtemplate.fragment;
 
-import android.app.Activity;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,16 +15,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import org.buildmlearn.toolkit.R;
-import org.buildmlearn.toolkit.learnspelling.data.SpellDb;
-
-import java.util.Locale;
 
 /**
- * Created by Anupam (opticod) on 2/6/16.
+ * Created by anupam on 10/8/16.
  */
 public class LastFragment extends Fragment {
 
-    private SpellDb db;
     private View rootView;
 
     public static Fragment newInstance() {
@@ -35,15 +30,12 @@ public class LastFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_last_spell, container, false);
-
-        final Activity activity = getActivity();
+        rootView = inflater.inflate(R.layout.fragment_last_flash, container, false);
 
         Toolbar toolbar = (Toolbar) rootView.findViewById(R.id.toolbar_main);
         toolbar.setTitle(getResources().getString(R.string.main_title_spell));
         toolbar.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary_comprehension));
         toolbar.inflateMenu(R.menu.menu_main_white);
-
 
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
@@ -67,17 +59,6 @@ public class LastFragment extends Fragment {
                 return true;
             }
         });
-        db = new SpellDb(activity);
-        db.open();
-
-        int stat[] = db.getStatistics();
-
-        assert ((TextView) rootView.findViewById(R.id.correct)) != null;
-        ((TextView) rootView.findViewById(R.id.correct)).setText(String.format(Locale.getDefault(), "Total Correct : %1$d", stat[0]));
-        assert ((TextView) rootView.findViewById(R.id.wrong)) != null;
-        ((TextView) rootView.findViewById(R.id.wrong)).setText(String.format(Locale.getDefault(), "Total Wrong : %1$d", stat[1]));
-        assert ((TextView) rootView.findViewById(R.id.un_answered)) != null;
-        ((TextView) rootView.findViewById(R.id.un_answered)).setText(String.format(Locale.getDefault(), "Total Unanswered : %1$d", stat[2]));
 
         rootView.findViewById(R.id.restart).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,7 +72,6 @@ public class LastFragment extends Fragment {
                 getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 getActivity().getSupportFragmentManager().beginTransaction().replace(((ViewGroup) getView().getParent()).getId(), frag).addToBackStack(null).commit();
 
-                db.resetCount();
             }
         });
 
@@ -101,14 +81,7 @@ public class LastFragment extends Fragment {
                 getActivity().finish();
             }
         });
-
         return rootView;
-    }
-
-    @Override
-    public void onDestroy() {
-        db.close();
-        super.onDestroy();
     }
 
 }
