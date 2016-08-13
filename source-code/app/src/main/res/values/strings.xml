@@ -32,7 +32,8 @@
     <string name="dialog_restore_fileerror">Unable to load given apk</string>
 
     <!-- Quiz Template-->
-
+    <string name="app_name_quiz">Quiz Time</string>
+    <string name="completed_message_quiz">Hurrah! You have completed the Quiz.</string>
     <string name="dialog_yes">Yes</string>
     <string name="dialog_no">No</string>
     <string name="dialog_delete_msg">Are you sure you want to delete this item?</string>
