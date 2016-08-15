@@ -22,6 +22,7 @@ public class HomeActivity extends AppCompatActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
     private Section currentSection;
+    private NavigationDrawerFragment mNavigationDrawerFragment;
 
     /**
      * {@inheritDoc}
@@ -37,7 +38,7 @@ public class HomeActivity extends AppCompatActivity
         /*
       Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
-        NavigationDrawerFragment mNavigationDrawerFragment = (NavigationDrawerFragment)
+        mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
 
         // Set up the drawer.
@@ -104,4 +105,12 @@ public class HomeActivity extends AppCompatActivity
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        if (mNavigationDrawerFragment.isDrawerOpen()) {
+            mNavigationDrawerFragment.closeDrawer();
+            return;
+        }
+        super.onBackPressed();
+    }
 }

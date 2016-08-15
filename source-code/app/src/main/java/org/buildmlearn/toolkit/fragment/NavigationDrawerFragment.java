@@ -153,7 +153,7 @@ public class NavigationDrawerFragment extends Fragment {
         return mDrawerListView;
     }
 
-    private boolean isDrawerOpen() {
+    public boolean isDrawerOpen() {
         return mDrawerLayout != null && mDrawerLayout.isDrawerOpen(mFragmentContainerView);
     }
 
@@ -342,6 +342,10 @@ public class NavigationDrawerFragment extends Fragment {
 
     private ActionBar getActionBar() {
         return ((AppCompatActivity) getActivity()).getSupportActionBar();
+    }
+
+    public void closeDrawer() {
+        mDrawerLayout.closeDrawers();
     }
 
     /**
