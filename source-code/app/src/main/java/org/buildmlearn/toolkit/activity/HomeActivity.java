@@ -82,7 +82,7 @@ public class HomeActivity extends AppCompatActivity
             if (currentSection == null || selectedMenuItem != currentSection) {
                 currentSection = selectedMenuItem;
                 FragmentManager fm = getFragmentManager();
-                FragmentTransaction ft = fm.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                FragmentTransaction ft = fm.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).addToBackStack(null);
                 Fragment f = fm.findFragmentById(R.id.container);
                 if (f != null) {
                     if (currentSection.isKeep()) {
@@ -110,6 +110,9 @@ public class HomeActivity extends AppCompatActivity
         if (mNavigationDrawerFragment.isDrawerOpen()) {
             mNavigationDrawerFragment.closeDrawer();
             return;
+        }
+        if (getFragmentManager().getBackStackEntryCount() <= 1) {
+            finish();
         }
         super.onBackPressed();
     }
