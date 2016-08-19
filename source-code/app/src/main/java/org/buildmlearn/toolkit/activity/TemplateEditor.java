@@ -397,13 +397,29 @@ public class TemplateEditor extends AppCompatActivity {
                 new BottomSheet.Builder(this).sheet(R.menu.bottom_sheet_template).listener(new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
+                        String savedFilePath;
                         switch (id) {
                             case R.id.save_project:
                                 saveProject();
                                 break;
+
+                            case R.id.share_project:
+                                savedFilePath = saveProject();
+                                if (savedFilePath == null || savedFilePath.length() == 0) {
+                                    return;
+                                }
+                                Uri fileUri = Uri.fromFile(new File(savedFilePath));
+                                ArrayList<Uri> uris = new ArrayList<Uri>();
+                                Intent sendIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
+                                sendIntent.setType("application/zip");
+                                uris.add(fileUri);
+                                sendIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
+                                startActivity(Intent.createChooser(sendIntent, null));
+                                break;
+
                             case R.id.share_apk:
 
-                                String savedFilePath = saveProject();
+                                savedFilePath = saveProject();
                                 if (savedFilePath == null || savedFilePath.length() == 0) {
                                     return;
                                 }

@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -309,6 +310,19 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                     }
                 });
                 dialog.show();
+                break;
+            case R.id.action_share:
+
+                SavedProject project = savedProjects.get(mAdapter.getSelectedPosition());
+                File file = new File(project.getFile().getPath());
+
+                Uri fileUri = Uri.fromFile(file);
+                ArrayList<Uri> uris = new ArrayList<Uri>();
+                Intent sendIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
+                sendIntent.setType("application/zip");
+                uris.add(fileUri);
+                sendIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
+                startActivity(Intent.createChooser(sendIntent, null));
                 break;
             default: //do nothing
                 break;

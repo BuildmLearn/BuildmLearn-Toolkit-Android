@@ -19,4 +19,9 @@
         android:icon="@drawable/share_apk"
         android:title="@string/bottom_sheet_share_apk" />
 
+    <item
+        android:id="@+id/share_project"
+        android:icon="@drawable/ic_group_work_black_24dp"
+        android:title="@string/bottom_sheet_share_project" />
+
 </menu>

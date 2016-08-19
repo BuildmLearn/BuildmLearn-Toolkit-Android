@@ -474,5 +474,6 @@
     <string name="second_list_up_match">Second List Up</string>
     <string name="separator_match">Separator</string>
     <string name="second_list_down_match">Second List Down</string>
+    <string name="bottom_sheet_share_project">Share Project</string>
 
 </resources>
