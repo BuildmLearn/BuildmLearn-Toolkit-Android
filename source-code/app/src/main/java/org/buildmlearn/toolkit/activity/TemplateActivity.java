@@ -4,11 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.AbsListView;
-import android.widget.AdapterView;
-import android.widget.ListAdapter;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.adapter.TemplateAdapter;
@@ -30,18 +29,17 @@ public class TemplateActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
-        ListAdapter mAdapter = new TemplateAdapter(this);
-        AbsListView mListView = (AbsListView) findViewById(android.R.id.list);
-        mListView.setAdapter(mAdapter);
+        TemplateAdapter mAdapter = new TemplateAdapter(this);
+        RecyclerView mRecyclerView = (RecyclerView) findViewById(android.R.id.list);
+        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        mAdapter.setOnClickListener(new TemplateAdapter.SetOnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+            public void onItemClick(int position, View view) {
                 Intent intent = new Intent(getApplicationContext(), TemplateEditor.class);
                 intent.putExtra(Constants.TEMPLATE_ID, position);
                 startActivity(intent);
-
             }
         });
     }
