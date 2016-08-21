@@ -27,12 +27,10 @@ import java.util.ArrayList;
  */
 public class MatchTemplate implements TemplateInterface {
 
-    private final String TEMPLATE_NAME = "Match Template";
     private final ArrayList<MatchMetaModel> metaData;
     transient private MatchAdapter adapter;
     transient private MatchMetaAdapter metaAdapter;
     private ArrayList<MatchModel> MatchData;
-    transient private Context mContext;
     private int templateId;
 
     public MatchTemplate() {
@@ -84,13 +82,11 @@ public class MatchTemplate implements TemplateInterface {
 
     @Override
     public BaseAdapter newTemplateEditorAdapter(Context context) {
-        mContext = context;
         adapter = new MatchAdapter(context, MatchData);
         return adapter;
     }
 
     public BaseAdapter newMetaEditorAdapter(Context context) {
-        mContext = context;
         metaAdapter = new MatchMetaAdapter(context, metaData);
         setEmptyView((Activity) context);
         return metaAdapter;
@@ -133,12 +129,8 @@ public class MatchTemplate implements TemplateInterface {
     }
 
     @Override
-    public String onAttach() {
-        return TEMPLATE_NAME;
-    }
-
-    @Override
     public String getTitle() {
+        String TEMPLATE_NAME = "Match Template";
         return TEMPLATE_NAME;
     }
 
@@ -353,8 +345,7 @@ public class MatchTemplate implements TemplateInterface {
     /**
      * @brief Toggles the visibility of empty text if Array has zero elements
      */
-    @Override
-    public void setEmptyView(Activity activity) {
+    private void setEmptyView(Activity activity) {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && metaData.size() > 0) {
             activity.findViewById(R.id.shadow_meta).setVisibility(View.VISIBLE);

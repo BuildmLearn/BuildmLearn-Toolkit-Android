@@ -11,14 +11,15 @@ import org.buildmlearn.toolkit.model.SavedProject;
 import org.buildmlearn.toolkit.views.TextViewPlus;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by scopeinfinity on 10/3/16.
  */
 public class DraftProjectAdapter extends BaseAdapter {
 
-    private Context mContext;
-    private ArrayList<SavedProject> data;
+    private final Context mContext;
+    private final ArrayList<SavedProject> data;
 
     public DraftProjectAdapter(Context mContext, ArrayList<SavedProject> data) {
         this.mContext = mContext;
@@ -68,8 +69,8 @@ public class DraftProjectAdapter extends BaseAdapter {
         }
 
         SavedProject projectData = getItem(position);
-        holder.draftSubtitle.setText("Last Modified: " + projectData.getTime() );
-        holder.draftTitle.setText("Drafted on "+projectData.getDate());
+        holder.draftSubtitle.setText(String.format(Locale.ENGLISH, "Last Modified: %s", projectData.getTime()));
+        holder.draftTitle.setText(String.format(Locale.ENGLISH, "Drafted on %s", projectData.getDate()));
         holder.draftIcon.setText("D");
         convertView.setTag(holder);
         return convertView;

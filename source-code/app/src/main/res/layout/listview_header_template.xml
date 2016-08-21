@@ -16,8 +16,10 @@
             android:background="@color/color_primary"
             android:orientation="vertical"
             android:paddingBottom="25dp"
+            android:paddingEnd="16dp"
             android:paddingLeft="72dp"
             android:paddingRight="16dp"
+            android:paddingStart="72dp"
             android:paddingTop="25dp">
 
             <view

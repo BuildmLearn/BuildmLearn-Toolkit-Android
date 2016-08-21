@@ -305,9 +305,7 @@ public class TemplateEditor extends AppCompatActivity {
                 populateMetaView(selectedTemplate.newMetaEditorAdapter(this));
             }
             setUpActionBar();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
+        } catch (InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
         }
     }
@@ -409,7 +407,7 @@ public class TemplateEditor extends AppCompatActivity {
                                     return;
                                 }
                                 Uri fileUri = Uri.fromFile(new File(savedFilePath));
-                                ArrayList<Uri> uris = new ArrayList<Uri>();
+                                ArrayList<Uri> uris = new ArrayList<>();
                                 Intent sendIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
                                 sendIntent.setType("application/zip");
                                 uris.add(fileUri);
@@ -426,7 +424,7 @@ public class TemplateEditor extends AppCompatActivity {
                                 String keyPassword = getString(R.string.key_password);
                                 String aliasName = getString(R.string.alias_name);
                                 String aliaspassword = getString(R.string.alias_password);
-                                KeyStoreDetails keyStoreDetails = new KeyStoreDetails("TestKeyStore.jks", keyPassword, aliasName, aliaspassword);
+                                KeyStoreDetails keyStoreDetails = new KeyStoreDetails(keyPassword, aliasName, aliaspassword);
                                 SignerThread signer = new SignerThread(getApplicationContext(), selectedTemplate.getApkFilePath(), saveProject(), keyStoreDetails, selectedTemplate.getAssetsFilePath(), selectedTemplate.getAssetsFileName(TemplateEditor.this));
 
                                 mApkGenerationDialog = new MaterialDialog.Builder(TemplateEditor.this)
@@ -487,7 +485,7 @@ public class TemplateEditor extends AppCompatActivity {
                                 keyPassword = getString(R.string.key_password);
                                 aliasName = getString(R.string.alias_name);
                                 aliaspassword = getString(R.string.alias_password);
-                                keyStoreDetails = new KeyStoreDetails("TestKeyStore.jks", keyPassword, aliasName, aliaspassword);
+                                keyStoreDetails = new KeyStoreDetails(keyPassword, aliasName, aliaspassword);
                                 signer = new SignerThread(getApplicationContext(), selectedTemplate.getApkFilePath(), saveProject(), keyStoreDetails, selectedTemplate.getAssetsFilePath(), selectedTemplate.getAssetsFileName(TemplateEditor.this));
 
                                 mApkGenerationDialog = new MaterialDialog.Builder(TemplateEditor.this)
@@ -616,8 +614,10 @@ public class TemplateEditor extends AppCompatActivity {
         EditText authorEditText = (EditText) findViewById(R.id.author_name);
         EditText titleEditText = (EditText) findViewById(R.id.template_title);
         assert findViewById(R.id.author_name) != null;
+        assert ((EditText) findViewById(R.id.author_name)) != null;
         String author = ((EditText) findViewById(R.id.author_name)).getText().toString();
         assert findViewById(R.id.template_title) != null;
+        assert ((EditText) findViewById(R.id.template_title)) != null;
         String title = ((EditText) findViewById(R.id.template_title)).getText().toString();
         if ("".equals(author)) {
             assert authorEditText != null;
@@ -695,9 +695,11 @@ public class TemplateEditor extends AppCompatActivity {
      * @return Absolute path of the saved file. Null if there is some error.
      * @brief Saves the current project into a .buildmlearn file.
      */
-    protected String saveDraft() {
+    private String saveDraft() {
 
+        assert ((EditText) findViewById(R.id.author_name)) != null;
         String author = ((EditText) findViewById(R.id.author_name)).getText().toString();
+        assert ((EditText) findViewById(R.id.template_title)) != null;
         String title = ((EditText) findViewById(R.id.template_title)).getText().toString();
 
 

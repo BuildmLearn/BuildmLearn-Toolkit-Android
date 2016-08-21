@@ -32,10 +32,8 @@ import java.util.ArrayList;
  */
 public class DictationTemplate implements TemplateInterface {
 
-    private final String TEMPLATE_NAME = "Dictation Template";
     transient private DictationAdapter adapter;
     private ArrayList<DictationModel> dictData;
-    transient private Context mContext;
     private int templateId;
 
     public DictationTemplate() {
@@ -62,7 +60,6 @@ public class DictationTemplate implements TemplateInterface {
 
     @Override
     public BaseAdapter newTemplateEditorAdapter(Context context) {
-        mContext = context;
         adapter = new DictationAdapter(context, dictData);
         setEmptyView((Activity) context);
         return adapter;
@@ -90,7 +87,6 @@ public class DictationTemplate implements TemplateInterface {
 
     @Override
     public BaseAdapter loadProjectTemplateEditor(Context context, ArrayList<Element> data) {
-        mContext = context;
         dictData = new ArrayList<>();
         for (Element item : data) {
             String dictTitle = item.getElementsByTagName(DictationModel.TITLE_TAG).item(0).getTextContent();
@@ -103,12 +99,8 @@ public class DictationTemplate implements TemplateInterface {
     }
 
     @Override
-    public String onAttach() {
-        return TEMPLATE_NAME;
-    }
-
-    @Override
     public String getTitle() {
+        String TEMPLATE_NAME = "Dictation Template";
         return TEMPLATE_NAME;
     }
 
@@ -129,7 +121,7 @@ public class DictationTemplate implements TemplateInterface {
             @Override
             public void onClick(View v) {
                 FileDialog fileDialog = new FileDialog(activity);
-                fileDialog.setFileEndsWith(".txt");
+                fileDialog.setFileEndsWith();
                 fileDialog.addFileListener(new FileDialog.FileSelectListener() {
                     public void fileSelected(File file) {
                         ((TextView) dialog.findViewById(R.id.file_name)).setText(file.toString());
@@ -189,7 +181,7 @@ public class DictationTemplate implements TemplateInterface {
             @Override
             public void onClick(View v) {
                 FileDialog fileDialog = new FileDialog(activity);
-                fileDialog.setFileEndsWith(".txt");
+                fileDialog.setFileEndsWith();
                 fileDialog.addFileListener(new FileDialog.FileSelectListener() {
                     public void fileSelected(File file) {
                         ((TextView) dialog.findViewById(R.id.file_name)).setText(file.toString());
@@ -274,8 +266,7 @@ public class DictationTemplate implements TemplateInterface {
     /**
      * @brief Toggles the visibility of empty text if Array has zero elements
      */
-    @Override
-    public void setEmptyView(Activity activity) {
+    private void setEmptyView(Activity activity) {
         if (dictData.size() < 1) {
             activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
         } else {

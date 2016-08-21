@@ -21,8 +21,6 @@ import org.buildmlearn.toolkit.R;
  */
 public class LastFragment extends Fragment {
 
-    private View rootView;
-
     public static Fragment newInstance() {
         return new LastFragment();
     }
@@ -30,7 +28,7 @@ public class LastFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_last_flash, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_last_flash, container, false);
 
         Toolbar toolbar = (Toolbar) rootView.findViewById(R.id.toolbar_main);
         toolbar.setTitle(getResources().getString(R.string.main_title_spell));
@@ -51,6 +49,7 @@ public class LastFragment extends Fragment {
                         welcomeAlert.show();
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
+                        assert ((TextView) welcomeAlert.findViewById(android.R.id.message)) != null;
                         ((TextView) welcomeAlert.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
                         break;
                     default: //do nothing

@@ -33,7 +33,7 @@ public class SplashFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_splash, container, false);
 
         final Activity mActivity = getActivity();
-        final String result[] = DataUtils.readTitleAuthor(getContext());
+        final String result[] = DataUtils.readTitleAuthor();
         TextView title = (TextView) rootView.findViewById(R.id.title);
         TextView author_name = (TextView) rootView.findViewById(R.id.author_name);
 

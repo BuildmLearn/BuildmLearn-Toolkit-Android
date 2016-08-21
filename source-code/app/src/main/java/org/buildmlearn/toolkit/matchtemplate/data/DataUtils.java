@@ -1,7 +1,5 @@
 package org.buildmlearn.toolkit.matchtemplate.data;
 
-import android.content.Context;
-
 import org.buildmlearn.toolkit.matchtemplate.Constants;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
@@ -18,7 +16,7 @@ import javax.xml.parsers.ParserConfigurationException;
  */
 public class DataUtils {
 
-    public static String[] readTitleAuthor(Context myContext) {
+    public static String[] readTitleAuthor() {
         String result[] = new String[2];
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 

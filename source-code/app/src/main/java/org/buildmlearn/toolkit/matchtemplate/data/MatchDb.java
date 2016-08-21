@@ -13,7 +13,6 @@ import android.support.annotation.NonNull;
  */
 public class MatchDb {
 
-    private static final String EQUAL = " == ";
     private final MatchDBHelper dbHelper;
     private SQLiteDatabase db;
 

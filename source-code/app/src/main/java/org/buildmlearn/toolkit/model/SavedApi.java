@@ -8,18 +8,16 @@ import java.text.SimpleDateFormat;
  */
 public class SavedApi {
 
-    private File file;
-
+    private final File file;
+    private final String date;
     private String name;
-    private String date;
     private String type;
     private String author;
-    private String fullPath;
 
     public SavedApi(File file, String fileName, long date, String fullPath) {
 
         this.file = file;
-        this.fullPath = fullPath;
+        String fullPath1 = fullPath;
         this.date = formatDate(date);
         this.type = type;
         String[] data = fileName.split("-by-");
@@ -48,43 +46,16 @@ public class SavedApi {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getDate() {
         return date;
-    }
-
-    public void setDate(long date) {
-        this.date = formatDate(date);
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public String getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public String getFullPath() {
-        return fullPath;
-    }
-
     public File getFile() {
         return file;
     }
 
-    public void setFile(File file) {
-        this.file = file;
-    }
 }

@@ -46,7 +46,6 @@ public class VideoCollectionTemplate implements TemplateInterface {
     private static final String YOUTUBE_SHORT = "youtu.be";
     private static final String DAILYMOTION = "dailymotion";
     private static final String VIMEO = "vimeo";
-    private final String TEMPLATE_NAME = "VideoCollection Template";
     transient private VideoCollectionAdapter adapter;
     private ArrayList<VideoModel> videoData;
     transient private ProgressDialog progress;
@@ -147,12 +146,8 @@ public class VideoCollectionTemplate implements TemplateInterface {
     }
 
     @Override
-    public String onAttach() {
-        return TEMPLATE_NAME;
-    }
-
-    @Override
     public String getTitle() {
+        String TEMPLATE_NAME = "VideoCollection Template";
         return TEMPLATE_NAME;
     }
 
@@ -361,8 +356,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
     /**
      * @brief Toggles the visibility of empty text if Array has zero elements
      */
-    @Override
-    public void setEmptyView(Activity activity) {
+    private void setEmptyView(Activity activity) {
         if (videoData.size() < 1) {
             activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
         } else {

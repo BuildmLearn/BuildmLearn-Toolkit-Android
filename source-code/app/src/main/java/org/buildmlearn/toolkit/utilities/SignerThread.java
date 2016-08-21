@@ -53,6 +53,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.security.UnrecoverableKeyException;
 import java.util.Calendar;
+import java.util.Objects;
 
 import kellinwood.security.zipsigner.AutoKeyException;
 import kellinwood.security.zipsigner.ZipSigner;
@@ -152,7 +153,7 @@ public class SignerThread extends Thread {
         FileUtils.copyAssets(context, keyDetails.getAssetsPath(), toolkit.getApkDir());
 
         try {
-            FileUtils.unZip(toolkit.getApkDir() + assetsApk, toolkit.getUnZipDir() + TEMP_FOLDER);
+            FileUtils.unZip(toolkit.getApkDir() + assetsApk, ToolkitApplication.getUnZipDir() + TEMP_FOLDER);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -163,7 +164,7 @@ public class SignerThread extends Thread {
             Calendar rightNow = Calendar.getInstance();
             packageName += String.valueOf(rightNow.getTimeInMillis());
 
-            modifyManifest(new String[]{toolkit.getUnZipDir() + TEMP_FOLDER + "/AndroidManifest.xml", packageName});
+            modifyManifest(new String[]{ToolkitApplication.getUnZipDir() + TEMP_FOLDER + "/AndroidManifest.xml", packageName});
         } catch (Exception e) {
             if (listener != null) {
                 listener.onFail(e);
@@ -172,7 +173,7 @@ public class SignerThread extends Thread {
         }
 
 
-        File folder = new File(toolkit.getUnZipDir() + TEMP_FOLDER + "/" + assetFilePath);
+        File folder = new File(ToolkitApplication.getUnZipDir() + TEMP_FOLDER + "/" + assetFilePath);
 
         if (!folder.exists()) {
             folder.mkdir();
@@ -184,7 +185,7 @@ public class SignerThread extends Thread {
         }
 
         File src = new File(projectFile);
-        File dest = new File(toolkit.getUnZipDir() + TEMP_FOLDER + "/" + assetFilePath + assetFileName);
+        File dest = new File(ToolkitApplication.getUnZipDir() + TEMP_FOLDER + "/" + assetFilePath + assetFileName);
 
         try {
             new FileWriter(dest.getAbsoluteFile(), true);
@@ -203,7 +204,7 @@ public class SignerThread extends Thread {
         }
 
         try {
-            FileUtils.zipFolder(toolkit.getUnZipDir() + TEMP_FOLDER);
+            FileUtils.zipFolder(ToolkitApplication.getUnZipDir() + TEMP_FOLDER);
         } catch (IOException e) {
             if (listener != null) {
                 listener.onFail(e);
@@ -211,7 +212,7 @@ public class SignerThread extends Thread {
             e.printStackTrace();
         }
 
-        String inputFile = toolkit.getUnZipDir() + TEMP_FOLDER + ".zip";
+        String inputFile = ToolkitApplication.getUnZipDir() + TEMP_FOLDER + ".zip";
         try {
             if (finalApk == null) {
                 throw new IllegalArgumentException("Parameter outputFile is null");
@@ -344,7 +345,7 @@ public class SignerThread extends Thread {
                 name = null;
             }
 
-            if (name != oldName || val != oldVal) {
+            if (!Objects.equals(name, oldName) || val != oldVal) {
                 changed = true;
                 if (!didLogNodeName) {
                     didLogNodeName = true;

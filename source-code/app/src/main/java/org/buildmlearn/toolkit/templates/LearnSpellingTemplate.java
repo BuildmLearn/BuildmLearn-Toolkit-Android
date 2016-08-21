@@ -95,11 +95,6 @@ public class LearnSpellingTemplate implements TemplateInterface {
     }
 
     @Override
-    public String onAttach() {
-        return "Learn Spelling Template";
-    }
-
-    @Override
     public void setTemplateId(int templateId) {
         this.templateId = templateId;
     }
@@ -239,8 +234,7 @@ public class LearnSpellingTemplate implements TemplateInterface {
     /**
      * @brief Toggles the visibility of empty text if Array has zero elements
      */
-    @Override
-    public void setEmptyView(Activity activity) {
+    private void setEmptyView(Activity activity) {
         if (mLearnSpellingData.size() < 1) {
             activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
         } else {

@@ -23,9 +23,9 @@ public class MatchMetaModel implements Parcelable {
             return new MatchMetaModel[size];
         }
     };
-    private String title;
-    private String first_list_title;
-    private String second_list_title;
+    private final String title;
+    private final String first_list_title;
+    private final String second_list_title;
 
     public MatchMetaModel(String t, String A, String B) {
         this.title = t;

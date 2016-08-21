@@ -51,12 +51,11 @@ public class TemplateAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
 
         View view = inflater.inflate(layoutResource, viewGroup, false);
-        RecyclerView.ViewHolder viewHolder = new ViewHolder(view);
 
-        return viewHolder;
+        return new ViewHolder(view);
     }
 
-    public Template getItem(int i) {
+    private Template getItem(int i) {
         return templates[i];
     }
 
@@ -119,14 +118,14 @@ public class TemplateAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     public interface SetOnClickListener extends ViewHolder.SetOnClickListener {
-        void onItemClick(int position, View itemView);
+        void onItemClick(int position);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView title;
-        public TextView description;
-        public ImageView image;
-        public CardView cardView;
+        public final TextView title;
+        public final TextView description;
+        public final ImageView image;
+        public final CardView cardView;
         SetOnClickListener listener;
 
         public ViewHolder(final View v) {
@@ -141,7 +140,7 @@ public class TemplateAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 @Override
                 public void onClick(View view) {
                     if (listener != null) {
-                        listener.onItemClick(getAdapterPosition(), v);
+                        listener.onItemClick(getAdapterPosition());
                     }
                 }
             });
@@ -151,32 +150,16 @@ public class TemplateAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             return image;
         }
 
-        public void setImage(ImageView image) {
-            this.image = image;
-        }
-
         public CardView getCardView() {
             return cardView;
-        }
-
-        public void setCardView(CardView cardView) {
-            this.cardView = cardView;
         }
 
         public TextView getDescription() {
             return description;
         }
 
-        public void setDescription(TextView description) {
-            this.description = description;
-        }
-
         public TextView getTitle() {
             return title;
-        }
-
-        public void setTitle(TextView title) {
-            this.title = title;
         }
 
         public void setItemClickListener(SetOnClickListener itemClickListener) {
@@ -184,7 +167,7 @@ public class TemplateAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
 
         public interface SetOnClickListener {
-            void onItemClick(int position, View itemView);
+            void onItemClick(int position);
         }
     }
 }

@@ -27,6 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:adjustViewBounds="true"
+                android:contentDescription="@string/flashcard_image"
                 android:scaleType="centerCrop"
                 android:src="@drawable/bg_card"/>
 
@@ -40,6 +41,7 @@
                     android:id="@+id/flash_item_edit"
                     style="@style/TextView.CircleIcon"
                     android:layout_gravity="center_vertical"
+                    android:contentDescription="@string/info_edit_title"
                     android:padding="2dp"
                     android:src="@drawable/menu_edit_template_item"/>
 
@@ -55,9 +57,9 @@
                         style="@style/TextView.Title.Thin"
                         class="org.buildmlearn.toolkit.views.TextViewPlus"
                         android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"
                         android:paddingBottom="8dp"
-                        android:paddingTop="16dp"
-                        android:text="Somedifficultword"/>
+                        android:paddingTop="16dp" />
 
 
                     <view
@@ -65,16 +67,16 @@
                         style="@style/TextView.Body1"
                         class="org.buildmlearn.toolkit.views.TextViewPlus"
                         android:layout_marginLeft="16dp"
-                        android:paddingBottom="4dp"
-                        android:text="Somedifficultword"/>
+                        android:layout_marginStart="16dp"
+                        android:paddingBottom="4dp" />
 
                     <view
                         android:id="@+id/flash_item_hint"
                         style="@style/TextView.Body1"
                         class="org.buildmlearn.toolkit.views.TextViewPlus"
                         android:layout_marginLeft="16dp"
-                        android:paddingBottom="8dp"
-                        android:text="Somedifficultword"/>
+                        android:layout_marginStart="16dp"
+                        android:paddingBottom="8dp" />
 
                 </LinearLayout>
 
@@ -84,8 +86,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
+                    android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
                     android:adjustViewBounds="true"
+                    android:contentDescription="@string/delete_item"
                     android:scaleType="centerInside"
                     android:src="@drawable/template_delete"/>
 

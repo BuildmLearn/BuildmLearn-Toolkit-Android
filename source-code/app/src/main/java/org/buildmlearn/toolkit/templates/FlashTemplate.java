@@ -98,11 +98,6 @@ public class FlashTemplate implements TemplateInterface {
     }
 
     @Override
-    public String onAttach() {
-        return "Flash card template";
-    }
-
-    @Override
     public void setTemplateId(int templateId) {
         this.templateId = templateId;
     }
@@ -315,7 +310,7 @@ public class FlashTemplate implements TemplateInterface {
         if (requestCode == REQUEST_TAKE_PHOTO && resultCode == Activity.RESULT_OK) {
             Bitmap bitmap = grabImage(context);
             if (bitmap != null) {
-                bitmap = getResizedBitmap(bitmap, 300);
+                bitmap = getResizedBitmap(bitmap);
                 if (bitmap != null) {
                     Log.d(TAG, "Bitmap not null: From Camera");
                 }
@@ -325,7 +320,7 @@ public class FlashTemplate implements TemplateInterface {
                     stream = context.getContentResolver().openInputStream(
                             intent.getData());
                     bitmap = BitmapFactory.decodeStream(stream);
-                    bitmap = getResizedBitmap(bitmap, 300);
+                    bitmap = getResizedBitmap(bitmap);
                     if (bitmap != null) {
                         Log.d(TAG, "Bitmap not null: From Gallery");
                     }
@@ -342,16 +337,16 @@ public class FlashTemplate implements TemplateInterface {
         }
     }
 
-    private Bitmap getResizedBitmap(Bitmap image, int maxSize) {
+    private Bitmap getResizedBitmap(Bitmap image) {
         int width = image.getWidth();
         int height = image.getHeight();
 
         float bitmapRatio = (float) width / (float) height;
         if (bitmapRatio > 0) {
-            width = maxSize;
+            width = 300;
             height = (int) (width / bitmapRatio);
         } else {
-            height = maxSize;
+            height = 300;
             width = (int) (height * bitmapRatio);
         }
         return Bitmap.createScaledBitmap(image, width, height, true);
@@ -380,7 +375,7 @@ public class FlashTemplate implements TemplateInterface {
         mImageUri = null;
         try {
 
-            photo = createTemporaryFile(context, "picture", ".jpg");
+            photo = createTemporaryFile(context, "picture");
             mImageUri = Uri.fromFile(photo);
             photo.delete();
         } catch (Exception e) {
@@ -397,7 +392,7 @@ public class FlashTemplate implements TemplateInterface {
         return chooser;
     }
 
-    private File createTemporaryFile(Context context, String part, String ext) throws Exception {
+    private File createTemporaryFile(Context context, String part) throws Exception {
 
         ToolkitApplication toolkitApplication = (ToolkitApplication) context.getApplicationContext();
 
@@ -406,14 +401,13 @@ public class FlashTemplate implements TemplateInterface {
         if (!tempDir.exists()) {
             tempDir.mkdir();
         }
-        return File.createTempFile(part, ext, tempDir);
+        return File.createTempFile("picture", ".jpg", tempDir);
     }
 
     /**
      * @brief Toggles the visibility of empty text if Array has zero elements
      */
-    @Override
-    public void setEmptyView(Activity activity) {
+    private void setEmptyView(Activity activity) {
         if (mData.size() < 1) {
             activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
         } else {

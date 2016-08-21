@@ -18,13 +18,10 @@ import java.io.InputStream;
  * @brief Class for extracting .buildmlearn file from apk.
  */
 public class RestoreThread extends Thread {
-    private static final String TAG = "RestoreThread";
     private static final String TEMP_FOLDER = "rtf";
-    private static String assetDirectory = "assets";
-    private String assetFileName;
-    private Context context;
-    private InputStream zipInputStream;
-    private ToolkitApplication toolkit;
+    private final Context context;
+    private final InputStream zipInputStream;
+    private final ToolkitApplication toolkit;
 
     private OnRestoreComplete listener;
 
@@ -41,7 +38,8 @@ public class RestoreThread extends Thread {
     @Override
     public void run() {
         try {
-            File assetDir = new File(toolkit.getUnZipDir() + TEMP_FOLDER + "/" + assetDirectory);
+            String assetDirectory = "assets";
+            File assetDir = new File(ToolkitApplication.getUnZipDir() + TEMP_FOLDER + "/" + assetDirectory);
             assetDir.mkdirs();
             //Deleting Previous Files if Exists
             File[] templateAssets = assetDir.listFiles();
@@ -50,7 +48,7 @@ public class RestoreThread extends Thread {
             }
 
             //Unzipping
-            FileUtils.unZip(zipInputStream, toolkit.getUnZipDir() + TEMP_FOLDER);
+            FileUtils.unZip(zipInputStream, ToolkitApplication.getUnZipDir() + TEMP_FOLDER);
             String files[] = assetDir.list();
             File data = null;
             Template[] templates = Template.values();
@@ -71,7 +69,7 @@ public class RestoreThread extends Thread {
 
             if (data == null) {
                 if (listener != null)
-                    listener.onFail(new Exception("Assets Data not Found!"));
+                    listener.onFail();
                 return;
             }
 
@@ -79,11 +77,6 @@ public class RestoreThread extends Thread {
                 listener.onSuccess(data);
 
 
-        } catch (IOException e) {
-            if (listener != null) {
-                listener.onFail(e);
-            }
-            e.printStackTrace();
         } finally {
 
             try {
@@ -97,6 +90,8 @@ public class RestoreThread extends Thread {
 
     public interface OnRestoreComplete {
         void onSuccess(File assetFile);
+
+        void onFail();
 
         void onFail(Exception e);
     }

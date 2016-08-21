@@ -21,10 +21,6 @@ public class MatchModel implements Serializable {
         this.matchB = B;
     }
 
-    public MatchModel() {
-
-    }
-
     public String getMatchA() {
         return matchA;
     }

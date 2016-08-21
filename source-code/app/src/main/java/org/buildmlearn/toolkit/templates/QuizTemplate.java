@@ -85,11 +85,6 @@ public class QuizTemplate implements TemplateInterface {
     }
 
     @Override
-    public String onAttach() {
-        return "Quiz Template";
-    }
-
-    @Override
     public void setTemplateId(int templateId) {
         this.templateId = templateId;
     }
@@ -351,8 +346,7 @@ public class QuizTemplate implements TemplateInterface {
     /**
      * @brief Toggles the visibility of empty text if Array has zero elements
      */
-    @Override
-    public void setEmptyView(Activity activity) {
+    private void setEmptyView(Activity activity) {
         if (quizData.size() < 1) {
             activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
         } else {

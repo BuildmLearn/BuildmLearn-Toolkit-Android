@@ -36,7 +36,6 @@ import java.util.Locale;
 public class ResponseFragment extends Fragment
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private Context mContext;
     private SpellDb db;
     private View rootView;
 
@@ -69,6 +68,7 @@ public class ResponseFragment extends Fragment
                         welcomeAlert.show();
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
+                        assert ((TextView) welcomeAlert.findViewById(android.R.id.message)) != null;
                         ((TextView) welcomeAlert.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
                         break;
                     default: //do nothing
@@ -89,7 +89,7 @@ public class ResponseFragment extends Fragment
         assert navigationView != null;
         navigationView.setNavigationItemSelectedListener(this);
 
-        mContext = getActivity();
+        Context mContext = getActivity();
 
         db = new SpellDb(mContext);
         db.open();
@@ -150,12 +150,12 @@ public class ResponseFragment extends Fragment
             word_text_view = "Correct Spell:&nbsp <font color=\"#7fe77f\">" + word + "</font> <br />You entered:&nbsp <font color=\"#ee9797\">" + answered + "</font>";
         }
 
-        assert ((TextView) rootView.findViewById(R.id.intro_response)) != null;
+        assert rootView.findViewById(R.id.intro_response) != null;
         ((TextView) rootView.findViewById(R.id.intro_response)).setText(message);
-        assert ((TextView) rootView.findViewById(R.id.word)) != null;
+        assert rootView.findViewById(R.id.word) != null;
         ((TextView) rootView.findViewById(R.id.word)).setText(Html.fromHtml(word_text_view), TextView.BufferType.SPANNABLE);
 
-        assert ((TextView) rootView.findViewById(R.id.meaning)) != null;
+        assert rootView.findViewById(R.id.meaning) != null;
         ((TextView) rootView.findViewById(R.id.meaning)).setText(meaning);
 
         final String finalSpellId = spellId;

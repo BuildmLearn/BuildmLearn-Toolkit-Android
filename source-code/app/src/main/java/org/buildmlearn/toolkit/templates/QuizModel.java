@@ -14,9 +14,9 @@ import java.util.ArrayList;
 
 public class QuizModel implements Serializable {
 
-    private String question;
-    private ArrayList<String> options;
-    private int correctAnswer;
+    private final String question;
+    private final ArrayList<String> options;
+    private final int correctAnswer;
     private boolean isSelected;
 
     public QuizModel(String question, ArrayList<String> options, int correctAnswer) {
@@ -30,24 +30,12 @@ public class QuizModel implements Serializable {
         return question;
     }
 
-    public void setQuestion(String question) {
-        this.question = question;
-    }
-
     public ArrayList<String> getOptions() {
         return options;
     }
 
-    public void setOptions(ArrayList<String> options) {
-        this.options = options;
-    }
-
     public int getCorrectAnswer() {
         return correctAnswer;
-    }
-
-    public void setCorrectAnswer(int correctAnswer) {
-        this.correctAnswer = correctAnswer;
     }
 
     public Element getXml(Document doc) {

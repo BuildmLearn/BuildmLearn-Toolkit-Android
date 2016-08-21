@@ -317,7 +317,7 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                 File file = new File(project.getFile().getPath());
 
                 Uri fileUri = Uri.fromFile(file);
-                ArrayList<Uri> uris = new ArrayList<Uri>();
+                ArrayList<Uri> uris = new ArrayList<>();
                 Intent sendIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
                 sendIntent.setType("application/zip");
                 uris.add(fileUri);

@@ -89,7 +89,7 @@ class ComprehensionAdapter extends BaseAdapter {
         for (int i = 0; i < holder.options.size(); i++) {
             if (i < data.getOptions().size()) {
                 int ascii = 65 + i;
-                holder.options.get(i).setText(Character.toString((char) ascii) + ")  " + data.getOptions().get(i));
+                holder.options.get(i).setText(String.format("%s) %s", Character.toString((char) ascii), data.getOptions().get(i)));
                 holder.options.get(i).setTextColor(ContextCompat.getColor(context, R.color.black_secondary_text));
                 holder.options.get(i).setVisibility(View.VISIBLE);
             } else {
@@ -159,7 +159,7 @@ class ComprehensionAdapter extends BaseAdapter {
         boolean wrapInScrollView = true;
         final MaterialDialog dialog = new MaterialDialog.Builder(context)
                 .title(R.string.quiz_edit)
-                .customView(R.layout.quiz_dialog_add_question, wrapInScrollView)
+                .customView(R.layout.quiz_dialog_add_question, true)
                 .positiveText(R.string.quiz_add)
                 .negativeText(R.string.quiz_cancel)
                 .build();

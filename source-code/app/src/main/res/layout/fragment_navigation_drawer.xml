@@ -7,5 +7,5 @@
     android:choiceMode="singleChoice"
     android:divider="@null"
     android:dividerHeight="0dp"
-    tools:context=".NavigationDrawerFragment"
+    tools:context=".fragment.NavigationDrawerFragment"
     tools:listitem="@layout/item_main_menu" />

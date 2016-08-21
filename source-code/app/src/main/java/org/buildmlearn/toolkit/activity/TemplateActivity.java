@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.adapter.TemplateAdapter;
@@ -27,16 +26,18 @@ public class TemplateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_template);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
         TemplateAdapter mAdapter = new TemplateAdapter(this);
         RecyclerView mRecyclerView = (RecyclerView) findViewById(android.R.id.list);
+        assert mRecyclerView != null;
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         mAdapter.setOnClickListener(new TemplateAdapter.SetOnClickListener() {
             @Override
-            public void onItemClick(int position, View view) {
+            public void onItemClick(int position) {
                 Intent intent = new Intent(getApplicationContext(), TemplateEditor.class);
                 intent.putExtra(Constants.TEMPLATE_ID, position);
                 startActivity(intent);

@@ -80,7 +80,7 @@ class DictationAdapter extends BaseAdapter {
         holder.collapseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                collapseTextView(holder.passage, 5);
+                collapseTextView(holder.passage);
                 dictation.setExpanded(false);
                 holder.expandButton.setVisibility(View.VISIBLE);
                 holder.collapseButton.setVisibility(View.INVISIBLE);
@@ -104,8 +104,8 @@ class DictationAdapter extends BaseAdapter {
         animation.setDuration(tv.getLineCount() * 10).start();
     }
 
-    private void collapseTextView(TextView tv, int numLines) {
-        ObjectAnimator animation = ObjectAnimator.ofInt(tv, "maxLines", numLines);
+    private void collapseTextView(TextView tv) {
+        ObjectAnimator animation = ObjectAnimator.ofInt(tv, "maxLines", 5);
         animation.setDuration(tv.getLineCount() * 10).start();
     }
 

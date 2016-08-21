@@ -26,7 +26,6 @@ import java.util.Locale;
 public class LastFragment extends Fragment {
 
     private SpellDb db;
-    private View rootView;
 
     public static Fragment newInstance() {
         return new LastFragment();
@@ -35,7 +34,7 @@ public class LastFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_last_spell, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_last_spell, container, false);
 
         final Activity activity = getActivity();
 
@@ -59,6 +58,7 @@ public class LastFragment extends Fragment {
                         welcomeAlert.show();
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
+                        assert ((TextView) welcomeAlert.findViewById(android.R.id.message)) != null;
                         ((TextView) welcomeAlert.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
                         break;
                     default: //do nothing
@@ -72,11 +72,11 @@ public class LastFragment extends Fragment {
 
         int stat[] = db.getStatistics();
 
-        assert ((TextView) rootView.findViewById(R.id.correct)) != null;
+        assert rootView.findViewById(R.id.correct) != null;
         ((TextView) rootView.findViewById(R.id.correct)).setText(String.format(Locale.getDefault(), "Total Correct : %1$d", stat[0]));
-        assert ((TextView) rootView.findViewById(R.id.wrong)) != null;
+        assert rootView.findViewById(R.id.wrong) != null;
         ((TextView) rootView.findViewById(R.id.wrong)).setText(String.format(Locale.getDefault(), "Total Wrong : %1$d", stat[1]));
-        assert ((TextView) rootView.findViewById(R.id.un_answered)) != null;
+        assert rootView.findViewById(R.id.un_answered) != null;
         ((TextView) rootView.findViewById(R.id.un_answered)).setText(String.format(Locale.getDefault(), "Total Unanswered : %1$d", stat[2]));
 
         rootView.findViewById(R.id.restart).setOnClickListener(new View.OnClickListener() {

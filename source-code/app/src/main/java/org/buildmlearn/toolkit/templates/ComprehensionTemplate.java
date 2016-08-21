@@ -36,12 +36,10 @@ import java.util.ArrayList;
  */
 public class ComprehensionTemplate implements TemplateInterface {
 
-    private final String TEMPLATE_NAME = "Comprehension Template";
     private final ArrayList<ComprehensionMetaModel> metaData;
     transient private ComprehensionAdapter adapter;
     transient private ComprehensionMetaAdapter metaAdapter;
     private ArrayList<ComprehensionModel> comprehensionData;
-    transient private Context mContext;
     private int templateId;
 
     public ComprehensionTemplate() {
@@ -77,13 +75,11 @@ public class ComprehensionTemplate implements TemplateInterface {
 
     @Override
     public BaseAdapter newTemplateEditorAdapter(Context context) {
-        mContext = context;
         adapter = new ComprehensionAdapter(context, comprehensionData);
         return adapter;
     }
 
     public BaseAdapter newMetaEditorAdapter(Context context) {
-        mContext = context;
         metaAdapter = new ComprehensionMetaAdapter(context, metaData);
         setEmptyView((Activity) context);
         return metaAdapter;
@@ -130,12 +126,8 @@ public class ComprehensionTemplate implements TemplateInterface {
     }
 
     @Override
-    public String onAttach() {
-        return TEMPLATE_NAME;
-    }
-
-    @Override
     public String getTitle() {
+        String TEMPLATE_NAME = "Comprehension Template";
         return TEMPLATE_NAME;
     }
 
@@ -263,7 +255,7 @@ public class ComprehensionTemplate implements TemplateInterface {
             @Override
             public void onClick(View v) {
                 FileDialog fileDialog = new FileDialog(activity);
-                fileDialog.setFileEndsWith(".txt");
+                fileDialog.setFileEndsWith();
                 fileDialog.addFileListener(new FileDialog.FileSelectListener() {
                     public void fileSelected(File file) {
                         ((TextView) dialog.findViewById(R.id.file_name)).setText(file.toString());
@@ -318,7 +310,7 @@ public class ComprehensionTemplate implements TemplateInterface {
                 @Override
                 public void onClick(View v) {
                     FileDialog fileDialog = new FileDialog(activity);
-                    fileDialog.setFileEndsWith(".txt");
+                    fileDialog.setFileEndsWith();
                     fileDialog.addFileListener(new FileDialog.FileSelectListener() {
                         public void fileSelected(File file) {
                             ((TextView) dialog.findViewById(R.id.file_name)).setText(file.toString());
@@ -502,8 +494,7 @@ public class ComprehensionTemplate implements TemplateInterface {
     /**
      * @brief Toggles the visibility of empty text if Array has zero elements
      */
-    @Override
-    public void setEmptyView(Activity activity) {
+    private void setEmptyView(Activity activity) {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && metaData.size() > 0) {
             activity.findViewById(R.id.shadow_meta).setVisibility(View.VISIBLE);

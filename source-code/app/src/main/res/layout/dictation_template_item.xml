@@ -52,6 +52,7 @@
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/expandbutton"
                 android:paddingBottom="@dimen/thumb_padding"
+                android:paddingEnd="@dimen/thumb_paddingTop"
                 android:paddingRight="@dimen/thumb_paddingTop"
                 android:src="@drawable/expand"
                 android:visibility="gone" />
@@ -66,6 +67,7 @@
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/expandbutton"
                 android:paddingBottom="@dimen/thumb_padding"
+                android:paddingEnd="@dimen/thumb_paddingTop"
                 android:paddingRight="@dimen/thumb_paddingTop"
                 android:src="@drawable/collapse"
                 android:visibility="gone" />

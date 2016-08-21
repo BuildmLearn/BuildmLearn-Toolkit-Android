@@ -25,6 +25,7 @@
                 android:layout_height="@dimen/card_thumb_size"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
+                android:contentDescription="@string/video_thumbnail"
                 android:paddingTop="@dimen/thumb_paddingTop" />
 
             <view

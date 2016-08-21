@@ -23,6 +23,7 @@
             android:layout_width="141dp"
             android:layout_height="180dp"
             android:adjustViewBounds="true"
+            android:contentDescription="@string/template_thumbnail"
             android:paddingTop="20dp" />
 
         <LinearLayout

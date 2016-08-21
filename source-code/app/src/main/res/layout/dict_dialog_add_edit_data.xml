@@ -54,6 +54,7 @@
             android:id="@+id/file_name"
             style="@style/TextView.Caption.Light"
             android:layout_marginLeft="@dimen/headline"
+            android:layout_marginStart="@dimen/headline"
             android:textColor="@color/black_secondary_text"
             android:textSize="@dimen/sub_title" />
 

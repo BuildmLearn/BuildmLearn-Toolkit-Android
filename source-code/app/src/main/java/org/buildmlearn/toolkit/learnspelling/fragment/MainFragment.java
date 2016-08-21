@@ -84,6 +84,7 @@ public class MainFragment extends Fragment
                         welcomeAlert.show();
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
+                        assert ((TextView) welcomeAlert.findViewById(android.R.id.message)) != null;
                         ((TextView) welcomeAlert.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
                         break;
                     default: //do nothing
@@ -159,12 +160,12 @@ public class MainFragment extends Fragment
         String meaning = spell_cursor.getString(Constants.COL_MEANING);
         String answered = spell_cursor.getString(Constants.COL_ANSWERED);
 
-        setListeners(spellId, word, meaning, answered);
+        setListeners(spellId, word, answered);
 
         return rootView;
     }
 
-    private void setListeners(final String spellId, final String word, final String meaning, final String answered) {
+    private void setListeners(final String spellId, final String word, final String answered) {
 
         rootView.findViewById(R.id.skip).setOnClickListener(new View.OnClickListener() {
             @Override

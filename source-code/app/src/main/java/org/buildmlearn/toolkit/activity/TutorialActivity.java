@@ -28,10 +28,12 @@ public class TutorialActivity extends AppCompatActivity {
         ViewPager mPager = (ViewPager) findViewById(R.id.pager);
         //  mPager.setAdapter(mAdapter);
 
+        assert mPager != null;
         mPager.setAdapter(mAdapter);
 
 
         CirclePageIndicator mIndicator = (CirclePageIndicator) findViewById(R.id.indicator);
+        assert mIndicator != null;
         mIndicator.setViewPager(mPager);
     }
 

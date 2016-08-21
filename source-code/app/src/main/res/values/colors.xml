@@ -20,19 +20,14 @@
     <color name="quiz_correct_answer">#43A047</color>
 
     <!-- Quiz Template-->
-    <color name="quiz_template_blue_background">#255593</color>
 
     <!-- Info Template-->
-
-    <color name="BlueBg">#255593</color>
 
     <!-- Flash Template-->
     <color name="colorPrimary_flash">#26C6DA</color>
     <color name="colorPrimaryDark_flash">#00BCD4</color>
     <color name="colorAccent_flash">#3F99A9</color>
     <color name="white_primary_text_flash">#FFF</color>
-    <color name="white_secondary_text_flash">#B3FFFFFF</color>
-    <color name="black_secondary_text_flash">#8a000000</color>
     <color name="transparent_black_flash">#80000000</color>
     <color name="white_color_flash">#ffffff</color>
     <color name="grey_shade_4_flash">#bdbdbd</color>
@@ -50,13 +45,7 @@
 
     <!--Match Template-->
 
-    <color name="colorPrimary_match">#26C6DA</color>
-    <color name="colorPrimaryDark_match">#00BCD4</color>
     <color name="colorAccent_match">#3F99A9</color>
-    <color name="white_primary_text_match">#FFF</color>
-    <color name="white_secondary_text_match">#B3FFFFFF</color>
-    <color name="black_secondary_text_match">#8a000000</color>
-    <color name="color_divider_match">#1E000000</color>
     <color name="item_correct_match">#ADFF2F</color>
     <color name="item_wrong_match">#FF4500</color>
 
@@ -65,8 +54,5 @@
     <color name="colorPrimary_spell">#26C6DA</color>
     <color name="colorPrimaryDark_spell">#00BCD4</color>
     <color name="colorAccent_spell">#3F99A9</color>
-    <color name="white_primary_text_spell">#FFF</color>
-    <color name="white_secondary_text_spell">#B3FFFFFF</color>
-    <color name="black_secondary_text_spell">#8a000000</color>
 
 </resources>

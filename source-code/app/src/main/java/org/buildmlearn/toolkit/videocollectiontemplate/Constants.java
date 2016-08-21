@@ -13,7 +13,6 @@ public class Constants {
             VideoContract.Videos.LINK,
             VideoContract.Videos.THUMBNAIL_URL
     };
-    public static final int COL_ID = 0;
     public static final int COL_TITLE = 1;
     public static final int COL_DESCRIPTION = 2;
     public static final int COL_LINK = 3;

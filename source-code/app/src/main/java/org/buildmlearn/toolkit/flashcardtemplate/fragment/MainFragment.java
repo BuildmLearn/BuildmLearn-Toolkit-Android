@@ -47,7 +47,6 @@ import java.util.Locale;
 public class MainFragment extends Fragment implements NavigationView.OnNavigationItemSelectedListener {
 
     private ViewPager viewPager;
-    private Context mContext;
     private FlashDb db;
     private View rootView;
 
@@ -80,6 +79,7 @@ public class MainFragment extends Fragment implements NavigationView.OnNavigatio
                         welcomeAlert.show();
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
+                        assert ((TextView) welcomeAlert.findViewById(android.R.id.message)) != null;
                         ((TextView) welcomeAlert.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
                         break;
                     default: //do nothing
@@ -100,7 +100,7 @@ public class MainFragment extends Fragment implements NavigationView.OnNavigatio
         assert navigationView != null;
         navigationView.setNavigationItemSelectedListener(this);
 
-        mContext = getActivity();
+        Context mContext = getActivity();
 
         db = new FlashDb(mContext);
         db.open();

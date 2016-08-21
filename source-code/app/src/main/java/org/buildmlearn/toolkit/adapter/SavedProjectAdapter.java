@@ -1,6 +1,7 @@
 package org.buildmlearn.toolkit.adapter;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -81,13 +82,13 @@ public class SavedProjectAdapter extends BaseAdapter {
         }
 
         if (selectedPosition == position) {
-            convertView.setBackgroundColor(mContext.getResources().getColor(R.color.color_divider));
+            convertView.setBackgroundColor(ContextCompat.getColor(mContext, R.color.color_divider));
         } else {
             convertView.setBackgroundColor(0);
         }
 
         SavedProject projectData = getItem(position);
-        holder.details.setText("Modified: " + projectData.getDate() + ", Author: " + projectData.getAuthor());
+        holder.details.setText(String.format(Locale.ENGLISH, "Modified: %s, Author: ", projectData.getDate(), projectData.getAuthor()));
         holder.projectName.setText(projectData.getName());
         holder.projectIcon.setText(projectData.getName().substring(0, 1).toUpperCase(Locale.US));
         convertView.setTag(holder);

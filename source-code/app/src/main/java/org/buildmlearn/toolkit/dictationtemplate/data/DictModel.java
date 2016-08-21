@@ -7,7 +7,7 @@ import android.os.Parcelable;
  * Created by Anupam (opticod) on 10/7/16.
  */
 public class DictModel implements Parcelable {
-    public final Creator<DictModel> CREATOR = new Creator<DictModel>() {
+    public final static Parcelable.Creator<DictModel> CREATOR = new Parcelable.Creator<DictModel>() {
         @Override
         public DictModel createFromParcel(Parcel parcel) {
             return new DictModel(parcel);
@@ -22,11 +22,6 @@ public class DictModel implements Parcelable {
     private String passage;
 
     public DictModel() {
-    }
-
-    public DictModel(String title, String passage) {
-        this.title = title;
-        this.passage = passage;
     }
 
     private DictModel(Parcel in) {
