@@ -154,7 +154,9 @@ public class VideoCollectionTemplate implements TemplateInterface {
     private String convertLink(String link) {
 
         if (link.contains(YOUTUBE)) {
-            if (!link.contains("www.")) {
+            if (link.contains("https://m." + YOUTUBE)) {
+                link = link.replace("https://m." + YOUTUBE, "https://www." + YOUTUBE);
+            } else if (!link.contains("www.")) {
                 link = "https://www." + link;
             } else if (!(link.contains("http:") || link.contains("https:"))) {
                 link = "https://" + link;
