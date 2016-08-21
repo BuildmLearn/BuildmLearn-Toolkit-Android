@@ -14,6 +14,8 @@
         android:paddingLeft="@dimen/paddingTop_match"
         android:paddingRight="@dimen/paddingTop_match"
         android:paddingStart="@dimen/paddingTop_match"
+        android:paddingTop="5.47dp"
+        android:singleLine="true"
         android:textAppearance="?android:textAppearanceSmall" />
 
     <ImageView
