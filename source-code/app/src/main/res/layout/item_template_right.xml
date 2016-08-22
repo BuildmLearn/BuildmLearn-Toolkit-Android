@@ -4,6 +4,7 @@
     android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/layout_margin"
     android:foreground="?attr/selectableItemBackground"
     android:minHeight="@dimen/cardview_template_height"
     card_view:cardCornerRadius="@dimen/cardview_default_radius"
@@ -39,6 +40,7 @@
             android:layout_width="141dp"
             android:layout_height="180dp"
             android:adjustViewBounds="true"
+            android:contentDescription="@string/template_thumbnail"
             android:paddingTop="20dp" />
     </LinearLayout>
 

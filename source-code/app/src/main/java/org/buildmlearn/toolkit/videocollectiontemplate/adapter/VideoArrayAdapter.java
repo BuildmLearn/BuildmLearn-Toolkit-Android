@@ -18,6 +18,8 @@ import org.buildmlearn.toolkit.utilities.RoundedTransformation;
 import org.buildmlearn.toolkit.videocollectiontemplate.Constants;
 
 /**
+ * @brief Adapter for displaying VideoCollection Template Editor data in simulator.
+ * <p/>
  * Created by Anupam (opticod) on 12/5/16.
  */
 public class VideoArrayAdapter extends CursorAdapter {

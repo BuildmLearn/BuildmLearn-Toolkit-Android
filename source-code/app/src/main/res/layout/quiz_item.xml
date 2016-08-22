@@ -14,16 +14,18 @@
         <ImageView
             android:id="@+id/question_icon"
             style="@style/TextView.CircleIcon"
+            android:layout_gravity="center_vertical"
             android:adjustViewBounds="true"
+            android:contentDescription="@string/show_more"
             android:scaleType="center"
-            android:src="@drawable/expand"
-            android:layout_gravity="center_vertical" />
+            android:src="@drawable/expand" />
 
         <view
             android:id="@+id/question"
             style="@style/TextView.Title.Thin"
             class="org.buildmlearn.toolkit.views.TextViewPlus"
             android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
             android:paddingBottom="16dp"
             android:paddingTop="16dp" />
 
@@ -34,6 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginLeft="72dp"
+        android:layout_marginStart="72dp"
         android:background="@color/color_divider">
 
     </View>
@@ -46,6 +49,7 @@
         android:orientation="vertical"
         android:paddingBottom="8dp"
         android:paddingLeft="72dp"
+        android:paddingStart="72dp"
         android:paddingTop="16dp">
 
         <view
@@ -76,7 +80,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="right"
+            android:gravity="end"
             android:orientation="horizontal">
 
             <Button

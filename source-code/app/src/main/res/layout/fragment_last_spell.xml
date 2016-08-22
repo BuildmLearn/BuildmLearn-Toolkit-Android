@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_main"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/simulator_detail_toolbar"
+            android:background="@color/colorPrimary_video"
+            android:minHeight="?attr/actionBarSize"
+            app:theme="@style/ToolBarStyle_video_heading"
+            app:titleTextAppearance="@style/Toolbar.TitleText" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/shadow_toolbar"
+            android:backgroundTint="@color/color_divider"
+            android:visibility="gone" />
+
+        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/paddingTop_spell"
+            card_view:cardBackgroundColor="#FFFFFF"
+            card_view:cardCornerRadius="3.47dp"
+            card_view:cardElevation="3.47dp"
+            card_view:cardUseCompatPadding="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_horizontal_margin_spell"
+                    android:paddingBottom="@dimen/activity_vertical_margin_spell"
+                    android:paddingLeft="@dimen/activity_horizontal_margin_spell"
+                    android:paddingRight="@dimen/activity_horizontal_margin_spell"
+                    android:paddingTop="@dimen/activity_vertical_margin_spell"
+                    android:text="@string/completed_message_spell"
+                    android:textAppearance="?android:textAppearanceSmall" />
+
+                <TextView
+                    android:id="@+id/correct"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text"
+                    android:layout_marginLeft="@dimen/splash_button_margin_top_spell"
+                    android:layout_marginStart="@dimen/splash_button_margin_top_spell"
+                    android:paddingBottom="@dimen/activity_vertical_margin_spell"
+                    android:paddingLeft="@dimen/activity_horizontal_margin_spell"
+                    android:paddingRight="@dimen/activity_horizontal_margin_spell"
+                    android:paddingTop="@dimen/activity_vertical_margin_spell"
+                    android:textAppearance="?android:textAppearanceSmall" />
+
+                <TextView
+                    android:id="@+id/wrong"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/correct"
+                    android:layout_marginLeft="@dimen/splash_button_margin_top_spell"
+                    android:layout_marginStart="@dimen/splash_button_margin_top_spell"
+                    android:paddingBottom="@dimen/activity_vertical_margin_spell"
+                    android:paddingLeft="@dimen/activity_horizontal_margin_spell"
+                    android:paddingRight="@dimen/activity_horizontal_margin_spell"
+                    android:paddingTop="@dimen/activity_vertical_margin_spell"
+                    android:textAppearance="?android:textAppearanceSmall" />
+
+                <TextView
+                    android:id="@+id/un_answered"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/wrong"
+                    android:layout_marginLeft="@dimen/splash_button_margin_top_spell"
+                    android:layout_marginStart="@dimen/splash_button_margin_top_spell"
+                    android:paddingBottom="@dimen/activity_vertical_margin_spell"
+                    android:paddingLeft="@dimen/activity_horizontal_margin_spell"
+                    android:paddingRight="@dimen/activity_horizontal_margin_spell"
+                    android:paddingTop="@dimen/activity_vertical_margin_spell"
+                    android:textAppearance="?android:textAppearanceSmall" />
+
+                <Button
+                    android:id="@+id/exit"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/un_answered"
+                    android:background="@android:color/transparent"
+                    android:paddingBottom="@dimen/activity_vertical_margin_spell"
+                    android:paddingLeft="@dimen/activity_horizontal_margin_spell"
+                    android:paddingRight="@dimen/activity_horizontal_margin_spell"
+                    android:paddingTop="@dimen/activity_vertical_margin_spell"
+                    android:text="@string/exit_spell"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:textColor="@color/colorAccent_spell" />
+
+                <Button
+                    android:id="@+id/restart"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toLeftOf="@+id/exit"
+                    android:layout_toStartOf="@+id/exit"
+                    android:background="@android:color/transparent"
+                    android:paddingBottom="@dimen/activity_vertical_margin_spell"
+                    android:paddingLeft="@dimen/activity_horizontal_margin_spell"
+                    android:paddingRight="@dimen/activity_horizontal_margin_spell"
+                    android:paddingTop="@dimen/activity_vertical_margin_spell"
+                    android:text="@string/restart_spell"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:textColor="@color/black_secondary_text" />
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+</ScrollView>

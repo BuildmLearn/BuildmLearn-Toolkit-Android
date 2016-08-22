@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/TextView.Caption.Light"
+        android:text="@string/comprehension_meta_title"
+        android:textColor="@color/black_secondary_text" />
+
+    <EditText
+        android:id="@+id/dict_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/comprehension_meta_title_of_passage"
+        android:inputType="textPersonName" />
+
+    <TextView
+        style="@style/TextView.Caption.Light"
+        android:text="@string/comprehension_meta_passage"
+        android:textColor="@color/black_secondary_text" />
+
+    <EditText
+        android:id="@+id/dict_passage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/comprehension_meta_enter_passage"
+        android:inputType="textMultiLine" />
+
+    <TextView
+        style="@style/TextView.Caption.Light"
+        android:text="@string/or"
+        android:textColor="@color/black_secondary_text" />
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5sp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/upload"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="30sp"
+            android:layout_margin="5sp"
+            android:background="#cfd8dc"
+            android:padding="5sp"
+            android:text="@string/upload" />
+
+        <TextView
+            android:id="@+id/file_name"
+            style="@style/TextView.Caption.Light"
+            android:layout_marginLeft="@dimen/headline"
+            android:layout_marginStart="@dimen/headline"
+            android:textColor="@color/black_secondary_text"
+            android:textSize="@dimen/sub_title" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -47,10 +47,6 @@ public class TutorialAdapter extends PagerAdapter {
         return mTutorials[position];
     }
 
-    public long getItemId(int position) {
-        return position;
-    }
-
     /**
      * {@inheritDoc}
      */

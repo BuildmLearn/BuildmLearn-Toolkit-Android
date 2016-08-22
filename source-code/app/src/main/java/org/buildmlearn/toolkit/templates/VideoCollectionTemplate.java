@@ -38,6 +38,8 @@ import java.net.URL;
 import java.util.ArrayList;
 
 /**
+ * @brief Video template code implementing methods of TemplateInterface
+ *
  * Created by Anupam (opticod) on 4/5/16.
  */
 public class VideoCollectionTemplate implements TemplateInterface {
@@ -46,7 +48,6 @@ public class VideoCollectionTemplate implements TemplateInterface {
     private static final String YOUTUBE_SHORT = "youtu.be";
     private static final String DAILYMOTION = "dailymotion";
     private static final String VIMEO = "vimeo";
-    private final String TEMPLATE_NAME = "VideoCollection Template";
     transient private VideoCollectionAdapter adapter;
     private ArrayList<VideoModel> videoData;
     transient private ProgressDialog progress;
@@ -147,19 +148,17 @@ public class VideoCollectionTemplate implements TemplateInterface {
     }
 
     @Override
-    public String onAttach() {
-        return TEMPLATE_NAME;
-    }
-
-    @Override
     public String getTitle() {
+        String TEMPLATE_NAME = "VideoCollection Template";
         return TEMPLATE_NAME;
     }
 
     private String convertLink(String link) {
 
         if (link.contains(YOUTUBE)) {
-            if (!link.contains("www.")) {
+            if (link.contains("https://m." + YOUTUBE)) {
+                link = link.replace("https://m." + YOUTUBE, "https://www." + YOUTUBE);
+            } else if (!link.contains("www.")) {
                 link = "https://www." + link;
             } else if (!(link.contains("http:") || link.contains("https:"))) {
                 link = "https://" + link;
@@ -361,8 +360,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
     /**
      * @brief Toggles the visibility of empty text if Array has zero elements
      */
-    @Override
-    public void setEmptyView(Activity activity) {
+    private void setEmptyView(Activity activity) {
         if (videoData.size() < 1) {
             activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
         } else {

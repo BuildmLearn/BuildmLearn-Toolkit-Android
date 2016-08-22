@@ -1,6 +1,5 @@
 <resources>
-
-    <item name="activity_template" type="layout">@layout/activity_template_grid</item>
+    <item name="activity_template" type="layout">@layout/activity_template_list</item>
     <item name="fragment_loadproject" type="layout">@layout/fragment_loadproject_grid</item>
 
 </resources>

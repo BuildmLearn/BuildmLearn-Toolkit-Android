@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/try_again"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:background="@android:color/transparent"
+        android:paddingEnd="@dimen/paddingTop_match"
+        android:paddingRight="@dimen/paddingTop_match"
+        android:paddingTop="@dimen/paddingTop_match"
+        android:text="@string/try_again_match"
+        android:textAppearance="?android:textAppearanceSmall"
+        android:textColor="@color/colorAccent_match" />
+
+</LinearLayout>

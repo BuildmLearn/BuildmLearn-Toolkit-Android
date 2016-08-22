@@ -56,6 +56,7 @@ import static org.hamcrest.core.IsAnything.anything;
 import static org.hamcrest.core.IsInstanceOf.instanceOf;
 
 /**
+ * Espresso test designed to test all the functionalities of Comprehension template
  * Created by anupam (opticod) on 7/6/16.
  */
 

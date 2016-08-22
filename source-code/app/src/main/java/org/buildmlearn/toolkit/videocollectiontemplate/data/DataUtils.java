@@ -12,6 +12,8 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 /**
+ * @brief Contains xml data utils for video collection template's simulator.
+ *
  * Created by Anupam (opticod) on 13/5/16.
  */
 public class DataUtils {

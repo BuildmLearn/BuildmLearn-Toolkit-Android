@@ -5,6 +5,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 /**
+ * @brief Helper functions used to check network connection.
+ *
  * Created by Anupam(opticod) on 10/5/16.
  */
 public class NetworkUtils {

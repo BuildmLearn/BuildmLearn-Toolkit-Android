@@ -15,6 +15,10 @@ import org.buildmlearn.toolkit.infotemplate.Constants;
 /**
  * Created by Anupam (opticod) on 20/6/16.
  */
+
+/**
+ * @brief Custom Adapter for info template's simulator.
+ */
 public class InfoArrayAdapter extends CursorAdapter {
 
     public InfoArrayAdapter(Context context) {

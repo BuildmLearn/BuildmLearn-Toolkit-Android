@@ -55,7 +55,7 @@ public class FileUtils {
      * @throws IOException Exception thrown in case of some error.
      * @brief Unzips a compressed file (.zip, .apk)
      */
-    public static void unZip(InputStream zipInputStream, String destinationFolder) throws IOException {
+    public static void unZip(InputStream zipInputStream, String destinationFolder) {
         int size;
         byte[] buffer = new byte[BUFFER_SIZE];
         try {
@@ -67,8 +67,7 @@ public class FileUtils {
                 f.mkdirs();
             }
 
-            ZipInputStream zin = new ZipInputStream(new BufferedInputStream(zipInputStream, BUFFER_SIZE));
-            try {
+            try (ZipInputStream zin = new ZipInputStream(new BufferedInputStream(zipInputStream, BUFFER_SIZE))) {
                 ZipEntry ze;
                 while ((ze = zin.getNextEntry()) != null) {
                     String path = destinationFolder + ze.getName();
@@ -82,7 +81,7 @@ public class FileUtils {
 
                         File parentDir = unzipFile.getParentFile();
                         if (null != parentDir && !parentDir.isDirectory()) {
-                                parentDir.mkdirs();
+                            parentDir.mkdirs();
                         }
 
                         FileOutputStream out = new FileOutputStream(unzipFile, false);
@@ -99,8 +98,6 @@ public class FileUtils {
                         }
                     }
                 }
-            } finally {
-                zin.close();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -149,8 +146,8 @@ public class FileUtils {
         //Indenitifier with 1 suffix corresponds for file1
         byte[] buffer1 = new byte[BUFFER_SIZE];
         byte[] buffer2 = new byte[BUFFER_SIZE];
-        int read1 = -1;
-        int read2 = -1;
+        int read1;
+        int read2;
         InputStream is1 = null;
         InputStream is2 = null;
         try {
@@ -182,7 +179,7 @@ public class FileUtils {
                         is1.close();
                 if(is2!=null)
                     is2.close();
-            } catch (IOException e) {
+            } catch (IOException ignored) {
 
             }
 

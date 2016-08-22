@@ -23,6 +23,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:adjustViewBounds="true"
+        android:contentDescription="@string/tutorial_image"
         android:scaleType="centerInside"/>
 
     <org.buildmlearn.toolkit.views.TextViewPlus

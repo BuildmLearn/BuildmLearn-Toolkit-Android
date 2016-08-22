@@ -1,7 +1,5 @@
 package org.buildmlearn.toolkit.comprehensiontemplate.data;
 
-import android.content.Context;
-
 import org.buildmlearn.toolkit.comprehensiontemplate.Constants;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
@@ -16,9 +14,13 @@ import javax.xml.parsers.ParserConfigurationException;
 /**
  * Created by Anupam (opticod) on 5/6/16.
  */
+
+/**
+ * @brief Contains xml data utils for comprehension template's simulator.
+ */
 public class DataUtils {
 
-    public static String[] readTitleAuthor(Context myContext) {
+    public static String[] readTitleAuthor() {
         String result[] = new String[2];
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 

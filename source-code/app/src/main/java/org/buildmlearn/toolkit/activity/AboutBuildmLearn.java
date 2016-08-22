@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import org.buildmlearn.toolkit.R;
 
+import java.util.Locale;
+
 /**
  * @brief Gives brief info about BuildmLearn community and toolkit
  */
@@ -30,9 +32,10 @@ public class AboutBuildmLearn extends AppCompatActivity {
             pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
             String version = pInfo.versionName;
             assert findViewById(R.id.app_version) != null;
-            ((TextView)findViewById(R.id.app_version)).setText("Version: " + version);
+            ((TextView) findViewById(R.id.app_version)).setText(String.format(Locale.ENGLISH, "Version: %s", version));
         } catch (PackageManager.NameNotFoundException e) {
             assert findViewById(R.id.app_version) != null;
+            assert ((TextView) findViewById(R.id.app_version)) != null;
             ((TextView)findViewById(R.id.app_version)).setText("Version: 1.0");
             e.printStackTrace();
         }

@@ -7,6 +7,7 @@ import android.content.res.ColorStateList;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -45,6 +46,10 @@ import javax.xml.parsers.ParserConfigurationException;
 
 /**
  * Created by scopeinfinity on 10/3/16.
+ */
+
+/**
+ * @brief Fragment used to save drafts.
  */
 public class DraftsFragment extends Fragment implements AbsListView.OnItemClickListener  {
 
@@ -85,8 +90,7 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_loadproject, container, false);
-        return view;
+        return inflater.inflate(R.layout.fragment_loadproject, container, false);
     }
 
     /**
@@ -112,7 +116,7 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
                     selectedView = view;
                     selectedPosition = position;
                     Log.d(TAG, "Position: " + selectedPosition);
-                    view.setBackgroundColor(getResources().getColor(R.color.color_divider));
+                    view.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.color_divider));
                     changeColorScheme();
                 }
                 return true;
@@ -164,7 +168,7 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
         super.onResume();
     }
 
-    protected void reloadContent() {
+    private void reloadContent() {
 
         draftProjects.clear();
 
@@ -180,8 +184,8 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
 
 
         Log.d("Files", "Size: " + file.length);
-        for (int i = 0; i < file.length; i++) {
-            File fXmlFile = new File(file[i].getAbsolutePath());
+        for (File aFile : file) {
+            File fXmlFile = new File(aFile.getAbsolutePath());
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder;
             try {
@@ -190,13 +194,7 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
                 doc.getDocumentElement().normalize();
                 Log.d("Files", "Root element :" + doc.getDocumentElement().getAttribute("type"));
                 draftProjects.add(new SavedProject(fXmlFile, fXmlFile.getName(), fXmlFile.lastModified(), doc.getDocumentElement().getAttribute("type"), fXmlFile.getAbsolutePath()));
-            } catch (ParserConfigurationException e) {
-                e.printStackTrace();
-            } catch (SAXException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (DOMException e) {
+            } catch (ParserConfigurationException | DOMException | IOException | SAXException e) {
                 e.printStackTrace();
             }
         }
@@ -217,9 +215,9 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
      * <p/>
      * Edit mode is triggered, when the list item is long pressed.
      */
-    public void restoreColorScheme() {
-        int primaryColor = getResources().getColor(R.color.color_primary);
-        int primaryColorDark = getResources().getColor(R.color.color_primary_dark);
+    private void restoreColorScheme() {
+        int primaryColor = ContextCompat.getColor(getActivity(), R.color.color_primary);
+        int primaryColorDark = ContextCompat.getColor(getActivity(), R.color.color_primary_dark);
         ((AppCompatActivity) activity).getSupportActionBar().setBackgroundDrawable(new ColorDrawable(primaryColor));
         ThemeSingleton.get().positiveColor = ColorStateList.valueOf(primaryColor);
         ThemeSingleton.get().neutralColor = ColorStateList.valueOf(primaryColor);
@@ -238,9 +236,9 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
      * <p/>
      * Edit mode is triggered, when the list item is long pressed.
      */
-    public void changeColorScheme() {
-        int primaryColor = getResources().getColor(R.color.color_primary_dark);
-        int primaryColorDark = getResources().getColor(R.color.color_selected_dark);
+    private void changeColorScheme() {
+        int primaryColor = ContextCompat.getColor(getActivity(), R.color.color_primary_dark);
+        int primaryColorDark = ContextCompat.getColor(getActivity(), R.color.color_selected_dark);
         ((AppCompatActivity) activity).getSupportActionBar().setBackgroundDrawable(new ColorDrawable(primaryColor));
         ThemeSingleton.get().positiveColor = ColorStateList.valueOf(primaryColor);
         ThemeSingleton.get().neutralColor = ColorStateList.valueOf(primaryColor);
@@ -361,7 +359,7 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
     /**
      * @brief Removes selected color from the selected ListView item when switching from edit mode to normal mode
      */
-    public void restoreSelectedView() {
+    private void restoreSelectedView() {
         if (selectedView != null) {
             selectedView.setBackgroundResource(0);
         }

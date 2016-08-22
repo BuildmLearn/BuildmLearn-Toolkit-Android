@@ -19,6 +19,10 @@ import org.buildmlearn.toolkit.views.TextViewPlus;
 /**
  * Created by Anupam (opticod) on 5/6/16.
  */
+
+/**
+ * @brief Splash intro Fragment for comprehension template's simulator.
+ */
 public class SplashFragment extends Fragment {
 
     public static Fragment newInstance(String path) {
@@ -33,7 +37,7 @@ public class SplashFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_splash, container, false);
 
         final Activity mActivity = getActivity();
-        final String result[] = DataUtils.readTitleAuthor(getContext());
+        final String result[] = DataUtils.readTitleAuthor();
         TextView title = (TextView) rootView.findViewById(R.id.title);
         TextView author_name = (TextView) rootView.findViewById(R.id.author_name);
 

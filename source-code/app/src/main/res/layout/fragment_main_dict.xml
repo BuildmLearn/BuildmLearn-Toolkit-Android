@@ -1,0 +1,140 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".dictationtemplate.fragment.MainActivityFragment">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_main"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbar_height_dict"
+            android:background="@color/colorPrimary_video"
+            android:minHeight="?attr/actionBarSize"
+            app:theme="@style/ToolBarStyle_video_heading" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/speed"
+            android:layout_below="@+id/toolbar_main"
+            android:layout_marginEnd="@dimen/medium_margin_dict"
+            android:layout_marginLeft="@dimen/medium_margin_dict"
+            android:layout_marginRight="@dimen/medium_margin_dict"
+            android:layout_marginStart="@dimen/medium_margin_dict"
+            android:layout_marginTop="@dimen/negative_margin_dict"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.Toolbar
+                        android:id="@+id/card_toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/toolbar_height_small_dict"
+                        android:background="@android:color/white"
+                        app:theme="@style/ToolBarStyle_video" />
+
+                    <ListView xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:id="@+id/list_view_dict"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingBottom="@dimen/padding_dict"
+                        android:paddingEnd="@dimen/paddingTop_dict"
+                        android:paddingLeft="@dimen/paddingTop_dict"
+                        android:paddingRight="@dimen/paddingTop_dict"
+                        android:paddingStart="@dimen/paddingTop_dict" />
+
+                    <TextView
+                        android:id="@+id/empty"
+                        style="@style/TextAppearance.AppCompat.Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.4"
+                        android:background="@android:color/background_light"
+                        android:enabled="true"
+                        android:gravity="center"
+                        android:paddingBottom="@dimen/paddingTop_dict"
+                        android:paddingTop="@dimen/paddingTop_dict"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/speed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/paddingTop_dict"
+                    android:paddingRight="@dimen/paddingTop_dict"
+                    android:paddingTop="@dimen/padding_dict"
+                    android:text="@string/select_speed_dict"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:textColor="@color/colorAccent_video" />
+
+                <RadioGroup
+                    android:id="@+id/radio_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radioButton1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/paddingTop_dict"
+                        android:paddingEnd="@dimen/paddingTop_dict"
+                        android:paddingRight="@dimen/paddingTop_dict"
+                        android:paddingTop="@dimen/paddingTop_dict"
+                        android:text="@string/slow_dict"
+                        android:textAppearance="?android:textAppearanceSmall" />
+
+                    <RadioButton
+                        android:id="@+id/radioButton2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/paddingTop_dict"
+                        android:paddingEnd="@dimen/paddingTop_dict"
+                        android:paddingRight="@dimen/paddingTop_dict"
+                        android:paddingTop="@dimen/paddingTop_dict"
+                        android:text="@string/medium_dict"
+                        android:textAppearance="?android:textAppearanceSmall" />
+
+                    <RadioButton
+                        android:id="@+id/radioButton3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/paddingTop_dict"
+                        android:paddingTop="@dimen/paddingTop_dict"
+                        android:text="@string/fast_dict"
+                        android:textAppearance="?android:textAppearanceSmall" />
+
+                </RadioGroup>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+    </RelativeLayout>
+</FrameLayout>

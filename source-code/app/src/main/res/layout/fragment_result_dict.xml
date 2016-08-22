@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    tools:context=".dictationtemplate.fragment.ResultActivityFragment">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_main"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/simulator_detail_toolbar"
+            android:background="@color/colorPrimary_video"
+            android:minHeight="?attr/actionBarSize"
+            app:theme="@style/ToolBarStyle_video_heading"
+            app:titleTextAppearance="@style/Toolbar.TitleText" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/shadow_toolbar"
+            android:backgroundTint="@color/color_divider"
+            android:visibility="gone" />
+
+        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardBackgroundColor="#FFFFFF"
+            card_view:cardCornerRadius="3.47dp"
+            card_view:cardElevation="3.47dp"
+            card_view:cardUseCompatPadding="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="@dimen/paddingTop_dict"
+                    android:paddingLeft="@dimen/paddingTop_dict"
+                    android:paddingRight="@dimen/paddingTop_dict"
+                    android:paddingStart="@dimen/paddingTop_dict"
+                    android:paddingTop="@dimen/paddingTop_dict"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/checked_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/score"
+                    android:paddingBottom="@dimen/paddingTop_dict"
+                    android:paddingEnd="@dimen/paddingTop_dict"
+                    android:paddingLeft="@dimen/paddingTop_dict"
+                    android:paddingRight="@dimen/paddingTop_dict"
+                    android:paddingStart="@dimen/paddingTop_dict"
+                    android:paddingTop="@dimen/paddingTop_dict"
+                    android:textAppearance="?android:textAppearanceSmall" />
+
+                <TextView
+                    android:id="@+id/corrected_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/checked_text"
+                    android:paddingBottom="@dimen/paddingTop_dict"
+                    android:paddingEnd="@dimen/paddingTop_dict"
+                    android:paddingLeft="@dimen/paddingTop_dict"
+                    android:paddingRight="@dimen/paddingTop_dict"
+                    android:paddingStart="@dimen/paddingTop_dict"
+                    android:paddingTop="@dimen/paddingTop_dict"
+                    android:textAppearance="?android:textAppearanceSmall" />
+
+                <Button
+                    android:id="@+id/exit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/corrected_text"
+                    android:background="@android:color/transparent"
+                    android:paddingBottom="@dimen/paddingTop_dict"
+                    android:paddingEnd="@dimen/paddingTop_dict"
+                    android:paddingLeft="@dimen/paddingTop_dict"
+                    android:paddingRight="@dimen/paddingTop_dict"
+                    android:paddingStart="@dimen/paddingTop_dict"
+                    android:paddingTop="@dimen/paddingTop_dict"
+                    android:text="@string/exit_dict"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:textColor="@color/colorAccent_video" />
+
+                <Button
+                    android:id="@+id/restart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/corrected_text"
+                    android:layout_toLeftOf="@+id/exit"
+                    android:layout_toStartOf="@+id/exit"
+                    android:background="@android:color/transparent"
+                    android:paddingBottom="@dimen/paddingTop_dict"
+                    android:paddingEnd="@dimen/paddingTop_dict"
+                    android:paddingLeft="@dimen/paddingTop_dict"
+                    android:paddingRight="@dimen/paddingTop_dict"
+                    android:paddingStart="@dimen/paddingTop_dict"
+                    android:paddingTop="@dimen/paddingTop_dict"
+                    android:text="@string/restart_dict"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:textColor="@color/black_secondary_text" />
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+</ScrollView>

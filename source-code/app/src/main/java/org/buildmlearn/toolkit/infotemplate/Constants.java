@@ -5,6 +5,10 @@ import org.buildmlearn.toolkit.infotemplate.data.InfoContract;
 /**
  * Created by Anupam (opticod) on 20/6/16.
  */
+
+/**
+ * @brief Constants used in info template's simulator relating databases.
+ */
 public class Constants {
     public static final String[] INFO_COLUMNS = {
             InfoContract.Info.TABLE_NAME + "." + InfoContract.Info._ID,

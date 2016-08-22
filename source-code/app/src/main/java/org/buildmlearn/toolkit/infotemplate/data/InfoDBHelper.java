@@ -10,6 +10,9 @@ import org.buildmlearn.toolkit.infotemplate.data.InfoContract.Info;
  * Created by Anupam (opticod) on 20/6/16.
  */
 
+/**
+ * @brief DatabaseHelper for info template's simulator.
+ */
 class InfoDBHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "mLearning.db";
