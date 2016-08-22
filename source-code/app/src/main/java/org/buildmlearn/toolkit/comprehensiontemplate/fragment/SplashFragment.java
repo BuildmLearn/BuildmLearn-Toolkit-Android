@@ -19,6 +19,10 @@ import org.buildmlearn.toolkit.views.TextViewPlus;
 /**
  * Created by Anupam (opticod) on 5/6/16.
  */
+
+/**
+ * @brief Splash intro Fragment for comprehension template's simulator.
+ */
 public class SplashFragment extends Fragment {
 
     public static Fragment newInstance(String path) {

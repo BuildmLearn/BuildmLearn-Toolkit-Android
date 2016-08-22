@@ -23,6 +23,10 @@ import java.util.Locale;
 /**
  * Created by Anupam (opticod) on 5/6/16.
  */
+
+/**
+ * @brief Last Fragment for comprehension template's simulator.
+ */
 public class LastFragment extends Fragment {
 
     public static Fragment newInstance() {

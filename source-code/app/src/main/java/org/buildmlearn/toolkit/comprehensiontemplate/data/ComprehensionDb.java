@@ -16,6 +16,10 @@ import java.util.Arrays;
 /**
  * Created by Anupam (opticod) on 5/6/16.
  */
+
+/**
+ * @brief Contains database util functions for comprehension template's simulator.
+ */
 public class ComprehensionDb {
 
     private static final String EQUAL = " == ";

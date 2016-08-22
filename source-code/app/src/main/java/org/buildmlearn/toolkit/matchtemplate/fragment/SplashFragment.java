@@ -19,6 +19,10 @@ import org.buildmlearn.toolkit.views.TextViewPlus;
 /**
  * Created by Anupam (opticod) on 28/7/16.
  */
+
+/**
+ * @brief Splash intro Fragment for match template's simulator.
+ */
 public class SplashFragment extends Fragment {
 
     public static Fragment newInstance(String path) {

@@ -32,6 +32,10 @@ import java.util.Locale;
 /**
  * Created by Anupam (opticod) on 10/7/16.
  */
+
+/**
+ * @brief Fragment for displaying score to user in dictation template's simulator.
+ */
 public class ResultActivityFragment extends Fragment implements LoaderCallbacks<Cursor> {
 
     private static final int DETAIL_LOADER = 0;

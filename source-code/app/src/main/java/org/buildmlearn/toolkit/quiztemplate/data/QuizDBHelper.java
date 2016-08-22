@@ -10,6 +10,9 @@ import org.buildmlearn.toolkit.quiztemplate.data.QuizContract.Questions;
  * Created by Anupam (opticod) on 11/8/16.
  */
 
+/**
+ * @brief DatabaseHelper for quiz template's simulator.
+ */
 class QuizDBHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "quiz.db";

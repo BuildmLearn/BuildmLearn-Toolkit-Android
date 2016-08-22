@@ -31,6 +31,10 @@ import java.util.Locale;
 /**
  * Created by Anupam (opticod) on 26/7/16.
  */
+
+/**
+ * @brief Fragment for displaying score with matched results in match template's simulator.
+ */
 public class DetailFragment extends Fragment {
 
     private static final String SELECTED_KEY_A = "selected_position_a";

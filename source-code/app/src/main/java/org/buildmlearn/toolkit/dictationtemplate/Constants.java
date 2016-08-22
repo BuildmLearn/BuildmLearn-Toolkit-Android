@@ -5,6 +5,10 @@ import org.buildmlearn.toolkit.dictationtemplate.data.DictContract;
 /**
  * Created by Anupam (opticod) on 10/7/16.
  */
+
+/**
+ * @brief Constants used in dictation template's simulator relating databases.
+ */
 public class Constants {
     public static final String[] DICT_COLUMNS = {
             DictContract.Dict.TABLE_NAME + "." + DictContract.Dict._ID,

@@ -6,20 +6,21 @@ import java.text.SimpleDateFormat;
 /**
  * Created by anupam on 29/2/16.
  */
+
+/**
+ * @brief Model used to hold api entries.
+ */
 public class SavedApi {
 
     private final File file;
     private final String date;
     private String name;
-    private String type;
     private String author;
 
     public SavedApi(File file, String fileName, long date, String fullPath) {
 
         this.file = file;
-        String fullPath1 = fullPath;
         this.date = formatDate(date);
-        this.type = type;
         String[] data = fileName.split("-by-");
         try {
             this.name = data[0];

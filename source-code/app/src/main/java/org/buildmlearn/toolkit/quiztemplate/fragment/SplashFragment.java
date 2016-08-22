@@ -20,6 +20,10 @@ import org.buildmlearn.toolkit.views.TextViewPlus;
 /**
  * Created by Anupam (opticod) on 14/8/16.
  */
+
+/**
+ * @brief Splash intro Fragment for quiz template's simulator.
+ */
 public class SplashFragment extends Fragment {
 
     public static Fragment newInstance(String path) {

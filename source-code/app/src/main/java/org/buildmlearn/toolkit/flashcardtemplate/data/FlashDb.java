@@ -13,6 +13,10 @@ import org.buildmlearn.toolkit.flashcardtemplate.data.FlashContract.FlashCards;
 /**
  * Created by Anupam (opticod) on 10/8/16.
  */
+
+/**
+ * @brief Contains database util functions for flash card template's simulator.
+ */
 public class FlashDb {
 
     private static final String EQUAL = " == ";

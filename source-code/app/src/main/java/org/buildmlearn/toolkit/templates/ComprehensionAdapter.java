@@ -25,6 +25,11 @@ import java.util.ArrayList;
 /**
  * Created by Anupam (opticod) on 26/5/16.
  */
+
+/**
+ * @brief Adapter for displaying Comprehension Template Editor data.
+ * <p/>
+ */
 class ComprehensionAdapter extends BaseAdapter {
 
 

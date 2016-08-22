@@ -33,6 +33,10 @@ import java.util.Collections;
 /**
  * Created by Anupam (opticod) on 24/7/16.
  */
+
+/**
+ * @brief Fragment for the users to match column A with column B in match template's simulator.
+ */
 public class MainFragment extends Fragment {
 
     private static final String SELECTED_KEY_A = "selected_position_a";

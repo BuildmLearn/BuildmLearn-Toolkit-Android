@@ -3,6 +3,10 @@ package org.buildmlearn.toolkit.comprehensiontemplate;
 /**
  * Created by Anupam (opticod) on 5/6/16.
  */
+
+/**
+ * @brief Constants used in comprehension template's simulator relating databases.
+ */
 public class Constants {
     public static final String firstrun = "firstRun";
     public static final int COL_TITLE = 1;

@@ -44,6 +44,10 @@ import java.util.Locale;
 /**
  * Created by anupam on 10/8/16.
  */
+
+/**
+ * @brief Fragment containing the flash cards in dictation template's simulator.
+ */
 public class MainFragment extends Fragment implements NavigationView.OnNavigationItemSelectedListener {
 
     private ViewPager viewPager;

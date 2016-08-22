@@ -10,6 +10,9 @@ import org.buildmlearn.toolkit.flashcardtemplate.data.FlashContract.FlashCards;
  * Created by Anupam (opticod) on 10/8/16.
  */
 
+/**
+ * @brief DatabaseHelper for flash card template's simulator.
+ */
 class FlashDBHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "learn_flash.db";

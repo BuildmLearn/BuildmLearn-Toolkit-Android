@@ -11,6 +11,10 @@ import org.buildmlearn.toolkit.comprehensiontemplate.data.ComprehensionContract.
  * Created by Anupam (opticod) on 5/6/16.
  */
 
+/**
+ * @brief DatabaseHelper for comprehension template's simulator.
+ */
+
 class ComprehensionDBHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "comprehension.db";

@@ -31,6 +31,11 @@ import java.util.Locale;
 /**
  * Created by Anupam (opticod) on 5/6/16.
  */
+
+/**
+ * @brief Main Fragment for comprehension template's simulator.
+ */
+
 public class MainFragment extends Fragment implements NavigationView.OnNavigationItemSelectedListener {
 
     private View rootView;

@@ -6,6 +6,10 @@ import android.os.Parcelable;
 /**
  * Created by Anupam (opticod) on 20/6/16.
  */
+
+/**
+ * @brief Model used to save info entries in database for info template's simulator.
+ */
 public class InfoModel implements Parcelable {
     public final static Parcelable.Creator<InfoModel> CREATOR = new Parcelable.Creator<InfoModel>() {
         @Override

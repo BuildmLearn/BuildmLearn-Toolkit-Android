@@ -3,6 +3,10 @@ package org.buildmlearn.toolkit.quiztemplate;
 /**
  * Created by Anupam (opticod) on 14/8/16.
  */
+
+/**
+ * @brief Constants used in quiz template's simulator relating databases.
+ */
 public class Constants {
     public static final String firstrun = "firstRun";
     public static final int COL_QUESTION = 1;

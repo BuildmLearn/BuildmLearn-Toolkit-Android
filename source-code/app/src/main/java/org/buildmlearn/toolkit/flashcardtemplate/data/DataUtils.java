@@ -13,6 +13,10 @@ import javax.xml.parsers.ParserConfigurationException;
 /**
  * Created by Anupam (opticod) on 10/8/16.
  */
+
+/**
+ * @brief Contains xml data utils for flash card template's simulator.
+ */
 public class DataUtils {
 
     public static String[] readTitleAuthor() {

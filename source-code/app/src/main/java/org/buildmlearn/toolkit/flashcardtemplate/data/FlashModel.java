@@ -6,6 +6,10 @@ import android.os.Parcelable;
 /**
  * Created by Anupam (opticod) on 10/8/16.
  */
+
+/**
+ * @brief Model used to save flash entries in database for flash card template's simulator.
+ */
 public class FlashModel implements Parcelable {
     public final static Creator<FlashModel> CREATOR = new Creator<FlashModel>() {
         @Override

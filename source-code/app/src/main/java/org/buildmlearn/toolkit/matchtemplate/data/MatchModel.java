@@ -9,6 +9,9 @@ import android.os.Parcelable;
  * Created by Anupam (opticod) on 24/7/16.
  */
 
+/**
+ * @brief Model used to save match entries in database for match template's simulator.
+ */
 public class MatchModel implements Parcelable {
     public final static Creator<MatchModel> CREATOR = new Creator<MatchModel>() {
         @Override

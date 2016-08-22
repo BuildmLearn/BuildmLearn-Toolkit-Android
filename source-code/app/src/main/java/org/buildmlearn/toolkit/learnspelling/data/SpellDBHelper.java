@@ -10,6 +10,9 @@ import org.buildmlearn.toolkit.learnspelling.data.SpellContract.Spellings;
  * Created by Anupam (opticod) on 1/6/16.
  */
 
+/**
+ * @brief DatabaseHelper for spell template's simulator.
+ */
 class SpellDBHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "learn_spell.db";

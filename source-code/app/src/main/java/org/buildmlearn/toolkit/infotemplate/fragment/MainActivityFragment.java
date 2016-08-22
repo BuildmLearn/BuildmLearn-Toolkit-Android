@@ -31,6 +31,11 @@ import java.util.ArrayList;
 /**
  * Created by Anupam (opticod) on 20/6/16.
  */
+
+/**
+ * @brief Fragment containing the list of items in info template's simulator.
+ */
+
 public class MainActivityFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final String SELECTED_KEY = "selected_position";

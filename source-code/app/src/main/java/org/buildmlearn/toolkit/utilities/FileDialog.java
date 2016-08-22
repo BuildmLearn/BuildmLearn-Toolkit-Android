@@ -14,6 +14,8 @@ import java.util.Collections;
 import java.util.List;
 
 /**
+ * @brief Programmed dialog box to select file from storage.
+ *
  * Created by Anupam (opticod) on 30/5/16.
  */
 public class FileDialog {

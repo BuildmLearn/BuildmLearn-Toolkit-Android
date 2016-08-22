@@ -6,6 +6,10 @@ import android.os.Parcelable;
 /**
  * Created by Anupam (opticod) on 1/6/16.
  */
+
+/**
+ * @brief Model used to save spell entries in database for spell template's simulator.
+ */
 public class SpellModel implements Parcelable {
     public final static Creator<SpellModel> CREATOR = new Creator<SpellModel>() {
         @Override

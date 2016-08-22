@@ -28,6 +28,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 /**
+ * @brief Dictation template code implementing methods of TemplateInterface
+ *
  * Created by Anupam (opticod) on 4/7/16.
  */
 public class DictationTemplate implements TemplateInterface {

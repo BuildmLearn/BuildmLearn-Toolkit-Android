@@ -25,6 +25,10 @@ import javax.xml.parsers.ParserConfigurationException;
 /**
  * Created by Anupam (opticod) on 14/8/16.
  */
+
+/**
+ * @brief Used to parse XML and save in database for quiz template's simulator.
+ */
 public class FetchXMLTask extends AsyncTask<String, Void, Void> {
 
     private final Context mContext;

@@ -10,6 +10,10 @@ import org.buildmlearn.toolkit.dictationtemplate.data.DictContract.Dict;
  * Created by Anupam (opticod) on 10/7/16.
  */
 
+/**
+ * @brief DatabaseHelper for dictation template's simulator.
+ */
+
 class DictDBHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "dictation.db";

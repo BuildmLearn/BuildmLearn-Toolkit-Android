@@ -6,6 +6,10 @@ import android.os.Parcelable;
 /**
  * Created by Anupam (opticod) on 10/7/16.
  */
+
+/**
+ * @brief Model used to save dict entries in database for comprehension template's simulator.
+ */
 public class DictModel implements Parcelable {
     public final static Parcelable.Creator<DictModel> CREATOR = new Parcelable.Creator<DictModel>() {
         @Override

@@ -14,6 +14,10 @@ import javax.xml.parsers.ParserConfigurationException;
 /**
  * Created by Anupam (opticod) on 5/6/16.
  */
+
+/**
+ * @brief Contains xml data utils for comprehension template's simulator.
+ */
 public class DataUtils {
 
     public static String[] readTitleAuthor() {

@@ -3,6 +3,10 @@ package org.buildmlearn.toolkit.learnspelling;
 /**
  * Created by Anupam (opticod) on 31/5/16.
  */
+
+/**
+ * @brief Constants used in spell template's simulator relating databases.
+ */
 public class Constants {
     public static final int COL_WORD = 1;
     public static final int COL_MEANING = 2;

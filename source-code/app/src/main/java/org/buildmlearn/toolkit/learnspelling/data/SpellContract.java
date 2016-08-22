@@ -6,6 +6,9 @@ import android.provider.BaseColumns;
  * Created by Anupam (opticod) on 1/6/16.
  */
 
+/**
+ * @brief Contains database contracts for spell template's simulator.
+ */
 class SpellContract {
 
     public static final class Spellings implements BaseColumns {

@@ -11,6 +11,9 @@ import org.buildmlearn.toolkit.matchtemplate.data.MatchContract.MetaDetails;
  * Created by Anupam (opticod) on 24/7/16.
  */
 
+/**
+ * @brief DatabaseHelper for match template's simulator.
+ */
 class MatchDBHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "matches.db";

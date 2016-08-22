@@ -33,6 +33,10 @@ import java.util.ArrayList;
 /**
  * Created by Anupam (opticod) on 10/7/16.
  */
+
+/**
+ * @brief Fragment to hear dictation in dictation template's simulator.
+ */
 public class MainActivityFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final String SELECTED_KEY = "selected_position";

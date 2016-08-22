@@ -27,6 +27,10 @@ import org.buildmlearn.toolkit.infotemplate.data.InfoDb;
 /**
  * Created by Anupam (opticod) on 20/6/16.
  */
+
+/**
+ * @brief Fragment for details of items in info template's simulator.
+ */
 public class DetailActivityFragment extends Fragment implements LoaderCallbacks<Cursor> {
 
     private static final int DETAIL_LOADER = 0;

@@ -41,6 +41,10 @@ import java.util.Locale;
  * Created by Anupam (opticod) on 31/5/16.
  */
 
+/**
+ * @brief Fragment for the users to test their spelling skills. spelling template's simulator.
+ */
+
 public class MainFragment extends Fragment
         implements NavigationView.OnNavigationItemSelectedListener {
 

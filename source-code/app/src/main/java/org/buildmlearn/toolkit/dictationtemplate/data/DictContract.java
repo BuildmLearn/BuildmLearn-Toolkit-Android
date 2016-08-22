@@ -6,6 +6,10 @@ import android.provider.BaseColumns;
  * Created by Anupam (opticod) on 10/7/16.
  */
 
+/**
+ * @brief Contains database contracts for dictation template's simulator.
+ */
+
 public class DictContract {
 
     public static final class Dict implements BaseColumns {

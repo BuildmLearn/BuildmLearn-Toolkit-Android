@@ -6,6 +6,9 @@ import android.provider.BaseColumns;
  * Created by Anupam (opticod) on 24/7/16.
  */
 
+/**
+ * @brief Contains database contracts for match template's simulator.
+ */
 class MatchContract {
 
     public static final class Matches implements BaseColumns {

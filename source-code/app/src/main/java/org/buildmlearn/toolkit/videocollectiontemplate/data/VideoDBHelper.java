@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import org.buildmlearn.toolkit.videocollectiontemplate.data.VideoContract.Videos;
 
 /**
+ * @brief DatabaseHelper for video collection template's simulator.
+ *
  * Created by Anupam (opticod) on 13/5/16.
  */
 

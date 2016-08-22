@@ -16,6 +16,10 @@ import java.util.ArrayList;
 /**
  * Created by Anupam (opticod) on 24/7/16.
  */
+
+/**
+ * @brief Custom Adapter for match template's simulator.
+ */
 public class MatchArrayAdapter_A extends ArrayAdapter<MatchModel> {
 
     public MatchArrayAdapter_A(Context context, ArrayList<MatchModel> lists) {

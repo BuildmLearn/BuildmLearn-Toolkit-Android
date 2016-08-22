@@ -23,6 +23,10 @@ import java.util.Locale;
 /**
  * Created by Anupam (opticod) on 2/6/16.
  */
+
+/**
+ * @brief Fragment for displaying score to user in learnspelling template's simulator.
+ */
 public class LastFragment extends Fragment {
 
     private SpellDb db;

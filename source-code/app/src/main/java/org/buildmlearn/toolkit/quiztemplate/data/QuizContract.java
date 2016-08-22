@@ -6,6 +6,9 @@ import android.provider.BaseColumns;
  * Created by Anupam (opticod) on 14/8/16.
  */
 
+/**
+ * @brief Contains database contracts for quiz template's simulator.
+ */
 class QuizContract {
 
     public static final class Questions implements BaseColumns {

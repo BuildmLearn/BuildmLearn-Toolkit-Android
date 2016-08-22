@@ -16,6 +16,10 @@ import java.util.Locale;
 /**
  * Created by scopeinfinity on 10/3/16.
  */
+
+/**
+ * @brief Adapter used for DraftsFragment to show the items
+ */
 public class DraftProjectAdapter extends BaseAdapter {
 
     private final Context mContext;

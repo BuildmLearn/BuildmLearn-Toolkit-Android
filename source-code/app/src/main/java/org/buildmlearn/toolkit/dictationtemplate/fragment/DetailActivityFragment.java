@@ -36,6 +36,10 @@ import java.util.Locale;
 /**
  * Created by Anupam (opticod) on 10/7/16.
  */
+
+/**
+ * @brief Fragment for taking user input(dictation) in dictation template's simulator.
+ */
 public class DetailActivityFragment extends Fragment implements LoaderCallbacks<Cursor> {
 
     private static final int DETAIL_LOADER = 0;
