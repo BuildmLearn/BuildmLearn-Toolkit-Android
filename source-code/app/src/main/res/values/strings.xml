@@ -39,13 +39,13 @@
 
     <string name="about_us">This application has been developed using the BuildmLearn Toolkit.\n\nTo know more about BuildmLearn Toolkit visit http://buildmlearn.org/</string>
     <string name="title_activity_simulator">Simulator</string>
-    <string name="title_activity_template">Template</string>
+    <string name="title_activity_template">Templates</string>
 
 
     <!-- Info Template-->
     <string name="info_template_word">Word</string>
     <string name="info_template_word_hint">Enter title</string>
-    <string name="info_template_meaning">Meaning</string>
+    <string name="info_template_meaning">Description</string>
     <string name="info_template_meaning_hint">Enter description</string>
     <string name="info_template_add">Add</string>
     <string name="info_template_delete">Delete</string>

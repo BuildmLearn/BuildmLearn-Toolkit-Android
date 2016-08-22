@@ -25,7 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lineSpacingMultiplier="1.2"
-                android:paddingBottom="@dimen/thumb_paddingTop"
+                android:paddingBottom="@dimen/thumb_padding"
                 android:paddingLeft="@dimen/thumb_paddingRight"
                 android:paddingRight="@dimen/thumb_paddingRight"
                 android:paddingTop="@dimen/thumb_paddingTop" />
@@ -36,9 +36,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/dict_title"
+                android:layout_marginBottom="-14dp"
                 android:lineSpacingMultiplier="1.2"
                 android:maxLines="5"
-                android:paddingBottom="@dimen/thumb_paddingTop"
                 android:paddingLeft="@dimen/thumb_paddingRight"
                 android:paddingRight="@dimen/thumb_paddingRight" />
 
