@@ -1,0 +1,241 @@
+\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment}{}\section{org.\+buildmlearn.\+toolkit.\+fragment.\+Load\+Project\+Fragment Class Reference}
+\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment}\index{org.\+buildmlearn.\+toolkit.\+fragment.\+Load\+Project\+Fragment@{org.\+buildmlearn.\+toolkit.\+fragment.\+Load\+Project\+Fragment}}
+
+
+Fragment used for loading existing projects into a list.  
+
+
+
+
+Inheritance diagram for org.\+buildmlearn.\+toolkit.\+fragment.\+Load\+Project\+Fragment\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=262pt]{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for org.\+buildmlearn.\+toolkit.\+fragment.\+Load\+Project\+Fragment\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_aa3475b8770215affec67dd109da8e9cb}{on\+Create} (Bundle saved\+Instance\+State)
+\item 
+View \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a00df408d1104d5e9da684300c7d1a373}{on\+Create\+View} (Layout\+Inflater inflater, View\+Group container, Bundle saved\+Instance\+State)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a486509578e69cb110ec10c53c6c813c6}{on\+View\+Created} (View view, Bundle saved\+Instance\+State)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_ab3fd6e093c178f367cf3403496d30fd5}{on\+Item\+Click} (Adapter\+View$<$?$>$ parent, View view, int position, long id)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_af7ebf8d42c3c401e7fcad1fa3850001c}{on\+Resume} ()
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a00797f05a8d23a1cc91dfc9a65d40b93}{on\+Create\+Options\+Menu} (Menu menu, Menu\+Inflater inflater)
+\item 
+boolean \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a69ca5df2fa6649fb01cbd2c195ee81fa}{on\+Options\+Item\+Selected} (Menu\+Item item)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_ac3e131316171d64afce81960e577d84c}{set\+Adapter} (\hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1SavedProjectAdapter}{Saved\+Project\+Adapter} adapter)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a50eba35f3d7070637945578124038117}{set\+Empty\+Text} ()
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_aa47c5914b681dd6ed2a8cde66303b6d2}{restore\+Color\+Scheme} ()
+\begin{DoxyCompactList}\small\item\em Restores the color scheme when switching from edit mode to normal mode. 
+
+Edit mode is triggered, when the list item is long pressed. \end{DoxyCompactList}\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a8ba9ba23e7a8c2645406063263ded642}{change\+Color\+Scheme} ()
+\begin{DoxyCompactList}\small\item\em Changes the color scheme when switching from normal mode to edit mode. 
+
+Edit mode is triggered, when the list item is long pressed. \end{DoxyCompactList}\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_ac2657b452dd8fe89498b20e8b2d5bdce}{delete\+Item} (int selected\+Position)
+\begin{DoxyCompactList}\small\item\em Removes selected project item. \end{DoxyCompactList}\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_ac6e61e1cc8dca33378a3dcc7b2fa79e4}{restore\+Selected\+View} ()
+\begin{DoxyCompactList}\small\item\em Removes selected color from the selected List\+View item when switching from edit mode to normal mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Abs\+List\+View \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a3e42689850030ceba9f4d8864c514a6a}{m\+List\+View}
+\item 
+boolean \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a3e417a84219dc1ba90e09df5f3535b97}{show\+Template\+Selected\+Menu}
+\item 
+\hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1SavedProjectAdapter}{Saved\+Project\+Adapter} \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a3a1adaf3b98aaf3713efe6b8059c3a01}{m\+Adapter}
+\item 
+\hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1ToolkitApplication}{Toolkit\+Application} \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a8eed05b138862fa7de2572d62d1db947}{m\+Toolkit}
+\item 
+Activity \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a5583227995dcb9475a0a1f4b787a4553}{activity}
+\item 
+Array\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1model_1_1SavedProject}{Saved\+Project} $>$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a4c085fb2467675412094cb68ca1f2d8a}{saved\+Projects}
+\item 
+View \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a8afa416416dcec1d719e0ce7b5836cf8}{selected\+View} = null
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a99d74143504259fcd70442cd20b38bde}{T\+AG} = \char`\"{}Load Project Fragment\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Fragment used for loading existing projects into a list. 
+
+\subsection{Member Function Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}!change\+Color\+Scheme@{change\+Color\+Scheme}}
+\index{change\+Color\+Scheme@{change\+Color\+Scheme}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}}
+\subsubsection[{\texorpdfstring{change\+Color\+Scheme()}{changeColorScheme()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+fragment.\+Load\+Project\+Fragment.\+change\+Color\+Scheme (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a8ba9ba23e7a8c2645406063263ded642}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a8ba9ba23e7a8c2645406063263ded642}
+
+
+Changes the color scheme when switching from normal mode to edit mode. 
+
+Edit mode is triggered, when the list item is long pressed. 
+
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}!delete\+Item@{delete\+Item}}
+\index{delete\+Item@{delete\+Item}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}}
+\subsubsection[{\texorpdfstring{delete\+Item(int selected\+Position)}{deleteItem(int selectedPosition)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+fragment.\+Load\+Project\+Fragment.\+delete\+Item (
+\begin{DoxyParamCaption}
+\item[{int}]{selected\+Position}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_ac2657b452dd8fe89498b20e8b2d5bdce}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_ac2657b452dd8fe89498b20e8b2d5bdce}
+
+
+Removes selected project item. 
+
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}!on\+Create@{on\+Create}}
+\index{on\+Create@{on\+Create}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}}
+\subsubsection[{\texorpdfstring{on\+Create(\+Bundle saved\+Instance\+State)}{onCreate(Bundle savedInstanceState)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+fragment.\+Load\+Project\+Fragment.\+on\+Create (
+\begin{DoxyParamCaption}
+\item[{Bundle}]{saved\+Instance\+State}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_aa3475b8770215affec67dd109da8e9cb}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_aa3475b8770215affec67dd109da8e9cb}
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}!on\+Create\+Options\+Menu@{on\+Create\+Options\+Menu}}
+\index{on\+Create\+Options\+Menu@{on\+Create\+Options\+Menu}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}}
+\subsubsection[{\texorpdfstring{on\+Create\+Options\+Menu(\+Menu menu, Menu\+Inflater inflater)}{onCreateOptionsMenu(Menu menu, MenuInflater inflater)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+fragment.\+Load\+Project\+Fragment.\+on\+Create\+Options\+Menu (
+\begin{DoxyParamCaption}
+\item[{Menu}]{menu, }
+\item[{Menu\+Inflater}]{inflater}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a00797f05a8d23a1cc91dfc9a65d40b93}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a00797f05a8d23a1cc91dfc9a65d40b93}
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}!on\+Create\+View@{on\+Create\+View}}
+\index{on\+Create\+View@{on\+Create\+View}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}}
+\subsubsection[{\texorpdfstring{on\+Create\+View(\+Layout\+Inflater inflater, View\+Group container, Bundle saved\+Instance\+State)}{onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)}}]{\setlength{\rightskip}{0pt plus 5cm}View org.\+buildmlearn.\+toolkit.\+fragment.\+Load\+Project\+Fragment.\+on\+Create\+View (
+\begin{DoxyParamCaption}
+\item[{Layout\+Inflater}]{inflater, }
+\item[{View\+Group}]{container, }
+\item[{Bundle}]{saved\+Instance\+State}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a00df408d1104d5e9da684300c7d1a373}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a00df408d1104d5e9da684300c7d1a373}
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}!on\+Item\+Click@{on\+Item\+Click}}
+\index{on\+Item\+Click@{on\+Item\+Click}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}}
+\subsubsection[{\texorpdfstring{on\+Item\+Click(\+Adapter\+View$<$?$>$ parent, View view, int position, long id)}{onItemClick(AdapterView<?> parent, View view, int position, long id)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+fragment.\+Load\+Project\+Fragment.\+on\+Item\+Click (
+\begin{DoxyParamCaption}
+\item[{Adapter\+View$<$?$>$}]{parent, }
+\item[{View}]{view, }
+\item[{int}]{position, }
+\item[{long}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_ab3fd6e093c178f367cf3403496d30fd5}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_ab3fd6e093c178f367cf3403496d30fd5}
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}!on\+Options\+Item\+Selected@{on\+Options\+Item\+Selected}}
+\index{on\+Options\+Item\+Selected@{on\+Options\+Item\+Selected}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}}
+\subsubsection[{\texorpdfstring{on\+Options\+Item\+Selected(\+Menu\+Item item)}{onOptionsItemSelected(MenuItem item)}}]{\setlength{\rightskip}{0pt plus 5cm}boolean org.\+buildmlearn.\+toolkit.\+fragment.\+Load\+Project\+Fragment.\+on\+Options\+Item\+Selected (
+\begin{DoxyParamCaption}
+\item[{Menu\+Item}]{item}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a69ca5df2fa6649fb01cbd2c195ee81fa}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a69ca5df2fa6649fb01cbd2c195ee81fa}
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}!on\+Resume@{on\+Resume}}
+\index{on\+Resume@{on\+Resume}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}}
+\subsubsection[{\texorpdfstring{on\+Resume()}{onResume()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+fragment.\+Load\+Project\+Fragment.\+on\+Resume (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_af7ebf8d42c3c401e7fcad1fa3850001c}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_af7ebf8d42c3c401e7fcad1fa3850001c}
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}!on\+View\+Created@{on\+View\+Created}}
+\index{on\+View\+Created@{on\+View\+Created}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}}
+\subsubsection[{\texorpdfstring{on\+View\+Created(\+View view, Bundle saved\+Instance\+State)}{onViewCreated(View view, Bundle savedInstanceState)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+fragment.\+Load\+Project\+Fragment.\+on\+View\+Created (
+\begin{DoxyParamCaption}
+\item[{View}]{view, }
+\item[{Bundle}]{saved\+Instance\+State}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a486509578e69cb110ec10c53c6c813c6}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a486509578e69cb110ec10c53c6c813c6}
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}!restore\+Color\+Scheme@{restore\+Color\+Scheme}}
+\index{restore\+Color\+Scheme@{restore\+Color\+Scheme}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}}
+\subsubsection[{\texorpdfstring{restore\+Color\+Scheme()}{restoreColorScheme()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+fragment.\+Load\+Project\+Fragment.\+restore\+Color\+Scheme (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_aa47c5914b681dd6ed2a8cde66303b6d2}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_aa47c5914b681dd6ed2a8cde66303b6d2}
+
+
+Restores the color scheme when switching from edit mode to normal mode. 
+
+Edit mode is triggered, when the list item is long pressed. 
+
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}!restore\+Selected\+View@{restore\+Selected\+View}}
+\index{restore\+Selected\+View@{restore\+Selected\+View}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}}
+\subsubsection[{\texorpdfstring{restore\+Selected\+View()}{restoreSelectedView()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+fragment.\+Load\+Project\+Fragment.\+restore\+Selected\+View (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_ac6e61e1cc8dca33378a3dcc7b2fa79e4}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_ac6e61e1cc8dca33378a3dcc7b2fa79e4}
+
+
+Removes selected color from the selected List\+View item when switching from edit mode to normal mode. 
+
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}!set\+Adapter@{set\+Adapter}}
+\index{set\+Adapter@{set\+Adapter}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}}
+\subsubsection[{\texorpdfstring{set\+Adapter(\+Saved\+Project\+Adapter adapter)}{setAdapter(SavedProjectAdapter adapter)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+fragment.\+Load\+Project\+Fragment.\+set\+Adapter (
+\begin{DoxyParamCaption}
+\item[{{\bf Saved\+Project\+Adapter}}]{adapter}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_ac3e131316171d64afce81960e577d84c}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_ac3e131316171d64afce81960e577d84c}
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}!set\+Empty\+Text@{set\+Empty\+Text}}
+\index{set\+Empty\+Text@{set\+Empty\+Text}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}}
+\subsubsection[{\texorpdfstring{set\+Empty\+Text()}{setEmptyText()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+fragment.\+Load\+Project\+Fragment.\+set\+Empty\+Text (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a50eba35f3d7070637945578124038117}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a50eba35f3d7070637945578124038117}
+
+
+\subsection{Member Data Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}!activity@{activity}}
+\index{activity@{activity}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}}
+\subsubsection[{\texorpdfstring{activity}{activity}}]{\setlength{\rightskip}{0pt plus 5cm}Activity org.\+buildmlearn.\+toolkit.\+fragment.\+Load\+Project\+Fragment.\+activity\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a5583227995dcb9475a0a1f4b787a4553}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a5583227995dcb9475a0a1f4b787a4553}
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}!m\+Adapter@{m\+Adapter}}
+\index{m\+Adapter@{m\+Adapter}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}}
+\subsubsection[{\texorpdfstring{m\+Adapter}{mAdapter}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Saved\+Project\+Adapter} org.\+buildmlearn.\+toolkit.\+fragment.\+Load\+Project\+Fragment.\+m\+Adapter\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a3a1adaf3b98aaf3713efe6b8059c3a01}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a3a1adaf3b98aaf3713efe6b8059c3a01}
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}!m\+List\+View@{m\+List\+View}}
+\index{m\+List\+View@{m\+List\+View}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}}
+\subsubsection[{\texorpdfstring{m\+List\+View}{mListView}}]{\setlength{\rightskip}{0pt plus 5cm}Abs\+List\+View org.\+buildmlearn.\+toolkit.\+fragment.\+Load\+Project\+Fragment.\+m\+List\+View\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a3e42689850030ceba9f4d8864c514a6a}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a3e42689850030ceba9f4d8864c514a6a}
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}!m\+Toolkit@{m\+Toolkit}}
+\index{m\+Toolkit@{m\+Toolkit}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}}
+\subsubsection[{\texorpdfstring{m\+Toolkit}{mToolkit}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Toolkit\+Application} org.\+buildmlearn.\+toolkit.\+fragment.\+Load\+Project\+Fragment.\+m\+Toolkit\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a8eed05b138862fa7de2572d62d1db947}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a8eed05b138862fa7de2572d62d1db947}
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}!saved\+Projects@{saved\+Projects}}
+\index{saved\+Projects@{saved\+Projects}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}}
+\subsubsection[{\texorpdfstring{saved\+Projects}{savedProjects}}]{\setlength{\rightskip}{0pt plus 5cm}Array\+List$<${\bf Saved\+Project}$>$ org.\+buildmlearn.\+toolkit.\+fragment.\+Load\+Project\+Fragment.\+saved\+Projects\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a4c085fb2467675412094cb68ca1f2d8a}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a4c085fb2467675412094cb68ca1f2d8a}
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}!selected\+View@{selected\+View}}
+\index{selected\+View@{selected\+View}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}}
+\subsubsection[{\texorpdfstring{selected\+View}{selectedView}}]{\setlength{\rightskip}{0pt plus 5cm}View org.\+buildmlearn.\+toolkit.\+fragment.\+Load\+Project\+Fragment.\+selected\+View = null\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a8afa416416dcec1d719e0ce7b5836cf8}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a8afa416416dcec1d719e0ce7b5836cf8}
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}!show\+Template\+Selected\+Menu@{show\+Template\+Selected\+Menu}}
+\index{show\+Template\+Selected\+Menu@{show\+Template\+Selected\+Menu}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}}
+\subsubsection[{\texorpdfstring{show\+Template\+Selected\+Menu}{showTemplateSelectedMenu}}]{\setlength{\rightskip}{0pt plus 5cm}boolean org.\+buildmlearn.\+toolkit.\+fragment.\+Load\+Project\+Fragment.\+show\+Template\+Selected\+Menu\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a3e417a84219dc1ba90e09df5f3535b97}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a3e417a84219dc1ba90e09df5f3535b97}
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}!T\+AG@{T\+AG}}
+\index{T\+AG@{T\+AG}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Load\+Project\+Fragment}}
+\subsubsection[{\texorpdfstring{T\+AG}{TAG}}]{\setlength{\rightskip}{0pt plus 5cm}final String org.\+buildmlearn.\+toolkit.\+fragment.\+Load\+Project\+Fragment.\+T\+AG = \char`\"{}Load Project Fragment\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a99d74143504259fcd70442cd20b38bde}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment_a99d74143504259fcd70442cd20b38bde}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+source-\/code/app/src/main/java/org/buildmlearn/toolkit/fragment/\hyperlink{LoadProjectFragment_8java}{Load\+Project\+Fragment.\+java}\end{DoxyCompactItemize}

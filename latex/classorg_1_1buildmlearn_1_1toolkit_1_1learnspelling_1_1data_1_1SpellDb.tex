@@ -1,0 +1,163 @@
+\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb}{}\section{org.\+buildmlearn.\+toolkit.\+learnspelling.\+data.\+Spell\+Db Class Reference}
+\label{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb}\index{org.\+buildmlearn.\+toolkit.\+learnspelling.\+data.\+Spell\+Db@{org.\+buildmlearn.\+toolkit.\+learnspelling.\+data.\+Spell\+Db}}
+
+
+Contains database util functions for spell template\textquotesingle{}s simulator.  
+
+
+
+
+Collaboration diagram for org.\+buildmlearn.\+toolkit.\+learnspelling.\+data.\+Spell\+Db\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_a6d44e0388ccb16e8de1e928fe2e748fe}{Spell\+Db} (Context context)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_a773f8ffe3f5d39fa5d00527857dbbc4c}{open} ()  throws S\+Q\+L\+Exception 
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_aba9603e60b67e5879e8a49103383beb8}{close} ()
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_ab0f41c5eec052829dbfbf65e468846fa}{mark\+Answered} (int id, String answer)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_aae589105a7bfce95e5866896c1a9cc44}{reset\+Count} ()
+\item 
+int\mbox{[}$\,$\mbox{]} \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_a725ab746fde77c96cf0e29676c0d73f2}{get\+Statistics} ()
+\item 
+Cursor \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_add7e3e2e9870e9a3f70b1dacaef3ed5f}{get\+Spelling\+Cursor\+By\+Id} (int id)
+\item 
+long \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_aa25b30012828f6e855da547a678ec7c4}{get\+Count\+Spellings} ()
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_abb05438c8c29b8c82e6b31b11d6675f7}{delete\+All} ()
+\item 
+int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_ad3d0e5673e2819acc5cbebe59dfa1486}{bulk\+Insert\+Spellings} (@Non\+Null Content\+Values\mbox{[}$\,$\mbox{]} values)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_a225206204441a0123294b056202cd7ae}{mark\+Un\+Answered} (int id)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+final Spell\+D\+B\+Helper \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_a5b0650c89704d8d4398b4a2d0c532738}{db\+Helper}
+\item 
+S\+Q\+Lite\+Database \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_aa23168ffbc9d57d41895bb1d529cc85a}{db}
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_a4fe1695ad33239e5c78d2a864249ec58}{E\+Q\+U\+AL} = \char`\"{} == \char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains database util functions for spell template\textquotesingle{}s simulator. 
+
+Created by Anupam (opticod) on 1/6/16. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db@{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db}!Spell\+Db@{Spell\+Db}}
+\index{Spell\+Db@{Spell\+Db}!org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db@{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db}}
+\subsubsection[{\texorpdfstring{Spell\+Db(\+Context context)}{SpellDb(Context context)}}]{\setlength{\rightskip}{0pt plus 5cm}org.\+buildmlearn.\+toolkit.\+learnspelling.\+data.\+Spell\+Db.\+Spell\+Db (
+\begin{DoxyParamCaption}
+\item[{Context}]{context}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_a6d44e0388ccb16e8de1e928fe2e748fe}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_a6d44e0388ccb16e8de1e928fe2e748fe}
+
+
+\subsection{Member Function Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db@{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db}!bulk\+Insert\+Spellings@{bulk\+Insert\+Spellings}}
+\index{bulk\+Insert\+Spellings@{bulk\+Insert\+Spellings}!org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db@{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db}}
+\subsubsection[{\texorpdfstring{bulk\+Insert\+Spellings("@Non\+Null Content\+Values[] values)}{bulkInsertSpellings(@NonNull ContentValues[] values)}}]{\setlength{\rightskip}{0pt plus 5cm}int org.\+buildmlearn.\+toolkit.\+learnspelling.\+data.\+Spell\+Db.\+bulk\+Insert\+Spellings (
+\begin{DoxyParamCaption}
+\item[{@Non\+Null Content\+Values\mbox{[}$\,$\mbox{]}}]{values}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_ad3d0e5673e2819acc5cbebe59dfa1486}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_ad3d0e5673e2819acc5cbebe59dfa1486}
+\index{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db@{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db}!close@{close}}
+\index{close@{close}!org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db@{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db}}
+\subsubsection[{\texorpdfstring{close()}{close()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+learnspelling.\+data.\+Spell\+Db.\+close (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_aba9603e60b67e5879e8a49103383beb8}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_aba9603e60b67e5879e8a49103383beb8}
+\index{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db@{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db}!delete\+All@{delete\+All}}
+\index{delete\+All@{delete\+All}!org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db@{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db}}
+\subsubsection[{\texorpdfstring{delete\+All()}{deleteAll()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+learnspelling.\+data.\+Spell\+Db.\+delete\+All (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_abb05438c8c29b8c82e6b31b11d6675f7}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_abb05438c8c29b8c82e6b31b11d6675f7}
+\index{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db@{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db}!get\+Count\+Spellings@{get\+Count\+Spellings}}
+\index{get\+Count\+Spellings@{get\+Count\+Spellings}!org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db@{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db}}
+\subsubsection[{\texorpdfstring{get\+Count\+Spellings()}{getCountSpellings()}}]{\setlength{\rightskip}{0pt plus 5cm}long org.\+buildmlearn.\+toolkit.\+learnspelling.\+data.\+Spell\+Db.\+get\+Count\+Spellings (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_aa25b30012828f6e855da547a678ec7c4}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_aa25b30012828f6e855da547a678ec7c4}
+\index{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db@{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db}!get\+Spelling\+Cursor\+By\+Id@{get\+Spelling\+Cursor\+By\+Id}}
+\index{get\+Spelling\+Cursor\+By\+Id@{get\+Spelling\+Cursor\+By\+Id}!org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db@{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db}}
+\subsubsection[{\texorpdfstring{get\+Spelling\+Cursor\+By\+Id(int id)}{getSpellingCursorById(int id)}}]{\setlength{\rightskip}{0pt plus 5cm}Cursor org.\+buildmlearn.\+toolkit.\+learnspelling.\+data.\+Spell\+Db.\+get\+Spelling\+Cursor\+By\+Id (
+\begin{DoxyParamCaption}
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_add7e3e2e9870e9a3f70b1dacaef3ed5f}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_add7e3e2e9870e9a3f70b1dacaef3ed5f}
+\index{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db@{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db}!get\+Statistics@{get\+Statistics}}
+\index{get\+Statistics@{get\+Statistics}!org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db@{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db}}
+\subsubsection[{\texorpdfstring{get\+Statistics()}{getStatistics()}}]{\setlength{\rightskip}{0pt plus 5cm}int \mbox{[}$\,$\mbox{]} org.\+buildmlearn.\+toolkit.\+learnspelling.\+data.\+Spell\+Db.\+get\+Statistics (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_a725ab746fde77c96cf0e29676c0d73f2}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_a725ab746fde77c96cf0e29676c0d73f2}
+\index{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db@{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db}!mark\+Answered@{mark\+Answered}}
+\index{mark\+Answered@{mark\+Answered}!org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db@{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db}}
+\subsubsection[{\texorpdfstring{mark\+Answered(int id, String answer)}{markAnswered(int id, String answer)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+learnspelling.\+data.\+Spell\+Db.\+mark\+Answered (
+\begin{DoxyParamCaption}
+\item[{int}]{id, }
+\item[{String}]{answer}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_ab0f41c5eec052829dbfbf65e468846fa}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_ab0f41c5eec052829dbfbf65e468846fa}
+\index{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db@{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db}!mark\+Un\+Answered@{mark\+Un\+Answered}}
+\index{mark\+Un\+Answered@{mark\+Un\+Answered}!org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db@{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db}}
+\subsubsection[{\texorpdfstring{mark\+Un\+Answered(int id)}{markUnAnswered(int id)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+learnspelling.\+data.\+Spell\+Db.\+mark\+Un\+Answered (
+\begin{DoxyParamCaption}
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_a225206204441a0123294b056202cd7ae}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_a225206204441a0123294b056202cd7ae}
+\index{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db@{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db}!open@{open}}
+\index{open@{open}!org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db@{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db}}
+\subsubsection[{\texorpdfstring{open()}{open()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+learnspelling.\+data.\+Spell\+Db.\+open (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) throws S\+Q\+L\+Exception}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_a773f8ffe3f5d39fa5d00527857dbbc4c}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_a773f8ffe3f5d39fa5d00527857dbbc4c}
+\index{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db@{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db}!reset\+Count@{reset\+Count}}
+\index{reset\+Count@{reset\+Count}!org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db@{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db}}
+\subsubsection[{\texorpdfstring{reset\+Count()}{resetCount()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+learnspelling.\+data.\+Spell\+Db.\+reset\+Count (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_aae589105a7bfce95e5866896c1a9cc44}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_aae589105a7bfce95e5866896c1a9cc44}
+
+
+\subsection{Member Data Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db@{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db}!db@{db}}
+\index{db@{db}!org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db@{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db}}
+\subsubsection[{\texorpdfstring{db}{db}}]{\setlength{\rightskip}{0pt plus 5cm}S\+Q\+Lite\+Database org.\+buildmlearn.\+toolkit.\+learnspelling.\+data.\+Spell\+Db.\+db\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_aa23168ffbc9d57d41895bb1d529cc85a}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_aa23168ffbc9d57d41895bb1d529cc85a}
+\index{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db@{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db}!db\+Helper@{db\+Helper}}
+\index{db\+Helper@{db\+Helper}!org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db@{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db}}
+\subsubsection[{\texorpdfstring{db\+Helper}{dbHelper}}]{\setlength{\rightskip}{0pt plus 5cm}final Spell\+D\+B\+Helper org.\+buildmlearn.\+toolkit.\+learnspelling.\+data.\+Spell\+Db.\+db\+Helper\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_a5b0650c89704d8d4398b4a2d0c532738}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_a5b0650c89704d8d4398b4a2d0c532738}
+\index{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db@{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db}!E\+Q\+U\+AL@{E\+Q\+U\+AL}}
+\index{E\+Q\+U\+AL@{E\+Q\+U\+AL}!org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db@{org\+::buildmlearn\+::toolkit\+::learnspelling\+::data\+::\+Spell\+Db}}
+\subsubsection[{\texorpdfstring{E\+Q\+U\+AL}{EQUAL}}]{\setlength{\rightskip}{0pt plus 5cm}final String org.\+buildmlearn.\+toolkit.\+learnspelling.\+data.\+Spell\+Db.\+E\+Q\+U\+AL = \char`\"{} == \char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_a4fe1695ad33239e5c78d2a864249ec58}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1SpellDb_a4fe1695ad33239e5c78d2a864249ec58}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+source-\/code/app/src/main/java/org/buildmlearn/toolkit/learnspelling/data/\hyperlink{SpellDb_8java}{Spell\+Db.\+java}\end{DoxyCompactItemize}

@@ -1,0 +1,1096 @@
+\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch}{}\section{org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch Class Reference}
+\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch}\index{org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch@{org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch}}
+
+
+Collaboration diagram for org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=253pt]{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff}
+\item 
+class \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1LinesToCharsResult}{Lines\+To\+Chars\+Result}
+\item 
+enum \hyperlink{enumorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Operation}{Operation}
+\item 
+class \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch}{Patch}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Linked\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} $>$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_ac3a49d63289ea35216363dfe99c1cf21}{diff\+\_\+main} (String text1, String text2)
+\item 
+Linked\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} $>$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a7562296717e7b97146eef8eec8fd270a}{diff\+\_\+main} (String text1, String text2, boolean checklines)
+\item 
+Linked\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} $>$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_ad029f054ec515159187232a4caa6329f}{diff\+\_\+\+Word\+Mode} (String text1, String text2)
+\item 
+int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_aac329de2538a84de56f903724d0eb687}{diff\+\_\+common\+Prefix} (String text1, String text2)
+\item 
+int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_aceacaaaf8bea312257d927602fac6d75}{diff\+\_\+common\+Suffix} (String text1, String text2)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a24fbf15c6ca66d20072d48f8314ade8c}{diff\+\_\+cleanup\+Semantic} (Linked\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} $>$ diffs)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_ad28a657eb0eeaaf185e72905df9b0e77}{diff\+\_\+cleanup\+Semantic\+Lossless} (Linked\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} $>$ diffs)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a8bef7e6bafbed49ad8afc87a30b838a5}{diff\+\_\+cleanup\+Efficiency} (Linked\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} $>$ diffs)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a0b7ca7d67b19884795e7ab14cc407789}{diff\+\_\+cleanup\+Merge} (Linked\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} $>$ diffs)
+\item 
+int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_ac3f5bac45bc1e4a8a8e8170674fdd89d}{diff\+\_\+x\+Index} (Linked\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} $>$ diffs, int loc)
+\item 
+String\mbox{[}$\,$\mbox{]} \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_adf54356a57b436b5fa2033012300c709}{diff\+\_\+pretty\+Html} (Linked\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} $>$ diffs)
+\item 
+String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a4f041137787e82747d1b3d862afbded7}{diff\+\_\+text1} (Linked\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} $>$ diffs)
+\item 
+String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a1a638543c64633431affd8936927bdd1}{diff\+\_\+text2} (Linked\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} $>$ diffs)
+\item 
+int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a61a85e54e5b6c714fafb80d5c5de4408}{diff\+\_\+levenshtein} (Linked\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} $>$ diffs)
+\item 
+String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a45f4e09004cd92f4fa815425e5847219}{diff\+\_\+to\+Delta} (Linked\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} $>$ diffs)
+\item 
+Linked\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} $>$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_af912c45fbc9fda41a237976f4cbb66bf}{diff\+\_\+from\+Delta} (String text1, String delta)  throws Illegal\+Argument\+Exception 
+\item 
+int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a4be87a57b645c96c2f8567b4a1ab081b}{match\+\_\+main} (String text, String pattern, int loc)
+\item 
+Linked\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch}{Patch} $>$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a5fe18be0a56e0f65ba594ea7d0f88e62}{patch\+\_\+make} (String text1, String text2)
+\item 
+Linked\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch}{Patch} $>$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_aa467b447116f168c94efe7ff7fda299a}{patch\+\_\+make} (Linked\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} $>$ diffs)
+\item 
+Linked\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch}{Patch} $>$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a77d8a5c3c7e14b48942502b27c37f379}{patch\+\_\+make} (String text1, String text2, Linked\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} $>$ diffs)
+\item 
+Linked\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch}{Patch} $>$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a240348ae5ab84cbcf6ee15f7a1b4cb7f}{patch\+\_\+make} (String text1, Linked\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} $>$ diffs)
+\item 
+Linked\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch}{Patch} $>$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a3da243bc7df48d2e0da5166441bcad8e}{patch\+\_\+deep\+Copy} (Linked\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch}{Patch} $>$ patches)
+\item 
+Object\mbox{[}$\,$\mbox{]} \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a6f6cd205d8dc689294c13ea483dac1db}{patch\+\_\+apply} (Linked\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch}{Patch} $>$ patches, String text)
+\item 
+String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_acf658679026e3da4d3180e6b749f04e6}{patch\+\_\+add\+Padding} (Linked\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch}{Patch} $>$ patches)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a2f3ee2a30ba8ba85defd42f1b7c53a35}{patch\+\_\+split\+Max} (Linked\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch}{Patch} $>$ patches)
+\item 
+String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a17e764e9b07c904d8884a1adeec12c96}{patch\+\_\+to\+Text} (List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch}{Patch} $>$ patches)
+\item 
+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch}{Patch} $>$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_ad080e812febcb40743ac9225b4e2469c}{patch\+\_\+from\+Text} (String textline)  throws Illegal\+Argument\+Exception 
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a371b7d83d00f5e5f156f04a9b6337d1a}{Diff\+\_\+\+Timeout} = 1.\+0f
+\item 
+short \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_ac0bccfcdfb920ae47c6da51095154ab6}{Diff\+\_\+\+Edit\+Cost} = 4
+\item 
+float \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_acf187fceb374f31164a5256fb3bc9990}{Match\+\_\+\+Threshold} = 0.\+5f
+\item 
+int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_aeec342cc294a0c3795d631ee1550a0da}{Match\+\_\+\+Distance} = 1000
+\item 
+float \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a08c885bb96f00082195af6c8a4abf5b4}{Patch\+\_\+\+Delete\+Threshold} = 0.\+5f
+\item 
+short \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a94f96bf3e770fd823e638f97fc51962a}{Patch\+\_\+\+Margin} = 4
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Linked\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} $>$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a05df843fb762717a833b3f94008ed0e1}{diff\+\_\+bisect} (String text1, String text2, long deadline)
+\item 
+\hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1LinesToCharsResult}{Lines\+To\+Chars\+Result} \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a3a517130c3822a26a829ecd454518e98}{diff\+\_\+lines\+To\+Chars} (String text1, String text2)
+\item 
+\hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1LinesToCharsResult}{Lines\+To\+Chars\+Result} \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a2a5e54e86f526975a09f163554113327}{diff\+\_\+words\+To\+Chars} (String text1, String text2)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a6bbc36a35836b9d64843ccab34efa555}{diff\+\_\+chars\+To\+Lines} (Linked\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} $>$ diffs, List$<$ String $>$ line\+Array)
+\item 
+int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a3ee3c894e278b4d3b2150f7e2ad2eb41}{diff\+\_\+common\+Overlap} (String text1, String text2)
+\item 
+String\mbox{[}$\,$\mbox{]} \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_ab8d8b6ab62b5b964ba1a1f389773ddf9}{diff\+\_\+half\+Match} (String text1, String text2)
+\item 
+int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a6f018d498c2a8197f74fb889acd2515e}{match\+\_\+bitap} (String text, String pattern, int loc)
+\item 
+Map$<$ Character, Integer $>$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a9cb7acc41c1d2f90c02c9489888f36f8}{match\+\_\+alphabet} (String pattern)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a78639823b3a4a12e1a6e492b7f378feb}{patch\+\_\+add\+Context} (\hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch}{Patch} patch, String text)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Linked\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} $>$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_ae1e07fddc2f23981f0b3a35284c289ae}{diff\+\_\+main} (String text1, String text2, boolean checklines, long deadline)
+\item 
+Linked\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} $>$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_ae284979fa55d548cbf9989ebae4dc543}{diff\+\_\+compute} (String text1, String text2, boolean checklines, long deadline)
+\item 
+Linked\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} $>$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a0d175137ea26dae68871ad0c3cb619a0}{diff\+\_\+line\+Mode} (String text1, String text2, long deadline)
+\item 
+Linked\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} $>$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a0b65cab0c42398230df7d762fb0f7a70}{diff\+\_\+bisect\+Split} (String text1, String text2, int x, int y, long deadline)
+\item 
+String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_ad2b31bf660320bf331ea4d0e3793bf70}{diff\+\_\+lines\+To\+Chars\+Munge} (String text, List$<$ String $>$ line\+Array, Map$<$ String, Integer $>$ line\+Hash)
+\item 
+String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a84ef353d2a83997f5bdcf76ba38c0647}{diff\+\_\+words\+To\+Chars\+Munge} (String text, List$<$ String $>$ line\+Array, Map$<$ String, Integer $>$ line\+Hash)
+\item 
+String\mbox{[}$\,$\mbox{]} \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a6d6fe166f63595b1a113483a01dc8d88}{diff\+\_\+half\+MatchI} (String longtext, String shorttext, int i)
+\item 
+int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a2debe8436f2ad7c48bbb9dd2037d2f8e}{diff\+\_\+cleanup\+Semantic\+Score} (String one, String two)
+\item 
+double \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_ab8c8d7a0486aaa6ad1f7ecb4720632cc}{match\+\_\+bitap\+Score} (int e, int x, int loc, String pattern)
+\end{DoxyCompactItemize}
+\subsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a9d75398146ce57e61ecd72d0b6eddfcc}{unescape\+For\+Encode\+Uri\+Compatability} (String str)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+short \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_acbd6579dfcc52cec95ac2e657d068e74}{Match\+\_\+\+Max\+Bits} = 32
+\item 
+Pattern \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_ae160e1c07d0d2594bb8134dd507b5762}{B\+L\+A\+N\+K\+L\+I\+N\+E\+E\+ND} = Pattern.\+compile(\char`\"{}\textbackslash{}\textbackslash{}n\textbackslash{}\textbackslash{}r?\textbackslash{}\textbackslash{}n\textbackslash{}\textbackslash{}Z\char`\"{}, Pattern.\+D\+O\+T\+A\+LL)
+\item 
+Pattern \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a8e0b9a30b90e431d81090b41a32ceaa1}{B\+L\+A\+N\+K\+L\+I\+N\+E\+S\+T\+A\+RT} = Pattern.\+compile(\char`\"{}\textbackslash{}\textbackslash{}A\textbackslash{}\textbackslash{}r?\textbackslash{}\textbackslash{}n\textbackslash{}\textbackslash{}r?\textbackslash{}\textbackslash{}n\char`\"{}, Pattern.\+D\+O\+T\+A\+LL)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class containing the diff, match and patch methods. Also contains the behaviour settings. 
+
+\subsection{Member Function Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!diff\+\_\+bisect@{diff\+\_\+bisect}}
+\index{diff\+\_\+bisect@{diff\+\_\+bisect}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{diff\+\_\+bisect(\+String text1, String text2, long deadline)}{diff_bisect(String text1, String text2, long deadline)}}]{\setlength{\rightskip}{0pt plus 5cm}Linked\+List$<${\bf Diff}$>$ org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+diff\+\_\+bisect (
+\begin{DoxyParamCaption}
+\item[{String}]{text1, }
+\item[{String}]{text2, }
+\item[{long}]{deadline}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a05df843fb762717a833b3f94008ed0e1}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a05df843fb762717a833b3f94008ed0e1}
+Find the \textquotesingle{}middle snake\textquotesingle{} of a diff, split the problem in two and return the recursively constructed diff. See Myers 1986 paper\+: An O(\+N\+D) Difference Algorithm and Its Variations.
+
+
+\begin{DoxyParams}{Parameters}
+{\em text1} & Old string to be diffed. \\
+\hline
+{\em text2} & New string to be diffed. \\
+\hline
+{\em deadline} & Time at which to bail if not yet complete. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Linked\+List of \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} objects. 
+\end{DoxyReturn}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!diff\+\_\+bisect\+Split@{diff\+\_\+bisect\+Split}}
+\index{diff\+\_\+bisect\+Split@{diff\+\_\+bisect\+Split}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{diff\+\_\+bisect\+Split(\+String text1, String text2, int x, int y, long deadline)}{diff_bisectSplit(String text1, String text2, int x, int y, long deadline)}}]{\setlength{\rightskip}{0pt plus 5cm}Linked\+List$<${\bf Diff}$>$ org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+diff\+\_\+bisect\+Split (
+\begin{DoxyParamCaption}
+\item[{String}]{text1, }
+\item[{String}]{text2, }
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{long}]{deadline}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a0b65cab0c42398230df7d762fb0f7a70}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a0b65cab0c42398230df7d762fb0f7a70}
+Given the location of the \textquotesingle{}middle snake\textquotesingle{}, split the diff in two parts and recurse.
+
+
+\begin{DoxyParams}{Parameters}
+{\em text1} & Old string to be diffed. \\
+\hline
+{\em text2} & New string to be diffed. \\
+\hline
+{\em x} & Index of split point in text1. \\
+\hline
+{\em y} & Index of split point in text2. \\
+\hline
+{\em deadline} & Time at which to bail if not yet complete. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Linked\+List of \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} objects. 
+\end{DoxyReturn}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!diff\+\_\+chars\+To\+Lines@{diff\+\_\+chars\+To\+Lines}}
+\index{diff\+\_\+chars\+To\+Lines@{diff\+\_\+chars\+To\+Lines}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{diff\+\_\+chars\+To\+Lines(\+Linked\+List$<$ Diff $>$ diffs, List$<$ String $>$ line\+Array)}{diff_charsToLines(LinkedList< Diff > diffs, List< String > lineArray)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+diff\+\_\+chars\+To\+Lines (
+\begin{DoxyParamCaption}
+\item[{Linked\+List$<$ {\bf Diff} $>$}]{diffs, }
+\item[{List$<$ String $>$}]{line\+Array}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a6bbc36a35836b9d64843ccab34efa555}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a6bbc36a35836b9d64843ccab34efa555}
+Rehydrate the text in a diff from a string of line hashes to real lines of text.
+
+
+\begin{DoxyParams}{Parameters}
+{\em diffs} & Linked\+List of \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} objects. \\
+\hline
+{\em line\+Array} & List of unique strings. \\
+\hline
+\end{DoxyParams}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!diff\+\_\+cleanup\+Efficiency@{diff\+\_\+cleanup\+Efficiency}}
+\index{diff\+\_\+cleanup\+Efficiency@{diff\+\_\+cleanup\+Efficiency}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{diff\+\_\+cleanup\+Efficiency(\+Linked\+List$<$ Diff $>$ diffs)}{diff_cleanupEfficiency(LinkedList< Diff > diffs)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+diff\+\_\+cleanup\+Efficiency (
+\begin{DoxyParamCaption}
+\item[{Linked\+List$<$ {\bf Diff} $>$}]{diffs}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a8bef7e6bafbed49ad8afc87a30b838a5}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a8bef7e6bafbed49ad8afc87a30b838a5}
+Reduce the number of edits by eliminating operationally trivial equalities.
+
+
+\begin{DoxyParams}{Parameters}
+{\em diffs} & Linked\+List of \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} objects. \\
+\hline
+\end{DoxyParams}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!diff\+\_\+cleanup\+Merge@{diff\+\_\+cleanup\+Merge}}
+\index{diff\+\_\+cleanup\+Merge@{diff\+\_\+cleanup\+Merge}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{diff\+\_\+cleanup\+Merge(\+Linked\+List$<$ Diff $>$ diffs)}{diff_cleanupMerge(LinkedList< Diff > diffs)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+diff\+\_\+cleanup\+Merge (
+\begin{DoxyParamCaption}
+\item[{Linked\+List$<$ {\bf Diff} $>$}]{diffs}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a0b7ca7d67b19884795e7ab14cc407789}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a0b7ca7d67b19884795e7ab14cc407789}
+Reorder and merge like edit sections. Merge equalities. Any edit section can move as long as it doesn\textquotesingle{}t cross an equality.
+
+
+\begin{DoxyParams}{Parameters}
+{\em diffs} & Linked\+List of \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} objects. \\
+\hline
+\end{DoxyParams}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!diff\+\_\+cleanup\+Semantic@{diff\+\_\+cleanup\+Semantic}}
+\index{diff\+\_\+cleanup\+Semantic@{diff\+\_\+cleanup\+Semantic}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{diff\+\_\+cleanup\+Semantic(\+Linked\+List$<$ Diff $>$ diffs)}{diff_cleanupSemantic(LinkedList< Diff > diffs)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+diff\+\_\+cleanup\+Semantic (
+\begin{DoxyParamCaption}
+\item[{Linked\+List$<$ {\bf Diff} $>$}]{diffs}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a24fbf15c6ca66d20072d48f8314ade8c}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a24fbf15c6ca66d20072d48f8314ade8c}
+Reduce the number of edits by eliminating semantically trivial equalities.
+
+
+\begin{DoxyParams}{Parameters}
+{\em diffs} & Linked\+List of \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} objects. \\
+\hline
+\end{DoxyParams}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!diff\+\_\+cleanup\+Semantic\+Lossless@{diff\+\_\+cleanup\+Semantic\+Lossless}}
+\index{diff\+\_\+cleanup\+Semantic\+Lossless@{diff\+\_\+cleanup\+Semantic\+Lossless}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{diff\+\_\+cleanup\+Semantic\+Lossless(\+Linked\+List$<$ Diff $>$ diffs)}{diff_cleanupSemanticLossless(LinkedList< Diff > diffs)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+diff\+\_\+cleanup\+Semantic\+Lossless (
+\begin{DoxyParamCaption}
+\item[{Linked\+List$<$ {\bf Diff} $>$}]{diffs}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_ad28a657eb0eeaaf185e72905df9b0e77}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_ad28a657eb0eeaaf185e72905df9b0e77}
+Look for single edits surrounded on both sides by equalities which can be shifted sideways to align the edit to a word boundary. e.\+g\+: The c$<$ins$>$at c$<$/ins$>$ame. -\/$>$ The $<$ins$>$cat $<$/ins$>$came.
+
+
+\begin{DoxyParams}{Parameters}
+{\em diffs} & Linked\+List of \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} objects. \\
+\hline
+\end{DoxyParams}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!diff\+\_\+cleanup\+Semantic\+Score@{diff\+\_\+cleanup\+Semantic\+Score}}
+\index{diff\+\_\+cleanup\+Semantic\+Score@{diff\+\_\+cleanup\+Semantic\+Score}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{diff\+\_\+cleanup\+Semantic\+Score(\+String one, String two)}{diff_cleanupSemanticScore(String one, String two)}}]{\setlength{\rightskip}{0pt plus 5cm}int org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+diff\+\_\+cleanup\+Semantic\+Score (
+\begin{DoxyParamCaption}
+\item[{String}]{one, }
+\item[{String}]{two}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a2debe8436f2ad7c48bbb9dd2037d2f8e}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a2debe8436f2ad7c48bbb9dd2037d2f8e}
+Given two strings, compute a score representing whether the internal boundary falls on logical boundaries. Scores range from 6 (best) to 0 (worst).
+
+
+\begin{DoxyParams}{Parameters}
+{\em one} & First string. \\
+\hline
+{\em two} & Second string. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The score. 
+\end{DoxyReturn}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!diff\+\_\+common\+Overlap@{diff\+\_\+common\+Overlap}}
+\index{diff\+\_\+common\+Overlap@{diff\+\_\+common\+Overlap}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{diff\+\_\+common\+Overlap(\+String text1, String text2)}{diff_commonOverlap(String text1, String text2)}}]{\setlength{\rightskip}{0pt plus 5cm}int org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+diff\+\_\+common\+Overlap (
+\begin{DoxyParamCaption}
+\item[{String}]{text1, }
+\item[{String}]{text2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a3ee3c894e278b4d3b2150f7e2ad2eb41}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a3ee3c894e278b4d3b2150f7e2ad2eb41}
+Determine if the suffix of one string is the prefix of another.
+
+
+\begin{DoxyParams}{Parameters}
+{\em text1} & First string. \\
+\hline
+{\em text2} & Second string. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of characters common to the end of the first string and the start of the second string. 
+\end{DoxyReturn}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!diff\+\_\+common\+Prefix@{diff\+\_\+common\+Prefix}}
+\index{diff\+\_\+common\+Prefix@{diff\+\_\+common\+Prefix}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{diff\+\_\+common\+Prefix(\+String text1, String text2)}{diff_commonPrefix(String text1, String text2)}}]{\setlength{\rightskip}{0pt plus 5cm}int org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+diff\+\_\+common\+Prefix (
+\begin{DoxyParamCaption}
+\item[{String}]{text1, }
+\item[{String}]{text2}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_aac329de2538a84de56f903724d0eb687}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_aac329de2538a84de56f903724d0eb687}
+Determine the common prefix of two strings
+
+
+\begin{DoxyParams}{Parameters}
+{\em text1} & First string. \\
+\hline
+{\em text2} & Second string. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of characters common to the start of each string. 
+\end{DoxyReturn}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!diff\+\_\+common\+Suffix@{diff\+\_\+common\+Suffix}}
+\index{diff\+\_\+common\+Suffix@{diff\+\_\+common\+Suffix}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{diff\+\_\+common\+Suffix(\+String text1, String text2)}{diff_commonSuffix(String text1, String text2)}}]{\setlength{\rightskip}{0pt plus 5cm}int org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+diff\+\_\+common\+Suffix (
+\begin{DoxyParamCaption}
+\item[{String}]{text1, }
+\item[{String}]{text2}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_aceacaaaf8bea312257d927602fac6d75}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_aceacaaaf8bea312257d927602fac6d75}
+Determine the common suffix of two strings
+
+
+\begin{DoxyParams}{Parameters}
+{\em text1} & First string. \\
+\hline
+{\em text2} & Second string. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of characters common to the end of each string. 
+\end{DoxyReturn}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!diff\+\_\+compute@{diff\+\_\+compute}}
+\index{diff\+\_\+compute@{diff\+\_\+compute}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{diff\+\_\+compute(\+String text1, String text2, boolean checklines, long deadline)}{diff_compute(String text1, String text2, boolean checklines, long deadline)}}]{\setlength{\rightskip}{0pt plus 5cm}Linked\+List$<${\bf Diff}$>$ org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+diff\+\_\+compute (
+\begin{DoxyParamCaption}
+\item[{String}]{text1, }
+\item[{String}]{text2, }
+\item[{boolean}]{checklines, }
+\item[{long}]{deadline}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_ae284979fa55d548cbf9989ebae4dc543}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_ae284979fa55d548cbf9989ebae4dc543}
+Find the differences between two texts. Assumes that the texts do not have any common prefix or suffix.
+
+
+\begin{DoxyParams}{Parameters}
+{\em text1} & Old string to be diffed. \\
+\hline
+{\em text2} & New string to be diffed. \\
+\hline
+{\em checklines} & Speedup flag. If false, then don\textquotesingle{}t run a line-\/level diff first to identify the changed areas. If true, then run a faster slightly less optimal diff. \\
+\hline
+{\em deadline} & Time when the diff should be complete by. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Linked List of \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} objects. 
+\end{DoxyReturn}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!diff\+\_\+from\+Delta@{diff\+\_\+from\+Delta}}
+\index{diff\+\_\+from\+Delta@{diff\+\_\+from\+Delta}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{diff\+\_\+from\+Delta(\+String text1, String delta)}{diff_fromDelta(String text1, String delta)}}]{\setlength{\rightskip}{0pt plus 5cm}Linked\+List$<${\bf Diff}$>$ org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+diff\+\_\+from\+Delta (
+\begin{DoxyParamCaption}
+\item[{String}]{text1, }
+\item[{String}]{delta}
+\end{DoxyParamCaption}
+) throws Illegal\+Argument\+Exception}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_af912c45fbc9fda41a237976f4cbb66bf}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_af912c45fbc9fda41a237976f4cbb66bf}
+Given the original text1, and an encoded string which describes the operations required to transform text1 into text2, compute the full diff.
+
+
+\begin{DoxyParams}{Parameters}
+{\em text1} & Source string for the diff. \\
+\hline
+{\em delta} & Delta text. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Array of \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} objects or null if invalid. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Illegal\+Argument\+Exception} & If invalid input. \\
+\hline
+\end{DoxyExceptions}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!diff\+\_\+half\+Match@{diff\+\_\+half\+Match}}
+\index{diff\+\_\+half\+Match@{diff\+\_\+half\+Match}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{diff\+\_\+half\+Match(\+String text1, String text2)}{diff_halfMatch(String text1, String text2)}}]{\setlength{\rightskip}{0pt plus 5cm}String \mbox{[}$\,$\mbox{]} org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+diff\+\_\+half\+Match (
+\begin{DoxyParamCaption}
+\item[{String}]{text1, }
+\item[{String}]{text2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_ab8d8b6ab62b5b964ba1a1f389773ddf9}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_ab8d8b6ab62b5b964ba1a1f389773ddf9}
+Do the two texts share a substring which is at least half the length of the longer text? This speedup can produce non-\/minimal diffs.
+
+
+\begin{DoxyParams}{Parameters}
+{\em text1} & First string. \\
+\hline
+{\em text2} & Second string. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Five element String array, containing the prefix of text1, the suffix of text1, the prefix of text2, the suffix of text2 and the common middle. Or null if there was no match. 
+\end{DoxyReturn}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!diff\+\_\+half\+MatchI@{diff\+\_\+half\+MatchI}}
+\index{diff\+\_\+half\+MatchI@{diff\+\_\+half\+MatchI}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{diff\+\_\+half\+Match\+I(\+String longtext, String shorttext, int i)}{diff_halfMatchI(String longtext, String shorttext, int i)}}]{\setlength{\rightskip}{0pt plus 5cm}String \mbox{[}$\,$\mbox{]} org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+diff\+\_\+half\+MatchI (
+\begin{DoxyParamCaption}
+\item[{String}]{longtext, }
+\item[{String}]{shorttext, }
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a6d6fe166f63595b1a113483a01dc8d88}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a6d6fe166f63595b1a113483a01dc8d88}
+Does a substring of shorttext exist within longtext such that the substring is at least half the length of longtext?
+
+
+\begin{DoxyParams}{Parameters}
+{\em longtext} & Longer string. \\
+\hline
+{\em shorttext} & Shorter string. \\
+\hline
+{\em i} & Start index of quarter length substring within longtext. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Five element String array, containing the prefix of longtext, the suffix of longtext, the prefix of shorttext, the suffix of shorttext and the common middle. Or null if there was no match. 
+\end{DoxyReturn}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!diff\+\_\+levenshtein@{diff\+\_\+levenshtein}}
+\index{diff\+\_\+levenshtein@{diff\+\_\+levenshtein}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{diff\+\_\+levenshtein(\+Linked\+List$<$ Diff $>$ diffs)}{diff_levenshtein(LinkedList< Diff > diffs)}}]{\setlength{\rightskip}{0pt plus 5cm}int org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+diff\+\_\+levenshtein (
+\begin{DoxyParamCaption}
+\item[{Linked\+List$<$ {\bf Diff} $>$}]{diffs}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a61a85e54e5b6c714fafb80d5c5de4408}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a61a85e54e5b6c714fafb80d5c5de4408}
+Compute the Levenshtein distance; the number of inserted, deleted or substituted characters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em diffs} & Linked\+List of \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} objects. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of changes. 
+\end{DoxyReturn}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!diff\+\_\+line\+Mode@{diff\+\_\+line\+Mode}}
+\index{diff\+\_\+line\+Mode@{diff\+\_\+line\+Mode}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{diff\+\_\+line\+Mode(\+String text1, String text2, long deadline)}{diff_lineMode(String text1, String text2, long deadline)}}]{\setlength{\rightskip}{0pt plus 5cm}Linked\+List$<${\bf Diff}$>$ org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+diff\+\_\+line\+Mode (
+\begin{DoxyParamCaption}
+\item[{String}]{text1, }
+\item[{String}]{text2, }
+\item[{long}]{deadline}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a0d175137ea26dae68871ad0c3cb619a0}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a0d175137ea26dae68871ad0c3cb619a0}
+Do a quick line-\/level diff on both strings, then rediff the parts for greater accuracy. This speedup can produce non-\/minimal diffs.
+
+
+\begin{DoxyParams}{Parameters}
+{\em text1} & Old string to be diffed. \\
+\hline
+{\em text2} & New string to be diffed. \\
+\hline
+{\em deadline} & Time when the diff should be complete by. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Linked List of \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} objects. 
+\end{DoxyReturn}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!diff\+\_\+lines\+To\+Chars@{diff\+\_\+lines\+To\+Chars}}
+\index{diff\+\_\+lines\+To\+Chars@{diff\+\_\+lines\+To\+Chars}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{diff\+\_\+lines\+To\+Chars(\+String text1, String text2)}{diff_linesToChars(String text1, String text2)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Lines\+To\+Chars\+Result} org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+diff\+\_\+lines\+To\+Chars (
+\begin{DoxyParamCaption}
+\item[{String}]{text1, }
+\item[{String}]{text2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a3a517130c3822a26a829ecd454518e98}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a3a517130c3822a26a829ecd454518e98}
+Split two texts into a list of strings. Reduce the texts to a string of hashes where each Unicode character represents one line.
+
+
+\begin{DoxyParams}{Parameters}
+{\em text1} & First string. \\
+\hline
+{\em text2} & Second string. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An object containing the encoded text1, the encoded text2 and the List of unique strings. The zeroth element of the List of unique strings is intentionally blank. 
+\end{DoxyReturn}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!diff\+\_\+lines\+To\+Chars\+Munge@{diff\+\_\+lines\+To\+Chars\+Munge}}
+\index{diff\+\_\+lines\+To\+Chars\+Munge@{diff\+\_\+lines\+To\+Chars\+Munge}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{diff\+\_\+lines\+To\+Chars\+Munge(\+String text, List$<$ String $>$ line\+Array, Map$<$ String, Integer $>$ line\+Hash)}{diff_linesToCharsMunge(String text, List< String > lineArray, Map< String, Integer > lineHash)}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+diff\+\_\+lines\+To\+Chars\+Munge (
+\begin{DoxyParamCaption}
+\item[{String}]{text, }
+\item[{List$<$ String $>$}]{line\+Array, }
+\item[{Map$<$ String, Integer $>$}]{line\+Hash}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_ad2b31bf660320bf331ea4d0e3793bf70}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_ad2b31bf660320bf331ea4d0e3793bf70}
+Split a text into a list of strings. Reduce the texts to a string of hashes where each Unicode character represents one line.
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & String to encode. \\
+\hline
+{\em line\+Array} & List of unique strings. \\
+\hline
+{\em line\+Hash} & Map of strings to indices. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Encoded string. 
+\end{DoxyReturn}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!diff\+\_\+main@{diff\+\_\+main}}
+\index{diff\+\_\+main@{diff\+\_\+main}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{diff\+\_\+main(\+String text1, String text2)}{diff_main(String text1, String text2)}}]{\setlength{\rightskip}{0pt plus 5cm}Linked\+List$<${\bf Diff}$>$ org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+diff\+\_\+main (
+\begin{DoxyParamCaption}
+\item[{String}]{text1, }
+\item[{String}]{text2}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_ac3a49d63289ea35216363dfe99c1cf21}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_ac3a49d63289ea35216363dfe99c1cf21}
+Find the differences between two texts. Run a faster, slightly less optimal diff. This method allows the \textquotesingle{}checklines\textquotesingle{} of \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_ac3a49d63289ea35216363dfe99c1cf21}{diff\+\_\+main()} to be optional. Most of the time checklines is wanted, so default to true.
+
+
+\begin{DoxyParams}{Parameters}
+{\em text1} & Old string to be diffed. \\
+\hline
+{\em text2} & New string to be diffed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Linked List of \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} objects. 
+\end{DoxyReturn}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!diff\+\_\+main@{diff\+\_\+main}}
+\index{diff\+\_\+main@{diff\+\_\+main}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{diff\+\_\+main(\+String text1, String text2, boolean checklines)}{diff_main(String text1, String text2, boolean checklines)}}]{\setlength{\rightskip}{0pt plus 5cm}Linked\+List$<${\bf Diff}$>$ org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+diff\+\_\+main (
+\begin{DoxyParamCaption}
+\item[{String}]{text1, }
+\item[{String}]{text2, }
+\item[{boolean}]{checklines}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a7562296717e7b97146eef8eec8fd270a}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a7562296717e7b97146eef8eec8fd270a}
+Find the differences between two texts.
+
+
+\begin{DoxyParams}{Parameters}
+{\em text1} & Old string to be diffed. \\
+\hline
+{\em text2} & New string to be diffed. \\
+\hline
+{\em checklines} & Speedup flag. If false, then don\textquotesingle{}t run a line-\/level diff first to identify the changed areas. If true, then run a faster slightly less optimal diff. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Linked List of \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} objects. 
+\end{DoxyReturn}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!diff\+\_\+main@{diff\+\_\+main}}
+\index{diff\+\_\+main@{diff\+\_\+main}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{diff\+\_\+main(\+String text1, String text2, boolean checklines, long deadline)}{diff_main(String text1, String text2, boolean checklines, long deadline)}}]{\setlength{\rightskip}{0pt plus 5cm}Linked\+List$<${\bf Diff}$>$ org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+diff\+\_\+main (
+\begin{DoxyParamCaption}
+\item[{String}]{text1, }
+\item[{String}]{text2, }
+\item[{boolean}]{checklines, }
+\item[{long}]{deadline}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_ae1e07fddc2f23981f0b3a35284c289ae}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_ae1e07fddc2f23981f0b3a35284c289ae}
+Find the differences between two texts. Simplifies the problem by stripping any common prefix or suffix off the texts before diffing.
+
+
+\begin{DoxyParams}{Parameters}
+{\em text1} & Old string to be diffed. \\
+\hline
+{\em text2} & New string to be diffed. \\
+\hline
+{\em checklines} & Speedup flag. If false, then don\textquotesingle{}t run a line-\/level diff first to identify the changed areas. If true, then run a faster slightly less optimal diff. \\
+\hline
+{\em deadline} & Time when the diff should be complete by. Used internally for recursive calls. Users should set Diff\+Timeout instead. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Linked List of \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} objects. 
+\end{DoxyReturn}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!diff\+\_\+pretty\+Html@{diff\+\_\+pretty\+Html}}
+\index{diff\+\_\+pretty\+Html@{diff\+\_\+pretty\+Html}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{diff\+\_\+pretty\+Html(\+Linked\+List$<$ Diff $>$ diffs)}{diff_prettyHtml(LinkedList< Diff > diffs)}}]{\setlength{\rightskip}{0pt plus 5cm}String \mbox{[}$\,$\mbox{]} org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+diff\+\_\+pretty\+Html (
+\begin{DoxyParamCaption}
+\item[{Linked\+List$<$ {\bf Diff} $>$}]{diffs}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_adf54356a57b436b5fa2033012300c709}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_adf54356a57b436b5fa2033012300c709}
+Convert a \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} list into a pretty H\+T\+ML report.
+
+
+\begin{DoxyParams}{Parameters}
+{\em diffs} & Linked\+List of \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} objects. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+H\+T\+ML representation. + number of equal words in an array where first element is H\+T\+ML representation and second is number of Equal words. 
+\end{DoxyReturn}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!diff\+\_\+text1@{diff\+\_\+text1}}
+\index{diff\+\_\+text1@{diff\+\_\+text1}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{diff\+\_\+text1(\+Linked\+List$<$ Diff $>$ diffs)}{diff_text1(LinkedList< Diff > diffs)}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+diff\+\_\+text1 (
+\begin{DoxyParamCaption}
+\item[{Linked\+List$<$ {\bf Diff} $>$}]{diffs}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a4f041137787e82747d1b3d862afbded7}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a4f041137787e82747d1b3d862afbded7}
+Compute and return the source text (all equalities and deletions).
+
+
+\begin{DoxyParams}{Parameters}
+{\em diffs} & Linked\+List of \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} objects. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Source text. 
+\end{DoxyReturn}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!diff\+\_\+text2@{diff\+\_\+text2}}
+\index{diff\+\_\+text2@{diff\+\_\+text2}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{diff\+\_\+text2(\+Linked\+List$<$ Diff $>$ diffs)}{diff_text2(LinkedList< Diff > diffs)}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+diff\+\_\+text2 (
+\begin{DoxyParamCaption}
+\item[{Linked\+List$<$ {\bf Diff} $>$}]{diffs}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a1a638543c64633431affd8936927bdd1}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a1a638543c64633431affd8936927bdd1}
+Compute and return the destination text (all equalities and insertions).
+
+
+\begin{DoxyParams}{Parameters}
+{\em diffs} & Linked\+List of \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} objects. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Destination text. 
+\end{DoxyReturn}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!diff\+\_\+to\+Delta@{diff\+\_\+to\+Delta}}
+\index{diff\+\_\+to\+Delta@{diff\+\_\+to\+Delta}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{diff\+\_\+to\+Delta(\+Linked\+List$<$ Diff $>$ diffs)}{diff_toDelta(LinkedList< Diff > diffs)}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+diff\+\_\+to\+Delta (
+\begin{DoxyParamCaption}
+\item[{Linked\+List$<$ {\bf Diff} $>$}]{diffs}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a45f4e09004cd92f4fa815425e5847219}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a45f4e09004cd92f4fa815425e5847219}
+Crush the diff into an encoded string which describes the operations required to transform text1 into text2. E.\+g. =3-\/2+ing -\/$>$ Keep 3 chars, delete 2 chars, insert \textquotesingle{}ing\textquotesingle{}. Operations are tab-\/separated. Inserted text is escaped using xx notation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em diffs} & Array of \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} objects. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Delta text. 
+\end{DoxyReturn}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!diff\+\_\+\+Word\+Mode@{diff\+\_\+\+Word\+Mode}}
+\index{diff\+\_\+\+Word\+Mode@{diff\+\_\+\+Word\+Mode}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{diff\+\_\+\+Word\+Mode(\+String text1, String text2)}{diff_WordMode(String text1, String text2)}}]{\setlength{\rightskip}{0pt plus 5cm}Linked\+List$<${\bf Diff}$>$ org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+diff\+\_\+\+Word\+Mode (
+\begin{DoxyParamCaption}
+\item[{String}]{text1, }
+\item[{String}]{text2}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_ad029f054ec515159187232a4caa6329f}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_ad029f054ec515159187232a4caa6329f}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!diff\+\_\+words\+To\+Chars@{diff\+\_\+words\+To\+Chars}}
+\index{diff\+\_\+words\+To\+Chars@{diff\+\_\+words\+To\+Chars}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{diff\+\_\+words\+To\+Chars(\+String text1, String text2)}{diff_wordsToChars(String text1, String text2)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Lines\+To\+Chars\+Result} org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+diff\+\_\+words\+To\+Chars (
+\begin{DoxyParamCaption}
+\item[{String}]{text1, }
+\item[{String}]{text2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a2a5e54e86f526975a09f163554113327}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a2a5e54e86f526975a09f163554113327}
+Split two texts into a list of strings. Reduce the texts to a string of hashes where each Unicode character represents one word.
+
+
+\begin{DoxyParams}{Parameters}
+{\em text1} & First string. \\
+\hline
+{\em text2} & Second string. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An object containing the encoded text1, the encoded text2 and the List of unique strings. The zeroth element of the List of unique strings is intentionally blank. 
+\end{DoxyReturn}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!diff\+\_\+words\+To\+Chars\+Munge@{diff\+\_\+words\+To\+Chars\+Munge}}
+\index{diff\+\_\+words\+To\+Chars\+Munge@{diff\+\_\+words\+To\+Chars\+Munge}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{diff\+\_\+words\+To\+Chars\+Munge(\+String text, List$<$ String $>$ line\+Array, Map$<$ String, Integer $>$ line\+Hash)}{diff_wordsToCharsMunge(String text, List< String > lineArray, Map< String, Integer > lineHash)}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+diff\+\_\+words\+To\+Chars\+Munge (
+\begin{DoxyParamCaption}
+\item[{String}]{text, }
+\item[{List$<$ String $>$}]{line\+Array, }
+\item[{Map$<$ String, Integer $>$}]{line\+Hash}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a84ef353d2a83997f5bdcf76ba38c0647}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a84ef353d2a83997f5bdcf76ba38c0647}
+Split a text into a list of strings. Reduce the texts to a string of hashes where each Unicode character represents one word.
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & String to encode. \\
+\hline
+{\em line\+Array} & List of unique strings. \\
+\hline
+{\em line\+Hash} & Map of strings to indices. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Encoded string. 
+\end{DoxyReturn}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!diff\+\_\+x\+Index@{diff\+\_\+x\+Index}}
+\index{diff\+\_\+x\+Index@{diff\+\_\+x\+Index}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{diff\+\_\+x\+Index(\+Linked\+List$<$ Diff $>$ diffs, int loc)}{diff_xIndex(LinkedList< Diff > diffs, int loc)}}]{\setlength{\rightskip}{0pt plus 5cm}int org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+diff\+\_\+x\+Index (
+\begin{DoxyParamCaption}
+\item[{Linked\+List$<$ {\bf Diff} $>$}]{diffs, }
+\item[{int}]{loc}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_ac3f5bac45bc1e4a8a8e8170674fdd89d}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_ac3f5bac45bc1e4a8a8e8170674fdd89d}
+loc is a location in text1, compute and return the equivalent location in text2. e.\+g. \char`\"{}\+The cat\char`\"{} vs \char`\"{}\+The big cat\char`\"{}, 1-\/$>$1, 5-\/$>$8
+
+
+\begin{DoxyParams}{Parameters}
+{\em diffs} & Linked\+List of \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} objects. \\
+\hline
+{\em loc} & Location within text1. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Location within text2. 
+\end{DoxyReturn}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!match\+\_\+alphabet@{match\+\_\+alphabet}}
+\index{match\+\_\+alphabet@{match\+\_\+alphabet}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{match\+\_\+alphabet(\+String pattern)}{match_alphabet(String pattern)}}]{\setlength{\rightskip}{0pt plus 5cm}Map$<$Character, Integer$>$ org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+match\+\_\+alphabet (
+\begin{DoxyParamCaption}
+\item[{String}]{pattern}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a9cb7acc41c1d2f90c02c9489888f36f8}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a9cb7acc41c1d2f90c02c9489888f36f8}
+Initialise the alphabet for the Bitap algorithm.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pattern} & The text to encode. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Hash of character locations. 
+\end{DoxyReturn}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!match\+\_\+bitap@{match\+\_\+bitap}}
+\index{match\+\_\+bitap@{match\+\_\+bitap}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{match\+\_\+bitap(\+String text, String pattern, int loc)}{match_bitap(String text, String pattern, int loc)}}]{\setlength{\rightskip}{0pt plus 5cm}int org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+match\+\_\+bitap (
+\begin{DoxyParamCaption}
+\item[{String}]{text, }
+\item[{String}]{pattern, }
+\item[{int}]{loc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a6f018d498c2a8197f74fb889acd2515e}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a6f018d498c2a8197f74fb889acd2515e}
+Locate the best instance of \textquotesingle{}pattern\textquotesingle{} in \textquotesingle{}text\textquotesingle{} near \textquotesingle{}loc\textquotesingle{} using the Bitap algorithm. Returns -\/1 if no match found.
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & The text to search. \\
+\hline
+{\em pattern} & The pattern to search for. \\
+\hline
+{\em loc} & The location to search around. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Best match index or -\/1. 
+\end{DoxyReturn}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!match\+\_\+bitap\+Score@{match\+\_\+bitap\+Score}}
+\index{match\+\_\+bitap\+Score@{match\+\_\+bitap\+Score}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{match\+\_\+bitap\+Score(int e, int x, int loc, String pattern)}{match_bitapScore(int e, int x, int loc, String pattern)}}]{\setlength{\rightskip}{0pt plus 5cm}double org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+match\+\_\+bitap\+Score (
+\begin{DoxyParamCaption}
+\item[{int}]{e, }
+\item[{int}]{x, }
+\item[{int}]{loc, }
+\item[{String}]{pattern}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_ab8c8d7a0486aaa6ad1f7ecb4720632cc}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_ab8c8d7a0486aaa6ad1f7ecb4720632cc}
+Compute and return the score for a match with e errors and x location.
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Number of errors in match. \\
+\hline
+{\em x} & Location of match. \\
+\hline
+{\em loc} & Expected location of match. \\
+\hline
+{\em pattern} & Pattern being sought. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Overall score for match (0.\+0 = good, 1.\+0 = bad). 
+\end{DoxyReturn}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!match\+\_\+main@{match\+\_\+main}}
+\index{match\+\_\+main@{match\+\_\+main}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{match\+\_\+main(\+String text, String pattern, int loc)}{match_main(String text, String pattern, int loc)}}]{\setlength{\rightskip}{0pt plus 5cm}int org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+match\+\_\+main (
+\begin{DoxyParamCaption}
+\item[{String}]{text, }
+\item[{String}]{pattern, }
+\item[{int}]{loc}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a4be87a57b645c96c2f8567b4a1ab081b}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a4be87a57b645c96c2f8567b4a1ab081b}
+Locate the best instance of \textquotesingle{}pattern\textquotesingle{} in \textquotesingle{}text\textquotesingle{} near \textquotesingle{}loc\textquotesingle{}. Returns -\/1 if no match found.
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & The text to search. \\
+\hline
+{\em pattern} & The pattern to search for. \\
+\hline
+{\em loc} & The location to search around. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Best match index or -\/1. 
+\end{DoxyReturn}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!patch\+\_\+add\+Context@{patch\+\_\+add\+Context}}
+\index{patch\+\_\+add\+Context@{patch\+\_\+add\+Context}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{patch\+\_\+add\+Context(\+Patch patch, String text)}{patch_addContext(Patch patch, String text)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+patch\+\_\+add\+Context (
+\begin{DoxyParamCaption}
+\item[{{\bf Patch}}]{patch, }
+\item[{String}]{text}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a78639823b3a4a12e1a6e492b7f378feb}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a78639823b3a4a12e1a6e492b7f378feb}
+Increase the context until it is unique, but don\textquotesingle{}t let the pattern expand beyond Match\+\_\+\+Max\+Bits.
+
+
+\begin{DoxyParams}{Parameters}
+{\em patch} & The patch to grow. \\
+\hline
+{\em text} & Source text. \\
+\hline
+\end{DoxyParams}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!patch\+\_\+add\+Padding@{patch\+\_\+add\+Padding}}
+\index{patch\+\_\+add\+Padding@{patch\+\_\+add\+Padding}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{patch\+\_\+add\+Padding(\+Linked\+List$<$ Patch $>$ patches)}{patch_addPadding(LinkedList< Patch > patches)}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+patch\+\_\+add\+Padding (
+\begin{DoxyParamCaption}
+\item[{Linked\+List$<$ {\bf Patch} $>$}]{patches}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_acf658679026e3da4d3180e6b749f04e6}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_acf658679026e3da4d3180e6b749f04e6}
+Add some padding on text start and end so that edges can match something. Intended to be called only from within patch\+\_\+apply.
+
+
+\begin{DoxyParams}{Parameters}
+{\em patches} & Array of \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch}{Patch} objects. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The padding string added to each side. 
+\end{DoxyReturn}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!patch\+\_\+apply@{patch\+\_\+apply}}
+\index{patch\+\_\+apply@{patch\+\_\+apply}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{patch\+\_\+apply(\+Linked\+List$<$ Patch $>$ patches, String text)}{patch_apply(LinkedList< Patch > patches, String text)}}]{\setlength{\rightskip}{0pt plus 5cm}Object \mbox{[}$\,$\mbox{]} org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+patch\+\_\+apply (
+\begin{DoxyParamCaption}
+\item[{Linked\+List$<$ {\bf Patch} $>$}]{patches, }
+\item[{String}]{text}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a6f6cd205d8dc689294c13ea483dac1db}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a6f6cd205d8dc689294c13ea483dac1db}
+Merge a set of patches onto the text. Return a patched text, as well as an array of true/false values indicating which patches were applied.
+
+
+\begin{DoxyParams}{Parameters}
+{\em patches} & Array of \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch}{Patch} objects \\
+\hline
+{\em text} & Old text. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Two element Object array, containing the new text and an array of boolean values. 
+\end{DoxyReturn}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!patch\+\_\+deep\+Copy@{patch\+\_\+deep\+Copy}}
+\index{patch\+\_\+deep\+Copy@{patch\+\_\+deep\+Copy}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{patch\+\_\+deep\+Copy(\+Linked\+List$<$ Patch $>$ patches)}{patch_deepCopy(LinkedList< Patch > patches)}}]{\setlength{\rightskip}{0pt plus 5cm}Linked\+List$<${\bf Patch}$>$ org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+patch\+\_\+deep\+Copy (
+\begin{DoxyParamCaption}
+\item[{Linked\+List$<$ {\bf Patch} $>$}]{patches}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a3da243bc7df48d2e0da5166441bcad8e}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a3da243bc7df48d2e0da5166441bcad8e}
+Given an array of patches, return another array that is identical.
+
+
+\begin{DoxyParams}{Parameters}
+{\em patches} & Array of \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch}{Patch} objects. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Array of \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch}{Patch} objects. 
+\end{DoxyReturn}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!patch\+\_\+from\+Text@{patch\+\_\+from\+Text}}
+\index{patch\+\_\+from\+Text@{patch\+\_\+from\+Text}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{patch\+\_\+from\+Text(\+String textline)}{patch_fromText(String textline)}}]{\setlength{\rightskip}{0pt plus 5cm}List$<${\bf Patch}$>$ org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+patch\+\_\+from\+Text (
+\begin{DoxyParamCaption}
+\item[{String}]{textline}
+\end{DoxyParamCaption}
+) throws Illegal\+Argument\+Exception}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_ad080e812febcb40743ac9225b4e2469c}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_ad080e812febcb40743ac9225b4e2469c}
+Parse a textual representation of patches and return a List of \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch}{Patch} objects.
+
+
+\begin{DoxyParams}{Parameters}
+{\em textline} & Text representation of patches. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List of \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch}{Patch} objects. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Illegal\+Argument\+Exception} & If invalid input. \\
+\hline
+\end{DoxyExceptions}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!patch\+\_\+make@{patch\+\_\+make}}
+\index{patch\+\_\+make@{patch\+\_\+make}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{patch\+\_\+make(\+String text1, String text2)}{patch_make(String text1, String text2)}}]{\setlength{\rightskip}{0pt plus 5cm}Linked\+List$<${\bf Patch}$>$ org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+patch\+\_\+make (
+\begin{DoxyParamCaption}
+\item[{String}]{text1, }
+\item[{String}]{text2}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a5fe18be0a56e0f65ba594ea7d0f88e62}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a5fe18be0a56e0f65ba594ea7d0f88e62}
+Compute a list of patches to turn text1 into text2. A set of diffs will be computed.
+
+
+\begin{DoxyParams}{Parameters}
+{\em text1} & Old text. \\
+\hline
+{\em text2} & New text. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Linked\+List of \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch}{Patch} objects. 
+\end{DoxyReturn}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!patch\+\_\+make@{patch\+\_\+make}}
+\index{patch\+\_\+make@{patch\+\_\+make}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{patch\+\_\+make(\+Linked\+List$<$ Diff $>$ diffs)}{patch_make(LinkedList< Diff > diffs)}}]{\setlength{\rightskip}{0pt plus 5cm}Linked\+List$<${\bf Patch}$>$ org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+patch\+\_\+make (
+\begin{DoxyParamCaption}
+\item[{Linked\+List$<$ {\bf Diff} $>$}]{diffs}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_aa467b447116f168c94efe7ff7fda299a}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_aa467b447116f168c94efe7ff7fda299a}
+Compute a list of patches to turn text1 into text2. text1 will be derived from the provided diffs.
+
+
+\begin{DoxyParams}{Parameters}
+{\em diffs} & Array of \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} objects for text1 to text2. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Linked\+List of \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch}{Patch} objects. 
+\end{DoxyReturn}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!patch\+\_\+make@{patch\+\_\+make}}
+\index{patch\+\_\+make@{patch\+\_\+make}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{patch\+\_\+make(\+String text1, String text2, Linked\+List$<$ Diff $>$ diffs)}{patch_make(String text1, String text2, LinkedList< Diff > diffs)}}]{\setlength{\rightskip}{0pt plus 5cm}Linked\+List$<${\bf Patch}$>$ org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+patch\+\_\+make (
+\begin{DoxyParamCaption}
+\item[{String}]{text1, }
+\item[{String}]{text2, }
+\item[{Linked\+List$<$ {\bf Diff} $>$}]{diffs}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a77d8a5c3c7e14b48942502b27c37f379}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a77d8a5c3c7e14b48942502b27c37f379}
+Compute a list of patches to turn text1 into text2. text2 is ignored, diffs are the delta between text1 and text2.
+
+
+\begin{DoxyParams}{Parameters}
+{\em text1} & Old text \\
+\hline
+{\em text2} & Ignored. \\
+\hline
+{\em diffs} & Array of \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} objects for text1 to text2. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Linked\+List of \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch}{Patch} objects. 
+\end{DoxyReturn}
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000001}{Deprecated}]Prefer \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a240348ae5ab84cbcf6ee15f7a1b4cb7f}{patch\+\_\+make(\+String text1, Linked\+List$<$\+Diff$>$ diffs)}. \end{DoxyRefDesc}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!patch\+\_\+make@{patch\+\_\+make}}
+\index{patch\+\_\+make@{patch\+\_\+make}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{patch\+\_\+make(\+String text1, Linked\+List$<$ Diff $>$ diffs)}{patch_make(String text1, LinkedList< Diff > diffs)}}]{\setlength{\rightskip}{0pt plus 5cm}Linked\+List$<${\bf Patch}$>$ org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+patch\+\_\+make (
+\begin{DoxyParamCaption}
+\item[{String}]{text1, }
+\item[{Linked\+List$<$ {\bf Diff} $>$}]{diffs}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a240348ae5ab84cbcf6ee15f7a1b4cb7f}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a240348ae5ab84cbcf6ee15f7a1b4cb7f}
+Compute a list of patches to turn text1 into text2. text2 is not provided, diffs are the delta between text1 and text2.
+
+
+\begin{DoxyParams}{Parameters}
+{\em text1} & Old text. \\
+\hline
+{\em diffs} & Array of \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} objects for text1 to text2. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Linked\+List of \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch}{Patch} objects. 
+\end{DoxyReturn}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!patch\+\_\+split\+Max@{patch\+\_\+split\+Max}}
+\index{patch\+\_\+split\+Max@{patch\+\_\+split\+Max}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{patch\+\_\+split\+Max(\+Linked\+List$<$ Patch $>$ patches)}{patch_splitMax(LinkedList< Patch > patches)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+patch\+\_\+split\+Max (
+\begin{DoxyParamCaption}
+\item[{Linked\+List$<$ {\bf Patch} $>$}]{patches}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a2f3ee2a30ba8ba85defd42f1b7c53a35}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a2f3ee2a30ba8ba85defd42f1b7c53a35}
+Look through the patches and break up any which are longer than the maximum limit of the match algorithm. Intended to be called only from within patch\+\_\+apply.
+
+
+\begin{DoxyParams}{Parameters}
+{\em patches} & Linked\+List of \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch}{Patch} objects. \\
+\hline
+\end{DoxyParams}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!patch\+\_\+to\+Text@{patch\+\_\+to\+Text}}
+\index{patch\+\_\+to\+Text@{patch\+\_\+to\+Text}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{patch\+\_\+to\+Text(\+List$<$ Patch $>$ patches)}{patch_toText(List< Patch > patches)}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+patch\+\_\+to\+Text (
+\begin{DoxyParamCaption}
+\item[{List$<$ {\bf Patch} $>$}]{patches}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a17e764e9b07c904d8884a1adeec12c96}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a17e764e9b07c904d8884a1adeec12c96}
+Take a list of patches and return a textual representation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em patches} & List of \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch}{Patch} objects. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Text representation of patches. 
+\end{DoxyReturn}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!unescape\+For\+Encode\+Uri\+Compatability@{unescape\+For\+Encode\+Uri\+Compatability}}
+\index{unescape\+For\+Encode\+Uri\+Compatability@{unescape\+For\+Encode\+Uri\+Compatability}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{unescape\+For\+Encode\+Uri\+Compatability(\+String str)}{unescapeForEncodeUriCompatability(String str)}}]{\setlength{\rightskip}{0pt plus 5cm}static String org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+unescape\+For\+Encode\+Uri\+Compatability (
+\begin{DoxyParamCaption}
+\item[{String}]{str}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a9d75398146ce57e61ecd72d0b6eddfcc}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a9d75398146ce57e61ecd72d0b6eddfcc}
+Unescape selected chars for compatability with Java\+Script\textquotesingle{}s encode\+U\+RI. In speed critical applications this could be dropped since the receiving application will certainly decode these fine. Note that this function is case-\/sensitive. Thus \char`\"{}\%3f\char`\"{} would not be unescaped. But this is ok because it is only called with the output of U\+R\+L\+Encoder.\+encode which returns uppercase hex. 
+
+Example\+: \char`\"{}\%3\+F\char`\"{} -\/$>$ \char`\"{}?\char`\"{}, \char`\"{}\%24\char`\"{} -\/$>$ \char`\"{}\$\char`\"{}, etc.
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & The string to escape. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The escaped string. 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!B\+L\+A\+N\+K\+L\+I\+N\+E\+E\+ND@{B\+L\+A\+N\+K\+L\+I\+N\+E\+E\+ND}}
+\index{B\+L\+A\+N\+K\+L\+I\+N\+E\+E\+ND@{B\+L\+A\+N\+K\+L\+I\+N\+E\+E\+ND}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{B\+L\+A\+N\+K\+L\+I\+N\+E\+E\+ND}{BLANKLINEEND}}]{\setlength{\rightskip}{0pt plus 5cm}Pattern org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+B\+L\+A\+N\+K\+L\+I\+N\+E\+E\+ND = Pattern.\+compile(\char`\"{}\textbackslash{}\textbackslash{}n\textbackslash{}\textbackslash{}r?\textbackslash{}\textbackslash{}n\textbackslash{}\textbackslash{}Z\char`\"{}, Pattern.\+D\+O\+T\+A\+LL)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_ae160e1c07d0d2594bb8134dd507b5762}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_ae160e1c07d0d2594bb8134dd507b5762}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!B\+L\+A\+N\+K\+L\+I\+N\+E\+S\+T\+A\+RT@{B\+L\+A\+N\+K\+L\+I\+N\+E\+S\+T\+A\+RT}}
+\index{B\+L\+A\+N\+K\+L\+I\+N\+E\+S\+T\+A\+RT@{B\+L\+A\+N\+K\+L\+I\+N\+E\+S\+T\+A\+RT}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{B\+L\+A\+N\+K\+L\+I\+N\+E\+S\+T\+A\+RT}{BLANKLINESTART}}]{\setlength{\rightskip}{0pt plus 5cm}Pattern org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+B\+L\+A\+N\+K\+L\+I\+N\+E\+S\+T\+A\+RT = Pattern.\+compile(\char`\"{}\textbackslash{}\textbackslash{}A\textbackslash{}\textbackslash{}r?\textbackslash{}\textbackslash{}n\textbackslash{}\textbackslash{}r?\textbackslash{}\textbackslash{}n\char`\"{}, Pattern.\+D\+O\+T\+A\+LL)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a8e0b9a30b90e431d81090b41a32ceaa1}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a8e0b9a30b90e431d81090b41a32ceaa1}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!Diff\+\_\+\+Edit\+Cost@{Diff\+\_\+\+Edit\+Cost}}
+\index{Diff\+\_\+\+Edit\+Cost@{Diff\+\_\+\+Edit\+Cost}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{Diff\+\_\+\+Edit\+Cost}{Diff_EditCost}}]{\setlength{\rightskip}{0pt plus 5cm}short org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+Diff\+\_\+\+Edit\+Cost = 4}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_ac0bccfcdfb920ae47c6da51095154ab6}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_ac0bccfcdfb920ae47c6da51095154ab6}
+Cost of an empty edit operation in terms of edit characters. \index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!Diff\+\_\+\+Timeout@{Diff\+\_\+\+Timeout}}
+\index{Diff\+\_\+\+Timeout@{Diff\+\_\+\+Timeout}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{Diff\+\_\+\+Timeout}{Diff_Timeout}}]{\setlength{\rightskip}{0pt plus 5cm}float org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+Diff\+\_\+\+Timeout = 1.\+0f}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a371b7d83d00f5e5f156f04a9b6337d1a}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a371b7d83d00f5e5f156f04a9b6337d1a}
+Number of seconds to map a diff before giving up (0 for infinity). \index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!Match\+\_\+\+Distance@{Match\+\_\+\+Distance}}
+\index{Match\+\_\+\+Distance@{Match\+\_\+\+Distance}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{Match\+\_\+\+Distance}{Match_Distance}}]{\setlength{\rightskip}{0pt plus 5cm}int org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+Match\+\_\+\+Distance = 1000}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_aeec342cc294a0c3795d631ee1550a0da}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_aeec342cc294a0c3795d631ee1550a0da}
+How far to search for a match (0 = exact location, 1000+ = broad match). A match this many characters away from the expected location will add 1.\+0 to the score (0.\+0 is a perfect match). \index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!Match\+\_\+\+Max\+Bits@{Match\+\_\+\+Max\+Bits}}
+\index{Match\+\_\+\+Max\+Bits@{Match\+\_\+\+Max\+Bits}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{Match\+\_\+\+Max\+Bits}{Match_MaxBits}}]{\setlength{\rightskip}{0pt plus 5cm}short org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+Match\+\_\+\+Max\+Bits = 32\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_acbd6579dfcc52cec95ac2e657d068e74}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_acbd6579dfcc52cec95ac2e657d068e74}
+The number of bits in an int. \index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!Match\+\_\+\+Threshold@{Match\+\_\+\+Threshold}}
+\index{Match\+\_\+\+Threshold@{Match\+\_\+\+Threshold}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{Match\+\_\+\+Threshold}{Match_Threshold}}]{\setlength{\rightskip}{0pt plus 5cm}float org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+Match\+\_\+\+Threshold = 0.\+5f}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_acf187fceb374f31164a5256fb3bc9990}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_acf187fceb374f31164a5256fb3bc9990}
+At what point is no match declared (0.\+0 = perfection, 1.\+0 = very loose). \index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!Patch\+\_\+\+Delete\+Threshold@{Patch\+\_\+\+Delete\+Threshold}}
+\index{Patch\+\_\+\+Delete\+Threshold@{Patch\+\_\+\+Delete\+Threshold}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{Patch\+\_\+\+Delete\+Threshold}{Patch_DeleteThreshold}}]{\setlength{\rightskip}{0pt plus 5cm}float org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+Patch\+\_\+\+Delete\+Threshold = 0.\+5f}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a08c885bb96f00082195af6c8a4abf5b4}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a08c885bb96f00082195af6c8a4abf5b4}
+When deleting a large block of text (over $\sim$64 characters), how close do the contents have to be to match the expected contents. (0.\+0 = perfection, 1.\+0 = very loose). Note that Match\+\_\+\+Threshold controls how closely the end points of a delete need to match. \index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}!Patch\+\_\+\+Margin@{Patch\+\_\+\+Margin}}
+\index{Patch\+\_\+\+Margin@{Patch\+\_\+\+Margin}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch}}
+\subsubsection[{\texorpdfstring{Patch\+\_\+\+Margin}{Patch_Margin}}]{\setlength{\rightskip}{0pt plus 5cm}short org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+Patch\+\_\+\+Margin = 4}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a94f96bf3e770fd823e638f97fc51962a}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_a94f96bf3e770fd823e638f97fc51962a}
+Chunk size for context length. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+source-\/code/app/src/main/java/org/buildmlearn/toolkit/utilities/\hyperlink{diff__match__patch_8java}{diff\+\_\+match\+\_\+patch.\+java}\end{DoxyCompactItemize}

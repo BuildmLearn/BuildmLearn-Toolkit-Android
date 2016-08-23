@@ -1,0 +1,5 @@
+<map id="org.buildmlearn.toolkit.dictationtemplate.fragment.MainActivityFragment" name="org.buildmlearn.toolkit.dictationtemplate.fragment.MainActivityFragment">
+<area shape="rect" id="node5" href="$classorg_1_1buildmlearn_1_1toolkit_1_1dictationtemplate_1_1data_1_1DictDb.html" title="Contains database util functions for dictation template&#39;s simulator. " alt="" coords="608,187,893,229"/>
+<area shape="rect" id="node7" title="DatabaseHelper for dictation template&#39;s simulator. " alt="" coords="185,193,471,234"/>
+<area shape="rect" id="node9" href="$classorg_1_1buildmlearn_1_1toolkit_1_1dictationtemplate_1_1adapter_1_1DictArrayAdapter.html" title="Custom Adapter for dictation template&#39;s simulator. " alt="" coords="599,253,902,294"/>
+</map>

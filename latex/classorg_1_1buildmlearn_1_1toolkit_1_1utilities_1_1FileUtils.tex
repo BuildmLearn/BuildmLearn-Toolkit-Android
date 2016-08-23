@@ -1,0 +1,251 @@
+\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils}{}\section{org.\+buildmlearn.\+toolkit.\+utilities.\+File\+Utils Class Reference}
+\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils}\index{org.\+buildmlearn.\+toolkit.\+utilities.\+File\+Utils@{org.\+buildmlearn.\+toolkit.\+utilities.\+File\+Utils}}
+
+
+Helper functions related to String manipulation.  
+
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils_a3985505c7367639777e7829b87fa625b}{un\+Zip} (String zip\+File\+Path, String destination\+Folder)  throws I\+O\+Exception 
+\begin{DoxyCompactList}\small\item\em Unzips a compressed file (.zip, .apk) \end{DoxyCompactList}\item 
+static void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils_a967a428caedce18e005b27539c0beb67}{un\+Zip} (Input\+Stream zip\+Input\+Stream, String destination\+Folder)
+\begin{DoxyCompactList}\small\item\em Unzips a compressed file (.zip, .apk) \end{DoxyCompactList}\item 
+static void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils_a40211ea6f81fcdd275cb33047c67c01a}{copy\+Assets} (Context context, String asset\+File\+Name, String destination\+Directory)
+\begin{DoxyCompactList}\small\item\em Copies a file from assets folder to a folder on device memory. \end{DoxyCompactList}\item 
+static boolean \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils_ae132c7d141598ae38e46d7229bccdb42}{equal\+Content} (File file1, File file2)
+\item 
+static void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils_add3d6116d25e4279692f34bc9cb237db}{save\+Xml\+File} (String destination\+Folder, String file\+Name, Document doc)
+\begin{DoxyCompactList}\small\item\em Converts a given Document object to xml format file. \end{DoxyCompactList}\item 
+static void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils_aa79713cc1d17fbf9b7294c60e851b774}{zip\+Folder} (String directory\+To\+Zip\+Path)  throws I\+O\+Exception 
+\begin{DoxyCompactList}\small\item\em Archives a folder into .zip compressed file. \end{DoxyCompactList}\item 
+static void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils_a22131f5eeefec02f52908ab439ab528b}{copy} (File src, File dst)  throws I\+O\+Exception 
+\begin{DoxyCompactList}\small\item\em Copies the content from one file to another. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils_aafa41feb34e473599f7181427de44c6c}{copy\+File} (Input\+Stream in, Output\+Stream out)  throws I\+O\+Exception 
+\item 
+static void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils_aa61e000a3890f6d8b42c1a537f8c2df4}{get\+All\+Files} (File dir, List$<$ File $>$ file\+List)
+\begin{DoxyCompactList}\small\item\em Add all the files in a given folder into a list. \end{DoxyCompactList}\item 
+static void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils_a65db51fe2a1892714317198a09958b7f}{write\+Zip\+File} (File directory\+To\+Zip, List$<$ File $>$ file\+List)
+\item 
+static void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils_aef6f60f80c3b591c89013a2acb2a9867}{add\+To\+Zip} (File directory\+To\+Zip, File file, Zip\+Output\+Stream zos)  throws I\+O\+Exception 
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils_a4b6b661a3961f90ac6e422a62bde8521}{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE} = 2048
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Helper functions related to String manipulation. 
+
+Created by Abhishek on 23-\/05-\/2015. 
+
+\subsection{Member Function Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils}!add\+To\+Zip@{add\+To\+Zip}}
+\index{add\+To\+Zip@{add\+To\+Zip}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils}}
+\subsubsection[{\texorpdfstring{add\+To\+Zip(\+File directory\+To\+Zip, File file, Zip\+Output\+Stream zos)}{addToZip(File directoryToZip, File file, ZipOutputStream zos)}}]{\setlength{\rightskip}{0pt plus 5cm}static void org.\+buildmlearn.\+toolkit.\+utilities.\+File\+Utils.\+add\+To\+Zip (
+\begin{DoxyParamCaption}
+\item[{File}]{directory\+To\+Zip, }
+\item[{File}]{file, }
+\item[{Zip\+Output\+Stream}]{zos}
+\end{DoxyParamCaption}
+) throws I\+O\+Exception\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils_aef6f60f80c3b591c89013a2acb2a9867}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils_aef6f60f80c3b591c89013a2acb2a9867}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils}!copy@{copy}}
+\index{copy@{copy}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils}}
+\subsubsection[{\texorpdfstring{copy(\+File src, File dst)}{copy(File src, File dst)}}]{\setlength{\rightskip}{0pt plus 5cm}static void org.\+buildmlearn.\+toolkit.\+utilities.\+File\+Utils.\+copy (
+\begin{DoxyParamCaption}
+\item[{File}]{src, }
+\item[{File}]{dst}
+\end{DoxyParamCaption}
+) throws I\+O\+Exception\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils_a22131f5eeefec02f52908ab439ab528b}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils_a22131f5eeefec02f52908ab439ab528b}
+
+
+Copies the content from one file to another. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em src} & Source file \\
+\hline
+{\em dst} & Destination file \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em I\+O\+Exception} & Exception thrown in case of error \\
+\hline
+\end{DoxyExceptions}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils}!copy\+Assets@{copy\+Assets}}
+\index{copy\+Assets@{copy\+Assets}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils}}
+\subsubsection[{\texorpdfstring{copy\+Assets(\+Context context, String asset\+File\+Name, String destination\+Directory)}{copyAssets(Context context, String assetFileName, String destinationDirectory)}}]{\setlength{\rightskip}{0pt plus 5cm}static void org.\+buildmlearn.\+toolkit.\+utilities.\+File\+Utils.\+copy\+Assets (
+\begin{DoxyParamCaption}
+\item[{Context}]{context, }
+\item[{String}]{asset\+File\+Name, }
+\item[{String}]{destination\+Directory}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils_a40211ea6f81fcdd275cb33047c67c01a}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils_a40211ea6f81fcdd275cb33047c67c01a}
+
+
+Copies a file from assets folder to a folder on device memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & Application context \\
+\hline
+{\em asset\+File\+Name} & Name of the file stored in assets \\
+\hline
+{\em destination\+Directory} & Destination folder for saving the file \\
+\hline
+\end{DoxyParams}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils}!copy\+File@{copy\+File}}
+\index{copy\+File@{copy\+File}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils}}
+\subsubsection[{\texorpdfstring{copy\+File(\+Input\+Stream in, Output\+Stream out)}{copyFile(InputStream in, OutputStream out)}}]{\setlength{\rightskip}{0pt plus 5cm}static void org.\+buildmlearn.\+toolkit.\+utilities.\+File\+Utils.\+copy\+File (
+\begin{DoxyParamCaption}
+\item[{Input\+Stream}]{in, }
+\item[{Output\+Stream}]{out}
+\end{DoxyParamCaption}
+) throws I\+O\+Exception\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils_aafa41feb34e473599f7181427de44c6c}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils_aafa41feb34e473599f7181427de44c6c}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils}!equal\+Content@{equal\+Content}}
+\index{equal\+Content@{equal\+Content}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils}}
+\subsubsection[{\texorpdfstring{equal\+Content(\+File file1, File file2)}{equalContent(File file1, File file2)}}]{\setlength{\rightskip}{0pt plus 5cm}static boolean org.\+buildmlearn.\+toolkit.\+utilities.\+File\+Utils.\+equal\+Content (
+\begin{DoxyParamCaption}
+\item[{File}]{file1, }
+\item[{File}]{file2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils_ae132c7d141598ae38e46d7229bccdb42}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils_ae132c7d141598ae38e46d7229bccdb42}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils}!get\+All\+Files@{get\+All\+Files}}
+\index{get\+All\+Files@{get\+All\+Files}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils}}
+\subsubsection[{\texorpdfstring{get\+All\+Files(\+File dir, List$<$ File $>$ file\+List)}{getAllFiles(File dir, List< File > fileList)}}]{\setlength{\rightskip}{0pt plus 5cm}static void org.\+buildmlearn.\+toolkit.\+utilities.\+File\+Utils.\+get\+All\+Files (
+\begin{DoxyParamCaption}
+\item[{File}]{dir, }
+\item[{List$<$ File $>$}]{file\+List}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils_aa61e000a3890f6d8b42c1a537f8c2df4}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils_aa61e000a3890f6d8b42c1a537f8c2df4}
+
+
+Add all the files in a given folder into a list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dir} & Source directory \\
+\hline
+{\em file\+List} & Referenced list. Files are added to this list \\
+\hline
+\end{DoxyParams}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils}!save\+Xml\+File@{save\+Xml\+File}}
+\index{save\+Xml\+File@{save\+Xml\+File}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils}}
+\subsubsection[{\texorpdfstring{save\+Xml\+File(\+String destination\+Folder, String file\+Name, Document doc)}{saveXmlFile(String destinationFolder, String fileName, Document doc)}}]{\setlength{\rightskip}{0pt plus 5cm}static void org.\+buildmlearn.\+toolkit.\+utilities.\+File\+Utils.\+save\+Xml\+File (
+\begin{DoxyParamCaption}
+\item[{String}]{destination\+Folder, }
+\item[{String}]{file\+Name, }
+\item[{Document}]{doc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils_add3d6116d25e4279692f34bc9cb237db}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils_add3d6116d25e4279692f34bc9cb237db}
+
+
+Converts a given Document object to xml format file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em destination\+Folder} & Destination folder for saving the file \\
+\hline
+{\em file\+Name} & Destination file name \\
+\hline
+{\em doc} & Document object to be converted to xml formatted file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if successfully converted 
+\end{DoxyReturn}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils}!un\+Zip@{un\+Zip}}
+\index{un\+Zip@{un\+Zip}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils}}
+\subsubsection[{\texorpdfstring{un\+Zip(\+String zip\+File\+Path, String destination\+Folder)}{unZip(String zipFilePath, String destinationFolder)}}]{\setlength{\rightskip}{0pt plus 5cm}static void org.\+buildmlearn.\+toolkit.\+utilities.\+File\+Utils.\+un\+Zip (
+\begin{DoxyParamCaption}
+\item[{String}]{zip\+File\+Path, }
+\item[{String}]{destination\+Folder}
+\end{DoxyParamCaption}
+) throws I\+O\+Exception\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils_a3985505c7367639777e7829b87fa625b}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils_a3985505c7367639777e7829b87fa625b}
+
+
+Unzips a compressed file (.zip, .apk) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em zip\+File\+Path} & Path of the source zip file \\
+\hline
+{\em destination\+Folder} & Destination folder for stroing the uncompresses files. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em I\+O\+Exception} & Exception thrown in case of some error. \\
+\hline
+\end{DoxyExceptions}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils}!un\+Zip@{un\+Zip}}
+\index{un\+Zip@{un\+Zip}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils}}
+\subsubsection[{\texorpdfstring{un\+Zip(\+Input\+Stream zip\+Input\+Stream, String destination\+Folder)}{unZip(InputStream zipInputStream, String destinationFolder)}}]{\setlength{\rightskip}{0pt plus 5cm}static void org.\+buildmlearn.\+toolkit.\+utilities.\+File\+Utils.\+un\+Zip (
+\begin{DoxyParamCaption}
+\item[{Input\+Stream}]{zip\+Input\+Stream, }
+\item[{String}]{destination\+Folder}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils_a967a428caedce18e005b27539c0beb67}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils_a967a428caedce18e005b27539c0beb67}
+
+
+Unzips a compressed file (.zip, .apk) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em zip\+Input\+Stream} & Input\+Stream of Zip file \\
+\hline
+{\em destination\+Folder} & Destination folder for stroing the uncompresses files. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em I\+O\+Exception} & Exception thrown in case of some error. \\
+\hline
+\end{DoxyExceptions}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils}!write\+Zip\+File@{write\+Zip\+File}}
+\index{write\+Zip\+File@{write\+Zip\+File}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils}}
+\subsubsection[{\texorpdfstring{write\+Zip\+File(\+File directory\+To\+Zip, List$<$ File $>$ file\+List)}{writeZipFile(File directoryToZip, List< File > fileList)}}]{\setlength{\rightskip}{0pt plus 5cm}static void org.\+buildmlearn.\+toolkit.\+utilities.\+File\+Utils.\+write\+Zip\+File (
+\begin{DoxyParamCaption}
+\item[{File}]{directory\+To\+Zip, }
+\item[{List$<$ File $>$}]{file\+List}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils_a65db51fe2a1892714317198a09958b7f}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils_a65db51fe2a1892714317198a09958b7f}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils}!zip\+Folder@{zip\+Folder}}
+\index{zip\+Folder@{zip\+Folder}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils}}
+\subsubsection[{\texorpdfstring{zip\+Folder(\+String directory\+To\+Zip\+Path)}{zipFolder(String directoryToZipPath)}}]{\setlength{\rightskip}{0pt plus 5cm}static void org.\+buildmlearn.\+toolkit.\+utilities.\+File\+Utils.\+zip\+Folder (
+\begin{DoxyParamCaption}
+\item[{String}]{directory\+To\+Zip\+Path}
+\end{DoxyParamCaption}
+) throws I\+O\+Exception\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils_aa79713cc1d17fbf9b7294c60e851b774}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils_aa79713cc1d17fbf9b7294c60e851b774}
+
+
+Archives a folder into .zip compressed file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em directory\+To\+Zip\+Path} & Source folder to be converted. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em I\+O\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+
+
+\subsection{Member Data Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils}!B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE@{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}}
+\index{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE@{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Utils}}
+\subsubsection[{\texorpdfstring{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}{BUFFER_SIZE}}]{\setlength{\rightskip}{0pt plus 5cm}final int org.\+buildmlearn.\+toolkit.\+utilities.\+File\+Utils.\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE = 2048\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils_a4b6b661a3961f90ac6e422a62bde8521}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileUtils_a4b6b661a3961f90ac6e422a62bde8521}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+source-\/code/app/src/main/java/org/buildmlearn/toolkit/utilities/\hyperlink{FileUtils_8java}{File\+Utils.\+java}\end{DoxyCompactItemize}

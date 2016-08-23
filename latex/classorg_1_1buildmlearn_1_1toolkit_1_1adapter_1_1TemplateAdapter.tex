@@ -1,0 +1,187 @@
+\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter}{}\section{org.\+buildmlearn.\+toolkit.\+adapter.\+Template\+Adapter Class Reference}
+\label{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter}\index{org.\+buildmlearn.\+toolkit.\+adapter.\+Template\+Adapter@{org.\+buildmlearn.\+toolkit.\+adapter.\+Template\+Adapter}}
+
+
+Adapter used for showing Templates available in the toolkit.  
+
+
+
+
+Inheritance diagram for org.\+buildmlearn.\+toolkit.\+adapter.\+Template\+Adapter\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=230pt]{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for org.\+buildmlearn.\+toolkit.\+adapter.\+Template\+Adapter\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class {\bfseries Async\+Drawable}
+\item 
+class {\bfseries Bitmap\+Worker\+Task}
+\item 
+enum {\bfseries List\+Color}
+\item 
+interface \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_1_1SetOnClickListener}{Set\+On\+Click\+Listener}
+\item 
+class \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_1_1ViewHolder}{View\+Holder}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_a39f071351048d858b84375b76c1cc8e1}{Template\+Adapter} (Context \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_a848684b0dd6cc43c279f4dde513346ea}{context})
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_abefb22ca8bf58dcf9fbc5816e97371d6}{set\+On\+Click\+Listener} (View\+Holder.\+Set\+On\+Click\+Listener click\+Listener)
+\item 
+Recycler\+View.\+View\+Holder \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_a83a2c83ea4e90fc5aed6a68d2ccb1157}{on\+Create\+View\+Holder} (View\+Group view\+Group, int position)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_a56ea041378f37dbf5270f69dab26f5a2}{on\+Bind\+View\+Holder} (Recycler\+View.\+View\+Holder view\+Holder, int position)
+\item 
+int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_ad79c3f5f747a7f83e5f8d929b1c46089}{get\+Item\+Count} ()
+\item 
+long \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_af7269011268e606de6d4c841d349149f}{get\+Item\+Id} (int i)
+\item 
+int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_a014c57ad6432bfc5f9566caf1edf1e76}{get\+Item\+View\+Type} (int position)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static boolean \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_aa314cac047e91a51517a4b68d29b6f39}{cancel\+Potential\+Work} (int data, Image\+View image\+View)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{enumorg_1_1buildmlearn_1_1toolkit_1_1model_1_1Template}{Template} \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_a0a369687833d55da928db3df41b65c39}{get\+Item} (int i)
+\end{DoxyCompactItemize}
+\subsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static Bitmap\+Worker\+Task \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_a9a68de78e39a559725d416a3aa02fc01}{get\+Bitmap\+Worker\+Task} (Image\+View image\+View)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+final Context \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_a848684b0dd6cc43c279f4dde513346ea}{context}
+\item 
+final \hyperlink{enumorg_1_1buildmlearn_1_1toolkit_1_1model_1_1Template}{Template}\mbox{[}$\,$\mbox{]} \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_ae40d5c4f746400bf9406ae5138a4cdcb}{templates} = Template.\+values()
+\item 
+final List\+Color\mbox{[}$\,$\mbox{]} \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_ad3708e7103ef3ec7ef5d57edbcd1e9bf}{colors} = List\+Color.\+values()
+\item 
+View\+Holder.\+Set\+On\+Click\+Listener \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_a7abb2097a4b27a2c6a7ba9630f3b6f64}{listener}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Adapter used for showing Templates available in the toolkit. 
+
+Created by Abhishek on 23-\/05-\/2015. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter@{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter}!Template\+Adapter@{Template\+Adapter}}
+\index{Template\+Adapter@{Template\+Adapter}!org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter@{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter}}
+\subsubsection[{\texorpdfstring{Template\+Adapter(\+Context context)}{TemplateAdapter(Context context)}}]{\setlength{\rightskip}{0pt plus 5cm}org.\+buildmlearn.\+toolkit.\+adapter.\+Template\+Adapter.\+Template\+Adapter (
+\begin{DoxyParamCaption}
+\item[{Context}]{context}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_a39f071351048d858b84375b76c1cc8e1}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_a39f071351048d858b84375b76c1cc8e1}
+
+
+\subsection{Member Function Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter@{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter}!cancel\+Potential\+Work@{cancel\+Potential\+Work}}
+\index{cancel\+Potential\+Work@{cancel\+Potential\+Work}!org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter@{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter}}
+\subsubsection[{\texorpdfstring{cancel\+Potential\+Work(int data, Image\+View image\+View)}{cancelPotentialWork(int data, ImageView imageView)}}]{\setlength{\rightskip}{0pt plus 5cm}static boolean org.\+buildmlearn.\+toolkit.\+adapter.\+Template\+Adapter.\+cancel\+Potential\+Work (
+\begin{DoxyParamCaption}
+\item[{int}]{data, }
+\item[{Image\+View}]{image\+View}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_aa314cac047e91a51517a4b68d29b6f39}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_aa314cac047e91a51517a4b68d29b6f39}
+\index{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter@{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter}!get\+Bitmap\+Worker\+Task@{get\+Bitmap\+Worker\+Task}}
+\index{get\+Bitmap\+Worker\+Task@{get\+Bitmap\+Worker\+Task}!org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter@{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter}}
+\subsubsection[{\texorpdfstring{get\+Bitmap\+Worker\+Task(\+Image\+View image\+View)}{getBitmapWorkerTask(ImageView imageView)}}]{\setlength{\rightskip}{0pt plus 5cm}static Bitmap\+Worker\+Task org.\+buildmlearn.\+toolkit.\+adapter.\+Template\+Adapter.\+get\+Bitmap\+Worker\+Task (
+\begin{DoxyParamCaption}
+\item[{Image\+View}]{image\+View}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_a9a68de78e39a559725d416a3aa02fc01}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_a9a68de78e39a559725d416a3aa02fc01}
+\index{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter@{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter}!get\+Item@{get\+Item}}
+\index{get\+Item@{get\+Item}!org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter@{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter}}
+\subsubsection[{\texorpdfstring{get\+Item(int i)}{getItem(int i)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Template} org.\+buildmlearn.\+toolkit.\+adapter.\+Template\+Adapter.\+get\+Item (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_a0a369687833d55da928db3df41b65c39}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_a0a369687833d55da928db3df41b65c39}
+\index{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter@{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter}!get\+Item\+Count@{get\+Item\+Count}}
+\index{get\+Item\+Count@{get\+Item\+Count}!org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter@{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter}}
+\subsubsection[{\texorpdfstring{get\+Item\+Count()}{getItemCount()}}]{\setlength{\rightskip}{0pt plus 5cm}int org.\+buildmlearn.\+toolkit.\+adapter.\+Template\+Adapter.\+get\+Item\+Count (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_ad79c3f5f747a7f83e5f8d929b1c46089}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_ad79c3f5f747a7f83e5f8d929b1c46089}
+\index{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter@{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter}!get\+Item\+Id@{get\+Item\+Id}}
+\index{get\+Item\+Id@{get\+Item\+Id}!org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter@{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter}}
+\subsubsection[{\texorpdfstring{get\+Item\+Id(int i)}{getItemId(int i)}}]{\setlength{\rightskip}{0pt plus 5cm}long org.\+buildmlearn.\+toolkit.\+adapter.\+Template\+Adapter.\+get\+Item\+Id (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_af7269011268e606de6d4c841d349149f}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_af7269011268e606de6d4c841d349149f}
+\index{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter@{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter}!get\+Item\+View\+Type@{get\+Item\+View\+Type}}
+\index{get\+Item\+View\+Type@{get\+Item\+View\+Type}!org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter@{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter}}
+\subsubsection[{\texorpdfstring{get\+Item\+View\+Type(int position)}{getItemViewType(int position)}}]{\setlength{\rightskip}{0pt plus 5cm}int org.\+buildmlearn.\+toolkit.\+adapter.\+Template\+Adapter.\+get\+Item\+View\+Type (
+\begin{DoxyParamCaption}
+\item[{int}]{position}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_a014c57ad6432bfc5f9566caf1edf1e76}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_a014c57ad6432bfc5f9566caf1edf1e76}
+\index{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter@{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter}!on\+Bind\+View\+Holder@{on\+Bind\+View\+Holder}}
+\index{on\+Bind\+View\+Holder@{on\+Bind\+View\+Holder}!org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter@{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter}}
+\subsubsection[{\texorpdfstring{on\+Bind\+View\+Holder(\+Recycler\+View.\+View\+Holder view\+Holder, int position)}{onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+adapter.\+Template\+Adapter.\+on\+Bind\+View\+Holder (
+\begin{DoxyParamCaption}
+\item[{Recycler\+View.\+View\+Holder}]{view\+Holder, }
+\item[{int}]{position}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_a56ea041378f37dbf5270f69dab26f5a2}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_a56ea041378f37dbf5270f69dab26f5a2}
+\index{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter@{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter}!on\+Create\+View\+Holder@{on\+Create\+View\+Holder}}
+\index{on\+Create\+View\+Holder@{on\+Create\+View\+Holder}!org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter@{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter}}
+\subsubsection[{\texorpdfstring{on\+Create\+View\+Holder(\+View\+Group view\+Group, int position)}{onCreateViewHolder(ViewGroup viewGroup, int position)}}]{\setlength{\rightskip}{0pt plus 5cm}Recycler\+View.\+View\+Holder org.\+buildmlearn.\+toolkit.\+adapter.\+Template\+Adapter.\+on\+Create\+View\+Holder (
+\begin{DoxyParamCaption}
+\item[{View\+Group}]{view\+Group, }
+\item[{int}]{position}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_a83a2c83ea4e90fc5aed6a68d2ccb1157}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_a83a2c83ea4e90fc5aed6a68d2ccb1157}
+\index{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter@{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter}!set\+On\+Click\+Listener@{set\+On\+Click\+Listener}}
+\index{set\+On\+Click\+Listener@{set\+On\+Click\+Listener}!org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter@{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter}}
+\subsubsection[{\texorpdfstring{set\+On\+Click\+Listener(\+View\+Holder.\+Set\+On\+Click\+Listener click\+Listener)}{setOnClickListener(ViewHolder.SetOnClickListener clickListener)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+adapter.\+Template\+Adapter.\+set\+On\+Click\+Listener (
+\begin{DoxyParamCaption}
+\item[{View\+Holder.\+Set\+On\+Click\+Listener}]{click\+Listener}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_abefb22ca8bf58dcf9fbc5816e97371d6}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_abefb22ca8bf58dcf9fbc5816e97371d6}
+
+
+\subsection{Member Data Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter@{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter}!colors@{colors}}
+\index{colors@{colors}!org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter@{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter}}
+\subsubsection[{\texorpdfstring{colors}{colors}}]{\setlength{\rightskip}{0pt plus 5cm}final List\+Color \mbox{[}$\,$\mbox{]} org.\+buildmlearn.\+toolkit.\+adapter.\+Template\+Adapter.\+colors = List\+Color.\+values()\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_ad3708e7103ef3ec7ef5d57edbcd1e9bf}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_ad3708e7103ef3ec7ef5d57edbcd1e9bf}
+\index{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter@{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter}!context@{context}}
+\index{context@{context}!org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter@{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter}}
+\subsubsection[{\texorpdfstring{context}{context}}]{\setlength{\rightskip}{0pt plus 5cm}final Context org.\+buildmlearn.\+toolkit.\+adapter.\+Template\+Adapter.\+context\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_a848684b0dd6cc43c279f4dde513346ea}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_a848684b0dd6cc43c279f4dde513346ea}
+\index{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter@{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter}!listener@{listener}}
+\index{listener@{listener}!org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter@{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter}}
+\subsubsection[{\texorpdfstring{listener}{listener}}]{\setlength{\rightskip}{0pt plus 5cm}View\+Holder.\+Set\+On\+Click\+Listener org.\+buildmlearn.\+toolkit.\+adapter.\+Template\+Adapter.\+listener\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_a7abb2097a4b27a2c6a7ba9630f3b6f64}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_a7abb2097a4b27a2c6a7ba9630f3b6f64}
+\index{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter@{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter}!templates@{templates}}
+\index{templates@{templates}!org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter@{org\+::buildmlearn\+::toolkit\+::adapter\+::\+Template\+Adapter}}
+\subsubsection[{\texorpdfstring{templates}{templates}}]{\setlength{\rightskip}{0pt plus 5cm}final {\bf Template} \mbox{[}$\,$\mbox{]} org.\+buildmlearn.\+toolkit.\+adapter.\+Template\+Adapter.\+templates = Template.\+values()\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_ae40d5c4f746400bf9406ae5138a4cdcb}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_ae40d5c4f746400bf9406ae5138a4cdcb}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+source-\/code/app/src/main/java/org/buildmlearn/toolkit/adapter/\hyperlink{TemplateAdapter_8java}{Template\+Adapter.\+java}\end{DoxyCompactItemize}

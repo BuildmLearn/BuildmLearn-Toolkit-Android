@@ -1,0 +1,528 @@
+\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate}{}\section{org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template Class Reference}
+\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate}\index{org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template@{org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template}}
+
+
+Flash Card template code implementing methods of Template\+Interface.  
+
+
+
+
+Inheritance diagram for org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=241pt]{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a93eca3908cf039e1fa37e0408d0f4837}{Flash\+Template} ()
+\item 
+Base\+Adapter \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_ad524e69199d8435959cf348558039b2d}{new\+Template\+Editor\+Adapter} (Context context)
+\begin{DoxyCompactList}\small\item\em Called from Template Editor when template editor is started for creating a new template project. \end{DoxyCompactList}\item 
+Base\+Adapter \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_acc09bbe7a90180bee49dfe4092f8cb29}{new\+Meta\+Editor\+Adapter} (Context context)
+\begin{DoxyCompactList}\small\item\em Called from Template Editor when template editor is started for creating a new meta details of template project. \end{DoxyCompactList}\item 
+Base\+Adapter \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a70db96b6e7ec5e339fe106fc15d64860}{current\+Template\+Editor\+Adapter} ()
+\begin{DoxyCompactList}\small\item\em This function is used to get the adapter (containing template data) for a existing/current template project. \end{DoxyCompactList}\item 
+Base\+Adapter \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_af0e590dfdd08ff97be8c27c16a851d1d}{current\+Meta\+Editor\+Adapter} ()
+\begin{DoxyCompactList}\small\item\em This function is used to get the meta adapter (containing template meta details) for a existing/current template project. \end{DoxyCompactList}\item 
+Base\+Adapter \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_af8aef752122b92b1f65cb9441af82653}{load\+Project\+Meta\+Editor} (Context context, Document doc)
+\item 
+Base\+Adapter \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_aeee0f28447c5d3c1d5c7c4ef8bb2ae3e}{load\+Project\+Template\+Editor} (Context context, Array\+List$<$ Element $>$ data)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a4d44f233e7bd0b4d480583c1e3aa2d18}{set\+Template\+Id} (int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a00df07dcf4f09799ccba120c9ef45e46}{template\+Id})
+\begin{DoxyCompactList}\small\item\em Set template\+Id,that can be used to get Info about current template from enum Template. \end{DoxyCompactList}\item 
+String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_aed263c384b73d5d700e4144a97007245}{get\+Title} ()
+\begin{DoxyCompactList}\small\item\em Used to get the title of the templaye. Mainly used to update Action\+Bar in Template Editor. \end{DoxyCompactList}\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a21bb61da956f40b08ae38bedb329639f}{add\+Item} (final Activity activity)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a38adf2d900315cadbee7160e8a06bdbd}{add\+Meta\+Data} (Activity activity)
+\begin{DoxyCompactList}\small\item\em Add Meta\+Data to template data. \end{DoxyCompactList}\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a83e541cdb95abf421a55a269f67f4e2f}{edit\+Item} (final Activity activity, final int position)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a9fafe16479379a494bcccde6811d909f}{delete\+Item} (Activity activity, int position)
+\begin{DoxyCompactList}\small\item\em Remove an item form template data list. \end{DoxyCompactList}\item 
+Array\+List$<$ Element $>$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_adac9ece8aeee9a46cd8b7ac97ba9aab0}{get\+Items} (Document doc)
+\item 
+android.\+support.\+v4.\+app.\+Fragment \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a36f3970e28dded3330ad192b418d3750}{get\+Simulator\+Fragment} (String file\+Path\+With\+Name)
+\begin{DoxyCompactList}\small\item\em Returns a fragment required for the Simulator Activity. \end{DoxyCompactList}\item 
+String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a4ddbf3cfd4aaa7a991e73e257d7423d0}{get\+Assets\+File\+Name} (Context context)
+\begin{DoxyCompactList}\small\item\em Name of the xml file congaing template data in the assets folders in the build apk. \end{DoxyCompactList}\item 
+String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a081b149001c8d3829f6d5e81e0b80113}{get\+Assets\+File\+Path} ()
+\begin{DoxyCompactList}\small\item\em Folder path in which the apk is stored in the build A\+PK. \end{DoxyCompactList}\item 
+String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_ae0ed657e20c9619afcd89bd624deb888}{get\+Apk\+File\+Path} ()
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a94a03d343059afa3914559725d911818}{on\+Activity\+Result} (Context context, int request\+Code, int result\+Code, Intent intent)
+\begin{DoxyCompactList}\small\item\em Called whenever on\+Activity\+Result is called in Template Editor. Can be used to perform action related to intent and callbacks. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+boolean \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a0f68f3164c359f3d2e80566bbe293fb5}{validate\+Data} (Edit\+Text \hyperlink{quiz__content_8txt_a4a899bd252c466e4cb51d25efbeae317}{question}, Edit\+Text answer, Edit\+Text answer\+Hint, Context context)
+\item 
+Bitmap \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_aa6ebcd5e67f9a077db7bb1ff454cd988}{get\+Resized\+Bitmap} (Bitmap image)
+\item 
+Bitmap \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_ad2f34800e489dfb0f0f74aab17c6be92}{grab\+Image} (Context context)
+\item 
+Intent \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_ab6d320b3989f7b3313243ac7a758891f}{make\+Photo\+Intent} (String title, Context context)
+\item 
+File \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_aa2ebd3b8006ca04c404b0372e2b70fbb}{create\+Temporary\+File} (Context context, String part)  throws Exception 
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a358ca371577a765ad0ddee2373ceee0b}{set\+Empty\+View} (Activity activity)
+\begin{DoxyCompactList}\small\item\em Toggles the visibility of empty text if Array has zero elements. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Array\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashCardModel}{Flash\+Card\+Model} $>$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a22f583de25594f6e010ceff3f45e30e0}{m\+Data}
+\item 
+transient Uri \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a5c746741b2733c55f00e458194733ab0}{m\+Image\+Uri}
+\item 
+transient Image\+View \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_ab7e63f59edb292088a4d3fc0386eb741}{m\+Banner\+Image}
+\item 
+boolean \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a7b7bcf879c40f3e2fc7de5503627318f}{m\+Is\+Photo\+Attached}
+\item 
+transient Flash\+Card\+Adapter \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a4decea11a01f62e92db3e24bb93a25bb}{m\+Adapter}
+\item 
+int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a00df07dcf4f09799ccba120c9ef45e46}{template\+Id}
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a587243f063c2b42ae7c457efe6752e28}{R\+E\+Q\+U\+E\+S\+T\+\_\+\+T\+A\+K\+E\+\_\+\+P\+H\+O\+TO} = 6677
+\item 
+static final String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a276db76cabb84d7edd7c28d3fb649039}{T\+AG} = \char`\"{}F\+L\+A\+SH T\+E\+M\+P\+L\+A\+TE\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Flash Card template code implementing methods of Template\+Interface. 
+
+Created by abhishek on 11/07/15 at 7\+:33 PM. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}!Flash\+Template@{Flash\+Template}}
+\index{Flash\+Template@{Flash\+Template}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}}
+\subsubsection[{\texorpdfstring{Flash\+Template()}{FlashTemplate()}}]{\setlength{\rightskip}{0pt plus 5cm}org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template.\+Flash\+Template (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a93eca3908cf039e1fa37e0408d0f4837}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a93eca3908cf039e1fa37e0408d0f4837}
+
+
+\subsection{Member Function Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}!add\+Item@{add\+Item}}
+\index{add\+Item@{add\+Item}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}}
+\subsubsection[{\texorpdfstring{add\+Item(final Activity activity)}{addItem(final Activity activity)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template.\+add\+Item (
+\begin{DoxyParamCaption}
+\item[{final Activity}]{activity}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a21bb61da956f40b08ae38bedb329639f}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a21bb61da956f40b08ae38bedb329639f}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}!add\+Meta\+Data@{add\+Meta\+Data}}
+\index{add\+Meta\+Data@{add\+Meta\+Data}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}}
+\subsubsection[{\texorpdfstring{add\+Meta\+Data(\+Activity activity)}{addMetaData(Activity activity)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template.\+add\+Meta\+Data (
+\begin{DoxyParamCaption}
+\item[{Activity}]{activity}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a38adf2d900315cadbee7160e8a06bdbd}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a38adf2d900315cadbee7160e8a06bdbd}
+
+
+Add Meta\+Data to template data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em activity} & Current Activity \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_a4dcf463c18db372074327d828e56cf2d}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}!create\+Temporary\+File@{create\+Temporary\+File}}
+\index{create\+Temporary\+File@{create\+Temporary\+File}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}}
+\subsubsection[{\texorpdfstring{create\+Temporary\+File(\+Context context, String part)}{createTemporaryFile(Context context, String part)}}]{\setlength{\rightskip}{0pt plus 5cm}File org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template.\+create\+Temporary\+File (
+\begin{DoxyParamCaption}
+\item[{Context}]{context, }
+\item[{String}]{part}
+\end{DoxyParamCaption}
+) throws Exception\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_aa2ebd3b8006ca04c404b0372e2b70fbb}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_aa2ebd3b8006ca04c404b0372e2b70fbb}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}!current\+Meta\+Editor\+Adapter@{current\+Meta\+Editor\+Adapter}}
+\index{current\+Meta\+Editor\+Adapter@{current\+Meta\+Editor\+Adapter}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}}
+\subsubsection[{\texorpdfstring{current\+Meta\+Editor\+Adapter()}{currentMetaEditorAdapter()}}]{\setlength{\rightskip}{0pt plus 5cm}Base\+Adapter org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template.\+current\+Meta\+Editor\+Adapter (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_af0e590dfdd08ff97be8c27c16a851d1d}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_af0e590dfdd08ff97be8c27c16a851d1d}
+
+
+This function is used to get the meta adapter (containing template meta details) for a existing/current template project. 
+
+\begin{DoxyReturn}{Returns}
+Base\+Adapter inherited Object 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_a2b24967afaab00b7dcce5083b829bb95}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}!current\+Template\+Editor\+Adapter@{current\+Template\+Editor\+Adapter}}
+\index{current\+Template\+Editor\+Adapter@{current\+Template\+Editor\+Adapter}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}}
+\subsubsection[{\texorpdfstring{current\+Template\+Editor\+Adapter()}{currentTemplateEditorAdapter()}}]{\setlength{\rightskip}{0pt plus 5cm}Base\+Adapter org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template.\+current\+Template\+Editor\+Adapter (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a70db96b6e7ec5e339fe106fc15d64860}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a70db96b6e7ec5e339fe106fc15d64860}
+
+
+This function is used to get the adapter (containing template data) for a existing/current template project. 
+
+\begin{DoxyReturn}{Returns}
+Base\+Adapter inherited Object 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_ae433eedc291006e78b65b0fc4135d560}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}!delete\+Item@{delete\+Item}}
+\index{delete\+Item@{delete\+Item}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}}
+\subsubsection[{\texorpdfstring{delete\+Item(\+Activity activity, int position)}{deleteItem(Activity activity, int position)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template.\+delete\+Item (
+\begin{DoxyParamCaption}
+\item[{Activity}]{activity, }
+\item[{int}]{position}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a9fafe16479379a494bcccde6811d909f}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a9fafe16479379a494bcccde6811d909f}
+
+
+Remove an item form template data list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em activity} & Current Activity \\
+\hline
+{\em position} & Position of the item to be removed \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_acc9339e97daba180a70b5d1907f214df}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}!edit\+Item@{edit\+Item}}
+\index{edit\+Item@{edit\+Item}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}}
+\subsubsection[{\texorpdfstring{edit\+Item(final Activity activity, final int position)}{editItem(final Activity activity, final int position)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template.\+edit\+Item (
+\begin{DoxyParamCaption}
+\item[{final Activity}]{activity, }
+\item[{final int}]{position}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a83e541cdb95abf421a55a269f67f4e2f}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a83e541cdb95abf421a55a269f67f4e2f}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}!get\+Apk\+File\+Path@{get\+Apk\+File\+Path}}
+\index{get\+Apk\+File\+Path@{get\+Apk\+File\+Path}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}}
+\subsubsection[{\texorpdfstring{get\+Apk\+File\+Path()}{getApkFilePath()}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template.\+get\+Apk\+File\+Path (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_ae0ed657e20c9619afcd89bd624deb888}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_ae0ed657e20c9619afcd89bd624deb888}
+Path of the apk stored in assets
+
+\begin{DoxyReturn}{Returns}
+Apk file path 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_a1bca348acb3790aebce645c04a9e0945}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}!get\+Assets\+File\+Name@{get\+Assets\+File\+Name}}
+\index{get\+Assets\+File\+Name@{get\+Assets\+File\+Name}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}}
+\subsubsection[{\texorpdfstring{get\+Assets\+File\+Name(\+Context context)}{getAssetsFileName(Context context)}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template.\+get\+Assets\+File\+Name (
+\begin{DoxyParamCaption}
+\item[{Context}]{context}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a4ddbf3cfd4aaa7a991e73e257d7423d0}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a4ddbf3cfd4aaa7a991e73e257d7423d0}
+
+
+Name of the xml file congaing template data in the assets folders in the build apk. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & For obtaining String from String\+Res \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Asset file name 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_aab9ccfcee9b83ea3d70efffecf8dad78}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}!get\+Assets\+File\+Path@{get\+Assets\+File\+Path}}
+\index{get\+Assets\+File\+Path@{get\+Assets\+File\+Path}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}}
+\subsubsection[{\texorpdfstring{get\+Assets\+File\+Path()}{getAssetsFilePath()}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template.\+get\+Assets\+File\+Path (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a081b149001c8d3829f6d5e81e0b80113}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a081b149001c8d3829f6d5e81e0b80113}
+
+
+Folder path in which the apk is stored in the build A\+PK. 
+
+\begin{DoxyReturn}{Returns}
+Assets folder path 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_ae35d1ab3f2c88b79d0d2a79cde81155b}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}!get\+Items@{get\+Items}}
+\index{get\+Items@{get\+Items}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}}
+\subsubsection[{\texorpdfstring{get\+Items(\+Document doc)}{getItems(Document doc)}}]{\setlength{\rightskip}{0pt plus 5cm}Array\+List$<$Element$>$ org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template.\+get\+Items (
+\begin{DoxyParamCaption}
+\item[{Document}]{doc}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_adac9ece8aeee9a46cd8b7ac97ba9aab0}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_adac9ece8aeee9a46cd8b7ac97ba9aab0}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_a9fb6e277f0ebfb2caea138017854473f}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}!get\+Resized\+Bitmap@{get\+Resized\+Bitmap}}
+\index{get\+Resized\+Bitmap@{get\+Resized\+Bitmap}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}}
+\subsubsection[{\texorpdfstring{get\+Resized\+Bitmap(\+Bitmap image)}{getResizedBitmap(Bitmap image)}}]{\setlength{\rightskip}{0pt plus 5cm}Bitmap org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template.\+get\+Resized\+Bitmap (
+\begin{DoxyParamCaption}
+\item[{Bitmap}]{image}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_aa6ebcd5e67f9a077db7bb1ff454cd988}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_aa6ebcd5e67f9a077db7bb1ff454cd988}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}!get\+Simulator\+Fragment@{get\+Simulator\+Fragment}}
+\index{get\+Simulator\+Fragment@{get\+Simulator\+Fragment}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}}
+\subsubsection[{\texorpdfstring{get\+Simulator\+Fragment(\+String file\+Path\+With\+Name)}{getSimulatorFragment(String filePathWithName)}}]{\setlength{\rightskip}{0pt plus 5cm}android.\+support.\+v4.\+app.\+Fragment org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template.\+get\+Simulator\+Fragment (
+\begin{DoxyParamCaption}
+\item[{String}]{file\+Path\+With\+Name}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a36f3970e28dded3330ad192b418d3750}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a36f3970e28dded3330ad192b418d3750}
+
+
+Returns a fragment required for the Simulator Activity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Path\+With\+Name} & Path of the generated .buildmlearn file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a fragment required for the Simulator Activity. $\ast$$\ast$\+Dev Note\+: File Path should be used to populate data from actual .buildmlearn file in the Simulator. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_a8668cc58306c48c8581ae51393138649}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}!get\+Title@{get\+Title}}
+\index{get\+Title@{get\+Title}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}}
+\subsubsection[{\texorpdfstring{get\+Title()}{getTitle()}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template.\+get\+Title (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_aed263c384b73d5d700e4144a97007245}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_aed263c384b73d5d700e4144a97007245}
+
+
+Used to get the title of the templaye. Mainly used to update Action\+Bar in Template Editor. 
+
+\begin{DoxyReturn}{Returns}
+Title as a string 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_a98a8592a7e4928ce76d0c61df17cf5c8}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}!grab\+Image@{grab\+Image}}
+\index{grab\+Image@{grab\+Image}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}}
+\subsubsection[{\texorpdfstring{grab\+Image(\+Context context)}{grabImage(Context context)}}]{\setlength{\rightskip}{0pt plus 5cm}Bitmap org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template.\+grab\+Image (
+\begin{DoxyParamCaption}
+\item[{Context}]{context}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_ad2f34800e489dfb0f0f74aab17c6be92}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_ad2f34800e489dfb0f0f74aab17c6be92}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}!load\+Project\+Meta\+Editor@{load\+Project\+Meta\+Editor}}
+\index{load\+Project\+Meta\+Editor@{load\+Project\+Meta\+Editor}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}}
+\subsubsection[{\texorpdfstring{load\+Project\+Meta\+Editor(\+Context context, Document doc)}{loadProjectMetaEditor(Context context, Document doc)}}]{\setlength{\rightskip}{0pt plus 5cm}Base\+Adapter org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template.\+load\+Project\+Meta\+Editor (
+\begin{DoxyParamCaption}
+\item[{Context}]{context, }
+\item[{Document}]{doc}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_af8aef752122b92b1f65cb9441af82653}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_af8aef752122b92b1f65cb9441af82653}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_a589528c60323c07cca5e6ef112530a50}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}!load\+Project\+Template\+Editor@{load\+Project\+Template\+Editor}}
+\index{load\+Project\+Template\+Editor@{load\+Project\+Template\+Editor}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}}
+\subsubsection[{\texorpdfstring{load\+Project\+Template\+Editor(\+Context context, Array\+List$<$ Element $>$ data)}{loadProjectTemplateEditor(Context context, ArrayList< Element > data)}}]{\setlength{\rightskip}{0pt plus 5cm}Base\+Adapter org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template.\+load\+Project\+Template\+Editor (
+\begin{DoxyParamCaption}
+\item[{Context}]{context, }
+\item[{Array\+List$<$ Element $>$}]{data}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_aeee0f28447c5d3c1d5c7c4ef8bb2ae3e}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_aeee0f28447c5d3c1d5c7c4ef8bb2ae3e}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_ac0637282a7f7b58a4e9b8e86a734bf93}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}!make\+Photo\+Intent@{make\+Photo\+Intent}}
+\index{make\+Photo\+Intent@{make\+Photo\+Intent}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}}
+\subsubsection[{\texorpdfstring{make\+Photo\+Intent(\+String title, Context context)}{makePhotoIntent(String title, Context context)}}]{\setlength{\rightskip}{0pt plus 5cm}Intent org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template.\+make\+Photo\+Intent (
+\begin{DoxyParamCaption}
+\item[{String}]{title, }
+\item[{Context}]{context}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_ab6d320b3989f7b3313243ac7a758891f}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_ab6d320b3989f7b3313243ac7a758891f}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}!new\+Meta\+Editor\+Adapter@{new\+Meta\+Editor\+Adapter}}
+\index{new\+Meta\+Editor\+Adapter@{new\+Meta\+Editor\+Adapter}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}}
+\subsubsection[{\texorpdfstring{new\+Meta\+Editor\+Adapter(\+Context context)}{newMetaEditorAdapter(Context context)}}]{\setlength{\rightskip}{0pt plus 5cm}Base\+Adapter org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template.\+new\+Meta\+Editor\+Adapter (
+\begin{DoxyParamCaption}
+\item[{Context}]{context}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_acc09bbe7a90180bee49dfe4092f8cb29}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_acc09bbe7a90180bee49dfe4092f8cb29}
+
+
+Called from Template Editor when template editor is started for creating a new meta details of template project. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & Application context \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Base\+Adapter inherited Object 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_acbf649946d2636f02e154dfefaadf868}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}!new\+Template\+Editor\+Adapter@{new\+Template\+Editor\+Adapter}}
+\index{new\+Template\+Editor\+Adapter@{new\+Template\+Editor\+Adapter}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}}
+\subsubsection[{\texorpdfstring{new\+Template\+Editor\+Adapter(\+Context context)}{newTemplateEditorAdapter(Context context)}}]{\setlength{\rightskip}{0pt plus 5cm}Base\+Adapter org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template.\+new\+Template\+Editor\+Adapter (
+\begin{DoxyParamCaption}
+\item[{Context}]{context}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_ad524e69199d8435959cf348558039b2d}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_ad524e69199d8435959cf348558039b2d}
+
+
+Called from Template Editor when template editor is started for creating a new template project. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & Application context \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Base\+Adapter inherited Object 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_af7d9d92709123fc39693504884e4f7e2}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}!on\+Activity\+Result@{on\+Activity\+Result}}
+\index{on\+Activity\+Result@{on\+Activity\+Result}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}}
+\subsubsection[{\texorpdfstring{on\+Activity\+Result(\+Context context, int request\+Code, int result\+Code, Intent intent)}{onActivityResult(Context context, int requestCode, int resultCode, Intent intent)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template.\+on\+Activity\+Result (
+\begin{DoxyParamCaption}
+\item[{Context}]{context, }
+\item[{int}]{request\+Code, }
+\item[{int}]{result\+Code, }
+\item[{Intent}]{intent}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a94a03d343059afa3914559725d911818}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a94a03d343059afa3914559725d911818}
+
+
+Called whenever on\+Activity\+Result is called in Template Editor. Can be used to perform action related to intent and callbacks. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & \\
+\hline
+{\em request\+Code} & \\
+\hline
+{\em result\+Code} & \\
+\hline
+{\em intent} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_a9c506bf3776973765d4d1e8d6954e95b}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}!set\+Empty\+View@{set\+Empty\+View}}
+\index{set\+Empty\+View@{set\+Empty\+View}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}}
+\subsubsection[{\texorpdfstring{set\+Empty\+View(\+Activity activity)}{setEmptyView(Activity activity)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template.\+set\+Empty\+View (
+\begin{DoxyParamCaption}
+\item[{Activity}]{activity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a358ca371577a765ad0ddee2373ceee0b}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a358ca371577a765ad0ddee2373ceee0b}
+
+
+Toggles the visibility of empty text if Array has zero elements. 
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}!set\+Template\+Id@{set\+Template\+Id}}
+\index{set\+Template\+Id@{set\+Template\+Id}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}}
+\subsubsection[{\texorpdfstring{set\+Template\+Id(int template\+Id)}{setTemplateId(int templateId)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template.\+set\+Template\+Id (
+\begin{DoxyParamCaption}
+\item[{int}]{template\+Id}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a4d44f233e7bd0b4d480583c1e3aa2d18}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a4d44f233e7bd0b4d480583c1e3aa2d18}
+
+
+Set template\+Id,that can be used to get Info about current template from enum Template. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em template\+Id} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_ae84eac484da25355ba7ace669d7b0c90}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}!validate\+Data@{validate\+Data}}
+\index{validate\+Data@{validate\+Data}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}}
+\subsubsection[{\texorpdfstring{validate\+Data(\+Edit\+Text question, Edit\+Text answer, Edit\+Text answer\+Hint, Context context)}{validateData(EditText question, EditText answer, EditText answerHint, Context context)}}]{\setlength{\rightskip}{0pt plus 5cm}boolean org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template.\+validate\+Data (
+\begin{DoxyParamCaption}
+\item[{Edit\+Text}]{question, }
+\item[{Edit\+Text}]{answer, }
+\item[{Edit\+Text}]{answer\+Hint, }
+\item[{Context}]{context}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a0f68f3164c359f3d2e80566bbe293fb5}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a0f68f3164c359f3d2e80566bbe293fb5}
+
+
+\subsection{Member Data Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}!m\+Adapter@{m\+Adapter}}
+\index{m\+Adapter@{m\+Adapter}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}}
+\subsubsection[{\texorpdfstring{m\+Adapter}{mAdapter}}]{\setlength{\rightskip}{0pt plus 5cm}transient Flash\+Card\+Adapter org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template.\+m\+Adapter\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a4decea11a01f62e92db3e24bb93a25bb}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a4decea11a01f62e92db3e24bb93a25bb}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}!m\+Banner\+Image@{m\+Banner\+Image}}
+\index{m\+Banner\+Image@{m\+Banner\+Image}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}}
+\subsubsection[{\texorpdfstring{m\+Banner\+Image}{mBannerImage}}]{\setlength{\rightskip}{0pt plus 5cm}transient Image\+View org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template.\+m\+Banner\+Image\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_ab7e63f59edb292088a4d3fc0386eb741}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_ab7e63f59edb292088a4d3fc0386eb741}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}!m\+Data@{m\+Data}}
+\index{m\+Data@{m\+Data}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}}
+\subsubsection[{\texorpdfstring{m\+Data}{mData}}]{\setlength{\rightskip}{0pt plus 5cm}Array\+List$<${\bf Flash\+Card\+Model}$>$ org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template.\+m\+Data\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a22f583de25594f6e010ceff3f45e30e0}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a22f583de25594f6e010ceff3f45e30e0}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}!m\+Image\+Uri@{m\+Image\+Uri}}
+\index{m\+Image\+Uri@{m\+Image\+Uri}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}}
+\subsubsection[{\texorpdfstring{m\+Image\+Uri}{mImageUri}}]{\setlength{\rightskip}{0pt plus 5cm}transient Uri org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template.\+m\+Image\+Uri\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a5c746741b2733c55f00e458194733ab0}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a5c746741b2733c55f00e458194733ab0}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}!m\+Is\+Photo\+Attached@{m\+Is\+Photo\+Attached}}
+\index{m\+Is\+Photo\+Attached@{m\+Is\+Photo\+Attached}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}}
+\subsubsection[{\texorpdfstring{m\+Is\+Photo\+Attached}{mIsPhotoAttached}}]{\setlength{\rightskip}{0pt plus 5cm}boolean org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template.\+m\+Is\+Photo\+Attached\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a7b7bcf879c40f3e2fc7de5503627318f}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a7b7bcf879c40f3e2fc7de5503627318f}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}!R\+E\+Q\+U\+E\+S\+T\+\_\+\+T\+A\+K\+E\+\_\+\+P\+H\+O\+TO@{R\+E\+Q\+U\+E\+S\+T\+\_\+\+T\+A\+K\+E\+\_\+\+P\+H\+O\+TO}}
+\index{R\+E\+Q\+U\+E\+S\+T\+\_\+\+T\+A\+K\+E\+\_\+\+P\+H\+O\+TO@{R\+E\+Q\+U\+E\+S\+T\+\_\+\+T\+A\+K\+E\+\_\+\+P\+H\+O\+TO}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}}
+\subsubsection[{\texorpdfstring{R\+E\+Q\+U\+E\+S\+T\+\_\+\+T\+A\+K\+E\+\_\+\+P\+H\+O\+TO}{REQUEST_TAKE_PHOTO}}]{\setlength{\rightskip}{0pt plus 5cm}final int org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template.\+R\+E\+Q\+U\+E\+S\+T\+\_\+\+T\+A\+K\+E\+\_\+\+P\+H\+O\+TO = 6677\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a587243f063c2b42ae7c457efe6752e28}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a587243f063c2b42ae7c457efe6752e28}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}!T\+AG@{T\+AG}}
+\index{T\+AG@{T\+AG}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}}
+\subsubsection[{\texorpdfstring{T\+AG}{TAG}}]{\setlength{\rightskip}{0pt plus 5cm}final String org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template.\+T\+AG = \char`\"{}F\+L\+A\+SH T\+E\+M\+P\+L\+A\+TE\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a276db76cabb84d7edd7c28d3fb649039}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a276db76cabb84d7edd7c28d3fb649039}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}!template\+Id@{template\+Id}}
+\index{template\+Id@{template\+Id}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Flash\+Template}}
+\subsubsection[{\texorpdfstring{template\+Id}{templateId}}]{\setlength{\rightskip}{0pt plus 5cm}int org.\+buildmlearn.\+toolkit.\+templates.\+Flash\+Template.\+template\+Id\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a00df07dcf4f09799ccba120c9ef45e46}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate_a00df07dcf4f09799ccba120c9ef45e46}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+source-\/code/app/src/main/java/org/buildmlearn/toolkit/templates/\hyperlink{FlashTemplate_8java}{Flash\+Template.\+java}\end{DoxyCompactItemize}

@@ -1,0 +1,471 @@
+\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate}{}\section{org.\+buildmlearn.\+toolkit.\+templates.\+Quiz\+Template Class Reference}
+\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate}\index{org.\+buildmlearn.\+toolkit.\+templates.\+Quiz\+Template@{org.\+buildmlearn.\+toolkit.\+templates.\+Quiz\+Template}}
+
+
+Quiz template code implementing methods of Template\+Interface.  
+
+
+
+
+Inheritance diagram for org.\+buildmlearn.\+toolkit.\+templates.\+Quiz\+Template\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=241pt]{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for org.\+buildmlearn.\+toolkit.\+templates.\+Quiz\+Template\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a564252fd818d44d1f9d2221f58f3eec5}{Quiz\+Template} ()
+\item 
+Base\+Adapter \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a47d3029ad563737e60c7c209738b0a71}{new\+Template\+Editor\+Adapter} (Context context)
+\begin{DoxyCompactList}\small\item\em Called from Template Editor when template editor is started for creating a new template project. \end{DoxyCompactList}\item 
+Base\+Adapter \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_aee4a8c4bf17f33d9dd362e3160b67975}{new\+Meta\+Editor\+Adapter} (Context context)
+\begin{DoxyCompactList}\small\item\em Called from Template Editor when template editor is started for creating a new meta details of template project. \end{DoxyCompactList}\item 
+Base\+Adapter \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_ab1d89e08da401108f6a6ec7bf208c973}{current\+Template\+Editor\+Adapter} ()
+\begin{DoxyCompactList}\small\item\em This function is used to get the adapter (containing template data) for a existing/current template project. \end{DoxyCompactList}\item 
+Base\+Adapter \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_ab9912c5d447a017a404bb4683b751d40}{current\+Meta\+Editor\+Adapter} ()
+\begin{DoxyCompactList}\small\item\em This function is used to get the meta adapter (containing template meta details) for a existing/current template project. \end{DoxyCompactList}\item 
+Base\+Adapter \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_ae6788b65da8c1691a4bb9f9cd0f10000}{load\+Project\+Meta\+Editor} (Context context, Document doc)
+\item 
+Base\+Adapter \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a546b1ec5e027883034daa14ef725c4ff}{load\+Project\+Template\+Editor} (Context context, Array\+List$<$ Element $>$ data)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a588fb1cbd0659ac8ebda7b7835b7ba9c}{set\+Template\+Id} (int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a3aa259fc687f8ba50518707c422a9611}{template\+Id})
+\begin{DoxyCompactList}\small\item\em Set template\+Id,that can be used to get Info about current template from enum Template. \end{DoxyCompactList}\item 
+String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a69f511c03a64a4945ffb41339666fcaa}{get\+Title} ()
+\begin{DoxyCompactList}\small\item\em Used to get the title of the templaye. Mainly used to update Action\+Bar in Template Editor. \end{DoxyCompactList}\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_af16912a1df8554f8131d706f5ed491d9}{add\+Item} (final Activity activity)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_adb59144defde290d4856dbc46160d39a}{add\+Meta\+Data} (Activity activity)
+\begin{DoxyCompactList}\small\item\em Add Meta\+Data to template data. \end{DoxyCompactList}\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a061e888a27db66b5b9d408a1067d4eac}{edit\+Item} (final Activity activity, final int position)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_aeefd643c10acdd3721513fccd5166306}{delete\+Item} (Activity activity, int position)
+\begin{DoxyCompactList}\small\item\em Remove an item form template data list. \end{DoxyCompactList}\item 
+Array\+List$<$ Element $>$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a3d41a179fe1b10edd828d4ef4f0fb344}{get\+Items} (Document doc)
+\item 
+android.\+support.\+v4.\+app.\+Fragment \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a6477f0a99f11a9938abbb154713b51d3}{get\+Simulator\+Fragment} (String file\+Path\+With\+Name)
+\begin{DoxyCompactList}\small\item\em Returns a fragment required for the Simulator Activity. \end{DoxyCompactList}\item 
+String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_ad53569c2c02377b891f06992f742ce97}{get\+Assets\+File\+Name} (Context context)
+\begin{DoxyCompactList}\small\item\em Name of the xml file congaing template data in the assets folders in the build apk. \end{DoxyCompactList}\item 
+String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a7f0008da11aa1e2608a82214c92809e3}{get\+Assets\+File\+Path} ()
+\begin{DoxyCompactList}\small\item\em Folder path in which the apk is stored in the build A\+PK. \end{DoxyCompactList}\item 
+String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_afe64be10f6c439dd611e843ceabb5ac4}{get\+Apk\+File\+Path} ()
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a23bf444a6527a4be8b416f1d04a4912e}{on\+Activity\+Result} (Context context, int request\+Code, int result\+Code, Intent intent)
+\begin{DoxyCompactList}\small\item\em Called whenever on\+Activity\+Result is called in Template Editor. Can be used to perform action related to intent and callbacks. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_af3655c5a5c8fa6b400f4174c14a75426}{check\+Button} (Array\+List$<$ Radio\+Button $>$ buttons, Array\+List$<$ Edit\+Text $>$ options, int id, Context context)
+\item 
+int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a668e4276c19d4dd30f5250809196c256}{get\+Checked\+Answer} (Array\+List$<$ Radio\+Button $>$ buttons)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a67a2a6db83844d5875375af21c58d3b7}{set\+Empty\+View} (Activity activity)
+\begin{DoxyCompactList}\small\item\em Toggles the visibility of empty text if Array has zero elements. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+transient Quiz\+Adapter \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_ad6eb1e75e6feb5e1af118ef0781a6a13}{m\+Adapter}
+\item 
+Array\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizModel}{Quiz\+Model} $>$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_adb05fdc78ce8f4f5198dec8c1e3c5504}{quiz\+Data}
+\item 
+int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a3aa259fc687f8ba50518707c422a9611}{template\+Id}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Quiz template code implementing methods of Template\+Interface. 
+
+Created by abhishek on 27/5/15. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}!Quiz\+Template@{Quiz\+Template}}
+\index{Quiz\+Template@{Quiz\+Template}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}}
+\subsubsection[{\texorpdfstring{Quiz\+Template()}{QuizTemplate()}}]{\setlength{\rightskip}{0pt plus 5cm}org.\+buildmlearn.\+toolkit.\+templates.\+Quiz\+Template.\+Quiz\+Template (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a564252fd818d44d1f9d2221f58f3eec5}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a564252fd818d44d1f9d2221f58f3eec5}
+
+
+\subsection{Member Function Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}!add\+Item@{add\+Item}}
+\index{add\+Item@{add\+Item}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}}
+\subsubsection[{\texorpdfstring{add\+Item(final Activity activity)}{addItem(final Activity activity)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+templates.\+Quiz\+Template.\+add\+Item (
+\begin{DoxyParamCaption}
+\item[{final Activity}]{activity}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_af16912a1df8554f8131d706f5ed491d9}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_af16912a1df8554f8131d706f5ed491d9}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}!add\+Meta\+Data@{add\+Meta\+Data}}
+\index{add\+Meta\+Data@{add\+Meta\+Data}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}}
+\subsubsection[{\texorpdfstring{add\+Meta\+Data(\+Activity activity)}{addMetaData(Activity activity)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+templates.\+Quiz\+Template.\+add\+Meta\+Data (
+\begin{DoxyParamCaption}
+\item[{Activity}]{activity}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_adb59144defde290d4856dbc46160d39a}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_adb59144defde290d4856dbc46160d39a}
+
+
+Add Meta\+Data to template data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em activity} & Current Activity \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_a4dcf463c18db372074327d828e56cf2d}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}!check\+Button@{check\+Button}}
+\index{check\+Button@{check\+Button}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}}
+\subsubsection[{\texorpdfstring{check\+Button(\+Array\+List$<$ Radio\+Button $>$ buttons, Array\+List$<$ Edit\+Text $>$ options, int id, Context context)}{checkButton(ArrayList< RadioButton > buttons, ArrayList< EditText > options, int id, Context context)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+templates.\+Quiz\+Template.\+check\+Button (
+\begin{DoxyParamCaption}
+\item[{Array\+List$<$ Radio\+Button $>$}]{buttons, }
+\item[{Array\+List$<$ Edit\+Text $>$}]{options, }
+\item[{int}]{id, }
+\item[{Context}]{context}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_af3655c5a5c8fa6b400f4174c14a75426}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_af3655c5a5c8fa6b400f4174c14a75426}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}!current\+Meta\+Editor\+Adapter@{current\+Meta\+Editor\+Adapter}}
+\index{current\+Meta\+Editor\+Adapter@{current\+Meta\+Editor\+Adapter}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}}
+\subsubsection[{\texorpdfstring{current\+Meta\+Editor\+Adapter()}{currentMetaEditorAdapter()}}]{\setlength{\rightskip}{0pt plus 5cm}Base\+Adapter org.\+buildmlearn.\+toolkit.\+templates.\+Quiz\+Template.\+current\+Meta\+Editor\+Adapter (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_ab9912c5d447a017a404bb4683b751d40}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_ab9912c5d447a017a404bb4683b751d40}
+
+
+This function is used to get the meta adapter (containing template meta details) for a existing/current template project. 
+
+\begin{DoxyReturn}{Returns}
+Base\+Adapter inherited Object 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_a2b24967afaab00b7dcce5083b829bb95}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}!current\+Template\+Editor\+Adapter@{current\+Template\+Editor\+Adapter}}
+\index{current\+Template\+Editor\+Adapter@{current\+Template\+Editor\+Adapter}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}}
+\subsubsection[{\texorpdfstring{current\+Template\+Editor\+Adapter()}{currentTemplateEditorAdapter()}}]{\setlength{\rightskip}{0pt plus 5cm}Base\+Adapter org.\+buildmlearn.\+toolkit.\+templates.\+Quiz\+Template.\+current\+Template\+Editor\+Adapter (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_ab1d89e08da401108f6a6ec7bf208c973}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_ab1d89e08da401108f6a6ec7bf208c973}
+
+
+This function is used to get the adapter (containing template data) for a existing/current template project. 
+
+\begin{DoxyReturn}{Returns}
+Base\+Adapter inherited Object 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_ae433eedc291006e78b65b0fc4135d560}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}!delete\+Item@{delete\+Item}}
+\index{delete\+Item@{delete\+Item}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}}
+\subsubsection[{\texorpdfstring{delete\+Item(\+Activity activity, int position)}{deleteItem(Activity activity, int position)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+templates.\+Quiz\+Template.\+delete\+Item (
+\begin{DoxyParamCaption}
+\item[{Activity}]{activity, }
+\item[{int}]{position}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_aeefd643c10acdd3721513fccd5166306}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_aeefd643c10acdd3721513fccd5166306}
+
+
+Remove an item form template data list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em activity} & Current Activity \\
+\hline
+{\em position} & Position of the item to be removed \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_acc9339e97daba180a70b5d1907f214df}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}!edit\+Item@{edit\+Item}}
+\index{edit\+Item@{edit\+Item}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}}
+\subsubsection[{\texorpdfstring{edit\+Item(final Activity activity, final int position)}{editItem(final Activity activity, final int position)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+templates.\+Quiz\+Template.\+edit\+Item (
+\begin{DoxyParamCaption}
+\item[{final Activity}]{activity, }
+\item[{final int}]{position}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a061e888a27db66b5b9d408a1067d4eac}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a061e888a27db66b5b9d408a1067d4eac}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}!get\+Apk\+File\+Path@{get\+Apk\+File\+Path}}
+\index{get\+Apk\+File\+Path@{get\+Apk\+File\+Path}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}}
+\subsubsection[{\texorpdfstring{get\+Apk\+File\+Path()}{getApkFilePath()}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+buildmlearn.\+toolkit.\+templates.\+Quiz\+Template.\+get\+Apk\+File\+Path (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_afe64be10f6c439dd611e843ceabb5ac4}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_afe64be10f6c439dd611e843ceabb5ac4}
+Path of the apk stored in assets
+
+\begin{DoxyReturn}{Returns}
+Apk file path 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_a1bca348acb3790aebce645c04a9e0945}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}!get\+Assets\+File\+Name@{get\+Assets\+File\+Name}}
+\index{get\+Assets\+File\+Name@{get\+Assets\+File\+Name}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}}
+\subsubsection[{\texorpdfstring{get\+Assets\+File\+Name(\+Context context)}{getAssetsFileName(Context context)}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+buildmlearn.\+toolkit.\+templates.\+Quiz\+Template.\+get\+Assets\+File\+Name (
+\begin{DoxyParamCaption}
+\item[{Context}]{context}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_ad53569c2c02377b891f06992f742ce97}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_ad53569c2c02377b891f06992f742ce97}
+
+
+Name of the xml file congaing template data in the assets folders in the build apk. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & For obtaining String from String\+Res \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Asset file name 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_aab9ccfcee9b83ea3d70efffecf8dad78}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}!get\+Assets\+File\+Path@{get\+Assets\+File\+Path}}
+\index{get\+Assets\+File\+Path@{get\+Assets\+File\+Path}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}}
+\subsubsection[{\texorpdfstring{get\+Assets\+File\+Path()}{getAssetsFilePath()}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+buildmlearn.\+toolkit.\+templates.\+Quiz\+Template.\+get\+Assets\+File\+Path (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a7f0008da11aa1e2608a82214c92809e3}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a7f0008da11aa1e2608a82214c92809e3}
+
+
+Folder path in which the apk is stored in the build A\+PK. 
+
+\begin{DoxyReturn}{Returns}
+Assets folder path 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_ae35d1ab3f2c88b79d0d2a79cde81155b}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}!get\+Checked\+Answer@{get\+Checked\+Answer}}
+\index{get\+Checked\+Answer@{get\+Checked\+Answer}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}}
+\subsubsection[{\texorpdfstring{get\+Checked\+Answer(\+Array\+List$<$ Radio\+Button $>$ buttons)}{getCheckedAnswer(ArrayList< RadioButton > buttons)}}]{\setlength{\rightskip}{0pt plus 5cm}int org.\+buildmlearn.\+toolkit.\+templates.\+Quiz\+Template.\+get\+Checked\+Answer (
+\begin{DoxyParamCaption}
+\item[{Array\+List$<$ Radio\+Button $>$}]{buttons}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a668e4276c19d4dd30f5250809196c256}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a668e4276c19d4dd30f5250809196c256}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}!get\+Items@{get\+Items}}
+\index{get\+Items@{get\+Items}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}}
+\subsubsection[{\texorpdfstring{get\+Items(\+Document doc)}{getItems(Document doc)}}]{\setlength{\rightskip}{0pt plus 5cm}Array\+List$<$Element$>$ org.\+buildmlearn.\+toolkit.\+templates.\+Quiz\+Template.\+get\+Items (
+\begin{DoxyParamCaption}
+\item[{Document}]{doc}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a3d41a179fe1b10edd828d4ef4f0fb344}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a3d41a179fe1b10edd828d4ef4f0fb344}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_a9fb6e277f0ebfb2caea138017854473f}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}!get\+Simulator\+Fragment@{get\+Simulator\+Fragment}}
+\index{get\+Simulator\+Fragment@{get\+Simulator\+Fragment}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}}
+\subsubsection[{\texorpdfstring{get\+Simulator\+Fragment(\+String file\+Path\+With\+Name)}{getSimulatorFragment(String filePathWithName)}}]{\setlength{\rightskip}{0pt plus 5cm}android.\+support.\+v4.\+app.\+Fragment org.\+buildmlearn.\+toolkit.\+templates.\+Quiz\+Template.\+get\+Simulator\+Fragment (
+\begin{DoxyParamCaption}
+\item[{String}]{file\+Path\+With\+Name}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a6477f0a99f11a9938abbb154713b51d3}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a6477f0a99f11a9938abbb154713b51d3}
+
+
+Returns a fragment required for the Simulator Activity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Path\+With\+Name} & Path of the generated .buildmlearn file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a fragment required for the Simulator Activity. $\ast$$\ast$\+Dev Note\+: File Path should be used to populate data from actual .buildmlearn file in the Simulator. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_a8668cc58306c48c8581ae51393138649}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}!get\+Title@{get\+Title}}
+\index{get\+Title@{get\+Title}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}}
+\subsubsection[{\texorpdfstring{get\+Title()}{getTitle()}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+buildmlearn.\+toolkit.\+templates.\+Quiz\+Template.\+get\+Title (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a69f511c03a64a4945ffb41339666fcaa}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a69f511c03a64a4945ffb41339666fcaa}
+
+
+Used to get the title of the templaye. Mainly used to update Action\+Bar in Template Editor. 
+
+\begin{DoxyReturn}{Returns}
+Title as a string 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_a98a8592a7e4928ce76d0c61df17cf5c8}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}!load\+Project\+Meta\+Editor@{load\+Project\+Meta\+Editor}}
+\index{load\+Project\+Meta\+Editor@{load\+Project\+Meta\+Editor}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}}
+\subsubsection[{\texorpdfstring{load\+Project\+Meta\+Editor(\+Context context, Document doc)}{loadProjectMetaEditor(Context context, Document doc)}}]{\setlength{\rightskip}{0pt plus 5cm}Base\+Adapter org.\+buildmlearn.\+toolkit.\+templates.\+Quiz\+Template.\+load\+Project\+Meta\+Editor (
+\begin{DoxyParamCaption}
+\item[{Context}]{context, }
+\item[{Document}]{doc}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_ae6788b65da8c1691a4bb9f9cd0f10000}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_ae6788b65da8c1691a4bb9f9cd0f10000}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_a589528c60323c07cca5e6ef112530a50}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}!load\+Project\+Template\+Editor@{load\+Project\+Template\+Editor}}
+\index{load\+Project\+Template\+Editor@{load\+Project\+Template\+Editor}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}}
+\subsubsection[{\texorpdfstring{load\+Project\+Template\+Editor(\+Context context, Array\+List$<$ Element $>$ data)}{loadProjectTemplateEditor(Context context, ArrayList< Element > data)}}]{\setlength{\rightskip}{0pt plus 5cm}Base\+Adapter org.\+buildmlearn.\+toolkit.\+templates.\+Quiz\+Template.\+load\+Project\+Template\+Editor (
+\begin{DoxyParamCaption}
+\item[{Context}]{context, }
+\item[{Array\+List$<$ Element $>$}]{data}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a546b1ec5e027883034daa14ef725c4ff}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a546b1ec5e027883034daa14ef725c4ff}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_ac0637282a7f7b58a4e9b8e86a734bf93}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}!new\+Meta\+Editor\+Adapter@{new\+Meta\+Editor\+Adapter}}
+\index{new\+Meta\+Editor\+Adapter@{new\+Meta\+Editor\+Adapter}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}}
+\subsubsection[{\texorpdfstring{new\+Meta\+Editor\+Adapter(\+Context context)}{newMetaEditorAdapter(Context context)}}]{\setlength{\rightskip}{0pt plus 5cm}Base\+Adapter org.\+buildmlearn.\+toolkit.\+templates.\+Quiz\+Template.\+new\+Meta\+Editor\+Adapter (
+\begin{DoxyParamCaption}
+\item[{Context}]{context}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_aee4a8c4bf17f33d9dd362e3160b67975}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_aee4a8c4bf17f33d9dd362e3160b67975}
+
+
+Called from Template Editor when template editor is started for creating a new meta details of template project. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & Application context \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Base\+Adapter inherited Object 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_acbf649946d2636f02e154dfefaadf868}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}!new\+Template\+Editor\+Adapter@{new\+Template\+Editor\+Adapter}}
+\index{new\+Template\+Editor\+Adapter@{new\+Template\+Editor\+Adapter}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}}
+\subsubsection[{\texorpdfstring{new\+Template\+Editor\+Adapter(\+Context context)}{newTemplateEditorAdapter(Context context)}}]{\setlength{\rightskip}{0pt plus 5cm}Base\+Adapter org.\+buildmlearn.\+toolkit.\+templates.\+Quiz\+Template.\+new\+Template\+Editor\+Adapter (
+\begin{DoxyParamCaption}
+\item[{Context}]{context}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a47d3029ad563737e60c7c209738b0a71}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a47d3029ad563737e60c7c209738b0a71}
+
+
+Called from Template Editor when template editor is started for creating a new template project. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & Application context \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Base\+Adapter inherited Object 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_af7d9d92709123fc39693504884e4f7e2}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}!on\+Activity\+Result@{on\+Activity\+Result}}
+\index{on\+Activity\+Result@{on\+Activity\+Result}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}}
+\subsubsection[{\texorpdfstring{on\+Activity\+Result(\+Context context, int request\+Code, int result\+Code, Intent intent)}{onActivityResult(Context context, int requestCode, int resultCode, Intent intent)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+templates.\+Quiz\+Template.\+on\+Activity\+Result (
+\begin{DoxyParamCaption}
+\item[{Context}]{context, }
+\item[{int}]{request\+Code, }
+\item[{int}]{result\+Code, }
+\item[{Intent}]{intent}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a23bf444a6527a4be8b416f1d04a4912e}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a23bf444a6527a4be8b416f1d04a4912e}
+
+
+Called whenever on\+Activity\+Result is called in Template Editor. Can be used to perform action related to intent and callbacks. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & \\
+\hline
+{\em request\+Code} & \\
+\hline
+{\em result\+Code} & \\
+\hline
+{\em intent} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_a9c506bf3776973765d4d1e8d6954e95b}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}!set\+Empty\+View@{set\+Empty\+View}}
+\index{set\+Empty\+View@{set\+Empty\+View}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}}
+\subsubsection[{\texorpdfstring{set\+Empty\+View(\+Activity activity)}{setEmptyView(Activity activity)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+templates.\+Quiz\+Template.\+set\+Empty\+View (
+\begin{DoxyParamCaption}
+\item[{Activity}]{activity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a67a2a6db83844d5875375af21c58d3b7}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a67a2a6db83844d5875375af21c58d3b7}
+
+
+Toggles the visibility of empty text if Array has zero elements. 
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}!set\+Template\+Id@{set\+Template\+Id}}
+\index{set\+Template\+Id@{set\+Template\+Id}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}}
+\subsubsection[{\texorpdfstring{set\+Template\+Id(int template\+Id)}{setTemplateId(int templateId)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+templates.\+Quiz\+Template.\+set\+Template\+Id (
+\begin{DoxyParamCaption}
+\item[{int}]{template\+Id}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a588fb1cbd0659ac8ebda7b7835b7ba9c}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a588fb1cbd0659ac8ebda7b7835b7ba9c}
+
+
+Set template\+Id,that can be used to get Info about current template from enum Template. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em template\+Id} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_ae84eac484da25355ba7ace669d7b0c90}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+
+
+\subsection{Member Data Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}!m\+Adapter@{m\+Adapter}}
+\index{m\+Adapter@{m\+Adapter}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}}
+\subsubsection[{\texorpdfstring{m\+Adapter}{mAdapter}}]{\setlength{\rightskip}{0pt plus 5cm}transient Quiz\+Adapter org.\+buildmlearn.\+toolkit.\+templates.\+Quiz\+Template.\+m\+Adapter\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_ad6eb1e75e6feb5e1af118ef0781a6a13}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_ad6eb1e75e6feb5e1af118ef0781a6a13}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}!quiz\+Data@{quiz\+Data}}
+\index{quiz\+Data@{quiz\+Data}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}}
+\subsubsection[{\texorpdfstring{quiz\+Data}{quizData}}]{\setlength{\rightskip}{0pt plus 5cm}Array\+List$<${\bf Quiz\+Model}$>$ org.\+buildmlearn.\+toolkit.\+templates.\+Quiz\+Template.\+quiz\+Data\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_adb05fdc78ce8f4f5198dec8c1e3c5504}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_adb05fdc78ce8f4f5198dec8c1e3c5504}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}!template\+Id@{template\+Id}}
+\index{template\+Id@{template\+Id}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Quiz\+Template}}
+\subsubsection[{\texorpdfstring{template\+Id}{templateId}}]{\setlength{\rightskip}{0pt plus 5cm}int org.\+buildmlearn.\+toolkit.\+templates.\+Quiz\+Template.\+template\+Id\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a3aa259fc687f8ba50518707c422a9611}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate_a3aa259fc687f8ba50518707c422a9611}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+source-\/code/app/src/main/java/org/buildmlearn/toolkit/templates/\hyperlink{QuizTemplate_8java}{Quiz\+Template.\+java}\end{DoxyCompactItemize}

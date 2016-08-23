@@ -1,0 +1,5 @@
+<map id="org.buildmlearn.toolkit.adapter.TemplateAdapter" name="org.buildmlearn.toolkit.adapter.TemplateAdapter">
+<area shape="rect" id="node3" href="$classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_1_1ViewHolder.html" title="org.buildmlearn.toolkit.adapter.\lTemplateAdapter.ViewHolder" alt="" coords="380,99,580,141"/>
+<area shape="rect" id="node7" href="$interfaceorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1TemplateAdapter_1_1ViewHolder_1_1SetOnClickListener.html" title="org.buildmlearn.toolkit.adapter.\lTemplateAdapter.ViewHolder.SetOnClick\lListener" alt="" coords="5,157,268,213"/>
+<area shape="rect" id="node9" href="$enumorg_1_1buildmlearn_1_1toolkit_1_1model_1_1Template.html" title="Enum for the templates that are included into toolkit application. " alt="" coords="384,165,576,206"/>
+</map>

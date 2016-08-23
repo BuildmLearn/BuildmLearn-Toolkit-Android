@@ -1,0 +1,464 @@
+\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate}{}\section{org.\+buildmlearn.\+toolkit.\+templates.\+Learn\+Spelling\+Template Class Reference}
+\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate}\index{org.\+buildmlearn.\+toolkit.\+templates.\+Learn\+Spelling\+Template@{org.\+buildmlearn.\+toolkit.\+templates.\+Learn\+Spelling\+Template}}
+
+
+Learn Spelling template code implementing methods of Template\+Interface.  
+
+
+
+
+Inheritance diagram for org.\+buildmlearn.\+toolkit.\+templates.\+Learn\+Spelling\+Template\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=241pt]{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for org.\+buildmlearn.\+toolkit.\+templates.\+Learn\+Spelling\+Template\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a09607c7a192a1e5754bfe51d3cac5df9}{Learn\+Spelling\+Template} ()
+\item 
+Base\+Adapter \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a532c1020ba161742148024ce7346d306}{new\+Template\+Editor\+Adapter} (Context context)
+\begin{DoxyCompactList}\small\item\em Called from Template Editor when template editor is started for creating a new template project. \end{DoxyCompactList}\item 
+Base\+Adapter \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_ad0d219aa413e781c88283c06bc607214}{new\+Meta\+Editor\+Adapter} (Context context)
+\begin{DoxyCompactList}\small\item\em Called from Template Editor when template editor is started for creating a new meta details of template project. \end{DoxyCompactList}\item 
+Base\+Adapter \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a46ba1da1d9832f8e2ffbaf5a416a23f8}{current\+Template\+Editor\+Adapter} ()
+\begin{DoxyCompactList}\small\item\em This function is used to get the adapter (containing template data) for a existing/current template project. \end{DoxyCompactList}\item 
+Base\+Adapter \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a5d4732acb45a266bca9bc14deb0ea5a1}{current\+Meta\+Editor\+Adapter} ()
+\begin{DoxyCompactList}\small\item\em This function is used to get the meta adapter (containing template meta details) for a existing/current template project. \end{DoxyCompactList}\item 
+Base\+Adapter \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_ab8d89b8b5575e3a9227664bc4f03ebed}{load\+Project\+Meta\+Editor} (Context context, Document doc)
+\item 
+Base\+Adapter \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a889d8d414440285b80ca93b6a243e05e}{load\+Project\+Template\+Editor} (Context context, Array\+List$<$ Element $>$ data)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a14326fcdc8ba61fc65172a4ad06b7012}{set\+Template\+Id} (int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a9a0737d2b579527b9d375518b9097014}{template\+Id})
+\begin{DoxyCompactList}\small\item\em Set template\+Id,that can be used to get Info about current template from enum Template. \end{DoxyCompactList}\item 
+String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a06f51659532ed7300478ad233aa3e8b7}{get\+Title} ()
+\begin{DoxyCompactList}\small\item\em Used to get the title of the templaye. Mainly used to update Action\+Bar in Template Editor. \end{DoxyCompactList}\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a79df95c6c1990205f55cbc75a0b9a163}{add\+Item} (final Activity activity)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a07b69a6061b09e649799cf69c2505beb}{add\+Meta\+Data} (Activity activity)
+\begin{DoxyCompactList}\small\item\em Add Meta\+Data to template data. \end{DoxyCompactList}\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_ac1a2b3a4507302be292deb019ab563f4}{edit\+Item} (final Activity activity, int position)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a488e201556351852b46fa4757d570a88}{delete\+Item} (Activity activity, int position)
+\begin{DoxyCompactList}\small\item\em Remove an item form template data list. \end{DoxyCompactList}\item 
+Array\+List$<$ Element $>$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a289b6e6a43daae52a975f3e74c03fa97}{get\+Items} (Document doc)
+\item 
+android.\+support.\+v4.\+app.\+Fragment \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a74f2099ed791540d7c96ed24af06e9de}{get\+Simulator\+Fragment} (String file\+Path\+With\+Name)
+\begin{DoxyCompactList}\small\item\em Returns a fragment required for the Simulator Activity. \end{DoxyCompactList}\item 
+String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a6ff9294df5f9a7b85fedd139f4f3a691}{get\+Assets\+File\+Name} (Context context)
+\begin{DoxyCompactList}\small\item\em Name of the xml file congaing template data in the assets folders in the build apk. \end{DoxyCompactList}\item 
+String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a49bf35434b6abe45d04db8ed1f16b9e1}{get\+Assets\+File\+Path} ()
+\begin{DoxyCompactList}\small\item\em Folder path in which the apk is stored in the build A\+PK. \end{DoxyCompactList}\item 
+String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a05c6bdea670350a1f2aed2c9c4b28e10}{get\+Apk\+File\+Path} ()
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a3717f8c402a9da264b3d8e6665532c3c}{on\+Activity\+Result} (Context context, int request\+Code, int result\+Code, Intent intent)
+\begin{DoxyCompactList}\small\item\em Called whenever on\+Activity\+Result is called in Template Editor. Can be used to perform action related to intent and callbacks. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a5c090cd62029ccfe1c08f99944486c1c}{set\+Empty\+View} (Activity activity)
+\begin{DoxyCompactList}\small\item\em Toggles the visibility of empty text if Array has zero elements. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static boolean \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a5acea6370884485ccc57d4068ec43a24}{validated} (Context context, Edit\+Text word, Edit\+Text meaning)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+transient Learn\+Spelling\+Adapter \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a6ebf13ae6c906777089b2b4686139a2a}{adapter}
+\item 
+Array\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingModel}{Learn\+Spelling\+Model} $>$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a81318e22742d557d80102eafc05a4548}{m\+Learn\+Spelling\+Data}
+\item 
+int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a9a0737d2b579527b9d375518b9097014}{template\+Id}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Learn Spelling template code implementing methods of Template\+Interface. 
+
+Created by abhishek on 16/06/15 at 9\+:59 PM. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}!Learn\+Spelling\+Template@{Learn\+Spelling\+Template}}
+\index{Learn\+Spelling\+Template@{Learn\+Spelling\+Template}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}}
+\subsubsection[{\texorpdfstring{Learn\+Spelling\+Template()}{LearnSpellingTemplate()}}]{\setlength{\rightskip}{0pt plus 5cm}org.\+buildmlearn.\+toolkit.\+templates.\+Learn\+Spelling\+Template.\+Learn\+Spelling\+Template (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a09607c7a192a1e5754bfe51d3cac5df9}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a09607c7a192a1e5754bfe51d3cac5df9}
+
+
+\subsection{Member Function Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}!add\+Item@{add\+Item}}
+\index{add\+Item@{add\+Item}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}}
+\subsubsection[{\texorpdfstring{add\+Item(final Activity activity)}{addItem(final Activity activity)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+templates.\+Learn\+Spelling\+Template.\+add\+Item (
+\begin{DoxyParamCaption}
+\item[{final Activity}]{activity}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a79df95c6c1990205f55cbc75a0b9a163}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a79df95c6c1990205f55cbc75a0b9a163}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}!add\+Meta\+Data@{add\+Meta\+Data}}
+\index{add\+Meta\+Data@{add\+Meta\+Data}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}}
+\subsubsection[{\texorpdfstring{add\+Meta\+Data(\+Activity activity)}{addMetaData(Activity activity)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+templates.\+Learn\+Spelling\+Template.\+add\+Meta\+Data (
+\begin{DoxyParamCaption}
+\item[{Activity}]{activity}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a07b69a6061b09e649799cf69c2505beb}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a07b69a6061b09e649799cf69c2505beb}
+
+
+Add Meta\+Data to template data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em activity} & Current Activity \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_a4dcf463c18db372074327d828e56cf2d}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}!current\+Meta\+Editor\+Adapter@{current\+Meta\+Editor\+Adapter}}
+\index{current\+Meta\+Editor\+Adapter@{current\+Meta\+Editor\+Adapter}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}}
+\subsubsection[{\texorpdfstring{current\+Meta\+Editor\+Adapter()}{currentMetaEditorAdapter()}}]{\setlength{\rightskip}{0pt plus 5cm}Base\+Adapter org.\+buildmlearn.\+toolkit.\+templates.\+Learn\+Spelling\+Template.\+current\+Meta\+Editor\+Adapter (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a5d4732acb45a266bca9bc14deb0ea5a1}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a5d4732acb45a266bca9bc14deb0ea5a1}
+
+
+This function is used to get the meta adapter (containing template meta details) for a existing/current template project. 
+
+\begin{DoxyReturn}{Returns}
+Base\+Adapter inherited Object 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_a2b24967afaab00b7dcce5083b829bb95}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}!current\+Template\+Editor\+Adapter@{current\+Template\+Editor\+Adapter}}
+\index{current\+Template\+Editor\+Adapter@{current\+Template\+Editor\+Adapter}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}}
+\subsubsection[{\texorpdfstring{current\+Template\+Editor\+Adapter()}{currentTemplateEditorAdapter()}}]{\setlength{\rightskip}{0pt plus 5cm}Base\+Adapter org.\+buildmlearn.\+toolkit.\+templates.\+Learn\+Spelling\+Template.\+current\+Template\+Editor\+Adapter (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a46ba1da1d9832f8e2ffbaf5a416a23f8}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a46ba1da1d9832f8e2ffbaf5a416a23f8}
+
+
+This function is used to get the adapter (containing template data) for a existing/current template project. 
+
+\begin{DoxyReturn}{Returns}
+Base\+Adapter inherited Object 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_ae433eedc291006e78b65b0fc4135d560}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}!delete\+Item@{delete\+Item}}
+\index{delete\+Item@{delete\+Item}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}}
+\subsubsection[{\texorpdfstring{delete\+Item(\+Activity activity, int position)}{deleteItem(Activity activity, int position)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+templates.\+Learn\+Spelling\+Template.\+delete\+Item (
+\begin{DoxyParamCaption}
+\item[{Activity}]{activity, }
+\item[{int}]{position}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a488e201556351852b46fa4757d570a88}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a488e201556351852b46fa4757d570a88}
+
+
+Remove an item form template data list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em activity} & Current Activity \\
+\hline
+{\em position} & Position of the item to be removed \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_acc9339e97daba180a70b5d1907f214df}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}!edit\+Item@{edit\+Item}}
+\index{edit\+Item@{edit\+Item}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}}
+\subsubsection[{\texorpdfstring{edit\+Item(final Activity activity, int position)}{editItem(final Activity activity, int position)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+templates.\+Learn\+Spelling\+Template.\+edit\+Item (
+\begin{DoxyParamCaption}
+\item[{final Activity}]{activity, }
+\item[{int}]{position}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_ac1a2b3a4507302be292deb019ab563f4}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_ac1a2b3a4507302be292deb019ab563f4}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}!get\+Apk\+File\+Path@{get\+Apk\+File\+Path}}
+\index{get\+Apk\+File\+Path@{get\+Apk\+File\+Path}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}}
+\subsubsection[{\texorpdfstring{get\+Apk\+File\+Path()}{getApkFilePath()}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+buildmlearn.\+toolkit.\+templates.\+Learn\+Spelling\+Template.\+get\+Apk\+File\+Path (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a05c6bdea670350a1f2aed2c9c4b28e10}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a05c6bdea670350a1f2aed2c9c4b28e10}
+Path of the apk stored in assets
+
+\begin{DoxyReturn}{Returns}
+Apk file path 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_a1bca348acb3790aebce645c04a9e0945}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}!get\+Assets\+File\+Name@{get\+Assets\+File\+Name}}
+\index{get\+Assets\+File\+Name@{get\+Assets\+File\+Name}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}}
+\subsubsection[{\texorpdfstring{get\+Assets\+File\+Name(\+Context context)}{getAssetsFileName(Context context)}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+buildmlearn.\+toolkit.\+templates.\+Learn\+Spelling\+Template.\+get\+Assets\+File\+Name (
+\begin{DoxyParamCaption}
+\item[{Context}]{context}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a6ff9294df5f9a7b85fedd139f4f3a691}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a6ff9294df5f9a7b85fedd139f4f3a691}
+
+
+Name of the xml file congaing template data in the assets folders in the build apk. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & For obtaining String from String\+Res \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Asset file name 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_aab9ccfcee9b83ea3d70efffecf8dad78}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}!get\+Assets\+File\+Path@{get\+Assets\+File\+Path}}
+\index{get\+Assets\+File\+Path@{get\+Assets\+File\+Path}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}}
+\subsubsection[{\texorpdfstring{get\+Assets\+File\+Path()}{getAssetsFilePath()}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+buildmlearn.\+toolkit.\+templates.\+Learn\+Spelling\+Template.\+get\+Assets\+File\+Path (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a49bf35434b6abe45d04db8ed1f16b9e1}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a49bf35434b6abe45d04db8ed1f16b9e1}
+
+
+Folder path in which the apk is stored in the build A\+PK. 
+
+\begin{DoxyReturn}{Returns}
+Assets folder path 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_ae35d1ab3f2c88b79d0d2a79cde81155b}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}!get\+Items@{get\+Items}}
+\index{get\+Items@{get\+Items}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}}
+\subsubsection[{\texorpdfstring{get\+Items(\+Document doc)}{getItems(Document doc)}}]{\setlength{\rightskip}{0pt plus 5cm}Array\+List$<$Element$>$ org.\+buildmlearn.\+toolkit.\+templates.\+Learn\+Spelling\+Template.\+get\+Items (
+\begin{DoxyParamCaption}
+\item[{Document}]{doc}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a289b6e6a43daae52a975f3e74c03fa97}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a289b6e6a43daae52a975f3e74c03fa97}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_a9fb6e277f0ebfb2caea138017854473f}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}!get\+Simulator\+Fragment@{get\+Simulator\+Fragment}}
+\index{get\+Simulator\+Fragment@{get\+Simulator\+Fragment}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}}
+\subsubsection[{\texorpdfstring{get\+Simulator\+Fragment(\+String file\+Path\+With\+Name)}{getSimulatorFragment(String filePathWithName)}}]{\setlength{\rightskip}{0pt plus 5cm}android.\+support.\+v4.\+app.\+Fragment org.\+buildmlearn.\+toolkit.\+templates.\+Learn\+Spelling\+Template.\+get\+Simulator\+Fragment (
+\begin{DoxyParamCaption}
+\item[{String}]{file\+Path\+With\+Name}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a74f2099ed791540d7c96ed24af06e9de}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a74f2099ed791540d7c96ed24af06e9de}
+
+
+Returns a fragment required for the Simulator Activity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Path\+With\+Name} & Path of the generated .buildmlearn file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a fragment required for the Simulator Activity. $\ast$$\ast$\+Dev Note\+: File Path should be used to populate data from actual .buildmlearn file in the Simulator. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_a8668cc58306c48c8581ae51393138649}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}!get\+Title@{get\+Title}}
+\index{get\+Title@{get\+Title}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}}
+\subsubsection[{\texorpdfstring{get\+Title()}{getTitle()}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+buildmlearn.\+toolkit.\+templates.\+Learn\+Spelling\+Template.\+get\+Title (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a06f51659532ed7300478ad233aa3e8b7}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a06f51659532ed7300478ad233aa3e8b7}
+
+
+Used to get the title of the templaye. Mainly used to update Action\+Bar in Template Editor. 
+
+\begin{DoxyReturn}{Returns}
+Title as a string 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_a98a8592a7e4928ce76d0c61df17cf5c8}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}!load\+Project\+Meta\+Editor@{load\+Project\+Meta\+Editor}}
+\index{load\+Project\+Meta\+Editor@{load\+Project\+Meta\+Editor}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}}
+\subsubsection[{\texorpdfstring{load\+Project\+Meta\+Editor(\+Context context, Document doc)}{loadProjectMetaEditor(Context context, Document doc)}}]{\setlength{\rightskip}{0pt plus 5cm}Base\+Adapter org.\+buildmlearn.\+toolkit.\+templates.\+Learn\+Spelling\+Template.\+load\+Project\+Meta\+Editor (
+\begin{DoxyParamCaption}
+\item[{Context}]{context, }
+\item[{Document}]{doc}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_ab8d89b8b5575e3a9227664bc4f03ebed}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_ab8d89b8b5575e3a9227664bc4f03ebed}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_a589528c60323c07cca5e6ef112530a50}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}!load\+Project\+Template\+Editor@{load\+Project\+Template\+Editor}}
+\index{load\+Project\+Template\+Editor@{load\+Project\+Template\+Editor}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}}
+\subsubsection[{\texorpdfstring{load\+Project\+Template\+Editor(\+Context context, Array\+List$<$ Element $>$ data)}{loadProjectTemplateEditor(Context context, ArrayList< Element > data)}}]{\setlength{\rightskip}{0pt plus 5cm}Base\+Adapter org.\+buildmlearn.\+toolkit.\+templates.\+Learn\+Spelling\+Template.\+load\+Project\+Template\+Editor (
+\begin{DoxyParamCaption}
+\item[{Context}]{context, }
+\item[{Array\+List$<$ Element $>$}]{data}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a889d8d414440285b80ca93b6a243e05e}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a889d8d414440285b80ca93b6a243e05e}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_ac0637282a7f7b58a4e9b8e86a734bf93}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}!new\+Meta\+Editor\+Adapter@{new\+Meta\+Editor\+Adapter}}
+\index{new\+Meta\+Editor\+Adapter@{new\+Meta\+Editor\+Adapter}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}}
+\subsubsection[{\texorpdfstring{new\+Meta\+Editor\+Adapter(\+Context context)}{newMetaEditorAdapter(Context context)}}]{\setlength{\rightskip}{0pt plus 5cm}Base\+Adapter org.\+buildmlearn.\+toolkit.\+templates.\+Learn\+Spelling\+Template.\+new\+Meta\+Editor\+Adapter (
+\begin{DoxyParamCaption}
+\item[{Context}]{context}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_ad0d219aa413e781c88283c06bc607214}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_ad0d219aa413e781c88283c06bc607214}
+
+
+Called from Template Editor when template editor is started for creating a new meta details of template project. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & Application context \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Base\+Adapter inherited Object 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_acbf649946d2636f02e154dfefaadf868}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}!new\+Template\+Editor\+Adapter@{new\+Template\+Editor\+Adapter}}
+\index{new\+Template\+Editor\+Adapter@{new\+Template\+Editor\+Adapter}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}}
+\subsubsection[{\texorpdfstring{new\+Template\+Editor\+Adapter(\+Context context)}{newTemplateEditorAdapter(Context context)}}]{\setlength{\rightskip}{0pt plus 5cm}Base\+Adapter org.\+buildmlearn.\+toolkit.\+templates.\+Learn\+Spelling\+Template.\+new\+Template\+Editor\+Adapter (
+\begin{DoxyParamCaption}
+\item[{Context}]{context}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a532c1020ba161742148024ce7346d306}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a532c1020ba161742148024ce7346d306}
+
+
+Called from Template Editor when template editor is started for creating a new template project. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & Application context \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Base\+Adapter inherited Object 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_af7d9d92709123fc39693504884e4f7e2}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}!on\+Activity\+Result@{on\+Activity\+Result}}
+\index{on\+Activity\+Result@{on\+Activity\+Result}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}}
+\subsubsection[{\texorpdfstring{on\+Activity\+Result(\+Context context, int request\+Code, int result\+Code, Intent intent)}{onActivityResult(Context context, int requestCode, int resultCode, Intent intent)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+templates.\+Learn\+Spelling\+Template.\+on\+Activity\+Result (
+\begin{DoxyParamCaption}
+\item[{Context}]{context, }
+\item[{int}]{request\+Code, }
+\item[{int}]{result\+Code, }
+\item[{Intent}]{intent}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a3717f8c402a9da264b3d8e6665532c3c}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a3717f8c402a9da264b3d8e6665532c3c}
+
+
+Called whenever on\+Activity\+Result is called in Template Editor. Can be used to perform action related to intent and callbacks. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & \\
+\hline
+{\em request\+Code} & \\
+\hline
+{\em result\+Code} & \\
+\hline
+{\em intent} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_a9c506bf3776973765d4d1e8d6954e95b}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}!set\+Empty\+View@{set\+Empty\+View}}
+\index{set\+Empty\+View@{set\+Empty\+View}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}}
+\subsubsection[{\texorpdfstring{set\+Empty\+View(\+Activity activity)}{setEmptyView(Activity activity)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+templates.\+Learn\+Spelling\+Template.\+set\+Empty\+View (
+\begin{DoxyParamCaption}
+\item[{Activity}]{activity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a5c090cd62029ccfe1c08f99944486c1c}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a5c090cd62029ccfe1c08f99944486c1c}
+
+
+Toggles the visibility of empty text if Array has zero elements. 
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}!set\+Template\+Id@{set\+Template\+Id}}
+\index{set\+Template\+Id@{set\+Template\+Id}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}}
+\subsubsection[{\texorpdfstring{set\+Template\+Id(int template\+Id)}{setTemplateId(int templateId)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+templates.\+Learn\+Spelling\+Template.\+set\+Template\+Id (
+\begin{DoxyParamCaption}
+\item[{int}]{template\+Id}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a14326fcdc8ba61fc65172a4ad06b7012}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a14326fcdc8ba61fc65172a4ad06b7012}
+
+
+Set template\+Id,that can be used to get Info about current template from enum Template. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em template\+Id} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_ae84eac484da25355ba7ace669d7b0c90}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}!validated@{validated}}
+\index{validated@{validated}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}}
+\subsubsection[{\texorpdfstring{validated(\+Context context, Edit\+Text word, Edit\+Text meaning)}{validated(Context context, EditText word, EditText meaning)}}]{\setlength{\rightskip}{0pt plus 5cm}static boolean org.\+buildmlearn.\+toolkit.\+templates.\+Learn\+Spelling\+Template.\+validated (
+\begin{DoxyParamCaption}
+\item[{Context}]{context, }
+\item[{Edit\+Text}]{word, }
+\item[{Edit\+Text}]{meaning}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a5acea6370884485ccc57d4068ec43a24}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a5acea6370884485ccc57d4068ec43a24}
+
+
+\subsection{Member Data Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}!adapter@{adapter}}
+\index{adapter@{adapter}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}}
+\subsubsection[{\texorpdfstring{adapter}{adapter}}]{\setlength{\rightskip}{0pt plus 5cm}transient Learn\+Spelling\+Adapter org.\+buildmlearn.\+toolkit.\+templates.\+Learn\+Spelling\+Template.\+adapter\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a6ebf13ae6c906777089b2b4686139a2a}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a6ebf13ae6c906777089b2b4686139a2a}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}!m\+Learn\+Spelling\+Data@{m\+Learn\+Spelling\+Data}}
+\index{m\+Learn\+Spelling\+Data@{m\+Learn\+Spelling\+Data}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}}
+\subsubsection[{\texorpdfstring{m\+Learn\+Spelling\+Data}{mLearnSpellingData}}]{\setlength{\rightskip}{0pt plus 5cm}Array\+List$<${\bf Learn\+Spelling\+Model}$>$ org.\+buildmlearn.\+toolkit.\+templates.\+Learn\+Spelling\+Template.\+m\+Learn\+Spelling\+Data\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a81318e22742d557d80102eafc05a4548}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a81318e22742d557d80102eafc05a4548}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}!template\+Id@{template\+Id}}
+\index{template\+Id@{template\+Id}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Learn\+Spelling\+Template}}
+\subsubsection[{\texorpdfstring{template\+Id}{templateId}}]{\setlength{\rightskip}{0pt plus 5cm}int org.\+buildmlearn.\+toolkit.\+templates.\+Learn\+Spelling\+Template.\+template\+Id\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a9a0737d2b579527b9d375518b9097014}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate_a9a0737d2b579527b9d375518b9097014}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+source-\/code/app/src/main/java/org/buildmlearn/toolkit/templates/\hyperlink{LearnSpellingTemplate_8java}{Learn\+Spelling\+Template.\+java}\end{DoxyCompactItemize}

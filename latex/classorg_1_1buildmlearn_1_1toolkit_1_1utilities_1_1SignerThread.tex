@@ -1,0 +1,207 @@
+\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread}{}\section{org.\+buildmlearn.\+toolkit.\+utilities.\+Signer\+Thread Class Reference}
+\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread}\index{org.\+buildmlearn.\+toolkit.\+utilities.\+Signer\+Thread@{org.\+buildmlearn.\+toolkit.\+utilities.\+Signer\+Thread}}
+
+
+Class for signing a unsigned apk file using a given keystore and credentials.  
+
+
+
+
+Inheritance diagram for org.\+buildmlearn.\+toolkit.\+utilities.\+Signer\+Thread\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for org.\+buildmlearn.\+toolkit.\+utilities.\+Signer\+Thread\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_1_1MyNodeVisitor}{My\+Node\+Visitor}
+\item 
+interface \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_1_1OnSignComplete}{On\+Sign\+Complete}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a5a37aaaeb632085cc262eb0376f4cabb}{Signer\+Thread} (Context \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a666153665b183a4cafa7d60fa30b977e}{context}, String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a51d7e3c05429574239160c6c7ffd11f5}{assets\+Apk}, String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a8b2b26a220753cfc192487bb0d47a72d}{final\+Apk}, \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1model_1_1KeyStoreDetails}{Key\+Store\+Details} \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a787591c33749051d9ae71911b0d1d426}{key\+Details}, String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_add70395b01fcaf42a1d4af32f6d16d7a}{asset\+File\+Path}, String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a62b2df0dcab626f9189812034f3f1510}{asset\+File\+Name})
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a2f75999b55a36de5421b6563677eb75a}{set\+Signer\+Thread\+Listener} (\hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_1_1OnSignComplete}{On\+Sign\+Complete} \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a6acac9c3507d6bc9e720aea1486f9beb}{listener})
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_ab03f540249e80693f090c9b30c692d17}{run} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_aff414424065d68592040cd946dd0122e}{get\+Final\+Apk\+Path} (String buildmlearn\+Path)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_add7546ba257b1319a0e90451333b81e1}{show\+Notification} (String description)
+\end{DoxyCompactItemize}
+\subsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a9873f5f2abdf3d92a9684290509bc16f}{modify\+Manifest} (final String\mbox{[}$\,$\mbox{]} args)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+final \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1ToolkitApplication}{Toolkit\+Application} \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a22e92e416784f287e5e16a55763364e2}{toolkit}
+\item 
+final Context \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a666153665b183a4cafa7d60fa30b977e}{context}
+\item 
+final String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a51d7e3c05429574239160c6c7ffd11f5}{assets\+Apk}
+\item 
+final String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a62b2df0dcab626f9189812034f3f1510}{asset\+File\+Name}
+\item 
+final String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_add70395b01fcaf42a1d4af32f6d16d7a}{asset\+File\+Path}
+\item 
+final String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_aba1a8cbac3cae3ab99a669527daa3eb6}{project\+File}
+\item 
+final \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1model_1_1KeyStoreDetails}{Key\+Store\+Details} \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a787591c33749051d9ae71911b0d1d426}{key\+Details}
+\item 
+String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a8b2b26a220753cfc192487bb0d47a72d}{final\+Apk}
+\item 
+\hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_1_1OnSignComplete}{On\+Sign\+Complete} \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a6acac9c3507d6bc9e720aea1486f9beb}{listener}
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_ab891931f3e23633cfeaa0636420b3183}{T\+AG} = \char`\"{}Signer\+Thread\char`\"{}
+\item 
+static final String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a5665b0a957fa49db69ea448a09c5ce74}{T\+E\+M\+P\+\_\+\+F\+O\+L\+D\+ER} = \char`\"{}hcjb\char`\"{}
+\item 
+static final String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a761195db6bfd06c3afc744631be1fcce}{NS} = \char`\"{}http\+://schemas.\+android.\+com/apk/res/android\char`\"{}
+\item 
+static boolean \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_ac0f01c5a54553c4429b6fd627761a46f}{need\+Remove\+Conflict}
+\item 
+static boolean \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_aded48e5927f2e9bb9514bb7d5efd5e59}{need\+Remove\+Lib}
+\item 
+static String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a91fa9f999565e0186dad26acb4d61711}{new\+Package\+Full\+Name}
+\item 
+static boolean \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a1960b232fb7931bed6810bfb180c2927}{changed}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class for signing a unsigned apk file using a given keystore and credentials. 
+
+Created by Abhishek on 10-\/06-\/2015. Modified by Anupam (opticod) on 18-\/05-\/2016 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}!Signer\+Thread@{Signer\+Thread}}
+\index{Signer\+Thread@{Signer\+Thread}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}}
+\subsubsection[{\texorpdfstring{Signer\+Thread(\+Context context, String assets\+Apk, String final\+Apk, Key\+Store\+Details key\+Details, String asset\+File\+Path, String asset\+File\+Name)}{SignerThread(Context context, String assetsApk, String finalApk, KeyStoreDetails keyDetails, String assetFilePath, String assetFileName)}}]{\setlength{\rightskip}{0pt plus 5cm}org.\+buildmlearn.\+toolkit.\+utilities.\+Signer\+Thread.\+Signer\+Thread (
+\begin{DoxyParamCaption}
+\item[{Context}]{context, }
+\item[{String}]{assets\+Apk, }
+\item[{String}]{final\+Apk, }
+\item[{{\bf Key\+Store\+Details}}]{key\+Details, }
+\item[{String}]{asset\+File\+Path, }
+\item[{String}]{asset\+File\+Name}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a5a37aaaeb632085cc262eb0376f4cabb}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a5a37aaaeb632085cc262eb0376f4cabb}
+
+
+\subsection{Member Function Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}!get\+Final\+Apk\+Path@{get\+Final\+Apk\+Path}}
+\index{get\+Final\+Apk\+Path@{get\+Final\+Apk\+Path}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}}
+\subsubsection[{\texorpdfstring{get\+Final\+Apk\+Path(\+String buildmlearn\+Path)}{getFinalApkPath(String buildmlearnPath)}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+buildmlearn.\+toolkit.\+utilities.\+Signer\+Thread.\+get\+Final\+Apk\+Path (
+\begin{DoxyParamCaption}
+\item[{String}]{buildmlearn\+Path}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_aff414424065d68592040cd946dd0122e}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_aff414424065d68592040cd946dd0122e}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}!modify\+Manifest@{modify\+Manifest}}
+\index{modify\+Manifest@{modify\+Manifest}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}}
+\subsubsection[{\texorpdfstring{modify\+Manifest(final String[] args)}{modifyManifest(final String[] args)}}]{\setlength{\rightskip}{0pt plus 5cm}static void org.\+buildmlearn.\+toolkit.\+utilities.\+Signer\+Thread.\+modify\+Manifest (
+\begin{DoxyParamCaption}
+\item[{final String\mbox{[}$\,$\mbox{]}}]{args}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a9873f5f2abdf3d92a9684290509bc16f}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a9873f5f2abdf3d92a9684290509bc16f}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}!run@{run}}
+\index{run@{run}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}}
+\subsubsection[{\texorpdfstring{run()}{run()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+utilities.\+Signer\+Thread.\+run (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_ab03f540249e80693f090c9b30c692d17}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_ab03f540249e80693f090c9b30c692d17}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}!set\+Signer\+Thread\+Listener@{set\+Signer\+Thread\+Listener}}
+\index{set\+Signer\+Thread\+Listener@{set\+Signer\+Thread\+Listener}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}}
+\subsubsection[{\texorpdfstring{set\+Signer\+Thread\+Listener(\+On\+Sign\+Complete listener)}{setSignerThreadListener(OnSignComplete listener)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+utilities.\+Signer\+Thread.\+set\+Signer\+Thread\+Listener (
+\begin{DoxyParamCaption}
+\item[{{\bf On\+Sign\+Complete}}]{listener}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a2f75999b55a36de5421b6563677eb75a}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a2f75999b55a36de5421b6563677eb75a}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}!show\+Notification@{show\+Notification}}
+\index{show\+Notification@{show\+Notification}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}}
+\subsubsection[{\texorpdfstring{show\+Notification(\+String description)}{showNotification(String description)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+utilities.\+Signer\+Thread.\+show\+Notification (
+\begin{DoxyParamCaption}
+\item[{String}]{description}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_add7546ba257b1319a0e90451333b81e1}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_add7546ba257b1319a0e90451333b81e1}
+
+
+\subsection{Member Data Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}!asset\+File\+Name@{asset\+File\+Name}}
+\index{asset\+File\+Name@{asset\+File\+Name}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}}
+\subsubsection[{\texorpdfstring{asset\+File\+Name}{assetFileName}}]{\setlength{\rightskip}{0pt plus 5cm}final String org.\+buildmlearn.\+toolkit.\+utilities.\+Signer\+Thread.\+asset\+File\+Name\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a62b2df0dcab626f9189812034f3f1510}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a62b2df0dcab626f9189812034f3f1510}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}!asset\+File\+Path@{asset\+File\+Path}}
+\index{asset\+File\+Path@{asset\+File\+Path}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}}
+\subsubsection[{\texorpdfstring{asset\+File\+Path}{assetFilePath}}]{\setlength{\rightskip}{0pt plus 5cm}final String org.\+buildmlearn.\+toolkit.\+utilities.\+Signer\+Thread.\+asset\+File\+Path\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_add70395b01fcaf42a1d4af32f6d16d7a}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_add70395b01fcaf42a1d4af32f6d16d7a}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}!assets\+Apk@{assets\+Apk}}
+\index{assets\+Apk@{assets\+Apk}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}}
+\subsubsection[{\texorpdfstring{assets\+Apk}{assetsApk}}]{\setlength{\rightskip}{0pt plus 5cm}final String org.\+buildmlearn.\+toolkit.\+utilities.\+Signer\+Thread.\+assets\+Apk\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a51d7e3c05429574239160c6c7ffd11f5}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a51d7e3c05429574239160c6c7ffd11f5}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}!changed@{changed}}
+\index{changed@{changed}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}}
+\subsubsection[{\texorpdfstring{changed}{changed}}]{\setlength{\rightskip}{0pt plus 5cm}boolean org.\+buildmlearn.\+toolkit.\+utilities.\+Signer\+Thread.\+changed\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a1960b232fb7931bed6810bfb180c2927}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a1960b232fb7931bed6810bfb180c2927}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}!context@{context}}
+\index{context@{context}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}}
+\subsubsection[{\texorpdfstring{context}{context}}]{\setlength{\rightskip}{0pt plus 5cm}final Context org.\+buildmlearn.\+toolkit.\+utilities.\+Signer\+Thread.\+context\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a666153665b183a4cafa7d60fa30b977e}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a666153665b183a4cafa7d60fa30b977e}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}!final\+Apk@{final\+Apk}}
+\index{final\+Apk@{final\+Apk}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}}
+\subsubsection[{\texorpdfstring{final\+Apk}{finalApk}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+buildmlearn.\+toolkit.\+utilities.\+Signer\+Thread.\+final\+Apk\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a8b2b26a220753cfc192487bb0d47a72d}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a8b2b26a220753cfc192487bb0d47a72d}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}!key\+Details@{key\+Details}}
+\index{key\+Details@{key\+Details}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}}
+\subsubsection[{\texorpdfstring{key\+Details}{keyDetails}}]{\setlength{\rightskip}{0pt plus 5cm}final {\bf Key\+Store\+Details} org.\+buildmlearn.\+toolkit.\+utilities.\+Signer\+Thread.\+key\+Details\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a787591c33749051d9ae71911b0d1d426}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a787591c33749051d9ae71911b0d1d426}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}!listener@{listener}}
+\index{listener@{listener}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}}
+\subsubsection[{\texorpdfstring{listener}{listener}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf On\+Sign\+Complete} org.\+buildmlearn.\+toolkit.\+utilities.\+Signer\+Thread.\+listener\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a6acac9c3507d6bc9e720aea1486f9beb}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a6acac9c3507d6bc9e720aea1486f9beb}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}!need\+Remove\+Conflict@{need\+Remove\+Conflict}}
+\index{need\+Remove\+Conflict@{need\+Remove\+Conflict}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}}
+\subsubsection[{\texorpdfstring{need\+Remove\+Conflict}{needRemoveConflict}}]{\setlength{\rightskip}{0pt plus 5cm}boolean org.\+buildmlearn.\+toolkit.\+utilities.\+Signer\+Thread.\+need\+Remove\+Conflict\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_ac0f01c5a54553c4429b6fd627761a46f}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_ac0f01c5a54553c4429b6fd627761a46f}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}!need\+Remove\+Lib@{need\+Remove\+Lib}}
+\index{need\+Remove\+Lib@{need\+Remove\+Lib}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}}
+\subsubsection[{\texorpdfstring{need\+Remove\+Lib}{needRemoveLib}}]{\setlength{\rightskip}{0pt plus 5cm}boolean org.\+buildmlearn.\+toolkit.\+utilities.\+Signer\+Thread.\+need\+Remove\+Lib\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_aded48e5927f2e9bb9514bb7d5efd5e59}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_aded48e5927f2e9bb9514bb7d5efd5e59}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}!new\+Package\+Full\+Name@{new\+Package\+Full\+Name}}
+\index{new\+Package\+Full\+Name@{new\+Package\+Full\+Name}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}}
+\subsubsection[{\texorpdfstring{new\+Package\+Full\+Name}{newPackageFullName}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+buildmlearn.\+toolkit.\+utilities.\+Signer\+Thread.\+new\+Package\+Full\+Name\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a91fa9f999565e0186dad26acb4d61711}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a91fa9f999565e0186dad26acb4d61711}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}!NS@{NS}}
+\index{NS@{NS}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}}
+\subsubsection[{\texorpdfstring{NS}{NS}}]{\setlength{\rightskip}{0pt plus 5cm}final String org.\+buildmlearn.\+toolkit.\+utilities.\+Signer\+Thread.\+NS = \char`\"{}http\+://schemas.\+android.\+com/apk/res/android\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a761195db6bfd06c3afc744631be1fcce}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a761195db6bfd06c3afc744631be1fcce}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}!project\+File@{project\+File}}
+\index{project\+File@{project\+File}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}}
+\subsubsection[{\texorpdfstring{project\+File}{projectFile}}]{\setlength{\rightskip}{0pt plus 5cm}final String org.\+buildmlearn.\+toolkit.\+utilities.\+Signer\+Thread.\+project\+File\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_aba1a8cbac3cae3ab99a669527daa3eb6}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_aba1a8cbac3cae3ab99a669527daa3eb6}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}!T\+AG@{T\+AG}}
+\index{T\+AG@{T\+AG}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}}
+\subsubsection[{\texorpdfstring{T\+AG}{TAG}}]{\setlength{\rightskip}{0pt plus 5cm}final String org.\+buildmlearn.\+toolkit.\+utilities.\+Signer\+Thread.\+T\+AG = \char`\"{}Signer\+Thread\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_ab891931f3e23633cfeaa0636420b3183}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_ab891931f3e23633cfeaa0636420b3183}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}!T\+E\+M\+P\+\_\+\+F\+O\+L\+D\+ER@{T\+E\+M\+P\+\_\+\+F\+O\+L\+D\+ER}}
+\index{T\+E\+M\+P\+\_\+\+F\+O\+L\+D\+ER@{T\+E\+M\+P\+\_\+\+F\+O\+L\+D\+ER}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}}
+\subsubsection[{\texorpdfstring{T\+E\+M\+P\+\_\+\+F\+O\+L\+D\+ER}{TEMP_FOLDER}}]{\setlength{\rightskip}{0pt plus 5cm}final String org.\+buildmlearn.\+toolkit.\+utilities.\+Signer\+Thread.\+T\+E\+M\+P\+\_\+\+F\+O\+L\+D\+ER = \char`\"{}hcjb\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a5665b0a957fa49db69ea448a09c5ce74}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a5665b0a957fa49db69ea448a09c5ce74}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}!toolkit@{toolkit}}
+\index{toolkit@{toolkit}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+Signer\+Thread}}
+\subsubsection[{\texorpdfstring{toolkit}{toolkit}}]{\setlength{\rightskip}{0pt plus 5cm}final {\bf Toolkit\+Application} org.\+buildmlearn.\+toolkit.\+utilities.\+Signer\+Thread.\+toolkit\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a22e92e416784f287e5e16a55763364e2}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1SignerThread_a22e92e416784f287e5e16a55763364e2}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+source-\/code/app/src/main/java/org/buildmlearn/toolkit/utilities/\hyperlink{SignerThread_8java}{Signer\+Thread.\+java}\end{DoxyCompactItemize}

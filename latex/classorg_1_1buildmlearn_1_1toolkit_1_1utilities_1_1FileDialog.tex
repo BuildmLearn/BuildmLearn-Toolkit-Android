@@ -1,0 +1,155 @@
+\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog}{}\section{org.\+buildmlearn.\+toolkit.\+utilities.\+File\+Dialog Class Reference}
+\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog}\index{org.\+buildmlearn.\+toolkit.\+utilities.\+File\+Dialog@{org.\+buildmlearn.\+toolkit.\+utilities.\+File\+Dialog}}
+
+
+Programmed dialog box to select file from storage.  
+
+
+
+
+Collaboration diagram for org.\+buildmlearn.\+toolkit.\+utilities.\+File\+Dialog\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+interface \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_1_1FileSelectListener}{File\+Select\+Listener}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_a98eda9195dc2e46af7e8822032586aa9}{File\+Dialog} (Activity \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_a145f83bf45ccc4012513d57f1d95301f}{activity})
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_a2b4eb4aba65bab023377964ed059f288}{add\+File\+Listener} (\hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_1_1FileSelectListener}{File\+Select\+Listener} listener)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_ada706f71f2afdcb8b8469f4821ca572a}{show\+Dialog} ()
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_a0b250b8085a226f3a5614dab96a06802}{set\+File\+Ends\+With} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Dialog \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_a6f7eeebe225e6bac532902bc18a4f336}{create\+File\+Dialog} ()
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_a40a770b6280f6da496438aa4e904baf9}{fire\+File\+Selected\+Event} (final File file)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_afdce16d10e893af4f5cee829336ff2bf}{load\+File\+List} (File path)
+\item 
+File \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_af7042a49f16d9477042f4d742680e0dd}{get\+Chosen\+File} (String file\+Chosen)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+final Activity \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_a145f83bf45ccc4012513d57f1d95301f}{activity}
+\item 
+final Listener\+List$<$ \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_1_1FileSelectListener}{File\+Select\+Listener} $>$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_a2cf83e551b79e78da54f700a1b190fd6}{file\+Listener\+List} = new Listener\+List$<$$>$()
+\item 
+String\mbox{[}$\,$\mbox{]} \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_a1e400eed62012e5265738f58fb0f73e1}{file\+List}
+\item 
+File \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_a0f49a1b6543e0abc023df6a1eed7e8a5}{current\+Path}
+\item 
+String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_a66078998b4ef3f93e4cbb16de037e244}{file\+Ends\+With}
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_ad807a8c118a38deafe9e989241110418}{P\+A\+R\+E\+N\+T\+\_\+\+D\+IR} = \char`\"{}..\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Programmed dialog box to select file from storage. 
+
+Created by Anupam (opticod) on 30/5/16. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog}!File\+Dialog@{File\+Dialog}}
+\index{File\+Dialog@{File\+Dialog}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog}}
+\subsubsection[{\texorpdfstring{File\+Dialog(\+Activity activity)}{FileDialog(Activity activity)}}]{\setlength{\rightskip}{0pt plus 5cm}org.\+buildmlearn.\+toolkit.\+utilities.\+File\+Dialog.\+File\+Dialog (
+\begin{DoxyParamCaption}
+\item[{Activity}]{activity}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_a98eda9195dc2e46af7e8822032586aa9}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_a98eda9195dc2e46af7e8822032586aa9}
+
+
+\subsection{Member Function Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog}!add\+File\+Listener@{add\+File\+Listener}}
+\index{add\+File\+Listener@{add\+File\+Listener}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog}}
+\subsubsection[{\texorpdfstring{add\+File\+Listener(\+File\+Select\+Listener listener)}{addFileListener(FileSelectListener listener)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+utilities.\+File\+Dialog.\+add\+File\+Listener (
+\begin{DoxyParamCaption}
+\item[{{\bf File\+Select\+Listener}}]{listener}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_a2b4eb4aba65bab023377964ed059f288}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_a2b4eb4aba65bab023377964ed059f288}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog}!create\+File\+Dialog@{create\+File\+Dialog}}
+\index{create\+File\+Dialog@{create\+File\+Dialog}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog}}
+\subsubsection[{\texorpdfstring{create\+File\+Dialog()}{createFileDialog()}}]{\setlength{\rightskip}{0pt plus 5cm}Dialog org.\+buildmlearn.\+toolkit.\+utilities.\+File\+Dialog.\+create\+File\+Dialog (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_a6f7eeebe225e6bac532902bc18a4f336}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_a6f7eeebe225e6bac532902bc18a4f336}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog}!fire\+File\+Selected\+Event@{fire\+File\+Selected\+Event}}
+\index{fire\+File\+Selected\+Event@{fire\+File\+Selected\+Event}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog}}
+\subsubsection[{\texorpdfstring{fire\+File\+Selected\+Event(final File file)}{fireFileSelectedEvent(final File file)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+utilities.\+File\+Dialog.\+fire\+File\+Selected\+Event (
+\begin{DoxyParamCaption}
+\item[{final File}]{file}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_a40a770b6280f6da496438aa4e904baf9}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_a40a770b6280f6da496438aa4e904baf9}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog}!get\+Chosen\+File@{get\+Chosen\+File}}
+\index{get\+Chosen\+File@{get\+Chosen\+File}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog}}
+\subsubsection[{\texorpdfstring{get\+Chosen\+File(\+String file\+Chosen)}{getChosenFile(String fileChosen)}}]{\setlength{\rightskip}{0pt plus 5cm}File org.\+buildmlearn.\+toolkit.\+utilities.\+File\+Dialog.\+get\+Chosen\+File (
+\begin{DoxyParamCaption}
+\item[{String}]{file\+Chosen}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_af7042a49f16d9477042f4d742680e0dd}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_af7042a49f16d9477042f4d742680e0dd}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog}!load\+File\+List@{load\+File\+List}}
+\index{load\+File\+List@{load\+File\+List}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog}}
+\subsubsection[{\texorpdfstring{load\+File\+List(\+File path)}{loadFileList(File path)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+utilities.\+File\+Dialog.\+load\+File\+List (
+\begin{DoxyParamCaption}
+\item[{File}]{path}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_afdce16d10e893af4f5cee829336ff2bf}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_afdce16d10e893af4f5cee829336ff2bf}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog}!set\+File\+Ends\+With@{set\+File\+Ends\+With}}
+\index{set\+File\+Ends\+With@{set\+File\+Ends\+With}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog}}
+\subsubsection[{\texorpdfstring{set\+File\+Ends\+With()}{setFileEndsWith()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+utilities.\+File\+Dialog.\+set\+File\+Ends\+With (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_a0b250b8085a226f3a5614dab96a06802}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_a0b250b8085a226f3a5614dab96a06802}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog}!show\+Dialog@{show\+Dialog}}
+\index{show\+Dialog@{show\+Dialog}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog}}
+\subsubsection[{\texorpdfstring{show\+Dialog()}{showDialog()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+utilities.\+File\+Dialog.\+show\+Dialog (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_ada706f71f2afdcb8b8469f4821ca572a}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_ada706f71f2afdcb8b8469f4821ca572a}
+
+
+\subsection{Member Data Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog}!activity@{activity}}
+\index{activity@{activity}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog}}
+\subsubsection[{\texorpdfstring{activity}{activity}}]{\setlength{\rightskip}{0pt plus 5cm}final Activity org.\+buildmlearn.\+toolkit.\+utilities.\+File\+Dialog.\+activity\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_a145f83bf45ccc4012513d57f1d95301f}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_a145f83bf45ccc4012513d57f1d95301f}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog}!current\+Path@{current\+Path}}
+\index{current\+Path@{current\+Path}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog}}
+\subsubsection[{\texorpdfstring{current\+Path}{currentPath}}]{\setlength{\rightskip}{0pt plus 5cm}File org.\+buildmlearn.\+toolkit.\+utilities.\+File\+Dialog.\+current\+Path\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_a0f49a1b6543e0abc023df6a1eed7e8a5}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_a0f49a1b6543e0abc023df6a1eed7e8a5}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog}!file\+Ends\+With@{file\+Ends\+With}}
+\index{file\+Ends\+With@{file\+Ends\+With}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog}}
+\subsubsection[{\texorpdfstring{file\+Ends\+With}{fileEndsWith}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+buildmlearn.\+toolkit.\+utilities.\+File\+Dialog.\+file\+Ends\+With\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_a66078998b4ef3f93e4cbb16de037e244}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_a66078998b4ef3f93e4cbb16de037e244}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog}!file\+List@{file\+List}}
+\index{file\+List@{file\+List}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog}}
+\subsubsection[{\texorpdfstring{file\+List}{fileList}}]{\setlength{\rightskip}{0pt plus 5cm}String \mbox{[}$\,$\mbox{]} org.\+buildmlearn.\+toolkit.\+utilities.\+File\+Dialog.\+file\+List\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_a1e400eed62012e5265738f58fb0f73e1}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_a1e400eed62012e5265738f58fb0f73e1}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog}!file\+Listener\+List@{file\+Listener\+List}}
+\index{file\+Listener\+List@{file\+Listener\+List}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog}}
+\subsubsection[{\texorpdfstring{file\+Listener\+List}{fileListenerList}}]{\setlength{\rightskip}{0pt plus 5cm}final Listener\+List$<${\bf File\+Select\+Listener}$>$ org.\+buildmlearn.\+toolkit.\+utilities.\+File\+Dialog.\+file\+Listener\+List = new Listener\+List$<$$>$()\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_a2cf83e551b79e78da54f700a1b190fd6}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_a2cf83e551b79e78da54f700a1b190fd6}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog}!P\+A\+R\+E\+N\+T\+\_\+\+D\+IR@{P\+A\+R\+E\+N\+T\+\_\+\+D\+IR}}
+\index{P\+A\+R\+E\+N\+T\+\_\+\+D\+IR@{P\+A\+R\+E\+N\+T\+\_\+\+D\+IR}!org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog@{org\+::buildmlearn\+::toolkit\+::utilities\+::\+File\+Dialog}}
+\subsubsection[{\texorpdfstring{P\+A\+R\+E\+N\+T\+\_\+\+D\+IR}{PARENT_DIR}}]{\setlength{\rightskip}{0pt plus 5cm}final String org.\+buildmlearn.\+toolkit.\+utilities.\+File\+Dialog.\+P\+A\+R\+E\+N\+T\+\_\+\+D\+IR = \char`\"{}..\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_ad807a8c118a38deafe9e989241110418}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1FileDialog_ad807a8c118a38deafe9e989241110418}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+source-\/code/app/src/main/java/org/buildmlearn/toolkit/utilities/\hyperlink{FileDialog_8java}{File\+Dialog.\+java}\end{DoxyCompactItemize}

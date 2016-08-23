@@ -1,0 +1,132 @@
+\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1InfoDb}{}\section{org.\+buildmlearn.\+toolkit.\+infotemplate.\+data.\+Info\+Db Class Reference}
+\label{classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1InfoDb}\index{org.\+buildmlearn.\+toolkit.\+infotemplate.\+data.\+Info\+Db@{org.\+buildmlearn.\+toolkit.\+infotemplate.\+data.\+Info\+Db}}
+
+
+Contains database util functions for info template\textquotesingle{}s simulator.  
+
+
+
+
+Collaboration diagram for org.\+buildmlearn.\+toolkit.\+infotemplate.\+data.\+Info\+Db\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1InfoDb__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1InfoDb_a5c77611262576b72820eb5b236513695}{Info\+Db} (Context context)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1InfoDb_a70b9284fc15f195b4c9d3432d371198a}{open} ()  throws S\+Q\+L\+Exception 
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1InfoDb_a3d85d2c10aed33cc77b24f47efe41ed7}{close} ()
+\item 
+Cursor \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1InfoDb_a8a11c7b13798bb99f2d9cfc7105cd472}{get\+Infos\+Cursor} ()
+\item 
+Cursor \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1InfoDb_acd51fd8d201efd1d954fd3aa417997a1}{get\+Info\+Cursor\+By\+Id} (int id)
+\item 
+long \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1InfoDb_a9ae6b2c376b451b3ac78c35fa95a4ac5}{get\+Count} ()
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1InfoDb_a04bad5412d8ae83ac8192ae2d37c92b4}{delete\+All} ()
+\item 
+int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1InfoDb_a541c89df46e4d986a58cd59bafd0fe85}{bulk\+Insert} (@Non\+Null Content\+Values\mbox{[}$\,$\mbox{]} values)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+final Info\+D\+B\+Helper \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1InfoDb_a34c9ce54812bfafd98df41278f6a96c8}{db\+Helper}
+\item 
+S\+Q\+Lite\+Database \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1InfoDb_a2bd16780a42033d11e54fa27962fd41a}{db}
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1InfoDb_aa6bd5fe405d5b4135431ba5c04ce1d8a}{E\+Q\+U\+AL} = \char`\"{} == \char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains database util functions for info template\textquotesingle{}s simulator. 
+
+Created by Anupam (opticod) on 20/6/16. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db@{org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db}!Info\+Db@{Info\+Db}}
+\index{Info\+Db@{Info\+Db}!org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db@{org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db}}
+\subsubsection[{\texorpdfstring{Info\+Db(\+Context context)}{InfoDb(Context context)}}]{\setlength{\rightskip}{0pt plus 5cm}org.\+buildmlearn.\+toolkit.\+infotemplate.\+data.\+Info\+Db.\+Info\+Db (
+\begin{DoxyParamCaption}
+\item[{Context}]{context}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1InfoDb_a5c77611262576b72820eb5b236513695}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1InfoDb_a5c77611262576b72820eb5b236513695}
+
+
+\subsection{Member Function Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db@{org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db}!bulk\+Insert@{bulk\+Insert}}
+\index{bulk\+Insert@{bulk\+Insert}!org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db@{org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db}}
+\subsubsection[{\texorpdfstring{bulk\+Insert("@Non\+Null Content\+Values[] values)}{bulkInsert(@NonNull ContentValues[] values)}}]{\setlength{\rightskip}{0pt plus 5cm}int org.\+buildmlearn.\+toolkit.\+infotemplate.\+data.\+Info\+Db.\+bulk\+Insert (
+\begin{DoxyParamCaption}
+\item[{@Non\+Null Content\+Values\mbox{[}$\,$\mbox{]}}]{values}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1InfoDb_a541c89df46e4d986a58cd59bafd0fe85}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1InfoDb_a541c89df46e4d986a58cd59bafd0fe85}
+\index{org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db@{org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db}!close@{close}}
+\index{close@{close}!org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db@{org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db}}
+\subsubsection[{\texorpdfstring{close()}{close()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+infotemplate.\+data.\+Info\+Db.\+close (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1InfoDb_a3d85d2c10aed33cc77b24f47efe41ed7}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1InfoDb_a3d85d2c10aed33cc77b24f47efe41ed7}
+\index{org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db@{org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db}!delete\+All@{delete\+All}}
+\index{delete\+All@{delete\+All}!org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db@{org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db}}
+\subsubsection[{\texorpdfstring{delete\+All()}{deleteAll()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+infotemplate.\+data.\+Info\+Db.\+delete\+All (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1InfoDb_a04bad5412d8ae83ac8192ae2d37c92b4}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1InfoDb_a04bad5412d8ae83ac8192ae2d37c92b4}
+\index{org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db@{org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db}!get\+Count@{get\+Count}}
+\index{get\+Count@{get\+Count}!org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db@{org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db}}
+\subsubsection[{\texorpdfstring{get\+Count()}{getCount()}}]{\setlength{\rightskip}{0pt plus 5cm}long org.\+buildmlearn.\+toolkit.\+infotemplate.\+data.\+Info\+Db.\+get\+Count (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1InfoDb_a9ae6b2c376b451b3ac78c35fa95a4ac5}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1InfoDb_a9ae6b2c376b451b3ac78c35fa95a4ac5}
+\index{org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db@{org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db}!get\+Info\+Cursor\+By\+Id@{get\+Info\+Cursor\+By\+Id}}
+\index{get\+Info\+Cursor\+By\+Id@{get\+Info\+Cursor\+By\+Id}!org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db@{org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db}}
+\subsubsection[{\texorpdfstring{get\+Info\+Cursor\+By\+Id(int id)}{getInfoCursorById(int id)}}]{\setlength{\rightskip}{0pt plus 5cm}Cursor org.\+buildmlearn.\+toolkit.\+infotemplate.\+data.\+Info\+Db.\+get\+Info\+Cursor\+By\+Id (
+\begin{DoxyParamCaption}
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1InfoDb_acd51fd8d201efd1d954fd3aa417997a1}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1InfoDb_acd51fd8d201efd1d954fd3aa417997a1}
+\index{org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db@{org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db}!get\+Infos\+Cursor@{get\+Infos\+Cursor}}
+\index{get\+Infos\+Cursor@{get\+Infos\+Cursor}!org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db@{org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db}}
+\subsubsection[{\texorpdfstring{get\+Infos\+Cursor()}{getInfosCursor()}}]{\setlength{\rightskip}{0pt plus 5cm}Cursor org.\+buildmlearn.\+toolkit.\+infotemplate.\+data.\+Info\+Db.\+get\+Infos\+Cursor (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1InfoDb_a8a11c7b13798bb99f2d9cfc7105cd472}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1InfoDb_a8a11c7b13798bb99f2d9cfc7105cd472}
+\index{org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db@{org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db}!open@{open}}
+\index{open@{open}!org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db@{org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db}}
+\subsubsection[{\texorpdfstring{open()}{open()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+infotemplate.\+data.\+Info\+Db.\+open (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) throws S\+Q\+L\+Exception}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1InfoDb_a70b9284fc15f195b4c9d3432d371198a}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1InfoDb_a70b9284fc15f195b4c9d3432d371198a}
+
+
+\subsection{Member Data Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db@{org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db}!db@{db}}
+\index{db@{db}!org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db@{org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db}}
+\subsubsection[{\texorpdfstring{db}{db}}]{\setlength{\rightskip}{0pt plus 5cm}S\+Q\+Lite\+Database org.\+buildmlearn.\+toolkit.\+infotemplate.\+data.\+Info\+Db.\+db\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1InfoDb_a2bd16780a42033d11e54fa27962fd41a}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1InfoDb_a2bd16780a42033d11e54fa27962fd41a}
+\index{org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db@{org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db}!db\+Helper@{db\+Helper}}
+\index{db\+Helper@{db\+Helper}!org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db@{org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db}}
+\subsubsection[{\texorpdfstring{db\+Helper}{dbHelper}}]{\setlength{\rightskip}{0pt plus 5cm}final Info\+D\+B\+Helper org.\+buildmlearn.\+toolkit.\+infotemplate.\+data.\+Info\+Db.\+db\+Helper\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1InfoDb_a34c9ce54812bfafd98df41278f6a96c8}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1InfoDb_a34c9ce54812bfafd98df41278f6a96c8}
+\index{org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db@{org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db}!E\+Q\+U\+AL@{E\+Q\+U\+AL}}
+\index{E\+Q\+U\+AL@{E\+Q\+U\+AL}!org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db@{org\+::buildmlearn\+::toolkit\+::infotemplate\+::data\+::\+Info\+Db}}
+\subsubsection[{\texorpdfstring{E\+Q\+U\+AL}{EQUAL}}]{\setlength{\rightskip}{0pt plus 5cm}final String org.\+buildmlearn.\+toolkit.\+infotemplate.\+data.\+Info\+Db.\+E\+Q\+U\+AL = \char`\"{} == \char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1InfoDb_aa6bd5fe405d5b4135431ba5c04ce1d8a}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1InfoDb_aa6bd5fe405d5b4135431ba5c04ce1d8a}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+source-\/code/app/src/main/java/org/buildmlearn/toolkit/infotemplate/data/\hyperlink{InfoDb_8java}{Info\+Db.\+java}\end{DoxyCompactItemize}

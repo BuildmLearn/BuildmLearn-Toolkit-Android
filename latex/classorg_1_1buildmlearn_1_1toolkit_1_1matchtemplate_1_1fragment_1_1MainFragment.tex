@@ -1,0 +1,223 @@
+\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment}{}\section{org.\+buildmlearn.\+toolkit.\+matchtemplate.\+fragment.\+Main\+Fragment Class Reference}
+\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment}\index{org.\+buildmlearn.\+toolkit.\+matchtemplate.\+fragment.\+Main\+Fragment@{org.\+buildmlearn.\+toolkit.\+matchtemplate.\+fragment.\+Main\+Fragment}}
+
+
+Fragment for the users to match column A with column B in match template\textquotesingle{}s simulator.  
+
+
+
+
+Inheritance diagram for org.\+buildmlearn.\+toolkit.\+matchtemplate.\+fragment.\+Main\+Fragment\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=304pt]{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for org.\+buildmlearn.\+toolkit.\+matchtemplate.\+fragment.\+Main\+Fragment\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a10b2cbf0db9e4ef9fd3edb503cd35889}{on\+Save\+Instance\+State} (Bundle out\+State)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a854d0f025c10cb556abddac60eee9e29}{on\+Create} (Bundle saved\+Instance\+State)
+\item 
+View \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a92653f11aba8e0470ef60004402b0331}{on\+Create\+View} (Layout\+Inflater inflater, View\+Group container, Bundle saved\+Instance\+State)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_ae7bdd6b11e0035f15c1d7e7afb70f43a}{on\+Destroy\+View} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static Fragment \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a99b90dc5edc809a1480d5fae941c4b0c}{new\+Instance} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a14192506ac5946de5e423edc9cbe8b61}{handle\+List\+View\+Listeners} ()
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a67670f42261fa59b018043fbcca7dcf5}{handle\+Button\+Listener} (View root\+View)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a33d46da5bd1f55ef6e43eea4883963cb}{highlight\+ListA} (int position, View view)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a3f4002edf36511a3d125cec2511873da}{highlight\+ListB} (int position, View view)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1adapter_1_1MatchArrayAdapter__A}{Match\+Array\+Adapter\+\_\+A} \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a24529dc618b5b5c748eaf2598b7eb8f5}{match\+List\+AdapterA}
+\item 
+\hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1adapter_1_1MatchArrayAdapter__B}{Match\+Array\+Adapter\+\_\+B} \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_ae593932b0b804d1036618c032364af30}{match\+List\+AdapterB}
+\item 
+int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_aa751a3adcba2cb2b3595a28c1681e36b}{m\+PositionA} = List\+View.\+I\+N\+V\+A\+L\+I\+D\+\_\+\+P\+O\+S\+I\+T\+I\+ON
+\item 
+int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_abb041044daa314afcb3ab1cabba0a545}{m\+PositionB} = List\+View.\+I\+N\+V\+A\+L\+I\+D\+\_\+\+P\+O\+S\+I\+T\+I\+ON
+\item 
+List\+View \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a4962aa59a75f108515924cf179e61c8a}{list\+ViewA}
+\item 
+List\+View \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a247a7236226916e778c77c333c3d295f}{list\+ViewB}
+\item 
+Array\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchModel}{Match\+Model} $>$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a1b84fd0969eef67d3afa9878bb7c1e22}{match\+ListA}
+\item 
+Array\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchModel}{Match\+Model} $>$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_ad2445f5849c804204d6e19979d44272e}{match\+ListB}
+\item 
+\hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchDb}{Match\+Db} \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a5b0105aba91fd41f46b4de2b6ee7429b}{db}
+\item 
+int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a2611205368a8e9ad3b519acdf19ef32f}{selected\+PositionA} = -\/1
+\item 
+int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a551644e1a207590d8f911431584586c7}{selected\+PositionB} = -\/1
+\item 
+View \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a3f22f954fc1bfa2c30f3440a9bbaad62}{selected\+ViewA}
+\item 
+View \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_aaa087f0b8191aecc84b89b60415743cc}{selected\+ViewB}
+\item 
+View \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a92e9139e7b1ec0421995253c1d279748}{click\+SourceA}
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_aaa308b6fd6a2d7225bba49e415881d22}{S\+E\+L\+E\+C\+T\+E\+D\+\_\+\+K\+E\+Y\+\_\+A} = \char`\"{}selected\+\_\+position\+\_\+a\char`\"{}
+\item 
+static final String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a88db5a44ba1cf59b52bfebd0a15efa11}{S\+E\+L\+E\+C\+T\+E\+D\+\_\+\+K\+E\+Y\+\_\+B} = \char`\"{}selected\+\_\+position\+\_\+b\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Fragment for the users to match column A with column B in match template\textquotesingle{}s simulator. 
+
+Created by Anupam (opticod) on 24/7/16. 
+
+\subsection{Member Function Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}!handle\+Button\+Listener@{handle\+Button\+Listener}}
+\index{handle\+Button\+Listener@{handle\+Button\+Listener}!org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}}
+\subsubsection[{\texorpdfstring{handle\+Button\+Listener(\+View root\+View)}{handleButtonListener(View rootView)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+matchtemplate.\+fragment.\+Main\+Fragment.\+handle\+Button\+Listener (
+\begin{DoxyParamCaption}
+\item[{View}]{root\+View}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a67670f42261fa59b018043fbcca7dcf5}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a67670f42261fa59b018043fbcca7dcf5}
+\index{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}!handle\+List\+View\+Listeners@{handle\+List\+View\+Listeners}}
+\index{handle\+List\+View\+Listeners@{handle\+List\+View\+Listeners}!org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}}
+\subsubsection[{\texorpdfstring{handle\+List\+View\+Listeners()}{handleListViewListeners()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+matchtemplate.\+fragment.\+Main\+Fragment.\+handle\+List\+View\+Listeners (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a14192506ac5946de5e423edc9cbe8b61}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a14192506ac5946de5e423edc9cbe8b61}
+\index{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}!highlight\+ListA@{highlight\+ListA}}
+\index{highlight\+ListA@{highlight\+ListA}!org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}}
+\subsubsection[{\texorpdfstring{highlight\+List\+A(int position, View view)}{highlightListA(int position, View view)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+matchtemplate.\+fragment.\+Main\+Fragment.\+highlight\+ListA (
+\begin{DoxyParamCaption}
+\item[{int}]{position, }
+\item[{View}]{view}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a33d46da5bd1f55ef6e43eea4883963cb}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a33d46da5bd1f55ef6e43eea4883963cb}
+\index{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}!highlight\+ListB@{highlight\+ListB}}
+\index{highlight\+ListB@{highlight\+ListB}!org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}}
+\subsubsection[{\texorpdfstring{highlight\+List\+B(int position, View view)}{highlightListB(int position, View view)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+matchtemplate.\+fragment.\+Main\+Fragment.\+highlight\+ListB (
+\begin{DoxyParamCaption}
+\item[{int}]{position, }
+\item[{View}]{view}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a3f4002edf36511a3d125cec2511873da}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a3f4002edf36511a3d125cec2511873da}
+\index{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}!new\+Instance@{new\+Instance}}
+\index{new\+Instance@{new\+Instance}!org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}}
+\subsubsection[{\texorpdfstring{new\+Instance()}{newInstance()}}]{\setlength{\rightskip}{0pt plus 5cm}static Fragment org.\+buildmlearn.\+toolkit.\+matchtemplate.\+fragment.\+Main\+Fragment.\+new\+Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a99b90dc5edc809a1480d5fae941c4b0c}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a99b90dc5edc809a1480d5fae941c4b0c}
+\index{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}!on\+Create@{on\+Create}}
+\index{on\+Create@{on\+Create}!org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}}
+\subsubsection[{\texorpdfstring{on\+Create(\+Bundle saved\+Instance\+State)}{onCreate(Bundle savedInstanceState)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+matchtemplate.\+fragment.\+Main\+Fragment.\+on\+Create (
+\begin{DoxyParamCaption}
+\item[{Bundle}]{saved\+Instance\+State}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a854d0f025c10cb556abddac60eee9e29}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a854d0f025c10cb556abddac60eee9e29}
+\index{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}!on\+Create\+View@{on\+Create\+View}}
+\index{on\+Create\+View@{on\+Create\+View}!org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}}
+\subsubsection[{\texorpdfstring{on\+Create\+View(\+Layout\+Inflater inflater, View\+Group container, Bundle saved\+Instance\+State)}{onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)}}]{\setlength{\rightskip}{0pt plus 5cm}View org.\+buildmlearn.\+toolkit.\+matchtemplate.\+fragment.\+Main\+Fragment.\+on\+Create\+View (
+\begin{DoxyParamCaption}
+\item[{Layout\+Inflater}]{inflater, }
+\item[{View\+Group}]{container, }
+\item[{Bundle}]{saved\+Instance\+State}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a92653f11aba8e0470ef60004402b0331}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a92653f11aba8e0470ef60004402b0331}
+\index{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}!on\+Destroy\+View@{on\+Destroy\+View}}
+\index{on\+Destroy\+View@{on\+Destroy\+View}!org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}}
+\subsubsection[{\texorpdfstring{on\+Destroy\+View()}{onDestroyView()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+matchtemplate.\+fragment.\+Main\+Fragment.\+on\+Destroy\+View (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_ae7bdd6b11e0035f15c1d7e7afb70f43a}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_ae7bdd6b11e0035f15c1d7e7afb70f43a}
+\index{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}!on\+Save\+Instance\+State@{on\+Save\+Instance\+State}}
+\index{on\+Save\+Instance\+State@{on\+Save\+Instance\+State}!org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}}
+\subsubsection[{\texorpdfstring{on\+Save\+Instance\+State(\+Bundle out\+State)}{onSaveInstanceState(Bundle outState)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+matchtemplate.\+fragment.\+Main\+Fragment.\+on\+Save\+Instance\+State (
+\begin{DoxyParamCaption}
+\item[{Bundle}]{out\+State}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a10b2cbf0db9e4ef9fd3edb503cd35889}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a10b2cbf0db9e4ef9fd3edb503cd35889}
+
+
+\subsection{Member Data Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}!click\+SourceA@{click\+SourceA}}
+\index{click\+SourceA@{click\+SourceA}!org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}}
+\subsubsection[{\texorpdfstring{click\+SourceA}{clickSourceA}}]{\setlength{\rightskip}{0pt plus 5cm}View org.\+buildmlearn.\+toolkit.\+matchtemplate.\+fragment.\+Main\+Fragment.\+click\+SourceA\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a92e9139e7b1ec0421995253c1d279748}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a92e9139e7b1ec0421995253c1d279748}
+\index{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}!db@{db}}
+\index{db@{db}!org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}}
+\subsubsection[{\texorpdfstring{db}{db}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Match\+Db} org.\+buildmlearn.\+toolkit.\+matchtemplate.\+fragment.\+Main\+Fragment.\+db\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a5b0105aba91fd41f46b4de2b6ee7429b}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a5b0105aba91fd41f46b4de2b6ee7429b}
+\index{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}!list\+ViewA@{list\+ViewA}}
+\index{list\+ViewA@{list\+ViewA}!org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}}
+\subsubsection[{\texorpdfstring{list\+ViewA}{listViewA}}]{\setlength{\rightskip}{0pt plus 5cm}List\+View org.\+buildmlearn.\+toolkit.\+matchtemplate.\+fragment.\+Main\+Fragment.\+list\+ViewA\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a4962aa59a75f108515924cf179e61c8a}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a4962aa59a75f108515924cf179e61c8a}
+\index{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}!list\+ViewB@{list\+ViewB}}
+\index{list\+ViewB@{list\+ViewB}!org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}}
+\subsubsection[{\texorpdfstring{list\+ViewB}{listViewB}}]{\setlength{\rightskip}{0pt plus 5cm}List\+View org.\+buildmlearn.\+toolkit.\+matchtemplate.\+fragment.\+Main\+Fragment.\+list\+ViewB\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a247a7236226916e778c77c333c3d295f}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a247a7236226916e778c77c333c3d295f}
+\index{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}!match\+ListA@{match\+ListA}}
+\index{match\+ListA@{match\+ListA}!org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}}
+\subsubsection[{\texorpdfstring{match\+ListA}{matchListA}}]{\setlength{\rightskip}{0pt plus 5cm}Array\+List$<${\bf Match\+Model}$>$ org.\+buildmlearn.\+toolkit.\+matchtemplate.\+fragment.\+Main\+Fragment.\+match\+ListA\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a1b84fd0969eef67d3afa9878bb7c1e22}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a1b84fd0969eef67d3afa9878bb7c1e22}
+\index{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}!match\+List\+AdapterA@{match\+List\+AdapterA}}
+\index{match\+List\+AdapterA@{match\+List\+AdapterA}!org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}}
+\subsubsection[{\texorpdfstring{match\+List\+AdapterA}{matchListAdapterA}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Match\+Array\+Adapter\+\_\+A} org.\+buildmlearn.\+toolkit.\+matchtemplate.\+fragment.\+Main\+Fragment.\+match\+List\+AdapterA\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a24529dc618b5b5c748eaf2598b7eb8f5}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a24529dc618b5b5c748eaf2598b7eb8f5}
+\index{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}!match\+List\+AdapterB@{match\+List\+AdapterB}}
+\index{match\+List\+AdapterB@{match\+List\+AdapterB}!org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}}
+\subsubsection[{\texorpdfstring{match\+List\+AdapterB}{matchListAdapterB}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Match\+Array\+Adapter\+\_\+B} org.\+buildmlearn.\+toolkit.\+matchtemplate.\+fragment.\+Main\+Fragment.\+match\+List\+AdapterB\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_ae593932b0b804d1036618c032364af30}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_ae593932b0b804d1036618c032364af30}
+\index{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}!match\+ListB@{match\+ListB}}
+\index{match\+ListB@{match\+ListB}!org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}}
+\subsubsection[{\texorpdfstring{match\+ListB}{matchListB}}]{\setlength{\rightskip}{0pt plus 5cm}Array\+List$<${\bf Match\+Model}$>$ org.\+buildmlearn.\+toolkit.\+matchtemplate.\+fragment.\+Main\+Fragment.\+match\+ListB\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_ad2445f5849c804204d6e19979d44272e}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_ad2445f5849c804204d6e19979d44272e}
+\index{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}!m\+PositionA@{m\+PositionA}}
+\index{m\+PositionA@{m\+PositionA}!org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}}
+\subsubsection[{\texorpdfstring{m\+PositionA}{mPositionA}}]{\setlength{\rightskip}{0pt plus 5cm}int org.\+buildmlearn.\+toolkit.\+matchtemplate.\+fragment.\+Main\+Fragment.\+m\+PositionA = List\+View.\+I\+N\+V\+A\+L\+I\+D\+\_\+\+P\+O\+S\+I\+T\+I\+ON\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_aa751a3adcba2cb2b3595a28c1681e36b}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_aa751a3adcba2cb2b3595a28c1681e36b}
+\index{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}!m\+PositionB@{m\+PositionB}}
+\index{m\+PositionB@{m\+PositionB}!org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}}
+\subsubsection[{\texorpdfstring{m\+PositionB}{mPositionB}}]{\setlength{\rightskip}{0pt plus 5cm}int org.\+buildmlearn.\+toolkit.\+matchtemplate.\+fragment.\+Main\+Fragment.\+m\+PositionB = List\+View.\+I\+N\+V\+A\+L\+I\+D\+\_\+\+P\+O\+S\+I\+T\+I\+ON\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_abb041044daa314afcb3ab1cabba0a545}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_abb041044daa314afcb3ab1cabba0a545}
+\index{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}!S\+E\+L\+E\+C\+T\+E\+D\+\_\+\+K\+E\+Y\+\_\+A@{S\+E\+L\+E\+C\+T\+E\+D\+\_\+\+K\+E\+Y\+\_\+A}}
+\index{S\+E\+L\+E\+C\+T\+E\+D\+\_\+\+K\+E\+Y\+\_\+A@{S\+E\+L\+E\+C\+T\+E\+D\+\_\+\+K\+E\+Y\+\_\+A}!org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}}
+\subsubsection[{\texorpdfstring{S\+E\+L\+E\+C\+T\+E\+D\+\_\+\+K\+E\+Y\+\_\+A}{SELECTED_KEY_A}}]{\setlength{\rightskip}{0pt plus 5cm}final String org.\+buildmlearn.\+toolkit.\+matchtemplate.\+fragment.\+Main\+Fragment.\+S\+E\+L\+E\+C\+T\+E\+D\+\_\+\+K\+E\+Y\+\_\+A = \char`\"{}selected\+\_\+position\+\_\+a\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_aaa308b6fd6a2d7225bba49e415881d22}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_aaa308b6fd6a2d7225bba49e415881d22}
+\index{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}!S\+E\+L\+E\+C\+T\+E\+D\+\_\+\+K\+E\+Y\+\_\+B@{S\+E\+L\+E\+C\+T\+E\+D\+\_\+\+K\+E\+Y\+\_\+B}}
+\index{S\+E\+L\+E\+C\+T\+E\+D\+\_\+\+K\+E\+Y\+\_\+B@{S\+E\+L\+E\+C\+T\+E\+D\+\_\+\+K\+E\+Y\+\_\+B}!org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}}
+\subsubsection[{\texorpdfstring{S\+E\+L\+E\+C\+T\+E\+D\+\_\+\+K\+E\+Y\+\_\+B}{SELECTED_KEY_B}}]{\setlength{\rightskip}{0pt plus 5cm}final String org.\+buildmlearn.\+toolkit.\+matchtemplate.\+fragment.\+Main\+Fragment.\+S\+E\+L\+E\+C\+T\+E\+D\+\_\+\+K\+E\+Y\+\_\+B = \char`\"{}selected\+\_\+position\+\_\+b\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a88db5a44ba1cf59b52bfebd0a15efa11}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a88db5a44ba1cf59b52bfebd0a15efa11}
+\index{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}!selected\+PositionA@{selected\+PositionA}}
+\index{selected\+PositionA@{selected\+PositionA}!org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}}
+\subsubsection[{\texorpdfstring{selected\+PositionA}{selectedPositionA}}]{\setlength{\rightskip}{0pt plus 5cm}int org.\+buildmlearn.\+toolkit.\+matchtemplate.\+fragment.\+Main\+Fragment.\+selected\+PositionA = -\/1\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a2611205368a8e9ad3b519acdf19ef32f}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a2611205368a8e9ad3b519acdf19ef32f}
+\index{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}!selected\+PositionB@{selected\+PositionB}}
+\index{selected\+PositionB@{selected\+PositionB}!org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}}
+\subsubsection[{\texorpdfstring{selected\+PositionB}{selectedPositionB}}]{\setlength{\rightskip}{0pt plus 5cm}int org.\+buildmlearn.\+toolkit.\+matchtemplate.\+fragment.\+Main\+Fragment.\+selected\+PositionB = -\/1\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a551644e1a207590d8f911431584586c7}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a551644e1a207590d8f911431584586c7}
+\index{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}!selected\+ViewA@{selected\+ViewA}}
+\index{selected\+ViewA@{selected\+ViewA}!org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}}
+\subsubsection[{\texorpdfstring{selected\+ViewA}{selectedViewA}}]{\setlength{\rightskip}{0pt plus 5cm}View org.\+buildmlearn.\+toolkit.\+matchtemplate.\+fragment.\+Main\+Fragment.\+selected\+ViewA\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a3f22f954fc1bfa2c30f3440a9bbaad62}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_a3f22f954fc1bfa2c30f3440a9bbaad62}
+\index{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}!selected\+ViewB@{selected\+ViewB}}
+\index{selected\+ViewB@{selected\+ViewB}!org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::fragment\+::\+Main\+Fragment}}
+\subsubsection[{\texorpdfstring{selected\+ViewB}{selectedViewB}}]{\setlength{\rightskip}{0pt plus 5cm}View org.\+buildmlearn.\+toolkit.\+matchtemplate.\+fragment.\+Main\+Fragment.\+selected\+ViewB\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_aaa087f0b8191aecc84b89b60415743cc}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1fragment_1_1MainFragment_aaa087f0b8191aecc84b89b60415743cc}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+source-\/code/app/src/main/java/org/buildmlearn/toolkit/matchtemplate/fragment/\hyperlink{matchtemplate_2fragment_2MainFragment_8java}{Main\+Fragment.\+java}\end{DoxyCompactItemize}

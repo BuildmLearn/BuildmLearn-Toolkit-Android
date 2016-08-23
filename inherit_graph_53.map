@@ -1,0 +1,21 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node2" href="$interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface.html" title="Interface containing methods for a implementing a template. " alt="" coords="154,233,346,275"/>
+<area shape="rect" id="node11" href="$classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1ComprehensionMetaModel.html" title="Model class for Comprehension Meta Template Editor data Created by Anupam (opticod) on 26/5/16..." alt="" coords="143,299,357,340"/>
+<area shape="rect" id="node12" href="$classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1ComprehensionModel.html" title="Model class for Comprehension Template Editor data Created by Anupam (opticod) on 26/5/16..." alt="" coords="143,364,357,405"/>
+<area shape="rect" id="node13" href="$classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationModel.html" title="Model class for Dictation Template Editor data Created by Anupam (opticod) on 4/7/16. " alt="" coords="143,429,357,471"/>
+<area shape="rect" id="node14" href="$classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashCardModel.html" title="Model class for Flash Card Template Editor data. " alt="" coords="143,495,357,536"/>
+<area shape="rect" id="node15" href="$classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1InfoModel.html" title="Model class for Info Template Editor data. " alt="" coords="143,560,357,601"/>
+<area shape="rect" id="node16" href="$classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingModel.html" title="Model class for Learn Spelling Template Editor data. " alt="" coords="143,625,357,667"/>
+<area shape="rect" id="node17" href="$classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1MatchMetaModel.html" title="Model class for Match The Following Meta Template Editor data Created by Anupam (opticod) on 16/7/16..." alt="" coords="143,691,357,732"/>
+<area shape="rect" id="node18" href="$classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1MatchModel.html" title="Model class for Match The Following Template Editor data. " alt="" coords="143,756,357,797"/>
+<area shape="rect" id="node19" href="$classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizModel.html" title="Model class for Quiz Template Editor data. " alt="" coords="143,821,357,863"/>
+<area shape="rect" id="node20" href="$classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1VideoModel.html" title="Model class for VideoCollection Template Editor data. " alt="" coords="143,887,357,928"/>
+<area shape="rect" id="node3" href="$classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1ComprehensionTemplate.html" title="Comprehension template code implementing methods of TemplateInterface. " alt="" coords="405,5,620,47"/>
+<area shape="rect" id="node4" href="$classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate.html" title="Dictation template code implementing methods of TemplateInterface. " alt="" coords="405,71,620,112"/>
+<area shape="rect" id="node5" href="$classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate.html" title="Flash Card template code implementing methods of TemplateInterface. " alt="" coords="405,136,620,177"/>
+<area shape="rect" id="node6" href="$classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1InfoTemplate.html" title="Info template code implementing methods of TemplateInterface. " alt="" coords="405,201,620,243"/>
+<area shape="rect" id="node7" href="$classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate.html" title="Learn Spelling template code implementing methods of TemplateInterface. " alt="" coords="405,267,620,308"/>
+<area shape="rect" id="node8" href="$classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1MatchTemplate.html" title="Match template code implementing methods of TemplateInterface. " alt="" coords="405,332,620,373"/>
+<area shape="rect" id="node9" href="$classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate.html" title="Quiz template code implementing methods of TemplateInterface. " alt="" coords="405,397,620,439"/>
+<area shape="rect" id="node10" href="$classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1VideoCollectionTemplate.html" title="Video template code implementing methods of TemplateInterface. " alt="" coords="405,463,620,504"/>
+</map>

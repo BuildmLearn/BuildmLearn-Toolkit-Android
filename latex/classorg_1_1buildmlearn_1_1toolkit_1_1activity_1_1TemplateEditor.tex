@@ -1,0 +1,463 @@
+\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor}{}\section{org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor Class Reference}
+\label{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor}\index{org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor@{org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor}}
+
+
+Placeholder activity for all the templates 
+
+A placeholder activty in which all the templates are loaded and allows the user to enter respective template data, generate and save projects, A\+P\+Ks and sharing options.  
+
+
+
+
+Inheritance diagram for org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a8dd35a4525cae8911df21beed169de02}{on\+Activity\+Result} (int request\+Code, int result\+Code, Intent intent)
+\item 
+boolean \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a9ce2150056a19a2bbd3222f061e1d4b2}{on\+Create\+Options\+Menu} (Menu menu)
+\item 
+boolean \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a4113877eb08f8665000bd3eb733737ef}{on\+Prepare\+Options\+Menu} (Menu menu)
+\item 
+boolean \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a619c591e1af2eba8188da92a021bc222}{on\+Options\+Item\+Selected} (Menu\+Item item)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_ae1fb961405f616070237c13e64f5b5bc}{restore\+Selected\+View} ()
+\begin{DoxyCompactList}\small\item\em Removes selected color from the selected List\+View item when switching from edit mode to normal mode. \end{DoxyCompactList}\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a8ebbbe37b4f8ad35d2270678e64dd4b2}{on\+Back\+Pressed} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_abe4f4b6fa4f8ca3bc10f9c01e3b81f73}{on\+Create} (Bundle saved\+Instance\+State)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a6f0e3399d8b62597bfed2bb402d44ae0}{on\+Save\+Instance\+State} (Bundle out\+State)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a28dfa99f087a79031bde74c7b1804b26}{populate\+Meta\+View} (final Base\+Adapter adapter)
+\begin{DoxyCompactList}\small\item\em Populates meta List\+View item by setting adapter to List\+View. \end{DoxyCompactList}\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_ade293345372081f3d43450df42e26092}{populate\+List\+View} (final Base\+Adapter adapter)
+\begin{DoxyCompactList}\small\item\em Populates List\+View item by setting adapter to List\+View. Also inflates Header View. 
+
+Header view contains the editable author name and template title fields. \end{DoxyCompactList}\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a5bd38be8a926fff23a40e8014b71cb13}{set\+Up\+Action\+Bar} ()
+\begin{DoxyCompactList}\small\item\em Initialization function for setting up action bar. \end{DoxyCompactList}\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a064ac90668a94f32256938cb08fe896e}{set\+Up\+Template\+Editor} ()
+\begin{DoxyCompactList}\small\item\em Initialization function when the Temlpate Editor is created. \end{DoxyCompactList}\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a957831b300058bc26fbfc187517962a8}{restore\+Template\+Editor} (Bundle saved\+Instance\+State)
+\begin{DoxyCompactList}\small\item\em Initialization function when the Temlpate Editor is restored. \end{DoxyCompactList}\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a579696858455696ea2bac7bea2dccbd0}{change\+Color\+Scheme} ()
+\begin{DoxyCompactList}\small\item\em Changes the color scheme when switching from normal mode to edit mode. 
+
+Edit mode is triggered, when the list item is long pressed. \end{DoxyCompactList}\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a596abe1f201578b28de1e3491b4f8cd6}{restore\+Color\+Scheme} ()
+\begin{DoxyCompactList}\small\item\em Restores the color scheme when switching from edit mode to normal mode. 
+
+Edit mode is triggered, when the list item is long pressed. \end{DoxyCompactList}\item 
+String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_aaec7f80eb29a74505a25bed11c20c29d}{save\+Project} ()
+\begin{DoxyCompactList}\small\item\em Saves the current project into a .buildmlearn file. \end{DoxyCompactList}\item 
+String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a65923747a2021fb9952cb9690ce78cb1}{save\+Draft} ()
+\begin{DoxyCompactList}\small\item\em Saves the current project into a .buildmlearn file. \end{DoxyCompactList}\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a0f4842fdb6b28f218c6f2ac5c69e62e1}{start\+Simulator} ()
+\begin{DoxyCompactList}\small\item\em Start the simulator activity 
+
+Start the simulator with the fragment returned by the selected template. Simulator is started as a new activity. \end{DoxyCompactList}\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_aef3001b6ab6df927e92ada78c02bc7da}{parse\+Saved\+File} (String path)
+\begin{DoxyCompactList}\small\item\em Converts an existing .buildmlearn file to Template\+Interface Object 
+
+This function is used in loading existing files to editor. Reads file at a given path, parse the file and convert into and convert it into Template\+Interface object. \end{DoxyCompactList}\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a3d785b7595c43249fc5a73e4f69daf41}{update\+Header\+Details} (String name, String title)
+\begin{DoxyCompactList}\small\item\em Updates the title and author name in the header view. \end{DoxyCompactList}\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a5c1e35aa985ed2199d9795ad1ab03e0d}{set\+Adapter} (Base\+Adapter adapter)
+\begin{DoxyCompactList}\small\item\em Sets the adapter to the List\+View. \end{DoxyCompactList}\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_acf3ac338304c57e1378633c804a860eb}{set\+Adapter\+Meta} (Base\+Adapter adapter)
+\begin{DoxyCompactList}\small\item\em Sets the adapter to the List\+View. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+final Handler \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a50320fc9b82545de0cef1fd83e51f124}{handler\+Toast}
+\item 
+List\+View \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a09b0ee15af33371b6edc5d0d8c9e094e}{template\+Edtior\+List}
+\item 
+List\+View \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_ae03ef38d236187ed866097da4eaaeecf}{template\+Meta\+List}
+\item 
+int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a828e86661f2e2d7007430801b25346f3}{template\+Id}
+\item 
+\hyperlink{enumorg_1_1buildmlearn_1_1toolkit_1_1model_1_1Template}{Template} \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a2dd7c11cbe7e69502eb22f12be0bb484}{template}
+\item 
+\hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface}{Template\+Interface} \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a71073c5ae2c78f417365ec59fd9c4e07}{selected\+Template}
+\item 
+int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a3a8c09c418c4dcd89e98f460d6b65905}{selected\+Position} = -\/1
+\item 
+boolean \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a2af7a93dc2f0f6a3aa9ad2adc2006ce9}{show\+Template\+Selected\+Menu}
+\item 
+View \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_ac27f27c3e26b8926f09501cd0e871614}{selected\+View}
+\item 
+\hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1ToolkitApplication}{Toolkit\+Application} \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_af6325370557d88b7e0e8852634509a46}{toolkit}
+\item 
+String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_ad90816675a8760c5a922a539fe6e86a5}{old\+File\+Name}
+\item 
+Material\+Dialog \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_afe8dcd1317d0b9075234654777563819}{m\+Apk\+Generation\+Dialog}
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a10184e181fd7372679d02be3b7bbb277}{T\+AG} = \char`\"{}T\+E\+M\+P\+L\+A\+TE E\+D\+I\+T\+OR\char`\"{}
+\item 
+static final int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a4f2e0d4a5351ba3b82bb302582618c2a}{P\+E\+R\+M\+I\+S\+S\+I\+O\+N\+\_\+\+R\+E\+Q\+U\+E\+S\+T\+\_\+\+W\+R\+I\+T\+E\+\_\+\+E\+X\+T\+E\+R\+N\+A\+L\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+R\+E\+S\+U\+LT} = 100
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Placeholder activity for all the templates 
+
+A placeholder activty in which all the templates are loaded and allows the user to enter respective template data, generate and save projects, A\+P\+Ks and sharing options. 
+
+\subsection{Member Function Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}!change\+Color\+Scheme@{change\+Color\+Scheme}}
+\index{change\+Color\+Scheme@{change\+Color\+Scheme}!org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}}
+\subsubsection[{\texorpdfstring{change\+Color\+Scheme()}{changeColorScheme()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor.\+change\+Color\+Scheme (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a579696858455696ea2bac7bea2dccbd0}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a579696858455696ea2bac7bea2dccbd0}
+
+
+Changes the color scheme when switching from normal mode to edit mode. 
+
+Edit mode is triggered, when the list item is long pressed. 
+
+\index{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}!on\+Activity\+Result@{on\+Activity\+Result}}
+\index{on\+Activity\+Result@{on\+Activity\+Result}!org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}}
+\subsubsection[{\texorpdfstring{on\+Activity\+Result(int request\+Code, int result\+Code, Intent intent)}{onActivityResult(int requestCode, int resultCode, Intent intent)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor.\+on\+Activity\+Result (
+\begin{DoxyParamCaption}
+\item[{int}]{request\+Code, }
+\item[{int}]{result\+Code, }
+\item[{Intent}]{intent}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a8dd35a4525cae8911df21beed169de02}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a8dd35a4525cae8911df21beed169de02}
+\index{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}!on\+Back\+Pressed@{on\+Back\+Pressed}}
+\index{on\+Back\+Pressed@{on\+Back\+Pressed}!org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}}
+\subsubsection[{\texorpdfstring{on\+Back\+Pressed()}{onBackPressed()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor.\+on\+Back\+Pressed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a8ebbbe37b4f8ad35d2270678e64dd4b2}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a8ebbbe37b4f8ad35d2270678e64dd4b2}
+\index{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}!on\+Create@{on\+Create}}
+\index{on\+Create@{on\+Create}!org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}}
+\subsubsection[{\texorpdfstring{on\+Create(\+Bundle saved\+Instance\+State)}{onCreate(Bundle savedInstanceState)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor.\+on\+Create (
+\begin{DoxyParamCaption}
+\item[{Bundle}]{saved\+Instance\+State}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_abe4f4b6fa4f8ca3bc10f9c01e3b81f73}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_abe4f4b6fa4f8ca3bc10f9c01e3b81f73}
+\index{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}!on\+Create\+Options\+Menu@{on\+Create\+Options\+Menu}}
+\index{on\+Create\+Options\+Menu@{on\+Create\+Options\+Menu}!org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}}
+\subsubsection[{\texorpdfstring{on\+Create\+Options\+Menu(\+Menu menu)}{onCreateOptionsMenu(Menu menu)}}]{\setlength{\rightskip}{0pt plus 5cm}boolean org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor.\+on\+Create\+Options\+Menu (
+\begin{DoxyParamCaption}
+\item[{Menu}]{menu}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a9ce2150056a19a2bbd3222f061e1d4b2}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a9ce2150056a19a2bbd3222f061e1d4b2}
+\index{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}!on\+Options\+Item\+Selected@{on\+Options\+Item\+Selected}}
+\index{on\+Options\+Item\+Selected@{on\+Options\+Item\+Selected}!org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}}
+\subsubsection[{\texorpdfstring{on\+Options\+Item\+Selected(\+Menu\+Item item)}{onOptionsItemSelected(MenuItem item)}}]{\setlength{\rightskip}{0pt plus 5cm}boolean org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor.\+on\+Options\+Item\+Selected (
+\begin{DoxyParamCaption}
+\item[{Menu\+Item}]{item}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a619c591e1af2eba8188da92a021bc222}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a619c591e1af2eba8188da92a021bc222}
+\index{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}!on\+Prepare\+Options\+Menu@{on\+Prepare\+Options\+Menu}}
+\index{on\+Prepare\+Options\+Menu@{on\+Prepare\+Options\+Menu}!org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}}
+\subsubsection[{\texorpdfstring{on\+Prepare\+Options\+Menu(\+Menu menu)}{onPrepareOptionsMenu(Menu menu)}}]{\setlength{\rightskip}{0pt plus 5cm}boolean org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor.\+on\+Prepare\+Options\+Menu (
+\begin{DoxyParamCaption}
+\item[{Menu}]{menu}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a4113877eb08f8665000bd3eb733737ef}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a4113877eb08f8665000bd3eb733737ef}
+\index{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}!on\+Save\+Instance\+State@{on\+Save\+Instance\+State}}
+\index{on\+Save\+Instance\+State@{on\+Save\+Instance\+State}!org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}}
+\subsubsection[{\texorpdfstring{on\+Save\+Instance\+State(\+Bundle out\+State)}{onSaveInstanceState(Bundle outState)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor.\+on\+Save\+Instance\+State (
+\begin{DoxyParamCaption}
+\item[{Bundle}]{out\+State}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a6f0e3399d8b62597bfed2bb402d44ae0}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a6f0e3399d8b62597bfed2bb402d44ae0}
+\index{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}!parse\+Saved\+File@{parse\+Saved\+File}}
+\index{parse\+Saved\+File@{parse\+Saved\+File}!org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}}
+\subsubsection[{\texorpdfstring{parse\+Saved\+File(\+String path)}{parseSavedFile(String path)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor.\+parse\+Saved\+File (
+\begin{DoxyParamCaption}
+\item[{String}]{path}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_aef3001b6ab6df927e92ada78c02bc7da}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_aef3001b6ab6df927e92ada78c02bc7da}
+
+
+Converts an existing .buildmlearn file to Template\+Interface Object 
+
+This function is used in loading existing files to editor. Reads file at a given path, parse the file and convert into and convert it into Template\+Interface object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Path of the existing .buildmlearn file \\
+\hline
+\end{DoxyParams}
+\index{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}!populate\+List\+View@{populate\+List\+View}}
+\index{populate\+List\+View@{populate\+List\+View}!org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}}
+\subsubsection[{\texorpdfstring{populate\+List\+View(final Base\+Adapter adapter)}{populateListView(final BaseAdapter adapter)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor.\+populate\+List\+View (
+\begin{DoxyParamCaption}
+\item[{final Base\+Adapter}]{adapter}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_ade293345372081f3d43450df42e26092}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_ade293345372081f3d43450df42e26092}
+
+
+Populates List\+View item by setting adapter to List\+View. Also inflates Header View. 
+
+Header view contains the editable author name and template title fields. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em adapter} & Adapter containing template data \\
+\hline
+\end{DoxyParams}
+\index{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}!populate\+Meta\+View@{populate\+Meta\+View}}
+\index{populate\+Meta\+View@{populate\+Meta\+View}!org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}}
+\subsubsection[{\texorpdfstring{populate\+Meta\+View(final Base\+Adapter adapter)}{populateMetaView(final BaseAdapter adapter)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor.\+populate\+Meta\+View (
+\begin{DoxyParamCaption}
+\item[{final Base\+Adapter}]{adapter}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a28dfa99f087a79031bde74c7b1804b26}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a28dfa99f087a79031bde74c7b1804b26}
+
+
+Populates meta List\+View item by setting adapter to List\+View. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em adapter} & Adapter containing template meta data \\
+\hline
+\end{DoxyParams}
+\index{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}!restore\+Color\+Scheme@{restore\+Color\+Scheme}}
+\index{restore\+Color\+Scheme@{restore\+Color\+Scheme}!org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}}
+\subsubsection[{\texorpdfstring{restore\+Color\+Scheme()}{restoreColorScheme()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor.\+restore\+Color\+Scheme (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a596abe1f201578b28de1e3491b4f8cd6}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a596abe1f201578b28de1e3491b4f8cd6}
+
+
+Restores the color scheme when switching from edit mode to normal mode. 
+
+Edit mode is triggered, when the list item is long pressed. 
+
+\index{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}!restore\+Selected\+View@{restore\+Selected\+View}}
+\index{restore\+Selected\+View@{restore\+Selected\+View}!org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}}
+\subsubsection[{\texorpdfstring{restore\+Selected\+View()}{restoreSelectedView()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor.\+restore\+Selected\+View (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_ae1fb961405f616070237c13e64f5b5bc}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_ae1fb961405f616070237c13e64f5b5bc}
+
+
+Removes selected color from the selected List\+View item when switching from edit mode to normal mode. 
+
+\index{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}!restore\+Template\+Editor@{restore\+Template\+Editor}}
+\index{restore\+Template\+Editor@{restore\+Template\+Editor}!org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}}
+\subsubsection[{\texorpdfstring{restore\+Template\+Editor(\+Bundle saved\+Instance\+State)}{restoreTemplateEditor(Bundle savedInstanceState)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor.\+restore\+Template\+Editor (
+\begin{DoxyParamCaption}
+\item[{Bundle}]{saved\+Instance\+State}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a957831b300058bc26fbfc187517962a8}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a957831b300058bc26fbfc187517962a8}
+
+
+Initialization function when the Temlpate Editor is restored. 
+
+\index{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}!save\+Draft@{save\+Draft}}
+\index{save\+Draft@{save\+Draft}!org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}}
+\subsubsection[{\texorpdfstring{save\+Draft()}{saveDraft()}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor.\+save\+Draft (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a65923747a2021fb9952cb9690ce78cb1}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a65923747a2021fb9952cb9690ce78cb1}
+
+
+Saves the current project into a .buildmlearn file. 
+
+Converts the current Template\+Interface object into a xml file. Xml file is saved in D\+R\+A\+FT Directory (defined in constants). File name is of the format\+: draft$<$0-\/X$>$.buildmlearn
+
+\begin{DoxyReturn}{Returns}
+Absolute path of the saved file. Null if there is some error. 
+\end{DoxyReturn}
+\index{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}!save\+Project@{save\+Project}}
+\index{save\+Project@{save\+Project}!org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}}
+\subsubsection[{\texorpdfstring{save\+Project()}{saveProject()}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor.\+save\+Project (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_aaec7f80eb29a74505a25bed11c20c29d}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_aaec7f80eb29a74505a25bed11c20c29d}
+
+
+Saves the current project into a .buildmlearn file. 
+
+Converts the current Template\+Interface object into a xml file. Xml file is saved in S\+A\+VE Directory (defined in constants). File name is of the format\+: $<$title$>$\+\_\+by\+\_\+$<$author$>$.\+buildmlearn
+
+\begin{DoxyReturn}{Returns}
+Absolute path of the saved file. Null if there is some error. 
+\end{DoxyReturn}
+\index{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}!set\+Adapter@{set\+Adapter}}
+\index{set\+Adapter@{set\+Adapter}!org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}}
+\subsubsection[{\texorpdfstring{set\+Adapter(\+Base\+Adapter adapter)}{setAdapter(BaseAdapter adapter)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor.\+set\+Adapter (
+\begin{DoxyParamCaption}
+\item[{Base\+Adapter}]{adapter}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a5c1e35aa985ed2199d9795ad1ab03e0d}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a5c1e35aa985ed2199d9795ad1ab03e0d}
+
+
+Sets the adapter to the List\+View. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em adapter} & \\
+\hline
+\end{DoxyParams}
+\index{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}!set\+Adapter\+Meta@{set\+Adapter\+Meta}}
+\index{set\+Adapter\+Meta@{set\+Adapter\+Meta}!org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}}
+\subsubsection[{\texorpdfstring{set\+Adapter\+Meta(\+Base\+Adapter adapter)}{setAdapterMeta(BaseAdapter adapter)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor.\+set\+Adapter\+Meta (
+\begin{DoxyParamCaption}
+\item[{Base\+Adapter}]{adapter}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_acf3ac338304c57e1378633c804a860eb}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_acf3ac338304c57e1378633c804a860eb}
+
+
+Sets the adapter to the List\+View. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em adapter} & \\
+\hline
+\end{DoxyParams}
+\index{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}!set\+Up\+Action\+Bar@{set\+Up\+Action\+Bar}}
+\index{set\+Up\+Action\+Bar@{set\+Up\+Action\+Bar}!org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}}
+\subsubsection[{\texorpdfstring{set\+Up\+Action\+Bar()}{setUpActionBar()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor.\+set\+Up\+Action\+Bar (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a5bd38be8a926fff23a40e8014b71cb13}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a5bd38be8a926fff23a40e8014b71cb13}
+
+
+Initialization function for setting up action bar. 
+
+\index{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}!set\+Up\+Template\+Editor@{set\+Up\+Template\+Editor}}
+\index{set\+Up\+Template\+Editor@{set\+Up\+Template\+Editor}!org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}}
+\subsubsection[{\texorpdfstring{set\+Up\+Template\+Editor()}{setUpTemplateEditor()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor.\+set\+Up\+Template\+Editor (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a064ac90668a94f32256938cb08fe896e}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a064ac90668a94f32256938cb08fe896e}
+
+
+Initialization function when the Temlpate Editor is created. 
+
+\index{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}!start\+Simulator@{start\+Simulator}}
+\index{start\+Simulator@{start\+Simulator}!org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}}
+\subsubsection[{\texorpdfstring{start\+Simulator()}{startSimulator()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor.\+start\+Simulator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a0f4842fdb6b28f218c6f2ac5c69e62e1}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a0f4842fdb6b28f218c6f2ac5c69e62e1}
+
+
+Start the simulator activity 
+
+Start the simulator with the fragment returned by the selected template. Simulator is started as a new activity. 
+
+\index{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}!update\+Header\+Details@{update\+Header\+Details}}
+\index{update\+Header\+Details@{update\+Header\+Details}!org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}}
+\subsubsection[{\texorpdfstring{update\+Header\+Details(\+String name, String title)}{updateHeaderDetails(String name, String title)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor.\+update\+Header\+Details (
+\begin{DoxyParamCaption}
+\item[{String}]{name, }
+\item[{String}]{title}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a3d785b7595c43249fc5a73e4f69daf41}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a3d785b7595c43249fc5a73e4f69daf41}
+
+
+Updates the title and author name in the header view. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of the author \\
+\hline
+{\em title} & Title of the template app \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}!handler\+Toast@{handler\+Toast}}
+\index{handler\+Toast@{handler\+Toast}!org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}}
+\subsubsection[{\texorpdfstring{handler\+Toast}{handlerToast}}]{\setlength{\rightskip}{0pt plus 5cm}final Handler org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor.\+handler\+Toast\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a50320fc9b82545de0cef1fd83e51f124}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a50320fc9b82545de0cef1fd83e51f124}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \textcolor{keyword}{new} Handler() \{
+        \textcolor{keyword}{public} \textcolor{keywordtype}{void} handleMessage(Message message) \{
+            \textcolor{keywordflow}{if} (message.arg1 == -1) \{
+                Toast.makeText(TemplateEditor.this, \textcolor{stringliteral}{"Build unsuccessful"}, Toast.LENGTH\_SHORT).show();
+            \}
+        \}
+    \}
+\end{DoxyCode}
+\index{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}!m\+Apk\+Generation\+Dialog@{m\+Apk\+Generation\+Dialog}}
+\index{m\+Apk\+Generation\+Dialog@{m\+Apk\+Generation\+Dialog}!org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}}
+\subsubsection[{\texorpdfstring{m\+Apk\+Generation\+Dialog}{mApkGenerationDialog}}]{\setlength{\rightskip}{0pt plus 5cm}Material\+Dialog org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor.\+m\+Apk\+Generation\+Dialog\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_afe8dcd1317d0b9075234654777563819}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_afe8dcd1317d0b9075234654777563819}
+\index{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}!old\+File\+Name@{old\+File\+Name}}
+\index{old\+File\+Name@{old\+File\+Name}!org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}}
+\subsubsection[{\texorpdfstring{old\+File\+Name}{oldFileName}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor.\+old\+File\+Name\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_ad90816675a8760c5a922a539fe6e86a5}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_ad90816675a8760c5a922a539fe6e86a5}
+\index{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}!P\+E\+R\+M\+I\+S\+S\+I\+O\+N\+\_\+\+R\+E\+Q\+U\+E\+S\+T\+\_\+\+W\+R\+I\+T\+E\+\_\+\+E\+X\+T\+E\+R\+N\+A\+L\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+R\+E\+S\+U\+LT@{P\+E\+R\+M\+I\+S\+S\+I\+O\+N\+\_\+\+R\+E\+Q\+U\+E\+S\+T\+\_\+\+W\+R\+I\+T\+E\+\_\+\+E\+X\+T\+E\+R\+N\+A\+L\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+R\+E\+S\+U\+LT}}
+\index{P\+E\+R\+M\+I\+S\+S\+I\+O\+N\+\_\+\+R\+E\+Q\+U\+E\+S\+T\+\_\+\+W\+R\+I\+T\+E\+\_\+\+E\+X\+T\+E\+R\+N\+A\+L\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+R\+E\+S\+U\+LT@{P\+E\+R\+M\+I\+S\+S\+I\+O\+N\+\_\+\+R\+E\+Q\+U\+E\+S\+T\+\_\+\+W\+R\+I\+T\+E\+\_\+\+E\+X\+T\+E\+R\+N\+A\+L\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+R\+E\+S\+U\+LT}!org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}}
+\subsubsection[{\texorpdfstring{P\+E\+R\+M\+I\+S\+S\+I\+O\+N\+\_\+\+R\+E\+Q\+U\+E\+S\+T\+\_\+\+W\+R\+I\+T\+E\+\_\+\+E\+X\+T\+E\+R\+N\+A\+L\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+R\+E\+S\+U\+LT}{PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE_RESULT}}]{\setlength{\rightskip}{0pt plus 5cm}final int org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor.\+P\+E\+R\+M\+I\+S\+S\+I\+O\+N\+\_\+\+R\+E\+Q\+U\+E\+S\+T\+\_\+\+W\+R\+I\+T\+E\+\_\+\+E\+X\+T\+E\+R\+N\+A\+L\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+R\+E\+S\+U\+LT = 100\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a4f2e0d4a5351ba3b82bb302582618c2a}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a4f2e0d4a5351ba3b82bb302582618c2a}
+\index{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}!selected\+Position@{selected\+Position}}
+\index{selected\+Position@{selected\+Position}!org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}}
+\subsubsection[{\texorpdfstring{selected\+Position}{selectedPosition}}]{\setlength{\rightskip}{0pt plus 5cm}int org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor.\+selected\+Position = -\/1\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a3a8c09c418c4dcd89e98f460d6b65905}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a3a8c09c418c4dcd89e98f460d6b65905}
+\index{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}!selected\+Template@{selected\+Template}}
+\index{selected\+Template@{selected\+Template}!org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}}
+\subsubsection[{\texorpdfstring{selected\+Template}{selectedTemplate}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Template\+Interface} org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor.\+selected\+Template\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a71073c5ae2c78f417365ec59fd9c4e07}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a71073c5ae2c78f417365ec59fd9c4e07}
+\index{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}!selected\+View@{selected\+View}}
+\index{selected\+View@{selected\+View}!org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}}
+\subsubsection[{\texorpdfstring{selected\+View}{selectedView}}]{\setlength{\rightskip}{0pt plus 5cm}View org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor.\+selected\+View\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_ac27f27c3e26b8926f09501cd0e871614}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_ac27f27c3e26b8926f09501cd0e871614}
+\index{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}!show\+Template\+Selected\+Menu@{show\+Template\+Selected\+Menu}}
+\index{show\+Template\+Selected\+Menu@{show\+Template\+Selected\+Menu}!org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}}
+\subsubsection[{\texorpdfstring{show\+Template\+Selected\+Menu}{showTemplateSelectedMenu}}]{\setlength{\rightskip}{0pt plus 5cm}boolean org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor.\+show\+Template\+Selected\+Menu\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a2af7a93dc2f0f6a3aa9ad2adc2006ce9}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a2af7a93dc2f0f6a3aa9ad2adc2006ce9}
+\index{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}!T\+AG@{T\+AG}}
+\index{T\+AG@{T\+AG}!org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}}
+\subsubsection[{\texorpdfstring{T\+AG}{TAG}}]{\setlength{\rightskip}{0pt plus 5cm}final String org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor.\+T\+AG = \char`\"{}T\+E\+M\+P\+L\+A\+TE E\+D\+I\+T\+OR\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a10184e181fd7372679d02be3b7bbb277}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a10184e181fd7372679d02be3b7bbb277}
+\index{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}!template@{template}}
+\index{template@{template}!org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}}
+\subsubsection[{\texorpdfstring{template}{template}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Template} org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor.\+template\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a2dd7c11cbe7e69502eb22f12be0bb484}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a2dd7c11cbe7e69502eb22f12be0bb484}
+\index{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}!template\+Edtior\+List@{template\+Edtior\+List}}
+\index{template\+Edtior\+List@{template\+Edtior\+List}!org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}}
+\subsubsection[{\texorpdfstring{template\+Edtior\+List}{templateEdtiorList}}]{\setlength{\rightskip}{0pt plus 5cm}List\+View org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor.\+template\+Edtior\+List\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a09b0ee15af33371b6edc5d0d8c9e094e}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a09b0ee15af33371b6edc5d0d8c9e094e}
+\index{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}!template\+Id@{template\+Id}}
+\index{template\+Id@{template\+Id}!org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}}
+\subsubsection[{\texorpdfstring{template\+Id}{templateId}}]{\setlength{\rightskip}{0pt plus 5cm}int org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor.\+template\+Id\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a828e86661f2e2d7007430801b25346f3}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_a828e86661f2e2d7007430801b25346f3}
+\index{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}!template\+Meta\+List@{template\+Meta\+List}}
+\index{template\+Meta\+List@{template\+Meta\+List}!org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}}
+\subsubsection[{\texorpdfstring{template\+Meta\+List}{templateMetaList}}]{\setlength{\rightskip}{0pt plus 5cm}List\+View org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor.\+template\+Meta\+List\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_ae03ef38d236187ed866097da4eaaeecf}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_ae03ef38d236187ed866097da4eaaeecf}
+\index{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}!toolkit@{toolkit}}
+\index{toolkit@{toolkit}!org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor@{org\+::buildmlearn\+::toolkit\+::activity\+::\+Template\+Editor}}
+\subsubsection[{\texorpdfstring{toolkit}{toolkit}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Toolkit\+Application} org.\+buildmlearn.\+toolkit.\+activity.\+Template\+Editor.\+toolkit\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_af6325370557d88b7e0e8852634509a46}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1activity_1_1TemplateEditor_af6325370557d88b7e0e8852634509a46}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+source-\/code/app/src/main/java/org/buildmlearn/toolkit/activity/\hyperlink{TemplateEditor_8java}{Template\+Editor.\+java}\end{DoxyCompactItemize}

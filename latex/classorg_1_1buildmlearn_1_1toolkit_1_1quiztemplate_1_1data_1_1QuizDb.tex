@@ -1,0 +1,160 @@
+\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb}{}\section{org.\+buildmlearn.\+toolkit.\+quiztemplate.\+data.\+Quiz\+Db Class Reference}
+\label{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb}\index{org.\+buildmlearn.\+toolkit.\+quiztemplate.\+data.\+Quiz\+Db@{org.\+buildmlearn.\+toolkit.\+quiztemplate.\+data.\+Quiz\+Db}}
+
+
+Contains database util functions for quiz template\textquotesingle{}s simulator.  
+
+
+
+
+Collaboration diagram for org.\+buildmlearn.\+toolkit.\+quiztemplate.\+data.\+Quiz\+Db\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_acdba8d7e662832d171ebdbe7b3380b4c}{Quiz\+Db} (Context context)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_abbeed626bc5b552f8b954d6237a3f3b1}{open} ()  throws S\+Q\+L\+Exception 
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_a92a9fb76a38eb9d93962a06ccf754259}{close} ()
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_a886cc12d59eaf545f613113a0189ec25}{mark\+Answered} (int id, int answer)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_a4010891a056a25437c671f4746bde454}{mark\+Un\+Answered} (int id)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_add8fc835dc5da623099b3e23770dd2e4}{delete\+All} ()
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_ac7189bed768cf882069fd5b443ae28a7}{reset\+Count} ()
+\item 
+int\mbox{[}$\,$\mbox{]} \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_a052a88921f4aa69e7340742cbc69c288}{get\+Statistics} ()
+\item 
+Cursor \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_a5ca5b23055708af02c5a2d8e24d3a517}{get\+Question\+Cursor\+By\+Id} (int id)
+\item 
+long \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_ab1e36f88ab226535ce811465049c2a1c}{get\+Count\+Questions} ()
+\item 
+int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_ab16060bc38aee8980bbbdc8ecf8626ab}{bulk\+Insert\+Questions} (@Non\+Null Content\+Values\mbox{[}$\,$\mbox{]} values)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+final Quiz\+D\+B\+Helper \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_a01f990a27fc631fd0f7f53640d8d84be}{db\+Helper}
+\item 
+S\+Q\+Lite\+Database \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_a279eb61d7a029a2081652a9fbd4dd104}{db}
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_a1bb2eea4424a48bde643fd9745d1f961}{E\+Q\+U\+AL} = \char`\"{} == \char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains database util functions for quiz template\textquotesingle{}s simulator. 
+
+Created by Anupam (opticod) on 14/8/16. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db@{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db}!Quiz\+Db@{Quiz\+Db}}
+\index{Quiz\+Db@{Quiz\+Db}!org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db@{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db}}
+\subsubsection[{\texorpdfstring{Quiz\+Db(\+Context context)}{QuizDb(Context context)}}]{\setlength{\rightskip}{0pt plus 5cm}org.\+buildmlearn.\+toolkit.\+quiztemplate.\+data.\+Quiz\+Db.\+Quiz\+Db (
+\begin{DoxyParamCaption}
+\item[{Context}]{context}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_acdba8d7e662832d171ebdbe7b3380b4c}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_acdba8d7e662832d171ebdbe7b3380b4c}
+
+
+\subsection{Member Function Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db@{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db}!bulk\+Insert\+Questions@{bulk\+Insert\+Questions}}
+\index{bulk\+Insert\+Questions@{bulk\+Insert\+Questions}!org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db@{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db}}
+\subsubsection[{\texorpdfstring{bulk\+Insert\+Questions("@Non\+Null Content\+Values[] values)}{bulkInsertQuestions(@NonNull ContentValues[] values)}}]{\setlength{\rightskip}{0pt plus 5cm}int org.\+buildmlearn.\+toolkit.\+quiztemplate.\+data.\+Quiz\+Db.\+bulk\+Insert\+Questions (
+\begin{DoxyParamCaption}
+\item[{@Non\+Null Content\+Values\mbox{[}$\,$\mbox{]}}]{values}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_ab16060bc38aee8980bbbdc8ecf8626ab}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_ab16060bc38aee8980bbbdc8ecf8626ab}
+\index{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db@{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db}!close@{close}}
+\index{close@{close}!org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db@{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db}}
+\subsubsection[{\texorpdfstring{close()}{close()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+quiztemplate.\+data.\+Quiz\+Db.\+close (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_a92a9fb76a38eb9d93962a06ccf754259}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_a92a9fb76a38eb9d93962a06ccf754259}
+\index{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db@{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db}!delete\+All@{delete\+All}}
+\index{delete\+All@{delete\+All}!org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db@{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db}}
+\subsubsection[{\texorpdfstring{delete\+All()}{deleteAll()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+quiztemplate.\+data.\+Quiz\+Db.\+delete\+All (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_add8fc835dc5da623099b3e23770dd2e4}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_add8fc835dc5da623099b3e23770dd2e4}
+\index{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db@{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db}!get\+Count\+Questions@{get\+Count\+Questions}}
+\index{get\+Count\+Questions@{get\+Count\+Questions}!org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db@{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db}}
+\subsubsection[{\texorpdfstring{get\+Count\+Questions()}{getCountQuestions()}}]{\setlength{\rightskip}{0pt plus 5cm}long org.\+buildmlearn.\+toolkit.\+quiztemplate.\+data.\+Quiz\+Db.\+get\+Count\+Questions (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_ab1e36f88ab226535ce811465049c2a1c}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_ab1e36f88ab226535ce811465049c2a1c}
+\index{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db@{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db}!get\+Question\+Cursor\+By\+Id@{get\+Question\+Cursor\+By\+Id}}
+\index{get\+Question\+Cursor\+By\+Id@{get\+Question\+Cursor\+By\+Id}!org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db@{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db}}
+\subsubsection[{\texorpdfstring{get\+Question\+Cursor\+By\+Id(int id)}{getQuestionCursorById(int id)}}]{\setlength{\rightskip}{0pt plus 5cm}Cursor org.\+buildmlearn.\+toolkit.\+quiztemplate.\+data.\+Quiz\+Db.\+get\+Question\+Cursor\+By\+Id (
+\begin{DoxyParamCaption}
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_a5ca5b23055708af02c5a2d8e24d3a517}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_a5ca5b23055708af02c5a2d8e24d3a517}
+\index{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db@{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db}!get\+Statistics@{get\+Statistics}}
+\index{get\+Statistics@{get\+Statistics}!org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db@{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db}}
+\subsubsection[{\texorpdfstring{get\+Statistics()}{getStatistics()}}]{\setlength{\rightskip}{0pt plus 5cm}int \mbox{[}$\,$\mbox{]} org.\+buildmlearn.\+toolkit.\+quiztemplate.\+data.\+Quiz\+Db.\+get\+Statistics (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_a052a88921f4aa69e7340742cbc69c288}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_a052a88921f4aa69e7340742cbc69c288}
+\index{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db@{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db}!mark\+Answered@{mark\+Answered}}
+\index{mark\+Answered@{mark\+Answered}!org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db@{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db}}
+\subsubsection[{\texorpdfstring{mark\+Answered(int id, int answer)}{markAnswered(int id, int answer)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+quiztemplate.\+data.\+Quiz\+Db.\+mark\+Answered (
+\begin{DoxyParamCaption}
+\item[{int}]{id, }
+\item[{int}]{answer}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_a886cc12d59eaf545f613113a0189ec25}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_a886cc12d59eaf545f613113a0189ec25}
+\index{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db@{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db}!mark\+Un\+Answered@{mark\+Un\+Answered}}
+\index{mark\+Un\+Answered@{mark\+Un\+Answered}!org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db@{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db}}
+\subsubsection[{\texorpdfstring{mark\+Un\+Answered(int id)}{markUnAnswered(int id)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+quiztemplate.\+data.\+Quiz\+Db.\+mark\+Un\+Answered (
+\begin{DoxyParamCaption}
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_a4010891a056a25437c671f4746bde454}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_a4010891a056a25437c671f4746bde454}
+\index{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db@{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db}!open@{open}}
+\index{open@{open}!org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db@{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db}}
+\subsubsection[{\texorpdfstring{open()}{open()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+quiztemplate.\+data.\+Quiz\+Db.\+open (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) throws S\+Q\+L\+Exception}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_abbeed626bc5b552f8b954d6237a3f3b1}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_abbeed626bc5b552f8b954d6237a3f3b1}
+\index{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db@{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db}!reset\+Count@{reset\+Count}}
+\index{reset\+Count@{reset\+Count}!org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db@{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db}}
+\subsubsection[{\texorpdfstring{reset\+Count()}{resetCount()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+quiztemplate.\+data.\+Quiz\+Db.\+reset\+Count (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_ac7189bed768cf882069fd5b443ae28a7}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_ac7189bed768cf882069fd5b443ae28a7}
+
+
+\subsection{Member Data Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db@{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db}!db@{db}}
+\index{db@{db}!org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db@{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db}}
+\subsubsection[{\texorpdfstring{db}{db}}]{\setlength{\rightskip}{0pt plus 5cm}S\+Q\+Lite\+Database org.\+buildmlearn.\+toolkit.\+quiztemplate.\+data.\+Quiz\+Db.\+db\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_a279eb61d7a029a2081652a9fbd4dd104}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_a279eb61d7a029a2081652a9fbd4dd104}
+\index{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db@{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db}!db\+Helper@{db\+Helper}}
+\index{db\+Helper@{db\+Helper}!org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db@{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db}}
+\subsubsection[{\texorpdfstring{db\+Helper}{dbHelper}}]{\setlength{\rightskip}{0pt plus 5cm}final Quiz\+D\+B\+Helper org.\+buildmlearn.\+toolkit.\+quiztemplate.\+data.\+Quiz\+Db.\+db\+Helper\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_a01f990a27fc631fd0f7f53640d8d84be}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_a01f990a27fc631fd0f7f53640d8d84be}
+\index{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db@{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db}!E\+Q\+U\+AL@{E\+Q\+U\+AL}}
+\index{E\+Q\+U\+AL@{E\+Q\+U\+AL}!org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db@{org\+::buildmlearn\+::toolkit\+::quiztemplate\+::data\+::\+Quiz\+Db}}
+\subsubsection[{\texorpdfstring{E\+Q\+U\+AL}{EQUAL}}]{\setlength{\rightskip}{0pt plus 5cm}final String org.\+buildmlearn.\+toolkit.\+quiztemplate.\+data.\+Quiz\+Db.\+E\+Q\+U\+AL = \char`\"{} == \char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_a1bb2eea4424a48bde643fd9745d1f961}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1QuizDb_a1bb2eea4424a48bde643fd9745d1f961}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+source-\/code/app/src/main/java/org/buildmlearn/toolkit/quiztemplate/data/\hyperlink{QuizDb_8java}{Quiz\+Db.\+java}\end{DoxyCompactItemize}

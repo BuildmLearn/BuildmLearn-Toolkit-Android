@@ -1,0 +1,10 @@
+<map id="org.buildmlearn.toolkit.model.TemplateInterface" name="org.buildmlearn.toolkit.model.TemplateInterface">
+<area shape="rect" id="node3" href="$classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1ComprehensionTemplate.html" title="Comprehension template code implementing methods of TemplateInterface. " alt="" coords="383,5,597,47"/>
+<area shape="rect" id="node4" href="$classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate.html" title="Dictation template code implementing methods of TemplateInterface. " alt="" coords="383,71,597,112"/>
+<area shape="rect" id="node5" href="$classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1FlashTemplate.html" title="Flash Card template code implementing methods of TemplateInterface. " alt="" coords="383,136,597,177"/>
+<area shape="rect" id="node6" href="$classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1InfoTemplate.html" title="Info template code implementing methods of TemplateInterface. " alt="" coords="383,201,597,243"/>
+<area shape="rect" id="node7" href="$classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1LearnSpellingTemplate.html" title="Learn Spelling template code implementing methods of TemplateInterface. " alt="" coords="383,267,597,308"/>
+<area shape="rect" id="node8" href="$classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1MatchTemplate.html" title="Match template code implementing methods of TemplateInterface. " alt="" coords="383,332,597,373"/>
+<area shape="rect" id="node9" href="$classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1QuizTemplate.html" title="Quiz template code implementing methods of TemplateInterface. " alt="" coords="383,397,597,439"/>
+<area shape="rect" id="node10" href="$classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1VideoCollectionTemplate.html" title="Video template code implementing methods of TemplateInterface. " alt="" coords="383,463,597,504"/>
+</map>

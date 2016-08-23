@@ -1,0 +1,5 @@
+<map id="org.buildmlearn.toolkit.videocollectiontemplate.fragment.MainActivityFragment" name="org.buildmlearn.toolkit.videocollectiontemplate.fragment.MainActivityFragment">
+<area shape="rect" id="node6" href="$classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1VideoDb.html" title="Contains database util functions for video collection template&#39;s simulator. " alt="" coords="645,239,968,281"/>
+<area shape="rect" id="node8" title="DatabaseHelper for video collection template&#39;s simulator. " alt="" coords="185,269,508,310"/>
+<area shape="rect" id="node11" href="$classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1adapter_1_1VideoArrayAdapter.html" title="Adapter for displaying VideoCollection Template Editor data in simulator. Created by Anupam (opticod)..." alt="" coords="637,357,977,398"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node2" href="$classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1FetchXMLTask.html" title="Used to parse XML and save in database for comprehension template&#39;s simulator. " alt="" coords="141,5,465,47"/>
+<area shape="rect" id="node3" href="$classorg_1_1buildmlearn_1_1toolkit_1_1dictationtemplate_1_1data_1_1FetchXMLTask.html" title="Used to parse XML and save in database for dictation template&#39;s simulator. " alt="" coords="161,71,446,112"/>
+<area shape="rect" id="node4" href="$classorg_1_1buildmlearn_1_1toolkit_1_1flashcardtemplate_1_1data_1_1FetchXMLTask.html" title="Used to parse XML and save in database for flash card template&#39;s simulator. " alt="" coords="159,136,448,177"/>
+<area shape="rect" id="node5" href="$classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1FetchXMLTask.html" title="Used to parse XML and save in database for info template&#39;s simulator. " alt="" coords="175,201,432,243"/>
+<area shape="rect" id="node6" href="$classorg_1_1buildmlearn_1_1toolkit_1_1learnspelling_1_1data_1_1FetchXMLTask.html" title="Used to parse XML and save in database for learn spelling template&#39;s simulator. " alt="" coords="174,267,433,308"/>
+<area shape="rect" id="node7" href="$classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1FetchXMLTask.html" title="Used to parse XML and save in database for match template&#39;s simulator. " alt="" coords="167,332,439,373"/>
+<area shape="rect" id="node8" href="$classorg_1_1buildmlearn_1_1toolkit_1_1quiztemplate_1_1data_1_1FetchXMLTask.html" title="Used to parse XML and save in database for quiz template&#39;s simulator. " alt="" coords="173,397,433,439"/>
+<area shape="rect" id="node9" href="$classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1VideoCollectionTemplate_1_1VideoInfoTask.html" title="org.buildmlearn.toolkit.templates.\lVideoCollectionTemplate.VideoInfoTask" alt="" coords="176,463,431,504"/>
+<area shape="rect" id="node10" href="$classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1FetchXMLTask.html" title="Used to parse XML and save in database for video collection template&#39;s simulator. ..." alt="" coords="142,528,465,569"/>
+</map>

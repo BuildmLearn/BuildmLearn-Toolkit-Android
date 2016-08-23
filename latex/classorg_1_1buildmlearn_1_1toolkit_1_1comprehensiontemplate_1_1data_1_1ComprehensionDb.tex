@@ -1,0 +1,178 @@
+\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb}{}\section{org.\+buildmlearn.\+toolkit.\+comprehensiontemplate.\+data.\+Comprehension\+Db Class Reference}
+\label{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb}\index{org.\+buildmlearn.\+toolkit.\+comprehensiontemplate.\+data.\+Comprehension\+Db@{org.\+buildmlearn.\+toolkit.\+comprehensiontemplate.\+data.\+Comprehension\+Db}}
+
+
+Contains database util functions for comprehension template\textquotesingle{}s simulator.  
+
+
+
+
+Collaboration diagram for org.\+buildmlearn.\+toolkit.\+comprehensiontemplate.\+data.\+Comprehension\+Db\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_a60b2672f7c8f66e02fe62ebbebbc3bec}{Comprehension\+Db} (Context context)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_aca8cf2abc2d08caf1d94bca5ab66f6ef}{open} ()  throws S\+Q\+L\+Exception 
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_a6fe16a726d76570ef223bf7b0592f4a4}{close} ()
+\item 
+Cursor \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_a50b7748c50e419099bd6b127b2e313ce}{get\+Meta\+Cursor} ()
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_a0ced60a113410ba1b164596fc5633670}{mark\+Answered} (int id, int answer)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_a83ca9deee52d2318a7c6f59e1b5f3f4e}{delete\+All} ()
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_ac0086b702fae36baa42469b3a57364c6}{mark\+Un\+Answered} (int id)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_ab7b93e9eaabd5b0d6ceb7c237fa8000a}{reset\+Count} ()
+\item 
+int\mbox{[}$\,$\mbox{]} \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_aad74f23060a5124e8f4bdc8202c2ca78}{get\+Statistics} ()
+\item 
+Cursor \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_ab1de81d645037cff9c16a9d10803ca77}{get\+Question\+Cursor\+By\+Id} (int id)
+\item 
+long \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_a64e8796817a51171086ecbe24396364d}{get\+Count\+Questions} ()
+\item 
+int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_a677d224b9a34f8123f7dd3b62839d012}{bulk\+Insert\+Questions} (@Non\+Null Content\+Values\mbox{[}$\,$\mbox{]} values)
+\item 
+int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_a8eca6fd3f5f142b53cbe0bc6f8b9038f}{bulk\+Insert\+Meta\+Details} (@Non\+Null Content\+Values\mbox{[}$\,$\mbox{]} values)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+final Comprehension\+D\+B\+Helper \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_aad6b415d9ba244e14a0a845bbc4e57f9}{db\+Helper}
+\item 
+S\+Q\+Lite\+Database \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_ae32d84b70065fd90bc1aa9ba88a93535}{db}
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_a3999082d158a860481de440fabe964af}{E\+Q\+U\+AL} = \char`\"{} == \char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains database util functions for comprehension template\textquotesingle{}s simulator. 
+
+Created by Anupam (opticod) on 5/6/16. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db@{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db}!Comprehension\+Db@{Comprehension\+Db}}
+\index{Comprehension\+Db@{Comprehension\+Db}!org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db@{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db}}
+\subsubsection[{\texorpdfstring{Comprehension\+Db(\+Context context)}{ComprehensionDb(Context context)}}]{\setlength{\rightskip}{0pt plus 5cm}org.\+buildmlearn.\+toolkit.\+comprehensiontemplate.\+data.\+Comprehension\+Db.\+Comprehension\+Db (
+\begin{DoxyParamCaption}
+\item[{Context}]{context}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_a60b2672f7c8f66e02fe62ebbebbc3bec}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_a60b2672f7c8f66e02fe62ebbebbc3bec}
+
+
+\subsection{Member Function Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db@{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db}!bulk\+Insert\+Meta\+Details@{bulk\+Insert\+Meta\+Details}}
+\index{bulk\+Insert\+Meta\+Details@{bulk\+Insert\+Meta\+Details}!org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db@{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db}}
+\subsubsection[{\texorpdfstring{bulk\+Insert\+Meta\+Details("@Non\+Null Content\+Values[] values)}{bulkInsertMetaDetails(@NonNull ContentValues[] values)}}]{\setlength{\rightskip}{0pt plus 5cm}int org.\+buildmlearn.\+toolkit.\+comprehensiontemplate.\+data.\+Comprehension\+Db.\+bulk\+Insert\+Meta\+Details (
+\begin{DoxyParamCaption}
+\item[{@Non\+Null Content\+Values\mbox{[}$\,$\mbox{]}}]{values}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_a8eca6fd3f5f142b53cbe0bc6f8b9038f}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_a8eca6fd3f5f142b53cbe0bc6f8b9038f}
+\index{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db@{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db}!bulk\+Insert\+Questions@{bulk\+Insert\+Questions}}
+\index{bulk\+Insert\+Questions@{bulk\+Insert\+Questions}!org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db@{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db}}
+\subsubsection[{\texorpdfstring{bulk\+Insert\+Questions("@Non\+Null Content\+Values[] values)}{bulkInsertQuestions(@NonNull ContentValues[] values)}}]{\setlength{\rightskip}{0pt plus 5cm}int org.\+buildmlearn.\+toolkit.\+comprehensiontemplate.\+data.\+Comprehension\+Db.\+bulk\+Insert\+Questions (
+\begin{DoxyParamCaption}
+\item[{@Non\+Null Content\+Values\mbox{[}$\,$\mbox{]}}]{values}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_a677d224b9a34f8123f7dd3b62839d012}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_a677d224b9a34f8123f7dd3b62839d012}
+\index{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db@{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db}!close@{close}}
+\index{close@{close}!org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db@{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db}}
+\subsubsection[{\texorpdfstring{close()}{close()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+comprehensiontemplate.\+data.\+Comprehension\+Db.\+close (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_a6fe16a726d76570ef223bf7b0592f4a4}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_a6fe16a726d76570ef223bf7b0592f4a4}
+\index{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db@{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db}!delete\+All@{delete\+All}}
+\index{delete\+All@{delete\+All}!org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db@{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db}}
+\subsubsection[{\texorpdfstring{delete\+All()}{deleteAll()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+comprehensiontemplate.\+data.\+Comprehension\+Db.\+delete\+All (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_a83ca9deee52d2318a7c6f59e1b5f3f4e}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_a83ca9deee52d2318a7c6f59e1b5f3f4e}
+\index{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db@{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db}!get\+Count\+Questions@{get\+Count\+Questions}}
+\index{get\+Count\+Questions@{get\+Count\+Questions}!org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db@{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db}}
+\subsubsection[{\texorpdfstring{get\+Count\+Questions()}{getCountQuestions()}}]{\setlength{\rightskip}{0pt plus 5cm}long org.\+buildmlearn.\+toolkit.\+comprehensiontemplate.\+data.\+Comprehension\+Db.\+get\+Count\+Questions (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_a64e8796817a51171086ecbe24396364d}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_a64e8796817a51171086ecbe24396364d}
+\index{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db@{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db}!get\+Meta\+Cursor@{get\+Meta\+Cursor}}
+\index{get\+Meta\+Cursor@{get\+Meta\+Cursor}!org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db@{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db}}
+\subsubsection[{\texorpdfstring{get\+Meta\+Cursor()}{getMetaCursor()}}]{\setlength{\rightskip}{0pt plus 5cm}Cursor org.\+buildmlearn.\+toolkit.\+comprehensiontemplate.\+data.\+Comprehension\+Db.\+get\+Meta\+Cursor (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_a50b7748c50e419099bd6b127b2e313ce}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_a50b7748c50e419099bd6b127b2e313ce}
+\index{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db@{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db}!get\+Question\+Cursor\+By\+Id@{get\+Question\+Cursor\+By\+Id}}
+\index{get\+Question\+Cursor\+By\+Id@{get\+Question\+Cursor\+By\+Id}!org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db@{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db}}
+\subsubsection[{\texorpdfstring{get\+Question\+Cursor\+By\+Id(int id)}{getQuestionCursorById(int id)}}]{\setlength{\rightskip}{0pt plus 5cm}Cursor org.\+buildmlearn.\+toolkit.\+comprehensiontemplate.\+data.\+Comprehension\+Db.\+get\+Question\+Cursor\+By\+Id (
+\begin{DoxyParamCaption}
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_ab1de81d645037cff9c16a9d10803ca77}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_ab1de81d645037cff9c16a9d10803ca77}
+\index{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db@{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db}!get\+Statistics@{get\+Statistics}}
+\index{get\+Statistics@{get\+Statistics}!org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db@{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db}}
+\subsubsection[{\texorpdfstring{get\+Statistics()}{getStatistics()}}]{\setlength{\rightskip}{0pt plus 5cm}int \mbox{[}$\,$\mbox{]} org.\+buildmlearn.\+toolkit.\+comprehensiontemplate.\+data.\+Comprehension\+Db.\+get\+Statistics (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_aad74f23060a5124e8f4bdc8202c2ca78}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_aad74f23060a5124e8f4bdc8202c2ca78}
+\index{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db@{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db}!mark\+Answered@{mark\+Answered}}
+\index{mark\+Answered@{mark\+Answered}!org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db@{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db}}
+\subsubsection[{\texorpdfstring{mark\+Answered(int id, int answer)}{markAnswered(int id, int answer)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+comprehensiontemplate.\+data.\+Comprehension\+Db.\+mark\+Answered (
+\begin{DoxyParamCaption}
+\item[{int}]{id, }
+\item[{int}]{answer}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_a0ced60a113410ba1b164596fc5633670}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_a0ced60a113410ba1b164596fc5633670}
+\index{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db@{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db}!mark\+Un\+Answered@{mark\+Un\+Answered}}
+\index{mark\+Un\+Answered@{mark\+Un\+Answered}!org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db@{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db}}
+\subsubsection[{\texorpdfstring{mark\+Un\+Answered(int id)}{markUnAnswered(int id)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+comprehensiontemplate.\+data.\+Comprehension\+Db.\+mark\+Un\+Answered (
+\begin{DoxyParamCaption}
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_ac0086b702fae36baa42469b3a57364c6}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_ac0086b702fae36baa42469b3a57364c6}
+\index{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db@{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db}!open@{open}}
+\index{open@{open}!org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db@{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db}}
+\subsubsection[{\texorpdfstring{open()}{open()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+comprehensiontemplate.\+data.\+Comprehension\+Db.\+open (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) throws S\+Q\+L\+Exception}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_aca8cf2abc2d08caf1d94bca5ab66f6ef}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_aca8cf2abc2d08caf1d94bca5ab66f6ef}
+\index{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db@{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db}!reset\+Count@{reset\+Count}}
+\index{reset\+Count@{reset\+Count}!org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db@{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db}}
+\subsubsection[{\texorpdfstring{reset\+Count()}{resetCount()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+comprehensiontemplate.\+data.\+Comprehension\+Db.\+reset\+Count (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_ab7b93e9eaabd5b0d6ceb7c237fa8000a}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_ab7b93e9eaabd5b0d6ceb7c237fa8000a}
+
+
+\subsection{Member Data Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db@{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db}!db@{db}}
+\index{db@{db}!org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db@{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db}}
+\subsubsection[{\texorpdfstring{db}{db}}]{\setlength{\rightskip}{0pt plus 5cm}S\+Q\+Lite\+Database org.\+buildmlearn.\+toolkit.\+comprehensiontemplate.\+data.\+Comprehension\+Db.\+db\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_ae32d84b70065fd90bc1aa9ba88a93535}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_ae32d84b70065fd90bc1aa9ba88a93535}
+\index{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db@{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db}!db\+Helper@{db\+Helper}}
+\index{db\+Helper@{db\+Helper}!org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db@{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db}}
+\subsubsection[{\texorpdfstring{db\+Helper}{dbHelper}}]{\setlength{\rightskip}{0pt plus 5cm}final Comprehension\+D\+B\+Helper org.\+buildmlearn.\+toolkit.\+comprehensiontemplate.\+data.\+Comprehension\+Db.\+db\+Helper\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_aad6b415d9ba244e14a0a845bbc4e57f9}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_aad6b415d9ba244e14a0a845bbc4e57f9}
+\index{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db@{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db}!E\+Q\+U\+AL@{E\+Q\+U\+AL}}
+\index{E\+Q\+U\+AL@{E\+Q\+U\+AL}!org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db@{org\+::buildmlearn\+::toolkit\+::comprehensiontemplate\+::data\+::\+Comprehension\+Db}}
+\subsubsection[{\texorpdfstring{E\+Q\+U\+AL}{EQUAL}}]{\setlength{\rightskip}{0pt plus 5cm}final String org.\+buildmlearn.\+toolkit.\+comprehensiontemplate.\+data.\+Comprehension\+Db.\+E\+Q\+U\+AL = \char`\"{} == \char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_a3999082d158a860481de440fabe964af}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1comprehensiontemplate_1_1data_1_1ComprehensionDb_a3999082d158a860481de440fabe964af}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+source-\/code/app/src/main/java/org/buildmlearn/toolkit/comprehensiontemplate/data/\hyperlink{ComprehensionDb_8java}{Comprehension\+Db.\+java}\end{DoxyCompactItemize}

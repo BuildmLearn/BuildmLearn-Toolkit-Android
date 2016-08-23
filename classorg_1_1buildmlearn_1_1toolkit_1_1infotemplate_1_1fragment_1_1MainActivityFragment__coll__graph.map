@@ -1,0 +1,5 @@
+<map id="org.buildmlearn.toolkit.infotemplate.fragment.MainActivityFragment" name="org.buildmlearn.toolkit.infotemplate.fragment.MainActivityFragment">
+<area shape="rect" id="node4" href="$classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1adapter_1_1InfoArrayAdapter.html" title="Custom Adapter for info template&#39;s simulator. " alt="" coords="571,122,846,163"/>
+<area shape="rect" id="node6" href="$classorg_1_1buildmlearn_1_1toolkit_1_1infotemplate_1_1data_1_1InfoDb.html" title="Contains database util functions for info template&#39;s simulator. " alt="" coords="580,187,837,229"/>
+<area shape="rect" id="node8" title="DatabaseHelper for info template&#39;s simulator. " alt="" coords="185,238,443,279"/>
+</map>

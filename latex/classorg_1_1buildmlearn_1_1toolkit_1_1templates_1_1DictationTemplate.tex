@@ -1,0 +1,470 @@
+\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate}{}\section{org.\+buildmlearn.\+toolkit.\+templates.\+Dictation\+Template Class Reference}
+\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate}\index{org.\+buildmlearn.\+toolkit.\+templates.\+Dictation\+Template@{org.\+buildmlearn.\+toolkit.\+templates.\+Dictation\+Template}}
+
+
+Dictation template code implementing methods of Template\+Interface.  
+
+
+
+
+Inheritance diagram for org.\+buildmlearn.\+toolkit.\+templates.\+Dictation\+Template\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=241pt]{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for org.\+buildmlearn.\+toolkit.\+templates.\+Dictation\+Template\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a8cb001ee5bb6a0afe7d36de75e11df24}{Dictation\+Template} ()
+\item 
+Base\+Adapter \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a542e53bbf25ac060d200dd7e10a2734d}{new\+Template\+Editor\+Adapter} (Context context)
+\begin{DoxyCompactList}\small\item\em Called from Template Editor when template editor is started for creating a new template project. \end{DoxyCompactList}\item 
+Base\+Adapter \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_acc7b175f92340d0f974e4aad90836e6c}{new\+Meta\+Editor\+Adapter} (Context context)
+\begin{DoxyCompactList}\small\item\em Called from Template Editor when template editor is started for creating a new meta details of template project. \end{DoxyCompactList}\item 
+Base\+Adapter \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a0be6195b7a866a35ddb48140af45476e}{current\+Template\+Editor\+Adapter} ()
+\begin{DoxyCompactList}\small\item\em This function is used to get the adapter (containing template data) for a existing/current template project. \end{DoxyCompactList}\item 
+Base\+Adapter \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a11b1e13a09c920dcff58d4e728c5eb0b}{current\+Meta\+Editor\+Adapter} ()
+\begin{DoxyCompactList}\small\item\em This function is used to get the meta adapter (containing template meta details) for a existing/current template project. \end{DoxyCompactList}\item 
+Base\+Adapter \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a5d9ca6a357b87c0ab67230ed4a8b10ad}{load\+Project\+Meta\+Editor} (Context context, Document doc)
+\item 
+Base\+Adapter \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_afb57f4aed6bb0f529702a30adb0378fe}{load\+Project\+Template\+Editor} (Context context, Array\+List$<$ Element $>$ data)
+\item 
+String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_af140a99f34e94aacc6926f91355d57e4}{get\+Title} ()
+\begin{DoxyCompactList}\small\item\em Used to get the title of the templaye. Mainly used to update Action\+Bar in Template Editor. \end{DoxyCompactList}\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a156a9b01a66d5ce1e08426c6544e5dfd}{add\+Item} (final Activity activity)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a9605db1565bfbb95cbee4d768d10b011}{add\+Meta\+Data} (Activity activity)
+\begin{DoxyCompactList}\small\item\em Add Meta\+Data to template data. \end{DoxyCompactList}\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a0262e857065565502482cb9305ae3b77}{edit\+Item} (final Activity activity, final int position)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a3f1c0098fb096ca7e56e52bfe2122ff0}{delete\+Item} (Activity activity, int position)
+\begin{DoxyCompactList}\small\item\em Remove an item form template data list. \end{DoxyCompactList}\item 
+Array\+List$<$ Element $>$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_ac19b648066d29711eb5c35b0bd076eed}{get\+Items} (Document doc)
+\item 
+android.\+support.\+v4.\+app.\+Fragment \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a0728ddad8247b6b56e10b236879f53b1}{get\+Simulator\+Fragment} (String file\+Path\+With\+Name)
+\begin{DoxyCompactList}\small\item\em Returns a fragment required for the Simulator Activity. \end{DoxyCompactList}\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a84d3d92657a1912cac61fa57083442e0}{set\+Template\+Id} (int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a4ad8d52a9cf5c27a33391d252a0fae02}{template\+Id})
+\begin{DoxyCompactList}\small\item\em Set template\+Id,that can be used to get Info about current template from enum Template. \end{DoxyCompactList}\item 
+String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_abfa521c667d14453bd07ae5b5ae7fd72}{get\+Assets\+File\+Name} (Context context)
+\begin{DoxyCompactList}\small\item\em Name of the xml file congaing template data in the assets folders in the build apk. \end{DoxyCompactList}\item 
+String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a554ecf0f0211f53853d23f3519f211dd}{get\+Assets\+File\+Path} ()
+\begin{DoxyCompactList}\small\item\em Folder path in which the apk is stored in the build A\+PK. \end{DoxyCompactList}\item 
+String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a8586e954d6d42d8aed5da1fe3b395619}{get\+Apk\+File\+Path} ()
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_ad25ce129ca416032df3d17539cfb0b06}{on\+Activity\+Result} (Context context, int request\+Code, int result\+Code, Intent intent)
+\begin{DoxyCompactList}\small\item\em Called whenever on\+Activity\+Result is called in Template Editor. Can be used to perform action related to intent and callbacks. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+boolean \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_aaa25f072cbb34597196cfec4cb4b9023}{validated} (Context context, Edit\+Text title, Edit\+Text passage)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a90a6f21ae43150a1531f5ca88638d059}{set\+Empty\+View} (Activity activity)
+\begin{DoxyCompactList}\small\item\em Toggles the visibility of empty text if Array has zero elements. \end{DoxyCompactList}\item 
+String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_af43334fa0e341ee6bde918d39cda57da}{read\+File} (File file)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+transient Dictation\+Adapter \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_aa96617a4a9b2a3b644f09014d3764081}{adapter}
+\item 
+Array\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationModel}{Dictation\+Model} $>$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a95030ad007d0a8047accfdd29b62588b}{dict\+Data}
+\item 
+int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a4ad8d52a9cf5c27a33391d252a0fae02}{template\+Id}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Dictation template code implementing methods of Template\+Interface. 
+
+Created by Anupam (opticod) on 4/7/16. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}!Dictation\+Template@{Dictation\+Template}}
+\index{Dictation\+Template@{Dictation\+Template}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}}
+\subsubsection[{\texorpdfstring{Dictation\+Template()}{DictationTemplate()}}]{\setlength{\rightskip}{0pt plus 5cm}org.\+buildmlearn.\+toolkit.\+templates.\+Dictation\+Template.\+Dictation\+Template (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a8cb001ee5bb6a0afe7d36de75e11df24}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a8cb001ee5bb6a0afe7d36de75e11df24}
+
+
+\subsection{Member Function Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}!add\+Item@{add\+Item}}
+\index{add\+Item@{add\+Item}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}}
+\subsubsection[{\texorpdfstring{add\+Item(final Activity activity)}{addItem(final Activity activity)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+templates.\+Dictation\+Template.\+add\+Item (
+\begin{DoxyParamCaption}
+\item[{final Activity}]{activity}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a156a9b01a66d5ce1e08426c6544e5dfd}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a156a9b01a66d5ce1e08426c6544e5dfd}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}!add\+Meta\+Data@{add\+Meta\+Data}}
+\index{add\+Meta\+Data@{add\+Meta\+Data}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}}
+\subsubsection[{\texorpdfstring{add\+Meta\+Data(\+Activity activity)}{addMetaData(Activity activity)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+templates.\+Dictation\+Template.\+add\+Meta\+Data (
+\begin{DoxyParamCaption}
+\item[{Activity}]{activity}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a9605db1565bfbb95cbee4d768d10b011}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a9605db1565bfbb95cbee4d768d10b011}
+
+
+Add Meta\+Data to template data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em activity} & Current Activity \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_a4dcf463c18db372074327d828e56cf2d}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}!current\+Meta\+Editor\+Adapter@{current\+Meta\+Editor\+Adapter}}
+\index{current\+Meta\+Editor\+Adapter@{current\+Meta\+Editor\+Adapter}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}}
+\subsubsection[{\texorpdfstring{current\+Meta\+Editor\+Adapter()}{currentMetaEditorAdapter()}}]{\setlength{\rightskip}{0pt plus 5cm}Base\+Adapter org.\+buildmlearn.\+toolkit.\+templates.\+Dictation\+Template.\+current\+Meta\+Editor\+Adapter (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a11b1e13a09c920dcff58d4e728c5eb0b}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a11b1e13a09c920dcff58d4e728c5eb0b}
+
+
+This function is used to get the meta adapter (containing template meta details) for a existing/current template project. 
+
+\begin{DoxyReturn}{Returns}
+Base\+Adapter inherited Object 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_a2b24967afaab00b7dcce5083b829bb95}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}!current\+Template\+Editor\+Adapter@{current\+Template\+Editor\+Adapter}}
+\index{current\+Template\+Editor\+Adapter@{current\+Template\+Editor\+Adapter}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}}
+\subsubsection[{\texorpdfstring{current\+Template\+Editor\+Adapter()}{currentTemplateEditorAdapter()}}]{\setlength{\rightskip}{0pt plus 5cm}Base\+Adapter org.\+buildmlearn.\+toolkit.\+templates.\+Dictation\+Template.\+current\+Template\+Editor\+Adapter (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a0be6195b7a866a35ddb48140af45476e}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a0be6195b7a866a35ddb48140af45476e}
+
+
+This function is used to get the adapter (containing template data) for a existing/current template project. 
+
+\begin{DoxyReturn}{Returns}
+Base\+Adapter inherited Object 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_ae433eedc291006e78b65b0fc4135d560}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}!delete\+Item@{delete\+Item}}
+\index{delete\+Item@{delete\+Item}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}}
+\subsubsection[{\texorpdfstring{delete\+Item(\+Activity activity, int position)}{deleteItem(Activity activity, int position)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+templates.\+Dictation\+Template.\+delete\+Item (
+\begin{DoxyParamCaption}
+\item[{Activity}]{activity, }
+\item[{int}]{position}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a3f1c0098fb096ca7e56e52bfe2122ff0}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a3f1c0098fb096ca7e56e52bfe2122ff0}
+
+
+Remove an item form template data list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em activity} & Current Activity \\
+\hline
+{\em position} & Position of the item to be removed \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_acc9339e97daba180a70b5d1907f214df}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}!edit\+Item@{edit\+Item}}
+\index{edit\+Item@{edit\+Item}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}}
+\subsubsection[{\texorpdfstring{edit\+Item(final Activity activity, final int position)}{editItem(final Activity activity, final int position)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+templates.\+Dictation\+Template.\+edit\+Item (
+\begin{DoxyParamCaption}
+\item[{final Activity}]{activity, }
+\item[{final int}]{position}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a0262e857065565502482cb9305ae3b77}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a0262e857065565502482cb9305ae3b77}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}!get\+Apk\+File\+Path@{get\+Apk\+File\+Path}}
+\index{get\+Apk\+File\+Path@{get\+Apk\+File\+Path}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}}
+\subsubsection[{\texorpdfstring{get\+Apk\+File\+Path()}{getApkFilePath()}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+buildmlearn.\+toolkit.\+templates.\+Dictation\+Template.\+get\+Apk\+File\+Path (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a8586e954d6d42d8aed5da1fe3b395619}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a8586e954d6d42d8aed5da1fe3b395619}
+Path of the apk stored in assets
+
+\begin{DoxyReturn}{Returns}
+Apk file path 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_a1bca348acb3790aebce645c04a9e0945}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}!get\+Assets\+File\+Name@{get\+Assets\+File\+Name}}
+\index{get\+Assets\+File\+Name@{get\+Assets\+File\+Name}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}}
+\subsubsection[{\texorpdfstring{get\+Assets\+File\+Name(\+Context context)}{getAssetsFileName(Context context)}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+buildmlearn.\+toolkit.\+templates.\+Dictation\+Template.\+get\+Assets\+File\+Name (
+\begin{DoxyParamCaption}
+\item[{Context}]{context}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_abfa521c667d14453bd07ae5b5ae7fd72}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_abfa521c667d14453bd07ae5b5ae7fd72}
+
+
+Name of the xml file congaing template data in the assets folders in the build apk. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & For obtaining String from String\+Res \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Asset file name 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_aab9ccfcee9b83ea3d70efffecf8dad78}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}!get\+Assets\+File\+Path@{get\+Assets\+File\+Path}}
+\index{get\+Assets\+File\+Path@{get\+Assets\+File\+Path}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}}
+\subsubsection[{\texorpdfstring{get\+Assets\+File\+Path()}{getAssetsFilePath()}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+buildmlearn.\+toolkit.\+templates.\+Dictation\+Template.\+get\+Assets\+File\+Path (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a554ecf0f0211f53853d23f3519f211dd}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a554ecf0f0211f53853d23f3519f211dd}
+
+
+Folder path in which the apk is stored in the build A\+PK. 
+
+\begin{DoxyReturn}{Returns}
+Assets folder path 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_ae35d1ab3f2c88b79d0d2a79cde81155b}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}!get\+Items@{get\+Items}}
+\index{get\+Items@{get\+Items}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}}
+\subsubsection[{\texorpdfstring{get\+Items(\+Document doc)}{getItems(Document doc)}}]{\setlength{\rightskip}{0pt plus 5cm}Array\+List$<$Element$>$ org.\+buildmlearn.\+toolkit.\+templates.\+Dictation\+Template.\+get\+Items (
+\begin{DoxyParamCaption}
+\item[{Document}]{doc}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_ac19b648066d29711eb5c35b0bd076eed}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_ac19b648066d29711eb5c35b0bd076eed}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_a9fb6e277f0ebfb2caea138017854473f}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}!get\+Simulator\+Fragment@{get\+Simulator\+Fragment}}
+\index{get\+Simulator\+Fragment@{get\+Simulator\+Fragment}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}}
+\subsubsection[{\texorpdfstring{get\+Simulator\+Fragment(\+String file\+Path\+With\+Name)}{getSimulatorFragment(String filePathWithName)}}]{\setlength{\rightskip}{0pt plus 5cm}android.\+support.\+v4.\+app.\+Fragment org.\+buildmlearn.\+toolkit.\+templates.\+Dictation\+Template.\+get\+Simulator\+Fragment (
+\begin{DoxyParamCaption}
+\item[{String}]{file\+Path\+With\+Name}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a0728ddad8247b6b56e10b236879f53b1}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a0728ddad8247b6b56e10b236879f53b1}
+
+
+Returns a fragment required for the Simulator Activity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Path\+With\+Name} & Path of the generated .buildmlearn file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a fragment required for the Simulator Activity. $\ast$$\ast$\+Dev Note\+: File Path should be used to populate data from actual .buildmlearn file in the Simulator. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_a8668cc58306c48c8581ae51393138649}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}!get\+Title@{get\+Title}}
+\index{get\+Title@{get\+Title}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}}
+\subsubsection[{\texorpdfstring{get\+Title()}{getTitle()}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+buildmlearn.\+toolkit.\+templates.\+Dictation\+Template.\+get\+Title (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_af140a99f34e94aacc6926f91355d57e4}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_af140a99f34e94aacc6926f91355d57e4}
+
+
+Used to get the title of the templaye. Mainly used to update Action\+Bar in Template Editor. 
+
+\begin{DoxyReturn}{Returns}
+Title as a string 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_a98a8592a7e4928ce76d0c61df17cf5c8}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}!load\+Project\+Meta\+Editor@{load\+Project\+Meta\+Editor}}
+\index{load\+Project\+Meta\+Editor@{load\+Project\+Meta\+Editor}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}}
+\subsubsection[{\texorpdfstring{load\+Project\+Meta\+Editor(\+Context context, Document doc)}{loadProjectMetaEditor(Context context, Document doc)}}]{\setlength{\rightskip}{0pt plus 5cm}Base\+Adapter org.\+buildmlearn.\+toolkit.\+templates.\+Dictation\+Template.\+load\+Project\+Meta\+Editor (
+\begin{DoxyParamCaption}
+\item[{Context}]{context, }
+\item[{Document}]{doc}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a5d9ca6a357b87c0ab67230ed4a8b10ad}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a5d9ca6a357b87c0ab67230ed4a8b10ad}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_a589528c60323c07cca5e6ef112530a50}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}!load\+Project\+Template\+Editor@{load\+Project\+Template\+Editor}}
+\index{load\+Project\+Template\+Editor@{load\+Project\+Template\+Editor}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}}
+\subsubsection[{\texorpdfstring{load\+Project\+Template\+Editor(\+Context context, Array\+List$<$ Element $>$ data)}{loadProjectTemplateEditor(Context context, ArrayList< Element > data)}}]{\setlength{\rightskip}{0pt plus 5cm}Base\+Adapter org.\+buildmlearn.\+toolkit.\+templates.\+Dictation\+Template.\+load\+Project\+Template\+Editor (
+\begin{DoxyParamCaption}
+\item[{Context}]{context, }
+\item[{Array\+List$<$ Element $>$}]{data}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_afb57f4aed6bb0f529702a30adb0378fe}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_afb57f4aed6bb0f529702a30adb0378fe}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_ac0637282a7f7b58a4e9b8e86a734bf93}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}!new\+Meta\+Editor\+Adapter@{new\+Meta\+Editor\+Adapter}}
+\index{new\+Meta\+Editor\+Adapter@{new\+Meta\+Editor\+Adapter}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}}
+\subsubsection[{\texorpdfstring{new\+Meta\+Editor\+Adapter(\+Context context)}{newMetaEditorAdapter(Context context)}}]{\setlength{\rightskip}{0pt plus 5cm}Base\+Adapter org.\+buildmlearn.\+toolkit.\+templates.\+Dictation\+Template.\+new\+Meta\+Editor\+Adapter (
+\begin{DoxyParamCaption}
+\item[{Context}]{context}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_acc7b175f92340d0f974e4aad90836e6c}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_acc7b175f92340d0f974e4aad90836e6c}
+
+
+Called from Template Editor when template editor is started for creating a new meta details of template project. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & Application context \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Base\+Adapter inherited Object 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_acbf649946d2636f02e154dfefaadf868}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}!new\+Template\+Editor\+Adapter@{new\+Template\+Editor\+Adapter}}
+\index{new\+Template\+Editor\+Adapter@{new\+Template\+Editor\+Adapter}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}}
+\subsubsection[{\texorpdfstring{new\+Template\+Editor\+Adapter(\+Context context)}{newTemplateEditorAdapter(Context context)}}]{\setlength{\rightskip}{0pt plus 5cm}Base\+Adapter org.\+buildmlearn.\+toolkit.\+templates.\+Dictation\+Template.\+new\+Template\+Editor\+Adapter (
+\begin{DoxyParamCaption}
+\item[{Context}]{context}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a542e53bbf25ac060d200dd7e10a2734d}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a542e53bbf25ac060d200dd7e10a2734d}
+
+
+Called from Template Editor when template editor is started for creating a new template project. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & Application context \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Base\+Adapter inherited Object 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_af7d9d92709123fc39693504884e4f7e2}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}!on\+Activity\+Result@{on\+Activity\+Result}}
+\index{on\+Activity\+Result@{on\+Activity\+Result}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}}
+\subsubsection[{\texorpdfstring{on\+Activity\+Result(\+Context context, int request\+Code, int result\+Code, Intent intent)}{onActivityResult(Context context, int requestCode, int resultCode, Intent intent)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+templates.\+Dictation\+Template.\+on\+Activity\+Result (
+\begin{DoxyParamCaption}
+\item[{Context}]{context, }
+\item[{int}]{request\+Code, }
+\item[{int}]{result\+Code, }
+\item[{Intent}]{intent}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_ad25ce129ca416032df3d17539cfb0b06}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_ad25ce129ca416032df3d17539cfb0b06}
+
+
+Called whenever on\+Activity\+Result is called in Template Editor. Can be used to perform action related to intent and callbacks. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & \\
+\hline
+{\em request\+Code} & \\
+\hline
+{\em result\+Code} & \\
+\hline
+{\em intent} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_a9c506bf3776973765d4d1e8d6954e95b}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}!read\+File@{read\+File}}
+\index{read\+File@{read\+File}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}}
+\subsubsection[{\texorpdfstring{read\+File(\+File file)}{readFile(File file)}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+buildmlearn.\+toolkit.\+templates.\+Dictation\+Template.\+read\+File (
+\begin{DoxyParamCaption}
+\item[{File}]{file}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_af43334fa0e341ee6bde918d39cda57da}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_af43334fa0e341ee6bde918d39cda57da}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}!set\+Empty\+View@{set\+Empty\+View}}
+\index{set\+Empty\+View@{set\+Empty\+View}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}}
+\subsubsection[{\texorpdfstring{set\+Empty\+View(\+Activity activity)}{setEmptyView(Activity activity)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+templates.\+Dictation\+Template.\+set\+Empty\+View (
+\begin{DoxyParamCaption}
+\item[{Activity}]{activity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a90a6f21ae43150a1531f5ca88638d059}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a90a6f21ae43150a1531f5ca88638d059}
+
+
+Toggles the visibility of empty text if Array has zero elements. 
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}!set\+Template\+Id@{set\+Template\+Id}}
+\index{set\+Template\+Id@{set\+Template\+Id}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}}
+\subsubsection[{\texorpdfstring{set\+Template\+Id(int template\+Id)}{setTemplateId(int templateId)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+templates.\+Dictation\+Template.\+set\+Template\+Id (
+\begin{DoxyParamCaption}
+\item[{int}]{template\+Id}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a84d3d92657a1912cac61fa57083442e0}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a84d3d92657a1912cac61fa57083442e0}
+
+
+Set template\+Id,that can be used to get Info about current template from enum Template. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em template\+Id} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface_ae84eac484da25355ba7ace669d7b0c90}{org.\+buildmlearn.\+toolkit.\+model.\+Template\+Interface}.
+
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}!validated@{validated}}
+\index{validated@{validated}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}}
+\subsubsection[{\texorpdfstring{validated(\+Context context, Edit\+Text title, Edit\+Text passage)}{validated(Context context, EditText title, EditText passage)}}]{\setlength{\rightskip}{0pt plus 5cm}boolean org.\+buildmlearn.\+toolkit.\+templates.\+Dictation\+Template.\+validated (
+\begin{DoxyParamCaption}
+\item[{Context}]{context, }
+\item[{Edit\+Text}]{title, }
+\item[{Edit\+Text}]{passage}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_aaa25f072cbb34597196cfec4cb4b9023}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_aaa25f072cbb34597196cfec4cb4b9023}
+
+
+\subsection{Member Data Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}!adapter@{adapter}}
+\index{adapter@{adapter}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}}
+\subsubsection[{\texorpdfstring{adapter}{adapter}}]{\setlength{\rightskip}{0pt plus 5cm}transient Dictation\+Adapter org.\+buildmlearn.\+toolkit.\+templates.\+Dictation\+Template.\+adapter\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_aa96617a4a9b2a3b644f09014d3764081}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_aa96617a4a9b2a3b644f09014d3764081}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}!dict\+Data@{dict\+Data}}
+\index{dict\+Data@{dict\+Data}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}}
+\subsubsection[{\texorpdfstring{dict\+Data}{dictData}}]{\setlength{\rightskip}{0pt plus 5cm}Array\+List$<${\bf Dictation\+Model}$>$ org.\+buildmlearn.\+toolkit.\+templates.\+Dictation\+Template.\+dict\+Data\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a95030ad007d0a8047accfdd29b62588b}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a95030ad007d0a8047accfdd29b62588b}
+\index{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}!template\+Id@{template\+Id}}
+\index{template\+Id@{template\+Id}!org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template@{org\+::buildmlearn\+::toolkit\+::templates\+::\+Dictation\+Template}}
+\subsubsection[{\texorpdfstring{template\+Id}{templateId}}]{\setlength{\rightskip}{0pt plus 5cm}int org.\+buildmlearn.\+toolkit.\+templates.\+Dictation\+Template.\+template\+Id\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a4ad8d52a9cf5c27a33391d252a0fae02}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1templates_1_1DictationTemplate_a4ad8d52a9cf5c27a33391d252a0fae02}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+source-\/code/app/src/main/java/org/buildmlearn/toolkit/templates/\hyperlink{DictationTemplate_8java}{Dictation\+Template.\+java}\end{DoxyCompactItemize}

@@ -1,0 +1,132 @@
+\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1VideoDb}{}\section{org.\+buildmlearn.\+toolkit.\+videocollectiontemplate.\+data.\+Video\+Db Class Reference}
+\label{classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1VideoDb}\index{org.\+buildmlearn.\+toolkit.\+videocollectiontemplate.\+data.\+Video\+Db@{org.\+buildmlearn.\+toolkit.\+videocollectiontemplate.\+data.\+Video\+Db}}
+
+
+Contains database util functions for video collection template\textquotesingle{}s simulator.  
+
+
+
+
+Collaboration diagram for org.\+buildmlearn.\+toolkit.\+videocollectiontemplate.\+data.\+Video\+Db\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1VideoDb__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1VideoDb_a879a547b74bb2e5c08854986d88fe609}{Video\+Db} (Context context)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1VideoDb_a24b0dcb6f8cfe711def7ba88c3bf18a0}{open} ()  throws S\+Q\+L\+Exception 
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1VideoDb_a2c2f783ce0cf99a6d792bae422ef9e08}{close} ()
+\item 
+Cursor \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1VideoDb_a927f479a47b78a6eef53401b98dfbb38}{get\+Videos\+Cursor} ()
+\item 
+Cursor \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1VideoDb_a84953834ff3b14a9255e094c9caedd17}{get\+Video\+Cursor\+By\+Id} (int id)
+\item 
+long \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1VideoDb_a326ce91107efcfd17997b33799f0c986}{get\+Count} ()
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1VideoDb_aeda2b598acf3f1bd2208fad666457a71}{delete\+All} ()
+\item 
+int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1VideoDb_adf7a413ac554df6966c4033eab7e628f}{bulk\+Insert} (@Non\+Null Content\+Values\mbox{[}$\,$\mbox{]} values)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+final Video\+D\+B\+Helper \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1VideoDb_af8d325e1b90b98559a14d36cd78712bc}{db\+Helper}
+\item 
+S\+Q\+Lite\+Database \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1VideoDb_abd5f6988affdcc87babe147f1be6caab}{db}
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1VideoDb_a5ac0075863866227b76d29e8a8369525}{E\+Q\+U\+AL} = \char`\"{} == \char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains database util functions for video collection template\textquotesingle{}s simulator. 
+
+Created by Anupam (opticod) on 19/5/16. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db@{org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db}!Video\+Db@{Video\+Db}}
+\index{Video\+Db@{Video\+Db}!org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db@{org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db}}
+\subsubsection[{\texorpdfstring{Video\+Db(\+Context context)}{VideoDb(Context context)}}]{\setlength{\rightskip}{0pt plus 5cm}org.\+buildmlearn.\+toolkit.\+videocollectiontemplate.\+data.\+Video\+Db.\+Video\+Db (
+\begin{DoxyParamCaption}
+\item[{Context}]{context}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1VideoDb_a879a547b74bb2e5c08854986d88fe609}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1VideoDb_a879a547b74bb2e5c08854986d88fe609}
+
+
+\subsection{Member Function Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db@{org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db}!bulk\+Insert@{bulk\+Insert}}
+\index{bulk\+Insert@{bulk\+Insert}!org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db@{org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db}}
+\subsubsection[{\texorpdfstring{bulk\+Insert("@Non\+Null Content\+Values[] values)}{bulkInsert(@NonNull ContentValues[] values)}}]{\setlength{\rightskip}{0pt plus 5cm}int org.\+buildmlearn.\+toolkit.\+videocollectiontemplate.\+data.\+Video\+Db.\+bulk\+Insert (
+\begin{DoxyParamCaption}
+\item[{@Non\+Null Content\+Values\mbox{[}$\,$\mbox{]}}]{values}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1VideoDb_adf7a413ac554df6966c4033eab7e628f}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1VideoDb_adf7a413ac554df6966c4033eab7e628f}
+\index{org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db@{org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db}!close@{close}}
+\index{close@{close}!org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db@{org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db}}
+\subsubsection[{\texorpdfstring{close()}{close()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+videocollectiontemplate.\+data.\+Video\+Db.\+close (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1VideoDb_a2c2f783ce0cf99a6d792bae422ef9e08}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1VideoDb_a2c2f783ce0cf99a6d792bae422ef9e08}
+\index{org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db@{org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db}!delete\+All@{delete\+All}}
+\index{delete\+All@{delete\+All}!org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db@{org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db}}
+\subsubsection[{\texorpdfstring{delete\+All()}{deleteAll()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+videocollectiontemplate.\+data.\+Video\+Db.\+delete\+All (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1VideoDb_aeda2b598acf3f1bd2208fad666457a71}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1VideoDb_aeda2b598acf3f1bd2208fad666457a71}
+\index{org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db@{org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db}!get\+Count@{get\+Count}}
+\index{get\+Count@{get\+Count}!org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db@{org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db}}
+\subsubsection[{\texorpdfstring{get\+Count()}{getCount()}}]{\setlength{\rightskip}{0pt plus 5cm}long org.\+buildmlearn.\+toolkit.\+videocollectiontemplate.\+data.\+Video\+Db.\+get\+Count (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1VideoDb_a326ce91107efcfd17997b33799f0c986}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1VideoDb_a326ce91107efcfd17997b33799f0c986}
+\index{org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db@{org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db}!get\+Video\+Cursor\+By\+Id@{get\+Video\+Cursor\+By\+Id}}
+\index{get\+Video\+Cursor\+By\+Id@{get\+Video\+Cursor\+By\+Id}!org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db@{org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db}}
+\subsubsection[{\texorpdfstring{get\+Video\+Cursor\+By\+Id(int id)}{getVideoCursorById(int id)}}]{\setlength{\rightskip}{0pt plus 5cm}Cursor org.\+buildmlearn.\+toolkit.\+videocollectiontemplate.\+data.\+Video\+Db.\+get\+Video\+Cursor\+By\+Id (
+\begin{DoxyParamCaption}
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1VideoDb_a84953834ff3b14a9255e094c9caedd17}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1VideoDb_a84953834ff3b14a9255e094c9caedd17}
+\index{org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db@{org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db}!get\+Videos\+Cursor@{get\+Videos\+Cursor}}
+\index{get\+Videos\+Cursor@{get\+Videos\+Cursor}!org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db@{org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db}}
+\subsubsection[{\texorpdfstring{get\+Videos\+Cursor()}{getVideosCursor()}}]{\setlength{\rightskip}{0pt plus 5cm}Cursor org.\+buildmlearn.\+toolkit.\+videocollectiontemplate.\+data.\+Video\+Db.\+get\+Videos\+Cursor (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1VideoDb_a927f479a47b78a6eef53401b98dfbb38}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1VideoDb_a927f479a47b78a6eef53401b98dfbb38}
+\index{org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db@{org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db}!open@{open}}
+\index{open@{open}!org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db@{org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db}}
+\subsubsection[{\texorpdfstring{open()}{open()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+videocollectiontemplate.\+data.\+Video\+Db.\+open (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) throws S\+Q\+L\+Exception}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1VideoDb_a24b0dcb6f8cfe711def7ba88c3bf18a0}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1VideoDb_a24b0dcb6f8cfe711def7ba88c3bf18a0}
+
+
+\subsection{Member Data Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db@{org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db}!db@{db}}
+\index{db@{db}!org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db@{org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db}}
+\subsubsection[{\texorpdfstring{db}{db}}]{\setlength{\rightskip}{0pt plus 5cm}S\+Q\+Lite\+Database org.\+buildmlearn.\+toolkit.\+videocollectiontemplate.\+data.\+Video\+Db.\+db\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1VideoDb_abd5f6988affdcc87babe147f1be6caab}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1VideoDb_abd5f6988affdcc87babe147f1be6caab}
+\index{org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db@{org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db}!db\+Helper@{db\+Helper}}
+\index{db\+Helper@{db\+Helper}!org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db@{org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db}}
+\subsubsection[{\texorpdfstring{db\+Helper}{dbHelper}}]{\setlength{\rightskip}{0pt plus 5cm}final Video\+D\+B\+Helper org.\+buildmlearn.\+toolkit.\+videocollectiontemplate.\+data.\+Video\+Db.\+db\+Helper\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1VideoDb_af8d325e1b90b98559a14d36cd78712bc}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1VideoDb_af8d325e1b90b98559a14d36cd78712bc}
+\index{org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db@{org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db}!E\+Q\+U\+AL@{E\+Q\+U\+AL}}
+\index{E\+Q\+U\+AL@{E\+Q\+U\+AL}!org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db@{org\+::buildmlearn\+::toolkit\+::videocollectiontemplate\+::data\+::\+Video\+Db}}
+\subsubsection[{\texorpdfstring{E\+Q\+U\+AL}{EQUAL}}]{\setlength{\rightskip}{0pt plus 5cm}final String org.\+buildmlearn.\+toolkit.\+videocollectiontemplate.\+data.\+Video\+Db.\+E\+Q\+U\+AL = \char`\"{} == \char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1VideoDb_a5ac0075863866227b76d29e8a8369525}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1videocollectiontemplate_1_1data_1_1VideoDb_a5ac0075863866227b76d29e8a8369525}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+source-\/code/app/src/main/java/org/buildmlearn/toolkit/videocollectiontemplate/data/\hyperlink{VideoDb_8java}{Video\+Db.\+java}\end{DoxyCompactItemize}

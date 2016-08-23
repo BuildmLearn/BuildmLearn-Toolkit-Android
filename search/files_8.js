@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['mainactivityfragment_2ejava',['MainActivityFragment.java',['../dictationtemplate_2fragment_2MainActivityFragment_8java.html',1,'']]],
+  ['mainactivityfragment_2ejava',['MainActivityFragment.java',['../infotemplate_2fragment_2MainActivityFragment_8java.html',1,'']]],
+  ['mainactivityfragment_2ejava',['MainActivityFragment.java',['../videocollectiontemplate_2fragment_2MainActivityFragment_8java.html',1,'']]],
+  ['mainfragment_2ejava',['MainFragment.java',['../comprehensiontemplate_2fragment_2MainFragment_8java.html',1,'']]],
+  ['mainfragment_2ejava',['MainFragment.java',['../matchtemplate_2fragment_2MainFragment_8java.html',1,'']]],
+  ['mainfragment_2ejava',['MainFragment.java',['../flashcardtemplate_2fragment_2MainFragment_8java.html',1,'']]],
+  ['mainfragment_2ejava',['MainFragment.java',['../learnspelling_2fragment_2MainFragment_8java.html',1,'']]],
+  ['matchadapter_2ejava',['MatchAdapter.java',['../MatchAdapter_8java.html',1,'']]],
+  ['matcharrayadapter_5fa_2ejava',['MatchArrayAdapter_A.java',['../MatchArrayAdapter__A_8java.html',1,'']]],
+  ['matcharrayadapter_5fb_2ejava',['MatchArrayAdapter_B.java',['../MatchArrayAdapter__B_8java.html',1,'']]],
+  ['matchcontract_2ejava',['MatchContract.java',['../MatchContract_8java.html',1,'']]],
+  ['matchdb_2ejava',['MatchDb.java',['../MatchDb_8java.html',1,'']]],
+  ['matchdbhelper_2ejava',['MatchDBHelper.java',['../MatchDBHelper_8java.html',1,'']]],
+  ['matchmetaadapter_2ejava',['MatchMetaAdapter.java',['../MatchMetaAdapter_8java.html',1,'']]],
+  ['matchmetamodel_2ejava',['MatchMetaModel.java',['../matchtemplate_2data_2MatchMetaModel_8java.html',1,'']]],
+  ['matchmetamodel_2ejava',['MatchMetaModel.java',['../templates_2MatchMetaModel_8java.html',1,'']]],
+  ['matchmodel_2ejava',['MatchModel.java',['../matchtemplate_2data_2MatchModel_8java.html',1,'']]],
+  ['matchmodel_2ejava',['MatchModel.java',['../templates_2MatchModel_8java.html',1,'']]],
+  ['matchtemplate_2ejava',['MatchTemplate.java',['../MatchTemplate_8java.html',1,'']]]
+];

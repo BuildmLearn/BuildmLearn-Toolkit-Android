@@ -1,0 +1,5 @@
+<map id="org.buildmlearn.toolkit.activity.TemplateEditor" name="org.buildmlearn.toolkit.activity.TemplateEditor">
+<area shape="rect" id="node3" href="$enumorg_1_1buildmlearn_1_1toolkit_1_1model_1_1Template.html" title="Enum for the templates that are included into toolkit application. " alt="" coords="144,57,336,98"/>
+<area shape="rect" id="node6" href="$interfaceorg_1_1buildmlearn_1_1toolkit_1_1model_1_1TemplateInterface.html" title="Interface containing methods for a implementing a template. " alt="" coords="144,225,336,266"/>
+<area shape="rect" id="node9" href="$classorg_1_1buildmlearn_1_1toolkit_1_1ToolkitApplication.html" title="Extended Application class. " alt="" coords="163,342,317,383"/>
+</map>

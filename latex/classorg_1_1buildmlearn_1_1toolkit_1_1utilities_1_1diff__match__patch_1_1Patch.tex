@@ -1,0 +1,83 @@
+\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch}{}\section{org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+Patch Class Reference}
+\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch}\index{org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+Patch@{org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+Patch}}
+
+
+Collaboration diagram for org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+Patch\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=295pt]{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch_ac19c8832e4505e8ce7ba97865c811407}{Patch} ()
+\item 
+String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch_aaf19c2f44229af948fa606046bd383e8}{to\+String} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Linked\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Diff}{Diff} $>$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch_a1b8ded8fe5708379608be5610964c3ae}{diffs}
+\item 
+int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch_afd9f5db9b077aa89baeea86c84dcfe89}{start1}
+\item 
+int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch_ad4d4afed8964a4aca079e5ca70aa85b5}{start2}
+\item 
+int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch_a9153b8d40d868d29ecf0e359f03c9027}{length1}
+\item 
+int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch_aa15ef05d12a5e89b19b71d954cbeb51c}{length2}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class representing one patch operation. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch\+::\+Patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch\+::\+Patch}!Patch@{Patch}}
+\index{Patch@{Patch}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch\+::\+Patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch\+::\+Patch}}
+\subsubsection[{\texorpdfstring{Patch()}{Patch()}}]{\setlength{\rightskip}{0pt plus 5cm}org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+Patch.\+Patch (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch_ac19c8832e4505e8ce7ba97865c811407}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch_ac19c8832e4505e8ce7ba97865c811407}
+Constructor. Initializes with an empty list of diffs. 
+
+\subsection{Member Function Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch\+::\+Patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch\+::\+Patch}!to\+String@{to\+String}}
+\index{to\+String@{to\+String}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch\+::\+Patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch\+::\+Patch}}
+\subsubsection[{\texorpdfstring{to\+String()}{toString()}}]{\setlength{\rightskip}{0pt plus 5cm}String org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+Patch.\+to\+String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch_aaf19c2f44229af948fa606046bd383e8}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch_aaf19c2f44229af948fa606046bd383e8}
+Emmulate G\+NU diff\textquotesingle{}s format. Header\+: @ -\/382,8 +481,9 @ Indicies are printed as 1-\/based, not 0-\/based.
+
+\begin{DoxyReturn}{Returns}
+The G\+NU diff string. 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch\+::\+Patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch\+::\+Patch}!diffs@{diffs}}
+\index{diffs@{diffs}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch\+::\+Patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch\+::\+Patch}}
+\subsubsection[{\texorpdfstring{diffs}{diffs}}]{\setlength{\rightskip}{0pt plus 5cm}Linked\+List$<${\bf Diff}$>$ org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+Patch.\+diffs}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch_a1b8ded8fe5708379608be5610964c3ae}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch_a1b8ded8fe5708379608be5610964c3ae}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch\+::\+Patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch\+::\+Patch}!length1@{length1}}
+\index{length1@{length1}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch\+::\+Patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch\+::\+Patch}}
+\subsubsection[{\texorpdfstring{length1}{length1}}]{\setlength{\rightskip}{0pt plus 5cm}int org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+Patch.\+length1}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch_a9153b8d40d868d29ecf0e359f03c9027}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch_a9153b8d40d868d29ecf0e359f03c9027}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch\+::\+Patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch\+::\+Patch}!length2@{length2}}
+\index{length2@{length2}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch\+::\+Patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch\+::\+Patch}}
+\subsubsection[{\texorpdfstring{length2}{length2}}]{\setlength{\rightskip}{0pt plus 5cm}int org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+Patch.\+length2}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch_aa15ef05d12a5e89b19b71d954cbeb51c}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch_aa15ef05d12a5e89b19b71d954cbeb51c}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch\+::\+Patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch\+::\+Patch}!start1@{start1}}
+\index{start1@{start1}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch\+::\+Patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch\+::\+Patch}}
+\subsubsection[{\texorpdfstring{start1}{start1}}]{\setlength{\rightskip}{0pt plus 5cm}int org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+Patch.\+start1}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch_afd9f5db9b077aa89baeea86c84dcfe89}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch_afd9f5db9b077aa89baeea86c84dcfe89}
+\index{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch\+::\+Patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch\+::\+Patch}!start2@{start2}}
+\index{start2@{start2}!org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch\+::\+Patch@{org\+::buildmlearn\+::toolkit\+::utilities\+::diff\+\_\+match\+\_\+patch\+::\+Patch}}
+\subsubsection[{\texorpdfstring{start2}{start2}}]{\setlength{\rightskip}{0pt plus 5cm}int org.\+buildmlearn.\+toolkit.\+utilities.\+diff\+\_\+match\+\_\+patch.\+Patch.\+start2}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch_ad4d4afed8964a4aca079e5ca70aa85b5}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1utilities_1_1diff__match__patch_1_1Patch_ad4d4afed8964a4aca079e5ca70aa85b5}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+source-\/code/app/src/main/java/org/buildmlearn/toolkit/utilities/\hyperlink{diff__match__patch_8java}{diff\+\_\+match\+\_\+patch.\+java}\end{DoxyCompactItemize}

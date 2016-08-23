@@ -1,0 +1,7 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node2" href="$classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment.html" title="Fragment used to save drafts. " alt="" coords="195,5,403,47"/>
+<area shape="rect" id="node3" href="$classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1HomeFragment.html" title="Fragment displayed on the home screen. " alt="" coords="195,267,403,308"/>
+<area shape="rect" id="node4" href="$classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadApkFragment.html" title="Fragment used for loading existing APKs into a list. " alt="" coords="195,71,403,112"/>
+<area shape="rect" id="node5" href="$classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1LoadProjectFragment.html" title="Fragment used for loading existing projects into a list. " alt="" coords="195,136,403,177"/>
+<area shape="rect" id="node6" href="$classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1NavigationDrawerFragment.html" title="org.buildmlearn.toolkit.fragment.\lNavigationDrawerFragment" alt="" coords="195,201,403,243"/>
+</map>

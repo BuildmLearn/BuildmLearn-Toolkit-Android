@@ -1,0 +1,269 @@
+\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment}{}\section{org.\+buildmlearn.\+toolkit.\+fragment.\+Drafts\+Fragment Class Reference}
+\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment}\index{org.\+buildmlearn.\+toolkit.\+fragment.\+Drafts\+Fragment@{org.\+buildmlearn.\+toolkit.\+fragment.\+Drafts\+Fragment}}
+
+
+Fragment used to save drafts.  
+
+
+
+
+Inheritance diagram for org.\+buildmlearn.\+toolkit.\+fragment.\+Drafts\+Fragment\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=262pt]{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for org.\+buildmlearn.\+toolkit.\+fragment.\+Drafts\+Fragment\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a1e05ae9cd797e7a6ab870fd56cb67b21}{on\+Create} (Bundle saved\+Instance\+State)
+\item 
+View \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a331f31f828107dbad75e8674799d6de6}{on\+Create\+View} (Layout\+Inflater inflater, View\+Group container, Bundle saved\+Instance\+State)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a92519c690ed616ac403cbc35113591e4}{on\+View\+Created} (View view, Bundle saved\+Instance\+State)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a818bb6da97190d0bde6225fc0cac1015}{on\+Item\+Click} (Adapter\+View$<$?$>$ parent, View view, int position, long id)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_abe0d05a64fb5e0dd1c450953cf6805c1}{on\+Resume} ()
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a19a18a03621f26f5d04d6d9e677fccec}{on\+Prepare\+Options\+Menu} (Menu menu)
+\item 
+boolean \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_aaedb7f7c94ed2b6c2e1c414485cafc4d}{on\+Options\+Item\+Selected} (Menu\+Item item)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a33d7ec27a26bc84724a5db3dc0566bc7}{set\+Adapter} (\hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1DraftProjectAdapter}{Draft\+Project\+Adapter} adapter)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_ac5ece2674f93f931bc57d70848a98180}{set\+Empty\+Text} ()
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a646b5e20a95f8f6ef9f58b7ea3f45a9f}{reload\+Content} ()
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_abef1bb8aa53038a5cd639e61c68feefa}{restore\+Color\+Scheme} ()
+\begin{DoxyCompactList}\small\item\em Restores the color scheme when switching from edit mode to normal mode. 
+
+Edit mode is triggered, when the list item is long pressed. \end{DoxyCompactList}\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a817ce3ea608863258adf9549d7fb4a1e}{change\+Color\+Scheme} ()
+\begin{DoxyCompactList}\small\item\em Changes the color scheme when switching from normal mode to edit mode. 
+
+Edit mode is triggered, when the list item is long pressed. \end{DoxyCompactList}\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a631069e1a6c2ba1010c077facdd1847f}{delete\+Item} (int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a133f99d6233f9f26ab03ebb14fe5f4b3}{selected\+Position})
+\begin{DoxyCompactList}\small\item\em Removes selected project item. \end{DoxyCompactList}\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a53efe88465e3ec05b9dc446ca4817932}{delete\+All\+Drafts} ()
+\begin{DoxyCompactList}\small\item\em Removes All Drafts. \end{DoxyCompactList}\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a6de95208d316f33fff13615cea2e450e}{restore\+Selected\+View} ()
+\begin{DoxyCompactList}\small\item\em Removes selected color from the selected List\+View item when switching from edit mode to normal mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Abs\+List\+View \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_ab2f4bc129418af539f5b333fc060f9de}{m\+List\+View}
+\item 
+boolean \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_ac4ba8c3a469443629064b55028e69523}{show\+Template\+Selected\+Menu}
+\item 
+\hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1adapter_1_1DraftProjectAdapter}{Draft\+Project\+Adapter} \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a25bef846f7a1bae6bb165e4b5184ea49}{m\+Adapter}
+\item 
+\hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1ToolkitApplication}{Toolkit\+Application} \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a58c19beba899a4c1ceb73865d658c777}{m\+Toolkit}
+\item 
+Activity \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a4d1f2cf0751e65c73818f14b1119799c}{activity}
+\item 
+Array\+List$<$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1model_1_1SavedProject}{Saved\+Project} $>$ \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a8b6b252506b897c8fe46fca0bf5010aa}{draft\+Projects}
+\item 
+View \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a61317e4e6b7b1a7abc8aad57b724d4fe}{selected\+View} = null
+\item 
+int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a133f99d6233f9f26ab03ebb14fe5f4b3}{selected\+Position} = -\/1
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final String \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a70a4f3509b545bd45556bf041b0950e1}{T\+AG} = \char`\"{}Draft Project Fragment\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Fragment used to save drafts. 
+
+Created by scopeinfinity on 10/3/16. 
+
+\subsection{Member Function Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}!change\+Color\+Scheme@{change\+Color\+Scheme}}
+\index{change\+Color\+Scheme@{change\+Color\+Scheme}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}}
+\subsubsection[{\texorpdfstring{change\+Color\+Scheme()}{changeColorScheme()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+fragment.\+Drafts\+Fragment.\+change\+Color\+Scheme (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a817ce3ea608863258adf9549d7fb4a1e}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a817ce3ea608863258adf9549d7fb4a1e}
+
+
+Changes the color scheme when switching from normal mode to edit mode. 
+
+Edit mode is triggered, when the list item is long pressed. 
+
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}!delete\+All\+Drafts@{delete\+All\+Drafts}}
+\index{delete\+All\+Drafts@{delete\+All\+Drafts}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}}
+\subsubsection[{\texorpdfstring{delete\+All\+Drafts()}{deleteAllDrafts()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+fragment.\+Drafts\+Fragment.\+delete\+All\+Drafts (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a53efe88465e3ec05b9dc446ca4817932}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a53efe88465e3ec05b9dc446ca4817932}
+
+
+Removes All Drafts. 
+
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}!delete\+Item@{delete\+Item}}
+\index{delete\+Item@{delete\+Item}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}}
+\subsubsection[{\texorpdfstring{delete\+Item(int selected\+Position)}{deleteItem(int selectedPosition)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+fragment.\+Drafts\+Fragment.\+delete\+Item (
+\begin{DoxyParamCaption}
+\item[{int}]{selected\+Position}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a631069e1a6c2ba1010c077facdd1847f}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a631069e1a6c2ba1010c077facdd1847f}
+
+
+Removes selected project item. 
+
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}!on\+Create@{on\+Create}}
+\index{on\+Create@{on\+Create}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}}
+\subsubsection[{\texorpdfstring{on\+Create(\+Bundle saved\+Instance\+State)}{onCreate(Bundle savedInstanceState)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+fragment.\+Drafts\+Fragment.\+on\+Create (
+\begin{DoxyParamCaption}
+\item[{Bundle}]{saved\+Instance\+State}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a1e05ae9cd797e7a6ab870fd56cb67b21}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a1e05ae9cd797e7a6ab870fd56cb67b21}
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}!on\+Create\+View@{on\+Create\+View}}
+\index{on\+Create\+View@{on\+Create\+View}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}}
+\subsubsection[{\texorpdfstring{on\+Create\+View(\+Layout\+Inflater inflater, View\+Group container, Bundle saved\+Instance\+State)}{onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)}}]{\setlength{\rightskip}{0pt plus 5cm}View org.\+buildmlearn.\+toolkit.\+fragment.\+Drafts\+Fragment.\+on\+Create\+View (
+\begin{DoxyParamCaption}
+\item[{Layout\+Inflater}]{inflater, }
+\item[{View\+Group}]{container, }
+\item[{Bundle}]{saved\+Instance\+State}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a331f31f828107dbad75e8674799d6de6}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a331f31f828107dbad75e8674799d6de6}
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}!on\+Item\+Click@{on\+Item\+Click}}
+\index{on\+Item\+Click@{on\+Item\+Click}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}}
+\subsubsection[{\texorpdfstring{on\+Item\+Click(\+Adapter\+View$<$?$>$ parent, View view, int position, long id)}{onItemClick(AdapterView<?> parent, View view, int position, long id)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+fragment.\+Drafts\+Fragment.\+on\+Item\+Click (
+\begin{DoxyParamCaption}
+\item[{Adapter\+View$<$?$>$}]{parent, }
+\item[{View}]{view, }
+\item[{int}]{position, }
+\item[{long}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a818bb6da97190d0bde6225fc0cac1015}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a818bb6da97190d0bde6225fc0cac1015}
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}!on\+Options\+Item\+Selected@{on\+Options\+Item\+Selected}}
+\index{on\+Options\+Item\+Selected@{on\+Options\+Item\+Selected}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}}
+\subsubsection[{\texorpdfstring{on\+Options\+Item\+Selected(\+Menu\+Item item)}{onOptionsItemSelected(MenuItem item)}}]{\setlength{\rightskip}{0pt plus 5cm}boolean org.\+buildmlearn.\+toolkit.\+fragment.\+Drafts\+Fragment.\+on\+Options\+Item\+Selected (
+\begin{DoxyParamCaption}
+\item[{Menu\+Item}]{item}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_aaedb7f7c94ed2b6c2e1c414485cafc4d}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_aaedb7f7c94ed2b6c2e1c414485cafc4d}
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}!on\+Prepare\+Options\+Menu@{on\+Prepare\+Options\+Menu}}
+\index{on\+Prepare\+Options\+Menu@{on\+Prepare\+Options\+Menu}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}}
+\subsubsection[{\texorpdfstring{on\+Prepare\+Options\+Menu(\+Menu menu)}{onPrepareOptionsMenu(Menu menu)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+fragment.\+Drafts\+Fragment.\+on\+Prepare\+Options\+Menu (
+\begin{DoxyParamCaption}
+\item[{Menu}]{menu}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a19a18a03621f26f5d04d6d9e677fccec}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a19a18a03621f26f5d04d6d9e677fccec}
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}!on\+Resume@{on\+Resume}}
+\index{on\+Resume@{on\+Resume}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}}
+\subsubsection[{\texorpdfstring{on\+Resume()}{onResume()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+fragment.\+Drafts\+Fragment.\+on\+Resume (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_abe0d05a64fb5e0dd1c450953cf6805c1}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_abe0d05a64fb5e0dd1c450953cf6805c1}
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}!on\+View\+Created@{on\+View\+Created}}
+\index{on\+View\+Created@{on\+View\+Created}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}}
+\subsubsection[{\texorpdfstring{on\+View\+Created(\+View view, Bundle saved\+Instance\+State)}{onViewCreated(View view, Bundle savedInstanceState)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+fragment.\+Drafts\+Fragment.\+on\+View\+Created (
+\begin{DoxyParamCaption}
+\item[{View}]{view, }
+\item[{Bundle}]{saved\+Instance\+State}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a92519c690ed616ac403cbc35113591e4}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a92519c690ed616ac403cbc35113591e4}
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}!reload\+Content@{reload\+Content}}
+\index{reload\+Content@{reload\+Content}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}}
+\subsubsection[{\texorpdfstring{reload\+Content()}{reloadContent()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+fragment.\+Drafts\+Fragment.\+reload\+Content (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a646b5e20a95f8f6ef9f58b7ea3f45a9f}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a646b5e20a95f8f6ef9f58b7ea3f45a9f}
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}!restore\+Color\+Scheme@{restore\+Color\+Scheme}}
+\index{restore\+Color\+Scheme@{restore\+Color\+Scheme}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}}
+\subsubsection[{\texorpdfstring{restore\+Color\+Scheme()}{restoreColorScheme()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+fragment.\+Drafts\+Fragment.\+restore\+Color\+Scheme (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_abef1bb8aa53038a5cd639e61c68feefa}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_abef1bb8aa53038a5cd639e61c68feefa}
+
+
+Restores the color scheme when switching from edit mode to normal mode. 
+
+Edit mode is triggered, when the list item is long pressed. 
+
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}!restore\+Selected\+View@{restore\+Selected\+View}}
+\index{restore\+Selected\+View@{restore\+Selected\+View}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}}
+\subsubsection[{\texorpdfstring{restore\+Selected\+View()}{restoreSelectedView()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+fragment.\+Drafts\+Fragment.\+restore\+Selected\+View (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a6de95208d316f33fff13615cea2e450e}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a6de95208d316f33fff13615cea2e450e}
+
+
+Removes selected color from the selected List\+View item when switching from edit mode to normal mode. 
+
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}!set\+Adapter@{set\+Adapter}}
+\index{set\+Adapter@{set\+Adapter}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}}
+\subsubsection[{\texorpdfstring{set\+Adapter(\+Draft\+Project\+Adapter adapter)}{setAdapter(DraftProjectAdapter adapter)}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+fragment.\+Drafts\+Fragment.\+set\+Adapter (
+\begin{DoxyParamCaption}
+\item[{{\bf Draft\+Project\+Adapter}}]{adapter}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a33d7ec27a26bc84724a5db3dc0566bc7}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a33d7ec27a26bc84724a5db3dc0566bc7}
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}!set\+Empty\+Text@{set\+Empty\+Text}}
+\index{set\+Empty\+Text@{set\+Empty\+Text}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}}
+\subsubsection[{\texorpdfstring{set\+Empty\+Text()}{setEmptyText()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+fragment.\+Drafts\+Fragment.\+set\+Empty\+Text (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_ac5ece2674f93f931bc57d70848a98180}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_ac5ece2674f93f931bc57d70848a98180}
+
+
+\subsection{Member Data Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}!activity@{activity}}
+\index{activity@{activity}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}}
+\subsubsection[{\texorpdfstring{activity}{activity}}]{\setlength{\rightskip}{0pt plus 5cm}Activity org.\+buildmlearn.\+toolkit.\+fragment.\+Drafts\+Fragment.\+activity\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a4d1f2cf0751e65c73818f14b1119799c}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a4d1f2cf0751e65c73818f14b1119799c}
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}!draft\+Projects@{draft\+Projects}}
+\index{draft\+Projects@{draft\+Projects}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}}
+\subsubsection[{\texorpdfstring{draft\+Projects}{draftProjects}}]{\setlength{\rightskip}{0pt plus 5cm}Array\+List$<${\bf Saved\+Project}$>$ org.\+buildmlearn.\+toolkit.\+fragment.\+Drafts\+Fragment.\+draft\+Projects\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a8b6b252506b897c8fe46fca0bf5010aa}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a8b6b252506b897c8fe46fca0bf5010aa}
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}!m\+Adapter@{m\+Adapter}}
+\index{m\+Adapter@{m\+Adapter}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}}
+\subsubsection[{\texorpdfstring{m\+Adapter}{mAdapter}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Draft\+Project\+Adapter} org.\+buildmlearn.\+toolkit.\+fragment.\+Drafts\+Fragment.\+m\+Adapter\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a25bef846f7a1bae6bb165e4b5184ea49}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a25bef846f7a1bae6bb165e4b5184ea49}
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}!m\+List\+View@{m\+List\+View}}
+\index{m\+List\+View@{m\+List\+View}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}}
+\subsubsection[{\texorpdfstring{m\+List\+View}{mListView}}]{\setlength{\rightskip}{0pt plus 5cm}Abs\+List\+View org.\+buildmlearn.\+toolkit.\+fragment.\+Drafts\+Fragment.\+m\+List\+View\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_ab2f4bc129418af539f5b333fc060f9de}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_ab2f4bc129418af539f5b333fc060f9de}
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}!m\+Toolkit@{m\+Toolkit}}
+\index{m\+Toolkit@{m\+Toolkit}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}}
+\subsubsection[{\texorpdfstring{m\+Toolkit}{mToolkit}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Toolkit\+Application} org.\+buildmlearn.\+toolkit.\+fragment.\+Drafts\+Fragment.\+m\+Toolkit\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a58c19beba899a4c1ceb73865d658c777}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a58c19beba899a4c1ceb73865d658c777}
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}!selected\+Position@{selected\+Position}}
+\index{selected\+Position@{selected\+Position}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}}
+\subsubsection[{\texorpdfstring{selected\+Position}{selectedPosition}}]{\setlength{\rightskip}{0pt plus 5cm}int org.\+buildmlearn.\+toolkit.\+fragment.\+Drafts\+Fragment.\+selected\+Position = -\/1\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a133f99d6233f9f26ab03ebb14fe5f4b3}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a133f99d6233f9f26ab03ebb14fe5f4b3}
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}!selected\+View@{selected\+View}}
+\index{selected\+View@{selected\+View}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}}
+\subsubsection[{\texorpdfstring{selected\+View}{selectedView}}]{\setlength{\rightskip}{0pt plus 5cm}View org.\+buildmlearn.\+toolkit.\+fragment.\+Drafts\+Fragment.\+selected\+View = null\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a61317e4e6b7b1a7abc8aad57b724d4fe}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a61317e4e6b7b1a7abc8aad57b724d4fe}
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}!show\+Template\+Selected\+Menu@{show\+Template\+Selected\+Menu}}
+\index{show\+Template\+Selected\+Menu@{show\+Template\+Selected\+Menu}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}}
+\subsubsection[{\texorpdfstring{show\+Template\+Selected\+Menu}{showTemplateSelectedMenu}}]{\setlength{\rightskip}{0pt plus 5cm}boolean org.\+buildmlearn.\+toolkit.\+fragment.\+Drafts\+Fragment.\+show\+Template\+Selected\+Menu\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_ac4ba8c3a469443629064b55028e69523}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_ac4ba8c3a469443629064b55028e69523}
+\index{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}!T\+AG@{T\+AG}}
+\index{T\+AG@{T\+AG}!org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment@{org\+::buildmlearn\+::toolkit\+::fragment\+::\+Drafts\+Fragment}}
+\subsubsection[{\texorpdfstring{T\+AG}{TAG}}]{\setlength{\rightskip}{0pt plus 5cm}final String org.\+buildmlearn.\+toolkit.\+fragment.\+Drafts\+Fragment.\+T\+AG = \char`\"{}Draft Project Fragment\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a70a4f3509b545bd45556bf041b0950e1}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1fragment_1_1DraftsFragment_a70a4f3509b545bd45556bf041b0950e1}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+source-\/code/app/src/main/java/org/buildmlearn/toolkit/fragment/\hyperlink{DraftsFragment_8java}{Drafts\+Fragment.\+java}\end{DoxyCompactItemize}

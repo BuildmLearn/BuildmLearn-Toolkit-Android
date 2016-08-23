@@ -1,0 +1,133 @@
+\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchDb}{}\section{org.\+buildmlearn.\+toolkit.\+matchtemplate.\+data.\+Match\+Db Class Reference}
+\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchDb}\index{org.\+buildmlearn.\+toolkit.\+matchtemplate.\+data.\+Match\+Db@{org.\+buildmlearn.\+toolkit.\+matchtemplate.\+data.\+Match\+Db}}
+
+
+Contains database util functions for match template\textquotesingle{}s simulator.  
+
+
+
+
+Collaboration diagram for org.\+buildmlearn.\+toolkit.\+matchtemplate.\+data.\+Match\+Db\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchDb__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchDb_a8da962dcccc5e7508a59f99af099d818}{Match\+Db} (Context context)
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchDb_a1f3f0afd1145fcfad5b7a18dd4010436}{open} ()  throws S\+Q\+L\+Exception 
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchDb_a009debcf6787ce1d9d2ddc133bbe1206}{close} ()
+\item 
+Cursor \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchDb_a7f7cd9bd775127b50f046e4e934187b8}{get\+Meta\+Cursor} ()
+\item 
+Cursor \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchDb_aa3bdb2f3715be5942019cdd1b8681fa3}{get\+Rand\+Match\+Cursor} ()
+\item 
+void \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchDb_a72282269989e50d407091357cffbf56d}{delete\+All} ()
+\item 
+int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchDb_a915164eaa881a96dc9ea95522894e100}{bulk\+Insert\+Matches} (@Non\+Null Content\+Values\mbox{[}$\,$\mbox{]} values)
+\item 
+long \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchDb_af86540cc35f17f174a1b89001600577f}{get\+Count\+Matches} ()
+\item 
+int \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchDb_a95e9a2ac9383f00bf0572ad02716af67}{bulk\+Insert\+Meta\+Details} (@Non\+Null Content\+Values\mbox{[}$\,$\mbox{]} values)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+final Match\+D\+B\+Helper \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchDb_af7159826cc3cc046e7371e971300fa2b}{db\+Helper}
+\item 
+S\+Q\+Lite\+Database \hyperlink{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchDb_a165218ecad83ee3dda6bb82c993b5c84}{db}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains database util functions for match template\textquotesingle{}s simulator. 
+
+Created by Anupam (opticod) on 24/7/16. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db}!Match\+Db@{Match\+Db}}
+\index{Match\+Db@{Match\+Db}!org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db}}
+\subsubsection[{\texorpdfstring{Match\+Db(\+Context context)}{MatchDb(Context context)}}]{\setlength{\rightskip}{0pt plus 5cm}org.\+buildmlearn.\+toolkit.\+matchtemplate.\+data.\+Match\+Db.\+Match\+Db (
+\begin{DoxyParamCaption}
+\item[{Context}]{context}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchDb_a8da962dcccc5e7508a59f99af099d818}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchDb_a8da962dcccc5e7508a59f99af099d818}
+
+
+\subsection{Member Function Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db}!bulk\+Insert\+Matches@{bulk\+Insert\+Matches}}
+\index{bulk\+Insert\+Matches@{bulk\+Insert\+Matches}!org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db}}
+\subsubsection[{\texorpdfstring{bulk\+Insert\+Matches("@Non\+Null Content\+Values[] values)}{bulkInsertMatches(@NonNull ContentValues[] values)}}]{\setlength{\rightskip}{0pt plus 5cm}int org.\+buildmlearn.\+toolkit.\+matchtemplate.\+data.\+Match\+Db.\+bulk\+Insert\+Matches (
+\begin{DoxyParamCaption}
+\item[{@Non\+Null Content\+Values\mbox{[}$\,$\mbox{]}}]{values}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchDb_a915164eaa881a96dc9ea95522894e100}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchDb_a915164eaa881a96dc9ea95522894e100}
+\index{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db}!bulk\+Insert\+Meta\+Details@{bulk\+Insert\+Meta\+Details}}
+\index{bulk\+Insert\+Meta\+Details@{bulk\+Insert\+Meta\+Details}!org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db}}
+\subsubsection[{\texorpdfstring{bulk\+Insert\+Meta\+Details("@Non\+Null Content\+Values[] values)}{bulkInsertMetaDetails(@NonNull ContentValues[] values)}}]{\setlength{\rightskip}{0pt plus 5cm}int org.\+buildmlearn.\+toolkit.\+matchtemplate.\+data.\+Match\+Db.\+bulk\+Insert\+Meta\+Details (
+\begin{DoxyParamCaption}
+\item[{@Non\+Null Content\+Values\mbox{[}$\,$\mbox{]}}]{values}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchDb_a95e9a2ac9383f00bf0572ad02716af67}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchDb_a95e9a2ac9383f00bf0572ad02716af67}
+\index{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db}!close@{close}}
+\index{close@{close}!org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db}}
+\subsubsection[{\texorpdfstring{close()}{close()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+matchtemplate.\+data.\+Match\+Db.\+close (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchDb_a009debcf6787ce1d9d2ddc133bbe1206}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchDb_a009debcf6787ce1d9d2ddc133bbe1206}
+\index{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db}!delete\+All@{delete\+All}}
+\index{delete\+All@{delete\+All}!org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db}}
+\subsubsection[{\texorpdfstring{delete\+All()}{deleteAll()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+matchtemplate.\+data.\+Match\+Db.\+delete\+All (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchDb_a72282269989e50d407091357cffbf56d}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchDb_a72282269989e50d407091357cffbf56d}
+\index{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db}!get\+Count\+Matches@{get\+Count\+Matches}}
+\index{get\+Count\+Matches@{get\+Count\+Matches}!org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db}}
+\subsubsection[{\texorpdfstring{get\+Count\+Matches()}{getCountMatches()}}]{\setlength{\rightskip}{0pt plus 5cm}long org.\+buildmlearn.\+toolkit.\+matchtemplate.\+data.\+Match\+Db.\+get\+Count\+Matches (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchDb_af86540cc35f17f174a1b89001600577f}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchDb_af86540cc35f17f174a1b89001600577f}
+\index{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db}!get\+Meta\+Cursor@{get\+Meta\+Cursor}}
+\index{get\+Meta\+Cursor@{get\+Meta\+Cursor}!org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db}}
+\subsubsection[{\texorpdfstring{get\+Meta\+Cursor()}{getMetaCursor()}}]{\setlength{\rightskip}{0pt plus 5cm}Cursor org.\+buildmlearn.\+toolkit.\+matchtemplate.\+data.\+Match\+Db.\+get\+Meta\+Cursor (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchDb_a7f7cd9bd775127b50f046e4e934187b8}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchDb_a7f7cd9bd775127b50f046e4e934187b8}
+\index{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db}!get\+Rand\+Match\+Cursor@{get\+Rand\+Match\+Cursor}}
+\index{get\+Rand\+Match\+Cursor@{get\+Rand\+Match\+Cursor}!org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db}}
+\subsubsection[{\texorpdfstring{get\+Rand\+Match\+Cursor()}{getRandMatchCursor()}}]{\setlength{\rightskip}{0pt plus 5cm}Cursor org.\+buildmlearn.\+toolkit.\+matchtemplate.\+data.\+Match\+Db.\+get\+Rand\+Match\+Cursor (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchDb_aa3bdb2f3715be5942019cdd1b8681fa3}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchDb_aa3bdb2f3715be5942019cdd1b8681fa3}
+\index{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db}!open@{open}}
+\index{open@{open}!org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db}}
+\subsubsection[{\texorpdfstring{open()}{open()}}]{\setlength{\rightskip}{0pt plus 5cm}void org.\+buildmlearn.\+toolkit.\+matchtemplate.\+data.\+Match\+Db.\+open (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) throws S\+Q\+L\+Exception}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchDb_a1f3f0afd1145fcfad5b7a18dd4010436}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchDb_a1f3f0afd1145fcfad5b7a18dd4010436}
+
+
+\subsection{Member Data Documentation}
+\index{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db}!db@{db}}
+\index{db@{db}!org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db}}
+\subsubsection[{\texorpdfstring{db}{db}}]{\setlength{\rightskip}{0pt plus 5cm}S\+Q\+Lite\+Database org.\+buildmlearn.\+toolkit.\+matchtemplate.\+data.\+Match\+Db.\+db\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchDb_a165218ecad83ee3dda6bb82c993b5c84}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchDb_a165218ecad83ee3dda6bb82c993b5c84}
+\index{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db}!db\+Helper@{db\+Helper}}
+\index{db\+Helper@{db\+Helper}!org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db@{org\+::buildmlearn\+::toolkit\+::matchtemplate\+::data\+::\+Match\+Db}}
+\subsubsection[{\texorpdfstring{db\+Helper}{dbHelper}}]{\setlength{\rightskip}{0pt plus 5cm}final Match\+D\+B\+Helper org.\+buildmlearn.\+toolkit.\+matchtemplate.\+data.\+Match\+Db.\+db\+Helper\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchDb_af7159826cc3cc046e7371e971300fa2b}{}\label{classorg_1_1buildmlearn_1_1toolkit_1_1matchtemplate_1_1data_1_1MatchDb_af7159826cc3cc046e7371e971300fa2b}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+source-\/code/app/src/main/java/org/buildmlearn/toolkit/matchtemplate/data/\hyperlink{MatchDb_8java}{Match\+Db.\+java}\end{DoxyCompactItemize}
