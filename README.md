@@ -2,7 +2,9 @@
 
 # BuildmLearn-Toolkit-Android
 
-This repository contains the Android version of the BuildmLearn Toolkit. BuildmLearn Toolkit app is an easy-to-use android app that helps the users make another mobile apps without any knowledge of android application development. The toolkit helps creating mobile application with various functionality and allows teachers to input their custom content. Targeted at teachers, this toolkit helps them make learning fun and engaging through mobile apps.
+This repository contains the Android version of the [BuildmLearn Toolkit](https://github.com/BuildmLearn/BuildmLearn-Toolkit). BuildmLearn Toolkit app is an easy-to-use android app that helps the users make another mobile apps without any knowledge of android application development. The toolkit helps creating mobile application with various functionality and allows teachers to input their custom content. Targeted at teachers, this toolkit helps them make learning fun and engaging through mobile apps.
+
+[Toolkit-mobile-templates](https://github.com/BuildmLearn/Toolkit-mobile-templates) contains the template applications of the toolkit.
 
 # Development Setup
 1. Go to the project repo and click the `Fork` button
@@ -31,9 +33,13 @@ Glosarry
 | [X]/quiztemplate | Contains simulator's code for Quiz Template  |
 | [X]/videocollectiontemplate | Contains simulator's code for FlashCard Template  |
 | [X]/comprehensiontemplate | Contains simulator's code for Comprehension Template  |
+| [X]/dictationtemplate | Contains simulator's code for Dictation Template  |
+| [X]/matchtemplate | Contains simulator's code for Match Template  |
 | [X]/[?]/adapter | Contains simulator's adapter for [?] Template  |
 | [X]/[?]/data  | Contains simulator's SQLiteDatabase code for [?] Template |
 | [X]/[?]/fragment | Contains simulator's fragment for [?] Template  |
+
+For complete documentation, please visit: http://buildmlearn.github.io/BuildmLearn-Toolkit-Android/
 
 # How to build
 
