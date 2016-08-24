@@ -65,7 +65,7 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
         activity = getActivity();
         savedApis = new ArrayList<>();
 
-        String path = mToolkit.getSavedDir();
+        String path = mToolkit.getApkDir();
         if (mToolkit.checkExternalStorage()) {
             path = mToolkit.getDownloadDirectory();
         }
