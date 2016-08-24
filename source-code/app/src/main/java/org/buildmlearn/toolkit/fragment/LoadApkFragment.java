@@ -103,8 +103,7 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_loadproject, container, false);
-        return view;
+        return inflater.inflate(R.layout.fragment_loadproject, container, false);
     }
 
     /**
@@ -213,9 +212,9 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
      * <p/>
      * Edit mode is triggered, when the list item is long pressed.
      */
-    public void restoreColorScheme() {
-        int primaryColor = getResources().getColor(R.color.color_primary);
-        int primaryColorDark = getResources().getColor(R.color.color_primary_dark);
+    private void restoreColorScheme() {
+        int primaryColor = ContextCompat.getColor(getActivity(), R.color.color_primary);
+        int primaryColorDark = ContextCompat.getColor(getActivity(), R.color.color_primary_dark);
         ((AppCompatActivity) activity).getSupportActionBar().setBackgroundDrawable(new ColorDrawable(primaryColor));
         ThemeSingleton.get().positiveColor = ColorStateList.valueOf(primaryColor);
         ThemeSingleton.get().neutralColor = ColorStateList.valueOf(primaryColor);
@@ -234,9 +233,9 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
      * <p/>
      * Edit mode is triggered, when the list item is long pressed.
      */
-    public void changeColorScheme() {
-        int primaryColor = getResources().getColor(R.color.color_primary_dark);
-        int primaryColorDark = getResources().getColor(R.color.color_selected_dark);
+    private void changeColorScheme() {
+        int primaryColor = ContextCompat.getColor(getActivity(), R.color.color_primary_dark);
+        int primaryColorDark = ContextCompat.getColor(getActivity(), R.color.color_selected_dark);
         ((AppCompatActivity) activity).getSupportActionBar().setBackgroundDrawable(new ColorDrawable(primaryColor));
         ThemeSingleton.get().positiveColor = ColorStateList.valueOf(primaryColor);
         ThemeSingleton.get().neutralColor = ColorStateList.valueOf(primaryColor);
@@ -325,7 +324,7 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
     /**
      * @brief Removes selected color from the selected ListView item when switching from edit mode to normal mode
      */
-    public void restoreSelectedView() {
+    private void restoreSelectedView() {
         if (selectedView != null) {
             selectedView.setBackgroundResource(0);
         }

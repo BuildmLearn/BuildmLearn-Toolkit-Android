@@ -3,19 +3,13 @@ package org.buildmlearn.toolkit.videocollectiontemplate.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-
 /**
+ * @brief Model used to save video entries in database for video collection template's simulator.
+ *
  * Created by Anupam (opticod) on 12/5/16.
  */
 public class VideoModel implements Parcelable {
-    private static final String ROOT_TAG = "item";
-    private static final String TITLE_TAG = "video_title";
-    private static final String DESCRIPTION_TAG = "video_description";
-    private static final String LINK_TAG = "video_link";
-    private static final String THUMB_LINK_TAG = "video_thumb_link";
-    public final Creator<VideoModel> CREATOR = new Creator<VideoModel>() {
+    public final static Parcelable.Creator<VideoModel> CREATOR = new Parcelable.Creator<VideoModel>() {
         @Override
         public VideoModel createFromParcel(Parcel parcel) {
             return new VideoModel(parcel);
@@ -26,19 +20,18 @@ public class VideoModel implements Parcelable {
             return new VideoModel[size];
         }
     };
+
+    private static final String ROOT_TAG = "item";
+    private static final String TITLE_TAG = "video_title";
+    private static final String DESCRIPTION_TAG = "video_description";
+    private static final String LINK_TAG = "video_link";
+    private static final String THUMB_LINK_TAG = "video_thumb_link";
     private String title;
     private String description;
     private String link;
     private String thumbnail_url;
 
     public VideoModel() {
-    }
-
-    public VideoModel(String title, String description, String link, String thumbnail_url) {
-        this.title = title;
-        this.description = description;
-        this.link = link;
-        this.thumbnail_url = thumbnail_url;
     }
 
     private VideoModel(Parcel in) {
@@ -59,23 +52,6 @@ public class VideoModel implements Parcelable {
         dest.writeString(description);
         dest.writeString(link);
         dest.writeString(thumbnail_url);
-    }
-
-    public Element getXml(Document doc) {
-        Element rootElement = doc.createElement(ROOT_TAG);
-        Element titleElement = doc.createElement(TITLE_TAG);
-        titleElement.appendChild(doc.createTextNode(title));
-        rootElement.appendChild(titleElement);
-        Element descriptionElement = doc.createElement(DESCRIPTION_TAG);
-        descriptionElement.appendChild(doc.createTextNode(String.valueOf(description)));
-        rootElement.appendChild(descriptionElement);
-        Element linkElement = doc.createElement(LINK_TAG);
-        linkElement.appendChild(doc.createTextNode(String.valueOf(link)));
-        rootElement.appendChild(linkElement);
-        Element videoLinkElement = doc.createElement(THUMB_LINK_TAG);
-        videoLinkElement.appendChild(doc.createTextNode(String.valueOf(thumbnail_url)));
-        rootElement.appendChild(videoLinkElement);
-        return rootElement;
     }
 
     public String getTitle() {

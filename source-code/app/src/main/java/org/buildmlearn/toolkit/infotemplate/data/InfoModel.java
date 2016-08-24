@@ -6,8 +6,12 @@ import android.os.Parcelable;
 /**
  * Created by Anupam (opticod) on 20/6/16.
  */
+
+/**
+ * @brief Model used to save info entries in database for info template's simulator.
+ */
 public class InfoModel implements Parcelable {
-    public final Creator<InfoModel> CREATOR = new Creator<InfoModel>() {
+    public final static Parcelable.Creator<InfoModel> CREATOR = new Parcelable.Creator<InfoModel>() {
         @Override
         public InfoModel createFromParcel(Parcel parcel) {
             return new InfoModel(parcel);
@@ -22,11 +26,6 @@ public class InfoModel implements Parcelable {
     private String description;
 
     public InfoModel() {
-    }
-
-    public InfoModel(String title, String description) {
-        this.title = title;
-        this.description = description;
     }
 
     private InfoModel(Parcel in) {

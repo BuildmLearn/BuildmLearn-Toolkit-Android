@@ -51,12 +51,6 @@ public interface TemplateInterface extends Serializable {
     BaseAdapter loadProjectTemplateEditor(Context context, ArrayList<Element> data);
 
     /**
-     * @return Custom string
-     * @brief Called from TemplateEditor whenever a template is attached to TemplateEditor
-     */
-    String onAttach();
-
-    /**
      * @brief Set templateId,that can be used to get Info about current template from enum Template
      * @param templateId
      */
@@ -137,8 +131,4 @@ public interface TemplateInterface extends Serializable {
      */
     void onActivityResult(Context context, int requestCode, int resultCode, Intent intent);
 
-    /**
-     * @brief Toggles the visibility of empty text if Array has zero elements
-     */
-    void setEmptyView(Activity activity);
 }

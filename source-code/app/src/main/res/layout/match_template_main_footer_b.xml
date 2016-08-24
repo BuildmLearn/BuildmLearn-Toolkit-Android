@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/second_list_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/second_list_up_match"
+            android:paddingBottom="@dimen/paddingTop_match"
+            android:paddingLeft="@dimen/paddingTop_match"
+            android:paddingStart="@dimen/paddingTop_match"
+            android:paddingTop="@dimen/paddingTop_match"
+            android:src="@drawable/ic_keyboard_capslock_black_24dp" />
+
+        <ImageButton
+            android:id="@+id/second_list_down"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/second_list_down_match"
+            android:paddingBottom="@dimen/paddingTop_match"
+            android:paddingEnd="@dimen/paddingTop_match"
+            android:paddingRight="@dimen/paddingTop_match"
+            android:paddingTop="@dimen/paddingTop_match"
+            android:src="@drawable/ic_keyboard_capslock_black_down_24dp"
+            android:text="@string/previous_match" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/check_answer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:background="@android:color/transparent"
+        android:paddingEnd="@dimen/paddingTop_match"
+        android:paddingRight="@dimen/paddingTop_match"
+        android:paddingTop="@dimen/paddingTop_match"
+        android:text="@string/check_answers_match"
+        android:textAppearance="?android:textAppearanceSmall"
+        android:textColor="@color/colorAccent_match" />
+
+</LinearLayout>

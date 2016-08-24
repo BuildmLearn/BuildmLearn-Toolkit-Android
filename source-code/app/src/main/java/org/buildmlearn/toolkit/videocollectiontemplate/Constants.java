@@ -3,6 +3,8 @@ package org.buildmlearn.toolkit.videocollectiontemplate;
 import org.buildmlearn.toolkit.videocollectiontemplate.data.VideoContract;
 
 /**
+ * @brief Constants used in video collection template's simulator relating databases.
+ *
  * Created by Anupam (opticod) on 13/5/16.
  */
 public class Constants {
@@ -13,7 +15,6 @@ public class Constants {
             VideoContract.Videos.LINK,
             VideoContract.Videos.THUMBNAIL_URL
     };
-    public static final int COL_ID = 0;
     public static final int COL_TITLE = 1;
     public static final int COL_DESCRIPTION = 2;
     public static final int COL_LINK = 3;

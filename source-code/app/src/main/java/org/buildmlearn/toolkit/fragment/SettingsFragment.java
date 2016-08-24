@@ -128,6 +128,17 @@ public class SettingsFragment extends PreferenceFragment {
                             }
 
                             @Override
+                            public void onFail() {
+                                processDiaglog.dismiss();
+                                final MaterialDialog dialog = new MaterialDialog.Builder(getActivity())
+                                        .title(R.string.dialog_restore_title)
+                                        .content(R.string.dialog_restore_failed)
+                                        .positiveText(R.string.info_template_ok)
+                                        .build();
+                                dialog.show();
+                            }
+
+                            @Override
                             public void onFail(Exception e) {
                                 processDiaglog.dismiss();
                                 final MaterialDialog dialog = new MaterialDialog.Builder(getActivity())

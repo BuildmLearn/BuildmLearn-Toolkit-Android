@@ -15,7 +15,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.model.Template;
 import org.buildmlearn.toolkit.model.TemplateInterface;
-import org.buildmlearn.toolkit.quiztemplate.TFTQuizFragment;
+import org.buildmlearn.toolkit.quiztemplate.fragment.SplashFragment;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -82,11 +82,6 @@ public class QuizTemplate implements TemplateInterface {
         mAdapter = new QuizAdapter(context, quizData);
         setEmptyView((Activity) context);
         return mAdapter;
-    }
-
-    @Override
-    public String onAttach() {
-        return "Quiz Template";
     }
 
     @Override
@@ -297,7 +292,7 @@ public class QuizTemplate implements TemplateInterface {
 
     @Override
     public android.support.v4.app.Fragment getSimulatorFragment(String filePathWithName) {
-        return TFTQuizFragment.newInstance(filePathWithName);
+        return SplashFragment.newInstance(filePathWithName);
     }
 
     @Override
@@ -351,8 +346,7 @@ public class QuizTemplate implements TemplateInterface {
     /**
      * @brief Toggles the visibility of empty text if Array has zero elements
      */
-    @Override
-    public void setEmptyView(Activity activity) {
+    private void setEmptyView(Activity activity) {
         if (quizData.size() < 1) {
             activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
         } else {

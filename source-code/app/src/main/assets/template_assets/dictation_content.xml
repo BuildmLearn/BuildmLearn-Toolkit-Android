@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <buildmlearn_application type="DictationTemplate">
+    <author>
+      <name>Anupam</name>
+    </author>
+    <title>Dictation</title>
+    <data>
+      <item>
+        <dictation_title>Dream of the Rarebit Fiend</dictation_title>
+        <dictation_passage>Dream of the Rarebit Fiend was a newspaper comic strip by American cartoonist Winsor McCay, begun September 10, 1904, that depicted fantastic bizarre dreams. It was McCay's second successful strip after Little Sammy Sneeze secured him a position on the cartoon staff of the New York Herald. Rarebit Fiend was printed in the Evening Telegram, a newspaper published by the Herald. The strip had no continuity or recurring characters.</dictation_passage>
+      </item>
+      <item>
+        <dictation_title>Earthworks</dictation_title>
+        <dictation_passage>Bill Bruford's Earthworks were a British jazz band led by drummer Bill Bruford. The band recorded several albums for Editions EG, Discipline Global Mobile and Summerfold Records.
+
+Earthworks went through several line-ups: in addition to the band's accomplishments as a unit, Earthworks was a training ground for Django Bates, Iain Ballamy, Patrick Clahar, Mark Hodgson, Steve Hamilton and Gwilym Simcock. The final band line-up featured previously established jazz musicians in the form of Chick Corea sideman Tim Garland and veteran bass player Laurence Cottle. In interviews during the band's earlier years, Bruford sometimes compared his responsibilities within it as being similar to those of Art Blakey with the Jazz Messengers, in that he was providing an environment for young British jazz players to gain attention and experience before going on to become well-known players and bandleaders in their own right.</dictation_passage>
+      </item>
+    </data>
+  </buildmlearn_application>

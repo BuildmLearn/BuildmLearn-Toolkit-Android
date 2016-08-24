@@ -12,8 +12,8 @@ public class KeyStoreDetails {
     private final String alias;
     private final String aliasPassword;
 
-    public KeyStoreDetails(String assetsPath, String password, String alias, String aliasPassword) {
-        this.assetsPath = assetsPath;
+    public KeyStoreDetails(String password, String alias, String aliasPassword) {
+        this.assetsPath = "TestKeyStore.jks";
         this.password = password;
         this.alias = alias;
         this.aliasPassword = aliasPassword;

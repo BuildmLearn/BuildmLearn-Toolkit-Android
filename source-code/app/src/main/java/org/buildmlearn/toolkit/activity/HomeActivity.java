@@ -22,6 +22,7 @@ public class HomeActivity extends AppCompatActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
     private Section currentSection;
+    private NavigationDrawerFragment mNavigationDrawerFragment;
 
     /**
      * {@inheritDoc}
@@ -37,7 +38,7 @@ public class HomeActivity extends AppCompatActivity
         /*
       Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
-        NavigationDrawerFragment mNavigationDrawerFragment = (NavigationDrawerFragment)
+        mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
 
         // Set up the drawer.
@@ -81,7 +82,7 @@ public class HomeActivity extends AppCompatActivity
             if (currentSection == null || selectedMenuItem != currentSection) {
                 currentSection = selectedMenuItem;
                 FragmentManager fm = getFragmentManager();
-                FragmentTransaction ft = fm.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                FragmentTransaction ft = fm.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).addToBackStack(null);
                 Fragment f = fm.findFragmentById(R.id.container);
                 if (f != null) {
                     if (currentSection.isKeep()) {
@@ -104,4 +105,15 @@ public class HomeActivity extends AppCompatActivity
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        if (mNavigationDrawerFragment.isDrawerOpen()) {
+            mNavigationDrawerFragment.closeDrawer();
+            return;
+        }
+        if (getFragmentManager().getBackStackEntryCount() <= 1) {
+            finish();
+        }
+        super.onBackPressed();
+    }
 }

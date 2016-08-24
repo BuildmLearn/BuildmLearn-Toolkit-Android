@@ -26,6 +26,8 @@ import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.adapter.NavigationDrawerMenuAdapter;
 import org.buildmlearn.toolkit.model.Section;
 
+import java.util.Locale;
+
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.
  * See the <a href="https://developer.android.com/design/patterns/navigation-drawer.html#Interaction">
@@ -122,7 +124,7 @@ public class NavigationDrawerFragment extends Fragment {
         View menuHeaderView = inflater.inflate(R.layout.listview_header_navigation_drawer, mDrawerListView, false);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
         TextView name = (TextView) menuHeaderView.findViewById(R.id.name);
-        name.setText("Welcome " + prefs.getString(getString(R.string.key_user_name), ""));
+        name.setText(String.format(Locale.ENGLISH, "Welcome %s", prefs.getString(getString(R.string.key_user_name), "")));
         mDrawerListView.addHeaderView(menuHeaderView, null, false);
         mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -142,8 +144,8 @@ public class NavigationDrawerFragment extends Fragment {
         });
         NavigationDrawerMenuAdapter adapter = new NavigationDrawerMenuAdapter(getActivity().getApplicationContext(), inflater);
         menus = Section.values();
-        for (int i = 0; i < menus.length; i++) {
-            menus[i].setIsSelected(false);
+        for (Section menu : menus) {
+            menu.setIsSelected(false);
         }
         if (menus.length > 0) {
             menus[selectedSectionMenu].setIsSelected(true);
@@ -153,7 +155,7 @@ public class NavigationDrawerFragment extends Fragment {
         return mDrawerListView;
     }
 
-    private boolean isDrawerOpen() {
+    public boolean isDrawerOpen() {
         return mDrawerLayout != null && mDrawerLayout.isDrawerOpen(mFragmentContainerView);
     }
 
@@ -229,7 +231,7 @@ public class NavigationDrawerFragment extends Fragment {
                 SharedPreferences sp = PreferenceManager
                         .getDefaultSharedPreferences(getActivity());
                 TextView name = (TextView) mFragmentContainerView.findViewById(R.id.name);
-                name.setText("Welcome " + sp.getString(getString(R.string.key_user_name), ""));
+                name.setText(String.format(Locale.ENGLISH, "Welcome %s", sp.getString(getString(R.string.key_user_name), "")));
             }
         };
 
@@ -342,6 +344,10 @@ public class NavigationDrawerFragment extends Fragment {
 
     private ActionBar getActionBar() {
         return ((AppCompatActivity) getActivity()).getSupportActionBar();
+    }
+
+    public void closeDrawer() {
+        mDrawerLayout.closeDrawers();
     }
 
     /**

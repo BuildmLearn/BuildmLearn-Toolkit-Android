@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/TextView.Caption.Light"
+        android:text="@string/meta_title"
+        android:textColor="@color/black_secondary_text" />
+
+    <EditText
+        android:id="@+id/meta_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/meta_title_match_hint"
+        android:inputType="textPersonName" />
+
+    <TextView
+        style="@style/TextView.Caption.Light"
+        android:text="@string/first_list_title"
+        android:textColor="@color/black_secondary_text" />
+
+    <EditText
+        android:id="@+id/meta_first_list_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/enter_first_list_title"
+        android:inputType="textPersonName" />
+
+    <TextView
+        style="@style/TextView.Caption.Light"
+        android:text="@string/second_list_title"
+        android:textColor="@color/black_secondary_text" />
+
+    <EditText
+        android:id="@+id/meta_second_list_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/enter_second_list_title"
+        android:inputType="textMultiLine" />
+
+</LinearLayout>

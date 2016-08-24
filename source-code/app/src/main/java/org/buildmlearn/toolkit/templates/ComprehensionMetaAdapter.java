@@ -10,6 +10,7 @@ import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.views.TextViewPlus;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * @brief Adapter for displaying Meta Details of Comprehension Template Editor data.
@@ -62,7 +63,7 @@ class ComprehensionMetaAdapter extends BaseAdapter {
 
         holder.title.setText(meta.getTitle());
         holder.passage.setText(meta.getPassage());
-        holder.timer.setText(meta.getTime() + " sec");
+        holder.timer.setText(String.format(Locale.ENGLISH, "%d sec", meta.getTime()));
         convertView.setTag(holder);
 
         return convertView;

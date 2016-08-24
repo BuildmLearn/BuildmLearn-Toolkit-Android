@@ -29,6 +29,8 @@ import org.buildmlearn.toolkit.videocollectiontemplate.data.VideoModel;
 import java.util.ArrayList;
 
 /**
+ * @brief Fragment containing list of videos in video collection template's simulator.
+ *
  * Created by Anupam (opticod) on 20/5/16.
  */
 public class MainActivityFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -97,6 +99,7 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
                         welcomeAlert.show();
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
+                        assert ((TextView) welcomeAlert.findViewById(android.R.id.message)) != null;
                         ((TextView) welcomeAlert.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
                         break;
                     default: //do nothing

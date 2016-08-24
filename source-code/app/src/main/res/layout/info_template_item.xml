@@ -15,6 +15,7 @@
             android:id="@+id/info_template_edit"
             style="@style/TextView.CircleIcon"
             android:layout_gravity="center_vertical"
+            android:contentDescription="@string/info_edit_title"
             android:padding="2dp"
             android:src="@drawable/menu_edit_template_item" />
 
@@ -30,18 +31,19 @@
                 style="@style/TextView.Title.Thin"
                 class="org.buildmlearn.toolkit.views.TextViewPlus"
                 android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
                 android:paddingBottom="8dp"
-                android:paddingTop="16dp"
-                android:text="Somedifficultword" />
+                android:paddingTop="16dp" />
 
             <view
                 android:id="@+id/info_description"
                 style="@style/TextView.Body1"
                 class="org.buildmlearn.toolkit.views.TextViewPlus"
                 android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
                 android:paddingBottom="8dp"
-                android:paddingRight="16dp"
-                android:text="This is a long long infoDescription of some cool infoObject. Made only for BuildmLearn as a pat of GSoC Project." />
+                android:paddingEnd="16dp"
+                android:paddingRight="16dp" />
         </LinearLayout>
 
 
@@ -50,8 +52,10 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center"
+            android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             android:adjustViewBounds="true"
+            android:contentDescription="@string/delete_item"
             android:scaleType="centerInside"
             android:src="@drawable/template_delete" />
 

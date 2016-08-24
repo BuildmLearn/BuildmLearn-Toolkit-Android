@@ -127,7 +127,7 @@ public class TemplateEditor extends AppCompatActivity {
         findViewById(R.id.button_add_item).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (templateId == 5 && selectedTemplate.currentMetaEditorAdapter().isEmpty()) {
+                if ((templateId == 5 || templateId == 7) && selectedTemplate.currentMetaEditorAdapter().isEmpty()) {
                     selectedTemplate.addMetaData(TemplateEditor.this);
                 } else {
                     selectedTemplate.addItem(TemplateEditor.this);
@@ -301,13 +301,11 @@ public class TemplateEditor extends AppCompatActivity {
             selectedTemplate = (TemplateInterface) templateObject;
             selectedTemplate.setTemplateId(templateId);
             populateListView(selectedTemplate.newTemplateEditorAdapter(this));
-            if (templateId == 5) {
+            if (templateId == 5 || templateId == 7) {
                 populateMetaView(selectedTemplate.newMetaEditorAdapter(this));
             }
             setUpActionBar();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
+        } catch (InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
         }
     }
@@ -325,7 +323,7 @@ public class TemplateEditor extends AppCompatActivity {
             finish();
         } else {
             populateListView(selectedTemplate.currentTemplateEditorAdapter());
-            if (templateId == 5) {
+            if (templateId == 5 || templateId == 7) {
                 populateMetaView(selectedTemplate.currentMetaEditorAdapter());
             }
             setUpActionBar();
@@ -397,20 +395,36 @@ public class TemplateEditor extends AppCompatActivity {
                 new BottomSheet.Builder(this).sheet(R.menu.bottom_sheet_template).listener(new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
+                        String savedFilePath;
                         switch (id) {
                             case R.id.save_project:
                                 saveProject();
                                 break;
+
+                            case R.id.share_project:
+                                savedFilePath = saveProject();
+                                if (savedFilePath == null || savedFilePath.length() == 0) {
+                                    return;
+                                }
+                                Uri fileUri = Uri.fromFile(new File(savedFilePath));
+                                ArrayList<Uri> uris = new ArrayList<>();
+                                Intent sendIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
+                                sendIntent.setType("application/zip");
+                                uris.add(fileUri);
+                                sendIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
+                                startActivity(Intent.createChooser(sendIntent, null));
+                                break;
+
                             case R.id.share_apk:
 
-                                String savedFilePath = saveProject();
+                                savedFilePath = saveProject();
                                 if (savedFilePath == null || savedFilePath.length() == 0) {
                                     return;
                                 }
                                 String keyPassword = getString(R.string.key_password);
                                 String aliasName = getString(R.string.alias_name);
                                 String aliaspassword = getString(R.string.alias_password);
-                                KeyStoreDetails keyStoreDetails = new KeyStoreDetails("TestKeyStore.jks", keyPassword, aliasName, aliaspassword);
+                                KeyStoreDetails keyStoreDetails = new KeyStoreDetails(keyPassword, aliasName, aliaspassword);
                                 SignerThread signer = new SignerThread(getApplicationContext(), selectedTemplate.getApkFilePath(), saveProject(), keyStoreDetails, selectedTemplate.getAssetsFilePath(), selectedTemplate.getAssetsFileName(TemplateEditor.this));
 
                                 mApkGenerationDialog = new MaterialDialog.Builder(TemplateEditor.this)
@@ -471,7 +485,7 @@ public class TemplateEditor extends AppCompatActivity {
                                 keyPassword = getString(R.string.key_password);
                                 aliasName = getString(R.string.alias_name);
                                 aliaspassword = getString(R.string.alias_password);
-                                keyStoreDetails = new KeyStoreDetails("TestKeyStore.jks", keyPassword, aliasName, aliaspassword);
+                                keyStoreDetails = new KeyStoreDetails(keyPassword, aliasName, aliaspassword);
                                 signer = new SignerThread(getApplicationContext(), selectedTemplate.getApkFilePath(), saveProject(), keyStoreDetails, selectedTemplate.getAssetsFilePath(), selectedTemplate.getAssetsFileName(TemplateEditor.this));
 
                                 mApkGenerationDialog = new MaterialDialog.Builder(TemplateEditor.this)
@@ -600,8 +614,10 @@ public class TemplateEditor extends AppCompatActivity {
         EditText authorEditText = (EditText) findViewById(R.id.author_name);
         EditText titleEditText = (EditText) findViewById(R.id.template_title);
         assert findViewById(R.id.author_name) != null;
+        assert ((EditText) findViewById(R.id.author_name)) != null;
         String author = ((EditText) findViewById(R.id.author_name)).getText().toString();
         assert findViewById(R.id.template_title) != null;
+        assert ((EditText) findViewById(R.id.template_title)) != null;
         String title = ((EditText) findViewById(R.id.template_title)).getText().toString();
         if ("".equals(author)) {
             assert authorEditText != null;
@@ -637,7 +653,7 @@ public class TemplateEditor extends AppCompatActivity {
                 doc.appendChild(rootElement);
                 Element dataElement = doc.createElement("data");
                 rootElement.appendChild(dataElement);
-                if (selectedTemplate.getItems(doc).size() == 0 || (selectedTemplate.getItems(doc).size() < 2 && templateId == 5)) {
+                if (selectedTemplate.getItems(doc).size() == 0 || (selectedTemplate.getItems(doc).size() < 2 && (templateId == 5 || templateId == 7))) {
                     Toast.makeText(this, "Unable to perform action: No Data", Toast.LENGTH_SHORT).show();
                     return null;
                 }
@@ -679,9 +695,11 @@ public class TemplateEditor extends AppCompatActivity {
      * @return Absolute path of the saved file. Null if there is some error.
      * @brief Saves the current project into a .buildmlearn file.
      */
-    protected String saveDraft() {
+    private String saveDraft() {
 
+        assert ((EditText) findViewById(R.id.author_name)) != null;
         String author = ((EditText) findViewById(R.id.author_name)).getText().toString();
+        assert ((EditText) findViewById(R.id.template_title)) != null;
         String title = ((EditText) findViewById(R.id.template_title)).getText().toString();
 
 
@@ -808,8 +826,9 @@ public class TemplateEditor extends AppCompatActivity {
 
             Object templateObject = templateClass.newInstance();
             selectedTemplate = (TemplateInterface) templateObject;
+            selectedTemplate.setTemplateId(templateId);
             populateListView(selectedTemplate.loadProjectTemplateEditor(this, items));
-            if (templateId == 5) {
+            if (templateId == 5 || templateId == 7) {
                 populateMetaView(selectedTemplate.loadProjectMetaEditor(this, doc));
             }
             File draftDir = new File(toolkit.getDraftDir());

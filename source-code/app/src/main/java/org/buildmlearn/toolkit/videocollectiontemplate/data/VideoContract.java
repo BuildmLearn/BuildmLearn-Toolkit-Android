@@ -3,6 +3,8 @@ package org.buildmlearn.toolkit.videocollectiontemplate.data;
 import android.provider.BaseColumns;
 
 /**
+ * @brief Contains database contracts for video collection template's simulator.
+ *
  * Created by Anupam (opticod) on 13/5/16.
  */
 

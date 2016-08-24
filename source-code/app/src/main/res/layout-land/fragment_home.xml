@@ -32,7 +32,9 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:contentDescription="@string/buildmlearn_logo"
                         android:paddingLeft="@dimen/cardview_body_padding_left_right"
+                        android:paddingStart="@dimen/cardview_body_padding_left_right"
                         android:src="@drawable/logo_70" />
 
                     <LinearLayout
@@ -124,8 +126,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="@dimen/floating_action_button_padding_bottom_right"
+        android:layout_marginEnd="@dimen/floating_action_button_padding_bottom_right"
         android:layout_marginRight="@dimen/floating_action_button_padding_bottom_right"
         android:src="@drawable/ic_add_white_24dp"
         fab:backgroundTint="@color/color_accent"

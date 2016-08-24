@@ -17,6 +17,8 @@ import org.buildmlearn.toolkit.videocollectiontemplate.data.VideoDb;
 import org.buildmlearn.toolkit.views.TextViewPlus;
 
 /**
+ * @brief Splash intro Fragment for video collection template's simulator.
+ *
  * Created by Anupam (opticod) on 21/5/16.
  */
 public class SplashFragment extends Fragment {

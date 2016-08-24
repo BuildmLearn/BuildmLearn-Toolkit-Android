@@ -9,6 +9,7 @@
         android:layout_width="@dimen/thumb_size"
         android:layout_height="@dimen/thumb_size"
         android:layout_gravity="center_horizontal"
+        android:contentDescription="@string/video_thumbnail"
         android:paddingBottom="@dimen/thumb_padding" />
 
     <TextView

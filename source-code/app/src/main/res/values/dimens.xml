@@ -1,7 +1,6 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
 
     <!-- Per the design guidelines, navigation drawers should be between 240dp and 320dp:
          https://developer.android.com/design/patterns/navigation-drawer.html -->
@@ -51,15 +50,26 @@
 
     <!-- Flash card template-->
 
-    <dimen name="card_width">320dp</dimen>
-    <dimen name="card_height">250dp</dimen>
-
     <dimen name="material_navigation_drawer_right_margin">56dp</dimen>
     <dimen name="navigation_drawer_header_height">160dp</dimen>
     <dimen name="thumb_size">250dp</dimen>
     <dimen name="thumb_padding">8dp</dimen>
     <dimen name="thumb_paddingTop">16dp</dimen>
     <dimen name="thumb_paddingRight">18dp</dimen>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="nav_header_vertical_spacing_flash">13.89dp</dimen>
+    <dimen name="nav_header_height_flash">138.9dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin_flash">13.89dp</dimen>
+    <dimen name="activity_vertical_margin_flash">13.89dp</dimen>
+    <dimen name="splash_text_margin_flash">21.71dp</dimen>
+    <dimen name="paddingTop_flash">13.89dp</dimen>
+    <dimen name="cardHeightLastActivity_flash">304.04dp</dimen>
+    <dimen name="margin_mini_flash">3.47dp</dimen>
+    <dimen name="material_button_height_flash">41.69dp</dimen>
+    <dimen name="margin_large_flash">13.89dp</dimen>
+    <dimen name="font_small_flash">13.89sp</dimen>
 
     <!-- Video Collection Template-->
 
@@ -87,10 +97,9 @@
     <dimen name="comprehension_nav_header_height">131dp</dimen>
     <!-- Default screen margins, per the Android Design guidelines. -->
 
+    <dimen name="comprehension_radio_button_margin_top">69.49dp</dimen>
     <dimen name="comprehension_splash_button_margin_top">41dp</dimen>
-    <dimen name="comprehension_paddingTop">13dp</dimen>
     <dimen name="comprehension_cardHeightLastActivity">286.36dp</dimen>
-    <dimen name="comprehension_toolbar_height_small">61.36dp</dimen>
     <dimen name="activity_vertical_margin_simulator">13dp</dimen>
 
     <!-- Info Template-->
@@ -100,4 +109,30 @@
     <dimen name="medium_margin_info">12.2dp</dimen>
     <dimen name="negative_margin_info">-28.63dp</dimen>
 
+    <!-- Dictation Template Simulator-->
+    <dimen name="padding_dict">6.94dp</dimen>
+    <dimen name="paddingTop_dict">13.89dp</dimen>
+    <dimen name="toolbar_height_dict">130.3dp</dimen>
+    <dimen name="medium_margin_dict">13dp</dimen>
+    <dimen name="negative_margin_dict">-30.4dp</dimen>
+    <dimen name="toolbar_height_small_dict">47.77dp</dimen>
+
+    <!--Match Template-->
+
+    <dimen name="paddingTop_match">13.89dp</dimen>
+
+    <!--Spell Template-->
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="nav_header_vertical_spacing_spell">13.89dp</dimen>
+    <dimen name="nav_header_height_spell">138dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin_spell">13.89dp</dimen>
+    <dimen name="activity_vertical_margin_spell">13.89dp</dimen>
+
+    <dimen name="splash_button_margin_top_spell">43.43dp</dimen>
+    <dimen name="splash_text_margin_spell">21.71dp</dimen>
+    <dimen name="paddingTop_spell">13.89dp</dimen>
+
+    <!--Simulator's dimens are .86868686 times smaller-->
 </resources>

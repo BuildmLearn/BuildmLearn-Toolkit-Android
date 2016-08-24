@@ -58,10 +58,6 @@ public class FlashCardModel implements Serializable {
         return mHint;
     }
 
-    public String getImage() {
-        return mImage;
-    }
-
     public Bitmap getImageBitmap() {
         byte[] decodedString = Base64.decode(mImage, Base64.DEFAULT);
         return BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);

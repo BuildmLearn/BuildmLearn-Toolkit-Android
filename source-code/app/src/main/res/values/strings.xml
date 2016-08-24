@@ -14,11 +14,8 @@
     <string name="buildmlearn_welcome_text">The BuildmLearn Toolkit is an easy-to-use program that helps users make mobile apps without any knowledge of application development.\n\nThe toolkit helps creating mobile application with various functionality and allows teachers to input their custom content.</string>
     <string name="no_item">No items</string>
     <string name="add_item_help">Click Add button to start adding items</string>
-    <string name="dialog_draft_title">Draft</string>
 
     <!-- Draft -->
-    <string name="dialog_draft_msg">Do you want to save Project as Draft?</string>
-    <string name="dialog_draft_error">Error in Saving Draft</string>
     <string name="draft_deleted">Draft Successfully Deleted!</string>
     <string name="draft_deleted_failed">Draft Deletion Failed!</string>
     <string name="dialog_delete_all_msg">Are you sure you clear you Draft?</string>
@@ -32,23 +29,23 @@
     <string name="dialog_restore_fileerror">Unable to load given apk</string>
 
     <!-- Quiz Template-->
-
+    <string name="app_name_quiz">Quiz Time</string>
+    <string name="completed_message_quiz">Hurrah! You have completed the Quiz.</string>
     <string name="dialog_yes">Yes</string>
     <string name="dialog_no">No</string>
     <string name="dialog_delete_msg">Are you sure you want to delete this item?</string>
     <string name="dialog_delete_title">Delete</string>
 
 
-    <string name="quiz_template_start">Start</string>
     <string name="about_us">This application has been developed using the BuildmLearn Toolkit.\n\nTo know more about BuildmLearn Toolkit visit http://buildmlearn.org/</string>
     <string name="title_activity_simulator">Simulator</string>
-    <string name="title_activity_template">Template</string>
+    <string name="title_activity_template">Templates</string>
 
 
     <!-- Info Template-->
     <string name="info_template_word">Word</string>
     <string name="info_template_word_hint">Enter title</string>
-    <string name="info_template_meaning">Meaning</string>
+    <string name="info_template_meaning">Description</string>
     <string name="info_template_meaning_hint">Enter description</string>
     <string name="info_template_add">Add</string>
     <string name="info_template_delete">Delete</string>
@@ -76,28 +73,39 @@
     <string name="flash_template_anser_hint">Enter Answer</string>
     <string name="flash_template_hint_hint">Enter Hint</string>
 
+    <string name="main_title_flash">Learn with FlashCards</string>
+    <string name="next_flash">NEXT</string>
+    <string name="exit_flash">EXIT</string>
+    <string name="restart_flash">RESTART</string>
+    <string name="buildmlearn_logo_flash">BuildmLearn Logo</string>
+    <string name="completed_message_flash">Hurrah! You have completed.\nThat was the last card!</string>
+    <string name="previous_flash">PREVIOUS</string>
+    <string name="flip_flash">FLIP</string>
+    <string name="backdrop_image_flash">Backdrop image</string>
+
     <!-- Spelling Template-->
 
-    <string name="msg_txt">Press SPEAK when you are ready. You may adjust the speech rate using the slider. Listen to the word as many times before answering. If you are not sure, you can skip the word.</string>
-    <string name="speak">Listen</string>
-    <string name="ready">Spell it!</string>
     <string name="submit">SUBMIT</string>
-    <string name="msg_successful">Great! You got it right</string>
-    <string name="msg_failure">This is not the correct spelling</string>
-    <string name="nxt_word">Next Word</string>
     <string name="restart">Restart</string>
     <string name="exit">Exit</string>
-    <string name="correct">Correct Spelled:</string>
-    <string name="wrong_spelled">Wrong Spelled:</string>
-    <string name="last_word">That was the last word</string>
-    <string name="skip">Skip</string>
-    <string name="unanswered">Unanswered:</string>
-    <string name="you_entered">You Entered</string>
-    <string name="normal">Normal</string>
-    <string name="start">Start</string>
-    <string name="low">Low</string>
     <string name="high">High</string>
     <string name="speech_rate">Speech Rate:</string>
+
+    <string name="main_title_spell">Learn Spellings</string>
+    <string name="next_spell">NEXT</string>
+    <string name="exit_spell">EXIT</string>
+    <string name="restart_spell">RESTART</string>
+    <string name="buildmlearn_logo_spell">BuildmLearn Logo</string>
+    <string name="completed_message_spell">Hurrah! You have completed.</string>
+    <string name="spell_it_spell">SPELL IT</string>
+    <string name="skip_spell">SKIP</string>
+    <string name="listen_spell">LISTEN</string>
+    <string name="submit_spell">SUBMIT</string>
+    <string name="enter_spelling">Enter Spelling</string>
+    <string name="normal_spell">Normal</string>
+    <string name="low_spell">Low</string>
+    <string name="intro_text_spell">Press SPEAK when you are ready. You may adjust the speech rate using the slider. Listen to the words as many times before answering. If you are not sure, you can skip the word.</string>
+
 
     <!-- Video Collection Template-->
     <string name="video_collection_title">Video Collection</string>
@@ -130,6 +138,18 @@
     <string name="comprehension_passage_title">Passage :</string>
     <string name="comprehension_completed_message">Hurrah! You have completed the Comprehension.</string>
 
+    <!-- Dictation Template-->
+    <string name="dictation_title">Dictation</string>
+    <string name="dictation_template">DictationTemplate</string>
+    <string name="dictation_description">Choose this template to create applications for practising dictation</string>
+    <string name="dictation_template_title_hint">Enter Title</string>
+    <string name="dictation_template_passage_hint">Enter Passage</string>
+
+    <!-- MatchTheFollowing Template-->
+    <string name="match_title">Match</string>
+    <string name="match_template">MatchTemplate</string>
+    <string name="match_description">Choose this template to create applications for practising match the following.</string>
+
     <!-- Assets Filename -->
     <string name="spelling_assets_name">spelling_content.xml</string>
     <string name="quiz_assets_name">quiz_content.xml</string>
@@ -137,6 +157,8 @@
     <string name="info_assets_name">info_content.xml</string>
     <string name="video_assets_name">video_content.xml</string>
     <string name="comprehension_assets_name">comprehension_content.xml</string>
+    <string name="dictation_assets_name">dictation_content.xml</string>
+    <string name="match_assets_name">match_content.xml</string>
 
     <!-- Template Resources-->
     <string name="basic_m_learning_title">Basic mLearning</string>
@@ -174,7 +196,6 @@
 
     <!-- Menu Strings-->
 
-    <string name="menu_project_sort">Sort</string>
     <string name="menu_save_template">Save Template</string>
     <string name="menu_simulate">Simulate</string>
     <string name="menu_delete_template_item">Delete</string>
@@ -182,11 +203,6 @@
     <string name="menu_edit_template_item">Edit</string>
 
     <!-- Dialog Sort -->
-
-    <string name="dialog_sort_title">Sort By</string>
-    <string name="dialog_sort_modified">Last Modified Time</string>
-    <string name="dialog_sort_name">Project Name</string>
-    <string name="dialog_sort_author">Author Name</string>
 
     <!-- Bottom Sheet-->
     <string name="bottom_sheet_share_apk">Share APK</string>
@@ -240,8 +256,6 @@
 
 
     <!-- Flash Card Template-->
-
-    <string name="last_msg">This was the last card!</string>
 
     <!-- Tutorial-->
     <string name="screen_1_title">Welcome to BuildmLearn Toolkit</string>
@@ -313,4 +327,58 @@
     <string name="restart_comprehension">RESTART</string>
 
     <string name="restore_msg">Restoring data from Apk</string>
+    <string name="expandbutton">expandButton</string>
+
+    <!-- About DictationTemplate -->
+    <string name="list_empty_dict">List is Empty!</string>
+    <string name="exit_dict">EXIT</string>
+    <string name="about_us_dict">About Us</string>
+    <string name="about_text_dict">This application has been developed using the BuildmLearn Toolkit.\n\nTo know more about BuildmLearn Toolkit visit <a href="https://buildmlearn.org/">here</a>.</string>
+    <string name="dict_thumbnail">Dict Thumbnail</string>
+    <string name="fast_dict">FAST</string>
+    <string name="medium_dict">MEDIUM</string>
+    <string name="slow_dict">SLOW</string>
+    <string name="select_speed_dict">SELECT SPEED</string>
+    <string name="back_dict">BACK</string>
+    <string name="hint_passage_dict">Click the Sound Icon to recite. And enter the passage that you hear.</string>
+    <string name="restart_dict">RESTART</string>
+    <string name="sound_icon_dict">Sound Icon</string>
+
+    <!--Match Template -->
+
+    <string name="divider">Divider</string>
+    <string name="first_list_title">First List Title</string>
+    <string name="enter_first_list_title">Enter First List Title</string>
+    <string name="second_list_title">Second List Title</string>
+    <string name="enter_second_list_title">Enter Second List Title</string>
+    <string name="match_first_list_title">Enter First List Title</string>
+    <string name="match_second_list_title">Enter Second List Title</string>
+    <string name="match_dialog_add_title">Enter two matching topics below</string>
+    <string name="first_list_item_match">First List Item</string>
+    <string name="second_list_item_match">Second List Item</string>
+    <string name="enter_first_list_item_match">Enter First List Item</string>
+    <string name="enter_second_list_item_match">Enter Second List Item</string>
+    <string name="match_dialog_edit_title">Edit two matching topics below</string>
+    <string name="meta_title">Title</string>
+    <string name="meta_title_match_hint">Enter Title</string>
+
+
+    <string name="previous_match">PREVIOUS</string>
+    <string name="check_answers_match">CHECK ANSWERS</string>
+    <string name="try_again_match">TRY AGAIN</string>
+    <string name="first_list_up_match">First List Up</string>
+    <string name="first_list_down_match">First List Down</string>
+    <string name="second_list_up_match">Second List Up</string>
+    <string name="separator_match">Separator</string>
+    <string name="second_list_down_match">Second List Down</string>
+    <string name="bottom_sheet_share_project">Share Project</string>
+    <string name="buildmlearn_logo">BuildmLearn Logo</string>
+    <string name="buildmlearn_backdrop_image">BuildmLearn backdrop image</string>
+    <string name="upload_image">Upload image</string>
+    <string name="flashcard_image">FlashCard image</string>
+    <string name="delete_item">Delete item</string>
+    <string name="template_thumbnail">Template thumbnail</string>
+    <string name="show_more">Show more</string>
+    <string name="tutorial_image">Tutorial image</string>
+
 </resources>

@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
 
 /**
+ * @brief Contains database util functions for video collection template's simulator.
+ *
  * Created by Anupam (opticod) on 19/5/16.
  */
 public class VideoDb {
@@ -23,10 +25,6 @@ public class VideoDb {
 
     public void open() throws SQLException {
         db = dbHelper.getWritableDatabase();
-    }
-
-    public boolean isOpen() {
-        return db.isOpen();
     }
 
     public void close() {

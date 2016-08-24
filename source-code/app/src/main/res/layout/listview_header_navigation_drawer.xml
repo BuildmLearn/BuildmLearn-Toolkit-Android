@@ -8,6 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
+        android:contentDescription="@string/buildmlearn_backdrop_image"
         android:scaleType="centerCrop"
         android:src="@drawable/bg_navigation_drawer_header" />
 
@@ -17,6 +18,7 @@
         android:layout_above="@+id/name"
         android:layout_centerHorizontal="true"
         android:adjustViewBounds="true"
+        android:contentDescription="@string/buildmlearn_logo"
         android:src="@drawable/logo_70" />
 
     <TextView
@@ -26,6 +28,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="5dp"
         android:textColor="@color/white_primary_text"
         android:textSize="@dimen/sub_title" />

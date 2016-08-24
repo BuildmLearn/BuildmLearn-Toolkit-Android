@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import org.buildmlearn.toolkit.R;
 
 /**
+ * @brief Fragment for displaying score to user in video collection template's simulator.
+ *
  * Created by Anupam (opticod) on 21/5/16.
  */
 public class LastFragment extends Fragment {

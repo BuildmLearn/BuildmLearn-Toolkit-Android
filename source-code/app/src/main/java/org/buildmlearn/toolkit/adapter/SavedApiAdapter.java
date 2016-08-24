@@ -21,8 +21,8 @@ import java.util.Locale;
 
 public class SavedApiAdapter extends BaseAdapter {
 
-    private Context mContext;
-    private ArrayList<SavedApi> data;
+    private final Context mContext;
+    private final ArrayList<SavedApi> data;
 
     public SavedApiAdapter(Context mContext, ArrayList<SavedApi> data) {
         this.mContext = mContext;
@@ -72,7 +72,7 @@ public class SavedApiAdapter extends BaseAdapter {
         }
 
         SavedApi apiData = getItem(position);
-        holder.details.setText("Modified: " + apiData.getDate() + ", Author: " + apiData.getAuthor());
+        holder.details.setText(String.format(Locale.ENGLISH, "Modified: %s, Author: ", apiData.getDate(), apiData.getAuthor()));
         holder.apkName.setText(apiData.getName());
         holder.projectIcon.setText(apiData.getName().substring(0, 1).toUpperCase(Locale.US));
         convertView.setTag(holder);

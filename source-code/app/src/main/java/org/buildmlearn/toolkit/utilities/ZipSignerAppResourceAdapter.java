@@ -43,7 +43,7 @@ class ZipSignerAppResourceAdapter implements ResourceAdapter {
                 return resources.getString(R.string.GeneratingSignatureBlock);
             case COPYING_ZIP_ENTRY:
                 // return String.format("Copying zip entry %d of %d", args[0], args[1]);
-                return resources.getString(R.string.CopyingZipEntry, (int) args[0], (int) args[1]);
+                return resources.getString(R.string.CopyingZipEntry, args[0], args[1]);
             default:
                 throw new IllegalArgumentException("Unknown item " + item);
         }

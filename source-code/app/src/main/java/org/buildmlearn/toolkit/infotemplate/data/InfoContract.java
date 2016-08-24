@@ -6,6 +6,9 @@ import android.provider.BaseColumns;
  * Created by Anupam (opticod) on 20/6/16.
  */
 
+/**
+ * @brief Contains database contracts for info template's simulator.
+ */
 public class InfoContract {
 
     public static final class Info implements BaseColumns {

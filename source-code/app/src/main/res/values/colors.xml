@@ -20,11 +20,17 @@
     <color name="quiz_correct_answer">#43A047</color>
 
     <!-- Quiz Template-->
-    <color name="quiz_template_blue_background">#255593</color>
 
     <!-- Info Template-->
 
-    <color name="BlueBg">#255593</color>
+    <!-- Flash Template-->
+    <color name="colorPrimary_flash">#26C6DA</color>
+    <color name="colorPrimaryDark_flash">#00BCD4</color>
+    <color name="colorAccent_flash">#3F99A9</color>
+    <color name="white_primary_text_flash">#FFF</color>
+    <color name="transparent_black_flash">#80000000</color>
+    <color name="white_color_flash">#ffffff</color>
+    <color name="grey_shade_4_flash">#bdbdbd</color>
 
     <!-- VideoCollectionTemplate Template-->
 
@@ -35,5 +41,18 @@
     <color name="colorPrimary_comprehension">#26C6DA</color>
     <color name="colorPrimaryDark_comprehension">#00BCD4</color>
     <color name="colorAccent_comprehension">#3F99A9</color>
+
+
+    <!--Match Template-->
+
+    <color name="colorAccent_match">#3F99A9</color>
+    <color name="item_correct_match">#ADFF2F</color>
+    <color name="item_wrong_match">#FF4500</color>
+
+    <!--Spell Template-->
+
+    <color name="colorPrimary_spell">#26C6DA</color>
+    <color name="colorPrimaryDark_spell">#00BCD4</color>
+    <color name="colorAccent_spell">#3F99A9</color>
 
 </resources>

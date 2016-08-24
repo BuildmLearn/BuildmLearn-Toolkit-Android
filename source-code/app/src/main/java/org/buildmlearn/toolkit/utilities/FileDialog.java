@@ -14,6 +14,8 @@ import java.util.Collections;
 import java.util.List;
 
 /**
+ * @brief Programmed dialog box to select file from storage.
+ *
  * Created by Anupam (opticod) on 30/5/16.
  */
 public class FileDialog {
@@ -79,7 +81,7 @@ public class FileDialog {
                     File sel = new File(dir, filename);
                     if (!sel.canRead()) return false;
                     else {
-                        boolean endsWith = fileEndsWith != null ? filename.toLowerCase().endsWith(fileEndsWith) : true;
+                        boolean endsWith = fileEndsWith == null || filename.toLowerCase().endsWith(fileEndsWith);
                         return endsWith || sel.isDirectory();
                     }
                 }
@@ -98,8 +100,8 @@ public class FileDialog {
         else return new File(currentPath, fileChosen);
     }
 
-    public void setFileEndsWith(String fileEndsWith) {
-        this.fileEndsWith = fileEndsWith != null ? fileEndsWith.toLowerCase() : fileEndsWith;
+    public void setFileEndsWith() {
+        this.fileEndsWith = ".txt" != null ? ".txt".toLowerCase() : ".txt";
     }
 
     public interface FileSelectListener {
@@ -119,10 +121,6 @@ class ListenerList<L> {
         for (L l : copy) {
             fireHandler.fireEvent(l);
         }
-    }
-
-    public void remove(L listener) {
-        listenerList.remove(listener);
     }
 
     public interface FireHandler<L> {

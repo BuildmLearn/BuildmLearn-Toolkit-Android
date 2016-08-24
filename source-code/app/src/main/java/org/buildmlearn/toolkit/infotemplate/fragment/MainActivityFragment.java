@@ -31,6 +31,11 @@ import java.util.ArrayList;
 /**
  * Created by Anupam (opticod) on 20/6/16.
  */
+
+/**
+ * @brief Fragment containing the list of items in info template's simulator.
+ */
+
 public class MainActivityFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final String SELECTED_KEY = "selected_position";
@@ -92,6 +97,7 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
                         builder.setPositiveButton("OK", null);
                         AlertDialog welcomeAlert = builder.create();
                         welcomeAlert.show();
+                        assert welcomeAlert.findViewById(android.R.id.message) != null;
                         assert ((TextView) welcomeAlert.findViewById(android.R.id.message)) != null;
                         ((TextView) welcomeAlert.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
                         break;
