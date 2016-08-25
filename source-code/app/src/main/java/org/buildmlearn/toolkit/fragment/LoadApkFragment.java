@@ -81,7 +81,10 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
         for (File aFile : file) {
             Log.d(TAG, aFile.getAbsolutePath());
             File apkFile = new File(aFile.getAbsolutePath());
-            savedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified(), apkFile.getAbsolutePath()));
+            PackageInfo info = getActivity().getPackageManager().getPackageArchiveInfo(apkFile.getAbsolutePath(),0);
+            if(info!=null&&info.packageName!=null&&info.packageName.startsWith("org.buildmlearn.")) {
+                savedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified(), apkFile.getAbsolutePath()));
+            }
         }
 
         Collections.sort(savedApis, new Comparator<SavedApi>() {
@@ -184,7 +187,10 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
             for (File aFile : file) {
                 if (aFile.getName().contains(".apk")) {
                     File apkFile = new File(aFile.getAbsolutePath());
-                    savedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified(), apkFile.getAbsolutePath()));
+                    PackageInfo info = getActivity().getPackageManager().getPackageArchiveInfo(apkFile.getAbsolutePath(),0);
+                    if(info!=null&&info.packageName!=null&&info.packageName.startsWith("org.buildmlearn.")) {
+                        savedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified(), apkFile.getAbsolutePath()));
+                    }
                 }
             }
 
