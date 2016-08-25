@@ -3,6 +3,7 @@ package org.buildmlearn.toolkit.fragment;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.res.ColorStateList;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -65,7 +66,7 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
         activity = getActivity();
         savedApis = new ArrayList<>();
 
-        String path = mToolkit.getSavedDir();
+        String path = mToolkit.getApkDir();
         if (mToolkit.checkExternalStorage()) {
             path = mToolkit.getDownloadDirectory();
         }
@@ -78,10 +79,13 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
         }
 
         Log.d("Files", "Size: " + file.length);
-        for (File aFile : file) {
-            Log.d(TAG, aFile.getAbsolutePath());
-            File apkFile = new File(aFile.getAbsolutePath());
-            savedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified(), apkFile.getAbsolutePath()));
+        for (int i = 0; i < file.length; i++) {
+            Log.d(TAG, file[i].getAbsolutePath());
+            File apkFile = new File(file[i].getAbsolutePath());
+            PackageInfo info = getActivity().getPackageManager().getPackageArchiveInfo(apkFile.getAbsolutePath(),0);
+            if(info!=null&&info.packageName!=null&&info.packageName.startsWith("org.buildmlearn.")) {
+                savedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified(), apkFile.getAbsolutePath()));
+            }
         }
 
         Collections.sort(savedApis, new Comparator<SavedApi>() {
@@ -181,10 +185,13 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
             }
 
             Log.d("Files", "Size: " + file.length);
-            for (File aFile : file) {
-                if (aFile.getName().contains(".apk")) {
-                    File apkFile = new File(aFile.getAbsolutePath());
-                    savedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified(), apkFile.getAbsolutePath()));
+            for (int i = 0; i < file.length; i++) {
+                if (file[i].getName().contains(".apk")) {
+                    File apkFile = new File(file[i].getAbsolutePath());
+                    PackageInfo info = getActivity().getPackageManager().getPackageArchiveInfo(apkFile.getAbsolutePath(),0);
+                    if(info!=null&&info.packageName!=null&&info.packageName.startsWith("org.buildmlearn.")) {
+                        savedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified(), apkFile.getAbsolutePath()));
+                    }
                 }
             }
 
