@@ -344,7 +344,7 @@ public class SignerThread extends Thread {
                 name = null;
             }
 
-            if (!(name==oldName) || val != oldVal) {
+            if ((!((name==null&&oldName==null)||(!(name==null&&oldName!=null))||(!(name!=null&&oldName==null)) || val != oldVal) {
                 changed = true;
                 if (!didLogNodeName) {
                     didLogNodeName = true;
