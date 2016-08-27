@@ -58,7 +58,6 @@ public class HomeActivity extends AppCompatActivity
             }
         }
     }
-
     /**
      * {@inheritDoc}
      */
@@ -66,6 +65,10 @@ public class HomeActivity extends AppCompatActivity
     public void onNavigationDrawerItemSelected(int position) {
         Section[] menuItem = Section.values();
         Section selectedMenuItem = menuItem[position];
+        if(getSupportActionBar()!=null) {
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            getSupportActionBar().setDisplayShowCustomEnabled(false);
+        }
         if (selectedMenuItem.getType() == Section.ACTIVITY) {
             Class<?> c;
             if (selectedMenuItem.getViewName() != null) {
@@ -107,6 +110,7 @@ public class HomeActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
+
         if (mNavigationDrawerFragment.isDrawerOpen()) {
             mNavigationDrawerFragment.closeDrawer();
             return;

@@ -17,6 +17,7 @@ public class SavedProject {
     private String time;
     private String type;
     private String author;
+    private long unformattedDate;
 
     public SavedProject(File file, String fileName, long date, String type, String fullPath) {
 
@@ -99,4 +100,6 @@ public class SavedProject {
     public void setFile(File file) {
         this.file = file;
     }
+
+    public long getUnformattedDate(){return unformattedDate;}
 }
