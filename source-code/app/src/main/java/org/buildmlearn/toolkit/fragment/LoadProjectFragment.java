@@ -2,6 +2,7 @@ package org.buildmlearn.toolkit.fragment;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.drawable.ColorDrawable;
@@ -9,16 +10,22 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
@@ -58,8 +65,11 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
     private SavedProjectAdapter mAdapter;
     private ToolkitApplication mToolkit;
     private Activity activity;
-    private ArrayList<SavedProject> savedProjects;
+    private ArrayList<SavedProject> savedProjects,allsavedProjects;
     private View selectedView = null;
+
+    private boolean isSearchOpened = false;
+    private EditText editSearch;
 
     /**
      * {@inheritDoc}
@@ -71,6 +81,7 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
         mToolkit = (ToolkitApplication) getActivity().getApplicationContext();
         activity = getActivity();
         savedProjects = new ArrayList<>();
+        allsavedProjects = new ArrayList<>();
 
         String path = mToolkit.getSavedDir();
         Log.d("Files", "Path: " + path);
@@ -95,6 +106,7 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                 doc.getDocumentElement().normalize();
                 Log.d("Files", "Root element :" + doc.getDocumentElement().getAttribute("type"));
                 savedProjects.add(new SavedProject(fXmlFile, fXmlFile.getName(), fXmlFile.lastModified(), doc.getDocumentElement().getAttribute("type"), fXmlFile.getAbsolutePath()));
+                allsavedProjects.add(new SavedProject(fXmlFile, fXmlFile.getName(), fXmlFile.lastModified(), doc.getDocumentElement().getAttribute("type"), fXmlFile.getAbsolutePath()));
             } catch (ParserConfigurationException | DOMException | IOException | SAXException e) {
                 e.printStackTrace();
             }
@@ -106,7 +118,14 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
             }
         });
 
+        Collections.sort(allsavedProjects, new Comparator<SavedProject>() {
+            public int compare(SavedProject f1, SavedProject f2) {
+                return Long.valueOf(f1.getFile().lastModified()).compareTo(f2.getFile().lastModified());
+            }
+        });
+
         Collections.reverse(savedProjects);
+        Collections.reverse(allsavedProjects);
     }
 
     /**
@@ -190,6 +209,7 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
         if (mAdapter != null) {
 
             savedProjects.clear();
+            allsavedProjects.clear();
 
             String path = mToolkit.getSavedDir();
             Log.d("Files", "Path: " + path);
@@ -213,6 +233,7 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                     doc.getDocumentElement().normalize();
                     Log.d("Files", "Root element :" + doc.getDocumentElement().getAttribute("type"));
                     savedProjects.add(new SavedProject(fXmlFile, fXmlFile.getName(), fXmlFile.lastModified(), doc.getDocumentElement().getAttribute("type"), fXmlFile.getAbsolutePath()));
+                    allsavedProjects.add(new SavedProject(fXmlFile, fXmlFile.getName(), fXmlFile.lastModified(), doc.getDocumentElement().getAttribute("type"), fXmlFile.getAbsolutePath()));
                 } catch (ParserConfigurationException | DOMException | IOException | SAXException e) {
                     e.printStackTrace();
                 }
@@ -224,7 +245,14 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                 }
             });
 
+            Collections.sort(allsavedProjects, new Comparator<SavedProject>() {
+                public int compare(SavedProject f1, SavedProject f2) {
+                    return Long.valueOf(f1.getFile().lastModified()).compareTo(f2.getFile().lastModified());
+                }
+            });
+
             Collections.reverse(savedProjects);
+            Collections.reverse(allsavedProjects);
             mAdapter.notifyDataSetChanged();
         }
         super.onResume();
@@ -282,13 +310,16 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
         if (showTemplateSelectedMenu) {
             activity.getMenuInflater().inflate(R.menu.menu_project_selected, menu);
         }
+        else {
+            activity.getMenuInflater().inflate(R.menu.menu_apk_not_selected,menu);
+        }
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(final MenuItem item) {
         int id = item.getItemId();
 
         switch (id) {
@@ -324,6 +355,92 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                 sendIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
                 startActivity(Intent.createChooser(sendIntent, null));
                 break;
+            case R.id.action_search:
+
+                isSearchOpened=true;
+                ActionBar actionBar=((AppCompatActivity)getActivity()).getSupportActionBar();
+                actionBar.setDisplayShowCustomEnabled(true);
+                item.setVisible(false);
+                actionBar.setCustomView(R.layout.search_bar);
+                actionBar.setDisplayShowTitleEnabled(false);
+                editSearch = (EditText)actionBar.getCustomView().findViewById(R.id.editSearch);
+                editSearch.setHint("Enter name of Apk");
+                editSearch.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        String text = s.toString();
+                        if (text != null) {
+                            if (text.length() > 0) {
+                                savedProjects.clear();
+                                SavedProject tempProject;
+                                for (int i = 0; i < allsavedProjects.size(); i++) {
+                                    if (allsavedProjects.get(i).getName().startsWith(text)) {
+                                        tempProject = new SavedProject(allsavedProjects.get(i).getFile(), allsavedProjects.get(i).getName(), allsavedProjects.get(i).getUnformattedDate(),allsavedProjects.get(i).getType(), allsavedProjects.get(i).getFullPath());
+                                        savedProjects.add(tempProject);
+                                    }
+                                }
+                                mAdapter.notifyDataSetChanged();
+                                setEmptyText();
+                            } else {
+                                savedProjects.clear();
+                                SavedProject tempProject;
+                                for (int i = 0; i < allsavedProjects.size(); i++) {
+                                    tempProject = new SavedProject(allsavedProjects.get(i).getFile(), allsavedProjects.get(i).getName(),allsavedProjects.get(i).getUnformattedDate() ,allsavedProjects.get(i).getType(), allsavedProjects.get(i).getFullPath());
+                                    savedProjects.add(tempProject);
+                                }
+                                mAdapter.notifyDataSetChanged();
+                                setEmptyText();
+                            }
+                        } else {
+                            savedProjects.clear();
+                            SavedProject tempProject;
+                            for (int i = 0; i < allsavedProjects.size(); i++) {
+                                tempProject = new SavedProject(allsavedProjects.get(i).getFile(), allsavedProjects.get(i).getName(),allsavedProjects.get(i).getUnformattedDate() ,allsavedProjects.get(i).getType(), allsavedProjects.get(i).getFullPath());
+                                savedProjects.add(tempProject);
+                            }
+                            mAdapter.notifyDataSetChanged();
+                            setEmptyText();
+                        }
+                    }
+                });
+                editSearch.setOnKeyListener(new View.OnKeyListener() {
+                    @Override
+                    public boolean onKey(View v, int keyCode, KeyEvent event) {
+                        if (keyCode == KeyEvent.KEYCODE_BACK) {
+                            editSearch.onKeyPreIme(keyCode, event);
+                            if (isSearchOpened) {
+                                editSearch.setText("");
+                                ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+                                restoreColorScheme();
+                                actionBar.setDisplayHomeAsUpEnabled(true);
+                                actionBar.setDisplayShowCustomEnabled(false);
+                                actionBar.setDisplayShowTitleEnabled(true);
+                                item.setVisible(true);
+                                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                                imm.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
+                                item.setIcon(getResources().getDrawable(R.drawable.ic_open_search));
+                                isSearchOpened = false;
+                                actionBar.setDisplayShowHomeEnabled(true);
+                            }
+                            return true;
+                        }
+                        return false;
+                    }
+                });
+                editSearch.requestFocus();
+                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.showSoftInput(editSearch, InputMethodManager.SHOW_IMPLICIT);
+
             default: //do nothing
                 break;
         }

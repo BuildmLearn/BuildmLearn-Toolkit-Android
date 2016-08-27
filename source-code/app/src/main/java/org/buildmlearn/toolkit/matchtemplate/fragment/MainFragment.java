@@ -164,6 +164,9 @@ public class MainFragment extends Fragment {
 
         handleListViewListeners();
 
+        listViewA.setAdapter(null);
+        listViewB.setAdapter(null);
+
         View header_A = getLayoutInflater(savedInstanceState).inflate(R.layout.match_template_main_header_a, null);
         View footer_A = getLayoutInflater(savedInstanceState).inflate(R.layout.match_template_main_footer_a, null);
         listViewA.addHeaderView(header_A);
@@ -176,7 +179,7 @@ public class MainFragment extends Fragment {
 
         listViewA.setAdapter(matchListAdapterA);
         listViewB.setAdapter(matchListAdapterB);
-        
+
         if (savedInstanceState != null && savedInstanceState.containsKey(SELECTED_KEY_A) && savedInstanceState.containsKey(SELECTED_KEY_B)) {
             mPositionA = savedInstanceState.getInt(SELECTED_KEY_A);
             mPositionB = savedInstanceState.getInt(SELECTED_KEY_B);
