@@ -367,7 +367,7 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
                         }
                         mAdapter.notifyDataSetChanged();
                         setEmptyText();                        
-                    }
+                   }
                 });
                 editSearch.setOnKeyListener(new View.OnKeyListener() {
                     @Override
