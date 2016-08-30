@@ -189,6 +189,9 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
     public void onResume() {
         if (mAdapter != null) {
 
+            String specificApis="";
+            if(isSearchOpened)
+                specificApis=editSearch.getText().toString();
             savedApis.clear();
             allsavedApis.clear();
             String path = mToolkit.getApkDir();
@@ -210,7 +213,8 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
                     File apkFile = new File(aFile.getAbsolutePath());
                     PackageInfo info = getActivity().getPackageManager().getPackageArchiveInfo(apkFile.getAbsolutePath(),0);
                     if(info!=null&&info.packageName!=null&&info.packageName.startsWith("org.buildmlearn.")) {
-                        savedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified(), apkFile.getAbsolutePath()));
+                        if(apkFile.getName().startsWith(specificApis))
+                            savedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified(), apkFile.getAbsolutePath()));
                         allsavedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified(), apkFile.getAbsolutePath()));
                     }
                 }
@@ -393,18 +397,7 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
                         if (keyCode == KeyEvent.KEYCODE_BACK) {
                             editSearch.onKeyPreIme(keyCode, event);
                             if (isSearchOpened) {
-                                editSearch.setText("");
-                                ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
-                                restoreColorScheme();
-                                actionBar.setDisplayHomeAsUpEnabled(true);
-                                actionBar.setDisplayShowCustomEnabled(false);
-                                actionBar.setDisplayShowTitleEnabled(true);
-                                item.setVisible(true);
-                                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                                imm.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
-                                item.setIcon(getResources().getDrawable(R.drawable.ic_open_search));
-                                isSearchOpened = false;
-                                actionBar.setDisplayShowHomeEnabled(true);
+                                closeSearch();
                             }
                             return true;
                         }
@@ -446,6 +439,23 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
             selectedView.setBackgroundResource(0);
         }
         restoreColorScheme();
+    }
+
+    public void closeSearch()
+    {
+        if (isSearchOpened) {
+            editSearch.setText("");
+            ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+            restoreColorScheme();
+            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
+            isSearchOpened = false;
+            actionBar.setDisplayShowHomeEnabled(true);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setDisplayShowCustomEnabled(false);
+            actionBar.setDisplayShowTitleEnabled(true);
+        }
+
     }
 
 }

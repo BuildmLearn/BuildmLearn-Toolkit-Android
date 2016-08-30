@@ -11,6 +11,8 @@ import android.support.v7.widget.Toolbar;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.constant.Constants;
+import org.buildmlearn.toolkit.fragment.LoadApkFragment;
+import org.buildmlearn.toolkit.fragment.LoadProjectFragment;
 import org.buildmlearn.toolkit.fragment.NavigationDrawerFragment;
 import org.buildmlearn.toolkit.fragment.SettingsFragment;
 import org.buildmlearn.toolkit.model.Section;
@@ -63,6 +65,25 @@ public class HomeActivity extends AppCompatActivity
      */
     @Override
     public void onNavigationDrawerItemSelected(int position) {
+        if(position==-1)
+        {
+            if(currentSection!=null)
+            {
+                if(currentSection.toString().equals("OPEN_PROJECT"))
+                {
+                    LoadProjectFragment f = (LoadProjectFragment)getFragmentManager().findFragmentByTag(currentSection.getViewName());
+                    if(f!=null)
+                        f.closeSearch();
+                }
+                else if(currentSection.toString().equals("OPEN_APK"))
+                {
+                    LoadApkFragment f = (LoadApkFragment)getFragmentManager().findFragmentByTag(currentSection.getViewName());
+                    if(f!=null)
+                        f.closeSearch();
+                }
+            }
+            return ;
+        }
         Section[] menuItem = Section.values();
         Section selectedMenuItem = menuItem[position];
         if(getSupportActionBar()!=null) {

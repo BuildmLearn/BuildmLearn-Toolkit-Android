@@ -208,6 +208,10 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
     public void onResume() {
         if (mAdapter != null) {
 
+            String specificApis="";
+            if(isSearchOpened)
+                specificApis=editSearch.getText().toString();
+
             savedProjects.clear();
             allsavedProjects.clear();
 
@@ -232,7 +236,8 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                     Document doc = dBuilder.parse(fXmlFile);
                     doc.getDocumentElement().normalize();
                     Log.d("Files", "Root element :" + doc.getDocumentElement().getAttribute("type"));
-                    savedProjects.add(new SavedProject(fXmlFile, fXmlFile.getName(), fXmlFile.lastModified(), doc.getDocumentElement().getAttribute("type"), fXmlFile.getAbsolutePath()));
+                    if(fXmlFile.getName().startsWith(specificApis))
+                        savedProjects.add(new SavedProject(fXmlFile, fXmlFile.getName(), fXmlFile.lastModified(), doc.getDocumentElement().getAttribute("type"), fXmlFile.getAbsolutePath()));
                     allsavedProjects.add(new SavedProject(fXmlFile, fXmlFile.getName(), fXmlFile.lastModified(), doc.getDocumentElement().getAttribute("type"), fXmlFile.getAbsolutePath()));
                 } catch (ParserConfigurationException | DOMException | IOException | SAXException e) {
                     e.printStackTrace();
@@ -364,53 +369,31 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                 actionBar.setCustomView(R.layout.search_bar);
                 actionBar.setDisplayShowTitleEnabled(false);
                 editSearch = (EditText)actionBar.getCustomView().findViewById(R.id.editSearch);
-                editSearch.setHint("Enter name of Apk");
+                editSearch.setHint("Enter name of Project");
                 editSearch.addTextChangedListener(new TextWatcher() {
                     @Override
                     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+                        // This method is intentionally left blank
                     }
 
                     @Override
                     public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                        // This method is intentionally left blank
                     }
 
                     @Override
                     public void afterTextChanged(Editable s) {
                         String text = s.toString();
-                        if (text != null) {
-                            if (text.length() > 0) {
-                                savedProjects.clear();
-                                SavedProject tempProject;
-                                for (int i = 0; i < allsavedProjects.size(); i++) {
-                                    if (allsavedProjects.get(i).getName().startsWith(text)) {
-                                        tempProject = new SavedProject(allsavedProjects.get(i).getFile(), allsavedProjects.get(i).getName(), allsavedProjects.get(i).getUnformattedDate(),allsavedProjects.get(i).getType(), allsavedProjects.get(i).getFullPath());
-                                        savedProjects.add(tempProject);
-                                    }
-                                }
-                                mAdapter.notifyDataSetChanged();
-                                setEmptyText();
-                            } else {
-                                savedProjects.clear();
-                                SavedProject tempProject;
-                                for (int i = 0; i < allsavedProjects.size(); i++) {
-                                    tempProject = new SavedProject(allsavedProjects.get(i).getFile(), allsavedProjects.get(i).getName(),allsavedProjects.get(i).getUnformattedDate() ,allsavedProjects.get(i).getType(), allsavedProjects.get(i).getFullPath());
-                                    savedProjects.add(tempProject);
-                                }
-                                mAdapter.notifyDataSetChanged();
-                                setEmptyText();
-                            }
-                        } else {
-                            savedProjects.clear();
-                            SavedProject tempProject;
-                            for (int i = 0; i < allsavedProjects.size(); i++) {
-                                tempProject = new SavedProject(allsavedProjects.get(i).getFile(), allsavedProjects.get(i).getName(),allsavedProjects.get(i).getUnformattedDate() ,allsavedProjects.get(i).getType(), allsavedProjects.get(i).getFullPath());
+                        savedProjects.clear();
+                        SavedProject tempProject;
+                        for (int i = 0; i < allsavedProjects.size(); i++) {
+                            if(allsavedProjects.get(i).getName().startsWith(text)) {
+                                tempProject = new SavedProject(allsavedProjects.get(i).getFile(), allsavedProjects.get(i).getName(), allsavedProjects.get(i).getUnformattedDate(), allsavedProjects.get(i).getType(), allsavedProjects.get(i).getFullPath());
                                 savedProjects.add(tempProject);
                             }
-                            mAdapter.notifyDataSetChanged();
-                            setEmptyText();
                         }
+                        mAdapter.notifyDataSetChanged();
+                        setEmptyText();
                     }
                 });
                 editSearch.setOnKeyListener(new View.OnKeyListener() {
@@ -419,18 +402,7 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                         if (keyCode == KeyEvent.KEYCODE_BACK) {
                             editSearch.onKeyPreIme(keyCode, event);
                             if (isSearchOpened) {
-                                editSearch.setText("");
-                                ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
-                                restoreColorScheme();
-                                actionBar.setDisplayHomeAsUpEnabled(true);
-                                actionBar.setDisplayShowCustomEnabled(false);
-                                actionBar.setDisplayShowTitleEnabled(true);
-                                item.setVisible(true);
-                                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                                imm.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
-                                item.setIcon(getResources().getDrawable(R.drawable.ic_open_search));
-                                isSearchOpened = false;
-                                actionBar.setDisplayShowHomeEnabled(true);
+                                closeSearch();
                             }
                             return true;
                         }
@@ -473,5 +445,22 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
             selectedView.setBackgroundResource(0);
         }
         restoreColorScheme();
+    }
+
+    public void closeSearch()
+    {
+        if (isSearchOpened) {
+            editSearch.setText("");
+            ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+            restoreColorScheme();
+            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
+            isSearchOpened = false;
+            actionBar.setDisplayShowHomeEnabled(true);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setDisplayShowCustomEnabled(false);
+            actionBar.setDisplayShowTitleEnabled(true);
+        }
+
     }
 }
