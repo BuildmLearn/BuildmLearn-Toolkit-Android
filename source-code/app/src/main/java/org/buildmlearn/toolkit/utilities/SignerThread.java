@@ -53,7 +53,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.security.UnrecoverableKeyException;
 import java.util.Calendar;
-import java.util.Objects;
 
 import kellinwood.security.zipsigner.AutoKeyException;
 import kellinwood.security.zipsigner.ZipSigner;
@@ -345,7 +344,7 @@ public class SignerThread extends Thread {
                 name = null;
             }
 
-            if (!Objects.equals(name, oldName) || val != oldVal) {
+            if ((!((name==null&&oldName==null)||(name!=null&&name.equals(oldName)))) || val != oldVal) {
                 changed = true;
                 if (!didLogNodeName) {
                     didLogNodeName = true;

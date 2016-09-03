@@ -2,23 +2,30 @@ package org.buildmlearn.toolkit.fragment;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.res.ColorStateList;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
-import android.content.pm.PackageInfo;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
@@ -50,9 +57,11 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
     private SavedApiAdapter mAdapter;
     private ToolkitApplication mToolkit;
     private Activity activity;
-    private ArrayList<SavedApi> savedApis;
+    private ArrayList<SavedApi> savedApis,allsavedApis;
     private View selectedView = null;
+    private EditText editSearch;
 
+    private boolean isSearchOpened=false;
     private int selectedPosition = -1;
 
     /**
@@ -65,6 +74,7 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
         mToolkit = (ToolkitApplication) getActivity().getApplicationContext();
         activity = getActivity();
         savedApis = new ArrayList<>();
+        allsavedApis = new ArrayList<>();
 
         String path = mToolkit.getSavedDir();
         if (mToolkit.checkExternalStorage()) {
@@ -85,6 +95,7 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
             PackageInfo info = getActivity().getPackageManager().getPackageArchiveInfo(apkFile.getAbsolutePath(),0);
             if(info!=null&&info.packageName!=null&&info.packageName.startsWith("org.buildmlearn.")) {
                 savedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified(), apkFile.getAbsolutePath()));
+                allsavedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified(), apkFile.getAbsolutePath()));
             }
         }
 
@@ -94,7 +105,15 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
             }
         });
 
+        Collections.sort(allsavedApis, new Comparator<SavedApi>() {
+            public int compare(SavedApi f1, SavedApi f2) {
+                return Long.valueOf(f1.getFile().lastModified()).compareTo(f2.getFile().lastModified());
+            }
+        });
+
         Collections.reverse(savedApis);
+        Collections.reverse(allsavedApis);
+
     }
 
     /**
@@ -170,7 +189,11 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
     public void onResume() {
         if (mAdapter != null) {
 
+            String specificApis="";
+            if(isSearchOpened)
+                specificApis=editSearch.getText().toString();
             savedApis.clear();
+            allsavedApis.clear();
             String path = mToolkit.getApkDir();
 
             if (mToolkit.checkExternalStorage()) {
@@ -190,7 +213,9 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
                     File apkFile = new File(aFile.getAbsolutePath());
                     PackageInfo info = getActivity().getPackageManager().getPackageArchiveInfo(apkFile.getAbsolutePath(),0);
                     if(info!=null&&info.packageName!=null&&info.packageName.startsWith("org.buildmlearn.")) {
-                        savedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified(), apkFile.getAbsolutePath()));
+                        if(apkFile.getName().startsWith(specificApis))
+                            savedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified(), apkFile.getAbsolutePath()));
+                        allsavedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified(), apkFile.getAbsolutePath()));
                     }
                 }
             }
@@ -201,7 +226,14 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
                 }
             });
 
+            Collections.sort(allsavedApis, new Comparator<SavedApi>() {
+                public int compare(SavedApi f1, SavedApi f2) {
+                    return Long.valueOf(f1.getFile().lastModified()).compareTo(f2.getFile().lastModified());
+                }
+            });
+
             Collections.reverse(savedApis);
+            Collections.reverse(allsavedApis);
             mAdapter.notifyDataSetChanged();
         }
         super.onResume();
@@ -259,13 +291,16 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
         if (showTemplateSelectedMenu) {
             activity.getMenuInflater().inflate(R.menu.menu_apk_selected, menu);
         }
+        else{
+            activity.getMenuInflater().inflate(R.menu.menu_apk_not_selected,menu);
+        }
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(final MenuItem item) {
         int id = item.getItemId();
 
         switch (id) {
@@ -297,6 +332,59 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
                 sendIntent.setType("application/vnd.android.package-archive");
                 sendIntent.putExtra(Intent.EXTRA_STREAM, fileUri);
                 startActivity(Intent.createChooser(sendIntent, null));
+                break;
+            case R.id.action_search:
+
+                isSearchOpened=true;
+                ActionBar actionBar=((AppCompatActivity)getActivity()).getSupportActionBar();
+                actionBar.setDisplayShowCustomEnabled(true);
+                item.setVisible(false);
+                actionBar.setCustomView(R.layout.search_bar);
+                actionBar.setDisplayShowTitleEnabled(false);
+                editSearch = (EditText)actionBar.getCustomView().findViewById(R.id.editSearch);
+                editSearch.setHint("Enter name of Apk");
+                editSearch.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        String text = s.toString().trim();
+                        savedApis.clear();
+                        SavedApi tempApi;
+                        for (int i = 0; i < allsavedApis.size(); i++) {
+	                        if (allsavedApis.get(i).getName().startsWith(text)) {
+                                tempApi = new SavedApi(allsavedApis.get(i).getFile(), allsavedApis.get(i).getName(), allsavedApis.get(i).getUnformattedDate(), allsavedApis.get(i).getFullPath());
+                                savedApis.add(tempApi);
+                            }
+                        }
+                        mAdapter.notifyDataSetChanged();
+                        setEmptyText();                        
+                   }
+                });
+                editSearch.setOnKeyListener(new View.OnKeyListener() {
+                    @Override
+                    public boolean onKey(View v, int keyCode, KeyEvent event) {
+                        if (keyCode == KeyEvent.KEYCODE_BACK) {
+                            editSearch.onKeyPreIme(keyCode, event);
+                            if (isSearchOpened) {
+                                closeSearch();
+                            }
+                            return true;
+                        }
+                        return false;
+                    }
+                });
+                editSearch.requestFocus();
+                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.showSoftInput(editSearch, InputMethodManager.SHOW_IMPLICIT);
                 break;
             default: //do nothing
                 break;
@@ -330,5 +418,23 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
         }
         restoreColorScheme();
     }
+
+    public void closeSearch()
+    {
+        if (isSearchOpened) {
+            editSearch.setText("");
+            ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+            restoreColorScheme();
+            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
+            isSearchOpened = false;
+            actionBar.setDisplayShowHomeEnabled(true);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setDisplayShowCustomEnabled(false);
+            actionBar.setDisplayShowTitleEnabled(true);
+        }
+
+    }
+
 }
 

@@ -877,4 +877,13 @@ public class TemplateEditor extends AppCompatActivity {
         templateMetaList.setAdapter(adapter);
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(mApkGenerationDialog!=null) {
+            mApkGenerationDialog.dismiss();
+            mApkGenerationDialog=null;
+        }
+    }
+
 }
