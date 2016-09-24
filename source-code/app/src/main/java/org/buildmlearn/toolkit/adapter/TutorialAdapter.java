@@ -18,7 +18,7 @@ import org.buildmlearn.toolkit.model.Tutorial;
 
 /**
  * @brief Adapter used for showing tutorial
- *
+ * <p/>
  * Created by abhishek on 03/08/15 at 10:52 PM.
  */
 public class TutorialAdapter extends PagerAdapter {
@@ -99,7 +99,7 @@ public class TutorialAdapter extends PagerAdapter {
      */
     @Override
     public boolean isViewFromObject(View view, Object object) {
-        return view == object;
+        return view.equals(object);
     }
 
     /**

@@ -66,7 +66,7 @@ class MatchAdapter extends BaseAdapter {
     }
 
     public class Holder {
-        TextViewPlus matchA;
-        TextViewPlus matchB;
+        public TextViewPlus matchA;
+        public TextViewPlus matchB;
     }
 }

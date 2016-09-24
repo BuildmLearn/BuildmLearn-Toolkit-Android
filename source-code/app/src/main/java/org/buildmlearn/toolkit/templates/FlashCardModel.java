@@ -12,7 +12,7 @@ import java.io.Serializable;
 
 /**
  * @brief Model class for Flash Card Template Editor data
- *
+ * <p/>
  * Created by abhishek on 11/07/15 at 7:34 PM.
  */
 public class FlashCardModel implements Serializable {

@@ -21,7 +21,7 @@ import org.buildmlearn.toolkit.model.Section;
 
 /**
  * @brief Adapter used for showing menus in the side panel
- *
+ * <p/>
  * Created by Abhishek on 21/04/15.
  */
 public class NavigationDrawerMenuAdapter extends BaseAdapter {
@@ -52,6 +52,7 @@ public class NavigationDrawerMenuAdapter extends BaseAdapter {
     public int getCount() {
         return sections.length;
     }
+
     /**
      * {@inheritDoc}
      */
@@ -59,6 +60,7 @@ public class NavigationDrawerMenuAdapter extends BaseAdapter {
     public Section getItem(int position) {
         return sections[position];
     }
+
     /**
      * {@inheritDoc}
      */
@@ -66,6 +68,7 @@ public class NavigationDrawerMenuAdapter extends BaseAdapter {
     public long getItemId(int position) {
         return position;
     }
+
     /**
      * {@inheritDoc}
      */
@@ -101,7 +104,7 @@ public class NavigationDrawerMenuAdapter extends BaseAdapter {
             tv.setCompoundDrawablesWithIntrinsicBounds(sectionIcon, null, null, null);
             tv.setBackgroundColor(backgroundColor);
         } else if (menu.getType() == Section.SECTION_DIVIDER && convertView == null) {
-                convertView = inflater.inflate(R.layout.item_section_divider, parent, false);
+            convertView = inflater.inflate(R.layout.item_section_divider, parent, false);
         }
         return convertView;
     }

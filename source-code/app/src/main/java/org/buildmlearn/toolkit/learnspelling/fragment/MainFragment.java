@@ -161,7 +161,6 @@ public class MainFragment extends Fragment
         Cursor spell_cursor = db.getSpellingCursorById(Integer.parseInt(spellId));
         spell_cursor.moveToFirst();
         String word = spell_cursor.getString(Constants.COL_WORD);
-        String meaning = spell_cursor.getString(Constants.COL_MEANING);
         String answered = spell_cursor.getString(Constants.COL_ANSWERED);
 
         setListeners(spellId, word, answered);
@@ -337,12 +336,12 @@ public class MainFragment extends Fragment
 
                 @Override
                 public void onDone(String utteranceId) {
-
+                    // This is intentionally empty
                 }
 
                 @Override
                 public void onError(String utteranceId) {
-
+                    // This is intentionally empty
                 }
             });
         }

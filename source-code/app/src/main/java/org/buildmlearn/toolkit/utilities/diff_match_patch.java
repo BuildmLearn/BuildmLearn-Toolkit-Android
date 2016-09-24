@@ -106,7 +106,7 @@ public class diff_match_patch {
      * Note that this function is case-sensitive.  Thus "%3f" would not be
      * unescaped.  But this is ok because it is only called with the output of
      * URLEncoder.encode which returns uppercase hex.
-     * <p>
+     * <p/>
      * Example: "%3F" -> "?", "%24" -> "$", etc.
      *
      * @param str The string to escape.

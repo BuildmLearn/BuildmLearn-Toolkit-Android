@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 
 /**
  * @brief Model class for holding the details of a Saved File
- *
+ * <p/>
  * Created by Abhishek on 01-06-2015.
  */
 public class SavedProject {
@@ -17,6 +17,7 @@ public class SavedProject {
     private String time;
     private String type;
     private String author;
+    private long unformattedDate;
 
     public SavedProject(File file, String fileName, long date, String type, String fullPath) {
 
@@ -64,12 +65,12 @@ public class SavedProject {
         return date;
     }
 
-    public String getTime() {
-        return time;
-    }
-
     public void setDate(long date) {
         this.date = formatDate(date);
+    }
+
+    public String getTime() {
+        return time;
     }
 
     public String getType() {
@@ -98,5 +99,9 @@ public class SavedProject {
 
     public void setFile(File file) {
         this.file = file;
+    }
+
+    public long getUnformattedDate() {
+        return unformattedDate;
     }
 }

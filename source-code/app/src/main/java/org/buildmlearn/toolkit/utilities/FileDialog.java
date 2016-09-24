@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  * @brief Programmed dialog box to select file from storage.
- *
+ * <p/>
  * Created by Anupam (opticod) on 30/5/16.
  */
 public class FileDialog {
@@ -101,7 +101,7 @@ public class FileDialog {
     }
 
     public void setFileEndsWith() {
-        this.fileEndsWith = ".txt" != null ? ".txt".toLowerCase() : ".txt";
+        this.fileEndsWith = ".txt";
     }
 
     public interface FileSelectListener {

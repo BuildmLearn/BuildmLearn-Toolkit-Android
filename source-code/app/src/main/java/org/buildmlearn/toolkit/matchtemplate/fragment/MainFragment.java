@@ -164,8 +164,8 @@ public class MainFragment extends Fragment {
 
         handleListViewListeners();
 
-        listViewA.setAdapter(matchListAdapterA);
-        listViewB.setAdapter(matchListAdapterB);
+        listViewA.setAdapter(null);
+        listViewB.setAdapter(null);
 
         View header_A = getLayoutInflater(savedInstanceState).inflate(R.layout.match_template_main_header_a, null);
         View footer_A = getLayoutInflater(savedInstanceState).inflate(R.layout.match_template_main_footer_a, null);
@@ -176,6 +176,9 @@ public class MainFragment extends Fragment {
         View footer_B = getLayoutInflater(savedInstanceState).inflate(R.layout.match_template_main_footer_b, null);
         listViewB.addHeaderView(header_B);
         listViewB.addFooterView(footer_B);
+
+        listViewA.setAdapter(matchListAdapterA);
+        listViewB.setAdapter(matchListAdapterB);
 
         if (savedInstanceState != null && savedInstanceState.containsKey(SELECTED_KEY_A) && savedInstanceState.containsKey(SELECTED_KEY_B)) {
             mPositionA = savedInstanceState.getInt(SELECTED_KEY_A);
@@ -212,7 +215,7 @@ public class MainFragment extends Fragment {
         listViewA.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (parent == clickSourceA) {
+                if (parent.equals(clickSourceA)) {
                     highlightListA(position, view);
                 }
             }
@@ -221,7 +224,7 @@ public class MainFragment extends Fragment {
         listViewB.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (parent != clickSourceA) {
+                if (!parent.equals(clickSourceA)) {
                     highlightListB(position, view);
                 }
             }
@@ -240,7 +243,7 @@ public class MainFragment extends Fragment {
         listViewB.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
-
+                // This is intentionally empty
             }
 
             @Override

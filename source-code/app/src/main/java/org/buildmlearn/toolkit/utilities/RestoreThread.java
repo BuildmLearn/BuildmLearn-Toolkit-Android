@@ -21,14 +21,12 @@ public class RestoreThread extends Thread {
     private static final String TEMP_FOLDER = "rtf";
     private final Context context;
     private final InputStream zipInputStream;
-    private final ToolkitApplication toolkit;
 
     private OnRestoreComplete listener;
 
     public RestoreThread(Context context, InputStream zipInputStream) {
         this.context = context;
         this.zipInputStream = zipInputStream;
-        toolkit = (ToolkitApplication) context.getApplicationContext();
     }
 
     public void setRestoreListener(OnRestoreComplete listener) {

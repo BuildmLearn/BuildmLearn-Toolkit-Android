@@ -67,10 +67,10 @@ class VideoCollectionAdapter extends BaseAdapter {
         holder.description.setText(Html.fromHtml("<b>" + "Description :  " + "</b> " + video.getDescription()));
         holder.title.setText(Html.fromHtml("<b>" + "Title :  " + "</b> " + video.getTitle()));
 
-        if (video.getThumbnail_url().length() > 0) {
+        if (video.getThumbnailUrl().length() > 0) {
             Picasso
                     .with(mContext)
-                    .load(video.getThumbnail_url())
+                    .load(video.getThumbnailUrl())
                     .transform(new RoundedTransformation(20, 20))
                     .fit()
                     .centerCrop()

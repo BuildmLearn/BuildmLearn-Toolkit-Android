@@ -33,7 +33,7 @@ import java.util.ArrayList;
 
 /**
  * @brief Comprehension template code implementing methods of TemplateInterface
- *
+ * <p/>
  * Created by Anupam (opticod) on 26/5/16.
  */
 public class ComprehensionTemplate implements TemplateInterface {
@@ -61,7 +61,7 @@ public class ComprehensionTemplate implements TemplateInterface {
         if (timerText.length() > 9) {
             Toast.makeText(context, R.string.comprehension_template_timer_correct_hint, Toast.LENGTH_SHORT).show();
             return false;
-        } else if (titleText.equals("")) {
+        } else if ("".equals(titleText)) {
             Toast.makeText(context, R.string.comprehension_template_title_hint, Toast.LENGTH_SHORT).show();
             return false;
         } else if (passageText.equals("")) {

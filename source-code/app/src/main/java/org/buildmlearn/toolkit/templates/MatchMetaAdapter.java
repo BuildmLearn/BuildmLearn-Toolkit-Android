@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 /**
  * @brief Adapter for displaying Meta Details of Match The Following Template Editor data.
- * <p>
+ * <p/>
  * Created by Anupam (opticod) on 16/7/16.
  */
 class MatchMetaAdapter extends BaseAdapter {
@@ -63,8 +63,8 @@ class MatchMetaAdapter extends BaseAdapter {
         MatchMetaModel meta = getItem(position);
 
         holder.title.setText(Html.fromHtml("<b>" + "Title :  " + "</b> " + meta.getTitle()));
-        holder.first_list_title.setText(Html.fromHtml("<b>" + "First List Title :  " + "</b> " + meta.getFirst_list_title()));
-        holder.second_list_title.setText(Html.fromHtml("<b>" + "Second List Title :  " + "</b> " + meta.getSecond_list_title()));
+        holder.first_list_title.setText(Html.fromHtml("<b>" + "First List Title :  " + "</b> " + meta.getFirstListTitle()));
+        holder.second_list_title.setText(Html.fromHtml("<b>" + "Second List Title :  " + "</b> " + meta.getSecondListTitle()));
 
         return convertView;
     }

@@ -28,7 +28,6 @@ public class SettingsFragment extends PreferenceFragment {
 
     private static final int REQUEST_PICK_APK = 9985;
     private Preference prefUsername;
-    private SharedPreferences preferences;
 
     public static float deleteDirectory(File file, float size) {
         if (file.exists()) {
@@ -52,7 +51,7 @@ public class SettingsFragment extends PreferenceFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.fragment_settings);
-        preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
         Preference deleteTempFiles = findPreference(getString(R.string.key_delete_temporary_files));
         deleteTempFiles.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
@@ -84,14 +83,14 @@ public class SettingsFragment extends PreferenceFragment {
         prefUsername.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
-                prefUsername.setSummary((String)newValue);
+                prefUsername.setSummary((String) newValue);
                 return true;
             }
         });
         prefUsername.setSummary(preferences.getString(getString(R.string.key_user_name), ""));
     }
 
-    void initRestoreProjectDialog() {
+    public void initRestoreProjectDialog() {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("application/*");
         startActivityForResult(intent, REQUEST_PICK_APK);
@@ -166,6 +165,8 @@ public class SettingsFragment extends PreferenceFragment {
 
                 }
 
+                break;
+            default: //do nothing
                 break;
         }
 

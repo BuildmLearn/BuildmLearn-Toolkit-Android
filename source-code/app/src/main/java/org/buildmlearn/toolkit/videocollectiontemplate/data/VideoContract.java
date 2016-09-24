@@ -4,7 +4,7 @@ import android.provider.BaseColumns;
 
 /**
  * @brief Contains database contracts for video collection template's simulator.
- *
+ * <p/>
  * Created by Anupam (opticod) on 13/5/16.
  */
 
