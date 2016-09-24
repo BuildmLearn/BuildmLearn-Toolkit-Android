@@ -33,7 +33,7 @@ import java.util.ArrayList;
 
 /**
  * @brief Comprehension template code implementing methods of TemplateInterface
- *
+ * <p/>
  * Created by Anupam (opticod) on 26/5/16.
  */
 public class ComprehensionTemplate implements TemplateInterface {

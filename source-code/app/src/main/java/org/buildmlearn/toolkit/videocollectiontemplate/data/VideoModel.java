@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 /**
  * @brief Model used to save video entries in database for video collection template's simulator.
- *
+ * <p/>
  * Created by Anupam (opticod) on 12/5/16.
  */
 public class VideoModel implements Parcelable {

@@ -25,7 +25,7 @@ import java.lang.ref.WeakReference;
 
 /**
  * @brief Adapter used for showing Templates available in the toolkit
- * <p>
+ * <p/>
  * Created by Abhishek on 23-05-2015.
  */
 public class TemplateAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {

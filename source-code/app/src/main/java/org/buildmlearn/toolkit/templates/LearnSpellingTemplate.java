@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 /**
  * @brief Learn Spelling template code implementing methods of TemplateInterface
- *
+ * <p/>
  * Created by abhishek on 16/06/15 at 9:59 PM.
  */
 public class LearnSpellingTemplate implements TemplateInterface {

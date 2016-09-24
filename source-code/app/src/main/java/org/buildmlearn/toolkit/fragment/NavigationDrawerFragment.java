@@ -212,7 +212,7 @@ public class NavigationDrawerFragment extends Fragment {
                 if (!isAdded()) {
                     return;
                 }
-                if(mCallbacks!=null)
+                if (mCallbacks != null)
                     mCallbacks.onNavigationDrawerItemSelected(-1);
 
                 if (!mUserLearnedDrawer) {
@@ -261,7 +261,7 @@ public class NavigationDrawerFragment extends Fragment {
         }
 
         if ((mDrawerLayout == null || !isDrawerOpen()) && mCallbacks != null) {
-                mCallbacks.onNavigationDrawerItemSelected(position);
+            mCallbacks.onNavigationDrawerItemSelected(position);
         }
         if (mDrawerLayout != null) {
             mDrawerLayout.closeDrawer(mFragmentContainerView);

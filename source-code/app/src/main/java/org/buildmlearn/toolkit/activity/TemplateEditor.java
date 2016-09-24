@@ -101,8 +101,8 @@ public class TemplateEditor extends AppCompatActivity {
         oldFileName = null;
         setContentView(R.layout.activity_template_editor);
         KeyboardHelper.hideKeyboard(this, findViewById(R.id.toolbar));
-        KeyboardHelper.hideKeyboard(this,findViewById(R.id.template_editor_listview));
-        KeyboardHelper.hideKeyboard(this,findViewById(R.id.empty));
+        KeyboardHelper.hideKeyboard(this, findViewById(R.id.template_editor_listview));
+        KeyboardHelper.hideKeyboard(this, findViewById(R.id.empty));
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         toolkit = (ToolkitApplication) getApplicationContext();
         templateId = getIntent().getIntExtra(Constants.TEMPLATE_ID, -1);
@@ -136,11 +136,11 @@ public class TemplateEditor extends AppCompatActivity {
         });
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                    != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                        PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE_RESULT);
-            }
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE_RESULT);
+        }
     }
 
     /**
@@ -223,14 +223,14 @@ public class TemplateEditor extends AppCompatActivity {
         if (templateEdtiorList == null) {
             templateEdtiorList = (ListView) findViewById(R.id.template_editor_listview);
         }
-            LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View templateHeader = inflater.inflate(R.layout.listview_header_template, templateEdtiorList, false);
-            templateEdtiorList.addHeaderView(templateHeader, null, false);
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View templateHeader = inflater.inflate(R.layout.listview_header_template, templateEdtiorList, false);
+        templateEdtiorList.addHeaderView(templateHeader, null, false);
 
-            EditText authorEditText = (EditText) findViewById(R.id.author_name);
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-            assert authorEditText != null;
-            authorEditText.setText(preferences.getString(getString(R.string.key_user_name), ""));
+        EditText authorEditText = (EditText) findViewById(R.id.author_name);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        assert authorEditText != null;
+        authorEditText.setText(preferences.getString(getString(R.string.key_user_name), ""));
 
         setAdapter(adapter);
 
@@ -552,7 +552,7 @@ public class TemplateEditor extends AppCompatActivity {
             if (selectedView instanceof CardView) {
                 ((CardView) selectedView).setCardBackgroundColor(Color.WHITE);
             } else {
-            selectedView.setBackgroundResource(0);
+                selectedView.setBackgroundResource(0);
             }
         }
 
@@ -683,8 +683,8 @@ public class TemplateEditor extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        if (saveDraft()!=null)
-            Toast.makeText(getApplicationContext(),"Saved in Draft!",Toast.LENGTH_SHORT).show();
+        if (saveDraft() != null)
+            Toast.makeText(getApplicationContext(), "Saved in Draft!", Toast.LENGTH_SHORT).show();
 
     }
 
@@ -739,12 +739,12 @@ public class TemplateEditor extends AppCompatActivity {
 
             int draftFileIndex = 0;
             File draftDir = new File(toolkit.getDraftDir());
-            String probableFileName = "draft"+draftFileIndex+ ".buildmlearn";
+            String probableFileName = "draft" + draftFileIndex + ".buildmlearn";
             File probableFile = new File(draftDir, probableFileName);
 
-            while(probableFile.exists()) {
+            while (probableFile.exists()) {
                 draftFileIndex++;
-                probableFileName = "draft"+draftFileIndex+ ".buildmlearn";
+                probableFileName = "draft" + draftFileIndex + ".buildmlearn";
                 probableFile = new File(draftDir, probableFileName);
             }
 
@@ -752,11 +752,11 @@ public class TemplateEditor extends AppCompatActivity {
             // Then Don't make Draft
             File tempFile = new File(toolkit.getDraftDir(), ".temp");
             File oldFile = null;
-            if (oldFileName!=null)
+            if (oldFileName != null)
                 oldFile = new File(oldFileName);
 
             FileUtils.saveXmlFile(toolkit.getDraftDir(), ".temp", doc);
-            if (oldFile == null || !FileUtils.equalContent(tempFile,oldFile)) {
+            if (oldFile == null || !FileUtils.equalContent(tempFile, oldFile)) {
                 tempFile.renameTo(probableFile);
                 return toolkit.getDraftDir() + probableFileName;
             } else {
@@ -768,7 +768,7 @@ public class TemplateEditor extends AppCompatActivity {
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
         }
-    return null;
+        return null;
     }
 
 
@@ -832,7 +832,7 @@ public class TemplateEditor extends AppCompatActivity {
                 populateMetaView(selectedTemplate.loadProjectMetaEditor(this, doc));
             }
             File draftDir = new File(toolkit.getDraftDir());
-            if (fXmlFile.getParentFile().compareTo(draftDir) ==0 ) {
+            if (fXmlFile.getParentFile().compareTo(draftDir) == 0) {
                 //If Draft File
                 fXmlFile.delete();
             }
@@ -880,9 +880,9 @@ public class TemplateEditor extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        if(mApkGenerationDialog!=null) {
+        if (mApkGenerationDialog != null) {
             mApkGenerationDialog.dismiss();
-            mApkGenerationDialog=null;
+            mApkGenerationDialog = null;
         }
     }
 

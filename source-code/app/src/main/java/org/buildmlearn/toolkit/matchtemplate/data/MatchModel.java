@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 /**
  * @brief Model class for Match The Following Template Editor data
- * <p>
+ * <p/>
  * Created by Anupam (opticod) on 24/7/16.
  */
 

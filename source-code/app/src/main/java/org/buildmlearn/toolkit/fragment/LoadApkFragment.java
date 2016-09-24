@@ -57,11 +57,11 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
     private SavedApiAdapter mAdapter;
     private ToolkitApplication mToolkit;
     private Activity activity;
-    private ArrayList<SavedApi> savedApis,allsavedApis;
+    private ArrayList<SavedApi> savedApis, allsavedApis;
     private View selectedView = null;
     private EditText editSearch;
 
-    private boolean isSearchOpened=false;
+    private boolean isSearchOpened = false;
     private int selectedPosition = -1;
 
     /**
@@ -92,8 +92,8 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
         for (File aFile : file) {
             Log.d(TAG, aFile.getAbsolutePath());
             File apkFile = new File(aFile.getAbsolutePath());
-            PackageInfo info = getActivity().getPackageManager().getPackageArchiveInfo(apkFile.getAbsolutePath(),0);
-            if(info!=null&&info.packageName!=null&&info.packageName.startsWith("org.buildmlearn.")) {
+            PackageInfo info = getActivity().getPackageManager().getPackageArchiveInfo(apkFile.getAbsolutePath(), 0);
+            if (info != null && info.packageName != null && info.packageName.startsWith("org.buildmlearn.")) {
                 savedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified()));
                 allsavedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified()));
             }
@@ -189,9 +189,9 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
     public void onResume() {
         if (mAdapter != null) {
 
-            String specificApis="";
-            if(isSearchOpened)
-                specificApis=editSearch.getText().toString();
+            String specificApis = "";
+            if (isSearchOpened)
+                specificApis = editSearch.getText().toString();
             savedApis.clear();
             allsavedApis.clear();
             String path = mToolkit.getApkDir();
@@ -211,9 +211,9 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
             for (File aFile : file) {
                 if (aFile.getName().contains(".apk")) {
                     File apkFile = new File(aFile.getAbsolutePath());
-                    PackageInfo info = getActivity().getPackageManager().getPackageArchiveInfo(apkFile.getAbsolutePath(),0);
-                    if(info!=null&&info.packageName!=null&&info.packageName.startsWith("org.buildmlearn.")) {
-                        if(apkFile.getName().startsWith(specificApis))
+                    PackageInfo info = getActivity().getPackageManager().getPackageArchiveInfo(apkFile.getAbsolutePath(), 0);
+                    if (info != null && info.packageName != null && info.packageName.startsWith("org.buildmlearn.")) {
+                        if (apkFile.getName().startsWith(specificApis))
                             savedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified()));
                         allsavedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified()));
                     }
@@ -290,9 +290,8 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
         super.onPrepareOptionsMenu(menu);
         if (showTemplateSelectedMenu) {
             activity.getMenuInflater().inflate(R.menu.menu_apk_selected, menu);
-        }
-        else{
-            activity.getMenuInflater().inflate(R.menu.menu_apk_not_selected,menu);
+        } else {
+            activity.getMenuInflater().inflate(R.menu.menu_apk_not_selected, menu);
         }
     }
 
@@ -335,13 +334,13 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
                 break;
             case R.id.action_search:
 
-                isSearchOpened=true;
-                ActionBar actionBar=((AppCompatActivity)getActivity()).getSupportActionBar();
+                isSearchOpened = true;
+                ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
                 actionBar.setDisplayShowCustomEnabled(true);
                 item.setVisible(false);
                 actionBar.setCustomView(R.layout.search_bar);
                 actionBar.setDisplayShowTitleEnabled(false);
-                editSearch = (EditText)actionBar.getCustomView().findViewById(R.id.editSearch);
+                editSearch = (EditText) actionBar.getCustomView().findViewById(R.id.editSearch);
                 editSearch.setHint("Enter name of Apk");
                 editSearch.addTextChangedListener(new TextWatcher() {
                     @Override
@@ -360,14 +359,14 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
                         savedApis.clear();
                         SavedApi tempApi;
                         for (int i = 0; i < allsavedApis.size(); i++) {
-	                        if (allsavedApis.get(i).getName().startsWith(text)) {
+                            if (allsavedApis.get(i).getName().startsWith(text)) {
                                 tempApi = new SavedApi(allsavedApis.get(i).getFile(), allsavedApis.get(i).getName(), allsavedApis.get(i).getUnformattedDate());
                                 savedApis.add(tempApi);
                             }
                         }
                         mAdapter.notifyDataSetChanged();
-                        setEmptyText();                        
-                   }
+                        setEmptyText();
+                    }
                 });
                 editSearch.setOnKeyListener(new View.OnKeyListener() {
                     @Override
@@ -419,8 +418,7 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
         restoreColorScheme();
     }
 
-    public void closeSearch()
-    {
+    public void closeSearch() {
         if (isSearchOpened) {
             editSearch.setText("");
             ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();

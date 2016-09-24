@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 /**
  * @brief Adapter for displaying Meta Details of Match The Following Template Editor data.
- * <p>
+ * <p/>
  * Created by Anupam (opticod) on 16/7/16.
  */
 class MatchMetaAdapter extends BaseAdapter {

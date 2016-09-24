@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 /**
  * @brief Adapter for displaying Learn Spelling Template Editor data.
- *
+ * <p/>
  * Created by abhishek on 17/06/15 at 9:48 PM.
  */
 class LearnSpellingAdapter extends BaseAdapter {

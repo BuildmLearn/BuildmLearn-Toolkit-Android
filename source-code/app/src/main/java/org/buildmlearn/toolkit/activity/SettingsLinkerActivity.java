@@ -12,7 +12,7 @@ import org.buildmlearn.toolkit.constant.Constants;
 
 /**
  * @brief Activity responsible for changing settings from android settings menu
- * <p>
+ * <p/>
  * This activity is started whenever users clicks App Settings under App notifications in android settings menu.
  */
 public class SettingsLinkerActivity extends Activity {

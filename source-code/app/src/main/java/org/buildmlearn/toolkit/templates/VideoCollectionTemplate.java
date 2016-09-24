@@ -39,7 +39,7 @@ import java.util.ArrayList;
 
 /**
  * @brief Video template code implementing methods of TemplateInterface
- *
+ * <p/>
  * Created by Anupam (opticod) on 4/5/16.
  */
 public class VideoCollectionTemplate implements TemplateInterface {

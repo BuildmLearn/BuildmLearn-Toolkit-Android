@@ -48,43 +48,39 @@ public class HomeActivity extends AppCompatActivity
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
         if (getIntent().hasExtra(Constants.START_FRAGMENT) && getIntent().getIntExtra(Constants.START_FRAGMENT, 0) == 3) {
-                currentSection.setIsSelected(false);
-                Section[] menuItem = Section.values();
-                Section selectedMenuItem = menuItem[3];
-                selectedMenuItem.setIsSelected(true);
-                currentSection = selectedMenuItem;
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.replace(R.id.container, new SettingsFragment());
-                ft.commit();
+            currentSection.setIsSelected(false);
+            Section[] menuItem = Section.values();
+            Section selectedMenuItem = menuItem[3];
+            selectedMenuItem.setIsSelected(true);
+            currentSection = selectedMenuItem;
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            ft.replace(R.id.container, new SettingsFragment());
+            ft.commit();
         }
     }
+
     /**
      * {@inheritDoc}
      */
     @Override
     public void onNavigationDrawerItemSelected(int position) {
-        if(position==-1)
-        {
-            if(currentSection!=null)
-            {
-                if(currentSection.toString().equals("OPEN_PROJECT"))
-                {
-                    LoadProjectFragment f = (LoadProjectFragment)getFragmentManager().findFragmentByTag(currentSection.getViewName());
-                    if(f!=null)
+        if (position == -1) {
+            if (currentSection != null) {
+                if (currentSection.toString().equals("OPEN_PROJECT")) {
+                    LoadProjectFragment f = (LoadProjectFragment) getFragmentManager().findFragmentByTag(currentSection.getViewName());
+                    if (f != null)
                         f.closeSearch();
-                }
-                else if(currentSection.toString().equals("OPEN_APK"))
-                {
-                    LoadApkFragment f = (LoadApkFragment)getFragmentManager().findFragmentByTag(currentSection.getViewName());
-                    if(f!=null)
+                } else if (currentSection.toString().equals("OPEN_APK")) {
+                    LoadApkFragment f = (LoadApkFragment) getFragmentManager().findFragmentByTag(currentSection.getViewName());
+                    if (f != null)
                         f.closeSearch();
                 }
             }
-            return ;
+            return;
         }
         Section[] menuItem = Section.values();
         Section selectedMenuItem = menuItem[position];
-        if(getSupportActionBar()!=null) {
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
             getSupportActionBar().setDisplayShowCustomEnabled(false);
         }

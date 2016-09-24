@@ -7,7 +7,7 @@ import org.buildmlearn.toolkit.R;
 
 /**
  * @brief Enum used as model for holding tutorial data.
- *
+ * <p/>
  * Created by abhishek on 03/08/15 at 10:53 PM.
  */
 public enum Tutorial {

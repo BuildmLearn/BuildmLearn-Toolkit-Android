@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 /**
  * @brief Adapter for displaying Flash Card Template Editor data.
- *
+ * <p/>
  * Created by abhishek on 12/07/15 at 11:56 PM.
  */
 class FlashCardAdapter extends BaseAdapter {

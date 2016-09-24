@@ -83,7 +83,7 @@ public class SettingsFragment extends PreferenceFragment {
         prefUsername.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
-                prefUsername.setSummary((String)newValue);
+                prefUsername.setSummary((String) newValue);
                 return true;
             }
         });
