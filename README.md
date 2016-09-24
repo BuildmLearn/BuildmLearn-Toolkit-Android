@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/BuildmLearn/BuildmLearn-Toolkit-Android.svg)](https://travis-ci.org/BuildmLearn/BuildmLearn-Toolkit-Android) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/05c83f4ecad84cc0a2e57d7ea39df41f)](https://www.codacy.com/app/anupam/BuildmLearn-Toolkit-Android?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=BuildmLearn/BuildmLearn-Toolkit-Android&amp;utm_campaign=Badge_Grade)
+[![Preview the app](https://img.shields.io/badge/Preview-Appetize.io-green.svg)](https://appetize.io/app/k56b095hpt7ppmhmmhbg2ayj20) [![Build Status](https://travis-ci.org/BuildmLearn/BuildmLearn-Toolkit-Android.svg)](https://travis-ci.org/BuildmLearn/BuildmLearn-Toolkit-Android) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/05c83f4ecad84cc0a2e57d7ea39df41f)](https://www.codacy.com/app/anupam/BuildmLearn-Toolkit-Android?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=BuildmLearn/BuildmLearn-Toolkit-Android&amp;utm_campaign=Badge_Grade)
 
 # BuildmLearn-Toolkit-Android
 
@@ -70,3 +70,9 @@ Redistributions in binary form must reproduce the above copyright notice, this l
 Neither the name of the BuildmLearn nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+## Maintainers
+The project is maintained by
+- Pankaj Nathani ([@croozeus](https://github.com/croozeus))
+- Anupam Das ([@opticod](https://github.com/opticod))
+
