@@ -65,7 +65,7 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
     private SavedProjectAdapter mAdapter;
     private ToolkitApplication mToolkit;
     private Activity activity;
-    private ArrayList<SavedProject> savedProjects,allsavedProjects;
+    private ArrayList<SavedProject> savedProjects, allsavedProjects;
     private View selectedView = null;
 
     private boolean isSearchOpened = false;
@@ -208,9 +208,9 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
     public void onResume() {
         if (mAdapter != null) {
 
-            String specificApis="";
-            if(isSearchOpened)
-                specificApis=editSearch.getText().toString();
+            String specificApis = "";
+            if (isSearchOpened)
+                specificApis = editSearch.getText().toString();
 
             savedProjects.clear();
             allsavedProjects.clear();
@@ -236,7 +236,7 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                     Document doc = dBuilder.parse(fXmlFile);
                     doc.getDocumentElement().normalize();
                     Log.d("Files", "Root element :" + doc.getDocumentElement().getAttribute("type"));
-                    if(fXmlFile.getName().startsWith(specificApis))
+                    if (fXmlFile.getName().startsWith(specificApis))
                         savedProjects.add(new SavedProject(fXmlFile, fXmlFile.getName(), fXmlFile.lastModified(), doc.getDocumentElement().getAttribute("type"), fXmlFile.getAbsolutePath()));
                     allsavedProjects.add(new SavedProject(fXmlFile, fXmlFile.getName(), fXmlFile.lastModified(), doc.getDocumentElement().getAttribute("type"), fXmlFile.getAbsolutePath()));
                 } catch (ParserConfigurationException | DOMException | IOException | SAXException e) {
@@ -314,9 +314,8 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
         super.onCreateOptionsMenu(menu, inflater);
         if (showTemplateSelectedMenu) {
             activity.getMenuInflater().inflate(R.menu.menu_project_selected, menu);
-        }
-        else {
-            activity.getMenuInflater().inflate(R.menu.menu_apk_not_selected,menu);
+        } else {
+            activity.getMenuInflater().inflate(R.menu.menu_apk_not_selected, menu);
         }
     }
 
@@ -362,13 +361,13 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                 break;
             case R.id.action_search:
 
-                isSearchOpened=true;
-                ActionBar actionBar=((AppCompatActivity)getActivity()).getSupportActionBar();
+                isSearchOpened = true;
+                ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
                 actionBar.setDisplayShowCustomEnabled(true);
                 item.setVisible(false);
                 actionBar.setCustomView(R.layout.search_bar);
                 actionBar.setDisplayShowTitleEnabled(false);
-                editSearch = (EditText)actionBar.getCustomView().findViewById(R.id.editSearch);
+                editSearch = (EditText) actionBar.getCustomView().findViewById(R.id.editSearch);
                 editSearch.setHint("Enter name of Project");
                 editSearch.addTextChangedListener(new TextWatcher() {
                     @Override
@@ -387,7 +386,7 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                         savedProjects.clear();
                         SavedProject tempProject;
                         for (int i = 0; i < allsavedProjects.size(); i++) {
-                            if(allsavedProjects.get(i).getName().startsWith(text)) {
+                            if (allsavedProjects.get(i).getName().startsWith(text)) {
                                 tempProject = new SavedProject(allsavedProjects.get(i).getFile(), allsavedProjects.get(i).getName(), allsavedProjects.get(i).getUnformattedDate(), allsavedProjects.get(i).getType(), allsavedProjects.get(i).getFullPath());
                                 savedProjects.add(tempProject);
                             }
@@ -447,8 +446,7 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
         restoreColorScheme();
     }
 
-    public void closeSearch()
-    {
+    public void closeSearch() {
         if (isSearchOpened) {
             editSearch.setText("");
             ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();

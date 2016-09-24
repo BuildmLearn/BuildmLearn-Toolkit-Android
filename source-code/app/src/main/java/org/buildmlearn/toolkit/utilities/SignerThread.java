@@ -132,7 +132,7 @@ public class SignerThread extends Thread {
 
     private String getFinalApkPath(String buildmlearnPath) {
         int index = buildmlearnPath.lastIndexOf("buildmlearn");
-        return buildmlearnPath.substring(0,index) + "apk";
+        return buildmlearnPath.substring(0, index) + "apk";
     }
 
     public void setSignerThreadListener(OnSignComplete listener) {
@@ -344,7 +344,7 @@ public class SignerThread extends Thread {
                 name = null;
             }
 
-            if ((!((name==null&&oldName==null)||(name!=null&&name.equals(oldName)))) || val != oldVal) {
+            if ((!((name == null && oldName == null) || (name != null && name.equals(oldName)))) || val != oldVal) {
                 changed = true;
                 if (!didLogNodeName) {
                     didLogNodeName = true;

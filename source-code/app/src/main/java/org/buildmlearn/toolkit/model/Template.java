@@ -15,7 +15,7 @@ import org.buildmlearn.toolkit.templates.VideoCollectionTemplate;
 
 /**
  * @brief Enum for the templates that are included into toolkit application.
- *
+ * <p/>
  * Created by Abhishek on 23-05-2015.
  */
 public enum Template {

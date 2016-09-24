@@ -10,7 +10,7 @@ import android.support.annotation.NonNull;
 
 /**
  * @brief Contains database util functions for video collection template's simulator.
- *
+ * <p/>
  * Created by Anupam (opticod) on 19/5/16.
  */
 public class VideoDb {

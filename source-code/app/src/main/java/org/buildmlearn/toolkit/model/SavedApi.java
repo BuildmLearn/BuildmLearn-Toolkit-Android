@@ -17,14 +17,12 @@ public class SavedApi {
     private long unformattedDate;
     private String name;
     private String author;
-    private String fullPath;
 
-    public SavedApi(File file, String fileName, long date, String fullPath) {
+    public SavedApi(File file, String fileName, long date) {
 
         this.file = file;
         this.unformattedDate = date;
         this.date = formatDate(date);
-        this.fullPath = fullPath;
         String[] data = fileName.split("-by-");
         try {
             this.name = data[0];
@@ -63,8 +61,8 @@ public class SavedApi {
         return file;
     }
 
-    public String getFullPath(){return fullPath;}
-
-    public long getUnformattedDate(){return unformattedDate;}
+    public long getUnformattedDate() {
+        return unformattedDate;
+    }
 
 }

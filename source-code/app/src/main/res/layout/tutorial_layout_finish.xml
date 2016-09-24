@@ -1,9 +1,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:font="http://schemas.android.com/apk/res-auto"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:context="org.buildmlearn.toolkit.activity.FirstRunActivity">
+    xmlns:font="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="org.buildmlearn.toolkit.activity.FirstRunActivity">
 
     <ImageView
         android:layout_width="match_parent"
@@ -11,7 +11,7 @@
         android:adjustViewBounds="true"
         android:contentDescription="@string/buildmlearn_backdrop_image"
         android:scaleType="centerCrop"
-        android:src="@drawable/first_run_bg"/>
+        android:src="@drawable/first_run_bg" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,7 +26,7 @@
             android:adjustViewBounds="true"
             android:contentDescription="@string/buildmlearn_logo"
             android:scaleType="centerCrop"
-            android:src="@drawable/logo_70"/>
+            android:src="@drawable/logo_70" />
 
         <org.buildmlearn.toolkit.views.TextViewPlus
             android:layout_width="match_parent"
@@ -35,7 +35,7 @@
             android:text="@string/main_title"
             android:textColor="@color/white_secondary_text"
             android:textSize="@dimen/headline_leading"
-            font:customFont="roboto_light.ttf"/>
+            font:customFont="roboto_light.ttf" />
 
         <org.buildmlearn.toolkit.views.TextViewPlus
             android:layout_width="match_parent"
@@ -44,7 +44,7 @@
             android:text="@string/main_subtitle"
             android:textColor="@color/white_secondary_text"
             android:textSize="@dimen/title"
-            font:customFont="roboto_light.ttf"/>
+            font:customFont="roboto_light.ttf" />
 
 
         <Button
@@ -58,7 +58,7 @@
             android:paddingRight="20dp"
             android:text="@string/screen_finish"
             android:textAllCaps="true"
-            android:textColor="@color/white_primary_text"/>
+            android:textColor="@color/white_primary_text" />
 
 
     </LinearLayout>

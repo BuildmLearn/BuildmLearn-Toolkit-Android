@@ -51,7 +51,7 @@ import javax.xml.parsers.ParserConfigurationException;
 /**
  * @brief Fragment used to save drafts.
  */
-public class DraftsFragment extends Fragment implements AbsListView.OnItemClickListener  {
+public class DraftsFragment extends Fragment implements AbsListView.OnItemClickListener {
 
     private static final String TAG = "Draft Project Fragment";
     private AbsListView mListView;
@@ -206,7 +206,7 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
             }
         });
 
-        if(mAdapter!=null)
+        if (mAdapter != null)
             mAdapter.notifyDataSetChanged();
     }
 
@@ -262,7 +262,7 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
         menu.clear();
         if (showTemplateSelectedMenu) {
             activity.getMenuInflater().inflate(R.menu.menu_project_selected, menu);
-        } else if (mAdapter.getCount()>0) {
+        } else if (mAdapter.getCount() > 0) {
             activity.getMenuInflater().inflate(R.menu.menu_draft, menu);
         }
     }
@@ -343,7 +343,7 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
         File draftDir = new File(mToolkit.getDraftDir());
         File[] allDrafts = draftDir.listFiles();
         boolean allDeleted = true;
-        for (File draft: allDrafts ) {
+        for (File draft : allDrafts) {
             if (!draft.delete())
                 allDeleted = false;
         }

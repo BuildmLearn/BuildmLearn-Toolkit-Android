@@ -2,9 +2,9 @@
 
     <!-- Hiding publish icon until the api is ready-->
     <!--<item-->
-        <!--android:id="@+id/publish_apk"-->
-        <!--android:icon="@drawable/publish_apk"-->
-        <!--android:title="@string/bottom_sheet_publish" />-->
+    <!--android:id="@+id/publish_apk"-->
+    <!--android:icon="@drawable/publish_apk"-->
+    <!--android:title="@string/bottom_sheet_publish" />-->
     <item
         android:id="@+id/save_apk"
         android:icon="@drawable/save_apk"

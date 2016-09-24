@@ -35,7 +35,7 @@ import java.util.ArrayList;
 
 /**
  * @brief Flash Card template code implementing methods of TemplateInterface
- *
+ * <p/>
  * Created by abhishek on 11/07/15 at 7:33 PM.
  */
 public class FlashTemplate implements TemplateInterface {
@@ -144,7 +144,7 @@ public class FlashTemplate implements TemplateInterface {
         uploadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                // This is intentionally empty
             }
         });
 
@@ -171,7 +171,7 @@ public class FlashTemplate implements TemplateInterface {
 
     @Override
     public void addMetaData(Activity activity) {
-
+        // This is intentionally empty
     }
 
 
@@ -375,7 +375,7 @@ public class FlashTemplate implements TemplateInterface {
         mImageUri = null;
         try {
 
-            photo = createTemporaryFile(context, "picture");
+            photo = createTemporaryFile(context);
             mImageUri = Uri.fromFile(photo);
             photo.delete();
         } catch (Exception e) {
@@ -392,7 +392,7 @@ public class FlashTemplate implements TemplateInterface {
         return chooser;
     }
 
-    private File createTemporaryFile(Context context, String part) throws Exception {
+    private File createTemporaryFile(Context context) throws Exception {
 
         ToolkitApplication toolkitApplication = (ToolkitApplication) context.getApplicationContext();
 

@@ -29,7 +29,7 @@ import javax.xml.transform.stream.StreamResult;
 
 /**
  * @brief Helper functions related to String manipulation.
- *
+ * <p/>
  * Created by Abhishek on 23-05-2015.
  */
 public class FileUtils {
@@ -38,11 +38,10 @@ public class FileUtils {
 
 
     /**
-     * @brief Unzips a compressed file (.zip, .apk)
-     *
-     * @param zipFilePath Path of the source zip file
+     * @param zipFilePath       Path of the source zip file
      * @param destinationFolder Destination folder for stroing the uncompresses files.
      * @throws IOException Exception thrown in case of some error.
+     * @brief Unzips a compressed file (.zip, .apk)
      */
     public static void unZip(String zipFilePath, String destinationFolder) throws IOException {
         InputStream zipInputStream = new FileInputStream(zipFilePath);
@@ -105,10 +104,10 @@ public class FileUtils {
     }
 
     /**
-     * @brief Copies a file from assets folder to a folder on device memory
-     * @param context Application context
-     * @param assetFileName Name of the file stored in assets
+     * @param context              Application context
+     * @param assetFileName        Name of the file stored in assets
      * @param destinationDirectory Destination folder for saving the file
+     * @brief Copies a file from assets folder to a folder on device memory
      */
     public static void copyAssets(Context context, String assetFileName, String destinationDirectory) {
         AssetManager assetManager = context.getAssets();
@@ -175,9 +174,9 @@ public class FileUtils {
         } finally {
 
             try {
-                if(is1!=null)
-                        is1.close();
-                if(is2!=null)
+                if (is1 != null)
+                    is1.close();
+                if (is2 != null)
                     is2.close();
             } catch (IOException ignored) {
 
@@ -188,13 +187,12 @@ public class FileUtils {
     }
 
 
-
     /**
-     * @brief Converts a given Document object to xml format file
      * @param destinationFolder Destination folder for saving the file
-     * @param fileName Destination file name
-     * @param doc Document object to be converted to xml formatted file
+     * @param fileName          Destination file name
+     * @param doc               Document object to be converted to xml formatted file
      * @return Returns true if successfully converted
+     * @brief Converts a given Document object to xml format file
      */
     public static void saveXmlFile(String destinationFolder, String fileName, Document doc) {
 
@@ -215,9 +213,9 @@ public class FileUtils {
     }
 
     /**
-     * @brief Archives a folder into .zip compressed file
      * @param directoryToZipPath Source folder to be converted.
      * @throws IOException
+     * @brief Archives a folder into .zip compressed file
      */
     public static void zipFolder(String directoryToZipPath) throws IOException {
         File directoryToZip = new File(directoryToZipPath);
@@ -231,9 +229,9 @@ public class FileUtils {
     }
 
     /**
-     * @brief Add all the files in a given folder into a list
-     * @param dir Source directory
+     * @param dir      Source directory
      * @param fileList Referenced list. Files are added to this list
+     * @brief Add all the files in a given folder into a list
      */
     private static void getAllFiles(File dir, List<File> fileList) {
         try {
@@ -295,10 +293,10 @@ public class FileUtils {
     }
 
     /**
-     * @brief Copies the content from one file to another
      * @param src Source file
      * @param dst Destination file
      * @throws IOException Exception thrown in case of error
+     * @brief Copies the content from one file to another
      */
     public static void copy(File src, File dst) throws IOException {
         InputStream in = new FileInputStream(src);

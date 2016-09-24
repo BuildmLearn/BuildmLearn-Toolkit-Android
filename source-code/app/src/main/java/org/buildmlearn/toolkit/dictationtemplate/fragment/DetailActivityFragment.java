@@ -243,12 +243,12 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
 
                 @Override
                 public void onDone(String utteranceId) {
-
+                    // This is intentionally empty
                 }
 
                 @Override
                 public void onError(String utteranceId) {
-
+                    // This is intentionally empty
                 }
             });
         }

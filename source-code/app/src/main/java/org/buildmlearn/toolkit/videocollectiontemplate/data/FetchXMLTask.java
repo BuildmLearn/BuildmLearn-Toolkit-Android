@@ -23,7 +23,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 /**
  * @brief Used to parse XML and save in database for video collection template's simulator.
- *
+ * <p/>
  * Created by Anupam (opticod) on 13/5/16.
  */
 

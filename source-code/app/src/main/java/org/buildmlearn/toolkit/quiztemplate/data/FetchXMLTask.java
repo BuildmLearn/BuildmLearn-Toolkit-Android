@@ -105,7 +105,6 @@ public class FetchXMLTask extends AsyncTask<String, Void, Void> {
         if (params.length == 0) {
             return null;
         }
-        String fileName = params[0];
         ArrayList<QuizModel> mList;
         ArrayList<String> mOptions;
 

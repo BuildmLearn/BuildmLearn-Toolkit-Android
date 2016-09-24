@@ -4,7 +4,7 @@ import org.buildmlearn.toolkit.videocollectiontemplate.data.VideoContract;
 
 /**
  * @brief Constants used in video collection template's simulator relating databases.
- *
+ * <p/>
  * Created by Anupam (opticod) on 13/5/16.
  */
 public class Constants {

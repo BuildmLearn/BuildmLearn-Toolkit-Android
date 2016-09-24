@@ -10,8 +10,8 @@ import java.util.ArrayList;
 
 /**
  * @brief Extended Application class
- *
- *
+ * <p/>
+ * <p/>
  * Created by Abhishek on 31-05-2015.
  */
 public class ToolkitApplication extends Application {
@@ -20,6 +20,13 @@ public class ToolkitApplication extends Application {
 
     private boolean isExternalStorageAvailable = false;
 
+    /**
+     * @return Folder path
+     * @brief Returns folder path for unzipped apks
+     */
+    public static String getUnZipDir() {
+        return dir + Constants.UNZIP;
+    }
 
     @Override
     public void onCreate() {
@@ -48,16 +55,16 @@ public class ToolkitApplication extends Application {
     }
 
     /**
-     * @brief Returns external storage directory.
      * @return folder file
+     * @brief Returns external storage directory.
      */
     public File getDir() {
         return Environment.getExternalStorageDirectory();
     }
 
     /**
-     * @brief Returns directory for BuildmLearn toolkit  manually created files.
      * @return folder path
+     * @brief Returns directory for BuildmLearn toolkit  manually created files.
      */
     public String getProjectDir() {
         return dir + Constants.BUILD_M_LEARN_PATH;
@@ -65,41 +72,32 @@ public class ToolkitApplication extends Application {
     }
 
     /**
-     * @brief Returns folder path for saved projects
      * @return Folder path
+     * @brief Returns folder path for saved projects
      */
     public String getSavedDir() {
         return dir + Constants.SAVED_DIR;
     }
 
     /**
-     * @brief Returns folder path for saved projects
      * @return Folder path
+     * @brief Returns folder path for saved projects
      */
     public String getDraftDir() {
         return dir + Constants.DRAFT_DIR;
     }
 
-
     /**
-     * @brief Returns folder path for unzipped apks
      * @return Folder path
-     */
-    public static String getUnZipDir() {
-        return dir + Constants.UNZIP;
-    }
-
-    /**
      * @brief Returns folder path for storing generated apks
-     * @return Folder path
      */
     public String getApkDir() {
         return dir + Constants.APK_DIR;
     }
 
     /**
-     * @brief Checks if external storage is present for storing data
      * @return true if external storage is present, else false
+     * @brief Checks if external storage is present for storing data
      */
     public boolean checkExternalStorage() {
 
@@ -117,8 +115,8 @@ public class ToolkitApplication extends Application {
     }
 
     /**
-     * @brief Returns folder path for Download directory
      * @return Folder path
+     * @brief Returns folder path for Download directory
      */
     public String getDownloadDirectory() {
         return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
