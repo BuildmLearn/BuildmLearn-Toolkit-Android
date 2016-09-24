@@ -47,8 +47,7 @@ public class HomeActivity extends AppCompatActivity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
-        if (getIntent().hasExtra(Constants.START_FRAGMENT)) {
-            if (getIntent().getIntExtra(Constants.START_FRAGMENT, 0) == 3) {
+        if (getIntent().hasExtra(Constants.START_FRAGMENT) && getIntent().getIntExtra(Constants.START_FRAGMENT, 0) == 3) {
                 currentSection.setIsSelected(false);
                 Section[] menuItem = Section.values();
                 Section selectedMenuItem = menuItem[3];
@@ -57,7 +56,6 @@ public class HomeActivity extends AppCompatActivity
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.replace(R.id.container, new SettingsFragment());
                 ft.commit();
-            }
         }
     }
     /**
@@ -103,7 +101,7 @@ public class HomeActivity extends AppCompatActivity
                 }
             }
         } else if (selectedMenuItem.getType() == Section.FRAGMENT) {
-            if (currentSection == null || selectedMenuItem != currentSection) {
+            if (currentSection == null || !selectedMenuItem.equals(currentSection)) {
                 currentSection = selectedMenuItem;
                 FragmentManager fm = getFragmentManager();
                 FragmentTransaction ft = fm.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).addToBackStack(null);

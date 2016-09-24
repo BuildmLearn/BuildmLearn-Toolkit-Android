@@ -158,7 +158,6 @@ class QuizAdapter extends BaseAdapter {
     private void editItem(final int position, final Context context) {
         QuizModel data = getItem(position);
 
-        boolean wrapInScrollView = true;
         final MaterialDialog dialog = new MaterialDialog.Builder(context)
                 .title(R.string.quiz_edit)
                 .customView(R.layout.quiz_dialog_add_question, true)
@@ -271,11 +270,11 @@ class QuizAdapter extends BaseAdapter {
     }
 
     public class Holder {
-        TextViewPlus question;
-        ImageView questionIcon;
-        ArrayList<TextViewPlus> options;
-        LinearLayout quizOptionsBox;
-        Button delete;
-        Button edit;
+        public TextViewPlus question;
+        public ImageView questionIcon;
+        public ArrayList<TextViewPlus> options;
+        public LinearLayout quizOptionsBox;
+        public Button delete;
+        public Button edit;
     }
 }

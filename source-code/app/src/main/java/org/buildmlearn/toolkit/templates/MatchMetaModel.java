@@ -26,15 +26,15 @@ public class MatchMetaModel implements Serializable {
         this.second_list_title = B;
     }
 
-    public String getFirst_list_title() {
+    public String getFirstListTitle() {
         return first_list_title;
     }
 
-    public void setFirst_list_title(String first_list_title) {
+    public void setFirstListTitle(String first_list_title) {
         this.first_list_title = first_list_title;
     }
 
-    public String getSecond_list_title() {
+    public String getSecondListTitle() {
         return second_list_title;
     }
 

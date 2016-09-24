@@ -119,12 +119,12 @@ class FlashCardAdapter extends BaseAdapter {
     }
 
     public class Holder {
-        TextView question;
-        TextView answer;
-        TextView hint;
-        ImageView image;
-        ImageView edit;
-        ImageView delete;
+        public TextView question;
+        public TextView answer;
+        public TextView hint;
+        public ImageView image;
+        public ImageView edit;
+        public ImageView delete;
 
     }
 }

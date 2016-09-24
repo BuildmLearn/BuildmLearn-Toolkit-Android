@@ -45,11 +45,11 @@ public class VideoModel implements Serializable {
         this.description = description;
     }
 
-    public String getThumbnail_url() {
+    public String getThumbnailUrl() {
         return thumbnail_url;
     }
 
-    public void setThumbnail_url(String thumbnail_url) {
+    public void setThumbnailUrl(String thumbnail_url) {
         this.thumbnail_url = thumbnail_url;
     }
 

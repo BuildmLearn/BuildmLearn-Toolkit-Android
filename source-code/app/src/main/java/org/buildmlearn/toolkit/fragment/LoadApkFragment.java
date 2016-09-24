@@ -94,8 +94,8 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
             File apkFile = new File(aFile.getAbsolutePath());
             PackageInfo info = getActivity().getPackageManager().getPackageArchiveInfo(apkFile.getAbsolutePath(),0);
             if(info!=null&&info.packageName!=null&&info.packageName.startsWith("org.buildmlearn.")) {
-                savedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified(), apkFile.getAbsolutePath()));
-                allsavedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified(), apkFile.getAbsolutePath()));
+                savedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified()));
+                allsavedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified()));
             }
         }
 
@@ -214,8 +214,8 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
                     PackageInfo info = getActivity().getPackageManager().getPackageArchiveInfo(apkFile.getAbsolutePath(),0);
                     if(info!=null&&info.packageName!=null&&info.packageName.startsWith("org.buildmlearn.")) {
                         if(apkFile.getName().startsWith(specificApis))
-                            savedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified(), apkFile.getAbsolutePath()));
-                        allsavedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified(), apkFile.getAbsolutePath()));
+                            savedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified()));
+                        allsavedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified()));
                     }
                 }
             }
@@ -361,7 +361,7 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
                         SavedApi tempApi;
                         for (int i = 0; i < allsavedApis.size(); i++) {
 	                        if (allsavedApis.get(i).getName().startsWith(text)) {
-                                tempApi = new SavedApi(allsavedApis.get(i).getFile(), allsavedApis.get(i).getName(), allsavedApis.get(i).getUnformattedDate(), allsavedApis.get(i).getFullPath());
+                                tempApi = new SavedApi(allsavedApis.get(i).getFile(), allsavedApis.get(i).getName(), allsavedApis.get(i).getUnformattedDate());
                                 savedApis.add(tempApi);
                             }
                         }

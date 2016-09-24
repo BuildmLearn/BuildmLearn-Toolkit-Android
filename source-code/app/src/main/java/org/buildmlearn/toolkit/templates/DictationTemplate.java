@@ -50,10 +50,10 @@ public class DictationTemplate implements TemplateInterface {
         String titleText = title.getText().toString();
         String passageText = passage.getText().toString();
 
-        if (titleText.equals("")) {
+        if ("".equals(titleText)) {
             Toast.makeText(context, R.string.dictation_template_title_hint, Toast.LENGTH_SHORT).show();
             return false;
-        } else if (passageText.equals("")) {
+        } else if ("".equals(passageText)) {
             Toast.makeText(context, R.string.dictation_template_passage_hint, Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -262,7 +262,7 @@ public class DictationTemplate implements TemplateInterface {
 
     @Override
     public void onActivityResult(Context context, int requestCode, int resultCode, Intent intent) {
-
+        // This is intentionally empty
     }
 
     /**

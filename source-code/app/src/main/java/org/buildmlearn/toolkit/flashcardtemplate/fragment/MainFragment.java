@@ -272,7 +272,7 @@ public class MainFragment extends Fragment implements NavigationView.OnNavigatio
 
     class MyPagerAdapter extends PagerAdapter {
 
-        final FlashModel model;
+        public final FlashModel model;
 
         public MyPagerAdapter(FlashModel mFlash) {
             this.model = mFlash;
@@ -317,7 +317,7 @@ public class MainFragment extends Fragment implements NavigationView.OnNavigatio
 
         @Override
         public boolean isViewFromObject(View view, Object object) {
-            return object == view;
+            return object.equals(view);
         }
 
         @Override

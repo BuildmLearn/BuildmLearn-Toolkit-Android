@@ -43,10 +43,10 @@ public class InfoTemplate implements TemplateInterface {
         String wordText = word.getText().toString();
         String meaningText = meaning.getText().toString();
 
-        if (wordText.equals("")) {
+        if ("".equals(wordText)) {
             Toast.makeText(context, "Enter word", Toast.LENGTH_SHORT).show();
             return false;
-        } else if (meaningText.equals("")) {
+        } else if ("".equals(meaningText)) {
             Toast.makeText(context, "Enter meaning", Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -141,7 +141,7 @@ public class InfoTemplate implements TemplateInterface {
 
     @Override
     public void addMetaData(Activity activity) {
-
+        // This is intentionally empty
     }
 
     @Override
@@ -228,7 +228,7 @@ public class InfoTemplate implements TemplateInterface {
 
     @Override
     public void onActivityResult(Context context, int requestCode, int resultCode, Intent intent) {
-
+        // This is intentionally empty
     }
 
     /**

@@ -101,7 +101,7 @@ public class FileDialog {
     }
 
     public void setFileEndsWith() {
-        this.fileEndsWith = ".txt" != null ? ".txt".toLowerCase() : ".txt";
+        this.fileEndsWith = ".txt";
     }
 
     public interface FileSelectListener {

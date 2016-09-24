@@ -85,6 +85,8 @@ public class TemplateAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             case 1:
                 layoutResource = R.layout.item_template_left;
                 break;
+            default: //do nothing
+                break;
         }
 
         View view = inflater.inflate(layoutResource, viewGroup, false);
@@ -169,7 +171,7 @@ public class TemplateAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         public final TextView description;
         public final ImageView image;
         public final CardView cardView;
-        SetOnClickListener listener;
+        public SetOnClickListener listener;
 
         public ViewHolder(final View v) {
             super(v);

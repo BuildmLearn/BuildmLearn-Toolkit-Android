@@ -66,7 +66,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
 
         String linkText = link.getText().toString();
 
-        if (linkText.equals("")) {
+        if ("".equals(linkText)) {
             Toast.makeText(context, R.string.video_collection_template_link_hint, Toast.LENGTH_SHORT).show();
             return false;
         } else if (!(linkText.contains(YOUTUBE + ".com") || linkText.contains(YOUTUBE_SHORT) || linkText.contains(DAILYMOTION + ".com") || linkText.contains(VIMEO + ".com"))) {
@@ -86,13 +86,13 @@ public class VideoCollectionTemplate implements TemplateInterface {
         String descriptionText = description.getText().toString();
         String linkText = link.getText().toString();
 
-        if (titleText.equals("")) {
+        if ("".equals(titleText)) {
             Toast.makeText(context, R.string.video_collection_template_title_hint, Toast.LENGTH_SHORT).show();
             return false;
-        } else if (descriptionText.equals("")) {
+        } else if ("".equals(descriptionText)) {
             Toast.makeText(context, R.string.video_collection_template_description_hint, Toast.LENGTH_SHORT).show();
             return false;
-        } else if (linkText.equals("")) {
+        } else if ("".equals(linkText)) {
             Toast.makeText(context, R.string.video_collection_template_link_hint, Toast.LENGTH_SHORT).show();
             return false;
         } else if (!(linkText.contains(YOUTUBE + ".com") || linkText.contains(YOUTUBE_SHORT) || linkText.contains(DAILYMOTION + ".com") || linkText.contains(VIMEO + ".com"))) {
@@ -233,7 +233,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
 
     @Override
     public void addMetaData(Activity activity) {
-
+        // This is intentionally empty
     }
 
     @Override
@@ -255,7 +255,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
 
         Picasso
                 .with(mContext)
-                .load(data.getThumbnail_url())
+                .load(data.getThumbnailUrl())
                 .transform(new RoundedTransformation(10, 10))
                 .fit()
                 .centerCrop()
@@ -354,7 +354,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
 
     @Override
     public void onActivityResult(Context context, int requestCode, int resultCode, Intent intent) {
-
+        // This is intentionally empty
     }
 
     /**
@@ -370,9 +370,9 @@ public class VideoCollectionTemplate implements TemplateInterface {
 
     private class VideoInfoTask extends AsyncTask<String, Integer, String> {
 
-        String link;
-        String position;
-        boolean success;
+        private String link;
+        private String position;
+        private boolean success;
 
         @Override
         protected String doInBackground(String... params) {
@@ -419,7 +419,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
                         data.setTitle(title);
                         data.setDescription(description);
                         data.setLink(link);
-                        data.setThumbnail_url(thumbnail_url);
+                        data.setThumbnailUrl(thumbnail_url);
                     }
 
                 } catch (Exception e) {
@@ -478,7 +478,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
                 return;
             }
 
-            if (!result.equals("done")) {
+            if (!"done".equals(result)) {
 
                 try {
                     JSONObject json = new JSONObject(result);
@@ -489,7 +489,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
                     String JSON_THUMBNAIL_URL = "thumbnail_url";
                     String thumbnail_url = json.getString(JSON_THUMBNAIL_URL);
 
-                    if (position.equals("-1")) {
+                    if ("-1".equals(position)) {
                         VideoModel temp = new VideoModel(title, description, link, thumbnail_url);
                         videoData.add(temp);
                     } else {
@@ -497,7 +497,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
                         data.setTitle(title);
                         data.setDescription(description);
                         data.setLink(link);
-                        data.setThumbnail_url(thumbnail_url);
+                        data.setThumbnailUrl(thumbnail_url);
                     }
 
                 } catch (JSONException e) {

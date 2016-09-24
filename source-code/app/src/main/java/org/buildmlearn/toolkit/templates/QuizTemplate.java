@@ -177,7 +177,7 @@ public class QuizTemplate implements TemplateInterface {
 
     @Override
     public void addMetaData(Activity activity) {
-
+        // This is intentionally empty
     }
 
     @Override
@@ -313,7 +313,7 @@ public class QuizTemplate implements TemplateInterface {
 
     @Override
     public void onActivityResult(Context context, int requestCode, int resultCode, Intent intent) {
-
+        // This is intentionally empty
     }
 
 
