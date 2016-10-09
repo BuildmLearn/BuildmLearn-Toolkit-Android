@@ -149,17 +149,19 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
         mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                if (mAdapter.getSelectedPosition() == position) {
-                    mAdapter.setSelectedPosition(-1);
+                if (mAdapter.isPositionSelected(position)) {
+                    mAdapter.removeSelectedPosition(position);
                     view.setBackgroundResource(0);
                     restoreColorScheme();
+                    if(mAdapter.selectedPositionsSize()==0)
+                        restoreColorScheme();
                 } else {
                     if (selectedView != null) {
                         selectedView.setBackgroundResource(0);
                     }
                     selectedView = view;
                     view.setBackgroundColor(ContextCompat.getColor(mToolkit, R.color.color_divider));
-                    mAdapter.setSelectedPosition(position);
+                    mAdapter.putSelectedPosition(position);
                     Log.d(TAG, "Position: " + position);
                     changeColorScheme();
                 }
@@ -173,6 +175,26 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
      */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+        if(mAdapter.selectedPositionsSize() > 0)
+        {
+            if(mAdapter.isPositionSelected(position)) {
+                mAdapter.removeSelectedPosition(position);
+                view.setBackgroundResource(0);
+                if(mAdapter.selectedPositionsSize() == 0)
+                    restoreColorScheme();
+            }
+            else{
+                selectedView = view;
+                view.setBackgroundColor(ContextCompat.getColor(mToolkit, R.color.color_divider));
+                mAdapter.putSelectedPosition(position);
+                Log.d(TAG, "Position: " + position);
+                changeColorScheme();
+
+            }
+            return ;
+        }
+
         SavedProject project = savedProjects.get(position);
         Template[] templates = Template.values();
         for (int i = 0; i < templates.length; i++) {
@@ -331,16 +353,19 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
 
                 final MaterialDialog dialog = new MaterialDialog.Builder(activity)
                         .title(R.string.dialog_delete_title)
-                        .content(R.string.dialog_delete_msg)
                         .positiveText(R.string.dialog_yes)
                         .negativeText(R.string.dialog_no)
                         .build();
 
+                if(mAdapter.selectedPositionsSize()==1)
+                    dialog.setContent(R.string.dialog_delete_msg);
+                else
+                    dialog.setContent(R.string.dialog_delete_multiple);
                 dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         dialog.dismiss();
-                        deleteItem(mAdapter.getSelectedPosition());
+                        deleteItems();
                         restoreSelectedView();
                     }
                 });
@@ -348,14 +373,19 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                 break;
             case R.id.action_share:
 
-                SavedProject project = savedProjects.get(mAdapter.getSelectedPosition());
-                File file = new File(project.getFile().getPath());
-
-                Uri fileUri = Uri.fromFile(file);
+                ArrayList<Integer> selectedPositions = mAdapter.getSelectedPositions();
                 ArrayList<Uri> uris = new ArrayList<>();
                 Intent sendIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
                 sendIntent.setType("application/zip");
-                uris.add(fileUri);
+                for(int selectedPosition : selectedPositions) {
+                    if(selectedPosition != selectedPositions.get(0))
+                        selectedPosition--;
+                    SavedProject project = savedProjects.get(selectedPosition);
+                    File file = new File(project.getFile().getPath());
+
+                    Uri fileUri = Uri.fromFile(file);
+                    uris.add(fileUri);
+                }
                 sendIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
                 startActivity(Intent.createChooser(sendIntent, null));
                 break;
@@ -411,6 +441,27 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                 editSearch.requestFocus();
                 InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.showSoftInput(editSearch, InputMethodManager.SHOW_IMPLICIT);
+                break;
+
+            case R.id.action_select_all:
+                for(int i=0;i<mAdapter.getCount();i++) {
+                    if (!mAdapter.isPositionSelected(i))
+                    {
+                        mListView.getChildAt(i).setBackgroundColor(ContextCompat.getColor(mToolkit, R.color.color_divider));
+                        mAdapter.putSelectedPosition(i);
+                        changeColorScheme();
+                    }
+                }
+                break;
+
+            case R.id.action_unselect_all:
+                for(int i=0;i<mAdapter.getCount();i++)
+                    if(mAdapter.isPositionSelected(i)) {
+                        mListView.getChildAt(i).setBackgroundColor(0);
+                        mAdapter.removeSelectedPosition(i);
+                    }
+                restoreColorScheme();
+                break;
 
             default: //do nothing
                 break;
@@ -421,19 +472,26 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
     /**
      * @brief Removes selected project item
      */
-    private void deleteItem(int selectedPosition) {
-        SavedProject project = savedProjects.get(selectedPosition);
-        File file = new File(project.getFile().getPath());
-        boolean deleted = file.delete();
-        if (deleted) {
-            savedProjects.remove(selectedPosition);
-            mAdapter.setSelectedPosition(-1);
-            mAdapter.notifyDataSetChanged();
-            setEmptyText();
-            Toast.makeText(activity, "Project Successfully Deleted!", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(activity, "Project Deletion Failed!", Toast.LENGTH_SHORT).show();
+
+    private void deleteItems() {
+        ArrayList<Integer> selectedPositions = mAdapter.getSelectedPositions();
+        boolean deleted = false;
+        for(int selectedPosition : selectedPositions) {
+            if(selectedPosition!=selectedPositions.get(0))selectedPosition--;
+            SavedProject project = savedProjects.get(selectedPosition);
+            File file = new File(project.getFile().getPath());
+            deleted = file.delete();
+            if (deleted) {
+                savedProjects.remove(selectedPosition);
+                mAdapter.removeSelectedPosition(selectedPosition);
+                mAdapter.notifyDataSetChanged();
+                setEmptyText();
+            }
         }
+        if(deleted)
+            Toast.makeText(activity, "Project Successfully Deleted!", Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(activity, "Project Deletion Failed!", Toast.LENGTH_SHORT).show();
     }
 
     /**

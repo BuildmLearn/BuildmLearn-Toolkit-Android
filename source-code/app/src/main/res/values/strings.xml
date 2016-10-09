@@ -19,6 +19,7 @@
     <string name="draft_deleted">Draft Successfully Deleted!</string>
     <string name="draft_deleted_failed">Draft Deletion Failed!</string>
     <string name="dialog_delete_all_msg">Are you sure you clear you Draft?</string>
+    <string name="dialog_delete_multiple">Are you sure you want to delete the selected items?</string>
     <string name="dialog_delete_all_title">Delete All</string>
 
 
@@ -208,6 +209,8 @@
     <string name="bottom_sheet_share_apk">Share APK</string>
     <string name="bottom_sheet_save_apk">Save APK</string>
     <string name="bottom_sheet_save_project">Save Project</string>
+    <string name="menu_select_all">Select All</string>
+    <string name="menu_unselect_all">Unselect All</string>
 
     <!--  Built-in file manager string values -->
 
