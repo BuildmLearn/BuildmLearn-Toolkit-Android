@@ -152,14 +152,9 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                 if (mAdapter.isPositionSelected(position)) {
                     mAdapter.removeSelectedPosition(position);
                     view.setBackgroundResource(0);
-                    restoreColorScheme();
                     if(mAdapter.selectedPositionsSize()==0)
                         restoreColorScheme();
                 } else {
-                    if (selectedView != null) {
-                        selectedView.setBackgroundResource(0);
-                    }
-                    selectedView = view;
                     view.setBackgroundColor(ContextCompat.getColor(mToolkit, R.color.color_divider));
                     mAdapter.putSelectedPosition(position);
                     Log.d(TAG, "Position: " + position);
@@ -185,7 +180,6 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                     restoreColorScheme();
             }
             else{
-                selectedView = view;
                 view.setBackgroundColor(ContextCompat.getColor(mToolkit, R.color.color_divider));
                 mAdapter.putSelectedPosition(position);
                 Log.d(TAG, "Position: " + position);
@@ -477,7 +471,8 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
         ArrayList<Integer> selectedPositions = mAdapter.getSelectedPositions();
         boolean deleted = false;
         for(int selectedPosition : selectedPositions) {
-            if(selectedPosition!=selectedPositions.get(0))selectedPosition--;
+            if(selectedPosition!=selectedPositions.get(0))
+                selectedPosition--;
             SavedProject project = savedProjects.get(selectedPosition);
             File file = new File(project.getFile().getPath());
             deleted = file.delete();
@@ -498,9 +493,6 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
      * @brief Removes selected color from the selected ListView item when switching from edit mode to normal mode
      */
     private void restoreSelectedView() {
-        if (selectedView != null) {
-            selectedView.setBackgroundResource(0);
-        }
         restoreColorScheme();
     }
 
