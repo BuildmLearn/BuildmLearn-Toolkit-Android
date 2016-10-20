@@ -31,9 +31,12 @@ import android.widget.Toast;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.internal.ThemeSingleton;
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.ToolkitApplication;
+import org.buildmlearn.toolkit.activity.TemplateActivity;
 import org.buildmlearn.toolkit.activity.TemplateEditor;
 import org.buildmlearn.toolkit.adapter.SavedProjectAdapter;
 import org.buildmlearn.toolkit.constant.Constants;
@@ -196,7 +199,19 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
 
         if (mListView.getAdapter().getCount() == 0) {
             getView().findViewById(R.id.empty).setVisibility(View.VISIBLE);
+            getView().findViewById(R.id.newProject).setVisibility(View.VISIBLE);
+            YoYo.with(Techniques.BounceInUp)
+                    .duration(2000)
+                    .playOn(getView().findViewById(R.id.newProject));
+            getView().findViewById(R.id.newProject).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(getActivity(),TemplateActivity.class));
+                }
+            });
+
         } else {
+            getView().findViewById(R.id.newProject).setVisibility(View.GONE);
             getView().findViewById(R.id.empty).setVisibility(View.GONE);
         }
     }
