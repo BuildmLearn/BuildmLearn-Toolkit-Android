@@ -149,7 +149,7 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
     }
 
     private void setEmptyText() {
-
+        getView().findViewById(R.id.newProject).setVisibility(View.GONE);
         if (mListView.getAdapter().getCount() == 0) {
             getView().findViewById(R.id.empty).setVisibility(View.VISIBLE);
         } else {

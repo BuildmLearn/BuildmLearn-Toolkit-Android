@@ -383,5 +383,6 @@
     <string name="template_thumbnail">Template thumbnail</string>
     <string name="show_more">Show more</string>
     <string name="tutorial_image">Tutorial image</string>
+    <string name="create_project">Create Project</string>
 
 </resources>

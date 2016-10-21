@@ -37,4 +37,13 @@
             android:text="@string/no_item" />
     </LinearLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/newProject"
+        android:text="@string/create_project"
+        android:textSize="25dp"
+        android:layout_below="@+id/empty"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="46dp"/>
 </RelativeLayout>
