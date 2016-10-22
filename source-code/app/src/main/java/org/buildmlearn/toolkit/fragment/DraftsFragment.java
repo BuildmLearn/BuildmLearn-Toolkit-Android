@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -313,6 +314,10 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
                 });
                 dialogDeleteAll.show();
                 break;
+
+            case R.id.action_share:
+                shareItem(selectedPosition);
+                break;
             default: //do nothing
                 break;
         }
@@ -335,6 +340,22 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
             Toast.makeText(activity, getResources().getString(R.string.draft_deleted_failed), Toast.LENGTH_SHORT).show();
         }
     }
+
+    private void shareItem(int selectedPosition){
+        SavedProject project=draftProjects.get(selectedPosition);
+        String savedFilePath=project.getFullPath();
+        if (savedFilePath == null || savedFilePath.length() == 0) {
+            return;
+        }
+        Uri fileUri = Uri.fromFile(new File(savedFilePath));
+        ArrayList<Uri> uris = new ArrayList<>();
+        Intent sendIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
+        sendIntent.setType("application/zip");
+        uris.add(fileUri);
+        sendIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
+        startActivity(Intent.createChooser(sendIntent, null));
+    }
+
 
     /**
      * @brief Removes All Drafts
