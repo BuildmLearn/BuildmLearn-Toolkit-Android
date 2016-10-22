@@ -17,6 +17,14 @@
         <item name="android:textColorSecondary">@color/black_secondary_text</item>
         <item name="android:listViewStyle">@style/ListView.Buildmlearn</item>
         <item name="android:scrollViewStyle">@style/ScrollView.Buildmlearn</item>
+        <item name="alertDialogTheme">@style/AppDialogTheme</item>
+    </style>
+
+    <style name="AppDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:textColorPrimary">@color/black_primary_text</item>
+        <item name="android:textColorSecondary">@color/black_secondary_text</item>
+        <item name="colorAccent">@color/color_accent</item>
+        <item name="android:background">@color/white_primary_text</item>
     </style>
 
     <style name="AppTheme.NoActionBar" tools:ignore="newApi">

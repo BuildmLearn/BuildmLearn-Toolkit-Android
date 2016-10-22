@@ -2,12 +2,13 @@ package org.buildmlearn.toolkit.fragment;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,10 +19,6 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.Toast;
-
-import com.afollestad.materialdialogs.DialogAction;
-import com.afollestad.materialdialogs.MaterialDialog;
-import com.afollestad.materialdialogs.internal.ThemeSingleton;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.ToolkitApplication;
@@ -219,10 +216,6 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
         int primaryColor = ContextCompat.getColor(getActivity(), R.color.color_primary);
         int primaryColorDark = ContextCompat.getColor(getActivity(), R.color.color_primary_dark);
         ((AppCompatActivity) activity).getSupportActionBar().setBackgroundDrawable(new ColorDrawable(primaryColor));
-        ThemeSingleton.get().positiveColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().neutralColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().negativeColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().widgetColor = primaryColor;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             activity.getWindow().setStatusBarColor(primaryColorDark);
             activity.getWindow().setNavigationBarColor(primaryColor);
@@ -240,10 +233,6 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
         int primaryColor = ContextCompat.getColor(getActivity(), R.color.color_primary_dark);
         int primaryColorDark = ContextCompat.getColor(getActivity(), R.color.color_selected_dark);
         ((AppCompatActivity) activity).getSupportActionBar().setBackgroundDrawable(new ColorDrawable(primaryColor));
-        ThemeSingleton.get().positiveColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().neutralColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().negativeColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().widgetColor = primaryColor;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             activity.getWindow().setStatusBarColor(primaryColorDark);
             activity.getWindow().setNavigationBarColor(primaryColor);
@@ -277,14 +266,15 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
         switch (id) {
             case R.id.action_delete:
 
-                final MaterialDialog dialogDelete = new MaterialDialog.Builder(activity)
-                        .title(R.string.dialog_delete_title)
-                        .content(R.string.dialog_delete_msg)
-                        .positiveText(R.string.dialog_yes)
-                        .negativeText(R.string.dialog_no)
-                        .build();
+                final AlertDialog dialogDelete = new AlertDialog.Builder(activity)
+                        .setTitle(R.string.dialog_delete_title)
+                        .setMessage(R.string.dialog_delete_msg)
+                        .setPositiveButton(R.string.dialog_yes, null)
+                        .setNegativeButton(R.string.dialog_no, null)
+                        .create();
+                dialogDelete.show();
 
-                dialogDelete.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+                dialogDelete.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         dialogDelete.dismiss();
@@ -292,18 +282,18 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
                         restoreSelectedView();
                     }
                 });
-                dialogDelete.show();
                 break;
             case R.id.action_delete_all:
 
-                final MaterialDialog dialogDeleteAll = new MaterialDialog.Builder(activity)
-                        .title(R.string.dialog_delete_all_title)
-                        .content(R.string.dialog_delete_all_msg)
-                        .positiveText(R.string.dialog_yes)
-                        .negativeText(R.string.dialog_no)
-                        .build();
+                final AlertDialog dialogDeleteAll = new AlertDialog.Builder(activity)
+                        .setTitle(R.string.dialog_delete_all_title)
+                        .setMessage(R.string.dialog_delete_all_msg)
+                        .setPositiveButton(R.string.dialog_yes, null)
+                        .setNegativeButton(R.string.dialog_no, null)
+                        .create();
+                dialogDeleteAll.show();
 
-                dialogDeleteAll.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+                dialogDeleteAll.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         dialogDeleteAll.dismiss();
@@ -311,7 +301,6 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
                         restoreSelectedView();
                     }
                 });
-                dialogDeleteAll.show();
                 break;
             default: //do nothing
                 break;

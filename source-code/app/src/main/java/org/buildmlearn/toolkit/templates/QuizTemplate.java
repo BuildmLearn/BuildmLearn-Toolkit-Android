@@ -2,15 +2,16 @@ package org.buildmlearn.toolkit.templates;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.DialogAction;
-import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.model.Template;
@@ -96,24 +97,31 @@ public class QuizTemplate implements TemplateInterface {
 
     @Override
     public void addItem(final Activity activity) {
-        final MaterialDialog dialog = new MaterialDialog.Builder(activity)
-                .title(R.string.quiz_new_question_title)
-                .customView(R.layout.quiz_dialog_add_question, true)
-                .positiveText(R.string.quiz_add)
-                .negativeText(R.string.quiz_cancel)
-                .build();
+        LayoutInflater inflater = activity.getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.quiz_dialog_add_question, null);
+        final AlertDialog dialog = new AlertDialog.Builder(activity)
+                .setTitle(R.string.quiz_new_question_title)
+                .setView(dialogView,
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_left),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_top),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_right),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_bottom))
+                .setPositiveButton(R.string.quiz_add, null)
+                .setNegativeButton(R.string.quiz_cancel, null)
+                .create();
+        dialog.show();
 
-        final EditText question = (EditText) dialog.findViewById(R.id.quiz_question);
+        final EditText question = (EditText) dialogView.findViewById(R.id.quiz_question);
         final ArrayList<RadioButton> buttons = new ArrayList<>();
         final ArrayList<EditText> options = new ArrayList<>();
-        options.add((EditText) dialog.findViewById(R.id.quiz_option_1));
-        options.add((EditText) dialog.findViewById(R.id.quiz_option_2));
-        options.add((EditText) dialog.findViewById(R.id.quiz_option_3));
-        options.add((EditText) dialog.findViewById(R.id.quiz_option_4));
-        buttons.add((RadioButton) dialog.findViewById(R.id.quiz_radio_1));
-        buttons.add((RadioButton) dialog.findViewById(R.id.quiz_radio_2));
-        buttons.add((RadioButton) dialog.findViewById(R.id.quiz_radio_3));
-        buttons.add((RadioButton) dialog.findViewById(R.id.quiz_radio_4));
+        options.add((EditText) dialogView.findViewById(R.id.quiz_option_1));
+        options.add((EditText) dialogView.findViewById(R.id.quiz_option_2));
+        options.add((EditText) dialogView.findViewById(R.id.quiz_option_3));
+        options.add((EditText) dialogView.findViewById(R.id.quiz_option_4));
+        buttons.add((RadioButton) dialogView.findViewById(R.id.quiz_radio_1));
+        buttons.add((RadioButton) dialogView.findViewById(R.id.quiz_radio_2));
+        buttons.add((RadioButton) dialogView.findViewById(R.id.quiz_radio_3));
+        buttons.add((RadioButton) dialogView.findViewById(R.id.quiz_radio_4));
 
         for (final RadioButton button : buttons) {
             button.setOnClickListener(new View.OnClickListener() {
@@ -124,7 +132,7 @@ public class QuizTemplate implements TemplateInterface {
             });
         }
 
-        dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+        dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -171,7 +179,6 @@ public class QuizTemplate implements TemplateInterface {
 
             }
         });
-        dialog.show();
 
     }
 
@@ -184,24 +191,31 @@ public class QuizTemplate implements TemplateInterface {
     public void editItem(final Activity activity, final int position) {
         QuizModel data = quizData.get(position);
 
-        final MaterialDialog dialog = new MaterialDialog.Builder(activity)
-                .title(R.string.quiz_edit)
-                .customView(R.layout.quiz_dialog_add_question, true)
-                .positiveText(R.string.quiz_ok)
-                .negativeText(R.string.quiz_cancel)
-                .build();
+        LayoutInflater inflater = activity.getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.quiz_dialog_add_question, null);
+        final AlertDialog dialog = new AlertDialog.Builder(activity)
+                .setTitle(R.string.quiz_edit)
+                .setView(dialogView,
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_left),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_top),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_right),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_bottom))
+                .setPositiveButton(R.string.quiz_add, null)
+                .setNegativeButton(R.string.quiz_cancel, null)
+                .create();
+        dialog.show();
 
-        final EditText question = (EditText) dialog.findViewById(R.id.quiz_question);
+        final EditText question = (EditText) dialogView.findViewById(R.id.quiz_question);
         final ArrayList<RadioButton> buttons = new ArrayList<>();
         final ArrayList<EditText> options = new ArrayList<>();
-        options.add((EditText) dialog.findViewById(R.id.quiz_option_1));
-        options.add((EditText) dialog.findViewById(R.id.quiz_option_2));
-        options.add((EditText) dialog.findViewById(R.id.quiz_option_3));
-        options.add((EditText) dialog.findViewById(R.id.quiz_option_4));
-        buttons.add((RadioButton) dialog.findViewById(R.id.quiz_radio_1));
-        buttons.add((RadioButton) dialog.findViewById(R.id.quiz_radio_2));
-        buttons.add((RadioButton) dialog.findViewById(R.id.quiz_radio_3));
-        buttons.add((RadioButton) dialog.findViewById(R.id.quiz_radio_4));
+        options.add((EditText) dialogView.findViewById(R.id.quiz_option_1));
+        options.add((EditText) dialogView.findViewById(R.id.quiz_option_2));
+        options.add((EditText) dialogView.findViewById(R.id.quiz_option_3));
+        options.add((EditText) dialogView.findViewById(R.id.quiz_option_4));
+        buttons.add((RadioButton) dialogView.findViewById(R.id.quiz_radio_1));
+        buttons.add((RadioButton) dialogView.findViewById(R.id.quiz_radio_2));
+        buttons.add((RadioButton) dialogView.findViewById(R.id.quiz_radio_3));
+        buttons.add((RadioButton) dialogView.findViewById(R.id.quiz_radio_4));
 
         for (int i = 0; i < data.getOptions().size(); i++) {
             options.get(i).setText(data.getOptions().get(i));
@@ -219,7 +233,7 @@ public class QuizTemplate implements TemplateInterface {
             });
         }
 
-        dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+        dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -265,7 +279,6 @@ public class QuizTemplate implements TemplateInterface {
 
             }
         });
-        dialog.show();
     }
 
     @Override

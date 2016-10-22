@@ -40,7 +40,7 @@
             class="org.buildmlearn.toolkit.views.TextViewPlus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/md_simplelist_icon_margin"
+            android:padding="@dimen/padding_small"
             android:text="@string/add_item_help" />
     </LinearLayout>
 
