@@ -214,9 +214,10 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
     private void setEmptyText() {
         if (mListView.getAdapter().getCount() == 0) {
             getView().findViewById(R.id.empty).setVisibility(View.VISIBLE);
+            getView().findViewById(R.id.NoImage).setVisibility(View.GONE);
             getView().findViewById(R.id.newProject).setVisibility(View.VISIBLE);
-            YoYo.with(Techniques.BounceInUp)
-                    .duration(2000)
+            YoYo.with(Techniques.Shake)
+                    .duration(500)
                     .playOn(getView().findViewById(R.id.newProject));
             getView().findViewById(R.id.newProject).setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     tools:context="org.buildmlearn.toolkit.fragment.LoadProjectFragment">
 
     <GridView
@@ -24,6 +25,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/NoImage"
             android:contentDescription="@string/buildmlearn_logo"
             android:src="@drawable/logo_bg_dark" />
 
@@ -37,13 +39,18 @@
             android:text="@string/no_item" />
     </LinearLayout>
 
-    <TextView
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/newProject"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/newProject"
-        android:text="@string/create_project"
-        android:textSize="25dp"
-        android:layout_below="@+id/empty"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="46dp"/>
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="@dimen/floating_action_button_padding_bottom_right"
+        android:layout_marginEnd="@dimen/floating_action_button_padding_bottom_right"
+        android:layout_marginRight="@dimen/floating_action_button_padding_bottom_right"
+        android:src="@drawable/ic_add_white_24dp"
+        fab:backgroundTint="@color/color_accent"
+        fab:fabSize="normal" />
+
 </RelativeLayout>
