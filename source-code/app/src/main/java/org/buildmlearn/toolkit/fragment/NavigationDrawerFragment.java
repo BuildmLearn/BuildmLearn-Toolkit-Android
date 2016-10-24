@@ -124,7 +124,7 @@ public class NavigationDrawerFragment extends Fragment {
         View menuHeaderView = inflater.inflate(R.layout.listview_header_navigation_drawer, mDrawerListView, false);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
         TextView name = (TextView) menuHeaderView.findViewById(R.id.name);
-        name.setText(String.format(Locale.ENGLISH, "Welcome %s", prefs.getString(getString(R.string.key_user_name), "")));
+        name.setText(String.format(" %s",prefs.getString(getString(R.string.key_user_name), "")));
         mDrawerListView.addHeaderView(menuHeaderView, null, false);
         mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -233,7 +233,7 @@ public class NavigationDrawerFragment extends Fragment {
                 SharedPreferences sp = PreferenceManager
                         .getDefaultSharedPreferences(getActivity());
                 TextView name = (TextView) mFragmentContainerView.findViewById(R.id.name);
-                name.setText(String.format(Locale.ENGLISH, "Welcome %s", sp.getString(getString(R.string.key_user_name), "")));
+                name.setText(String.format(" %s", sp.getString(getString(R.string.key_user_name), "")));
             }
         };
 
