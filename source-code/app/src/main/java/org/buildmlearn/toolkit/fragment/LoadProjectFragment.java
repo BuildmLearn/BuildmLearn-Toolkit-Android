@@ -22,6 +22,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
@@ -31,8 +33,6 @@ import android.widget.Toast;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.internal.ThemeSingleton;
-import com.daimajia.androidanimations.library.Techniques;
-import com.daimajia.androidanimations.library.YoYo;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.ToolkitApplication;
@@ -212,22 +212,22 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
     }
 
     private void setEmptyText() {
+        getView().findViewById(R.id.empty).setVisibility(View.GONE);
+        Animation anim_shake = AnimationUtils.loadAnimation(getContext(), R.anim.shake);
         if (mListView.getAdapter().getCount() == 0) {
-            getView().findViewById(R.id.empty).setVisibility(View.VISIBLE);
-            getView().findViewById(R.id.NoImage).setVisibility(View.GONE);
-            getView().findViewById(R.id.newProject).setVisibility(View.VISIBLE);
-            YoYo.with(Techniques.Shake)
-                    .duration(500)
-                    .playOn(getView().findViewById(R.id.newProject));
-            getView().findViewById(R.id.newProject).setOnClickListener(new View.OnClickListener() {
+            getView().findViewById(R.id.no_saved_project).setVisibility(View.VISIBLE);
+            View view= getView().findViewById(R.id.newProject);
+            view.setVisibility(View.VISIBLE);
+            view.startAnimation(anim_shake);
+            view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     startActivity(new Intent(getActivity(),TemplateActivity.class));
                 }
             });
         } else {
-            getView().findViewById(R.id.empty).setVisibility(View.GONE);
             getView().findViewById(R.id.newProject).setVisibility(View.GONE);
+            getView().findViewById(R.id.no_saved_project).setVisibility(View.GONE);
         }
     }
 

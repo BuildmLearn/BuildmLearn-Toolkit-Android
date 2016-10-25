@@ -60,6 +60,7 @@
     <string name="list_empty_info">List is Empty!</string>
     <string name="previous_info">PREVIOUS</string>
     <string name="next_info">NEXT</string>
+    <string name="no_saved_projects">No Saved Projects yet</string>
     <string name="exit_info">EXIT</string>
     <string name="about_text_info">This application has been developed using the BuildmLearn Toolkit.\n\nTo know more about BuildmLearn Toolkit visit <a href="https://buildmlearn.org/">here</a>.</string>
     <string name="info_thumbnail_info">Info Thumbnail</string>

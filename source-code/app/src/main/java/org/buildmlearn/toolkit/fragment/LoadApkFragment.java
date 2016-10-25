@@ -187,6 +187,7 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
 
     private void setEmptyText() {
         getView().findViewById(R.id.newProject).setVisibility(View.GONE);
+        getView().findViewById(R.id.no_saved_project).setVisibility(View.GONE);
         if (mListView.getAdapter().getCount() == 0) {
             getView().findViewById(R.id.empty).setVisibility(View.VISIBLE);
         } else {
