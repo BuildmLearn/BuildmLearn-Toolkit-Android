@@ -262,6 +262,7 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
         menu.clear();
         if (showTemplateSelectedMenu) {
             activity.getMenuInflater().inflate(R.menu.menu_project_selected, menu);
+            menu.findItem(R.id.action_share).setVisible(false);
         } else if (mAdapter.getCount() > 0) {
             activity.getMenuInflater().inflate(R.menu.menu_draft, menu);
         }
