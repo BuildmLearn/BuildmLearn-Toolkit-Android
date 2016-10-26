@@ -5,8 +5,14 @@ package org.buildmlearn.toolkit.utilities;
  */
 
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.os.Handler;
+import android.os.Looper;
 
+import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.ToolkitApplication;
 import org.buildmlearn.toolkit.model.Template;
 
@@ -21,12 +27,13 @@ public class RestoreThread extends Thread {
     private static final String TEMP_FOLDER = "rtf";
     private final Context context;
     private final InputStream zipInputStream;
-
+    private final ProgressDialog processDialog;
     private OnRestoreComplete listener;
 
-    public RestoreThread(Context context, InputStream zipInputStream) {
+    public RestoreThread(Context context, InputStream zipInputStream, ProgressDialog processDialog) {
         this.context = context;
         this.zipInputStream = zipInputStream;
+        this.processDialog = processDialog;
     }
 
     public void setRestoreListener(OnRestoreComplete listener) {
@@ -66,8 +73,26 @@ public class RestoreThread extends Thread {
             }
 
             if (data == null) {
-                if (listener != null)
-                    listener.onFail();
+                if (listener != null){
+                    Handler mHandler=new Handler(Looper.getMainLooper());
+                    mHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            processDialog.dismiss();
+                            final AlertDialog dialog = new AlertDialog.Builder(context)
+                                    .setTitle(R.string.dialog_restore_title)
+                                    .setMessage(R.string.dialog_restore_fileerror)
+                                    .setPositiveButton(R.string.info_template_ok, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.dismiss();
+                                        }
+                                    })
+                                    .create();
+                            dialog.show();
+                        }
+                    });
+                }
                 return;
             }
 

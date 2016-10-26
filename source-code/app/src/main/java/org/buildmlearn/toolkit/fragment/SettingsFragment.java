@@ -1,6 +1,9 @@
 package org.buildmlearn.toolkit.fragment;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -9,8 +12,6 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.widget.Toast;
-
-import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.ToolkitApplication;
@@ -28,7 +29,6 @@ public class SettingsFragment extends PreferenceFragment {
 
     private static final int REQUEST_PICK_APK = 9985;
     private Preference prefUsername;
-
     public static float deleteDirectory(File file, float size) {
         if (file.exists()) {
             File[] listFiles = file.listFiles();
@@ -106,45 +106,53 @@ public class SettingsFragment extends PreferenceFragment {
                 if (resultCode == Activity.RESULT_OK) {
 
                     try {
-                        final MaterialDialog processDiaglog = new MaterialDialog.Builder(getActivity())
-                                .title(R.string.restore_progress_dialog)
-                                .content(R.string.restore_msg)
-                                .cancelable(false)
-                                .progress(true, 0)
-                                .show();
+                        final ProgressDialog processDialog = new ProgressDialog(getActivity());
+                                processDialog.setTitle(R.string.restore_progress_dialog);
+                                processDialog.setMessage("Restoring Project from Apk");
+                                processDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                                processDialog.setIndeterminate(true);
+                                processDialog.show();
 
 
                         InputStream inputStream = getActivity().getContentResolver().openInputStream(data.getData());
-                        RestoreThread restore = new RestoreThread(getActivity(), inputStream);
-
+                        RestoreThread restore = new RestoreThread(getActivity(), inputStream,processDialog);
                         restore.setRestoreListener(new RestoreThread.OnRestoreComplete() {
                             @Override
                             public void onSuccess(File assetFile) {
-                                processDiaglog.dismiss();
+                                processDialog.dismiss();
                                 Intent intentProject = new Intent(getActivity(), DeepLinkerActivity.class);
                                 intentProject.setData(Uri.fromFile(assetFile));
                                 getActivity().startActivity(intentProject);
                             }
-
                             @Override
                             public void onFail() {
-                                processDiaglog.dismiss();
-                                final MaterialDialog dialog = new MaterialDialog.Builder(getActivity())
-                                        .title(R.string.dialog_restore_title)
-                                        .content(R.string.dialog_restore_failed)
-                                        .positiveText(R.string.info_template_ok)
-                                        .build();
+                                processDialog.dismiss();
+                                final AlertDialog dialog = new AlertDialog.Builder(getActivity())
+                                        .setTitle(R.string.dialog_restore_title)
+                                        .setMessage(R.string.dialog_restore_failed)
+                                        .setPositiveButton(R.string.info_template_ok, new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.dismiss();
+                                            }
+                                        })
+                                        .create();
                                 dialog.show();
                             }
 
                             @Override
                             public void onFail(Exception e) {
-                                processDiaglog.dismiss();
-                                final MaterialDialog dialog = new MaterialDialog.Builder(getActivity())
-                                        .title(R.string.dialog_restore_title)
-                                        .content(R.string.dialog_restore_failed)
-                                        .positiveText(R.string.info_template_ok)
-                                        .build();
+                                processDialog.dismiss();
+                                final AlertDialog dialog = new AlertDialog.Builder(getActivity())
+                                        .setTitle(R.string.dialog_restore_title)
+                                        .setMessage(R.string.dialog_restore_failed)
+                                        .setPositiveButton(R.string.info_template_ok, new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.dismiss();
+                                            }
+                                        })
+                                        .create();
                                 dialog.show();
                             }
                         });
@@ -154,11 +162,16 @@ public class SettingsFragment extends PreferenceFragment {
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
 
-                        final MaterialDialog dialog = new MaterialDialog.Builder(getActivity())
-                                .title(R.string.dialog_restore_title)
-                                .content(R.string.dialog_restore_fileerror)
-                                .positiveText(R.string.info_template_ok)
-                                .build();
+                        final AlertDialog dialog = new AlertDialog.Builder(getActivity())
+                                .setTitle(R.string.dialog_restore_title)
+                                .setMessage(R.string.dialog_restore_fileerror)
+                                .setPositiveButton(R.string.info_template_ok, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                })
+                                .create();
                         dialog.show();
                     }
 
