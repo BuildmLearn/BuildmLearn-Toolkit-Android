@@ -6,11 +6,12 @@ package org.buildmlearn.toolkit.utilities;
 
 
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Handler;
 import android.os.Looper;
+
+import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.ToolkitApplication;
@@ -27,10 +28,10 @@ public class RestoreThread extends Thread {
     private static final String TEMP_FOLDER = "rtf";
     private final Context context;
     private final InputStream zipInputStream;
-    private final ProgressDialog processDialog;
+    private final MaterialDialog processDialog;
     private OnRestoreComplete listener;
 
-    public RestoreThread(Context context, InputStream zipInputStream, ProgressDialog processDialog) {
+    public RestoreThread(Context context, InputStream zipInputStream, MaterialDialog processDialog) {
         this.context = context;
         this.zipInputStream = zipInputStream;
         this.processDialog = processDialog;
