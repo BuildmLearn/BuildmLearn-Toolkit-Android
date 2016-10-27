@@ -21,7 +21,7 @@
     <string name="dialog_delete_all_msg">Are you sure you clear you Draft?</string>
     <string name="dialog_delete_multiple">Are you sure you want to delete the selected items?</string>
     <string name="dialog_delete_all_title">Delete All</string>
-
+    <string name="no_saved_drafts">"No Saved Drafts Yet"</string>
 
     <!-- Restore Dialog-->
 
@@ -385,5 +385,5 @@
     <string name="show_more">Show more</string>
     <string name="tutorial_image">Tutorial image</string>
     <string name="create_project">Create Project</string>
-
+    <string name="no_saved_apks">"No Saved Apks yet"</string>
 </resources>

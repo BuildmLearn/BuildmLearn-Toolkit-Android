@@ -22,8 +22,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
@@ -212,13 +210,12 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
     }
 
     private void setEmptyText() {
-        getView().findViewById(R.id.empty).setVisibility(View.GONE);
-        Animation anim_shake = AnimationUtils.loadAnimation(getContext(), R.anim.shake);
+        getView().findViewById(R.id.no_saved_drafts).setVisibility(View.GONE);
+        getView().findViewById(R.id.no_saved_apks).setVisibility(View.GONE);
         if (mListView.getAdapter().getCount() == 0) {
             getView().findViewById(R.id.no_saved_project).setVisibility(View.VISIBLE);
             View view= getView().findViewById(R.id.newProject);
             view.setVisibility(View.VISIBLE);
-            view.startAnimation(anim_shake);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
