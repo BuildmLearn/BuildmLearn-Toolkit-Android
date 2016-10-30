@@ -301,7 +301,7 @@
     <string name="restore_progress_dialog">Restoring</string>
     <string name="apk_msg">Inserting data into Apk</string>
     <string name="video_fetching_error">Error while fetching video info!</string>
-    <string name="video_support_error">We only support Youtube, Dailymotion and Vimeo.</string>
+    <string name="video_support_error">We only support Youtube, Dailymotion, Metacafe and Vimeo.</string>
     <string name="network_error">Network Unavailable! Please try later.</string>
     <string name="menu_load_apks">Saved APKs</string>
 
