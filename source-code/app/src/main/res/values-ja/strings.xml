@@ -1,0 +1,387 @@
+<resources>
+    <string name="app_name">BuildmLearnツールキット</string>
+    <string name="navigation_drawer_open">オープンナビゲーションドロワー</string>
+    <string name="navigation_drawer_close">ナビゲーションドロワーを閉じます</string>
+    <string name="menu_load_project">保存されたプロジェクト</string>
+    <string name="menu_settings">設定</string>
+    <string name="menu_drafts">私の下書き</string>
+    <string name="menu_how_to">の仕方</string>
+    <string name="menu_about_us">BuildmLearnについて</string>
+    <string name="menu_home">ホーム</string>
+    <string name="buildmlearn_welcome_title">BuildmLearnツールキットへようこそ</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="buildmlearn_welcome_text">BuildmLearn Toolkitは、ユーザーがアプリケーション開発の知識なしのモバイルアプリを作ることができます簡単に使用できるプログラムです。\n\nこのツールキットは、さまざまな機能を備えたモバイルアプリケーションを作成するのに役立ちますし、入力彼らのカスタムコンテンツに教師を可能にします。</string>
+    <string name="no_item">アイテムはありません</string>
+    <string name="add_item_help">アイテムの追加を開始するために追加]ボタンをクリックします</string>
+
+    <!-- Draft -->
+    <string name="draft_deleted">ドラフトは正常に削除します！</string>
+    <string name="draft_deleted_failed">ドラフトの削除に失敗しました！</string>
+    <string name="dialog_delete_all_msg">あなたはあなたがドラフトCLEARか？</string>
+    <string name="dialog_delete_multiple">あなたが選択した項目を削除してもよろしいですか？</string>
+    <string name="dialog_delete_all_title">すべて削除</string>
+
+
+    <!-- Restore Dialog-->
+
+    <string name="dialog_restore_title">プロジェクトを復元</string>
+    <string name="dialog_restore_failed">指定されたAPKからプロジェクトを復元することができません。</string>
+    <string name="dialog_restore_fileerror">指定されたAPKを読み込むことができません</string>
+
+    <!-- Quiz Template-->
+    <string name="app_name_quiz">クイズタイム</string>
+    <string name="completed_message_quiz">万歳！あなたはクイズを完了しました。</string>
+    <string name="dialog_yes">はい</string>
+    <string name="dialog_no">いいえ</string>
+    <string name="dialog_delete_msg">あなたはこのアイテムを削除してもよろしいですか？</string>
+    <string name="dialog_delete_title">削除</string>
+
+
+    <string name="about_us">このアプリケーションは、BuildmLearn Toolkitを使用して開発されてきました。\n\nBuildmLearn Toolkitの訪問についての詳細を知るために。 http://buildmlearn.org/</string>
+    <string name="title_activity_simulator">シミュレータ。</string>
+    <string name="title_activity_template">テンプレート</string>
+
+
+    <!-- Info Template-->
+    <string name="info_template_word">単語</string>
+    <string name="info_template_word_hint">タイトルを入力します</string>
+    <string name="info_template_meaning">説明</string>
+    <string name="info_template_meaning_hint">説明を入力します</string>
+    <string name="info_template_add">加えます</string>
+    <string name="info_template_delete">削除</string>
+    <string name="info_template_ok">はい</string>
+    <string name="info_template_cancel">キャンセル</string>
+    <string name="info_add_new_title">新しいアイテムを追加します。</string>
+    <string name="info_edit_title">編集項目</string>
+    <string name="info_delete_item_content">あなたはこのアイテムを削除してもよろしいですか？</string>
+    <string name="info_template">情報テンプレート</string>
+    <string name="main_title_info">情報アプリ</string>
+    <string name="list_empty_info">リストは空です！</string>
+    <string name="previous_info">前</string>
+    <string name="next_info">次</string>
+    <string name="exit_info">出口</string>
+    <string name="about_text_info">このアプリケーションBuildmLearn Toolkitを使用して開発されました。\ nは\ n特定のはBuildmLearn Toolkitの訪問についての詳細を知ります<a href="https://buildmlearn.org/">ここに</a>.</string>
+    <string name="info_thumbnail_info">情報サムネイル</string>
+
+    <!-- Flash Card Template-->
+    <string name="flash_card_template">フラッシュカードテンプレート</string>
+    <string name="flash_photo_source">選択画像ソース</string>
+    <string name="flash_templete_question">質問</string>
+    <string name="flash_template_answer">回答</string>
+    <string name="flash_template_hint">回答ヒント</string>
+    <string name="flash_template_question_hint">質問を入力してください</string>
+    <string name="flash_template_anser_hint">回答を入力してください</string>
+    <string name="flash_template_hint_hint">ヒントを入力してください</string>
+
+    <string name="main_title_flash">フラッシュカードで学びます</string>
+    <string name="next_flash">次</string>
+    <string name="exit_flash">出口</string>
+    <string name="restart_flash">再起動</string>
+    <string name="buildmlearn_logo_flash">BuildmLearnロゴ</string>
+    <string name="completed_message_flash">万歳！あなたは最後のカードでした。\ nを完了しました！</string>
+    <string name="previous_flash">前</string>
+    <string name="flip_flash">フリップ</string>
+    <string name="backdrop_image_flash">背景イメージ</string>
+
+    <!-- Spelling Template-->
+
+    <string name="submit">提出します</string>
+    <string name="restart">再起動</string>
+    <string name="exit">出口</string>
+    <string name="high">高い</string>
+    <string name="speech_rate">発話速度：</string>
+
+    <string name="main_title_spell">スペルを学びます</string>
+    <string name="next_spell">次</string>
+    <string name="exit_spell">出口</string>
+    <string name="restart_spell">再起動</string>
+    <string name="buildmlearn_logo_spell">BuildmLearnロゴ</string>
+    <string name="completed_message_spell">万歳！あなたが完了しました。</string>
+    <string name="spell_it_spell">それを綴る</string>
+    <string name="skip_spell">スキップ</string>
+    <string name="listen_spell">聴く</string>
+    <string name="submit_spell">提出します</string>
+    <string name="enter_spelling">スペルを入力してください</string>
+    <string name="normal_spell">ノーマル</string>
+    <string name="low_spell">ロー</string>
+    <string name="intro_text_spell">準備ができたらEnterキーを押して話します。あなたは、スライダを使用して話速を調整することができます。答える前に何度などの単語を聞きます。あなたがわからない場合は、単語をスキップすることができます。</string>
+
+
+    <!-- Video Collection Template-->
+    <string name="video_collection_title">ビデオコレクション</string>
+    <string name="video_collection_template">ビデオコレクションテンプレート</string>
+    <string name="video_collection_description">ビデオからの学習用のアプリケーションを作成するには、このテンプレートを選択します</string>
+    <string name="video_collection_template_link">リンク</string>
+    <string name="video_collection_template_title">タイトル</string>
+    <string name="video_collection_template_description">説明</string>
+    <string name="video_collection_template_title_hint">タイトルを入力します。</string>
+    <string name="video_collection_template_link_hint">リンクを入力してください</string>
+    <string name="video_collection_template_description_hint">説明を入力します。</string>
+    <string name="video_collection_or">または</string>
+
+    <!-- Comprehension Template-->
+    <string name="comprehension_title">理解</string>
+    <string name="comprehension_template">理解テンプレート</string>
+    <string name="comprehension_description">内包から学習するためのアプリケーションを作成するには、このテンプレートを選択します</string>
+    <string name="comprehension_template_title_hint">タイトルを入力します。</string>
+    <string name="comprehension_template_timer_correct_hint">最大時間:: 999999999</string>
+
+    <string name="comprehension_navigation_drawer_open">オープンナビゲーションドロワー</string>
+    <string name="comprehension_navigation_drawer_close">ナビゲーションドロワーを閉じます</string>
+
+    <string name="comprehension_previous">前</string>
+    <string name="comprehension_next">次</string>
+    <string name="comprehension_about_us">私たちに関しては</string>
+    <string name="comprehension_about_text">このアプリケーションBuildmLearn Toolkitを使用して開発されました。\ nは\ n特定のはBuildmLearn Toolkitの訪問についての詳細を知ります<a href="https://buildmlearn.org/">ここに</a>.</string>
+    <string name="comprehension_buildmlearn_logo">BuildmLearnロゴ</string>
+    <string name="comprehension_go_to_questions">質問に行きます</string>
+    <string name="comprehension_passage_title">航路：</string>
+    <string name="comprehension_completed_message">万歳！あなたは理解が完了しました。</string>
+
+    <!-- Dictation Template-->
+    <string name="dictation_title">ディクテーション</string>
+    <string name="dictation_template">ディクテーションテンプレート</string>
+    <string name="dictation_description">ディクテーションを実施するためのアプリケーションを作成するには、このテンプレートを選択します</string>
+    <string name="dictation_template_title_hint">タイトルを入力します。</string>
+    <string name="dictation_template_passage_hint">パッセージを入力してください</string>
+
+    <!-- MatchTheFollowing Template-->
+    <string name="match_title">一致</string>
+    <string name="match_template">マッチテンプレート</string>
+    <string name="match_description">以下に一致する練習用のアプリケーションを作成するには、このテンプレートを選択します。</string>
+
+    <!-- Assets Filename -->
+    <string name="spelling_assets_name">spelling_content.xml</string>
+    <string name="quiz_assets_name">quiz_content.xml</string>
+    <string name="flash_assets_name">flash_content.xml</string>
+    <string name="info_assets_name">info_content.xml</string>
+    <string name="video_assets_name">video_content.xml</string>
+    <string name="comprehension_assets_name">comprehension_content.xml</string>
+    <string name="dictation_assets_name">dictation_content.xml</string>
+    <string name="match_assets_name">match_content.xml</string>
+
+    <!-- Template Resources-->
+    <string name="basic_m_learning_title">基本 mLearning</string>
+    <string name="basic_m_learning_description">テキスト情報のクリック可能なリストを表示するアプリを作成します。</string>
+
+    <string name="flash_card_title">フラッシュカード</string>
+    <string name="flash_card_description">フラッシュカードのアプリケーションを作成するには、このテンプレートを選択します</string>
+
+    <string name="learn_spellings_title">スペルを学びます</string>
+    <string name="learn_spellings_description">単語のスペルを学習するためのアプリケーションを作成するには、このテンプレートを選択します</string>
+    <string name="spelling_type">スペルテンプレート</string>
+
+
+    <string name="quiz_title">クイズ</string>
+    <string name="quiz_new_question_title">新しい質問を追加</string>
+    <string name="quiz_type">クイズテンプレート</string>
+
+    <string name="quiz_add">加えます</string>
+    <string name="quiz_delete">削除</string>
+    <string name="quiz_ok">はい</string>
+    <string name="quiz_cancel">キャンセル</string>
+    <string name="quiz_edit">編集質問</string>
+    <string name="quiz_description">クイズのようなアプリケーションを作成するには、このテンプレートを選択します</string>
+    <string name="hint_quiz_name">テンプレート名</string>
+    <string name="label_quiz">テンプレート名</string>
+    <string name="hint_author">名</string>
+    <string name="label_author">著者</string>
+    <string name="title_activity_template_editor">テンプレートエディタ</string>
+    <string name="quiz_new_question">質問</string>
+    <string name="quiz_new_question_answer">回答</string>
+    <string name="quiz_option_hint_1">オプション1</string>
+    <string name="quiz_option_hint_2">オプション2</string>
+    <string name="quiz_option_hint_3">オプション3</string>
+    <string name="quiz_option_hint_4">オプション4</string>
+
+    <!-- Menu Strings-->
+
+    <string name="menu_save_template">テンプレートの保存</string>
+    <string name="menu_simulate">シミュレート</string>
+    <string name="menu_delete_template_item">削除</string>
+    <string name="menu_delete_all_template_items">すべて削除</string>
+    <string name="menu_edit_template_item">編集</string>
+
+    <!-- Dialog Sort -->
+
+    <!-- Bottom Sheet-->
+    <string name="bottom_sheet_share_apk">シェアAPK</string>
+    <string name="bottom_sheet_save_apk">APKを保存</string>
+    <string name="bottom_sheet_save_project">プロジェクトの保存</string>
+    <string name="menu_select_all">すべて選択</string>
+    <string name="menu_unselect_all">すべての選択を解除</string>
+
+    <!--  Built-in file manager string values -->
+
+    <!--  menu string values -->
+
+    <!-- Manage Keys string values -->
+
+
+    <!-- Progress messages -->
+    <string name="LoadingCertificateAnKey">読み込んで証明書と秘密鍵</string>
+    <string name="ParsingCentralDirectory">解析の入力\'sの中央ディレクトリ</string>
+    <string name="GeneratingManifest">マニフェストの生成</string>
+    <string name="GeneratingSignatureFile">署名ファイルの生成</string>
+    <string name="GeneratingSignatureBlock">署名ブロックファイルの生成</string>
+    <string name="CopyingZipEntry">コピーzipエントリ %1$d の %2$d</string>
+
+    <!-- Error message shown if the input and output filenames are the same -->
+    <string name="InputFileSameAsOutput">入力ファイルと出力ファイルは同じです。出力に別の名前を指定します。</string>
+    <!-- Error message shown when the key/mode="auto" and the key to use for signing can't be determined.  %s replaced with input filename. -->
+    <string name="AutoKeySelectionError">署名の自動選択キーにできません。%s</string>
+
+    <!-- Preference Data-->
+
+    <string name="project_settings">プロジェクトの設定</string>
+    <string name="key_developer_mode">デバッグキー</string>
+    <string name="developer_mode">開発者モード</string>
+    <string name="summary_developer_mode">開発者モードはBuildmLearnストアにAPKの公開を無効にします。</string>
+    <string name="title_user_name">あなたの名前を入力してください</string>
+
+    <string name="key_delete_temporary_files">一時ファイルを削除します。</string>
+    <string name="delete_temp_files">一時ファイルを削除します。</string>
+    <string name="summary_temp_files">ストレージスペースを節約するために、一時的に生成されたファイルを削除します。</string>
+
+    <string name="key_restore_project">プロジェクトを復元</string>
+    <string name="restore_project">プロジェクトを復元</string>
+    <string name="summary_restore_project">バックのapkからプロジェクトを復元します。</string>
+
+    <string name="key_user_name">キーユーザー名</string>
+    <string name="your_name">あなたの名前</string>
+    <string name="app_settings">アプリの設定</string>
+    <string name="advance_settings">アドバンス設定</string>
+
+    <string name="main_title">BuildmLearn</string>
+    <string name="main_subtitle">ツールキット</string>
+    <string name="main_name_hint">あなたの名前！</string>
+
+
+    <!-- Flash Card Template-->
+
+    <!-- Tutorial-->
+    <string name="screen_1_title">BuildmLearnツールキットへようこそ</string>
+    <string name="screen_1_desc">BuildmLearnツールキットを使用すると、アプリケーション開発に関する知識がなくmラーニングアプリケーションを作成することができます</string>
+    <string name="title_activity_tutorial">チュートリアル活動</string>
+
+    <string name="screen_2_title">作ります mLearning APK</string>
+    <string name="screen_2_desc">建物のアプリを使い始めるために大きなピンクのボタンを押してください。</string>
+
+    <string name="screen_3_title">様々なテンプレート</string>
+    <string name="screen_3_desc">テンプレートは、クイズなど、スペルやディクテーションなどのアプリの様々なタイプを作成することができます</string>
+
+    <string name="screen_4_title">作り付けの編集機能</string>
+    <string name="screen_4_desc">ツールキット・エディターは、アプリをシミュレートする、のAPKを公開し、プロジェクトを保存するような様々なファイル操作を可能にします</string>
+
+    <string name="screen_5_title">シミュレータのサポート</string>
+    <string name="screen_5_desc">BuildmLearnツールキットを使用すると、ツールキットの内部でアプリをテストすることができたネクサス6シミュレータが付属しています</string>
+
+    <string name="screen_6_title">保存したプロジェクトをロード</string>
+    <string name="screen_6_desc">あなたは、アンドロイドやデスクトップツールキットを使用して作成した任意の保存されたプロジェクトを開くことができます</string>
+
+
+    <string name="screen_finish">始めましょう</string>
+    <string name="title_activity_about_buildm_learn">BuildmLearnについて</string>
+
+
+    <!-- About BuildmLearn-->
+    <string name="about_para_1">BuildmLearn Toolkitは、ユーザーがアプリケーション開発の知識なしのモバイルアプリを作ることができます簡単に使用できるプログラムです。</string>
+    <string name="about_para_2">http://buildmlearn.org/で私たちをご覧ください。</string>
+    <string name="about_para_3">すべてのフィードバックやBuildmLearnツールキットに関連した提案は常に歓迎されています。私たちに書いてください buildmlearn@gmail.com.</string>
+    <string name="title_activity_deep_linker">BuildmLearnツールキット</string>
+
+    <string name="apk_progress_dialog">APKを生成します</string>
+    <string name="restore_progress_dialog">復元します</string>
+    <string name="apk_msg">APKへのデータの挿入</string>
+    <string name="video_fetching_error">ビデオ情報の取得中にエラー！</string>
+    <string name="video_support_error">私たちはYouTubeやDailymotionのとVimeoのをサポートしています。</string>
+    <string name="network_error">ネットワークを使用できません！後でやり直してください。</string>
+    <string name="menu_load_apks">保存されたのAPK</string>
+
+
+    <!-- About VideoCollectionTemplate -->
+
+    <string name="enter_video">入る</string>
+    <string name="by_video">によって</string>
+    <string name="anupam_video" translatable="false">アヌパム</string>
+    <string name="title_activity_about_video">約</string>
+    <string name="list_empty_video">リストは空です！</string>
+    <string name="previous_video">前</string>
+    <string name="next_video">次</string>
+    <string name="about_text_video">このアプリケーションBuildmLearn Toolkitを使用して開発されました。\ nは\ n特定のはBuildmLearn Toolkitの訪問についての詳細を知ります<a href="https://buildmlearn.org/">ここに</a>.</string>
+    <string name="background_image_video">背景画像</string>
+    <string name="buildmlearn_logo_video">BuildmLearnロゴ</string>
+    <string name="last_video">それが最後のビデオでした！</string>
+    <string name="video_thumbnail">動画サムネイル</string>
+    <string name="comprehension_add_meta_title">メタの詳細を追加します。</string>
+    <string name="comprehension_meta_title">タイトル</string>
+    <string name="comprehension_meta_title_of_passage">パッセージのタイトル</string>
+    <string name="comprehension_meta_passage">通路</string>
+    <string name="comprehension_meta_enter_passage">航路を入力するか、ファイルをアップロード</string>
+    <string name="or">または</string>
+    <string name="upload">アップロード</string>
+    <string name="timer">タイマー</string>
+    <string name="time_hint">秒で時間を入力します。</string>
+    <string name="comprehension_template_passage_hint">パッセージを入力してください</string>
+    <string name="comprehension_template_timer_hint">時間を入力します</string>
+    <string name="comprehension_edit_meta_title">編集メタ詳細</string>
+    <string name="meta_add_help">メタ詳細の追加を開始するために追加]ボタンをクリックします</string>
+    <string name="restart_comprehension">再起動</string>
+
+    <string name="restore_msg">APKからデータを復元します</string>
+    <string name="expandbutton">ボタンを拡大</string>
+
+    <!-- About DictationTemplate -->
+    <string name="list_empty_dict">リストは空です！</string>
+    <string name="exit_dict">出口</string>
+    <string name="about_us_dict">私たちに関しては</string>
+    <string name="about_text_dict">このアプリケーションBuildmLearn Toolkitを使用して開発されました。\ nは\ n特定のはBuildmLearn Toolkitの訪問についての詳細を知ります<a href="https://buildmlearn.org/">こに</a>.</string>
+    <string name="dict_thumbnail">ディクテーションサムネイル</string>
+    <string name="fast_dict">ファスト</string>
+    <string name="medium_dict">ミディアム</string>
+    <string name="slow_dict">スロー</string>
+    <string name="select_speed_dict">スピードを選択</string>
+    <string name="back_dict">バック</string>
+    <string name="hint_passage_dict">暗唱するサウンドアイコンをクリックしてください。そして、あなたが聞くの通路を入力します。</string>
+    <string name="restart_dict">再起動</string>
+    <string name="sound_icon_dict">サウンドアイコン</string>
+
+    <!--Match Template -->
+
+    <string name="divider">分周器</string>
+    <string name="first_list_title">まず、リストのタイトル</string>
+    <string name="enter_first_list_title">まず、リストのタイトルを入力します。</string>
+    <string name="second_list_title">2番目のリストのタイトル</string>
+    <string name="enter_second_list_title">2番目のリストのタイトルを入力します。</string>
+    <string name="match_first_list_title">まず、リストのタイトルを入力します。</string>
+    <string name="match_second_list_title">2番目のリストのタイトルを入力します。</string>
+    <string name="match_dialog_add_title">下の2つのマッチングのトピックを入力してください</string>
+    <string name="first_list_item_match">最初のリストアイテム</string>
+    <string name="second_list_item_match">2番目のリスト項目</string>
+    <string name="enter_first_list_item_match">まず、リスト項目を入力してください</string>
+    <string name="enter_second_list_item_match">2番目のリスト項目を入力してください</string>
+    <string name="match_dialog_edit_title">下の2つのマッチングのトピックを編集します</string>
+    <string name="meta_title">タイトル</string>
+    <string name="meta_title_match_hint">タイトルを入力します。</string>
+
+
+    <string name="previous_match">前</string>
+    <string name="check_answers_match">チェック解答</string>
+    <string name="try_again_match">再試行する</string>
+    <string name="first_list_up_match">最初のリストアップ</string>
+    <string name="first_list_down_match">最初のドロップダウンリスト</string>
+    <string name="second_list_up_match">2番目のリストアップ</string>
+    <string name="separator_match">セパレーター</string>
+    <string name="second_list_down_match">2番目のリストダウン</string>
+    <string name="bottom_sheet_share_project">共有プロジェクト</string>
+    <string name="buildmlearn_logo">BuildmLearnロゴ</string>
+    <string name="buildmlearn_backdrop_image">BuildmLearnの背景画像</string>
+    <string name="upload_image">画像をアップロード</string>
+    <string name="flashcard_image">フラッシュカードの画像</string>
+    <string name="delete_item">項目を削除</string>
+    <string name="template_thumbnail">テンプレートのサムネイル</string>
+    <string name="show_more">もっと見せる</string>
+    <string name="tutorial_image">チュートリアル画像</string>
+
+</resources>
