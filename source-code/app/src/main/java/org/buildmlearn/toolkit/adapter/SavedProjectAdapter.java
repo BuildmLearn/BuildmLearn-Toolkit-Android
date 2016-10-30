@@ -74,7 +74,7 @@ public class SavedProjectAdapter extends BaseAdapter {
         {
             positions.add((Integer)key);
         }
-        Collections.sort(positions);
+        Collections.sort(positions, Collections.reverseOrder());
         return positions;
     }
 
