@@ -128,7 +128,7 @@ public class QuizTemplate implements TemplateInterface {
             @Override
             public void onClick(View v) {
 
-                boolean isValidated = true;
+                boolean isValidated=validateOptions(options,activity);
                 int checkedAns = getCheckedAnswer(buttons);
                 if (checkedAns < 0) {
                     Toast.makeText(activity, "Choose a correct option", Toast.LENGTH_SHORT).show();
@@ -223,7 +223,7 @@ public class QuizTemplate implements TemplateInterface {
             @Override
             public void onClick(View v) {
 
-                boolean isValidated = true;
+                boolean isValidated = validateOptions(options,activity);
                 int checkedAns = getCheckedAnswer(buttons);
                 if (checkedAns < 0) {
                     Toast.makeText(activity, "Choose a correct option", Toast.LENGTH_SHORT).show();
@@ -332,6 +332,19 @@ public class QuizTemplate implements TemplateInterface {
                 button.setChecked(false);
             }
         }
+    }
+
+    private boolean validateOptions(ArrayList<EditText> options,Context context){
+            for(EditText option:options){
+                int i=options.indexOf(option);
+                for(int j=i+1;j<options.size();j++){
+                    if(options.get(i).getText().toString().equals(options.get(j).getText().toString())) {
+                        Toast.makeText(context, "Options can't be Same. ", Toast.LENGTH_LONG).show();
+                        return false;
+                    }
+                }
+            }
+        return true;
     }
 
     private int getCheckedAnswer(ArrayList<RadioButton> buttons) {
