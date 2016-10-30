@@ -1,7 +1,9 @@
 package org.buildmlearn.toolkit.utilities;
 
 import android.content.Context;
+
 import android.content.res.AssetManager;
+
 
 import org.w3c.dom.Document;
 
@@ -194,7 +196,7 @@ public class FileUtils {
      * @return Returns true if successfully converted
      * @brief Converts a given Document object to xml format file
      */
-    public static void saveXmlFile(String destinationFolder, String fileName, Document doc) {
+    public static boolean saveXmlFile(String destinationFolder, String fileName, Document doc) {
 
         File f = new File(destinationFolder);
         if (!f.isDirectory()) {
@@ -203,13 +205,18 @@ public class FileUtils {
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer;
         try {
+            File newTemplateFile=new File(destinationFolder + fileName);
+            if(newTemplateFile.exists())
+                return false;
             transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File(destinationFolder + fileName));
+            StreamResult result = new StreamResult(newTemplateFile);
             transformer.transform(source, result);
+
         } catch (TransformerException e) {
             e.printStackTrace();
         }
+        return true;
     }
 
     /**
@@ -312,3 +319,4 @@ public class FileUtils {
         out.close();
     }
 }
+
