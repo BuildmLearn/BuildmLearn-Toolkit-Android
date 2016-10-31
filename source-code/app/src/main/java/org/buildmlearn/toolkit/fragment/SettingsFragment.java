@@ -1,6 +1,7 @@
 package org.buildmlearn.toolkit.fragment;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -168,6 +169,17 @@ public class SettingsFragment extends PreferenceFragment {
 
     }
     private class AsyncTaskRunner extends AsyncTask<String,Void,Float> {
+        private ProgressDialog progressDialog;
+
+        @Override
+        protected void onPreExecute() {
+            progressDialog=new ProgressDialog(getActivity());
+            progressDialog.setTitle("Deleting...");
+            progressDialog.setMessage("Deleting Temporary file");
+            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progressDialog.setCancelable(false);
+            progressDialog.show();
+        }
 
         @Override
         protected Float doInBackground(String... params) {
@@ -178,10 +190,11 @@ public class SettingsFragment extends PreferenceFragment {
 
         @Override
         protected void onPostExecute(Float size) {
+            progressDialog.dismiss();
             if (size != 0) {
-                Toast.makeText(SettingsFragment.this.getActivity(), "Deleted " + size + " MB.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Deleted " + size + " MB.", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(SettingsFragment.this.getActivity(), "No Temp Files Found!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "No Temp Files Found!", Toast.LENGTH_SHORT).show();
             }
         }
     }
