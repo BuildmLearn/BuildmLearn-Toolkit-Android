@@ -1,0 +1,384 @@
+<resources>
+    <string name="app_name">BuildmLearn Toolkit</string>
+    <string name="navigation_drawer_open">Abrir cajón de navegación</string>
+    <string name="navigation_drawer_close">Cierre el cajón de navegación</string>
+    <string name="menu_load_project">Los proyectos guardados</string>
+    <string name="menu_settings">ajustes</string>
+    <string name="menu_drafts">Mis bosquejos</string>
+    <string name="menu_how_to">Cómo</string>
+    <string name="menu_about_us">Acerca de BuildmLearn</string>
+    <string name="menu_home">Casa</string>
+    <string name="buildmlearn_welcome_title">Bienvenido a BuildmLearn Toolkit</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="buildmlearn_welcome_text">El BuildmLearn Toolkit es un programa fácil de usar que ayuda a los usuarios a tomar las aplicaciones móviles sin ningún conocimiento de programación de aplicaciones. \n\n El conjunto de herramientas ayuda a la creación de aplicaciones móviles con diferentes funcionalidades y permite a los profesores de entrada de su contenido personalizado.</string>
+    <string name="no_item">No hay artículos</string>
+    <string name="add_item_help">Haga clic en el botón Agregar para empezar a añadir elementos</string>
+
+    <!-- Draft -->
+    <string name="draft_deleted">Se ha eliminado el proyecto!</string>
+    <string name="draft_deleted_failed">Proyecto de Supresión Error!</string>
+    <string name="dialog_delete_all_msg">¿Seguro que claro se draft?</string>
+    <string name="dialog_delete_all_title">Borrar todos</string>
+
+
+    <!-- Restore Dialog-->
+
+    <string name="dialog_restore_title">restaurar Proyecto</string>
+    <string name="dialog_restore_failed">No se puede restaurar Proyecto de apk dada</string>
+    <string name="dialog_restore_fileerror">No se puede cargar apk dada</string>
+
+    <!-- Quiz Template-->
+    <string name="app_name_quiz">Quiz tiempo</string>
+    <string name="completed_message_quiz">¡Hurra! Ha completado el cuestionario.</string>
+    <string name="dialog_yes">Sí</string>
+    <string name="dialog_no">No</string>
+    <string name="dialog_delete_msg">¿Está seguro de que desea Borrar este artículo?</string>
+    <string name="dialog_delete_title">Borrar</string>
+
+
+    <string name="about_us">Esta aplicación ha sido desarrollada utilizando el kit de herramientas de BuildmLearn. \n\n Para saber más sobre la visita BuildmLearn Toolkit http://buildmlearn.org/</string>
+    <string name="title_activity_simulator">Simulador</string>
+    <string name="title_activity_template">Plantillas</string>
+
+
+    <!-- Info Template-->
+    <string name="info_template_word">Palabra</string>
+    <string name="info_template_word_hint">introducir el título</string>
+    <string name="info_template_meaning">Descripción</string>
+    <string name="info_template_meaning_hint">Rellena el texto</string>
+    <string name="info_template_add">Añadir</string>
+    <string name="info_template_delete">Borrar</string>
+    <string name="info_template_ok">De acuerd</string>
+    <string name="info_template_cancel">Cancelar</string>
+    <string name="info_add_new_title">agregar ítem nuevo</string>
+    <string name="info_edit_title">Editar elemento</string>
+    <string name="info_delete_item_content">¿Está seguro de que desea eliminar este artículo?</string>
+    <string name="info_template">InfoTemplate</string>
+    <string name="main_title_info">información de la aplicación</string>
+    <string name="list_empty_info">La lista está vacía!</string>
+    <string name="previous_info">ANTERIOR</string>
+    <string name="next_info">próximo</string>
+    <string name="exit_info">hacer mutis</string>
+    <string name="about_text_info">Esta aplicación ha sido desarrollada utilizando el kit de herramientas de BuildmLearn. \n\n Para saber más sobre la visita BuildmLearn Toolkit <a href="https://buildmlearn.org/">here</a>.</string>
+    <string name="info_thumbnail_info">información en miniatura</string>
+
+    <!-- Flash Card Template-->
+    <string name="flash_card_template">Tarjetas Flash Plantilla de</string>
+    <string name="flash_photo_source">Seleccionar origen de imagen</string>
+    <string name="flash_templete_question">Pregunta</string>
+    <string name="flash_template_answer">Responder</string>
+    <string name="flash_template_hint">Responder dar un indicio</string>
+    <string name="flash_template_question_hint">entrar Pregunta</string>
+    <string name="flash_template_anser_hint">entrar Responder</string>
+    <string name="flash_template_hint_hint">entrar dar un indicio</string>
+
+    <string name="main_title_flash">Aprende con FlashCards</string>
+    <string name="next_flash">SIGUIENTE</string>
+    <string name="exit_flash">hacer mutis</string>
+    <string name="restart_flash">Reiniciar</string>
+    <string name="buildmlearn_logo_flash">BuildmLearn Logo</string>
+    <string name="completed_message_flash">¡Hurra! Ha finalizado. \n que fue la última carta!</string>
+    <string name="previous_flash">anterior</string>
+    <string name="flip_flash">capirotazo</string>
+    <string name="backdrop_image_flash">Espalda soltar imagen</string>
+
+    <!-- Spelling Template-->
+
+    <string name="submit">enviar</string>
+    <string name="restart">Reiniciar</string>
+    <string name="exit">hacer mutis</string>
+    <string name="high">Alto</string>
+    <string name="speech_rate">discurso tarifa:</string>
+
+    <string name="main_title_spell">aprende la ortografía</string>
+    <string name="next_spell">próximo</string>
+    <string name="exit_spell">hacer mutis</string>
+    <string name="restart_spell">Reiniciar</string>
+    <string name="buildmlearn_logo_spell">BuildmLearn Logo</string>
+    <string name="completed_message_spell">¡Hurra! Has completado.</string>
+    <string name="spell_it_spell">DELETREARLO</string>
+    <string name="skip_spell">OMITIR</string>
+    <string name="listen_spell">ESCUCH</string>
+    <string name="submit_spell">enviar</string>
+    <string name="enter_spelling">Introduzca Spelling</string>
+    <string name="normal_spell">Normal</string>
+    <string name="low_spell">Low</string>
+    <string name="intro_text_spell">Presione HABLAR cuando esté listo. Es posible ajustar la velocidad de la voz con el control deslizante. Escucha las palabras tantas veces antes de contestar. Si no está seguro, puede omitir la palabra.</string>
+
+
+    <!-- Video Collection Template-->
+    <string name="video_collection_title">Colección de vídeo</string>
+    <string name="video_collection_template">Plantilla de la colección del vídeo</string>
+    <string name="video_collection_description">Elija esta plantilla para crear aplicaciones para el aprendizaje de los vídeos</string>
+    <string name="video_collection_template_link">enlazar</string>
+    <string name="video_collection_template_title">título</string>
+    <string name="video_collection_template_description">Description</string>
+    <string name="video_collection_template_title_hint">introducir el título</string>
+    <string name="video_collection_template_link_hint">Introduzca enlace</string>
+    <string name="video_collection_template_description_hint">introduzca la descripción</string>
+    <string name="video_collection_or">O</string>
+
+    <!-- Comprehension Template-->
+    <string name="comprehension_title">Comprensión</string>
+    <string name="comprehension_template">Plantilla de la comprensión</string>
+    <string name="comprehension_description">Elija esta plantilla para crear aplicaciones para el aprendizaje de por comprensión</string>
+    <string name="comprehension_template_title_hint">introducir el título</string>
+    <string name="comprehension_template_timer_correct_hint">Tiempo máximo :: 999,999,999 </string>
+
+    <string name="comprehension_navigation_drawer_open">Abrir cajón de navegación</string>
+    <string name="comprehension_navigation_drawer_close">Cierre el cajón de navegación</string>
+
+    <string name="comprehension_previous">anterior</string>
+    <string name="comprehension_next">próximo</string>
+    <string name="comprehension_about_us">Sobre nosotros</string>
+    <string name="comprehension_about_text">Esta aplicación ha sido desarrollada utilizando el kit de herramientas de BuildmLearn. \n\n Para saber más sobre la visita BuildmLearn Toolkit <a href="https://buildmlearn.org/">here</a>.</string>
+    <string name="comprehension_buildmlearn_logo">BuildmLearn Logo</string>
+    <string name="comprehension_go_to_questions">IR A LAS PREGUNTAS</string>
+    <string name="comprehension_passage_title">pasadizoe :</string>
+    <string name="comprehension_completed_message">¡Hurra! Ha finalizado la comprensión.</string>
+
+    <!-- Dictation Template-->
+    <string name="dictation_title">Dictado</string>
+    <string name="dictation_template">Plantilla de dictado</string>
+    <string name="dictation_description">Elija esta plantilla para crear aplicaciones para la práctica de dictado</string>
+    <string name="dictation_template_title_hint">introducir el título</string>
+    <string name="dictation_template_passage_hint">Introduzca Pasaje</string>
+
+    <!-- MatchTheFollowing Template-->
+    <string name="match_title">Partido</string>
+    <string name="match_template">Partido Modelo</string>
+    <string name="match_description">Elija esta plantilla para crear aplicaciones para la práctica coincide con la siguiente.</string>
+
+    <!-- Assets Filename -->
+    <string name="spelling_assets_name">spelling_content.xml</string>
+    <string name="quiz_assets_name">quiz_content.xml</string>
+    <string name="flash_assets_name">flash_content.xml</string>
+    <string name="info_assets_name">info_content.xml</string>
+    <string name="video_assets_name">video_content.xml</string>
+    <string name="comprehension_assets_name">comprehension_content.xml</string>
+    <string name="dictation_assets_name">dictation_content.xml</string>
+    <string name="match_assets_name">match_content.xml</string>
+
+    <!-- Template Resources-->
+    <string name="basic_m_learning_title">básica mLearning</string>
+    <string name="basic_m_learning_description">Crear aplicación se presentan lista seleccionable de información textual</string>
+
+    <string name="flash_card_title">Tarjetas flash</string>
+    <string name="flash_card_description">Elija esta plantilla para crear aplicaciones de tarjetas flash</string>
+
+    <string name="learn_spellings_title">aprender ortografías</string>
+    <string name="learn_spellings_description">Elija esta plantilla para crear aplicaciones para aprender a deletrear palabras</string>
+    <string name="spelling_type">Plantilla de ortografía</string>
+
+
+    <string name="quiz_title">Examen</string>
+    <string name="quiz_new_question_title">Añadir nueva pregunta</string>
+    <string name="quiz_type">plantilla de cuestionario</string>
+
+    <string name="quiz_add">Añadir</string>
+    <string name="quiz_delete">Borrar</string>
+    <string name="quiz_ok">DE ACUERDO</string>
+    <string name="quiz_cancel">Cancelar</string>
+    <string name="quiz_edit">Editar pregunta</string>
+    <string name="quiz_description">Elija esta plantilla para crear aplicaciones Quiz-como</string>
+    <string name="hint_quiz_name">Nombre de la plantilla</string>
+    <string name="label_quiz">Nombre de la plantilla</string>
+    <string name="hint_author">Nombre</string>
+    <string name="label_author">Autor</string>
+    <string name="title_activity_template_editor">Editor de plantillas</string>
+    <string name="quiz_new_question">Pregunta</string>
+    <string name="quiz_new_question_answer">respuestas</string>
+    <string name="quiz_option_hint_1">opción 1</string>
+    <string name="quiz_option_hint_2">opción 2</string>
+    <string name="quiz_option_hint_3">opción 3</string>
+    <string name="quiz_option_hint_4">opción 4</string>
+
+    <!-- Menu Strings-->
+
+    <string name="menu_save_template">Guardar plantilla</string>
+    <string name="menu_simulate">Simular</string>
+    <string name="menu_delete_template_item">Borrar</string>
+    <string name="menu_delete_all_template_items">Borrar todos</string>
+    <string name="menu_edit_template_item">Editar</string>
+
+    <!-- Dialog Sort -->
+
+    <!-- Bottom Sheet-->
+    <string name="bottom_sheet_share_apk">Compartir APK</string>
+    <string name="bottom_sheet_save_apk">guardar APK</string>
+    <string name="bottom_sheet_save_project">Guardar proyecto</string>
+
+    <!--  Built-in file manager string values -->
+
+    <!--  menu string values -->
+
+    <!-- Manage Keys string values -->
+
+
+    <!-- Progress messages -->
+    <string name="LoadingCertificateAnKey">Cargando certificado y la clave privada</string>
+    <string name="ParsingCentralDirectory">Analizar la entrada de directorio \ 's centro</string>
+    <string name="GeneratingManifest">La generación de manifiesto</string>
+    <string name="GeneratingSignatureFile">Generación de archivo de la firma</string>
+    <string name="GeneratingSignatureBlock">Generación de archivo de bloque de firma</string>
+    <string name="CopyingZipEntry">Copiado postal entrada %1$d de %2$d</string>
+
+    <!-- Error message shown if the input and output filenames are the same -->
+    <string name="InputFileSameAsOutput">Los archivos de entrada y de salida son los mismos. Especificar un nombre diferente para la salida.</string>
+    <!-- Error message shown when the key/mode="auto" and the key to use for signing can't be determined.  %s replaced with input filename. -->
+    <string name="AutoKeySelectionError">No se ha podido tecla de selección automática para la firma %s</string>
+
+    <!-- Preference Data-->
+
+    <string name="project_settings">Configuración del proyecto</string>
+    <string name="key_developer_mode">clave de depuración</string>
+    <string name="developer_mode">Modo desarrollador</string>
+    <string name="summary_developer_mode">Modo de programador desactivado la publicación de APK BuildmLearn tienda.</string>
+    <string name="title_user_name">Introduzca su nombre</string>
+
+    <string name="key_delete_temporary_files">eliminar archivos temporales</string>
+    <string name="delete_temp_files">Eliminar archivos temporales</string>
+    <string name="summary_temp_files">Eliminar archivos temporales generados para ahorrar espacio de almacenamiento</string>
+
+    <string name="key_restore_project">restaurar el proyecto</string>
+    <string name="restore_project">restaurar Proyecto</string>
+    <string name="summary_restore_project">Restaurar Proyecto de vuelta de apk</string>
+
+    <string name="key_user_name">nombre de usuario clave</string>
+    <string name="your_name">Tu nombre</string>
+    <string name="app_settings">Ajustes de Aplicacion</string>
+    <string name="advance_settings">Ajustes avanzados</string>
+
+    <string name="main_title">BuildmLearn</string>
+    <string name="main_subtitle"></string>
+    <string name="main_name_hint">¡Tu nombre!</string>
+
+
+    <!-- Flash Card Template-->
+
+    <!-- Tutorial-->
+    <string name="screen_1_title">Bienvenido a BuildmLearn Toolkit</string>
+    <string name="screen_1_desc">BuildmLearn Kit de herramientas de ayuda a crear aplicaciones mLearning sin ningún conocimiento sobre el desarrollo de aplicaciones</string>
+    <string name="title_activity_tutorial">Actividad tutorial</string>
+
+    <string name="screen_2_title">Hacer mLearning Aplicaciones</string>
+    <string name="screen_2_desc">Pulse el botón rosado grande para empezar a utilizar la aplicación edificio.</string>
+
+    <string name="screen_3_title">Varias plantillas</string>
+    <string name="screen_3_desc">Plantillas permite la creación de diferentes tipos de aplicaciones como la ortografía y dictado, cuestionario, etc.</string>
+
+    <string name="screen_4_title">Características de edición incorporado</string>
+    <string name="screen_4_desc">editor de Toolkit permite varias operaciones de archivo como guardar proyectos, publicar los archivos APK, simular la aplicación</string>
+
+    <string name="screen_5_title">Soporte simulador</string>
+    <string name="screen_5_desc">BuildmLearn conjunto de herramientas viene con un simulador de Nexus 6 en el que se puede probar la aplicación en el interior kit de herramientas</string>
+
+    <string name="screen_6_title">Cargar proyectos guardados</string>
+    <string name="screen_6_desc">Puede abrir cualquier proyecto guardado creado usando kit de herramientas androide o de escritorio</string>
+
+
+    <string name="screen_finish">Vamos a empezar</string>
+    <string name="title_activity_about_buildm_learn">sobre BuildmLearn</string>
+
+
+    <!-- About BuildmLearn-->
+    <string name="about_para_1">BuildmLearn Toolkit es un programa fácil de usar que ayuda a los usuarios a tomar las aplicaciones móviles sin ningún conocimiento de programación de aplicaciones.</string>
+    <string name="about_para_2">Visítenos en http://buildmlearn.org/.</string>
+    <string name="about_para_3">Cualquier comentario o sugerencia relacionados con BuildmLearn Toolkit son siempre bienvenidas. Por favor escríbanos a buildmlearn@gmail.com.</string>
+    <string name="title_activity_deep_linker">BuildmLearn Tookit</string>
+
+    <string name="apk_progress_dialog">Generación de Apk</string>
+    <string name="restore_progress_dialog">restaurando</string>
+    <string name="apk_msg">Inserción de datos en Apk</string>
+    <string name="video_fetching_error">Error al recuperar la información de vídeo!</string>
+    <string name="video_support_error">Sólo se da soporte Youtube, Dailymotion y Vimeo.</string>
+    <string name="network_error">¡Red no disponible! Por favor intente mas tarde.</string>
+    <string name="menu_load_apks">Guardar archivos APK</string>
+
+
+    <!-- About VideoCollectionTemplate -->
+
+    <string name="enter_video">ENTRAR</string>
+    <string name="by_video">por</string>
+    <string name="anupam_video" translatable="false">Anupam</string>
+    <string name="title_activity_about_video">Acerca de</string>
+    <string name="list_empty_video">La lista está vacía!</string>
+    <string name="previous_video">anterior</string>
+    <string name="next_video">próximo</string>
+    <string name="about_text_video">Esta aplicación ha sido desarrollada utilizando el kit de herramientas de BuildmLearn. \ Nm Para saber más sobre la visita BuildmLearn Toolkit <a href="https://buildmlearn.org/">aquí</a>.</string>
+    <string name="background_image_video">Imagen de fondo</string>
+    <string name="buildmlearn_logo_video">BuildmLearn Logo</string>
+    <string name="last_video">Ese fue el último vídeo!</string>
+    <string name="video_thumbnail">miniatura del vídeo</string>
+    <string name="comprehension_add_meta_title">Añadir Meta detalles</string>
+    <string name="comprehension_meta_title">Título</string>
+    <string name="comprehension_meta_title_of_passage">Título del Pasaje</string>
+    <string name="comprehension_meta_passage">Paso</string>
+    <string name="comprehension_meta_enter_passage">Introduzca Pasaje o cargar un archivo</string>
+    <string name="or">O</string>
+    <string name="upload">SUBIR</string>
+    <string name="timer">Minutero</string>
+    <string name="time_hint">Introducir la Hora en la Sec</string>
+    <string name="comprehension_template_passage_hint">Introduzca Pasaje</string>
+    <string name="comprehension_template_timer_hint">Introduzca la hora</string>
+    <string name="comprehension_edit_meta_title">Editar detalles del Meta</string>
+    <string name="meta_add_help">Haga clic en el botón Agregar para empezar a añadir detalles meta</string>
+    <string name="restart_comprehension">Reiniciar</string>
+
+    <string name="restore_msg">Restauración de datos desde Apk</string>
+    <string name="expandbutton">Botón ampliar</string>
+
+    <!-- About DictationTemplate -->
+    <string name="list_empty_dict">La lista está vacía!</string>
+    <string name="exit_dict">hacer mutis</string>
+    <string name="about_us_dict">Sobre nosotros</string>
+    <string name="about_text_dict">Esta aplicación ha sido desarrollada utilizando el kit de herramientas de BuildmLearn. \ Nm Para saber más sobre la visita BuildmLearn Toolkit <a href="https://buildmlearn.org/">aquí</a>.</string>
+    <string name="dict_thumbnail">dict en miniatura</string>
+    <string name="fast_dict">RÁPIDO</string>
+    <string name="medium_dict">MEDIO</string>
+    <string name="slow_dict">lento</string>
+    <string name="select_speed_dict">Selección de velocidad</string>
+    <string name="back_dict">ESPALDA</string>
+    <string name="hint_passage_dict">Haga clic en el icono de sonido para recitar. Y entra en el pasaje que se escucha.</string>
+    <string name="restart_dict">Reiniciar</string>
+    <string name="sound_icon_dict">Icono de sonido</string>
+
+    <!--Match Template -->
+
+    <string name="divider">Divisor</string>
+    <string name="first_list_title">Primera lista de títulos</string>
+    <string name="enter_first_list_title">En primer lugar entrar en la lista de títulos</string>
+    <string name="second_list_title">Segunda lista de títulos</string>
+    <string name="enter_second_list_title">Introduzca Segunda lista de títulos</string>
+    <string name="match_first_list_title">En primer lugar entrar en la lista de títulos</string>
+    <string name="match_second_list_title">Introduzca Segunda lista de títulos</string>
+    <string name="match_dialog_add_title">Introduzca dos temas juego abajo</string>
+    <string name="first_list_item_match">Primera lista de elementos</string>
+    <string name="second_list_item_match">Segunda lista de elementos</string>
+    <string name="enter_first_list_item_match">En primer lugar entrar en la lista de elementos</string>
+    <string name="enter_second_list_item_match">Introduzca segunda lista de artículos</string>
+    <string name="match_dialog_edit_title">Editar dos temas juego abajo</string>
+    <string name="meta_title">Título</string>
+    <string name="meta_title_match_hint">introducir el título</string>
+
+
+    <string name="previous_match">anterior</string>
+    <string name="check_answers_match">Comprobar respuestas</string>
+    <string name="try_again_match">INTÉNTALO DE NUEVO</string>
+    <string name="first_list_up_match">First lista para arriba</string>
+    <string name="first_list_down_match">First lista Down</string>
+    <string name="second_list_up_match">Segundo lista para arriba</string>
+    <string name="separator_match">Separador</string>
+    <string name="second_list_down_match">Segunda lista de Down</string>
+    <string name="bottom_sheet_share_project">Compartir Proyecto</string>
+    <string name="buildmlearn_logo">BuildmLearn Logo</string>
+    <string name="buildmlearn_backdrop_image">BuildmLearn el telón de foro imagen</string>
+    <string name="upload_image">Cargar imagen</string>
+    <string name="flashcard_image">imagen FlashCard</string>
+    <string name="delete_item">Eliminar elemento</string>
+    <string name="template_thumbnail">miniatura de la plantilla</string>
+    <string name="show_more">Mostrar más</string>
+    <string name="tutorial_image">imagen tutorial</string>
+
+</resources>
