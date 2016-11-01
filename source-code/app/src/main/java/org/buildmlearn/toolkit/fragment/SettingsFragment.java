@@ -1,9 +1,11 @@
 package org.buildmlearn.toolkit.fragment;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
@@ -59,13 +61,8 @@ public class SettingsFragment extends PreferenceFragment {
             public boolean onPreferenceClick(Preference preference) {
 
                 String path = ToolkitApplication.getUnZipDir();
-                float size = deleteDirectory(new File(path), 0);
-                size = (float) ((float) Math.round((size / 1048576) * 100d) / 100d);
-                if (size != 0) {
-                    Toast.makeText(SettingsFragment.this.getActivity(), "Deleted " + size + " MB.", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(SettingsFragment.this.getActivity(), "No Temp Files Found!", Toast.LENGTH_SHORT).show();
-                }
+                AsyncTaskRunner asynctaskrunner = new AsyncTaskRunner();
+                asynctaskrunner.execute(path);
                 return true;
             }
         });
@@ -170,5 +167,35 @@ public class SettingsFragment extends PreferenceFragment {
                 break;
         }
 
+    }
+    private class AsyncTaskRunner extends AsyncTask<String,Void,Float> {
+        private ProgressDialog progressDialog;
+
+        @Override
+        protected void onPreExecute() {
+            progressDialog=new ProgressDialog(getActivity());
+            progressDialog.setTitle("Deleting...");
+            progressDialog.setMessage("Deleting Temporary file");
+            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progressDialog.setCancelable(false);
+            progressDialog.show();
+        }
+
+        @Override
+        protected Float doInBackground(String... params) {
+            float size = deleteDirectory(new File(params[0]), 0);
+            size = (float) ((float) Math.round((size / 1048576) * 100d) / 100d);
+            return size;
+        }
+
+        @Override
+        protected void onPostExecute(Float size) {
+            progressDialog.dismiss();
+            if (size != 0) {
+                Toast.makeText(getActivity(), "Deleted " + size + " MB.", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getActivity(), "No Temp Files Found!", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }
