@@ -34,6 +34,7 @@ import com.afollestad.materialdialogs.internal.ThemeSingleton;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.ToolkitApplication;
+import org.buildmlearn.toolkit.activity.TemplateActivity;
 import org.buildmlearn.toolkit.activity.TemplateEditor;
 import org.buildmlearn.toolkit.adapter.SavedProjectAdapter;
 import org.buildmlearn.toolkit.constant.Constants;
@@ -209,11 +210,21 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
     }
 
     private void setEmptyText() {
-
+        getView().findViewById(R.id.no_saved_drafts).setVisibility(View.GONE);
+        getView().findViewById(R.id.no_saved_apks).setVisibility(View.GONE);
         if (mListView.getAdapter().getCount() == 0) {
-            getView().findViewById(R.id.empty).setVisibility(View.VISIBLE);
+            getView().findViewById(R.id.no_saved_project).setVisibility(View.VISIBLE);
+            View view= getView().findViewById(R.id.newProject);
+            view.setVisibility(View.VISIBLE);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(getActivity(),TemplateActivity.class));
+                }
+            });
         } else {
-            getView().findViewById(R.id.empty).setVisibility(View.GONE);
+            getView().findViewById(R.id.newProject).setVisibility(View.GONE);
+            getView().findViewById(R.id.no_saved_project).setVisibility(View.GONE);
         }
     }
 
