@@ -220,7 +220,7 @@
 
     <!-- Progress messages -->
     <string name="LoadingCertificateAnKey">Cargando certificado y la clave privada</string>
-    <string name="ParsingCentralDirectory">Analizar la entrada de directorio \ 's centro</string>
+    <string name="ParsingCentralDirectory">Analizar el directorio central de la entradas</string>
     <string name="GeneratingManifest">La generación de manifiesto</string>
     <string name="GeneratingSignatureFile">Generación de archivo de la firma</string>
     <string name="GeneratingSignatureBlock">Generación de archivo de bloque de firma</string>
