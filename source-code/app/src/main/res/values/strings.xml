@@ -9,6 +9,7 @@
     <string name="menu_about_us">About BuildmLearn</string>
     <string name="menu_home">Home</string>
     <string name="buildmlearn_welcome_title">Welcome to BuildmLearn Toolkit</string>
+    <string name="welcome">Welcome</string>
 
     <!--Snackbar-->
     <string name="snackbar_deleted_message">Item deleted</string>

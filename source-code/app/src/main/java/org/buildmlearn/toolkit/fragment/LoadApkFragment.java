@@ -458,8 +458,6 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
             InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
             isSearchOpened = false;
-            actionBar.setDisplayShowHomeEnabled(true);
-            actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setDisplayShowCustomEnabled(false);
             actionBar.setDisplayShowTitleEnabled(true);
         }

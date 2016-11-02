@@ -15,14 +15,13 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/name"
+        android:layout_above="@+id/nav_text"
         android:layout_centerHorizontal="true"
         android:adjustViewBounds="true"
         android:contentDescription="@string/buildmlearn_logo"
         android:src="@drawable/logo_70" />
 
-    <TextView
-        android:id="@+id/name"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -30,8 +29,21 @@
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="5dp"
-        android:textColor="@color/white_primary_text"
-        android:textSize="@dimen/sub_title" />
+        android:id="@+id/nav_text">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome"
+            android:textColor="@color/white_primary_text"
+            android:textSize="@dimen/sub_title" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white_primary_text"
+            android:textSize="@dimen/sub_title" />
+    </LinearLayout>
 
 </RelativeLayout>

@@ -133,7 +133,8 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_loadproject, container, false);
+        View view = inflater.inflate(R.layout.fragment_loadproject, container, false);
+        return view;
     }
 
     /**
@@ -499,8 +500,6 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
             InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
             isSearchOpened = false;
-            actionBar.setDisplayShowHomeEnabled(true);
-            actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setDisplayShowCustomEnabled(false);
             actionBar.setDisplayShowTitleEnabled(true);
         }
