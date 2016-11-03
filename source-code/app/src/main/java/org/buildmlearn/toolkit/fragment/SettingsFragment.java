@@ -7,6 +7,8 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
@@ -115,34 +117,50 @@ public class SettingsFragment extends PreferenceFragment {
                         RestoreThread restore = new RestoreThread(getActivity(), inputStream);
 
                         restore.setRestoreListener(new RestoreThread.OnRestoreComplete() {
-                            @Override
-                            public void onSuccess(File assetFile) {
-                                processDiaglog.dismiss();
-                                Intent intentProject = new Intent(getActivity(), DeepLinkerActivity.class);
-                                intentProject.setData(Uri.fromFile(assetFile));
-                                getActivity().startActivity(intentProject);
-                            }
 
+                            Handler mhandler=new Handler(Looper.getMainLooper());
+                            @Override
+                            public void onSuccess(final File assetFile) {
+                                mhandler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        processDiaglog.dismiss();
+                                        Intent intentProject = new Intent(getActivity(), DeepLinkerActivity.class);
+                                        intentProject.setData(Uri.fromFile(assetFile));
+                                        getActivity().startActivity(intentProject);
+                                    }
+                                });}
                             @Override
                             public void onFail() {
-                                processDiaglog.dismiss();
-                                final MaterialDialog dialog = new MaterialDialog.Builder(getActivity())
-                                        .title(R.string.dialog_restore_title)
-                                        .content(R.string.dialog_restore_failed)
-                                        .positiveText(R.string.info_template_ok)
-                                        .build();
-                                dialog.show();
+                                mhandler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        processDiaglog.dismiss();
+                                        final MaterialDialog dialog = new MaterialDialog.Builder(getActivity())
+                                                .title(R.string.dialog_restore_title)
+                                                .content(R.string.dialog_restore_failed)
+                                                .positiveText(R.string.info_template_ok)
+                                                .build();
+                                        dialog.show();
+                                    }
+                                });
                             }
 
                             @Override
                             public void onFail(Exception e) {
                                 processDiaglog.dismiss();
-                                final MaterialDialog dialog = new MaterialDialog.Builder(getActivity())
-                                        .title(R.string.dialog_restore_title)
-                                        .content(R.string.dialog_restore_failed)
-                                        .positiveText(R.string.info_template_ok)
-                                        .build();
-                                dialog.show();
+                                mhandler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        processDiaglog.dismiss();
+                                        final MaterialDialog dialog = new MaterialDialog.Builder(getActivity())
+                                                .title(R.string.dialog_restore_title)
+                                                .content(R.string.dialog_restore_failed)
+                                                .positiveText(R.string.info_template_ok)
+                                                .build();
+                                        dialog.show();
+                                    }
+                                });
                             }
                         });
 
