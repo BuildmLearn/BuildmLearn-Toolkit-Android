@@ -200,7 +200,7 @@ public class QuizTemplate implements TemplateInterface {
                         activity.getResources().getDimensionPixelSize(R.dimen.spacing_top),
                         activity.getResources().getDimensionPixelSize(R.dimen.spacing_right),
                         activity.getResources().getDimensionPixelSize(R.dimen.spacing_bottom))
-                .setPositiveButton(R.string.quiz_add, null)
+                .setPositiveButton(R.string.quiz_ok, null)
                 .setNegativeButton(R.string.quiz_cancel, null)
                 .create();
         dialog.show();

@@ -10,7 +10,6 @@ import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.activity.TemplateEditor;
 import org.buildmlearn.toolkit.views.TextViewPlus;
@@ -102,7 +101,7 @@ class LearnSpellingAdapter extends BaseAdapter {
                 LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 final View dialogView = inflater.inflate(R.layout.info_dialog_add_edit_data, null);
                 final AlertDialog dialog = new AlertDialog.Builder(mContext)
-                        .setTitle(R.string.info_add_new_title)
+                        .setTitle(R.string.info_edit_title)
                         .setView(dialogView,
                                 mContext.getResources().getDimensionPixelSize(R.dimen.spacing_left),
                                 mContext.getResources().getDimensionPixelSize(R.dimen.spacing_top),

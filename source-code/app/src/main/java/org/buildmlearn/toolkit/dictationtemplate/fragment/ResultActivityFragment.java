@@ -88,7 +88,7 @@ public class ResultActivityFragment extends Fragment implements LoaderCallbacks<
                     case R.id.action_about:
                         AlertDialog.Builder builder =
                                 new AlertDialog.Builder(getActivity());
-                        builder.setTitle(String.format("%1$s", getString(R.string.about_us)));
+                        builder.setTitle(String.format("%1$s", getString(R.string.comprehension_about_us)));
                         builder.setMessage(getResources().getText(R.string.about_text_video));
                         builder.setPositiveButton("OK", null);
                         AlertDialog welcomeAlert = builder.create();

@@ -12,7 +12,6 @@ import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.matchtemplate.fragment.SplashFragment;
 import org.buildmlearn.toolkit.model.Template;
@@ -265,7 +264,7 @@ public class MatchTemplate implements TemplateInterface {
             final MatchModel data = MatchData.get(position);
 
             LayoutInflater inflater = activity.getLayoutInflater();
-            View dialogView = inflater.inflate(R.layout.match_meta_dialog_add_edit_data, null);
+            View dialogView = inflater.inflate(R.layout.match_dialog_add_edit, null);
             final AlertDialog dialog = new AlertDialog.Builder(activity)
                     .setTitle(R.string.match_dialog_edit_title)
                     .setView(dialogView,

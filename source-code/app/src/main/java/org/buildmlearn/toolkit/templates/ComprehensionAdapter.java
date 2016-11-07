@@ -15,7 +15,6 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.activity.TemplateEditor;
 import org.buildmlearn.toolkit.views.TextViewPlus;
@@ -169,7 +168,7 @@ class ComprehensionAdapter extends BaseAdapter {
                         context.getResources().getDimensionPixelSize(R.dimen.spacing_top),
                         context.getResources().getDimensionPixelSize(R.dimen.spacing_right),
                         context.getResources().getDimensionPixelSize(R.dimen.spacing_bottom))
-                .setPositiveButton(R.string.quiz_add, null)
+                .setPositiveButton(R.string.quiz_ok, null)
                 .setNegativeButton(R.string.quiz_cancel, null)
                 .create();
         dialog.show();
