@@ -105,6 +105,7 @@ public class SettingsFragment extends PreferenceFragment {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.dialog_settings_your_name, null);
         final EditText editInput = (EditText) dialogView.findViewById(R.id.et_dialog_settings_your_name);
+        editInput.setText(prefUsername.getSummary());
         final AlertDialog dialog =
                 new AlertDialog.Builder(getActivity())
                         .setTitle(R.string.title_user_name)
