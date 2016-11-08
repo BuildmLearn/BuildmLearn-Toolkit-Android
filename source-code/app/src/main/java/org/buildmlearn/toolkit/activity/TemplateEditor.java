@@ -616,16 +616,22 @@ public class TemplateEditor extends AppCompatActivity {
         assert findViewById(R.id.author_name) != null;
         assert ((EditText) findViewById(R.id.author_name)) != null;
         String author = ((EditText) findViewById(R.id.author_name)).getText().toString();
+        author = author.trim();
         assert findViewById(R.id.template_title) != null;
         assert ((EditText) findViewById(R.id.template_title)) != null;
         String title = ((EditText) findViewById(R.id.template_title)).getText().toString();
-        if ("".equals(author)) {
-            assert authorEditText != null;
-            authorEditText.setError("Author name is required");
-        } else if ("".equals(title)) {
+        title = title.trim();
+        if (title.equals("") || title.equals(null)) {
             assert titleEditText != null;
-            titleEditText.setError("Title is required");
-        } else {
+            titleEditText.setError("Enter a valid title..");
+            return null;
+        }
+        if (author.equals("") || author.equals(null)) {
+            assert authorEditText != null;
+            authorEditText.setError("Enter a valid author name.");
+            return null;
+        }
+        else {
 
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder;
