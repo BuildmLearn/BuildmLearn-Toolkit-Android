@@ -82,7 +82,13 @@ public class SettingsFragment extends PreferenceFragment {
         prefUsername = findPreference(getString(R.string.key_user_name));
         prefUsername.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
-            public boolean onPreferenceChange(Preference preference, Object newValue) {
+            public boolean onPreferenceChange(Preference preference, Object newValue)
+            {
+                if(newValue.toString().trim().equals("") || newValue.toString().trim().equals(null))
+                {
+                    Toast.makeText(getActivity(), "Name cannot be empty.",Toast.LENGTH_SHORT).show();
+                    return false;
+                }
                 prefUsername.setSummary((String) newValue);
                 return true;
             }
