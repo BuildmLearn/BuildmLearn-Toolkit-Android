@@ -61,9 +61,10 @@ public class FirstRunActivity extends AppCompatActivity {
                     switch (keyCode) {
                         case KeyEvent.KEYCODE_DPAD_CENTER:
                         case KeyEvent.KEYCODE_ENTER:
-
-                            if (name.getText().toString().equals("")) {
-                                Toast.makeText(getApplicationContext(), "Enter name", Toast.LENGTH_SHORT).show();
+                        String Name = name.getText().toString().trim();
+                            if (Name.equals("") || Name.equals(null)) {
+                                name.setError("Enter a valid name.");
+                                //Toast.makeText(getApplicationContext(), "Enter name", Toast.LENGTH_SHORT).show();
                                 return false;
                             }
 
