@@ -40,8 +40,8 @@ public class LearnSpellingTemplate implements TemplateInterface {
             return false;
         }
 
-        String wordText = word.getText().toString();
-        String meaningText = meaning.getText().toString();
+        String wordText = word.getText().toString().trim();
+        String meaningText = meaning.getText().toString().trim();
 
         if ("".equals(wordText)) {
             Toast.makeText(context, "Enter word", Toast.LENGTH_SHORT).show();
@@ -168,8 +168,8 @@ public class LearnSpellingTemplate implements TemplateInterface {
                     String wordText = word.getText().toString();
                     String meaningText = meaning.getText().toString();
 
-                    data.setWord(wordText);
-                    data.setMeaning(meaningText);
+                    data.setWord(wordText.trim());
+                    data.setMeaning(meaningText.trim());
 
                     adapter.notifyDataSetChanged();
                     dialog.dismiss();

@@ -50,10 +50,10 @@ public class DictationTemplate implements TemplateInterface {
         String titleText = title.getText().toString();
         String passageText = passage.getText().toString();
 
-        if ("".equals(titleText)) {
+        if ("".equals(titleText.trim())) {
             Toast.makeText(context, R.string.dictation_template_title_hint, Toast.LENGTH_SHORT).show();
             return false;
-        } else if ("".equals(passageText)) {
+        } else if ("".equals(passageText.trim())) {
             Toast.makeText(context, R.string.dictation_template_passage_hint, Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -126,8 +126,8 @@ public class DictationTemplate implements TemplateInterface {
                 fileDialog.setFileEndsWith();
                 fileDialog.addFileListener(new FileDialog.FileSelectListener() {
                     public void fileSelected(File file) {
-                        ((TextView) dialog.findViewById(R.id.file_name)).setText(file.toString());
-                        ((TextView) dialog.findViewById(R.id.dict_passage)).setText(readFile(file));
+                        ((TextView) dialog.findViewById(R.id.file_name)).setText(file.toString().trim());
+                        ((TextView) dialog.findViewById(R.id.dict_passage)).setText(readFile(file).trim());
                     }
                 });
                 fileDialog.showDialog();
@@ -139,8 +139,8 @@ public class DictationTemplate implements TemplateInterface {
             public void onClick(View v) {
 
                 if (validated(activity, title, passage)) {
-                    String titleText = title.getText().toString();
-                    String passageText = passage.getText().toString();
+                    String titleText = title.getText().toString().trim();
+                    String passageText = passage.getText().toString().trim();
 
                     DictationModel temp = new DictationModel(titleText, passageText);
                     dictData.add(temp);
@@ -176,8 +176,8 @@ public class DictationTemplate implements TemplateInterface {
 
         final EditText title = (EditText) dialog.findViewById(R.id.dict_title);
         final EditText passage = (EditText) dialog.findViewById(R.id.dict_passage);
-        title.setText(data.getTitle());
-        passage.setText(data.getPassage());
+        title.setText(data.getTitle().trim());
+        passage.setText(data.getPassage().trim());
 
         dialog.findViewById(R.id.upload).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -186,8 +186,8 @@ public class DictationTemplate implements TemplateInterface {
                 fileDialog.setFileEndsWith();
                 fileDialog.addFileListener(new FileDialog.FileSelectListener() {
                     public void fileSelected(File file) {
-                        ((TextView) dialog.findViewById(R.id.file_name)).setText(file.toString());
-                        ((TextView) dialog.findViewById(R.id.dict_passage)).setText(readFile(file));
+                        ((TextView) dialog.findViewById(R.id.file_name)).setText(file.toString().trim());
+                        ((TextView) dialog.findViewById(R.id.dict_passage)).setText(readFile(file).trim());
                     }
                 });
                 fileDialog.showDialog();
@@ -203,8 +203,8 @@ public class DictationTemplate implements TemplateInterface {
                     String titleText = title.getText().toString();
                     String passageText = passage.getText().toString();
 
-                    data.setTitle(titleText);
-                    data.setPassage(passageText);
+                    data.setTitle(titleText.trim());
+                    data.setPassage(passageText.trim());
                     adapter.notifyDataSetChanged();
                     dialog.dismiss();
                 }

@@ -619,13 +619,13 @@ public class TemplateEditor extends AppCompatActivity {
         assert findViewById(R.id.template_title) != null;
         assert ((EditText) findViewById(R.id.template_title)) != null;
         String title = ((EditText) findViewById(R.id.template_title)).getText().toString();
-        if ("".equals(author)) {
-            assert authorEditText != null;
-            authorEditText.setError("Author name is required");
-        } else if ("".equals(title)) {
+        if ("".equals(title.trim())) {
             assert titleEditText != null;
             titleEditText.setError("Title is required");
-        } else {
+        }else if ("".equals(author.trim())) {
+            assert authorEditText != null;
+            authorEditText.setError("Author name is required");
+        }  else {
 
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder;

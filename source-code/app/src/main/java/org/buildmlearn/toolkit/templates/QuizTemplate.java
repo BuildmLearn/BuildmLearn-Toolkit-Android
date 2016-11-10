@@ -33,6 +33,9 @@ public class QuizTemplate implements TemplateInterface {
     transient private QuizAdapter mAdapter;
     private ArrayList<QuizModel> quizData;
     private int templateId;
+    EditText question;
+    ArrayList<RadioButton> buttons;
+    ArrayList<EditText> options;
 
     public QuizTemplate() {
         this.quizData = new ArrayList<>();
@@ -103,9 +106,9 @@ public class QuizTemplate implements TemplateInterface {
                 .negativeText(R.string.quiz_cancel)
                 .build();
 
-        final EditText question = (EditText) dialog.findViewById(R.id.quiz_question);
-        final ArrayList<RadioButton> buttons = new ArrayList<>();
-        final ArrayList<EditText> options = new ArrayList<>();
+        question = (EditText) dialog.findViewById(R.id.quiz_question);
+        buttons = new ArrayList<>();
+        options = new ArrayList<>();
         options.add((EditText) dialog.findViewById(R.id.quiz_option_1));
         options.add((EditText) dialog.findViewById(R.id.quiz_option_2));
         options.add((EditText) dialog.findViewById(R.id.quiz_option_3));
@@ -130,31 +133,66 @@ public class QuizTemplate implements TemplateInterface {
 
                 boolean isValidated = true;
                 int checkedAns = getCheckedAnswer(buttons);
-                if (checkedAns < 0) {
-                    Toast.makeText(activity, "Choose a correct option", Toast.LENGTH_SHORT).show();
-                    isValidated = false;
-                }
-                if (question.getText().toString().equals("")) {
+                if (question.getText().toString().trim().equals("")) {
 
-                    question.setError("Question is required");
+                    question.setError("Enter a question.");
                     isValidated = false;
+                    return;
                 }
 
                 int optionCount = 0;
-                for (EditText option : options) {
-                    if (!option.getText().toString().equals("")) {
-                        optionCount++;
-                    }
-                }
-                if (optionCount < 2) {
-                    Toast.makeText(activity, "Minimum two multiple answers are required.", Toast.LENGTH_SHORT).show();
+                int correctAnswer = 0;
+
+                if(options.get(0).getText().toString().trim().equals("")){
+                    options.get(0).setError("Cannot be empty.");
                     isValidated = false;
+                    return;
+                }
+                optionCount++;
+                if(options.get(1).getText().toString().trim().equals("")){
+                    options.get(1).setError("Cannot be empty.");
+                    isValidated = false;
+                    return;
+                }
+                optionCount++;
+                if(options.get(2).getText().toString().trim().equals("") && !options.get(3).getText().toString().trim().equals("")){
+                    options.get(2).hasFocus();
+                    options.get(2).setError("Enter option 3 first.");
+                    isValidated = false;
+                    return;
+                }
+                if(!options.get(2).getText().toString().trim().equals("") && options.get(3).getText().toString().trim().equals("")){
+                    optionCount = 3;
+                }
+                if(!options.get(2).getText().toString().trim().equals("") && !options.get(3).getText().toString().trim().equals("")){
+                    optionCount = 4;
+                }
+                if (checkedAns < 0) {
+                    Toast.makeText(activity, "Choose a correct option.", Toast.LENGTH_SHORT).show();
+                    isValidated = false;
+                    return;
+                }
+                if(options.get(checkedAns).getText().toString().trim().equals("")){
+                    Toast.makeText(activity, "Enter a valid option before marking it as answer.", Toast.LENGTH_SHORT).show();
+                    isValidated = false;
+                    return;
+                }
+                for (EditText option : options) {
+                    if (option.getText().toString().equals("")){
+                        continue;
+                    }
+                    if (option.getText().toString()!= null && option.getText().toString().trim().equals("")) {
+                        option.getText().clear();
+                        option.setError("Enter a valid option.");
+                        isValidated = false;
+                        return;
+                    }
                 }
 
                 if (isValidated) {
                     dialog.dismiss();
                     ArrayList<String> answerOptions = new ArrayList<>();
-                    int correctAnswer = 0;
+                    correctAnswer = 0;
                     for (int i = 0; i < buttons.size(); i++) {
                         if (buttons.get(i).isChecked() && !options.get(i).getText().toString().equals("")) {
                             correctAnswer = answerOptions.size();
@@ -191,18 +229,6 @@ public class QuizTemplate implements TemplateInterface {
                 .negativeText(R.string.quiz_cancel)
                 .build();
 
-        final EditText question = (EditText) dialog.findViewById(R.id.quiz_question);
-        final ArrayList<RadioButton> buttons = new ArrayList<>();
-        final ArrayList<EditText> options = new ArrayList<>();
-        options.add((EditText) dialog.findViewById(R.id.quiz_option_1));
-        options.add((EditText) dialog.findViewById(R.id.quiz_option_2));
-        options.add((EditText) dialog.findViewById(R.id.quiz_option_3));
-        options.add((EditText) dialog.findViewById(R.id.quiz_option_4));
-        buttons.add((RadioButton) dialog.findViewById(R.id.quiz_radio_1));
-        buttons.add((RadioButton) dialog.findViewById(R.id.quiz_radio_2));
-        buttons.add((RadioButton) dialog.findViewById(R.id.quiz_radio_3));
-        buttons.add((RadioButton) dialog.findViewById(R.id.quiz_radio_4));
-
         for (int i = 0; i < data.getOptions().size(); i++) {
             options.get(i).setText(data.getOptions().get(i));
         }
@@ -225,31 +251,66 @@ public class QuizTemplate implements TemplateInterface {
 
                 boolean isValidated = true;
                 int checkedAns = getCheckedAnswer(buttons);
-                if (checkedAns < 0) {
-                    Toast.makeText(activity, "Choose a correct option", Toast.LENGTH_SHORT).show();
-                    isValidated = false;
-                }
-                if (question.getText().toString().equals("")) {
+                if (question.getText().toString().trim().equals("")) {
 
-                    question.setError("Question is required");
+                    question.setError("Enter a question.");
                     isValidated = false;
+                    return;
                 }
 
                 int optionCount = 0;
-                for (EditText option : options) {
-                    if (!option.getText().toString().equals("")) {
-                        optionCount++;
-                    }
-                }
-                if (optionCount < 2) {
-                    Toast.makeText(activity, "Minimum two multiple answers are required.", Toast.LENGTH_SHORT).show();
+                int correctAnswer = 0;
+
+                if(options.get(0).getText().toString().trim().equals("")){
+                    options.get(0).setError("Cannot be empty.");
                     isValidated = false;
+                    return;
+                }
+                optionCount++;
+                if(options.get(1).getText().toString().trim().equals("")){
+                    options.get(1).setError("Cannot be empty.");
+                    isValidated = false;
+                    return;
+                }
+                optionCount++;
+                if(options.get(2).getText().toString().trim().equals("") && !options.get(3).getText().toString().trim().equals("")){
+                    options.get(2).hasFocus();
+                    options.get(2).setError("Enter option 3 first.");
+                    isValidated = false;
+                    return;
+                }
+                if(!options.get(2).getText().toString().trim().equals("") && options.get(3).getText().toString().trim().equals("")){
+                    optionCount = 3;
+                }
+                if(!options.get(2).getText().toString().trim().equals("") && !options.get(3).getText().toString().trim().equals("")){
+                    optionCount = 4;
+                }
+                if (checkedAns < 0) {
+                    Toast.makeText(activity, "Choose a correct option.", Toast.LENGTH_SHORT).show();
+                    isValidated = false;
+                    return;
+                }
+                if(options.get(checkedAns).getText().toString().trim().equals("")){
+                    Toast.makeText(activity, "Enter a valid option before marking it as answer.", Toast.LENGTH_SHORT).show();
+                    isValidated = false;
+                    return;
+                }
+                for (EditText option : options) {
+                    if (option.getText().toString().equals("")){
+                        continue;
+                    }
+                    if (option.getText().toString()!= null && option.getText().toString().trim().equals("")) {
+                        option.getText().clear();
+                        option.setError("Enter a valid option.");
+                        isValidated = false;
+                        return;
+                    }
                 }
 
                 if (isValidated) {
                     dialog.dismiss();
                     ArrayList<String> answerOptions = new ArrayList<>();
-                    int correctAnswer = 0;
+                    correctAnswer = 0;
                     for (int i = 0; i < buttons.size(); i++) {
                         if (buttons.get(i).isChecked() && !options.get(i).getText().toString().equals("")) {
                             correctAnswer = answerOptions.size();

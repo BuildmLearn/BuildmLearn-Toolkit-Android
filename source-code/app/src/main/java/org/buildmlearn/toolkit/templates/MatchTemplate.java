@@ -49,13 +49,13 @@ public class MatchTemplate implements TemplateInterface {
         String first_list_titleText = first_list_title.getText().toString();
         String second_list_titleText = second_list_title.getText().toString();
 
-        if ("".equals(titleText)) {
+        if ("".equals(titleText.trim())) {
             Toast.makeText(context, R.string.comprehension_template_title_hint, Toast.LENGTH_SHORT).show();
             return false;
-        } else if ("".equals(first_list_titleText)) {
+        } else if ("".equals(first_list_titleText.trim())) {
             Toast.makeText(context, R.string.match_first_list_title, Toast.LENGTH_SHORT).show();
             return false;
-        } else if ("".equals(second_list_titleText)) {
+        } else if ("".equals(second_list_titleText.trim())) {
             Toast.makeText(context, R.string.match_second_list_title, Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -71,10 +71,10 @@ public class MatchTemplate implements TemplateInterface {
         String first_list_titleText = first_list_title.getText().toString();
         String second_list_titleText = second_list_title.getText().toString();
 
-        if (first_list_titleText.equals("")) {
+        if (first_list_titleText.trim().equals("")) {
             Toast.makeText(context, R.string.match_first_list_title, Toast.LENGTH_SHORT).show();
             return false;
-        } else if (second_list_titleText.equals("")) {
+        } else if (second_list_titleText.trim().equals("")) {
             Toast.makeText(context, R.string.match_second_list_title, Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -189,8 +189,8 @@ public class MatchTemplate implements TemplateInterface {
                 if (validated(activity, title, first_list_title, second_list_title)) {
 
                     String titleText = title.getText().toString();
-                    String first_list_titleText = first_list_title.getText().toString();
-                    String second_list_titleText = second_list_title.getText().toString();
+                    String first_list_titleText = first_list_title.getText().toString().trim();
+                    String second_list_titleText = second_list_title.getText().toString().trim();
                     MatchMetaModel temp = new MatchMetaModel(titleText, first_list_titleText, second_list_titleText);
                     metaData.add(temp);
                     setEmptyView(activity);
@@ -229,9 +229,9 @@ public class MatchTemplate implements TemplateInterface {
 
                     if (validated(activity, title, first_list_title, second_list_title)) {
 
-                        String titleText = title.getText().toString();
-                        String first_list_titleText = first_list_title.getText().toString();
-                        String second_list_titleText = second_list_title.getText().toString();
+                        String titleText = title.getText().toString().trim();
+                        String first_list_titleText = first_list_title.getText().toString().trim();
+                        String second_list_titleText = second_list_title.getText().toString().trim();
 
                         data.setTitle(titleText);
                         data.setFirstListTitle(first_list_titleText);
@@ -268,8 +268,8 @@ public class MatchTemplate implements TemplateInterface {
 
                     if (validated(activity, first_list_item, second_list_item)) {
 
-                        String first_list_itemText = first_list_item.getText().toString();
-                        String second_list_itemText = second_list_item.getText().toString();
+                        String first_list_itemText = first_list_item.getText().toString().trim();
+                        String second_list_itemText = second_list_item.getText().toString().trim();
 
                         data.setMatchA(first_list_itemText);
                         data.setMatchB(second_list_itemText);

@@ -83,7 +83,13 @@ public class SettingsFragment extends PreferenceFragment {
         prefUsername.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
+                if(newValue.toString().trim().equals(""))
+                {
+                    Toast.makeText(getActivity(),"Enter a valid name.",Toast.LENGTH_SHORT).show();
+                    return false;
+                }
                 prefUsername.setSummary((String) newValue);
+                Toast.makeText(getActivity(),"Detail updated.",Toast.LENGTH_SHORT).show();
                 return true;
             }
         });

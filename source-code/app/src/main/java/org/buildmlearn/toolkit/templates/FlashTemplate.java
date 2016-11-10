@@ -152,13 +152,13 @@ public class FlashTemplate implements TemplateInterface {
             @Override
             public void onClick(View v) {
 
-                if (validateData(question, answer, answerHint, activity)) {
+                if (validateData(question, answer, activity)) {
                     dialog.dismiss();
                     Bitmap bitmap = ((BitmapDrawable) mBannerImage.getDrawable()).getBitmap();
                     String questionText = question.getText().toString();
                     String answerText = answer.getText().toString();
                     String hintText = answerHint.getText().toString();
-                    mData.add(new FlashCardModel(questionText, answerText, hintText, bitmap));
+                    mData.add(new FlashCardModel(questionText.trim(), answerText.trim(), hintText.trim(), bitmap));
                     setEmptyView(activity);
                     mAdapter.notifyDataSetChanged();
                 }
@@ -225,12 +225,12 @@ public class FlashTemplate implements TemplateInterface {
             @Override
             public void onClick(View v) {
 
-                if (validateData(question, answer, answerHint, activity)) {
+                if (validateData(question, answer, activity)) {
                     dialog.dismiss();
                     Bitmap bitmap = ((BitmapDrawable) mBannerImage.getDrawable()).getBitmap();
-                    String questionText = question.getText().toString();
-                    String answerText = answer.getText().toString();
-                    String hintText = answerHint.getText().toString();
+                    String questionText = question.getText().toString().trim();
+                    String answerText = answer.getText().toString().trim();
+                    String hintText = answerHint.getText().toString().trim();
                     mData.set(position, new FlashCardModel(questionText, answerText, hintText, bitmap));
                     mAdapter.notifyDataSetChanged();
                 }
@@ -241,19 +241,15 @@ public class FlashTemplate implements TemplateInterface {
         dialog.show();
     }
 
-    private boolean validateData(EditText question, EditText answer, EditText answerHint, Context context) {
-        String questionText = question.getText().toString();
-        String answerText = answer.getText().toString();
-        String hintText = answerHint.getText().toString();
+    private boolean validateData(EditText question, EditText answer, Context context) {
+        String questionText = question.getText().toString().trim();
+        String answerText = answer.getText().toString().trim();
 
-        if (questionText.isEmpty()) {
+        if (questionText.isEmpty() || questionText.equals("")) {
             Toast.makeText(context, "Enter question", Toast.LENGTH_SHORT).show();
             return false;
-        } else if (answerText.isEmpty()) {
+        } else if (answerText.isEmpty() || answerText.equals("")) {
             Toast.makeText(context, "Enter answer", Toast.LENGTH_SHORT).show();
-            return false;
-        } else if (hintText.isEmpty()) {
-            Toast.makeText(context, "Enter hint", Toast.LENGTH_SHORT).show();
             return false;
         } else if (!mIsPhotoAttached) {
             Toast.makeText(context, "Attach an image", Toast.LENGTH_SHORT).show();

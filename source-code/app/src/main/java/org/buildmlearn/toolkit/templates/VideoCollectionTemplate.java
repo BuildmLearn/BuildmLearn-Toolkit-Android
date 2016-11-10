@@ -64,9 +64,12 @@ public class VideoCollectionTemplate implements TemplateInterface {
             return false;
         }
 
-        String linkText = link.getText().toString();
+        String linkText = link.getText().toString().trim();
 
-        if ("".equals(linkText)) {
+        if(!linkText.contains(".") && !linkText.contains("/")){
+            Toast.makeText(context, "Enter a valid url.", Toast.LENGTH_SHORT).show();
+            return false;
+        } else if ("".equals(linkText)) {
             Toast.makeText(context, R.string.video_collection_template_link_hint, Toast.LENGTH_SHORT).show();
             return false;
         } else if (!(linkText.contains(YOUTUBE + ".com") || linkText.contains(YOUTUBE_SHORT) || linkText.contains(DAILYMOTION + ".com") || linkText.contains(VIMEO + ".com"))) {
@@ -82,9 +85,9 @@ public class VideoCollectionTemplate implements TemplateInterface {
             return false;
         }
 
-        String titleText = title.getText().toString();
-        String descriptionText = description.getText().toString();
-        String linkText = link.getText().toString();
+        String titleText = title.getText().toString().trim();
+        String descriptionText = description.getText().toString().trim();
+        String linkText = link.getText().toString().trim();
 
         if ("".equals(titleText)) {
             Toast.makeText(context, R.string.video_collection_template_title_hint, Toast.LENGTH_SHORT).show();
@@ -94,6 +97,9 @@ public class VideoCollectionTemplate implements TemplateInterface {
             return false;
         } else if ("".equals(linkText)) {
             Toast.makeText(context, R.string.video_collection_template_link_hint, Toast.LENGTH_SHORT).show();
+            return false;
+        } else if(!linkText.contains(".") && !linkText.contains("/")){
+            Toast.makeText(context, "Enter a valid url.", Toast.LENGTH_SHORT).show();
             return false;
         } else if (!(linkText.contains(YOUTUBE + ".com") || linkText.contains(YOUTUBE_SHORT) || linkText.contains(DAILYMOTION + ".com") || linkText.contains(VIMEO + ".com"))) {
             Toast.makeText(context, R.string.video_support_error, Toast.LENGTH_SHORT).show();
@@ -273,9 +279,9 @@ public class VideoCollectionTemplate implements TemplateInterface {
 
                 if (validated(activity, title, description, link)) {
 
-                    String titleText = title.getText().toString();
-                    String descriptionText = description.getText().toString();
-                    String linkText = link.getText().toString();
+                    String titleText = title.getText().toString().trim();
+                    String descriptionText = description.getText().toString().trim();
+                    String linkText = link.getText().toString().trim();
 
                     setEmptyView(activity);
 
