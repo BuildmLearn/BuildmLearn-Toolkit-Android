@@ -245,10 +245,10 @@ public class FlashTemplate implements TemplateInterface {
         String questionText = question.getText().toString().trim();
         String answerText = answer.getText().toString().trim();
 
-        if (questionText.isEmpty() || questionText.equals("")) {
+        if (questionText.equals("")) {
             Toast.makeText(context, "Enter question", Toast.LENGTH_SHORT).show();
             return false;
-        } else if (answerText.isEmpty() || answerText.equals("")) {
+        } else if (answerText.equals("")) {
             Toast.makeText(context, "Enter answer", Toast.LENGTH_SHORT).show();
             return false;
         } else if (!mIsPhotoAttached) {

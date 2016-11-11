@@ -33,9 +33,9 @@ public class QuizTemplate implements TemplateInterface {
     transient private QuizAdapter mAdapter;
     private ArrayList<QuizModel> quizData;
     private int templateId;
-    EditText question;
-    ArrayList<RadioButton> buttons;
-    ArrayList<EditText> options;
+    private EditText question;
+    private ArrayList<RadioButton> buttons;
+    private ArrayList<EditText> options;
 
     public QuizTemplate() {
         this.quizData = new ArrayList<>();
