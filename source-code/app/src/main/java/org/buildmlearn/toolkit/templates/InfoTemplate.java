@@ -43,11 +43,11 @@ public class InfoTemplate implements TemplateInterface {
         String wordText = word.getText().toString();
         String meaningText = meaning.getText().toString();
 
-        if ("".equals(wordText)) {
-            Toast.makeText(context, "Enter word", Toast.LENGTH_SHORT).show();
+        if ("".equals(wordText.trim())) {
+            Toast.makeText(context, "Enter a word.", Toast.LENGTH_SHORT).show();
             return false;
-        } else if ("".equals(meaningText)) {
-            Toast.makeText(context, "Enter meaning", Toast.LENGTH_SHORT).show();
+        } else if ("".equals(meaningText.trim())) {
+            Toast.makeText(context, "Enter a description.", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
@@ -122,8 +122,8 @@ public class InfoTemplate implements TemplateInterface {
             public void onClick(View v) {
 
                 if (validated(activity, word, meaning)) {
-                    String wordText = word.getText().toString();
-                    String meaningText = meaning.getText().toString();
+                    String wordText = word.getText().toString().trim();
+                    String meaningText = meaning.getText().toString().trim();
 
                     InfoModel temp = new InfoModel(wordText, meaningText);
                     infoData.add(temp);
@@ -165,8 +165,8 @@ public class InfoTemplate implements TemplateInterface {
             public void onClick(View v) {
 
                 if (validated(activity, word, meaning)) {
-                    String wordText = word.getText().toString();
-                    String meaningText = meaning.getText().toString();
+                    String wordText = word.getText().toString().trim();
+                    String meaningText = meaning.getText().toString().trim();
 
                     data.setWord(wordText);
                     data.setInfoDescription(meaningText);
