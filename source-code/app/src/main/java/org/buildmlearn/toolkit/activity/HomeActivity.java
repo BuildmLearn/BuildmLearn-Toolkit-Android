@@ -5,9 +5,11 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.constant.Constants;
@@ -25,6 +27,8 @@ public class HomeActivity extends AppCompatActivity
 
     private Section currentSection;
     private NavigationDrawerFragment mNavigationDrawerFragment;
+    private  boolean atHome = true;
+    private boolean backPressedOnce = false;
 
     /**
      * {@inheritDoc}
@@ -54,6 +58,7 @@ public class HomeActivity extends AppCompatActivity
             selectedMenuItem.setIsSelected(true);
             currentSection = selectedMenuItem;
             FragmentTransaction ft = getFragmentManager().beginTransaction();
+            atHome = false;
             ft.replace(R.id.container, new SettingsFragment());
             ft.commit();
         }
@@ -67,10 +72,12 @@ public class HomeActivity extends AppCompatActivity
         if (position == -1) {
             if (currentSection != null) {
                 if (currentSection.toString().equals("OPEN_PROJECT")) {
+                    atHome = false;
                     LoadProjectFragment f = (LoadProjectFragment) getFragmentManager().findFragmentByTag(currentSection.getViewName());
                     if (f != null)
                         f.closeSearch();
                 } else if (currentSection.toString().equals("OPEN_APK")) {
+                    atHome = false;
                     LoadApkFragment f = (LoadApkFragment) getFragmentManager().findFragmentByTag(currentSection.getViewName());
                     if (f != null)
                         f.closeSearch();
@@ -88,7 +95,9 @@ public class HomeActivity extends AppCompatActivity
             Class<?> c;
             if (selectedMenuItem.getViewName() != null) {
                 try {
+                    //how to and about us.
                     c = Class.forName(selectedMenuItem.getViewName());
+                    atHome = false;
                     Intent intent = new Intent(this, c);
                     startActivity(intent);
 
@@ -100,12 +109,18 @@ public class HomeActivity extends AppCompatActivity
             if (currentSection == null || !selectedMenuItem.equals(currentSection)) {
                 currentSection = selectedMenuItem;
                 FragmentManager fm = getFragmentManager();
+                //home projects apk drafts settings
                 FragmentTransaction ft = fm.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).addToBackStack(null);
                 Fragment f = fm.findFragmentById(R.id.container);
                 if (f != null) {
                     if (currentSection.isKeep()) {
                         ft.detach(f);
                     } else {
+                        if(currentSection.toString().equals("HOME")){
+                            atHome = true;
+                        }else if(!currentSection.toString().equals("HOME")){
+                            atHome = false;
+                        }
                         ft.remove(f);
                     }
                 }
@@ -130,9 +145,24 @@ public class HomeActivity extends AppCompatActivity
             mNavigationDrawerFragment.closeDrawer();
             return;
         }
-        if (getFragmentManager().getBackStackEntryCount() <= 1) {
-            finish();
+        if(atHome){
+            if(backPressedOnce){
+                finish();
+            }
+            backPressedOnce=true;
+            Toast.makeText(this, "Tap back once more to exit.", Toast.LENGTH_SHORT).show();
+            new Handler().postDelayed(new Runnable()
+            {
+                @Override
+                public void run()
+                {
+                    backPressedOnce= false;
+                }
+            }, 2000);
         }
-        super.onBackPressed();
+        else if(!atHome){
+            onNavigationDrawerItemSelected(0);
+            atHome = true;
+        }
     }
 }
