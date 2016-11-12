@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:orientation="vertical">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,7 +20,7 @@
             android:adjustViewBounds="true"
             android:contentDescription="@string/upload_image"
             android:scaleType="centerCrop"
-            android:src="@drawable/bg_card"/>
+            android:src="@drawable/bg_card" />
 
         <ImageView
             android:id="@+id/flash_upload_image"
@@ -25,26 +29,26 @@
             android:adjustViewBounds="true"
             android:contentDescription="@string/upload_image"
             android:scaleType="centerCrop"
-            android:src="@drawable/upload_button"/>
+            android:src="@drawable/upload_button" />
     </RelativeLayout>
 
 
     <TextView
         style="@style/TextView.Caption.Light"
         android:text="@string/flash_templete_question"
-        android:textColor="@color/black_secondary_text"/>
+        android:textColor="@color/black_secondary_text" />
 
     <EditText
         android:id="@+id/flash_question"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/flash_template_question_hint"
-        android:inputType="textPersonName"/>
+        android:inputType="textPersonName" />
 
     <TextView
         style="@style/TextView.Caption.Light"
         android:text="@string/flash_template_answer"
-        android:textColor="@color/black_secondary_text"/>
+        android:textColor="@color/black_secondary_text" />
 
 
     <EditText
@@ -52,12 +56,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/flash_template_anser_hint"
-        android:inputType="textPersonName"/>
+        android:inputType="textPersonName" />
 
     <TextView
         style="@style/TextView.Caption.Light"
         android:text="@string/flash_template_hint"
-        android:textColor="@color/black_secondary_text"/>
+        android:textColor="@color/black_secondary_text" />
 
 
     <EditText
@@ -65,8 +69,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/flash_template_hint_hint"
-        android:inputType="textPersonName"/>
+        android:inputType="textPersonName" />
 
+    </LinearLayout>
 
-
-</LinearLayout>
+</ScrollView>

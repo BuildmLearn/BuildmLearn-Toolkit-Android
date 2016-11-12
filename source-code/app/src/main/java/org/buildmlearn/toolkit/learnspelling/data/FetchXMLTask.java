@@ -90,7 +90,6 @@ public class FetchXMLTask extends AsyncTask<String, Void, Void> {
         if (params.length == 0) {
             return null;
         }
-        String fileName = params[0];
         ArrayList<SpellModel> mList;
 
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();

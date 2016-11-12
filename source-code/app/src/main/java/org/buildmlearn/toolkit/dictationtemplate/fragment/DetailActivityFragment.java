@@ -92,7 +92,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
                     case R.id.action_about:
                         AlertDialog.Builder builder =
                                 new AlertDialog.Builder(getActivity());
-                        builder.setTitle(String.format("%1$s", getString(R.string.about_us)));
+                        builder.setTitle(String.format("%1$s", getString(R.string.comprehension_about_us)));
                         builder.setMessage(getResources().getText(R.string.about_text_video));
                         builder.setPositiveButton("OK", null);
                         AlertDialog welcomeAlert = builder.create();
@@ -243,12 +243,12 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
 
                 @Override
                 public void onDone(String utteranceId) {
-
+                    // This is intentionally empty
                 }
 
                 @Override
                 public void onError(String utteranceId) {
-
+                    // This is intentionally empty
                 }
             });
         }

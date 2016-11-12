@@ -215,7 +215,7 @@ public class MainFragment extends Fragment {
         listViewA.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (parent == clickSourceA) {
+                if (parent.equals(clickSourceA)) {
                     highlightListA(position, view);
                 }
             }
@@ -224,7 +224,7 @@ public class MainFragment extends Fragment {
         listViewB.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (parent != clickSourceA) {
+                if (!parent.equals(clickSourceA)) {
                     highlightListB(position, view);
                 }
             }
@@ -243,7 +243,7 @@ public class MainFragment extends Fragment {
         listViewB.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
-
+                // This is intentionally empty
             }
 
             @Override

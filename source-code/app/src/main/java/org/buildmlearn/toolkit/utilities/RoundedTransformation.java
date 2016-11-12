@@ -33,7 +33,7 @@ public class RoundedTransformation implements com.squareup.picasso.Transformatio
         Canvas canvas = new Canvas(output);
         canvas.drawRoundRect(new RectF(margin, margin, source.getWidth() - margin, source.getHeight() - margin), radius, radius, paint);
 
-        if (source != output) {
+        if (!source.equals(output)) {
             source.recycle();
         }
 

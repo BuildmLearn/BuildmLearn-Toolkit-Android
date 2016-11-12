@@ -3,15 +3,16 @@ package org.buildmlearn.toolkit.fragment;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
-import android.content.res.ColorStateList;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -27,10 +28,6 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import com.afollestad.materialdialogs.DialogAction;
-import com.afollestad.materialdialogs.MaterialDialog;
-import com.afollestad.materialdialogs.internal.ThemeSingleton;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.ToolkitApplication;
@@ -57,11 +54,11 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
     private SavedApiAdapter mAdapter;
     private ToolkitApplication mToolkit;
     private Activity activity;
-    private ArrayList<SavedApi> savedApis,allsavedApis;
+    private ArrayList<SavedApi> savedApis, allsavedApis;
     private View selectedView = null;
     private EditText editSearch;
 
-    private boolean isSearchOpened=false;
+    private boolean isSearchOpened = false;
     private int selectedPosition = -1;
 
     /**
@@ -92,10 +89,10 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
         for (File aFile : file) {
             Log.d(TAG, aFile.getAbsolutePath());
             File apkFile = new File(aFile.getAbsolutePath());
-            PackageInfo info = getActivity().getPackageManager().getPackageArchiveInfo(apkFile.getAbsolutePath(),0);
-            if(info!=null&&info.packageName!=null&&info.packageName.startsWith("org.buildmlearn.")) {
-                savedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified(), apkFile.getAbsolutePath()));
-                allsavedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified(), apkFile.getAbsolutePath()));
+            PackageInfo info = getActivity().getPackageManager().getPackageArchiveInfo(apkFile.getAbsolutePath(), 0);
+            if (info != null && info.packageName != null && info.packageName.startsWith("org.buildmlearn.")) {
+                savedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified()));
+                allsavedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified()));
             }
         }
 
@@ -189,9 +186,9 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
     public void onResume() {
         if (mAdapter != null) {
 
-            String specificApis="";
-            if(isSearchOpened)
-                specificApis=editSearch.getText().toString();
+            String specificApis = "";
+            if (isSearchOpened)
+                specificApis = editSearch.getText().toString();
             savedApis.clear();
             allsavedApis.clear();
             String path = mToolkit.getApkDir();
@@ -211,11 +208,11 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
             for (File aFile : file) {
                 if (aFile.getName().contains(".apk")) {
                     File apkFile = new File(aFile.getAbsolutePath());
-                    PackageInfo info = getActivity().getPackageManager().getPackageArchiveInfo(apkFile.getAbsolutePath(),0);
-                    if(info!=null&&info.packageName!=null&&info.packageName.startsWith("org.buildmlearn.")) {
-                        if(apkFile.getName().startsWith(specificApis))
-                            savedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified(), apkFile.getAbsolutePath()));
-                        allsavedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified(), apkFile.getAbsolutePath()));
+                    PackageInfo info = getActivity().getPackageManager().getPackageArchiveInfo(apkFile.getAbsolutePath(), 0);
+                    if (info != null && info.packageName != null && info.packageName.startsWith("org.buildmlearn.")) {
+                        if (apkFile.getName().startsWith(specificApis))
+                            savedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified()));
+                        allsavedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified()));
                     }
                 }
             }
@@ -248,10 +245,6 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
         int primaryColor = ContextCompat.getColor(getActivity(), R.color.color_primary);
         int primaryColorDark = ContextCompat.getColor(getActivity(), R.color.color_primary_dark);
         ((AppCompatActivity) activity).getSupportActionBar().setBackgroundDrawable(new ColorDrawable(primaryColor));
-        ThemeSingleton.get().positiveColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().neutralColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().negativeColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().widgetColor = primaryColor;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             activity.getWindow().setStatusBarColor(primaryColorDark);
             activity.getWindow().setNavigationBarColor(primaryColor);
@@ -269,10 +262,6 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
         int primaryColor = ContextCompat.getColor(getActivity(), R.color.color_primary_dark);
         int primaryColorDark = ContextCompat.getColor(getActivity(), R.color.color_selected_dark);
         ((AppCompatActivity) activity).getSupportActionBar().setBackgroundDrawable(new ColorDrawable(primaryColor));
-        ThemeSingleton.get().positiveColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().neutralColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().negativeColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().widgetColor = primaryColor;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             activity.getWindow().setStatusBarColor(primaryColorDark);
             activity.getWindow().setNavigationBarColor(primaryColor);
@@ -290,9 +279,8 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
         super.onPrepareOptionsMenu(menu);
         if (showTemplateSelectedMenu) {
             activity.getMenuInflater().inflate(R.menu.menu_apk_selected, menu);
-        }
-        else{
-            activity.getMenuInflater().inflate(R.menu.menu_apk_not_selected,menu);
+        } else {
+            activity.getMenuInflater().inflate(R.menu.menu_apk_not_selected, menu);
         }
     }
 
@@ -306,14 +294,15 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
         switch (id) {
             case R.id.action_delete:
 
-                final MaterialDialog dialog = new MaterialDialog.Builder(activity)
-                        .title(R.string.dialog_delete_title)
-                        .content(R.string.dialog_delete_msg)
-                        .positiveText(R.string.dialog_yes)
-                        .negativeText(R.string.dialog_no)
-                        .build();
+                final AlertDialog dialog = new AlertDialog.Builder(activity)
+                        .setTitle(R.string.dialog_delete_title)
+                        .setMessage(R.string.dialog_delete_msg)
+                        .setPositiveButton(R.string.dialog_yes, null)
+                        .setNegativeButton(R.string.dialog_no, null)
+                        .create();
+                dialog.show();
 
-                dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+                dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         dialog.dismiss();
@@ -321,7 +310,6 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
                         restoreSelectedView();
                     }
                 });
-                dialog.show();
                 break;
             case R.id.action_share:
 
@@ -335,13 +323,13 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
                 break;
             case R.id.action_search:
 
-                isSearchOpened=true;
-                ActionBar actionBar=((AppCompatActivity)getActivity()).getSupportActionBar();
+                isSearchOpened = true;
+                ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
                 actionBar.setDisplayShowCustomEnabled(true);
                 item.setVisible(false);
                 actionBar.setCustomView(R.layout.search_bar);
                 actionBar.setDisplayShowTitleEnabled(false);
-                editSearch = (EditText)actionBar.getCustomView().findViewById(R.id.editSearch);
+                editSearch = (EditText) actionBar.getCustomView().findViewById(R.id.editSearch);
                 editSearch.setHint("Enter name of Apk");
                 editSearch.addTextChangedListener(new TextWatcher() {
                     @Override
@@ -360,14 +348,14 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
                         savedApis.clear();
                         SavedApi tempApi;
                         for (int i = 0; i < allsavedApis.size(); i++) {
-	                        if (allsavedApis.get(i).getName().startsWith(text)) {
-                                tempApi = new SavedApi(allsavedApis.get(i).getFile(), allsavedApis.get(i).getName(), allsavedApis.get(i).getUnformattedDate(), allsavedApis.get(i).getFullPath());
+                            if (allsavedApis.get(i).getName().startsWith(text)) {
+                                tempApi = new SavedApi(allsavedApis.get(i).getFile(), allsavedApis.get(i).getName(), allsavedApis.get(i).getUnformattedDate());
                                 savedApis.add(tempApi);
                             }
                         }
                         mAdapter.notifyDataSetChanged();
-                        setEmptyText();                        
-                   }
+                        setEmptyText();
+                    }
                 });
                 editSearch.setOnKeyListener(new View.OnKeyListener() {
                     @Override
@@ -419,8 +407,7 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
         restoreColorScheme();
     }
 
-    public void closeSearch()
-    {
+    public void closeSearch() {
         if (isSearchOpened) {
             editSearch.setText("");
             ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();

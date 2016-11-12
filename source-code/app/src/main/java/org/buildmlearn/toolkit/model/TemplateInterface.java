@@ -13,9 +13,9 @@ import java.util.ArrayList;
 
 /**
  * @brief Interface containing methods for a implementing a template.
- *
+ * <p/>
  * Each template must implement this interface. For using the template, a new enum in Template Enum is required.
- *
+ * <p/>
  * Created by abhishek on 27/5/15.
  */
 public interface TemplateInterface extends Serializable {
@@ -51,8 +51,8 @@ public interface TemplateInterface extends Serializable {
     BaseAdapter loadProjectTemplateEditor(Context context, ArrayList<Element> data);
 
     /**
-     * @brief Set templateId,that can be used to get Info about current template from enum Template
      * @param templateId
+     * @brief Set templateId,that can be used to get Info about current template from enum Template
      */
     void setTemplateId(int templateId);
 
@@ -69,7 +69,6 @@ public interface TemplateInterface extends Serializable {
     void addItem(Activity activity);
 
     /**
-     *
      * @param activity Current Activity
      * @brief Add MetaData to template data
      */
@@ -96,7 +95,7 @@ public interface TemplateInterface extends Serializable {
      * @param filePathWithName Path of the generated .buildmlearn file
      * @return
      * @brief Returns a fragment required for the Simulator Activity.
-     *
+     * <p/>
      * Returns a fragment required for the Simulator Activity.
      * **Dev Note: File Path should be used to populate data from actual .buildmlearn file in the Simulator.
      */

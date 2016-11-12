@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 /**
  * @brief Model class for Match The Following Template Editor data
- * <p>
+ * <p/>
  * Created by Anupam (opticod) on 16/7/16.
  */
 

@@ -1,7 +1,9 @@
 package org.buildmlearn.toolkit.templates;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +15,6 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.DialogAction;
-import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.activity.TemplateEditor;
@@ -129,14 +129,15 @@ class QuizAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
 
-                final MaterialDialog dialog = new MaterialDialog.Builder(context)
-                        .title(R.string.dialog_delete_title)
-                        .content(R.string.dialog_delete_msg)
-                        .positiveText(R.string.dialog_yes)
-                        .negativeText(R.string.dialog_no)
-                        .build();
+                final AlertDialog dialog = new AlertDialog.Builder(context)
+                        .setTitle(R.string.dialog_delete_title)
+                        .setMessage(R.string.dialog_delete_msg)
+                        .setPositiveButton(R.string.dialog_yes, null)
+                        .setNegativeButton(R.string.dialog_no, null)
+                        .create();
+                dialog.show();
 
-                dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+                dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         quizData.remove(position);
@@ -147,8 +148,6 @@ class QuizAdapter extends BaseAdapter {
                         expandedPostion = -1;
                     }
                 });
-
-                dialog.show();
             }
         });
         convertView.setTag(holder);
@@ -158,25 +157,31 @@ class QuizAdapter extends BaseAdapter {
     private void editItem(final int position, final Context context) {
         QuizModel data = getItem(position);
 
-        boolean wrapInScrollView = true;
-        final MaterialDialog dialog = new MaterialDialog.Builder(context)
-                .title(R.string.quiz_edit)
-                .customView(R.layout.quiz_dialog_add_question, true)
-                .positiveText(R.string.quiz_add)
-                .negativeText(R.string.quiz_cancel)
-                .build();
+        LayoutInflater inflater = LayoutInflater.from(context);
+        final View dialogView = inflater.inflate(R.layout.quiz_dialog_add_question, null);
+        final AlertDialog dialog = new AlertDialog.Builder(context)
+                .setTitle(R.string.quiz_edit)
+                .setView(dialogView,
+                        context.getResources().getDimensionPixelSize(R.dimen.spacing_left),
+                        context.getResources().getDimensionPixelSize(R.dimen.spacing_top),
+                        context.getResources().getDimensionPixelSize(R.dimen.spacing_right),
+                        context.getResources().getDimensionPixelSize(R.dimen.spacing_bottom))
+                .setPositiveButton(R.string.quiz_add, null)
+                .setNegativeButton(R.string.quiz_cancel, null)
+                .create();
+        dialog.show();
 
-        final EditText question = (EditText) dialog.findViewById(R.id.quiz_question);
+        final EditText question = (EditText) dialogView.findViewById(R.id.quiz_question);
         final ArrayList<RadioButton> buttons = new ArrayList<>();
         final ArrayList<EditText> options = new ArrayList<>();
-        options.add((EditText) dialog.findViewById(R.id.quiz_option_1));
-        options.add((EditText) dialog.findViewById(R.id.quiz_option_2));
-        options.add((EditText) dialog.findViewById(R.id.quiz_option_3));
-        options.add((EditText) dialog.findViewById(R.id.quiz_option_4));
-        buttons.add((RadioButton) dialog.findViewById(R.id.quiz_radio_1));
-        buttons.add((RadioButton) dialog.findViewById(R.id.quiz_radio_2));
-        buttons.add((RadioButton) dialog.findViewById(R.id.quiz_radio_3));
-        buttons.add((RadioButton) dialog.findViewById(R.id.quiz_radio_4));
+        options.add((EditText) dialogView.findViewById(R.id.quiz_option_1));
+        options.add((EditText) dialogView.findViewById(R.id.quiz_option_2));
+        options.add((EditText) dialogView.findViewById(R.id.quiz_option_3));
+        options.add((EditText) dialogView.findViewById(R.id.quiz_option_4));
+        buttons.add((RadioButton) dialogView.findViewById(R.id.quiz_radio_1));
+        buttons.add((RadioButton) dialogView.findViewById(R.id.quiz_radio_2));
+        buttons.add((RadioButton) dialogView.findViewById(R.id.quiz_radio_3));
+        buttons.add((RadioButton) dialogView.findViewById(R.id.quiz_radio_4));
 
         for (int i = 0; i < data.getOptions().size(); i++) {
             options.get(i).setText(data.getOptions().get(i));
@@ -194,7 +199,7 @@ class QuizAdapter extends BaseAdapter {
             });
         }
 
-        dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+        dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -240,8 +245,6 @@ class QuizAdapter extends BaseAdapter {
 
             }
         });
-        dialog.show();
-
     }
 
     private void checkButton(ArrayList<RadioButton> buttons, ArrayList<EditText> options, int id, Context context) {
@@ -271,11 +274,11 @@ class QuizAdapter extends BaseAdapter {
     }
 
     public class Holder {
-        TextViewPlus question;
-        ImageView questionIcon;
-        ArrayList<TextViewPlus> options;
-        LinearLayout quizOptionsBox;
-        Button delete;
-        Button edit;
+        public TextViewPlus question;
+        public ImageView questionIcon;
+        public ArrayList<TextViewPlus> options;
+        public LinearLayout quizOptionsBox;
+        public Button delete;
+        public Button edit;
     }
 }

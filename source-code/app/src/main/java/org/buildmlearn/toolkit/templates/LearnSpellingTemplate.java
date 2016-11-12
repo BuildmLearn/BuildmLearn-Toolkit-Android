@@ -2,14 +2,15 @@ package org.buildmlearn.toolkit.templates;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.DialogAction;
-import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.learnspelling.fragment.SplashFragment;
@@ -22,7 +23,7 @@ import java.util.ArrayList;
 
 /**
  * @brief Learn Spelling template code implementing methods of TemplateInterface
- *
+ * <p/>
  * Created by abhishek on 16/06/15 at 9:59 PM.
  */
 public class LearnSpellingTemplate implements TemplateInterface {
@@ -43,10 +44,10 @@ public class LearnSpellingTemplate implements TemplateInterface {
         String wordText = word.getText().toString();
         String meaningText = meaning.getText().toString();
 
-        if (wordText.equals("")) {
+        if ("".equals(wordText)) {
             Toast.makeText(context, "Enter word", Toast.LENGTH_SHORT).show();
             return false;
-        } else if (meaningText.equals("")) {
+        } else if ("".equals(meaningText)) {
             Toast.makeText(context, "Enter meaning", Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -107,17 +108,24 @@ public class LearnSpellingTemplate implements TemplateInterface {
     @Override
     public void addItem(final Activity activity) {
 
-        final MaterialDialog dialog = new MaterialDialog.Builder(activity)
-                .title(R.string.info_add_new_title)
-                .customView(R.layout.info_dialog_add_edit_data, true)
-                .positiveText(R.string.info_template_add)
-                .negativeText(R.string.info_template_cancel)
-                .build();
+        LayoutInflater inflater = activity.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.info_dialog_add_edit_data, null);
+        final AlertDialog dialog = new AlertDialog.Builder(activity)
+                .setTitle(R.string.info_add_new_title)
+                .setView(dialogView,
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_left),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_top),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_right),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_bottom))
+                .setPositiveButton(R.string.info_template_add, null)
+                .setNegativeButton(R.string.info_template_cancel, null)
+                .create();
+        dialog.show();
 
-        final EditText word = (EditText) dialog.findViewById(R.id.info_word);
-        final EditText meaning = (EditText) dialog.findViewById(R.id.info_meaning);
+        final EditText word = (EditText) dialogView.findViewById(R.id.info_word);
+        final EditText meaning = (EditText) dialogView.findViewById(R.id.info_meaning);
 
-        dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+        dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -134,33 +142,37 @@ public class LearnSpellingTemplate implements TemplateInterface {
 
             }
         });
-
-        dialog.show();
-
     }
 
     @Override
     public void addMetaData(Activity activity) {
-
+        // This is intentionally empty
     }
 
     @Override
     public void editItem(final Activity activity, int position) {
-        final MaterialDialog dialog = new MaterialDialog.Builder(activity)
-                .title(R.string.info_edit_title)
-                .customView(R.layout.info_dialog_add_edit_data, true)
-                .positiveText(R.string.info_template_ok)
-                .negativeText(R.string.info_template_cancel)
-                .build();
+        LayoutInflater inflater = activity.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.info_dialog_add_edit_data, null);
+        final AlertDialog dialog = new AlertDialog.Builder(activity)
+                .setTitle(R.string.info_edit_title)
+                .setView(dialogView,
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_left),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_top),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_right),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_bottom))
+                .setPositiveButton(R.string.info_template_ok, null)
+                .setNegativeButton(R.string.info_template_cancel, null)
+                .create();
+        dialog.show();
 
         final LearnSpellingModel data = mLearnSpellingData.get(position);
 
-        final EditText word = (EditText) dialog.findViewById(R.id.info_word);
-        final EditText meaning = (EditText) dialog.findViewById(R.id.info_meaning);
+        final EditText word = (EditText) dialogView.findViewById(R.id.info_word);
+        final EditText meaning = (EditText) dialogView.findViewById(R.id.info_meaning);
         word.setText(data.getWord());
         meaning.setText(data.getMeaning());
 
-        dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+        dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -177,9 +189,6 @@ public class LearnSpellingTemplate implements TemplateInterface {
 
             }
         });
-
-        dialog.show();
-
     }
 
     @Override
@@ -228,7 +237,7 @@ public class LearnSpellingTemplate implements TemplateInterface {
 
     @Override
     public void onActivityResult(Context context, int requestCode, int resultCode, Intent intent) {
-
+        // This is intentionally empty
     }
 
     /**

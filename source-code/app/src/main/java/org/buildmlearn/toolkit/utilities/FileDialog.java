@@ -1,9 +1,9 @@
 package org.buildmlearn.toolkit.utilities;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
+
 import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 
 import org.buildmlearn.toolkit.ToolkitApplication;
 
@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  * @brief Programmed dialog box to select file from storage.
- *
+ * <p/>
  * Created by Anupam (opticod) on 30/5/16.
  */
 public class FileDialog {
@@ -32,12 +32,11 @@ public class FileDialog {
         loadFileList(new ToolkitApplication().getDir());
     }
 
-    private Dialog createFileDialog() {
-        Dialog dialog;
+    private AlertDialog createFileDialog() {
+        AlertDialog dialog;
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 
         builder.setTitle(currentPath.getPath());
-
         builder.setItems(fileList, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 String fileChosen = fileList[which];
@@ -101,7 +100,7 @@ public class FileDialog {
     }
 
     public void setFileEndsWith() {
-        this.fileEndsWith = ".txt" != null ? ".txt".toLowerCase() : ".txt";
+        this.fileEndsWith = ".txt";
     }
 
     public interface FileSelectListener {

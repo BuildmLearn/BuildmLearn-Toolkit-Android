@@ -3,22 +3,22 @@ package org.buildmlearn.toolkit.templates;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-
-import com.afollestad.materialdialogs.DialogAction;
-import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.ToolkitApplication;
@@ -35,7 +35,7 @@ import java.util.ArrayList;
 
 /**
  * @brief Flash Card template code implementing methods of TemplateInterface
- *
+ * <p/>
  * Created by abhishek on 11/07/15 at 7:33 PM.
  */
 public class FlashTemplate implements TemplateInterface {
@@ -112,21 +112,25 @@ public class FlashTemplate implements TemplateInterface {
 
         mIsPhotoAttached = false;
 
-        final MaterialDialog dialog = new MaterialDialog.Builder(activity)
-                .title(R.string.info_add_new_title)
-                .customView(R.layout.flash_dialog_add_edit_item, true)
-                .positiveText(R.string.info_template_add)
-                .negativeText(R.string.info_template_cancel)
-                .build();
+        LayoutInflater inflater = activity.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.flash_dialog_add_edit_item, null);
+        final AlertDialog dialog = new AlertDialog.Builder(activity)
+                .setTitle(R.string.info_add_new_title)
+                .setView(dialogView,
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_left),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_top),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_right),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_bottom))
+                .setPositiveButton(R.string.info_template_add, null)
+                .setNegativeButton(R.string.info_template_cancel, null)
+                .create();
+        dialog.show();
 
-        final EditText question = (EditText) dialog.findViewById(R.id.flash_question);
-        final EditText answer = (EditText) dialog.findViewById(R.id.flash_answer);
-        final EditText answerHint = (EditText) dialog.findViewById(R.id.flash_hint);
-
-
-        mBannerImage = (ImageView) dialog.findViewById(R.id.banner_image);
-
-        final ImageView uploadButton = (ImageView) dialog.findViewById(R.id.flash_upload_image);
+        final EditText question = (EditText) dialogView.findViewById(R.id.flash_question);
+        final EditText answer = (EditText) dialogView.findViewById(R.id.flash_answer);
+        final EditText answerHint = (EditText) dialogView.findViewById(R.id.flash_hint);
+        mBannerImage = (ImageView) dialogView.findViewById(R.id.banner_image);
+        final ImageView uploadButton = (ImageView) dialogView.findViewById(R.id.flash_upload_image);
         uploadButton.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -144,14 +148,12 @@ public class FlashTemplate implements TemplateInterface {
         uploadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                // This is intentionally empty
             }
         });
-
-        dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+        dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if (validateData(question, answer, answerHint, activity)) {
                     dialog.dismiss();
                     Bitmap bitmap = ((BitmapDrawable) mBannerImage.getDrawable()).getBitmap();
@@ -162,16 +164,13 @@ public class FlashTemplate implements TemplateInterface {
                     setEmptyView(activity);
                     mAdapter.notifyDataSetChanged();
                 }
-
             }
         });
-
-        dialog.show();
     }
 
     @Override
     public void addMetaData(Activity activity) {
-
+        // This is intentionally empty
     }
 
 
@@ -181,25 +180,31 @@ public class FlashTemplate implements TemplateInterface {
 
         FlashCardModel data = mData.get(position);
 
-        final MaterialDialog dialog = new MaterialDialog.Builder(activity)
-                .title(R.string.info_edit_title)
-                .customView(R.layout.flash_dialog_add_edit_item, true)
-                .positiveText(R.string.info_template_ok)
-                .negativeText(R.string.info_template_cancel)
-                .build();
+        LayoutInflater inflater = activity.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.flash_dialog_add_edit_item, null);
+        final AlertDialog dialog = new AlertDialog.Builder(activity)
+                .setTitle(R.string.info_edit_title)
+                .setView(dialogView,
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_left),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_top),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_right),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_bottom))
+                .setPositiveButton(R.string.info_template_ok, null)
+                .setNegativeButton(R.string.info_template_cancel, null)
+                .create();
+        dialog.show();
 
-        final EditText question = (EditText) dialog.findViewById(R.id.flash_question);
-        final EditText answer = (EditText) dialog.findViewById(R.id.flash_answer);
-        final EditText answerHint = (EditText) dialog.findViewById(R.id.flash_hint);
-
+        final EditText question = (EditText) dialogView.findViewById(R.id.flash_question);
+        final EditText answer = (EditText) dialogView.findViewById(R.id.flash_answer);
+        final EditText answerHint = (EditText) dialogView.findViewById(R.id.flash_hint);
+        mBannerImage = (ImageView) dialogView.findViewById(R.id.banner_image);
         question.setText(data.getQuestion());
         answer.setText(data.getAnswer());
         answerHint.setText(data.getHint());
 
-        mBannerImage = (ImageView) dialog.findViewById(R.id.banner_image);
         mBannerImage.setImageBitmap(data.getImageBitmap());
 
-        final ImageView uploadButton = (ImageView) dialog.findViewById(R.id.flash_upload_image);
+        final ImageView uploadButton = (ImageView) dialogView.findViewById(R.id.flash_upload_image);
         uploadButton.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -217,14 +222,13 @@ public class FlashTemplate implements TemplateInterface {
         uploadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                // This is intentionally empty
             }
         });
 
-        dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+        dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if (validateData(question, answer, answerHint, activity)) {
                     dialog.dismiss();
                     Bitmap bitmap = ((BitmapDrawable) mBannerImage.getDrawable()).getBitmap();
@@ -234,11 +238,8 @@ public class FlashTemplate implements TemplateInterface {
                     mData.set(position, new FlashCardModel(questionText, answerText, hintText, bitmap));
                     mAdapter.notifyDataSetChanged();
                 }
-
             }
         });
-
-        dialog.show();
     }
 
     private boolean validateData(EditText question, EditText answer, EditText answerHint, Context context) {
@@ -375,7 +376,7 @@ public class FlashTemplate implements TemplateInterface {
         mImageUri = null;
         try {
 
-            photo = createTemporaryFile(context, "picture");
+            photo = createTemporaryFile(context);
             mImageUri = Uri.fromFile(photo);
             photo.delete();
         } catch (Exception e) {
@@ -392,7 +393,7 @@ public class FlashTemplate implements TemplateInterface {
         return chooser;
     }
 
-    private File createTemporaryFile(Context context, String part) throws Exception {
+    private File createTemporaryFile(Context context) throws Exception {
 
         ToolkitApplication toolkitApplication = (ToolkitApplication) context.getApplicationContext();
 

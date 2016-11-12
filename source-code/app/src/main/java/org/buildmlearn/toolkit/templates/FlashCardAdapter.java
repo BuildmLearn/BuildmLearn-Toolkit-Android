@@ -1,6 +1,8 @@
 package org.buildmlearn.toolkit.templates;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,8 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.DialogAction;
-import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.activity.TemplateEditor;
@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 /**
  * @brief Adapter for displaying Flash Card Template Editor data.
- *
+ * <p/>
  * Created by abhishek on 12/07/15 at 11:56 PM.
  */
 class FlashCardAdapter extends BaseAdapter {
@@ -89,14 +89,15 @@ class FlashCardAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
 
-                final MaterialDialog dialog = new MaterialDialog.Builder(mContext)
-                        .title(R.string.info_template_delete)
-                        .content(R.string.info_delete_item_content)
-                        .positiveText(R.string.dialog_yes)
-                        .negativeText(R.string.dialog_no)
-                        .build();
+                final AlertDialog dialog = new AlertDialog.Builder(mContext)
+                        .setTitle(R.string.info_template_delete)
+                        .setMessage(R.string.info_delete_item_content)
+                        .setPositiveButton(R.string.dialog_yes, null)
+                        .setNegativeButton(R.string.dialog_no, null)
+                        .create();
+                dialog.show();
 
-                dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+                dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         mData.remove(position);
@@ -106,8 +107,6 @@ class FlashCardAdapter extends BaseAdapter {
                         ((TemplateEditor) mContext).restoreSelectedView();
                     }
                 });
-
-                dialog.show();
 
             }
         });
@@ -119,12 +118,12 @@ class FlashCardAdapter extends BaseAdapter {
     }
 
     public class Holder {
-        TextView question;
-        TextView answer;
-        TextView hint;
-        ImageView image;
-        ImageView edit;
-        ImageView delete;
+        public TextView question;
+        public TextView answer;
+        public TextView hint;
+        public ImageView image;
+        public ImageView edit;
+        public ImageView delete;
 
     }
 }

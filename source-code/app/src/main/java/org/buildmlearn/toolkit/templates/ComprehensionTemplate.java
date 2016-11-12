@@ -2,8 +2,10 @@ package org.buildmlearn.toolkit.templates;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
@@ -11,15 +13,13 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.DialogAction;
-import com.afollestad.materialdialogs.MaterialDialog;
-
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.comprehensiontemplate.fragment.SplashFragment;
 import org.buildmlearn.toolkit.model.Template;
 import org.buildmlearn.toolkit.model.TemplateInterface;
 import org.buildmlearn.toolkit.utilities.FileDialog;
 import org.buildmlearn.toolkit.views.TextViewPlus;
+import android.support.v7.app.AlertDialog;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -33,7 +33,7 @@ import java.util.ArrayList;
 
 /**
  * @brief Comprehension template code implementing methods of TemplateInterface
- *
+ * <p/>
  * Created by Anupam (opticod) on 26/5/16.
  */
 public class ComprehensionTemplate implements TemplateInterface {
@@ -61,7 +61,7 @@ public class ComprehensionTemplate implements TemplateInterface {
         if (timerText.length() > 9) {
             Toast.makeText(context, R.string.comprehension_template_timer_correct_hint, Toast.LENGTH_SHORT).show();
             return false;
-        } else if (titleText.equals("")) {
+        } else if ("".equals(titleText)) {
             Toast.makeText(context, R.string.comprehension_template_title_hint, Toast.LENGTH_SHORT).show();
             return false;
         } else if (passageText.equals("")) {
@@ -161,24 +161,32 @@ public class ComprehensionTemplate implements TemplateInterface {
 
     @Override
     public void addItem(final Activity activity) {
-        final MaterialDialog dialog = new MaterialDialog.Builder(activity)
-                .title(R.string.quiz_new_question_title)
-                .customView(R.layout.quiz_dialog_add_question, true)
-                .positiveText(R.string.quiz_add)
-                .negativeText(R.string.quiz_cancel)
-                .build();
+        LayoutInflater inflater = activity.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.quiz_dialog_add_question, null);
+        final AlertDialog dialog = new AlertDialog.Builder(activity)
+                .setTitle(R.string.quiz_new_question_title)
+                .setView(dialogView,
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_left),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_top),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_right),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_bottom))
+                .setPositiveButton(R.string.quiz_add, null)
+                .setNegativeButton(R.string.quiz_cancel, null)
+                .create();
+        dialog.show();
 
-        final EditText question = (EditText) dialog.findViewById(R.id.quiz_question);
+        final EditText question = (EditText) dialogView.findViewById(R.id.quiz_question);
         final ArrayList<RadioButton> buttons = new ArrayList<>();
         final ArrayList<EditText> options = new ArrayList<>();
-        options.add((EditText) dialog.findViewById(R.id.quiz_option_1));
-        options.add((EditText) dialog.findViewById(R.id.quiz_option_2));
-        options.add((EditText) dialog.findViewById(R.id.quiz_option_3));
-        options.add((EditText) dialog.findViewById(R.id.quiz_option_4));
-        buttons.add((RadioButton) dialog.findViewById(R.id.quiz_radio_1));
-        buttons.add((RadioButton) dialog.findViewById(R.id.quiz_radio_2));
-        buttons.add((RadioButton) dialog.findViewById(R.id.quiz_radio_3));
-        buttons.add((RadioButton) dialog.findViewById(R.id.quiz_radio_4));
+
+        options.add((EditText) dialogView.findViewById(R.id.quiz_option_1));
+        options.add((EditText) dialogView.findViewById(R.id.quiz_option_2));
+        options.add((EditText) dialogView.findViewById(R.id.quiz_option_3));
+        options.add((EditText) dialogView.findViewById(R.id.quiz_option_4));
+        buttons.add((RadioButton) dialogView.findViewById(R.id.quiz_radio_1));
+        buttons.add((RadioButton) dialogView.findViewById(R.id.quiz_radio_2));
+        buttons.add((RadioButton) dialogView.findViewById(R.id.quiz_radio_3));
+        buttons.add((RadioButton) dialogView.findViewById(R.id.quiz_radio_4));
 
         for (final RadioButton button : buttons) {
             button.setOnClickListener(new View.OnClickListener() {
@@ -189,10 +197,9 @@ public class ComprehensionTemplate implements TemplateInterface {
             });
         }
 
-        dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+        dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 boolean isValidated = true;
                 int checkedAns = getCheckedAnswer(buttons);
                 if (checkedAns < 0) {
@@ -233,42 +240,46 @@ public class ComprehensionTemplate implements TemplateInterface {
                     setEmptyView(activity);
                     adapter.notifyDataSetChanged();
                 }
-
             }
         });
-        dialog.show();
-
     }
 
     @Override
     public void addMetaData(final Activity activity) {
-        final MaterialDialog dialog = new MaterialDialog.Builder(activity)
-                .title(R.string.comprehension_add_meta_title)
-                .customView(R.layout.comprehension_meta_dialog_add_edit_data, true)
-                .positiveText(R.string.info_template_add)
-                .negativeText(R.string.info_template_cancel)
-                .build();
+        LayoutInflater inflater = activity.getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.comprehension_meta_dialog_add_edit_data, null);
+        final AlertDialog dialog = new AlertDialog.Builder(activity)
+                .setTitle(R.string.comprehension_add_meta_title)
+                .setView(dialogView,
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_left),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_top),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_right),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_bottom))
+                .setPositiveButton(R.string.info_template_add, null)
+                .setNegativeButton(R.string.info_template_cancel, null)
+                .create();
+        dialog.show();
 
-        final EditText title = (EditText) dialog.findViewById(R.id.meta_title);
-        final EditText passage = (EditText) dialog.findViewById(R.id.meta_passage);
-        final EditText timer = (EditText) dialog.findViewById(R.id.meta_timer);
+        final EditText title = (EditText) dialogView.findViewById(R.id.meta_title);
+        final EditText passage = (EditText) dialogView.findViewById(R.id.meta_passage);
+        final EditText timer = (EditText) dialogView.findViewById(R.id.meta_timer);
 
-        dialog.findViewById(R.id.upload).setOnClickListener(new View.OnClickListener() {
+        dialogView.findViewById(R.id.upload).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FileDialog fileDialog = new FileDialog(activity);
                 fileDialog.setFileEndsWith();
                 fileDialog.addFileListener(new FileDialog.FileSelectListener() {
                     public void fileSelected(File file) {
-                        ((TextView) dialog.findViewById(R.id.file_name)).setText(file.toString());
-                        ((TextView) dialog.findViewById(R.id.meta_passage)).setText(readFile(file));
+                        ((TextView) dialogView.findViewById(R.id.file_name)).setText(file.toString());
+                        ((TextView) dialogView.findViewById(R.id.meta_passage)).setText(readFile(file));
                     }
                 });
                 fileDialog.showDialog();
             }
         });
 
-        dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+        dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -285,45 +296,50 @@ public class ComprehensionTemplate implements TemplateInterface {
                 }
             }
         });
-
-        dialog.show();
     }
 
     @Override
     public void editItem(final Activity activity, final int position) {
         if (position == -2) {
-            final MaterialDialog dialog = new MaterialDialog.Builder(activity)
-                    .title(R.string.comprehension_edit_meta_title)
-                    .customView(R.layout.comprehension_meta_dialog_add_edit_data, true)
-                    .positiveText(R.string.info_template_ok)
-                    .negativeText(R.string.info_template_cancel)
-                    .build();
+            LayoutInflater inflater = activity.getLayoutInflater();
+            final View dialogView = inflater.inflate(R.layout.comprehension_meta_dialog_add_edit_data, null);
+            final AlertDialog dialog = new AlertDialog.Builder(activity)
+                    .setTitle(R.string.comprehension_edit_meta_title)
+                    .setView(dialogView,
+                            activity.getResources().getDimensionPixelSize(R.dimen.spacing_left),
+                            activity.getResources().getDimensionPixelSize(R.dimen.spacing_top),
+                            activity.getResources().getDimensionPixelSize(R.dimen.spacing_right),
+                            activity.getResources().getDimensionPixelSize(R.dimen.spacing_bottom))
+                    .setPositiveButton(R.string.info_template_ok, null)
+                    .setNegativeButton(R.string.info_template_cancel, null)
+                    .create();
+            dialog.show();
 
             final ComprehensionMetaModel data = metaData.get(0);
 
-            final EditText title = (EditText) dialog.findViewById(R.id.meta_title);
-            final EditText passage = (EditText) dialog.findViewById(R.id.meta_passage);
-            final EditText timer = (EditText) dialog.findViewById(R.id.meta_timer);
+            final EditText title = (EditText) dialogView.findViewById(R.id.meta_title);
+            final EditText passage = (EditText) dialogView.findViewById(R.id.meta_passage);
+            final EditText timer = (EditText) dialogView.findViewById(R.id.meta_timer);
             title.setText(data.getTitle());
             passage.setText(data.getPassage());
             timer.setText(String.valueOf(data.getTime()));
 
-            dialog.findViewById(R.id.upload).setOnClickListener(new View.OnClickListener() {
+            dialogView.findViewById(R.id.upload).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     FileDialog fileDialog = new FileDialog(activity);
                     fileDialog.setFileEndsWith();
                     fileDialog.addFileListener(new FileDialog.FileSelectListener() {
                         public void fileSelected(File file) {
-                            ((TextView) dialog.findViewById(R.id.file_name)).setText(file.toString());
-                            ((TextView) dialog.findViewById(R.id.meta_passage)).setText(readFile(file));
+                            ((TextView) dialogView.findViewById(R.id.file_name)).setText(file.toString());
+                            ((TextView) dialogView.findViewById(R.id.meta_passage)).setText(readFile(file));
                         }
                     });
                     fileDialog.showDialog();
                 }
             });
 
-            dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+            dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
@@ -342,30 +358,35 @@ public class ComprehensionTemplate implements TemplateInterface {
                 }
             });
 
-            dialog.show();
-
         } else {
 
             ComprehensionModel data = comprehensionData.get(position);
 
-            final MaterialDialog dialog = new MaterialDialog.Builder(activity)
-                    .title(R.string.quiz_edit)
-                    .customView(R.layout.quiz_dialog_add_question, true)
-                    .positiveText(R.string.quiz_ok)
-                    .negativeText(R.string.quiz_cancel)
-                    .build();
+            LayoutInflater inflater = activity.getLayoutInflater();
+            View dialogView = inflater.inflate(R.layout.quiz_dialog_add_question, null);
+            final AlertDialog dialog = new AlertDialog.Builder(activity)
+                    .setTitle(R.string.quiz_edit)
+                    .setView(dialogView,
+                            activity.getResources().getDimensionPixelSize(R.dimen.spacing_left),
+                            activity.getResources().getDimensionPixelSize(R.dimen.spacing_top),
+                            activity.getResources().getDimensionPixelSize(R.dimen.spacing_right),
+                            activity.getResources().getDimensionPixelSize(R.dimen.spacing_bottom))
+                    .setPositiveButton(R.string.quiz_ok, null)
+                    .setNegativeButton(R.string.quiz_cancel, null)
+                    .create();
+            dialog.show();
 
-            final EditText question = (EditText) dialog.findViewById(R.id.quiz_question);
+            final EditText question = (EditText) dialogView.findViewById(R.id.quiz_question);
             final ArrayList<RadioButton> buttons = new ArrayList<>();
             final ArrayList<EditText> options = new ArrayList<>();
-            options.add((EditText) dialog.findViewById(R.id.quiz_option_1));
-            options.add((EditText) dialog.findViewById(R.id.quiz_option_2));
-            options.add((EditText) dialog.findViewById(R.id.quiz_option_3));
-            options.add((EditText) dialog.findViewById(R.id.quiz_option_4));
-            buttons.add((RadioButton) dialog.findViewById(R.id.quiz_radio_1));
-            buttons.add((RadioButton) dialog.findViewById(R.id.quiz_radio_2));
-            buttons.add((RadioButton) dialog.findViewById(R.id.quiz_radio_3));
-            buttons.add((RadioButton) dialog.findViewById(R.id.quiz_radio_4));
+            options.add((EditText) dialogView.findViewById(R.id.quiz_option_1));
+            options.add((EditText) dialogView.findViewById(R.id.quiz_option_2));
+            options.add((EditText) dialogView.findViewById(R.id.quiz_option_3));
+            options.add((EditText) dialogView.findViewById(R.id.quiz_option_4));
+            buttons.add((RadioButton) dialogView.findViewById(R.id.quiz_radio_1));
+            buttons.add((RadioButton) dialogView.findViewById(R.id.quiz_radio_2));
+            buttons.add((RadioButton) dialogView.findViewById(R.id.quiz_radio_3));
+            buttons.add((RadioButton) dialogView.findViewById(R.id.quiz_radio_4));
 
             for (int i = 0; i < data.getOptions().size(); i++) {
                 options.get(i).setText(data.getOptions().get(i));
@@ -383,7 +404,7 @@ public class ComprehensionTemplate implements TemplateInterface {
                 });
             }
 
-            dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+            dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
@@ -429,7 +450,6 @@ public class ComprehensionTemplate implements TemplateInterface {
 
                 }
             });
-            dialog.show();
         }
     }
 

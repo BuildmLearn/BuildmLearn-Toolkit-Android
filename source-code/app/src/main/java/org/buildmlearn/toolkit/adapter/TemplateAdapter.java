@@ -25,7 +25,7 @@ import java.lang.ref.WeakReference;
 
 /**
  * @brief Adapter used for showing Templates available in the toolkit
- * <p>
+ * <p/>
  * Created by Abhishek on 23-05-2015.
  */
 public class TemplateAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -84,6 +84,8 @@ public class TemplateAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 break;
             case 1:
                 layoutResource = R.layout.item_template_left;
+                break;
+            default: //do nothing
                 break;
         }
 
@@ -169,7 +171,7 @@ public class TemplateAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         public final TextView description;
         public final ImageView image;
         public final CardView cardView;
-        SetOnClickListener listener;
+        public SetOnClickListener listener;
 
         public ViewHolder(final View v) {
             super(v);

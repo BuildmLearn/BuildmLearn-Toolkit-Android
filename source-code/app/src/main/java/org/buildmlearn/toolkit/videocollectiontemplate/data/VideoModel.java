@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 /**
  * @brief Model used to save video entries in database for video collection template's simulator.
- *
+ * <p/>
  * Created by Anupam (opticod) on 12/5/16.
  */
 public class VideoModel implements Parcelable {
@@ -21,11 +21,6 @@ public class VideoModel implements Parcelable {
         }
     };
 
-    private static final String ROOT_TAG = "item";
-    private static final String TITLE_TAG = "video_title";
-    private static final String DESCRIPTION_TAG = "video_description";
-    private static final String LINK_TAG = "video_link";
-    private static final String THUMB_LINK_TAG = "video_thumb_link";
     private String title;
     private String description;
     private String link;

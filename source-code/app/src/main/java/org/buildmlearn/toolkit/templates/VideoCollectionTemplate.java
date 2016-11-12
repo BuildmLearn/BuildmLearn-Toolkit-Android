@@ -3,17 +3,18 @@ package org.buildmlearn.toolkit.templates;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.support.v7.app.AlertDialog;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.DialogAction;
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
 
 import org.buildmlearn.toolkit.R;
@@ -39,7 +40,7 @@ import java.util.ArrayList;
 
 /**
  * @brief Video template code implementing methods of TemplateInterface
- *
+ * <p/>
  * Created by Anupam (opticod) on 4/5/16.
  */
 public class VideoCollectionTemplate implements TemplateInterface {
@@ -66,7 +67,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
 
         String linkText = link.getText().toString();
 
-        if (linkText.equals("")) {
+        if ("".equals(linkText)) {
             Toast.makeText(context, R.string.video_collection_template_link_hint, Toast.LENGTH_SHORT).show();
             return false;
         } else if (!(linkText.contains(YOUTUBE + ".com") || linkText.contains(YOUTUBE_SHORT) || linkText.contains(DAILYMOTION + ".com") || linkText.contains(VIMEO + ".com"))) {
@@ -86,13 +87,13 @@ public class VideoCollectionTemplate implements TemplateInterface {
         String descriptionText = description.getText().toString();
         String linkText = link.getText().toString();
 
-        if (titleText.equals("")) {
+        if ("".equals(titleText)) {
             Toast.makeText(context, R.string.video_collection_template_title_hint, Toast.LENGTH_SHORT).show();
             return false;
-        } else if (descriptionText.equals("")) {
+        } else if ("".equals(descriptionText)) {
             Toast.makeText(context, R.string.video_collection_template_description_hint, Toast.LENGTH_SHORT).show();
             return false;
-        } else if (linkText.equals("")) {
+        } else if ("".equals(linkText)) {
             Toast.makeText(context, R.string.video_collection_template_link_hint, Toast.LENGTH_SHORT).show();
             return false;
         } else if (!(linkText.contains(YOUTUBE + ".com") || linkText.contains(YOUTUBE_SHORT) || linkText.contains(DAILYMOTION + ".com") || linkText.contains(VIMEO + ".com"))) {
@@ -195,16 +196,23 @@ public class VideoCollectionTemplate implements TemplateInterface {
     @Override
     public void addItem(final Activity activity) {
 
-        final MaterialDialog dialog = new MaterialDialog.Builder(activity)
-                .title(R.string.info_add_new_title)
-                .customView(R.layout.video_dialog_add_data, true)
-                .positiveText(R.string.info_template_add)
-                .negativeText(R.string.info_template_cancel)
-                .build();
+        LayoutInflater inflater = activity.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.video_dialog_add_data, null);
+        final AlertDialog dialog = new AlertDialog.Builder(activity)
+                .setTitle(R.string.info_add_new_title)
+                .setView(dialogView,
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_left),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_top),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_right),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_bottom))
+                .setPositiveButton(R.string.info_template_add, null)
+                .setNegativeButton(R.string.info_template_cancel, null)
+                .create();
+        dialog.show();
 
-        final EditText link = (EditText) dialog.findViewById(R.id.video_link);
+        final EditText link = (EditText) dialogView.findViewById(R.id.video_link);
 
-        dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+        dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -226,36 +234,39 @@ public class VideoCollectionTemplate implements TemplateInterface {
 
             }
         });
-
-        dialog.show();
-
     }
 
     @Override
     public void addMetaData(Activity activity) {
-
+        // This is intentionally empty
     }
 
     @Override
     public void editItem(final Activity activity, final int position) {
 
-        final MaterialDialog dialog = new MaterialDialog.Builder(activity)
-                .title(R.string.info_edit_title)
-                .customView(R.layout.video_dialog_edit_data, true)
-                .positiveText(R.string.info_template_ok)
-                .negativeText(R.string.info_template_cancel)
-                .build();
+        LayoutInflater inflater = activity.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.video_dialog_edit_data, null);
+        final AlertDialog dialog = new AlertDialog.Builder(activity)
+                .setTitle(R.string.info_edit_title)
+                .setView(dialogView,
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_left),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_top),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_right),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_bottom))
+                .setPositiveButton(R.string.info_template_ok, null)
+                .setNegativeButton(R.string.info_template_cancel, null)
+                .create();
+        dialog.show();
 
         final VideoModel data = videoData.get(position);
 
-        final ImageView thumb = (ImageView) dialog.findViewById(R.id.thumb);
-        final EditText title = (EditText) dialog.findViewById(R.id.video_title);
-        final EditText description = (EditText) dialog.findViewById(R.id.video_description);
-        final EditText link = (EditText) dialog.findViewById(R.id.video_link);
+        final ImageView thumb = (ImageView) dialogView.findViewById(R.id.thumb);
+        final EditText title = (EditText) dialogView.findViewById(R.id.video_title);
+        final EditText description = (EditText) dialogView.findViewById(R.id.video_description);
+        final EditText link = (EditText) dialogView.findViewById(R.id.video_link);
 
-        Picasso
-                .with(mContext)
-                .load(data.getThumbnail_url())
+        Picasso.with(mContext)
+                .load(data.getThumbnailUrl())
                 .transform(new RoundedTransformation(10, 10))
                 .fit()
                 .centerCrop()
@@ -267,7 +278,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
         description.setText(data.getDescription());
         link.setText(data.getLink());
 
-        dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+        dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -302,9 +313,6 @@ public class VideoCollectionTemplate implements TemplateInterface {
 
             }
         });
-
-        dialog.show();
-
     }
 
     @Override
@@ -354,7 +362,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
 
     @Override
     public void onActivityResult(Context context, int requestCode, int resultCode, Intent intent) {
-
+        // This is intentionally empty
     }
 
     /**
@@ -370,9 +378,9 @@ public class VideoCollectionTemplate implements TemplateInterface {
 
     private class VideoInfoTask extends AsyncTask<String, Integer, String> {
 
-        String link;
-        String position;
-        boolean success;
+        private String link;
+        private String position;
+        private boolean success;
 
         @Override
         protected String doInBackground(String... params) {
@@ -419,7 +427,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
                         data.setTitle(title);
                         data.setDescription(description);
                         data.setLink(link);
-                        data.setThumbnail_url(thumbnail_url);
+                        data.setThumbnailUrl(thumbnail_url);
                     }
 
                 } catch (Exception e) {
@@ -478,7 +486,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
                 return;
             }
 
-            if (!result.equals("done")) {
+            if (!"done".equals(result)) {
 
                 try {
                     JSONObject json = new JSONObject(result);
@@ -489,7 +497,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
                     String JSON_THUMBNAIL_URL = "thumbnail_url";
                     String thumbnail_url = json.getString(JSON_THUMBNAIL_URL);
 
-                    if (position.equals("-1")) {
+                    if ("-1".equals(position)) {
                         VideoModel temp = new VideoModel(title, description, link, thumbnail_url);
                         videoData.add(temp);
                     } else {
@@ -497,7 +505,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
                         data.setTitle(title);
                         data.setDescription(description);
                         data.setLink(link);
-                        data.setThumbnail_url(thumbnail_url);
+                        data.setThumbnailUrl(thumbnail_url);
                     }
 
                 } catch (JSONException e) {

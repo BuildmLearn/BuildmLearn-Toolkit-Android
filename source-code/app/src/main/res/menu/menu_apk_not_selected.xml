@@ -4,8 +4,7 @@
     tools:context="org.buildmlearn.toolkit.fragment.LoadProjectFragment">
     <item
         android:id="@+id/action_search"
-        android:title="Search"
         android:icon="@drawable/ic_open_search"
-        app:showAsAction="ifRoom"
-        />
+        android:title="Search"
+        app:showAsAction="ifRoom" />
 </menu>
