@@ -79,7 +79,7 @@ public class SavedApiAdapter extends BaseAdapter {
         {
             positions.add((Integer)key);
         }
-        Collections.sort(positions);
+        Collections.sort(positions,Collections.reverseOrder());
         return positions;
     }
 
