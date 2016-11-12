@@ -332,8 +332,6 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
                 Intent sendIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
                 sendIntent.setType("application/zip");
                 for(int selectedPosition : selectedPositions) {
-                    if(selectedPosition != selectedPositions.get(0))
-                        selectedPosition--;
                     SavedApi apk = savedApis.get(selectedPosition);
                     File file = new File(apk.getFile().getPath());
                     Uri fileUri = Uri.fromFile(file);
@@ -429,13 +427,12 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
         ArrayList<Integer> selectedPositions = mAdapter.getSelectedPositions();
         boolean deleted = false;
         for(int selectedPosition : selectedPositions) {
-            if (selectedPosition != selectedPositions.get(0))
-                selectedPosition--;
             SavedApi apk = savedApis.get(selectedPosition);
             File file = new File(apk.getFile().getPath());
             deleted = file.delete();
             if (deleted) {
                 savedApis.remove(selectedPosition);
+                mAdapter.removeSelectedPosition(selectedPosition);
                 mAdapter.notifyDataSetChanged();
                 setEmptyText();
             }

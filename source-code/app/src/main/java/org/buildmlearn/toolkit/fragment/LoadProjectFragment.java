@@ -370,8 +370,6 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                 Intent sendIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
                 sendIntent.setType("application/zip");
                 for(int selectedPosition : selectedPositions) {
-                    if(selectedPosition != selectedPositions.get(0))
-                        selectedPosition--;
                     SavedProject project = savedProjects.get(selectedPosition);
                     File file = new File(project.getFile().getPath());
 
@@ -469,11 +467,10 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
         ArrayList<Integer> selectedPositions = mAdapter.getSelectedPositions();
         boolean deleted = false;
         for(int selectedPosition : selectedPositions) {
-            if(selectedPosition!=selectedPositions.get(0))
-                selectedPosition--;
             SavedProject project = savedProjects.get(selectedPosition);
             File file = new File(project.getFile().getPath());
             deleted = file.delete();
+
             if (deleted) {
                 savedProjects.remove(selectedPosition);
                 mAdapter.removeSelectedPosition(selectedPosition);
