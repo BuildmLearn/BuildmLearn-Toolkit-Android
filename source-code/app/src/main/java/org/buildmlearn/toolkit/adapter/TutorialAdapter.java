@@ -3,7 +3,9 @@ package org.buildmlearn.toolkit.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.preference.PreferenceManager;
 import android.support.annotation.ColorRes;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
@@ -28,6 +30,8 @@ public class TutorialAdapter extends PagerAdapter {
     private final Tutorial[] mTutorials;
     private final ListColor[] colors = ListColor.values();
     private final boolean mStartActivity;
+    private SharedPreferences prefs;
+    private boolean SkipTutorial;
 
     public TutorialAdapter(Activity activity, boolean startActivity) {
         mActivity = activity;
@@ -53,6 +57,9 @@ public class TutorialAdapter extends PagerAdapter {
      */
     @Override
     public Object instantiateItem(ViewGroup container, final int position) {
+
+        prefs = PreferenceManager.getDefaultSharedPreferences(mActivity);
+        SkipTutorial = prefs.getBoolean("SkipTutorial",false);
 
         LayoutInflater inflater = (LayoutInflater) container.getContext()
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -93,11 +100,12 @@ public class TutorialAdapter extends PagerAdapter {
             deviceImage.setImageResource(tutorial.getImage());
             title.setText(tutorial.getTitle());
             description.setText(tutorial.getDescription());
-            if("Welcome to BuildmLearn Toolkit".equals(title.getText().toString())){
-                skip_button.setVisibility(View.VISIBLE);
-            }
-            else{
-                skip_button.setVisibility(View.GONE);
+            if(!SkipTutorial) {
+                if ("Welcome to BuildmLearn Toolkit".equals(title.getText().toString())) {
+                    skip_button.setVisibility(View.VISIBLE);
+                } else {
+                    skip_button.setVisibility(View.GONE);
+                }
             }
             convertView.findViewById(R.id.skip_button).setOnClickListener(new View.OnClickListener() {
                 @Override
