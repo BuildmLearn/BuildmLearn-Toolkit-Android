@@ -146,11 +146,13 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
     }
 
     private void setEmptyText() {
-
+        getView().findViewById(R.id.newProject).setVisibility(View.GONE);
+        getView().findViewById(R.id.no_saved_project).setVisibility(View.GONE);
+        getView().findViewById(R.id.no_saved_apks).setVisibility(View.GONE);
         if (mListView.getAdapter().getCount() == 0) {
-            getView().findViewById(R.id.empty).setVisibility(View.VISIBLE);
+            getView().findViewById(R.id.no_saved_drafts).setVisibility(View.VISIBLE);
         } else {
-            getView().findViewById(R.id.empty).setVisibility(View.GONE);
+            getView().findViewById(R.id.no_saved_drafts).setVisibility(View.GONE);
         }
     }
 
@@ -251,6 +253,7 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
         menu.clear();
         if (showTemplateSelectedMenu) {
             activity.getMenuInflater().inflate(R.menu.menu_project_selected, menu);
+            menu.findItem(R.id.action_share).setVisible(false);
         } else if (mAdapter.getCount() > 0) {
             activity.getMenuInflater().inflate(R.menu.menu_draft, menu);
         }

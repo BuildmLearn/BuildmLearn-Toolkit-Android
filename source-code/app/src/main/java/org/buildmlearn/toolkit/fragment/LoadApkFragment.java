@@ -134,18 +134,14 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
         mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                if (selectedPosition == position) {
-                    selectedPosition = -1;
+                if (mAdapter.isPositionSelected(position)) {
+                    mAdapter.removeSelectedPosition(position);
                     view.setBackgroundResource(0);
-                    restoreColorScheme();
+                    if(mAdapter.selectedPositionsSize()==0)
+                        restoreColorScheme();
                 } else {
-                    if (selectedView != null) {
-                        selectedView.setBackgroundResource(0);
-                    }
-                    selectedView = view;
-                    selectedPosition = position;
-                    Log.d(TAG, "Position: " + selectedPosition);
                     view.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.color_divider));
+                    mAdapter.putSelectedPosition(position);
                     changeColorScheme();
                 }
                 return true;
@@ -158,6 +154,21 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
      */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        if(mAdapter.selectedPositionsSize() > 0) {
+            if(mAdapter.isPositionSelected(position)) {
+                mAdapter.removeSelectedPosition(position);
+                view.setBackgroundResource(0);
+                if(mAdapter.selectedPositionsSize() == 0)
+                    restoreColorScheme();
+            }
+            else{
+                view.setBackgroundColor(ContextCompat.getColor(mToolkit, R.color.color_divider));
+                mAdapter.putSelectedPosition(position);
+                Log.d(TAG, "Position: " + position);
+                changeColorScheme();
+            }
+            return ;
+        }
         SavedApi apk = savedApis.get(position);
         File file = new File(apk.getFile().getPath());
         Intent intent = new Intent();
@@ -172,10 +183,13 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
     }
 
     private void setEmptyText() {
+        getView().findViewById(R.id.newProject).setVisibility(View.GONE);
+        getView().findViewById(R.id.no_saved_project).setVisibility(View.GONE);
+        getView().findViewById(R.id.no_saved_drafts).setVisibility(View.GONE);
         if (mListView.getAdapter().getCount() == 0) {
-            getView().findViewById(R.id.empty).setVisibility(View.VISIBLE);
+            getView().findViewById(R.id.no_saved_apks).setVisibility(View.VISIBLE);
         } else {
-            getView().findViewById(R.id.empty).setVisibility(View.GONE);
+            getView().findViewById(R.id.no_saved_apks).setVisibility(View.GONE);
         }
     }
 
@@ -306,19 +320,26 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
                     @Override
                     public void onClick(View v) {
                         dialog.dismiss();
-                        deleteItem(selectedPosition);
+                        deleteItems();
                         restoreSelectedView();
                     }
                 });
                 break;
             case R.id.action_share:
 
-                SavedApi apk = savedApis.get(selectedPosition);
-                File file = new File(apk.getFile().getPath());
-                Uri fileUri = Uri.fromFile(file);
-                Intent sendIntent = new Intent(Intent.ACTION_SEND);
-                sendIntent.setType("application/vnd.android.package-archive");
-                sendIntent.putExtra(Intent.EXTRA_STREAM, fileUri);
+                ArrayList<Integer> selectedPositions = mAdapter.getSelectedPositions();
+                ArrayList<Uri> uris = new ArrayList<>();
+                Intent sendIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
+                sendIntent.setType("application/zip");
+                for(int selectedPosition : selectedPositions) {
+                    if(selectedPosition != selectedPositions.get(0))
+                        selectedPosition--;
+                    SavedApi apk = savedApis.get(selectedPosition);
+                    File file = new File(apk.getFile().getPath());
+                    Uri fileUri = Uri.fromFile(file);
+                    uris.add(fileUri);
+                }
+                sendIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
                 startActivity(Intent.createChooser(sendIntent, null));
                 break;
             case R.id.action_search:
@@ -374,6 +395,27 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
                 InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.showSoftInput(editSearch, InputMethodManager.SHOW_IMPLICIT);
                 break;
+
+            case R.id.action_select_all:
+                for(int i=0;i<mAdapter.getCount();i++) {
+                    if (!mAdapter.isPositionSelected(i))
+                    {
+                        mListView.getChildAt(i).setBackgroundColor(ContextCompat.getColor(mToolkit, R.color.color_divider));
+                        mAdapter.putSelectedPosition(i);
+                        changeColorScheme();
+                    }
+                }
+                break;
+
+            case R.id.action_unselect_all:
+                for(int i=0;i<mAdapter.getCount();i++)
+                    if(mAdapter.isPositionSelected(i)) {
+                        mListView.getChildAt(i).setBackgroundColor(0);
+                        mAdapter.removeSelectedPosition(i);
+                    }
+                restoreColorScheme();
+                break;
+
             default: //do nothing
                 break;
         }
@@ -383,27 +425,31 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
     /**
      * @brief Removes selected apk item
      */
-    private void deleteItem(int selectedPosition) {
-        SavedApi apk = savedApis.get(selectedPosition);
-        File file = new File(apk.getFile().getPath());
-        boolean deleted = file.delete();
-        if (deleted) {
-            savedApis.remove(selectedPosition);
-            mAdapter.notifyDataSetChanged();
-            setEmptyText();
-            Toast.makeText(activity, "APK Successfully Deleted!", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(activity, "APK Deletion Failed!", Toast.LENGTH_SHORT).show();
+    private void deleteItems() {
+        ArrayList<Integer> selectedPositions = mAdapter.getSelectedPositions();
+        boolean deleted = false;
+        for(int selectedPosition : selectedPositions) {
+            if (selectedPosition != selectedPositions.get(0))
+                selectedPosition--;
+            SavedApi apk = savedApis.get(selectedPosition);
+            File file = new File(apk.getFile().getPath());
+            deleted = file.delete();
+            if (deleted) {
+                savedApis.remove(selectedPosition);
+                mAdapter.notifyDataSetChanged();
+                setEmptyText();
+            }
         }
+        if(deleted)
+            Toast.makeText(activity, "Project Successfully Deleted!", Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(activity, "Project Deletion Failed!", Toast.LENGTH_SHORT).show();
     }
 
     /**
      * @brief Removes selected color from the selected ListView item when switching from edit mode to normal mode
      */
     private void restoreSelectedView() {
-        if (selectedView != null) {
-            selectedView.setBackgroundResource(0);
-        }
         restoreColorScheme();
     }
 

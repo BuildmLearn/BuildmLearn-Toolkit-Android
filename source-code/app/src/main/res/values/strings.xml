@@ -19,8 +19,9 @@
     <string name="draft_deleted">Draft Successfully Deleted!</string>
     <string name="draft_deleted_failed">Draft Deletion Failed!</string>
     <string name="dialog_delete_all_msg">Are you sure you clear you Draft?</string>
+    <string name="dialog_delete_multiple">Are you sure you want to delete the selected items?</string>
     <string name="dialog_delete_all_title">Delete All</string>
-
+    <string name="no_saved_drafts">"No Saved Drafts Yet"</string>
 
     <!-- Restore Dialog-->
 
@@ -59,6 +60,7 @@
     <string name="list_empty_info">List is Empty!</string>
     <string name="previous_info">PREVIOUS</string>
     <string name="next_info">NEXT</string>
+    <string name="no_saved_projects">No Saved Projects yet</string>
     <string name="exit_info">EXIT</string>
     <string name="about_text_info">This application has been developed using the BuildmLearn Toolkit.\n\nTo know more about BuildmLearn Toolkit visit <a href="https://buildmlearn.org/">here</a>.</string>
     <string name="info_thumbnail_info">Info Thumbnail</string>
@@ -208,6 +210,8 @@
     <string name="bottom_sheet_share_apk">Share APK</string>
     <string name="bottom_sheet_save_apk">Save APK</string>
     <string name="bottom_sheet_save_project">Save Project</string>
+    <string name="menu_select_all">Select All</string>
+    <string name="menu_unselect_all">Unselect All</string>
 
     <!--  Built-in file manager string values -->
 
@@ -380,5 +384,6 @@
     <string name="template_thumbnail">Template thumbnail</string>
     <string name="show_more">Show more</string>
     <string name="tutorial_image">Tutorial image</string>
-
+    <string name="create_project">Create Project</string>
+    <string name="no_saved_apks">"No Saved Apks yet"</string>
 </resources>
