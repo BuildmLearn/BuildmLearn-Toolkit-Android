@@ -9,6 +9,7 @@ import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -74,6 +75,10 @@ public class TutorialAdapter extends PagerAdapter {
             });
         } else {
             convertView = inflater.inflate(R.layout.tutorial_layout, null);
+
+            View skip_button = convertView.findViewById(R.id.skip_button);
+            skip_button.setVisibility(View.GONE);
+
             ImageView deviceImage = (ImageView) convertView
                     .findViewById(R.id.device_image);
             TextView title = (TextView) convertView
@@ -88,6 +93,22 @@ public class TutorialAdapter extends PagerAdapter {
             deviceImage.setImageResource(tutorial.getImage());
             title.setText(tutorial.getTitle());
             description.setText(tutorial.getDescription());
+            if("Welcome to BuildmLearn Toolkit".equals(title.getText().toString())){
+                skip_button.setVisibility(View.VISIBLE);
+            }
+            else{
+                skip_button.setVisibility(View.GONE);
+            }
+            convertView.findViewById(R.id.skip_button).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mStartActivity) {
+                        mActivity.startActivity(new Intent(mActivity, HomeActivity.class));
+                    }
+                    mActivity.finish();
+                }
+            });
+
         }
         container.addView(convertView, 0);
 
