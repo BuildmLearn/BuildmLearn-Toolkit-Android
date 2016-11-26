@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.buildmlearn.toolkit" >
+    package="org.buildmlearn.toolkit">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -17,13 +17,12 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".activity.HomeActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name"
-            android:theme="@style/NoActionBarThemeTransparentStatusBar" >
-        </activity>
+            android:theme="@style/NoActionBarThemeTransparentStatusBar"></activity>
         <activity
             android:name=".simulator.Simulator"
             android:label="@string/title_activity_simulator"
@@ -33,7 +32,7 @@
             android:name=".activity.TemplateActivity"
             android:label="@string/title_activity_template"
             android:parentActivityName=".activity.HomeActivity"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.buildmlearn.toolkit.activity.HomeActivity" />
@@ -42,8 +41,7 @@
             android:name=".activity.TemplateEditor"
             android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_template_editor"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
         <meta-data
             android:name="io.fabric.ApiKey"
@@ -52,8 +50,8 @@
         <activity
             android:name=".activity.FirstRunActivity"
             android:label="@string/app_name"
-            android:theme="@style/Buildmlearn.FullScreen"
-            android:windowSoftInputMode="adjustPan" >
+            android:theme="@style/SplashTheme"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -63,24 +61,23 @@
         <activity
             android:name=".activity.TutorialActivity"
             android:label="@string/title_activity_tutorial"
-            android:theme="@style/Buildmlearn.FullScreen" >
-        </activity>
+            android:theme="@style/Buildmlearn.FullScreen"></activity>
         <activity
             android:name=".activity.AboutBuildmLearn"
             android:label="@string/title_activity_about_buildm_learn"
             android:parentActivityName=".activity.HomeActivity"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.buildmlearn.toolkit.activity.HomeActivity" />
         </activity>
         <activity
             android:name=".activity.DeepLinkerActivity"
-            android:label="@string/title_activity_deep_linker" >
+            android:label="@string/title_activity_deep_linker">
             <intent-filter
                 android:icon="@mipmap/ic_launcher"
                 android:label="@string/app_name"
-                android:priority="1" >
+                android:priority="1">
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
@@ -91,10 +88,10 @@
                 <data android:pathPattern=".*\\.buildmlearn" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activity.SettingsLinkerActivity">
+        <activity android:name=".activity.SettingsLinkerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.NOTIFICATION_PREFERENCES" />
             </intent-filter>
         </activity>
