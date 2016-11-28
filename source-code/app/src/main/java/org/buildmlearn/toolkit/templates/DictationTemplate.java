@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.dictationtemplate.data.DictModel;
 import org.buildmlearn.toolkit.dictationtemplate.fragment.SplashFragment;
 import org.buildmlearn.toolkit.model.Template;
 import org.buildmlearn.toolkit.model.TemplateInterface;
@@ -226,10 +227,25 @@ public class DictationTemplate implements TemplateInterface {
     }
 
     @Override
-    public void deleteItem(Activity activity, int position) {
+    public Object deleteItem(Activity activity, int position) {
+        DictationModel dictationModel = dictData.get(position);
         dictData.remove(position);
         setEmptyView(activity);
         adapter.notifyDataSetChanged();
+        return dictationModel;
+    }
+
+    @Override
+    public void restoreItem(Activity activity, int position, Object object) {
+        if (object instanceof DictationModel)
+        {
+            DictationModel dictationModel = (DictationModel)object;
+            if (dictationModel!=null)
+            {
+                dictData.add(position,dictationModel);
+                adapter.notifyDataSetChanged();
+            }
+        }
     }
 
     @Override

@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
@@ -365,25 +366,19 @@ public class TemplateEditor extends AppCompatActivity {
 
         switch (id) {
             case R.id.action_delete:
-
-                final AlertDialog dialog = new AlertDialog.Builder(this)
-                        .setTitle(R.string.dialog_delete_title)
-                        .setMessage(R.string.dialog_delete_msg)
-                        .setPositiveButton(R.string.dialog_yes, null)
-                        .setNegativeButton(R.string.dialog_no, null)
-                        .create();
-                dialog.show();
-
-                dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+                final int restorePosition = selectedPosition;
+                final Object object = selectedTemplate.deleteItem(TemplateEditor.this, selectedPosition);
+                selectedPosition = -1;
+                restoreSelectedView();
+                Snackbar.make(getWindow().getDecorView(),
+                        R.string.snackbar_deleted_message,Snackbar.LENGTH_LONG)
+                        .setAction(R.string.snackbar_undo, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        dialog.dismiss();
-                        selectedTemplate.deleteItem(TemplateEditor.this, selectedPosition);
-                        selectedPosition = -1;
-                        restoreSelectedView();
+                        selectedTemplate.restoreItem(TemplateEditor.this,restorePosition,object);
+                        Snackbar.make(v,R.string.snackbar_restored_message,Snackbar.LENGTH_LONG).show();
                     }
-                });
-
+                }).show();
                 break;
             case R.id.action_edit:
                 selectedTemplate.editItem(this, selectedPosition);

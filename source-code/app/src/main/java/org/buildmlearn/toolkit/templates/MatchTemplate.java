@@ -32,11 +32,11 @@ public class MatchTemplate implements TemplateInterface {
     private final ArrayList<MatchMetaModel> metaData;
     transient private MatchAdapter adapter;
     transient private MatchMetaAdapter metaAdapter;
-    private ArrayList<MatchModel> MatchData;
+    private ArrayList<MatchModel> matchData;
     private int templateId;
 
     public MatchTemplate() {
-        MatchData = new ArrayList<>();
+        matchData = new ArrayList<>();
         metaData = new ArrayList<>();
     }
 
@@ -84,7 +84,7 @@ public class MatchTemplate implements TemplateInterface {
 
     @Override
     public BaseAdapter newTemplateEditorAdapter(Context context) {
-        adapter = new MatchAdapter(context, MatchData);
+        adapter = new MatchAdapter(context, matchData);
         return adapter;
     }
 
@@ -105,15 +105,15 @@ public class MatchTemplate implements TemplateInterface {
 
     @Override
     public BaseAdapter loadProjectTemplateEditor(Context context, ArrayList<Element> data) {
-        MatchData = new ArrayList<>();
+        matchData = new ArrayList<>();
         for (Element item : data) {
             String first_list_item = item.getElementsByTagName("first_list_item").item(0).getTextContent();
             String second_list_item = item.getElementsByTagName("second_list_item").item(0).getTextContent();
 
-            MatchData.add(new MatchModel(first_list_item, second_list_item));
+            matchData.add(new MatchModel(first_list_item, second_list_item));
 
         }
-        adapter = new MatchAdapter(context, MatchData);
+        adapter = new MatchAdapter(context, matchData);
         return adapter;
     }
 
@@ -164,7 +164,7 @@ public class MatchTemplate implements TemplateInterface {
                     String second_list_itemText = second_list_item.getText().toString();
 
                     MatchModel temp = new MatchModel(first_list_itemText, second_list_itemText);
-                    MatchData.add(temp);
+                    matchData.add(temp);
                     adapter.notifyDataSetChanged();
                     setEmptyView(activity);
                     dialog.dismiss();
@@ -261,7 +261,7 @@ public class MatchTemplate implements TemplateInterface {
 
         } else {
 
-            final MatchModel data = MatchData.get(position);
+            final MatchModel data = matchData.get(position);
 
             LayoutInflater inflater = activity.getLayoutInflater();
             View dialogView = inflater.inflate(R.layout.match_dialog_add_edit, null);
@@ -304,15 +304,48 @@ public class MatchTemplate implements TemplateInterface {
     }
 
     @Override
-    public void deleteItem(Activity activity, int position) {
+    public Object deleteItem(Activity activity, int position) {
+        MatchMetaModel matchMetaModel =null;
+        MatchModel matchModel = null;
         if (position == -2) {
+            matchMetaModel = metaData.get(0);
             metaData.remove(0);
             setEmptyView(activity);
             metaAdapter.notifyDataSetChanged();
         } else {
-            MatchData.remove(position);
+            matchModel = matchData.get(position);
+            matchData.remove(position);
             setEmptyView(activity);
             adapter.notifyDataSetChanged();
+        }
+        if (matchMetaModel==null)
+        {
+            return matchModel;
+        }else
+        {
+            return matchMetaModel;
+        }
+    }
+
+    @Override
+    public void restoreItem(Activity activity, int position, Object object) {
+        if (position==-2)
+        {
+            if (object instanceof MatchMetaModel) {
+                MatchMetaModel matchMetaModel = (MatchMetaModel) object;
+                if (matchMetaModel != null) {
+                    metaData.add( matchMetaModel);
+                    metaAdapter.notifyDataSetChanged();
+                }
+            }
+        }else {
+            if (object instanceof MatchModel) {
+               MatchModel matchModel = (MatchModel) object;
+                if (matchModel != null) {
+                    matchData.add(position, matchModel);
+                    adapter.notifyDataSetChanged();
+                }
+            }
         }
     }
 
@@ -324,7 +357,7 @@ public class MatchTemplate implements TemplateInterface {
             itemElements.add(data.getXml(doc));
         }
 
-        for (MatchModel data : MatchData) {
+        for (MatchModel data : matchData) {
 
             itemElements.add(data.getXml(doc));
         }
@@ -371,11 +404,11 @@ public class MatchTemplate implements TemplateInterface {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && metaData.size() > 0) {
             activity.findViewById(R.id.shadow_meta).setVisibility(View.VISIBLE);
         }
-        if (MatchData.size() < 1 && metaData.size() < 1) {
+        if (matchData.size() < 1 && metaData.size() < 1) {
             activity.findViewById(R.id.shadow_meta).setVisibility(View.GONE);
             ((TextViewPlus) activity.findViewById(R.id.empty_view_text)).setText(R.string.meta_add_help);
             activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
-        } else if (MatchData.size() < 1) {
+        } else if (matchData.size() < 1) {
             ((TextViewPlus) activity.findViewById(R.id.empty_view_text)).setText(R.string.add_item_help);
             activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
         } else if (metaData.size() < 1) {
