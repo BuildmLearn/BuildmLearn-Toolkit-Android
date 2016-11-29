@@ -102,20 +102,18 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
         mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                if (selectedPosition == position) {
-                    selectedPosition = -1;
+                if (mAdapter.isPositionSelected(position)) {
+                    mAdapter.removeSelectedPosition(position);
                     view.setBackgroundResource(0);
-                    restoreColorScheme();
+                    if (mAdapter.selectedPositionsSize() == 0)
+                        restoreColorScheme();
                 } else {
-                    if (selectedView != null) {
-                        selectedView.setBackgroundResource(0);
-                    }
-                    selectedView = view;
-                    selectedPosition = position;
-                    Log.d(TAG, "Position: " + selectedPosition);
                     view.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.color_divider));
+                    mAdapter.putSelectedPosition(position);
                     changeColorScheme();
                 }
+
+
                 return true;
             }
         });
@@ -126,6 +124,23 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
      */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        if(mAdapter.selectedPositionsSize() > 0)
+        {
+            if(mAdapter.isPositionSelected(position)) {
+                mAdapter.removeSelectedPosition(position);
+                view.setBackgroundResource(0);
+                if(mAdapter.selectedPositionsSize() == 0)
+                    restoreColorScheme();
+            }
+            else{
+                view.setBackgroundColor(ContextCompat.getColor(mToolkit, R.color.color_divider));
+                mAdapter.putSelectedPosition(position);
+                Log.d(TAG, "Position: " + position);
+                changeColorScheme();
+
+            }
+            return ;
+        }
         SavedProject project = draftProjects.get(position);
         Template[] templates = Template.values();
         for (int i = 0; i < templates.length; i++) {
@@ -262,6 +277,7 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
     /**
      * {@inheritDoc}
      */
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -281,11 +297,32 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
                     @Override
                     public void onClick(View v) {
                         dialogDelete.dismiss();
-                        deleteItem(selectedPosition);
+                        deleteItems();
                         restoreSelectedView();
                     }
                 });
                 break;
+
+            case R.id.action_select_all:
+                for(int i=0;i<mAdapter.getCount();i++) {
+                    if (!mAdapter.isPositionSelected(i))
+                    {
+                        mListView.getChildAt(i).setBackgroundColor(ContextCompat.getColor(mToolkit, R.color.color_divider));
+                        mAdapter.putSelectedPosition(i);
+                        changeColorScheme();
+                    }
+                }
+                break;
+
+            case R.id.action_unselect_all:
+                for(int i=0;i<mAdapter.getCount();i++)
+                    if(mAdapter.isPositionSelected(i)) {
+                        mListView.getChildAt(i).setBackgroundColor(0);
+                        mAdapter.removeSelectedPosition(i);
+                    }
+                restoreColorScheme();
+                break;
+
             case R.id.action_delete_all:
 
                 final AlertDialog dialogDeleteAll = new AlertDialog.Builder(activity)
@@ -314,18 +351,24 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
     /**
      * @brief Removes selected project item
      */
-    private void deleteItem(int selectedPosition) {
-        SavedProject project = draftProjects.get(selectedPosition);
-        File file = new File(project.getFile().getPath());
-        boolean deleted = file.delete();
-        if (deleted) {
-            draftProjects.remove(selectedPosition);
-            mAdapter.notifyDataSetChanged();
-            setEmptyText();
-            Toast.makeText(activity, getResources().getString(R.string.draft_deleted), Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(activity, getResources().getString(R.string.draft_deleted_failed), Toast.LENGTH_SHORT).show();
+    private void deleteItems() {
+        ArrayList<Integer> selectedPositions = mAdapter.getSelectedPositions();
+        boolean deleted = false;
+        for(int selectedPosition : selectedPositions) {
+            SavedProject project = draftProjects.get(selectedPosition);
+            File file = new File(project.getFile().getPath());
+            deleted = file.delete();
+            if (deleted) {
+                draftProjects.remove(selectedPosition);
+                mAdapter.removeSelectedPosition(selectedPosition);
+                mAdapter.notifyDataSetChanged();
+                setEmptyText();
+            }
         }
+        if(deleted)
+            Toast.makeText(activity, "Project Successfully Deleted!", Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(activity, "Project Deletion Failed!", Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -352,9 +395,6 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
      * @brief Removes selected color from the selected ListView item when switching from edit mode to normal mode
      */
     private void restoreSelectedView() {
-        if (selectedView != null) {
-            selectedView.setBackgroundResource(0);
-        }
         restoreColorScheme();
     }
 }
