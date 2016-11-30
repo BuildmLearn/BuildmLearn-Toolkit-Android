@@ -370,7 +370,7 @@ public class TemplateEditor extends AppCompatActivity {
                 final Object object = selectedTemplate.deleteItem(TemplateEditor.this, selectedPosition);
                 selectedPosition = -1;
                 restoreSelectedView();
-                Snackbar.make(getWindow().getDecorView(),
+                Snackbar.make(findViewById(R.id.relative_layout),
                         R.string.snackbar_deleted_message,Snackbar.LENGTH_LONG)
                         .setAction(R.string.snackbar_undo, new View.OnClickListener() {
                     @Override
