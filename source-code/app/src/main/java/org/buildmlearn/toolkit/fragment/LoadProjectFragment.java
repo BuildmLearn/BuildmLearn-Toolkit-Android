@@ -3,14 +3,15 @@ package org.buildmlearn.toolkit.fragment;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -28,12 +29,10 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.DialogAction;
-import com.afollestad.materialdialogs.MaterialDialog;
-import com.afollestad.materialdialogs.internal.ThemeSingleton;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.ToolkitApplication;
+import org.buildmlearn.toolkit.activity.TemplateActivity;
 import org.buildmlearn.toolkit.activity.TemplateEditor;
 import org.buildmlearn.toolkit.adapter.SavedProjectAdapter;
 import org.buildmlearn.toolkit.constant.Constants;
@@ -209,11 +208,21 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
     }
 
     private void setEmptyText() {
-
+        getView().findViewById(R.id.no_saved_drafts).setVisibility(View.GONE);
+        getView().findViewById(R.id.no_saved_apks).setVisibility(View.GONE);
         if (mListView.getAdapter().getCount() == 0) {
-            getView().findViewById(R.id.empty).setVisibility(View.VISIBLE);
+            getView().findViewById(R.id.no_saved_project).setVisibility(View.VISIBLE);
+            View view= getView().findViewById(R.id.newProject);
+            view.setVisibility(View.VISIBLE);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(getActivity(),TemplateActivity.class));
+                }
+            });
         } else {
-            getView().findViewById(R.id.empty).setVisibility(View.GONE);
+            getView().findViewById(R.id.newProject).setVisibility(View.GONE);
+            getView().findViewById(R.id.no_saved_project).setVisibility(View.GONE);
         }
     }
 
@@ -288,10 +297,6 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
         int primaryColor = ContextCompat.getColor(mToolkit, R.color.color_primary);
         int primaryColorDark = ContextCompat.getColor(mToolkit, R.color.color_primary_dark);
         ((AppCompatActivity) activity).getSupportActionBar().setBackgroundDrawable(new ColorDrawable(primaryColor));
-        ThemeSingleton.get().positiveColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().neutralColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().negativeColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().widgetColor = primaryColor;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             activity.getWindow().setStatusBarColor(primaryColorDark);
             activity.getWindow().setNavigationBarColor(primaryColor);
@@ -309,10 +314,6 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
         int primaryColor = ContextCompat.getColor(mToolkit, R.color.color_primary_dark);
         int primaryColorDark = ContextCompat.getColor(mToolkit, R.color.color_selected_dark);
         ((AppCompatActivity) activity).getSupportActionBar().setBackgroundDrawable(new ColorDrawable(primaryColor));
-        ThemeSingleton.get().positiveColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().neutralColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().negativeColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().widgetColor = primaryColor;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             activity.getWindow().setStatusBarColor(primaryColorDark);
             activity.getWindow().setNavigationBarColor(primaryColor);
@@ -345,17 +346,15 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
         switch (id) {
             case R.id.action_delete:
 
-                final MaterialDialog dialog = new MaterialDialog.Builder(activity)
-                        .title(R.string.dialog_delete_title)
-                        .positiveText(R.string.dialog_yes)
-                        .negativeText(R.string.dialog_no)
-                        .build();
+                final AlertDialog dialog = new AlertDialog.Builder(activity)
+                        .setTitle(R.string.dialog_delete_title)
+                        .setMessage(R.string.dialog_delete_msg)
+                        .setPositiveButton(R.string.dialog_yes, null)
+                        .setNegativeButton(R.string.dialog_no, null)
+                        .create();
+                dialog.show();
 
-                if(mAdapter.selectedPositionsSize()==1)
-                    dialog.setContent(R.string.dialog_delete_msg);
-                else
-                    dialog.setContent(R.string.dialog_delete_multiple);
-                dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+                dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         dialog.dismiss();
@@ -363,7 +362,6 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                         restoreSelectedView();
                     }
                 });
-                dialog.show();
                 break;
             case R.id.action_share:
 
@@ -372,8 +370,6 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                 Intent sendIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
                 sendIntent.setType("application/zip");
                 for(int selectedPosition : selectedPositions) {
-                    if(selectedPosition != selectedPositions.get(0))
-                        selectedPosition--;
                     SavedProject project = savedProjects.get(selectedPosition);
                     File file = new File(project.getFile().getPath());
 
@@ -471,11 +467,10 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
         ArrayList<Integer> selectedPositions = mAdapter.getSelectedPositions();
         boolean deleted = false;
         for(int selectedPosition : selectedPositions) {
-            if(selectedPosition!=selectedPositions.get(0))
-                selectedPosition--;
             SavedProject project = savedProjects.get(selectedPosition);
             File file = new File(project.getFile().getPath());
             deleted = file.delete();
+
             if (deleted) {
                 savedProjects.remove(selectedPosition);
                 mAdapter.removeSelectedPosition(selectedPosition);

@@ -13,11 +13,8 @@
 
     <PreferenceCategory android:title="@string/app_settings">
 
-        <com.afollestad.materialdialogs.prefs.MaterialEditTextPreference
-            android:dialogTitle="@string/title_user_name"
+        <Preference
             android:key="@string/key_user_name"
-            android:lines="1"
-            android:maxLines="1"
             android:title="@string/your_name" />
 
         <Preference

@@ -1,19 +1,29 @@
 before_install: cd source-code
 
 language: android
-sudo: true
 jdk: oraclejdk8
+# Turn off caching to avoid any caching problems
+cache: false
+sudo: true
+
+cache:
+  directories:
+    - ${TRAVIS_BUILD_DIR}/gradle/caches/
+    - ${TRAVIS_BUILD_DIR}/gradle/wrapper/dists/
+    
 env:
   matrix:
-    - ADB_INSTALL_TIMEOUT=12 ANDROID_BUILD_TOOLS_VERSION=23.0.2 ANDROID_TARGET=android-23 ANDROID_ABI=armeabi-v7a
+    - ANDROID_API_LEVEL=23 ADB_INSTALL_TIMEOUT=12 ANDROID_BUILD_TOOLS_VERSION=23.0.2 ANDROID_ABI=armeabi-v7a ANDROID_TAG=google_apis
 
 android:
   components:
+    - tools # to get the new repository-11.xml
     - platform-tools
-    - tools
+    - tools # to install Android SDK tools
     - build-tools-$ANDROID_BUILD_TOOLS_VERSION
-    - $ANDROID_TARGET
-    - android-23
+    - android-$ANDROID_API_LEVEL    
+    # For Google APIs
+    - addon-google_apis-google-$ANDROID_API_LEVEL
     # Google Play Services
     - extra-google-google_play_services
     # Support library
@@ -22,21 +32,10 @@ android:
     - extra-google-m2repository
     - extra-android-m2repository
     # Specify at least one system image,
-    - sys-img-armeabi-v7a-$ANDROID_TARGET
-
-before_script:
-  # Create and start emulator
-  - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
-  - emulator -avd test -no-skin -no-audio -no-window &
-  - android-wait-for-emulator
-  - sleep 10
-  - adb shell settings put global window_animation_scale 0 &
-  - adb shell settings put global transition_animation_scale 0 &
-  - adb shell settings put global animator_duration_scale 0 &
-  - adb shell input keyevent 82 &
+    - sys-img-armeabi-v7a-android-$ANDROID_API_LEVEL
 
 script:
-  - ./gradlew check connectedAndroidTest
+  -  ./gradlew assembleRelease
 
 notifications:
   email:

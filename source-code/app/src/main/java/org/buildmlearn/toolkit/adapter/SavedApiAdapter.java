@@ -79,7 +79,7 @@ public class SavedApiAdapter extends BaseAdapter {
         {
             positions.add((Integer)key);
         }
-        Collections.sort(positions);
+        Collections.sort(positions,Collections.reverseOrder());
         return positions;
     }
 
@@ -115,7 +115,7 @@ public class SavedApiAdapter extends BaseAdapter {
         }
 
         SavedApi apiData = getItem(position);
-        holder.details.setText(String.format(Locale.ENGLISH, "Modified: %s, Author: ", apiData.getDate(), apiData.getAuthor()));
+        holder.details.setText(String.format(Locale.ENGLISH, "%s, %s", apiData.getAuthor(), apiData.getDate()));
         holder.apkName.setText(apiData.getName());
         holder.projectIcon.setText(apiData.getName().substring(0, 1).toUpperCase(Locale.US));
         convertView.setTag(holder);

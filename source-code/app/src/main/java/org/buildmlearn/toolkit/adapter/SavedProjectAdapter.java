@@ -74,7 +74,7 @@ public class SavedProjectAdapter extends BaseAdapter {
         {
             positions.add((Integer)key);
         }
-        Collections.sort(positions);
+        Collections.sort(positions, Collections.reverseOrder());
         return positions;
     }
 
@@ -112,7 +112,7 @@ public class SavedProjectAdapter extends BaseAdapter {
         }
 
         SavedProject projectData = getItem(position);
-        holder.details.setText(String.format(Locale.ENGLISH, "Modified: %s, Author: ", projectData.getDate(), projectData.getAuthor()));
+        holder.details.setText(String.format(Locale.ENGLISH, "%s, %s", projectData.getAuthor(), projectData.getDate()));
         holder.projectName.setText(projectData.getName());
         holder.projectIcon.setText(projectData.getName().substring(0, 1).toUpperCase(Locale.US));
         convertView.setTag(holder);

@@ -135,4 +135,11 @@
     <dimen name="paddingTop_spell">13.89dp</dimen>
 
     <!--Simulator's dimens are .86868686 times smaller-->
+
+    <!--padding defaults-->
+    <dimen name="padding_small">16dp</dimen>
+    <dimen name="spacing_left">24dp</dimen>
+    <dimen name="spacing_top">20dp</dimen>
+    <dimen name="spacing_right">24dp</dimen>
+    <dimen name="spacing_bottom">24dp</dimen>
 </resources>

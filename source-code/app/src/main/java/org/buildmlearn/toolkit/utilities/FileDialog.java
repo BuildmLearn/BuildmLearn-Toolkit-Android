@@ -1,9 +1,9 @@
 package org.buildmlearn.toolkit.utilities;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
+
 import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 
 import org.buildmlearn.toolkit.ToolkitApplication;
 
@@ -32,12 +32,11 @@ public class FileDialog {
         loadFileList(new ToolkitApplication().getDir());
     }
 
-    private Dialog createFileDialog() {
-        Dialog dialog;
+    private AlertDialog createFileDialog() {
+        AlertDialog dialog;
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 
         builder.setTitle(currentPath.getPath());
-
         builder.setItems(fileList, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 String fileChosen = fileList[which];
