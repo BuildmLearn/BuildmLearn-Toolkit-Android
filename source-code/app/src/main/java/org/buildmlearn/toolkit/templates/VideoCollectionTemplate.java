@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.BaseAdapter;
@@ -60,44 +61,48 @@ public class VideoCollectionTemplate implements TemplateInterface {
         videoData = new ArrayList<>();
     }
 
-    private static boolean validated(Context context, EditText link) {
+    private static boolean validated(EditText link) {
         if (link == null) {
             return false;
         }
 
-        String linkText = link.getText().toString();
+        String linkText = link.getText().toString().trim();
 
         if ("".equals(linkText)) {
-            Toast.makeText(context, R.string.video_collection_template_link_hint, Toast.LENGTH_SHORT).show();
+            link.setText("Enter a link.");
             return false;
+        } else if(!Patterns.WEB_URL.matcher(linkText).matches()){
+            link.setText("Enter a valid link.");
         } else if (!(linkText.contains(YOUTUBE + ".com") || linkText.contains(YOUTUBE_SHORT) || linkText.contains(DAILYMOTION + ".com") || linkText.contains(VIMEO + ".com"))) {
-            Toast.makeText(context, R.string.video_support_error, Toast.LENGTH_SHORT).show();
+            link.setError("Only Youtube, Dailymotion and Vimeo links supported.");
             return false;
         }
         return true;
 
     }
 
-    private static boolean validated(Context context, EditText title, EditText description, EditText link) {
+    private static boolean validated(EditText title, EditText description, EditText link) {
         if (link == null || title == null || description == null) {
             return false;
         }
 
-        String titleText = title.getText().toString();
-        String descriptionText = description.getText().toString();
-        String linkText = link.getText().toString();
+        String titleText = title.getText().toString().trim();
+        String descriptionText = description.getText().toString().trim();
+        String linkText = link.getText().toString().trim();
 
         if ("".equals(titleText)) {
-            Toast.makeText(context, R.string.video_collection_template_title_hint, Toast.LENGTH_SHORT).show();
+            title.setError("Enter a title.");
             return false;
         } else if ("".equals(descriptionText)) {
-            Toast.makeText(context, R.string.video_collection_template_description_hint, Toast.LENGTH_SHORT).show();
+            description.setError("Enter a description.");
             return false;
         } else if ("".equals(linkText)) {
-            Toast.makeText(context, R.string.video_collection_template_link_hint, Toast.LENGTH_SHORT).show();
+            link.setText("Enter a link.");
             return false;
+        } else if(!Patterns.WEB_URL.matcher(linkText).matches()){
+            link.setText("Enter a valid link.");
         } else if (!(linkText.contains(YOUTUBE + ".com") || linkText.contains(YOUTUBE_SHORT) || linkText.contains(DAILYMOTION + ".com") || linkText.contains(VIMEO + ".com"))) {
-            Toast.makeText(context, R.string.video_support_error, Toast.LENGTH_SHORT).show();
+            link.setError("Only Youtube, Dailymotion and Vimeo links supported.");
             return false;
         }
         return true;
@@ -216,8 +221,8 @@ public class VideoCollectionTemplate implements TemplateInterface {
             @Override
             public void onClick(View v) {
 
-                if (validated(activity, link)) {
-                    String linkText = link.getText().toString();
+                if (validated(link)) {
+                    String linkText = link.getText().toString().trim();
                     String convertedLink = convertLink(linkText);
 
                     if (NetworkUtils.isNetworkAvailable(mContext)) {
@@ -274,19 +279,19 @@ public class VideoCollectionTemplate implements TemplateInterface {
 
         thumb.setAdjustViewBounds(true);
 
-        title.setText(data.getTitle());
-        description.setText(data.getDescription());
-        link.setText(data.getLink());
+        title.setText(data.getTitle().trim());
+        description.setText(data.getDescription().trim());
+        link.setText(data.getLink().trim());
 
         dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (validated(activity, title, description, link)) {
+                if (validated(title, description, link)) {
 
-                    String titleText = title.getText().toString();
-                    String descriptionText = description.getText().toString();
-                    String linkText = link.getText().toString();
+                    String titleText = title.getText().toString().trim();
+                    String descriptionText = description.getText().toString().trim();
+                    String linkText = link.getText().toString().trim();
 
                     setEmptyView(activity);
 

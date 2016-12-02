@@ -73,7 +73,7 @@
     <string name="flash_template_hint">Answer Hint</string>
     <string name="flash_template_question_hint">Enter Question</string>
     <string name="flash_template_anser_hint">Enter Answer</string>
-    <string name="flash_template_hint_hint">Enter Hint</string>
+    <string name="flash_template_hint_hint">Enter Hint (Optional)</string>
 
     <string name="main_title_flash">Learn with FlashCards</string>
     <string name="next_flash">NEXT</string>

@@ -36,19 +36,25 @@ public class LearnSpellingTemplate implements TemplateInterface {
         mLearnSpellingData = new ArrayList<>();
     }
 
-    private static boolean validated(Context context, EditText word, EditText meaning) {
+    private static boolean validated(EditText word, EditText meaning) {
         if (word == null || meaning == null) {
             return false;
         }
 
-        String wordText = word.getText().toString();
-        String meaningText = meaning.getText().toString();
+        String wordText = word.getText().toString().trim();
+        String meaningText = meaning.getText().toString().trim();
 
         if ("".equals(wordText)) {
-            Toast.makeText(context, "Enter word", Toast.LENGTH_SHORT).show();
+            word.setError("Enter a word.");
+            return false;
+        } else if (!wordText.matches("([A-Za-z ])")){
+            word.setError("Enter a valid word.");
             return false;
         } else if ("".equals(meaningText)) {
-            Toast.makeText(context, "Enter meaning", Toast.LENGTH_SHORT).show();
+            meaning.setError("Enter meaning of the word.");
+            return false;
+        } else if(!meaningText.matches("([A-Za-z ])")){
+            meaning.setError("Enter a valid meaning.");
             return false;
         }
         return true;
@@ -129,7 +135,7 @@ public class LearnSpellingTemplate implements TemplateInterface {
             @Override
             public void onClick(View v) {
 
-                if (validated(activity, word, meaning)) {
+                if (validated(word, meaning)) {
                     String wordText = word.getText().toString().trim();
                     String meaningText = meaning.getText().toString().trim();
 
@@ -169,16 +175,16 @@ public class LearnSpellingTemplate implements TemplateInterface {
 
         final EditText word = (EditText) dialogView.findViewById(R.id.info_word);
         final EditText meaning = (EditText) dialogView.findViewById(R.id.info_meaning);
-        word.setText(data.getWord());
-        meaning.setText(data.getMeaning());
+        word.setText(data.getWord().trim());
+        meaning.setText(data.getMeaning().trim());
 
         dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (validated(activity, word, meaning)) {
-                    String wordText = word.getText().toString();
-                    String meaningText = meaning.getText().toString();
+                if (validated(word, meaning)) {
+                    String wordText = word.getText().toString().trim();
+                    String meaningText = meaning.getText().toString().trim();
 
                     data.setWord(wordText);
                     data.setMeaning(meaningText);

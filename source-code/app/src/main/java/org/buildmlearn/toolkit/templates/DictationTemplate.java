@@ -43,19 +43,19 @@ public class DictationTemplate implements TemplateInterface {
         dictData = new ArrayList<>();
     }
 
-    private boolean validated(Context context, EditText title, EditText passage) {
+    private boolean validated(EditText title, EditText passage) {
         if (title == null || passage == null) {
             return false;
         }
 
-        String titleText = title.getText().toString();
-        String passageText = passage.getText().toString();
+        String titleText = title.getText().toString().trim();
+        String passageText = passage.getText().toString().trim();
 
         if ("".equals(titleText)) {
-            Toast.makeText(context, R.string.dictation_template_title_hint, Toast.LENGTH_SHORT).show();
+            title.setError("Entrer a title.");
             return false;
         } else if ("".equals(passageText)) {
-            Toast.makeText(context, R.string.dictation_template_passage_hint, Toast.LENGTH_SHORT).show();
+            passage.setError("Enater text or upload file.");
             return false;
         }
         return true;
@@ -146,9 +146,9 @@ public class DictationTemplate implements TemplateInterface {
             @Override
             public void onClick(View v) {
 
-                if (validated(activity, title, passage)) {
-                    String titleText = title.getText().toString();
-                    String passageText = passage.getText().toString();
+                if (validated(title, passage)) {
+                    String titleText = title.getText().toString().trim();
+                    String passageText = passage.getText().toString().trim();
 
                     DictationModel temp = new DictationModel(titleText, passageText);
                     dictData.add(temp);
@@ -189,8 +189,8 @@ public class DictationTemplate implements TemplateInterface {
 
         final EditText title = (EditText) dialogView.findViewById(R.id.dict_title);
         final EditText passage = (EditText) dialogView.findViewById(R.id.dict_passage);
-        title.setText(data.getTitle());
-        passage.setText(data.getPassage());
+        title.setText(data.getTitle().trim());
+        passage.setText(data.getPassage().trim());
 
         dialogView.findViewById(R.id.upload).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -211,10 +211,10 @@ public class DictationTemplate implements TemplateInterface {
             @Override
             public void onClick(View v) {
 
-                if (validated(activity, title, passage)) {
+                if (validated(title, passage)) {
 
-                    String titleText = title.getText().toString();
-                    String passageText = passage.getText().toString();
+                    String titleText = title.getText().toString().trim();
+                    String passageText = passage.getText().toString().trim();
 
                     data.setTitle(titleText);
                     data.setPassage(passageText);

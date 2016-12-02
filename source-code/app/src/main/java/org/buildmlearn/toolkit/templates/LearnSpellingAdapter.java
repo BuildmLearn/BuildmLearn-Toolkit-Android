@@ -123,7 +123,7 @@ class LearnSpellingAdapter extends BaseAdapter {
                     @Override
                     public void onClick(View v) {
 
-                        if (InfoTemplate.validated(mContext, word, meaning)) {
+                        if (InfoTemplate.validated(word, meaning)) {
                             String wordText = word.getText().toString();
                             String meaningText = meaning.getText().toString();
 

@@ -36,19 +36,22 @@ public class InfoTemplate implements TemplateInterface {
         infoData = new ArrayList<>();
     }
 
-    public static boolean validated(Context context, EditText word, EditText meaning) {
+    public static boolean validated(EditText word, EditText meaning) {
         if (word == null || meaning == null) {
             return false;
         }
 
-        String wordText = word.getText().toString();
-        String meaningText = meaning.getText().toString();
+        String wordText = word.getText().toString().trim();
+        String meaningText = meaning.getText().toString().trim();
 
         if ("".equals(wordText)) {
-            Toast.makeText(context, "Enter word", Toast.LENGTH_SHORT).show();
+            word.setError("Enter a word.");
+            return false;
+        } else if (!wordText.matches("([A-Za-z ])")){
+            word.setError("Enter a valid word.");
             return false;
         } else if ("".equals(meaningText)) {
-            Toast.makeText(context, "Enter meaning", Toast.LENGTH_SHORT).show();
+            meaning.setError("Enter the description.");
             return false;
         }
         return true;
@@ -129,9 +132,9 @@ public class InfoTemplate implements TemplateInterface {
             @Override
             public void onClick(View v) {
 
-                if (validated(activity, word, meaning)) {
-                    String wordText = word.getText().toString();
-                    String meaningText = meaning.getText().toString();
+                if (validated(word, meaning)) {
+                    String wordText = word.getText().toString().trim();
+                    String meaningText = meaning.getText().toString().trim();
 
                     InfoModel temp = new InfoModel(wordText, meaningText);
                     infoData.add(temp);
@@ -169,16 +172,16 @@ public class InfoTemplate implements TemplateInterface {
 
         final EditText word = (EditText) dialogView.findViewById(R.id.info_word);
         final EditText meaning = (EditText) dialogView.findViewById(R.id.info_meaning);
-        word.setText(data.getInfoObject());
-        meaning.setText(data.getInfoDescription());
+        word.setText(data.getInfoObject().trim());
+        meaning.setText(data.getInfoDescription().trim());
 
         dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (validated(activity, word, meaning)) {
-                    String wordText = word.getText().toString();
-                    String meaningText = meaning.getText().toString();
+                if (validated(word, meaning)) {
+                    String wordText = word.getText().toString().trim();
+                    String meaningText = meaning.getText().toString().trim();
 
                     data.setWord(wordText);
                     data.setInfoDescription(meaningText);
