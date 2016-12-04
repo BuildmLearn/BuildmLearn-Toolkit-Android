@@ -192,13 +192,25 @@ public class InfoTemplate implements TemplateInterface {
     }
 
     @Override
-    public void deleteItem(Activity activity, int position) {
-
-
+    public Object deleteItem(Activity activity, int position) {
+        InfoModel infoModel = infoData.get(position);
         infoData.remove(position);
         setEmptyView(activity);
         adapter.notifyDataSetChanged();
+        return infoModel;
+    }
 
+    @Override
+    public void restoreItem(Activity activity, int position, Object object) {
+        if (object instanceof InfoModel)
+        {
+            InfoModel infoModel = (InfoModel)object;
+            if (infoModel!=null)
+            {
+                infoData.add(position,infoModel);
+                adapter.notifyDataSetChanged();
+            }
+        }
     }
 
     @Override

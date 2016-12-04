@@ -2,6 +2,7 @@ package org.buildmlearn.toolkit.templates;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -88,26 +89,23 @@ class FlashCardAdapter extends BaseAdapter {
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final FlashCardModel flashCardModel = mData.get(position);
+                mData.remove(position);
+                notifyDataSetChanged();
+                notifyDataSetChanged();
+                Snackbar.make(v,R.string.snackbar_deleted_message,Snackbar.LENGTH_LONG)
+                        .setAction(R.string.snackbar_undo, new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                mData.add(position,flashCardModel);
+                                notifyDataSetChanged();
+                                Snackbar.make(v,R.string.snackbar_restored_message,Snackbar.LENGTH_LONG).show();
+                            }
+                        }).show();
 
-                final AlertDialog dialog = new AlertDialog.Builder(mContext)
-                        .setTitle(R.string.info_template_delete)
-                        .setMessage(R.string.info_delete_item_content)
-                        .setPositiveButton(R.string.dialog_yes, null)
-                        .setNegativeButton(R.string.dialog_no, null)
-                        .create();
-                dialog.show();
 
-                dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        mData.remove(position);
-                        notifyDataSetChanged();
-                        dialog.dismiss();
 
-                        ((TemplateEditor) mContext).restoreSelectedView();
-                    }
-                });
-
+                ((TemplateEditor) mContext).restoreSelectedView();
             }
         });
 

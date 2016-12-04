@@ -10,6 +10,11 @@
     <string name="menu_home">Home</string>
     <string name="buildmlearn_welcome_title">Welcome to BuildmLearn Toolkit</string>
 
+    <!--Snackbar-->
+    <string name="snackbar_deleted_message">Item deleted</string>
+    <string name="snackbar_undo">UNDO</string>
+    <string name="snackbar_restored_message">Item restored</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="buildmlearn_welcome_text">The BuildmLearn Toolkit is an easy-to-use program that helps users make mobile apps without any knowledge of application development.\n\nThe toolkit helps creating mobile application with various functionality and allows teachers to input their custom content.</string>
     <string name="no_item">No items</string>

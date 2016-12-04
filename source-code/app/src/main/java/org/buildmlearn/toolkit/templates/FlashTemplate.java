@@ -265,10 +265,26 @@ public class FlashTemplate implements TemplateInterface {
     }
 
     @Override
-    public void deleteItem(Activity activity, int position) {
+    public Object deleteItem(Activity activity, int position) {
+        FlashCardModel flashCardModel = mData.get(position);
         mData.remove(position);
         setEmptyView(activity);
         mAdapter.notifyDataSetChanged();
+
+        return flashCardModel;
+    }
+
+    @Override
+    public void restoreItem(Activity activity, int position, Object object) {
+        if (object instanceof FlashCardModel)
+        {
+            FlashCardModel flashCardModel = (FlashCardModel)object;
+            if (flashCardModel!=null)
+            {
+                mData.add(position,flashCardModel);
+                mAdapter.notifyDataSetChanged();
+            }
+        }
     }
 
     @Override

@@ -282,10 +282,23 @@ public class QuizTemplate implements TemplateInterface {
     }
 
     @Override
-    public void deleteItem(Activity activity, int position) {
+    public Object deleteItem(Activity activity, int position) {
+        QuizModel quizModel = quizData.get(position);
         quizData.remove(position);
         setEmptyView(activity);
         mAdapter.notifyDataSetChanged();
+        return quizModel;
+    }
+
+    @Override
+    public void restoreItem(Activity activity, int position, Object object) {
+        if (object instanceof QuizModel) {
+            QuizModel quizModel = (QuizModel) object;
+            if (quizModel != null) {
+                quizData.add(position, quizModel);
+                mAdapter.notifyDataSetChanged();
+            }
+        }
     }
 
     @Override
