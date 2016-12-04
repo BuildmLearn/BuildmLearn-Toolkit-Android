@@ -59,7 +59,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:ems="10"
-            android:gravity="center_horizontal"
             android:hint="@string/main_name_hint"
             android:inputType="textPersonName"
             android:paddingLeft="20dp"
