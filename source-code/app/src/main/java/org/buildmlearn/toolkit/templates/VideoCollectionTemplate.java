@@ -2,6 +2,7 @@ package org.buildmlearn.toolkit.templates;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -61,7 +62,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
         videoData = new ArrayList<>();
     }
 
-    private static boolean validated(EditText link) {
+    private static boolean validated(Context context, EditText link) {
         if (link == null) {
             return false;
         }
@@ -69,19 +70,19 @@ public class VideoCollectionTemplate implements TemplateInterface {
         String linkText = link.getText().toString().trim();
 
         if ("".equals(linkText)) {
-            link.setText("Enter a link.");
+            link.setText(context.getString(R.string.video_collection_template_link_hint));
             return false;
         } else if(!Patterns.WEB_URL.matcher(linkText).matches()){
-            link.setText("Enter a valid link.");
+            link.setText(context.getString(R.string.video_collection_template_link_valid_hint));
         } else if (!(linkText.contains(YOUTUBE + ".com") || linkText.contains(YOUTUBE_SHORT) || linkText.contains(DAILYMOTION + ".com") || linkText.contains(VIMEO + ".com"))) {
-            link.setError("Only Youtube, Dailymotion and Vimeo links supported.");
+            link.setError(context.getString(R.string.video_collection_template_linited_links));
             return false;
         }
         return true;
 
     }
 
-    private static boolean validated(EditText title, EditText description, EditText link) {
+    private static boolean validated(Context context, EditText title, EditText description, EditText link) {
         if (link == null || title == null || description == null) {
             return false;
         }
@@ -91,18 +92,18 @@ public class VideoCollectionTemplate implements TemplateInterface {
         String linkText = link.getText().toString().trim();
 
         if ("".equals(titleText)) {
-            title.setError("Enter a title.");
+            title.setError(context.getString(R.string.enter_title));
             return false;
         } else if ("".equals(descriptionText)) {
-            description.setError("Enter a description.");
+            description.setError(context.getString(R.string.enter_description));
             return false;
         } else if ("".equals(linkText)) {
-            link.setText("Enter a link.");
+            link.setError(context.getString(R.string.video_collection_template_link_hint));
             return false;
         } else if(!Patterns.WEB_URL.matcher(linkText).matches()){
-            link.setText("Enter a valid link.");
+            link.setError(context.getString(R.string.video_collection_template_link_valid_hint));
         } else if (!(linkText.contains(YOUTUBE + ".com") || linkText.contains(YOUTUBE_SHORT) || linkText.contains(DAILYMOTION + ".com") || linkText.contains(VIMEO + ".com"))) {
-            link.setError("Only Youtube, Dailymotion and Vimeo links supported.");
+            link.setError(context.getString(R.string.video_collection_template_linited_links));
             return false;
         }
         return true;
@@ -221,7 +222,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
             @Override
             public void onClick(View v) {
 
-                if (validated(link)) {
+                if (validated(activity, link)) {
                     String linkText = link.getText().toString().trim();
                     String convertedLink = convertLink(linkText);
 
@@ -287,7 +288,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
             @Override
             public void onClick(View v) {
 
-                if (validated(title, description, link)) {
+                if (validated(activity, title, description, link)) {
 
                     String titleText = title.getText().toString().trim();
                     String descriptionText = description.getText().toString().trim();

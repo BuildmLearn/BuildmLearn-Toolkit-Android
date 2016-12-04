@@ -43,7 +43,7 @@ public class DictationTemplate implements TemplateInterface {
         dictData = new ArrayList<>();
     }
 
-    private boolean validated(EditText title, EditText passage) {
+    private boolean validated(Context context, EditText title, EditText passage) {
         if (title == null || passage == null) {
             return false;
         }
@@ -52,10 +52,10 @@ public class DictationTemplate implements TemplateInterface {
         String passageText = passage.getText().toString().trim();
 
         if ("".equals(titleText)) {
-            title.setError("Entrer a title.");
+            title.setError(context.getString(R.string.dictation_template_title_hint));
             return false;
         } else if ("".equals(passageText)) {
-            passage.setError("Enater text or upload file.");
+            passage.setError(context.getString(R.string.dictation_template_passage_hint));
             return false;
         }
         return true;
@@ -146,7 +146,7 @@ public class DictationTemplate implements TemplateInterface {
             @Override
             public void onClick(View v) {
 
-                if (validated(title, passage)) {
+                if (validated(activity, title, passage)) {
                     String titleText = title.getText().toString().trim();
                     String passageText = passage.getText().toString().trim();
 
@@ -211,7 +211,7 @@ public class DictationTemplate implements TemplateInterface {
             @Override
             public void onClick(View v) {
 
-                if (validated(title, passage)) {
+                if (validated(activity, title, passage)) {
 
                     String titleText = title.getText().toString().trim();
                     String passageText = passage.getText().toString().trim();

@@ -141,7 +141,7 @@ public class QuizTemplate implements TemplateInterface {
                 boolean isValidated = true;
 
                 if ("".equals(question.getText().toString().trim())) {
-                    question.setError("Enter a question.");
+                    question.setError(activity.getString(R.string.enter_question));
                     isValidated = false;
                     return;
                 }
@@ -149,20 +149,20 @@ public class QuizTemplate implements TemplateInterface {
                 int optionCount = 0;
 
                 if(options.get(0).getText().toString().trim().equals("")){
-                    options.get(0).setError("Cannot be empty.");
+                    options.get(0).setError(activity.getString(R.string.cannot_be_empty));
                     isValidated = false;
                     return;
                 }
                 optionCount++;
                 if(options.get(1).getText().toString().trim().equals("")){
-                    options.get(1).setError("Cannot be empty.");
+                    options.get(1).setError(activity.getString(R.string.cannot_be_empty));
                     isValidated = false;
                     return;
                 }
                 optionCount++;
                 if(options.get(2).getText().toString().trim().equals("") && !options.get(3).getText().toString().trim().equals("")){
                     options.get(2).hasFocus();
-                    options.get(2).setError("Enter option 3 first.");
+                    options.get(2).setError(activity.getString(R.string.comprehension_select_option_3_first));
                     isValidated = false;
                     return;
                 }
@@ -177,7 +177,7 @@ public class QuizTemplate implements TemplateInterface {
                 int checkedAns = getCheckedAnswer(buttons);
 
                 if (checkedAns < 0) {
-                    Toast.makeText(activity, "Choose a correct option.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity, activity.getString(R.string.comprehension_template_choose_correct_option), Toast.LENGTH_SHORT).show();
                     isValidated = false;
                     return;
                 }
@@ -187,7 +187,7 @@ public class QuizTemplate implements TemplateInterface {
                     }
                     if (option.getText().toString()!= null && "".equals(option.getText().toString().trim())) {
                         option.getText().clear();
-                        option.setError("Enter a valid option.");
+                        option.setError(activity.getString(R.string.comprehension_template_valid_option));
                         isValidated = false;
                         return;
                     }
@@ -273,27 +273,27 @@ public class QuizTemplate implements TemplateInterface {
                 boolean isValidated = true;
 
                 if ("".equals(question.getText().toString().trim())) {
-                    question.setError("Enter a question.");
+                    question.setError(activity.getString(R.string.enter_question));
                     isValidated = false;
                 }
 
                 int optionCount = 0;
 
                 if(options.get(0).getText().toString().trim().equals("")){
-                    options.get(0).setError("Cannot be empty.");
+                    options.get(0).setError(activity.getString(R.string.cannot_be_empty));
                     isValidated = false;
                     return;
                 }
                 optionCount++;
                 if(options.get(1).getText().toString().trim().equals("")){
-                    options.get(1).setError("Cannot be empty.");
+                    options.get(1).setError(activity.getString(R.string.cannot_be_empty));
                     isValidated = false;
                     return;
                 }
                 optionCount++;
                 if(options.get(2).getText().toString().trim().equals("") && !options.get(3).getText().toString().trim().equals("")){
                     options.get(2).hasFocus();
-                    options.get(2).setError("Enter option 3 first.");
+                    options.get(2).setError(activity.getString(R.string.comprehension_select_option_3_first));
                     isValidated = false;
                     return;
                 }
@@ -308,7 +308,7 @@ public class QuizTemplate implements TemplateInterface {
                 int checkedAns = getCheckedAnswer(buttons);
 
                 if (checkedAns < 0) {
-                    Toast.makeText(activity, "Choose a correct option.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity, activity.getString(R.string.comprehension_template_choose_correct_option), Toast.LENGTH_SHORT).show();
                     isValidated = false;
                     return;
                 }
@@ -319,7 +319,7 @@ public class QuizTemplate implements TemplateInterface {
                     }
                     if (option.getText().toString()!= null && "".equals(option.getText().toString().trim())) {
                         option.getText().clear();
-                        option.setError("Enter a valid option.");
+                        option.setError(activity.getString(R.string.comprehension_template_valid_option));
                         isValidated = false;
                         return;
                     }
@@ -399,7 +399,7 @@ public class QuizTemplate implements TemplateInterface {
             if (button.getId() == id) {
                 int index = buttons.indexOf(button);
                 if ("".equals(options.get(index).getText().toString().trim())) {
-                    options.get(index).setError("Enter a valid option before marking it as answer.");
+                    options.get(index).setError(context.getString(R.string.valid_before_answer));
                     options.get(index).setText(null);
                     button.setChecked(false);
                     return;

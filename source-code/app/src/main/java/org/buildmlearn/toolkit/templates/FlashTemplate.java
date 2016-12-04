@@ -247,13 +247,13 @@ public class FlashTemplate implements TemplateInterface {
         String answerText = answer.getText().toString().trim();
 
         if ("".equals(questionText)) {
-            question.setError("Enter a question.");
+            question.setError(context.getString(R.string.enter_question));
             return false;
         } else if ("".equals(answerText)) {
-            answer.setError("Enter an answer.");
+            answer.setError(context.getString(R.string.enter_answer));
             return false;
         } else if (!mIsPhotoAttached) {
-            Toast.makeText(context, "Attach an image", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, context.getString(R.string.flash_template_attach_image), Toast.LENGTH_SHORT).show();
             return false;
         }
 
@@ -377,7 +377,7 @@ public class FlashTemplate implements TemplateInterface {
             photo.delete();
         } catch (Exception e) {
             Log.d(TAG, e.getMessage());
-            Toast.makeText(context, "Please check SD card! Image shot is impossible!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.check_sd_card, Toast.LENGTH_SHORT).show();
         }
 
         cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, mImageUri);

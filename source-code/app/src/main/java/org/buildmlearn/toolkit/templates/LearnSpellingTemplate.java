@@ -36,7 +36,7 @@ public class LearnSpellingTemplate implements TemplateInterface {
         mLearnSpellingData = new ArrayList<>();
     }
 
-    private static boolean validated(EditText word, EditText meaning) {
+    private static boolean validated(Context context, EditText word, EditText meaning) {
         if (word == null || meaning == null) {
             return false;
         }
@@ -45,16 +45,16 @@ public class LearnSpellingTemplate implements TemplateInterface {
         String meaningText = meaning.getText().toString().trim();
 
         if ("".equals(wordText)) {
-            word.setError("Enter a word.");
+            word.setError(context.getString(R.string.enter_word));
             return false;
-        } else if (!wordText.matches("([A-Za-z ])")){
-            word.setError("Enter a valid word.");
+        } else if (!wordText.matches("([A-Za-z ]+)")){
+            word.setError(context.getString(R.string.enter_valid_word));
             return false;
         } else if ("".equals(meaningText)) {
-            meaning.setError("Enter meaning of the word.");
+            meaning.setError(context.getString(R.string.enter_meaning));
             return false;
-        } else if(!meaningText.matches("([A-Za-z ])")){
-            meaning.setError("Enter a valid meaning.");
+        } else if(!meaningText.matches("([A-Za-z ]+)")){
+            meaning.setError(context.getString(R.string.enter_valid_meaning));
             return false;
         }
         return true;
@@ -135,7 +135,7 @@ public class LearnSpellingTemplate implements TemplateInterface {
             @Override
             public void onClick(View v) {
 
-                if (validated(word, meaning)) {
+                if (validated(activity, word, meaning)) {
                     String wordText = word.getText().toString().trim();
                     String meaningText = meaning.getText().toString().trim();
 
@@ -182,7 +182,7 @@ public class LearnSpellingTemplate implements TemplateInterface {
             @Override
             public void onClick(View v) {
 
-                if (validated(word, meaning)) {
+                if (validated(activity, word, meaning)) {
                     String wordText = word.getText().toString().trim();
                     String meaningText = meaning.getText().toString().trim();
 

@@ -49,7 +49,7 @@ public class ComprehensionTemplate implements TemplateInterface {
         metaData = new ArrayList<>();
     }
 
-    private static boolean validated(EditText title, EditText passage, EditText timer) {
+    private static boolean validated( Context context, EditText title, EditText passage, EditText timer) {
         if (title == null || passage == null || timer == null) {
             return false;
         }
@@ -59,16 +59,16 @@ public class ComprehensionTemplate implements TemplateInterface {
         String timerText = timer.getText().toString().trim();
 
         if ("".equals(titleText)) {
-            title.setError("Enter a title.");
+            title.setError(context.getString(R.string.comprehension_template_title_hint));
             return false;
         } else if ("".equals(passageText)) {
-            passage.setError("Enter text or upload file.");
+            passage.setError(context.getString(R.string.comprehension_template_passage_hint));
             return false;
         }else if (timerText.length() > 9) {
-            timer.setError("Maximum time : 999,999,999.");
+            timer.setError(context.getString(R.string.comprehension_template_timer_correct_hint));
             return false;
         } else if ("".equals(timerText)) {
-            timer.setError("Enter time.");
+            timer.setError(context.getString(R.string.comprehension_template_timer_hint));
             return false;
         }
 
@@ -138,7 +138,7 @@ public class ComprehensionTemplate implements TemplateInterface {
             if (button.getId() == id) {
                 int index = buttons.indexOf(button);
                 if ("".equals(options.get(index).getText().toString().trim())) {
-                    options.get(index).setError("Enter a valid option before marking it as answer.");
+                    options.get(index).setError(context.getString(R.string.valid_before_setting_answer));
                     button.setChecked(false);
                     return;
                 } else {
@@ -204,7 +204,7 @@ public class ComprehensionTemplate implements TemplateInterface {
                 boolean isValidated = true;
 
                 if ("".equals(question.getText().toString().trim())) {
-                    question.setError("Enter a question.");
+                    question.setError(activity.getString(R.string.enter_question));
                     isValidated = false;
                     return;
                 }
@@ -212,20 +212,20 @@ public class ComprehensionTemplate implements TemplateInterface {
                 int optionCount = 0;
 
                 if(options.get(0).getText().toString().trim().equals("")){
-                    options.get(0).setError("Cannot be empty.");
+                    options.get(0).setError(activity.getString(R.string.cannot_be_empty));
                     isValidated = false;
                     return;
                 }
                 optionCount++;
                 if(options.get(1).getText().toString().trim().equals("")){
-                    options.get(1).setError("Cannot be empty.");
+                    options.get(1).setError(activity.getString(R.string.cannot_be_empty));
                     isValidated = false;
                     return;
                 }
                 optionCount++;
                 if(options.get(2).getText().toString().trim().equals("") && !options.get(3).getText().toString().trim().equals("")){
                     options.get(2).hasFocus();
-                    options.get(2).setError("Enter option 3 first.");
+                    options.get(2).setError(activity.getString(R.string.comprehension_select_option_3_first));
                     isValidated = false;
                     return;
                 }
@@ -240,7 +240,7 @@ public class ComprehensionTemplate implements TemplateInterface {
                 int checkedAns = getCheckedAnswer(buttons);
 
                 if (checkedAns < 0) {
-                    Toast.makeText(activity, "Choose a correct option.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity, R.string.comprehension_template_choose_correct_option, Toast.LENGTH_SHORT).show();
                     isValidated = false;
                     return;
                 }
@@ -251,7 +251,7 @@ public class ComprehensionTemplate implements TemplateInterface {
                     }
                     if (option.getText().toString()!= null && "".equals(option.getText().toString().trim())) {
                         option.getText().clear();
-                        option.setError("Enter a valid option.");
+                        option.setError(activity.getString(R.string.comprehension_template_valid_option));
                         isValidated = false;
                         return;
                     }
@@ -317,7 +317,7 @@ public class ComprehensionTemplate implements TemplateInterface {
             @Override
             public void onClick(View v) {
 
-                if (validated(title, passage, timer)) {
+                if (validated(activity,title, passage, timer)) {
 
                     String titleText = title.getText().toString().trim();
                     String passageText = passage.getText().toString().trim();
@@ -377,7 +377,7 @@ public class ComprehensionTemplate implements TemplateInterface {
                 @Override
                 public void onClick(View v) {
 
-                    if (validated(title, passage, timer)) {
+                    if (validated(activity,title, passage, timer)) {
 
                         String titleText = title.getText().toString().trim();
                         String passageText = passage.getText().toString().trim();
@@ -445,27 +445,27 @@ public class ComprehensionTemplate implements TemplateInterface {
                     boolean isValidated = true;
 
                     if ("".equals(question.getText().toString().trim())) {
-                        question.setError("Enter a question.");
+                        question.setError(activity.getString(R.string.enter_question));
                         isValidated = false;
                     }
 
                     int optionCount = 0;
 
                     if(options.get(0).getText().toString().trim().equals("")){
-                        options.get(0).setError("Cannot be empty.");
+                        options.get(0).setError(activity.getString(R.string.cannot_be_empty));
                         isValidated = false;
                         return;
                     }
                     optionCount++;
                     if(options.get(1).getText().toString().trim().equals("")){
-                        options.get(1).setError("Cannot be empty.");
+                        options.get(1).setError(activity.getString(R.string.cannot_be_empty));
                         isValidated = false;
                         return;
                     }
                     optionCount++;
                     if(options.get(2).getText().toString().trim().equals("") && !options.get(3).getText().toString().trim().equals("")){
                         options.get(2).hasFocus();
-                        options.get(2).setError("Enter option 3 first.");
+                        options.get(2).setError(activity.getString(R.string.comprehension_select_option_3_first));
                         isValidated = false;
                         return;
                     }
@@ -480,7 +480,7 @@ public class ComprehensionTemplate implements TemplateInterface {
                     int checkedAns = getCheckedAnswer(buttons);
 
                     if (checkedAns < 0) {
-                        Toast.makeText(activity, "Choose a correct option.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(activity, R.string.comprehension_template_choose_correct_option, Toast.LENGTH_SHORT).show();
                         isValidated = false;
                         return;
                     }
@@ -491,7 +491,7 @@ public class ComprehensionTemplate implements TemplateInterface {
                         }
                         if (option.getText().toString()!= null && "".equals(option.getText().toString().trim())) {
                             option.getText().clear();
-                            option.setError("Enter a valid option.");
+                            option.setError(activity.getString(R.string.comprehension_template_valid_option));
                             isValidated = false;
                             return;
                         }

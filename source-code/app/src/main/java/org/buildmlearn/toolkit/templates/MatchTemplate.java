@@ -40,7 +40,7 @@ public class MatchTemplate implements TemplateInterface {
         metaData = new ArrayList<>();
     }
 
-    private static boolean validated(EditText title, EditText first_list_title, EditText second_list_title) {
+    private static boolean validated(Context context, EditText title, EditText first_list_title, EditText second_list_title) {
         if (title == null || first_list_title == null || second_list_title == null) {
             return false;
         }
@@ -50,20 +50,20 @@ public class MatchTemplate implements TemplateInterface {
         String second_list_titleText = second_list_title.getText().toString().trim();
 
         if ("".equals(titleText)) {
-            title.setError("Enter a title.");
+            title.setError(context.getString(R.string.match_main_title));
             return false;
         } else if ("".equals(first_list_titleText)) {
-            first_list_title.setError("Enter list title.");
+            first_list_title.setError(context.getString(R.string.match_first_list_title));
             return false;
         } else if ("".equals(second_list_titleText)) {
-            second_list_title.setError("Enter list title.");
+            second_list_title.setError(context.getString(R.string.match_second_list_title));
             return false;
         }
 
         return true;
     }
 
-    private static boolean validated(EditText first_list_title, EditText second_list_title) {
+    private static boolean validated(Context context, EditText first_list_title, EditText second_list_title) {
         if (first_list_title == null || second_list_title == null) {
             return false;
         }
@@ -72,10 +72,10 @@ public class MatchTemplate implements TemplateInterface {
         String second_list_titleText = second_list_title.getText().toString().trim();
 
         if (first_list_titleText.equals("")) {
-            first_list_title.setError("Enter list title.");
+            first_list_title.setError(context.getString(R.string.match_first_list_title));
             return false;
         } else if (second_list_titleText.equals("")) {
-            second_list_title.setError("Enter list title.");
+            second_list_title.setError(context.getString(R.string.match_second_list_title));
             return false;
         }
 
@@ -159,7 +159,7 @@ public class MatchTemplate implements TemplateInterface {
             @Override
             public void onClick(View v) {
 
-                if (validated(first_list_item, second_list_item)) {
+                if (validated(activity, first_list_item, second_list_item)) {
                     String first_list_itemText = first_list_item.getText().toString().trim();
                     String second_list_itemText = second_list_item.getText().toString().trim();
 
@@ -198,7 +198,7 @@ public class MatchTemplate implements TemplateInterface {
             @Override
             public void onClick(View v) {
 
-                if (validated(title, first_list_title, second_list_title)) {
+                if (validated(activity, first_list_title, second_list_title)) {
 
                     String titleText = title.getText().toString().trim();
                     String first_list_titleText = first_list_title.getText().toString().trim();
@@ -244,7 +244,7 @@ public class MatchTemplate implements TemplateInterface {
                 @Override
                 public void onClick(View v) {
 
-                    if (validated(title, first_list_title, second_list_title)) {
+                    if (validated(activity, title, first_list_title, second_list_title)) {
 
                         String titleText = title.getText().toString().trim();
                         String first_list_titleText = first_list_title.getText().toString().trim();
@@ -287,7 +287,7 @@ public class MatchTemplate implements TemplateInterface {
                 @Override
                 public void onClick(View v) {
 
-                    if (validated(first_list_item, second_list_item)) {
+                    if (validated(activity, first_list_item, second_list_item)) {
 
                         String first_list_itemText = first_list_item.getText().toString().trim();
                         String second_list_itemText = second_list_item.getText().toString().trim();
