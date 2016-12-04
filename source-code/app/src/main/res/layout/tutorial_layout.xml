@@ -25,6 +25,15 @@
         android:contentDescription="@string/tutorial_image"
         android:scaleType="centerInside" />
 
+    <Button
+        android:text="Skip tutorial."
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#29A6D4"
+        android:textAllCaps="false"
+        android:id="@+id/skip_button" />
+
     <org.buildmlearn.toolkit.views.TextViewPlus
         android:id="@+id/tutorial_desc"
         android:layout_width="match_parent"
