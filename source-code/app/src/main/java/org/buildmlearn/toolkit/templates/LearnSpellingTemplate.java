@@ -192,13 +192,25 @@ public class LearnSpellingTemplate implements TemplateInterface {
     }
 
     @Override
-    public void deleteItem(Activity activity, int position) {
-
-
+    public Object deleteItem(Activity activity, int position) {
+        LearnSpellingModel learnSpellingModel = mLearnSpellingData.get(position);
         mLearnSpellingData.remove(position);
         setEmptyView(activity);
         adapter.notifyDataSetChanged();
+        return learnSpellingModel;
+    }
 
+    @Override
+    public void restoreItem(Activity activity, int position, Object object) {
+        if (object instanceof LearnSpellingModel)
+        {
+            LearnSpellingModel learnSpellingModel = (LearnSpellingModel)object;
+            if (learnSpellingModel!=null)
+            {
+                mLearnSpellingData.add(position,learnSpellingModel);
+                adapter.notifyDataSetChanged();
+            }
+        }
     }
 
     @Override

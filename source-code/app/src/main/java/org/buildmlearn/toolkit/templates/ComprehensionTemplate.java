@@ -454,16 +454,55 @@ public class ComprehensionTemplate implements TemplateInterface {
     }
 
     @Override
-    public void deleteItem(Activity activity, int position) {
+    public Object deleteItem(Activity activity, int position) {
+        ComprehensionMetaModel comprehensionMetaModel =null;
+        ComprehensionModel comprehensionModel=null;
         if (position == -2) {
+            comprehensionMetaModel = metaData.get(0);
             metaData.remove(0);
             setEmptyView(activity);
             metaAdapter.notifyDataSetChanged();
         } else {
+            comprehensionModel = comprehensionData.get(position);
             comprehensionData.remove(position);
             setEmptyView(activity);
             adapter.notifyDataSetChanged();
         }
+        if (comprehensionMetaModel==null)
+        {
+            return comprehensionModel;
+        }else
+        {
+            return comprehensionMetaModel;
+        }
+    }
+
+    @Override
+    public void restoreItem(Activity activity, int position, Object object) {
+        if (position==-2)
+        {
+            if (object instanceof ComprehensionMetaModel)
+            {
+                ComprehensionMetaModel comprehensionMetaModel = (ComprehensionMetaModel)object;
+                if (comprehensionMetaModel!=null)
+                {
+                    metaData.add(comprehensionMetaModel);
+                    metaAdapter.notifyDataSetChanged();
+                }
+            }
+        }else
+        {
+            if (object instanceof ComprehensionModel)
+            {
+                ComprehensionModel comprehensionModel = (ComprehensionModel)object;
+                if (comprehensionModel!=null)
+                {
+                    comprehensionData.add(position,comprehensionModel);
+                    adapter.notifyDataSetChanged();
+                }
+            }
+        }
+
     }
 
     @Override

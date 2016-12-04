@@ -316,10 +316,23 @@ public class VideoCollectionTemplate implements TemplateInterface {
     }
 
     @Override
-    public void deleteItem(Activity activity, int position) {
+    public Object deleteItem(Activity activity, int position) {
+        VideoModel videoModel = videoData.get(position);
         videoData.remove(position);
         setEmptyView(activity);
         adapter.notifyDataSetChanged();
+        return videoModel;
+    }
+
+    @Override
+    public void restoreItem(Activity activity, int position, Object object) {
+        if (object instanceof VideoModel) {
+            VideoModel videoModel = (VideoModel) object;
+            if (videoModel != null) {
+                videoData.add(position, videoModel);
+                adapter.notifyDataSetChanged();
+            }
+        }
     }
 
     @Override
