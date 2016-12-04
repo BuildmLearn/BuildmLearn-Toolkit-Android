@@ -86,7 +86,9 @@ public interface TemplateInterface extends Serializable {
      * @param position Position of the item to be removed
      * @brief Remove an item form template data list
      */
-    void deleteItem(Activity activity, int position);
+    Object deleteItem(Activity activity, int position);
+
+    void restoreItem(Activity activity, int position,Object object);
 
 
     ArrayList<Element> getItems(Document doc);

@@ -2,6 +2,7 @@ package org.buildmlearn.toolkit.templates;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
@@ -128,26 +129,21 @@ class QuizAdapter extends BaseAdapter {
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final QuizModel learnSpellingModel = quizData.get(position);
+                quizData.remove(position);
+                notifyDataSetChanged();
+                Snackbar.make(v,R.string.snackbar_deleted_message,Snackbar.LENGTH_LONG)
+                        .setAction(R.string.snackbar_undo, new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                quizData.add(position,learnSpellingModel);
+                                notifyDataSetChanged();
+                                Snackbar.make(v,R.string.snackbar_restored_message,Snackbar.LENGTH_LONG).show();
+                            }
+                        }).show();
 
-                final AlertDialog dialog = new AlertDialog.Builder(context)
-                        .setTitle(R.string.dialog_delete_title)
-                        .setMessage(R.string.dialog_delete_msg)
-                        .setPositiveButton(R.string.dialog_yes, null)
-                        .setNegativeButton(R.string.dialog_no, null)
-                        .create();
-                dialog.show();
-
-                dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        quizData.remove(position);
-                        notifyDataSetChanged();
-                        dialog.dismiss();
-
-                        ((TemplateEditor) context).restoreSelectedView();
-                        expandedPostion = -1;
-                    }
-                });
+                ((TemplateEditor) context).restoreSelectedView();
+                expandedPostion = -1;
             }
         });
         convertView.setTag(holder);
