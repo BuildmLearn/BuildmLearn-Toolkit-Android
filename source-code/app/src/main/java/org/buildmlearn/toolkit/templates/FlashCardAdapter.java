@@ -1,6 +1,9 @@
 package org.buildmlearn.toolkit.templates;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,8 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.DialogAction;
-import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.activity.TemplateEditor;
@@ -88,27 +89,23 @@ class FlashCardAdapter extends BaseAdapter {
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final FlashCardModel flashCardModel = mData.get(position);
+                mData.remove(position);
+                notifyDataSetChanged();
+                notifyDataSetChanged();
+                Snackbar.make(v,R.string.snackbar_deleted_message,Snackbar.LENGTH_LONG)
+                        .setAction(R.string.snackbar_undo, new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                mData.add(position,flashCardModel);
+                                notifyDataSetChanged();
+                                Snackbar.make(v,R.string.snackbar_restored_message,Snackbar.LENGTH_LONG).show();
+                            }
+                        }).show();
 
-                final MaterialDialog dialog = new MaterialDialog.Builder(mContext)
-                        .title(R.string.info_template_delete)
-                        .content(R.string.info_delete_item_content)
-                        .positiveText(R.string.dialog_yes)
-                        .negativeText(R.string.dialog_no)
-                        .build();
 
-                dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        mData.remove(position);
-                        notifyDataSetChanged();
-                        dialog.dismiss();
 
-                        ((TemplateEditor) mContext).restoreSelectedView();
-                    }
-                });
-
-                dialog.show();
-
+                ((TemplateEditor) mContext).restoreSelectedView();
             }
         });
 

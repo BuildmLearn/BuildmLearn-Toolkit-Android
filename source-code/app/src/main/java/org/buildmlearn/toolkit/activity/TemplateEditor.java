@@ -1,12 +1,12 @@
 package org.buildmlearn.toolkit.activity;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -15,9 +15,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
@@ -32,9 +34,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.DialogAction;
-import com.afollestad.materialdialogs.MaterialDialog;
-import com.afollestad.materialdialogs.internal.ThemeSingleton;
 import com.cocosw.bottomsheet.BottomSheet;
 
 import org.buildmlearn.toolkit.R;
@@ -90,7 +89,7 @@ public class TemplateEditor extends AppCompatActivity {
     private View selectedView;
     private ToolkitApplication toolkit;
     private String oldFileName;
-    private MaterialDialog mApkGenerationDialog;
+    private ProgressDialog mApkGenerationDialog;
 
     /**
      * {@inheritDoc}
@@ -305,7 +304,9 @@ public class TemplateEditor extends AppCompatActivity {
                 populateMetaView(selectedTemplate.newMetaEditorAdapter(this));
             }
             setUpActionBar();
-        } catch (InstantiationException | IllegalAccessException e) {
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
             e.printStackTrace();
         }
     }
@@ -365,26 +366,19 @@ public class TemplateEditor extends AppCompatActivity {
 
         switch (id) {
             case R.id.action_delete:
-
-                final MaterialDialog dialog = new MaterialDialog.Builder(this)
-                        .title(R.string.dialog_delete_title)
-                        .content(R.string.dialog_delete_msg)
-                        .positiveText(R.string.dialog_yes)
-                        .negativeText(R.string.dialog_no)
-                        .build();
-
-                dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+                final int restorePosition = selectedPosition;
+                final Object object = selectedTemplate.deleteItem(TemplateEditor.this, selectedPosition);
+                selectedPosition = -1;
+                restoreSelectedView();
+                Snackbar.make(findViewById(R.id.relative_layout),
+                        R.string.snackbar_deleted_message,Snackbar.LENGTH_LONG)
+                        .setAction(R.string.snackbar_undo, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        dialog.dismiss();
-                        selectedTemplate.deleteItem(TemplateEditor.this, selectedPosition);
-                        selectedPosition = -1;
-                        restoreSelectedView();
+                        selectedTemplate.restoreItem(TemplateEditor.this,restorePosition,object);
+                        Snackbar.make(v,R.string.snackbar_restored_message,Snackbar.LENGTH_LONG).show();
                     }
-                });
-
-                dialog.show();
-
+                }).show();
                 break;
             case R.id.action_edit:
                 selectedTemplate.editItem(this, selectedPosition);
@@ -427,12 +421,13 @@ public class TemplateEditor extends AppCompatActivity {
                                 KeyStoreDetails keyStoreDetails = new KeyStoreDetails(keyPassword, aliasName, aliaspassword);
                                 SignerThread signer = new SignerThread(getApplicationContext(), selectedTemplate.getApkFilePath(), saveProject(), keyStoreDetails, selectedTemplate.getAssetsFilePath(), selectedTemplate.getAssetsFileName(TemplateEditor.this));
 
-                                mApkGenerationDialog = new MaterialDialog.Builder(TemplateEditor.this)
-                                        .title(R.string.apk_progress_dialog)
-                                        .content(R.string.apk_msg)
-                                        .cancelable(false)
-                                        .progress(true, 0)
-                                        .show();
+                                mApkGenerationDialog = new ProgressDialog(TemplateEditor.this, R.style.AppDialogTheme);
+                                mApkGenerationDialog.setTitle(R.string.apk_progress_dialog);
+                                mApkGenerationDialog.setMessage(getString(R.string.apk_msg));
+                                mApkGenerationDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                                mApkGenerationDialog.setCancelable(false);
+                                mApkGenerationDialog.setProgress(0);
+                                mApkGenerationDialog.show();
 
                                 signer.setSignerThreadListener(new SignerThread.OnSignComplete() {
                                     @Override
@@ -488,12 +483,13 @@ public class TemplateEditor extends AppCompatActivity {
                                 keyStoreDetails = new KeyStoreDetails(keyPassword, aliasName, aliaspassword);
                                 signer = new SignerThread(getApplicationContext(), selectedTemplate.getApkFilePath(), saveProject(), keyStoreDetails, selectedTemplate.getAssetsFilePath(), selectedTemplate.getAssetsFileName(TemplateEditor.this));
 
-                                mApkGenerationDialog = new MaterialDialog.Builder(TemplateEditor.this)
-                                        .title(R.string.apk_progress_dialog)
-                                        .content(R.string.apk_msg)
-                                        .cancelable(false)
-                                        .progress(true, 0)
-                                        .show();
+                                mApkGenerationDialog = new ProgressDialog(TemplateEditor.this, R.style.AppDialogTheme);
+                                mApkGenerationDialog.setTitle(R.string.apk_progress_dialog);
+                                mApkGenerationDialog.setMessage(getString(R.string.apk_msg));
+                                mApkGenerationDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                                mApkGenerationDialog.setCancelable(false);
+                                mApkGenerationDialog.setProgress(0);
+                                mApkGenerationDialog.show();
 
                                 signer.setSignerThreadListener(new SignerThread.OnSignComplete() {
                                     @Override
@@ -504,11 +500,17 @@ public class TemplateEditor extends AppCompatActivity {
                                         runOnUiThread(new Runnable() {
                                             @Override
                                             public void run() {
-                                                mApkGenerationDialog = new MaterialDialog.Builder(TemplateEditor.this)
-                                                        .title("Apk Generated")
-                                                        .content("Apk file saved at " + path)
-                                                        .positiveText("okay")
-                                                        .show();
+                                                AlertDialog dialog = new AlertDialog.Builder(TemplateEditor.this)
+                                                        .setTitle("Apk Generated")
+                                                        .setMessage("Apk file saved at " + path)
+                                                        .setPositiveButton("okay", new DialogInterface.OnClickListener() {
+                                                            @Override
+                                                            public void onClick(DialogInterface dialog, int which) {
+                                                                dialog.dismiss();
+                                                            }
+                                                        })
+                                                        .create();
+                                                dialog.show();
                                             }
                                         });
 
@@ -568,10 +570,6 @@ public class TemplateEditor extends AppCompatActivity {
         int primaryColor = ContextCompat.getColor(toolkit, R.color.color_primary_dark);
         int primaryColorDark = ContextCompat.getColor(toolkit, R.color.color_selected_dark);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(primaryColor));
-        ThemeSingleton.get().positiveColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().neutralColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().negativeColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().widgetColor = primaryColor;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(primaryColorDark);
             getWindow().setNavigationBarColor(primaryColor);
@@ -590,10 +588,7 @@ public class TemplateEditor extends AppCompatActivity {
         int primaryColor = ContextCompat.getColor(toolkit, R.color.color_primary);
         int primaryColorDark = ContextCompat.getColor(toolkit, R.color.color_primary_dark);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(primaryColor));
-        ThemeSingleton.get().positiveColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().neutralColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().negativeColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().widgetColor = primaryColor;
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(primaryColorDark);
             getWindow().setNavigationBarColor(primaryColor);

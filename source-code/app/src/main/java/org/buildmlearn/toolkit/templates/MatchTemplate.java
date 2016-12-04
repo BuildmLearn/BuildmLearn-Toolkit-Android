@@ -2,15 +2,15 @@ package org.buildmlearn.toolkit.templates;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
+import android.support.v7.app.AlertDialog;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import com.afollestad.materialdialogs.DialogAction;
-import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.matchtemplate.fragment.SplashFragment;
@@ -32,11 +32,11 @@ public class MatchTemplate implements TemplateInterface {
     private final ArrayList<MatchMetaModel> metaData;
     transient private MatchAdapter adapter;
     transient private MatchMetaAdapter metaAdapter;
-    private ArrayList<MatchModel> MatchData;
+    private ArrayList<MatchModel> matchData;
     private int templateId;
 
     public MatchTemplate() {
-        MatchData = new ArrayList<>();
+        matchData = new ArrayList<>();
         metaData = new ArrayList<>();
     }
 
@@ -84,7 +84,7 @@ public class MatchTemplate implements TemplateInterface {
 
     @Override
     public BaseAdapter newTemplateEditorAdapter(Context context) {
-        adapter = new MatchAdapter(context, MatchData);
+        adapter = new MatchAdapter(context, matchData);
         return adapter;
     }
 
@@ -105,15 +105,15 @@ public class MatchTemplate implements TemplateInterface {
 
     @Override
     public BaseAdapter loadProjectTemplateEditor(Context context, ArrayList<Element> data) {
-        MatchData = new ArrayList<>();
+        matchData = new ArrayList<>();
         for (Element item : data) {
             String first_list_item = item.getElementsByTagName("first_list_item").item(0).getTextContent();
             String second_list_item = item.getElementsByTagName("second_list_item").item(0).getTextContent();
 
-            MatchData.add(new MatchModel(first_list_item, second_list_item));
+            matchData.add(new MatchModel(first_list_item, second_list_item));
 
         }
-        adapter = new MatchAdapter(context, MatchData);
+        adapter = new MatchAdapter(context, matchData);
         return adapter;
     }
 
@@ -138,17 +138,24 @@ public class MatchTemplate implements TemplateInterface {
 
     @Override
     public void addItem(final Activity activity) {
-        final MaterialDialog dialog = new MaterialDialog.Builder(activity)
-                .title(R.string.match_dialog_add_title)
-                .customView(R.layout.match_dialog_add_edit, true)
-                .positiveText(R.string.quiz_add)
-                .negativeText(R.string.quiz_cancel)
-                .build();
+        LayoutInflater inflater = activity.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.match_dialog_add_edit, null);
+        final AlertDialog dialog = new AlertDialog.Builder(activity)
+                .setTitle(R.string.match_dialog_add_title)
+                .setView(dialogView,
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_left),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_top),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_right),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_bottom))
+                .setPositiveButton(R.string.quiz_add, null)
+                .setNegativeButton(R.string.quiz_cancel, null)
+                .create();
+        dialog.show();
 
-        final EditText first_list_item = (EditText) dialog.findViewById(R.id.first_list_item);
-        final EditText second_list_item = (EditText) dialog.findViewById(R.id.second_list_item);
+        final EditText first_list_item = (EditText) dialogView.findViewById(R.id.first_list_item);
+        final EditText second_list_item = (EditText) dialogView.findViewById(R.id.second_list_item);
 
-        dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+        dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -157,7 +164,7 @@ public class MatchTemplate implements TemplateInterface {
                     String second_list_itemText = second_list_item.getText().toString();
 
                     MatchModel temp = new MatchModel(first_list_itemText, second_list_itemText);
-                    MatchData.add(temp);
+                    matchData.add(temp);
                     adapter.notifyDataSetChanged();
                     setEmptyView(activity);
                     dialog.dismiss();
@@ -165,24 +172,29 @@ public class MatchTemplate implements TemplateInterface {
 
             }
         });
-
-        dialog.show();
     }
 
     @Override
     public void addMetaData(final Activity activity) {
-        final MaterialDialog dialog = new MaterialDialog.Builder(activity)
-                .title(R.string.comprehension_add_meta_title)
-                .customView(R.layout.match_meta_dialog_add_edit_data, true)
-                .positiveText(R.string.info_template_add)
-                .negativeText(R.string.info_template_cancel)
-                .build();
+        LayoutInflater inflater = activity.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.match_meta_dialog_add_edit_data, null);
+        final AlertDialog dialog = new AlertDialog.Builder(activity)
+                .setTitle(R.string.comprehension_add_meta_title)
+                .setView(dialogView,
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_left),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_top),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_right),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_bottom))
+                .setPositiveButton(R.string.info_template_add, null)
+                .setNegativeButton(R.string.info_template_cancel, null)
+                .create();
+        dialog.show();
 
-        final EditText title = (EditText) dialog.findViewById(R.id.meta_title);
-        final EditText first_list_title = (EditText) dialog.findViewById(R.id.meta_first_list_title);
-        final EditText second_list_title = (EditText) dialog.findViewById(R.id.meta_second_list_title);
+        final EditText title = (EditText) dialogView.findViewById(R.id.meta_title);
+        final EditText first_list_title = (EditText) dialogView.findViewById(R.id.meta_first_list_title);
+        final EditText second_list_title = (EditText) dialogView.findViewById(R.id.meta_second_list_title);
 
-        dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+        dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -199,31 +211,36 @@ public class MatchTemplate implements TemplateInterface {
                 }
             }
         });
-
-        dialog.show();
     }
 
     @Override
     public void editItem(final Activity activity, final int position) {
         if (position == -2) {
-            final MaterialDialog dialog = new MaterialDialog.Builder(activity)
-                    .title(R.string.comprehension_edit_meta_title)
-                    .customView(R.layout.match_meta_dialog_add_edit_data, true)
-                    .positiveText(R.string.info_template_ok)
-                    .negativeText(R.string.info_template_cancel)
-                    .build();
+            LayoutInflater inflater = activity.getLayoutInflater();
+            View dialogView = inflater.inflate(R.layout.match_meta_dialog_add_edit_data, null);
+            final AlertDialog dialog = new AlertDialog.Builder(activity)
+                    .setTitle(R.string.comprehension_edit_meta_title)
+                    .setView(dialogView,
+                            activity.getResources().getDimensionPixelSize(R.dimen.spacing_left),
+                            activity.getResources().getDimensionPixelSize(R.dimen.spacing_top),
+                            activity.getResources().getDimensionPixelSize(R.dimen.spacing_right),
+                            activity.getResources().getDimensionPixelSize(R.dimen.spacing_bottom))
+                    .setPositiveButton(R.string.info_template_ok, null)
+                    .setNegativeButton(R.string.info_template_cancel, null)
+                    .create();
+            dialog.show();
 
             final MatchMetaModel data = metaData.get(0);
 
-            final EditText title = (EditText) dialog.findViewById(R.id.meta_title);
-            final EditText first_list_title = (EditText) dialog.findViewById(R.id.meta_first_list_title);
-            final EditText second_list_title = (EditText) dialog.findViewById(R.id.meta_second_list_title);
+            final EditText title = (EditText) dialogView.findViewById(R.id.meta_title);
+            final EditText first_list_title = (EditText) dialogView.findViewById(R.id.meta_first_list_title);
+            final EditText second_list_title = (EditText) dialogView.findViewById(R.id.meta_second_list_title);
 
             title.setText(data.getTitle());
             first_list_title.setText(data.getFirstListTitle());
             second_list_title.setText(data.getSecondListTitle());
 
-            dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+            dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
@@ -242,27 +259,31 @@ public class MatchTemplate implements TemplateInterface {
                 }
             });
 
-            dialog.show();
-
         } else {
 
-            final MatchModel data = MatchData.get(position);
+            final MatchModel data = matchData.get(position);
 
-            final MaterialDialog dialog = new MaterialDialog.Builder(activity)
-                    .title(R.string.match_dialog_edit_title)
-                    .customView(R.layout.match_dialog_add_edit, true)
-                    .positiveText(R.string.info_template_ok)
-                    .negativeText(R.string.info_template_cancel)
-                    .build();
+            LayoutInflater inflater = activity.getLayoutInflater();
+            View dialogView = inflater.inflate(R.layout.match_dialog_add_edit, null);
+            final AlertDialog dialog = new AlertDialog.Builder(activity)
+                    .setTitle(R.string.match_dialog_edit_title)
+                    .setView(dialogView,
+                            activity.getResources().getDimensionPixelSize(R.dimen.spacing_left),
+                            activity.getResources().getDimensionPixelSize(R.dimen.spacing_top),
+                            activity.getResources().getDimensionPixelSize(R.dimen.spacing_right),
+                            activity.getResources().getDimensionPixelSize(R.dimen.spacing_bottom))
+                    .setPositiveButton(R.string.info_template_ok, null)
+                    .setNegativeButton(R.string.info_template_cancel, null)
+                    .create();
+            dialog.show();
 
-
-            final EditText first_list_item = (EditText) dialog.findViewById(R.id.first_list_item);
-            final EditText second_list_item = (EditText) dialog.findViewById(R.id.second_list_item);
+            final EditText first_list_item = (EditText) dialogView.findViewById(R.id.first_list_item);
+            final EditText second_list_item = (EditText) dialogView.findViewById(R.id.second_list_item);
 
             first_list_item.setText(data.getMatchA());
             second_list_item.setText(data.getMatchB());
 
-            dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+            dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
@@ -279,21 +300,52 @@ public class MatchTemplate implements TemplateInterface {
                     }
                 }
             });
-
-            dialog.show();
         }
     }
 
     @Override
-    public void deleteItem(Activity activity, int position) {
+    public Object deleteItem(Activity activity, int position) {
+        MatchMetaModel matchMetaModel =null;
+        MatchModel matchModel = null;
         if (position == -2) {
+            matchMetaModel = metaData.get(0);
             metaData.remove(0);
             setEmptyView(activity);
             metaAdapter.notifyDataSetChanged();
         } else {
-            MatchData.remove(position);
+            matchModel = matchData.get(position);
+            matchData.remove(position);
             setEmptyView(activity);
             adapter.notifyDataSetChanged();
+        }
+        if (matchMetaModel==null)
+        {
+            return matchModel;
+        }else
+        {
+            return matchMetaModel;
+        }
+    }
+
+    @Override
+    public void restoreItem(Activity activity, int position, Object object) {
+        if (position==-2)
+        {
+            if (object instanceof MatchMetaModel) {
+                MatchMetaModel matchMetaModel = (MatchMetaModel) object;
+                if (matchMetaModel != null) {
+                    metaData.add( matchMetaModel);
+                    metaAdapter.notifyDataSetChanged();
+                }
+            }
+        }else {
+            if (object instanceof MatchModel) {
+               MatchModel matchModel = (MatchModel) object;
+                if (matchModel != null) {
+                    matchData.add(position, matchModel);
+                    adapter.notifyDataSetChanged();
+                }
+            }
         }
     }
 
@@ -305,7 +357,7 @@ public class MatchTemplate implements TemplateInterface {
             itemElements.add(data.getXml(doc));
         }
 
-        for (MatchModel data : MatchData) {
+        for (MatchModel data : matchData) {
 
             itemElements.add(data.getXml(doc));
         }
@@ -352,11 +404,11 @@ public class MatchTemplate implements TemplateInterface {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && metaData.size() > 0) {
             activity.findViewById(R.id.shadow_meta).setVisibility(View.VISIBLE);
         }
-        if (MatchData.size() < 1 && metaData.size() < 1) {
+        if (matchData.size() < 1 && metaData.size() < 1) {
             activity.findViewById(R.id.shadow_meta).setVisibility(View.GONE);
             ((TextViewPlus) activity.findViewById(R.id.empty_view_text)).setText(R.string.meta_add_help);
             activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
-        } else if (MatchData.size() < 1) {
+        } else if (matchData.size() < 1) {
             ((TextViewPlus) activity.findViewById(R.id.empty_view_text)).setText(R.string.add_item_help);
             activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
         } else if (metaData.size() < 1) {

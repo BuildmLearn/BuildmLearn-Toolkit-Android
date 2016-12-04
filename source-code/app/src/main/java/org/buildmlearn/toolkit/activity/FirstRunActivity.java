@@ -7,12 +7,12 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
-import com.daimajia.androidanimations.library.Techniques;
-import com.daimajia.androidanimations.library.YoYo;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.constant.Constants;
@@ -46,14 +46,9 @@ public class FirstRunActivity extends AppCompatActivity {
 
 
         findViewById(R.id.focus_thief).clearFocus();
-        YoYo.with(Techniques.BounceInUp)
-                .duration(2700)
-                .playOn(findViewById(R.id.first_name));
-
-
+        Animation anim_bounceinup=AnimationUtils.loadAnimation(getBaseContext(),R.anim.bounceinup);
         name = (EditText) findViewById(R.id.first_name);
-
-
+        name.startAnimation(anim_bounceinup);
         name.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {

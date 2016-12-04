@@ -1,6 +1,7 @@
 package org.buildmlearn.toolkit.adapter;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,10 @@ import org.buildmlearn.toolkit.model.SavedProject;
 import org.buildmlearn.toolkit.views.TextViewPlus;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 /**
  * Created by scopeinfinity on 10/3/16.
@@ -24,10 +28,12 @@ public class DraftProjectAdapter extends BaseAdapter {
 
     private final Context mContext;
     private final ArrayList<SavedProject> data;
+    private Map selectedPositions;
 
     public DraftProjectAdapter(Context mContext, ArrayList<SavedProject> data) {
         this.mContext = mContext;
         this.data = data;
+        selectedPositions=new HashMap();
     }
 
     /**
@@ -57,6 +63,36 @@ public class DraftProjectAdapter extends BaseAdapter {
     /**
      * {@inheritDoc}
      */
+
+    public boolean isPositionSelected(int position)
+    {
+        return selectedPositions.containsKey(position);
+    }
+
+    public void putSelectedPosition(int position) {
+        selectedPositions.put(position,true);
+    }
+
+    public ArrayList<Integer> getSelectedPositions()
+    {
+        ArrayList<Integer> positions = new ArrayList<>();
+        for(Object key : selectedPositions.keySet())
+        {
+            positions.add((Integer)key);
+        }
+        Collections.sort(positions,Collections.reverseOrder());
+        return positions;
+    }
+
+    public void removeSelectedPosition(int position)
+    {
+        selectedPositions.remove(position);
+    }
+
+    public int selectedPositionsSize()
+    {
+        return selectedPositions.size();
+    }
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater mInflater;
@@ -70,6 +106,12 @@ public class DraftProjectAdapter extends BaseAdapter {
             holder.draftSubtitle = (TextViewPlus) convertView.findViewById(R.id.subtitle);
         } else {
             holder = (DraftHolder) convertView.getTag();
+        }
+
+        if (selectedPositions.containsKey(position)) {
+            convertView.setBackgroundColor(ContextCompat.getColor(mContext, R.color.color_divider));
+        } else {
+            convertView.setBackgroundColor(0);
         }
 
         SavedProject projectData = getItem(position);

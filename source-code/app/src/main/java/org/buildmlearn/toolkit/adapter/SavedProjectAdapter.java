@@ -12,7 +12,10 @@ import org.buildmlearn.toolkit.model.SavedProject;
 import org.buildmlearn.toolkit.views.TextViewPlus;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 /**
  * @brief Adapter used for showing saved projects in a list
@@ -23,12 +26,12 @@ public class SavedProjectAdapter extends BaseAdapter {
 
     private final Context mContext;
     private final ArrayList<SavedProject> data;
-    private int selectedPosition;
+    private Map selectedPositions;
 
     public SavedProjectAdapter(Context mContext, ArrayList<SavedProject> data) {
         this.mContext = mContext;
         this.data = data;
-        selectedPosition = -1;
+        selectedPositions = new HashMap();
     }
 
     /**
@@ -55,14 +58,35 @@ public class SavedProjectAdapter extends BaseAdapter {
         return i;
     }
 
-    public int getSelectedPosition() {
-        return selectedPosition;
+    public boolean isPositionSelected(int position)
+    {
+        return selectedPositions.containsKey(position);
     }
 
-    public void setSelectedPosition(int selectedPosition) {
-        this.selectedPosition = selectedPosition;
+    public void putSelectedPosition(int position) {
+        selectedPositions.put(position,true);
     }
 
+    public ArrayList<Integer> getSelectedPositions()
+    {
+        ArrayList<Integer> positions = new ArrayList<>();
+        for(Object key : selectedPositions.keySet())
+        {
+            positions.add((Integer)key);
+        }
+        Collections.sort(positions, Collections.reverseOrder());
+        return positions;
+    }
+
+    public void removeSelectedPosition(int position)
+    {
+        selectedPositions.remove(position);
+    }
+
+    public int selectedPositionsSize()
+    {
+        return selectedPositions.size();
+    }
     /**
      * {@inheritDoc}
      */
@@ -81,14 +105,14 @@ public class SavedProjectAdapter extends BaseAdapter {
             holder = (ProjectHolder) convertView.getTag();
         }
 
-        if (selectedPosition == position) {
+        if (selectedPositions.containsKey(position)) {
             convertView.setBackgroundColor(ContextCompat.getColor(mContext, R.color.color_divider));
         } else {
             convertView.setBackgroundColor(0);
         }
 
         SavedProject projectData = getItem(position);
-        holder.details.setText(String.format(Locale.ENGLISH, "Modified: %s, Author: ", projectData.getDate(), projectData.getAuthor()));
+        holder.details.setText(String.format(Locale.ENGLISH, "%s, %s", projectData.getAuthor(), projectData.getDate()));
         holder.projectName.setText(projectData.getName());
         holder.projectIcon.setText(projectData.getName().substring(0, 1).toUpperCase(Locale.US));
         convertView.setTag(holder);

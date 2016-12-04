@@ -3,17 +3,18 @@ package org.buildmlearn.toolkit.templates;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.support.v7.app.AlertDialog;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.DialogAction;
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
 
 import org.buildmlearn.toolkit.R;
@@ -195,16 +196,23 @@ public class VideoCollectionTemplate implements TemplateInterface {
     @Override
     public void addItem(final Activity activity) {
 
-        final MaterialDialog dialog = new MaterialDialog.Builder(activity)
-                .title(R.string.info_add_new_title)
-                .customView(R.layout.video_dialog_add_data, true)
-                .positiveText(R.string.info_template_add)
-                .negativeText(R.string.info_template_cancel)
-                .build();
+        LayoutInflater inflater = activity.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.video_dialog_add_data, null);
+        final AlertDialog dialog = new AlertDialog.Builder(activity)
+                .setTitle(R.string.info_add_new_title)
+                .setView(dialogView,
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_left),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_top),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_right),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_bottom))
+                .setPositiveButton(R.string.info_template_add, null)
+                .setNegativeButton(R.string.info_template_cancel, null)
+                .create();
+        dialog.show();
 
-        final EditText link = (EditText) dialog.findViewById(R.id.video_link);
+        final EditText link = (EditText) dialogView.findViewById(R.id.video_link);
 
-        dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+        dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -226,9 +234,6 @@ public class VideoCollectionTemplate implements TemplateInterface {
 
             }
         });
-
-        dialog.show();
-
     }
 
     @Override
@@ -239,22 +244,28 @@ public class VideoCollectionTemplate implements TemplateInterface {
     @Override
     public void editItem(final Activity activity, final int position) {
 
-        final MaterialDialog dialog = new MaterialDialog.Builder(activity)
-                .title(R.string.info_edit_title)
-                .customView(R.layout.video_dialog_edit_data, true)
-                .positiveText(R.string.info_template_ok)
-                .negativeText(R.string.info_template_cancel)
-                .build();
+        LayoutInflater inflater = activity.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.video_dialog_edit_data, null);
+        final AlertDialog dialog = new AlertDialog.Builder(activity)
+                .setTitle(R.string.info_edit_title)
+                .setView(dialogView,
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_left),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_top),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_right),
+                        activity.getResources().getDimensionPixelSize(R.dimen.spacing_bottom))
+                .setPositiveButton(R.string.info_template_ok, null)
+                .setNegativeButton(R.string.info_template_cancel, null)
+                .create();
+        dialog.show();
 
         final VideoModel data = videoData.get(position);
 
-        final ImageView thumb = (ImageView) dialog.findViewById(R.id.thumb);
-        final EditText title = (EditText) dialog.findViewById(R.id.video_title);
-        final EditText description = (EditText) dialog.findViewById(R.id.video_description);
-        final EditText link = (EditText) dialog.findViewById(R.id.video_link);
+        final ImageView thumb = (ImageView) dialogView.findViewById(R.id.thumb);
+        final EditText title = (EditText) dialogView.findViewById(R.id.video_title);
+        final EditText description = (EditText) dialogView.findViewById(R.id.video_description);
+        final EditText link = (EditText) dialogView.findViewById(R.id.video_link);
 
-        Picasso
-                .with(mContext)
+        Picasso.with(mContext)
                 .load(data.getThumbnailUrl())
                 .transform(new RoundedTransformation(10, 10))
                 .fit()
@@ -267,7 +278,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
         description.setText(data.getDescription());
         link.setText(data.getLink());
 
-        dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+        dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -302,16 +313,26 @@ public class VideoCollectionTemplate implements TemplateInterface {
 
             }
         });
-
-        dialog.show();
-
     }
 
     @Override
-    public void deleteItem(Activity activity, int position) {
+    public Object deleteItem(Activity activity, int position) {
+        VideoModel videoModel = videoData.get(position);
         videoData.remove(position);
         setEmptyView(activity);
         adapter.notifyDataSetChanged();
+        return videoModel;
+    }
+
+    @Override
+    public void restoreItem(Activity activity, int position, Object object) {
+        if (object instanceof VideoModel) {
+            VideoModel videoModel = (VideoModel) object;
+            if (videoModel != null) {
+                videoData.add(position, videoModel);
+                adapter.notifyDataSetChanged();
+            }
+        }
     }
 
     @Override

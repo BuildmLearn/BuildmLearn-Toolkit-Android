@@ -2,12 +2,13 @@ package org.buildmlearn.toolkit.fragment;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,10 +19,6 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.Toast;
-
-import com.afollestad.materialdialogs.DialogAction;
-import com.afollestad.materialdialogs.MaterialDialog;
-import com.afollestad.materialdialogs.internal.ThemeSingleton;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.ToolkitApplication;
@@ -105,20 +102,18 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
         mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                if (selectedPosition == position) {
-                    selectedPosition = -1;
+                if (mAdapter.isPositionSelected(position)) {
+                    mAdapter.removeSelectedPosition(position);
                     view.setBackgroundResource(0);
-                    restoreColorScheme();
+                    if (mAdapter.selectedPositionsSize() == 0)
+                        restoreColorScheme();
                 } else {
-                    if (selectedView != null) {
-                        selectedView.setBackgroundResource(0);
-                    }
-                    selectedView = view;
-                    selectedPosition = position;
-                    Log.d(TAG, "Position: " + selectedPosition);
                     view.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.color_divider));
+                    mAdapter.putSelectedPosition(position);
                     changeColorScheme();
                 }
+
+
                 return true;
             }
         });
@@ -129,6 +124,23 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
      */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        if(mAdapter.selectedPositionsSize() > 0)
+        {
+            if(mAdapter.isPositionSelected(position)) {
+                mAdapter.removeSelectedPosition(position);
+                view.setBackgroundResource(0);
+                if(mAdapter.selectedPositionsSize() == 0)
+                    restoreColorScheme();
+            }
+            else{
+                view.setBackgroundColor(ContextCompat.getColor(mToolkit, R.color.color_divider));
+                mAdapter.putSelectedPosition(position);
+                Log.d(TAG, "Position: " + position);
+                changeColorScheme();
+
+            }
+            return ;
+        }
         SavedProject project = draftProjects.get(position);
         Template[] templates = Template.values();
         for (int i = 0; i < templates.length; i++) {
@@ -149,11 +161,13 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
     }
 
     private void setEmptyText() {
-
+        getView().findViewById(R.id.newProject).setVisibility(View.GONE);
+        getView().findViewById(R.id.no_saved_project).setVisibility(View.GONE);
+        getView().findViewById(R.id.no_saved_apks).setVisibility(View.GONE);
         if (mListView.getAdapter().getCount() == 0) {
-            getView().findViewById(R.id.empty).setVisibility(View.VISIBLE);
+            getView().findViewById(R.id.no_saved_drafts).setVisibility(View.VISIBLE);
         } else {
-            getView().findViewById(R.id.empty).setVisibility(View.GONE);
+            getView().findViewById(R.id.no_saved_drafts).setVisibility(View.GONE);
         }
     }
 
@@ -219,10 +233,6 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
         int primaryColor = ContextCompat.getColor(getActivity(), R.color.color_primary);
         int primaryColorDark = ContextCompat.getColor(getActivity(), R.color.color_primary_dark);
         ((AppCompatActivity) activity).getSupportActionBar().setBackgroundDrawable(new ColorDrawable(primaryColor));
-        ThemeSingleton.get().positiveColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().neutralColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().negativeColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().widgetColor = primaryColor;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             activity.getWindow().setStatusBarColor(primaryColorDark);
             activity.getWindow().setNavigationBarColor(primaryColor);
@@ -240,10 +250,6 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
         int primaryColor = ContextCompat.getColor(getActivity(), R.color.color_primary_dark);
         int primaryColorDark = ContextCompat.getColor(getActivity(), R.color.color_selected_dark);
         ((AppCompatActivity) activity).getSupportActionBar().setBackgroundDrawable(new ColorDrawable(primaryColor));
-        ThemeSingleton.get().positiveColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().neutralColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().negativeColor = ColorStateList.valueOf(primaryColor);
-        ThemeSingleton.get().widgetColor = primaryColor;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             activity.getWindow().setStatusBarColor(primaryColorDark);
             activity.getWindow().setNavigationBarColor(primaryColor);
@@ -262,6 +268,7 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
         menu.clear();
         if (showTemplateSelectedMenu) {
             activity.getMenuInflater().inflate(R.menu.menu_project_selected, menu);
+            menu.findItem(R.id.action_share).setVisible(false);
         } else if (mAdapter.getCount() > 0) {
             activity.getMenuInflater().inflate(R.menu.menu_draft, menu);
         }
@@ -270,6 +277,7 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
     /**
      * {@inheritDoc}
      */
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -277,33 +285,55 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
         switch (id) {
             case R.id.action_delete:
 
-                final MaterialDialog dialogDelete = new MaterialDialog.Builder(activity)
-                        .title(R.string.dialog_delete_title)
-                        .content(R.string.dialog_delete_msg)
-                        .positiveText(R.string.dialog_yes)
-                        .negativeText(R.string.dialog_no)
-                        .build();
+                final AlertDialog dialogDelete = new AlertDialog.Builder(activity)
+                        .setTitle(R.string.dialog_delete_title)
+                        .setMessage(R.string.dialog_delete_msg)
+                        .setPositiveButton(R.string.dialog_yes, null)
+                        .setNegativeButton(R.string.dialog_no, null)
+                        .create();
+                dialogDelete.show();
 
-                dialogDelete.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+                dialogDelete.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         dialogDelete.dismiss();
-                        deleteItem(selectedPosition);
+                        deleteItems();
                         restoreSelectedView();
                     }
                 });
-                dialogDelete.show();
                 break;
+
+            case R.id.action_select_all:
+                for(int i=0;i<mAdapter.getCount();i++) {
+                    if (!mAdapter.isPositionSelected(i))
+                    {
+                        mListView.getChildAt(i).setBackgroundColor(ContextCompat.getColor(mToolkit, R.color.color_divider));
+                        mAdapter.putSelectedPosition(i);
+                        changeColorScheme();
+                    }
+                }
+                break;
+
+            case R.id.action_unselect_all:
+                for(int i=0;i<mAdapter.getCount();i++)
+                    if(mAdapter.isPositionSelected(i)) {
+                        mListView.getChildAt(i).setBackgroundColor(0);
+                        mAdapter.removeSelectedPosition(i);
+                    }
+                restoreColorScheme();
+                break;
+
             case R.id.action_delete_all:
 
-                final MaterialDialog dialogDeleteAll = new MaterialDialog.Builder(activity)
-                        .title(R.string.dialog_delete_all_title)
-                        .content(R.string.dialog_delete_all_msg)
-                        .positiveText(R.string.dialog_yes)
-                        .negativeText(R.string.dialog_no)
-                        .build();
+                final AlertDialog dialogDeleteAll = new AlertDialog.Builder(activity)
+                        .setTitle(R.string.dialog_delete_all_title)
+                        .setMessage(R.string.dialog_delete_all_msg)
+                        .setPositiveButton(R.string.dialog_yes, null)
+                        .setNegativeButton(R.string.dialog_no, null)
+                        .create();
+                dialogDeleteAll.show();
 
-                dialogDeleteAll.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+                dialogDeleteAll.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         dialogDeleteAll.dismiss();
@@ -311,7 +341,6 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
                         restoreSelectedView();
                     }
                 });
-                dialogDeleteAll.show();
                 break;
             default: //do nothing
                 break;
@@ -322,18 +351,24 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
     /**
      * @brief Removes selected project item
      */
-    private void deleteItem(int selectedPosition) {
-        SavedProject project = draftProjects.get(selectedPosition);
-        File file = new File(project.getFile().getPath());
-        boolean deleted = file.delete();
-        if (deleted) {
-            draftProjects.remove(selectedPosition);
-            mAdapter.notifyDataSetChanged();
-            setEmptyText();
-            Toast.makeText(activity, getResources().getString(R.string.draft_deleted), Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(activity, getResources().getString(R.string.draft_deleted_failed), Toast.LENGTH_SHORT).show();
+    private void deleteItems() {
+        ArrayList<Integer> selectedPositions = mAdapter.getSelectedPositions();
+        boolean deleted = false;
+        for(int selectedPosition : selectedPositions) {
+            SavedProject project = draftProjects.get(selectedPosition);
+            File file = new File(project.getFile().getPath());
+            deleted = file.delete();
+            if (deleted) {
+                draftProjects.remove(selectedPosition);
+                mAdapter.removeSelectedPosition(selectedPosition);
+                mAdapter.notifyDataSetChanged();
+                setEmptyText();
+            }
         }
+        if(deleted)
+            Toast.makeText(activity, "Project Successfully Deleted!", Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(activity, "Project Deletion Failed!", Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -360,9 +395,6 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
      * @brief Removes selected color from the selected ListView item when switching from edit mode to normal mode
      */
     private void restoreSelectedView() {
-        if (selectedView != null) {
-            selectedView.setBackgroundResource(0);
-        }
         restoreColorScheme();
     }
 }

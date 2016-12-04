@@ -1,15 +1,15 @@
 package org.buildmlearn.toolkit.templates;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
-
-import com.afollestad.materialdialogs.DialogAction;
-import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.activity.TemplateEditor;
@@ -73,27 +73,20 @@ class LearnSpellingAdapter extends BaseAdapter {
         holder.deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final LearnSpellingModel learnSpellingModel = data.get(position);
+                data.remove(position);
+                notifyDataSetChanged();
+                Snackbar.make(v,R.string.snackbar_deleted_message,Snackbar.LENGTH_LONG)
+                        .setAction(R.string.snackbar_undo, new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                data.add(position,learnSpellingModel);
+                                notifyDataSetChanged();
+                                Snackbar.make(v,R.string.snackbar_restored_message,Snackbar.LENGTH_LONG).show();
+                            }
+                        }).show();
 
-                final MaterialDialog dialog = new MaterialDialog.Builder(mContext)
-                        .title(R.string.info_template_delete)
-                        .content(R.string.info_delete_item_content)
-                        .positiveText(R.string.dialog_yes)
-                        .negativeText(R.string.dialog_no)
-                        .build();
-
-                dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        data.remove(position);
-                        notifyDataSetChanged();
-                        dialog.dismiss();
-
-                        ((TemplateEditor) mContext).restoreSelectedView();
-                    }
-                });
-
-                dialog.show();
-
+                ((TemplateEditor) mContext).restoreSelectedView();
             }
         });
 
@@ -101,21 +94,28 @@ class LearnSpellingAdapter extends BaseAdapter {
         holder.editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final MaterialDialog dialog = new MaterialDialog.Builder(mContext)
-                        .title(R.string.info_add_new_title)
-                        .customView(R.layout.info_dialog_add_edit_data, true)
-                        .positiveText(R.string.info_template_add)
-                        .negativeText(R.string.info_template_cancel)
-                        .build();
+                LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                final View dialogView = inflater.inflate(R.layout.info_dialog_add_edit_data, null);
+                final AlertDialog dialog = new AlertDialog.Builder(mContext)
+                        .setTitle(R.string.info_edit_title)
+                        .setView(dialogView,
+                                mContext.getResources().getDimensionPixelSize(R.dimen.spacing_left),
+                                mContext.getResources().getDimensionPixelSize(R.dimen.spacing_top),
+                                mContext.getResources().getDimensionPixelSize(R.dimen.spacing_right),
+                                mContext.getResources().getDimensionPixelSize(R.dimen.spacing_bottom))
+                        .setPositiveButton(R.string.info_template_add, null)
+                        .setNegativeButton(R.string.info_template_cancel, null)
+                        .create();
+                dialog.show();
 
                 final LearnSpellingModel data = getItem(position);
 
-                final EditText word = (EditText) dialog.findViewById(R.id.info_word);
-                final EditText meaning = (EditText) dialog.findViewById(R.id.info_meaning);
+                final EditText word = (EditText) dialogView.findViewById(R.id.info_word);
+                final EditText meaning = (EditText) dialogView.findViewById(R.id.info_meaning);
                 word.setText(data.getWord());
                 meaning.setText(data.getMeaning());
 
-                dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+                dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
@@ -132,8 +132,6 @@ class LearnSpellingAdapter extends BaseAdapter {
 
                     }
                 });
-
-                dialog.show();
             }
         });
 

@@ -10,6 +10,11 @@
     <string name="menu_home">Home</string>
     <string name="buildmlearn_welcome_title">Welcome to BuildmLearn Toolkit</string>
 
+    <!--Snackbar-->
+    <string name="snackbar_deleted_message">Item deleted</string>
+    <string name="snackbar_undo">UNDO</string>
+    <string name="snackbar_restored_message">Item restored</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="buildmlearn_welcome_text">The BuildmLearn Toolkit is an easy-to-use program that helps users make mobile apps without any knowledge of application development.\n\nThe toolkit helps creating mobile application with various functionality and allows teachers to input their custom content.</string>
     <string name="no_item">No items</string>
@@ -19,8 +24,9 @@
     <string name="draft_deleted">Draft Successfully Deleted!</string>
     <string name="draft_deleted_failed">Draft Deletion Failed!</string>
     <string name="dialog_delete_all_msg">Are you sure you clear you Draft?</string>
+    <string name="dialog_delete_multiple">Are you sure you want to delete the selected items?</string>
     <string name="dialog_delete_all_title">Delete All</string>
-
+    <string name="no_saved_drafts">"No Saved Drafts Yet"</string>
 
     <!-- Restore Dialog-->
 
@@ -59,6 +65,7 @@
     <string name="list_empty_info">List is Empty!</string>
     <string name="previous_info">PREVIOUS</string>
     <string name="next_info">NEXT</string>
+    <string name="no_saved_projects">No Saved Projects yet</string>
     <string name="exit_info">EXIT</string>
     <string name="about_text_info">This application has been developed using the BuildmLearn Toolkit.\n\nTo know more about BuildmLearn Toolkit visit <a href="https://buildmlearn.org/">here</a>.</string>
     <string name="info_thumbnail_info">Info Thumbnail</string>
@@ -208,6 +215,8 @@
     <string name="bottom_sheet_share_apk">Share APK</string>
     <string name="bottom_sheet_save_apk">Save APK</string>
     <string name="bottom_sheet_save_project">Save Project</string>
+    <string name="menu_select_all">Select All</string>
+    <string name="menu_unselect_all">Unselect All</string>
 
     <!--  Built-in file manager string values -->
 
@@ -380,5 +389,6 @@
     <string name="template_thumbnail">Template thumbnail</string>
     <string name="show_more">Show more</string>
     <string name="tutorial_image">Tutorial image</string>
-
+    <string name="create_project">Create Project</string>
+    <string name="no_saved_apks">"No Saved Apks yet"</string>
 </resources>

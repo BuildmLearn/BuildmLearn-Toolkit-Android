@@ -8,13 +8,29 @@
         android:icon="@drawable/ic_share_white_24dp"
         android:orderInCategory="1"
         android:title="@string/bottom_sheet_share_apk"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/action_delete"
         android:icon="@drawable/menu_delete_template_item"
         android:orderInCategory="2"
         android:title="@string/menu_delete_template_item"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_select_all"
+        android:icon="@drawable/ic_select_all_white_24dp"
+        android:orderInCategory="3"
+        android:title="@string/menu_select_all"
+        app:showAsAction="always"
+        />
+
+    <item
+        android:id="@+id/action_unselect_all"
+        android:icon="@drawable/ic_close"
+        android:orderInCategory="4"
+        android:title="@string/menu_unselect_all"
+        app:showAsAction="always"
+        />
 
 </menu>
