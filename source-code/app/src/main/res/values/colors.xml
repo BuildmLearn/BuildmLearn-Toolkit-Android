@@ -19,6 +19,7 @@
     <color name="simulator_action_bar">#AA181818</color>
     <color name="quiz_correct_answer">#43A047</color>
 
+    <color name="gray">#444440</color>
     <!-- Quiz Template-->
 
     <!-- Info Template-->

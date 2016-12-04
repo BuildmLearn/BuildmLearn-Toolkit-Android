@@ -49,7 +49,6 @@ public class FirstRunActivity extends AppCompatActivity {
         Animation anim_bounceinup=AnimationUtils.loadAnimation(getBaseContext(),R.anim.bounceinup);
         name = (EditText) findViewById(R.id.first_name);
         name.startAnimation(anim_bounceinup);
-
         name.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
