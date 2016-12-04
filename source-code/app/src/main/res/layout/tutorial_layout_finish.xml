@@ -57,7 +57,7 @@
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:text="@string/screen_finish"
-            android:textAllCaps="true"
+            android:textAllCaps="false"
             android:textColor="@color/white_primary_text" />
 
 
