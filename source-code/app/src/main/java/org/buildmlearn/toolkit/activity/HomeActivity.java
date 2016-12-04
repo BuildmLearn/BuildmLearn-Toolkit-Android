@@ -58,6 +58,7 @@ public class HomeActivity extends AppCompatActivity
             selectedMenuItem.setIsSelected(true);
             currentSection = selectedMenuItem;
             FragmentTransaction ft = getFragmentManager().beginTransaction();
+            atHome = false;
             ft.replace(R.id.container, new SettingsFragment());
             ft.commit();
         }
@@ -71,10 +72,12 @@ public class HomeActivity extends AppCompatActivity
         if (position == -1) {
             if (currentSection != null) {
                 if (currentSection.toString().equals("OPEN_PROJECT")) {
+                    atHome = false;
                     LoadProjectFragment f = (LoadProjectFragment) getFragmentManager().findFragmentByTag(currentSection.getViewName());
                     if (f != null)
                         f.closeSearch();
                 } else if (currentSection.toString().equals("OPEN_APK")) {
+                    atHome = false;
                     LoadApkFragment f = (LoadApkFragment) getFragmentManager().findFragmentByTag(currentSection.getViewName());
                     if (f != null)
                         f.closeSearch();
@@ -92,7 +95,9 @@ public class HomeActivity extends AppCompatActivity
             Class<?> c;
             if (selectedMenuItem.getViewName() != null) {
                 try {
+                    //how to and about us.
                     c = Class.forName(selectedMenuItem.getViewName());
+                    atHome = false;
                     Intent intent = new Intent(this, c);
                     startActivity(intent);
 
@@ -104,12 +109,18 @@ public class HomeActivity extends AppCompatActivity
             if (currentSection == null || !selectedMenuItem.equals(currentSection)) {
                 currentSection = selectedMenuItem;
                 FragmentManager fm = getFragmentManager();
+                //home projects apk drafts settings
                 FragmentTransaction ft = fm.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).addToBackStack(null);
                 Fragment f = fm.findFragmentById(R.id.container);
                 if (f != null) {
                     if (currentSection.isKeep()) {
                         ft.detach(f);
                     } else {
+                        if(currentSection.toString().equals("HOME")){
+                            atHome = true;
+                        }else if(!currentSection.toString().equals("HOME")){
+                            atHome = false;
+                        }
                         ft.remove(f);
                     }
                 }
