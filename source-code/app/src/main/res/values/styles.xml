@@ -12,7 +12,7 @@
         <item name="activatedBackgroundIndicator">@drawable/activated_background</item>
     </style>
     <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:windowBackground">@drawable/splashmain</item>
+        <item name="android:windowBackground">@drawable/background_splash</item>
     </style>
 
     <style name="AppTheme" parent="Base.AppTheme">
