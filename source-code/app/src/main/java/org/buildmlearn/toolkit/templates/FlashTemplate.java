@@ -154,12 +154,12 @@ public class FlashTemplate implements TemplateInterface {
         dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (validateData(question, answer, answerHint, activity)) {
+                if (validateData(question, answer, activity)) {
                     dialog.dismiss();
                     Bitmap bitmap = ((BitmapDrawable) mBannerImage.getDrawable()).getBitmap();
-                    String questionText = question.getText().toString();
-                    String answerText = answer.getText().toString();
-                    String hintText = answerHint.getText().toString();
+                    String questionText = question.getText().toString().trim();
+                    String answerText = answer.getText().toString().trim();
+                    String hintText = answerHint.getText().toString().trim();
                     mData.add(new FlashCardModel(questionText, answerText, hintText, bitmap));
                     setEmptyView(activity);
                     mAdapter.notifyDataSetChanged();
@@ -198,9 +198,9 @@ public class FlashTemplate implements TemplateInterface {
         final EditText answer = (EditText) dialogView.findViewById(R.id.flash_answer);
         final EditText answerHint = (EditText) dialogView.findViewById(R.id.flash_hint);
         mBannerImage = (ImageView) dialogView.findViewById(R.id.banner_image);
-        question.setText(data.getQuestion());
-        answer.setText(data.getAnswer());
-        answerHint.setText(data.getHint());
+        question.setText(data.getQuestion().trim());
+        answer.setText(data.getAnswer().trim());
+        answerHint.setText(data.getHint().trim());
 
         mBannerImage.setImageBitmap(data.getImageBitmap());
 
@@ -229,12 +229,12 @@ public class FlashTemplate implements TemplateInterface {
         dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (validateData(question, answer, answerHint, activity)) {
+                if (validateData(question, answer, activity)) {
                     dialog.dismiss();
                     Bitmap bitmap = ((BitmapDrawable) mBannerImage.getDrawable()).getBitmap();
-                    String questionText = question.getText().toString();
-                    String answerText = answer.getText().toString();
-                    String hintText = answerHint.getText().toString();
+                    String questionText = question.getText().toString().trim();
+                    String answerText = answer.getText().toString().trim();
+                    String hintText = answerHint.getText().toString().trim();
                     mData.set(position, new FlashCardModel(questionText, answerText, hintText, bitmap));
                     mAdapter.notifyDataSetChanged();
                 }
@@ -242,22 +242,18 @@ public class FlashTemplate implements TemplateInterface {
         });
     }
 
-    private boolean validateData(EditText question, EditText answer, EditText answerHint, Context context) {
-        String questionText = question.getText().toString();
-        String answerText = answer.getText().toString();
-        String hintText = answerHint.getText().toString();
+    private boolean validateData(EditText question, EditText answer, Context context) {
+        String questionText = question.getText().toString().trim();
+        String answerText = answer.getText().toString().trim();
 
-        if (questionText.isEmpty()) {
-            Toast.makeText(context, "Enter question", Toast.LENGTH_SHORT).show();
+        if ("".equals(questionText)) {
+            question.setError(context.getString(R.string.enter_question));
             return false;
-        } else if (answerText.isEmpty()) {
-            Toast.makeText(context, "Enter answer", Toast.LENGTH_SHORT).show();
-            return false;
-        } else if (hintText.isEmpty()) {
-            Toast.makeText(context, "Enter hint", Toast.LENGTH_SHORT).show();
+        } else if ("".equals(answerText)) {
+            answer.setError(context.getString(R.string.enter_answer));
             return false;
         } else if (!mIsPhotoAttached) {
-            Toast.makeText(context, "Attach an image", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, context.getString(R.string.flash_template_attach_image), Toast.LENGTH_SHORT).show();
             return false;
         }
 
@@ -397,7 +393,7 @@ public class FlashTemplate implements TemplateInterface {
             photo.delete();
         } catch (Exception e) {
             Log.d(TAG, e.getMessage());
-            Toast.makeText(context, "Please check SD card! Image shot is impossible!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.check_sd_card, Toast.LENGTH_SHORT).show();
         }
 
         cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, mImageUri);
