@@ -71,8 +71,6 @@ public class VideoCollectionTemplate implements TemplateInterface {
         if ("".equals(linkText)) {
             link.setError(context.getString(R.string.video_collection_template_link_hint));
             return false;
-        } else if(!Patterns.WEB_URL.matcher(linkText).matches()){
-            link.setError(context.getString(R.string.video_collection_template_link_valid_hint));
         } else if (!(linkText.contains(YOUTUBE + ".com") || linkText.contains(YOUTUBE_SHORT) || linkText.contains(DAILYMOTION + ".com") || linkText.contains(VIMEO + ".com"))) {
             link.setError(context.getString(R.string.video_collection_template_linited_links));
             return false;

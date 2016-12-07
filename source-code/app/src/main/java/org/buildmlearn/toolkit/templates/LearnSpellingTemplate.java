@@ -9,8 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
-import android.widget.Toast;
-
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.learnspelling.fragment.SplashFragment;
@@ -47,14 +45,8 @@ public class LearnSpellingTemplate implements TemplateInterface {
         if ("".equals(wordText)) {
             word.setError(context.getString(R.string.enter_word));
             return false;
-        } else if (!wordText.matches("([A-Za-z ]+)")){
-            word.setError(context.getString(R.string.enter_valid_word));
-            return false;
         } else if ("".equals(meaningText)) {
             meaning.setError(context.getString(R.string.enter_meaning));
-            return false;
-        } else if(!meaningText.matches("([A-Za-z ]+)")){
-            meaning.setError(context.getString(R.string.enter_valid_meaning));
             return false;
         }
         return true;
