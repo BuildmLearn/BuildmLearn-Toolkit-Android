@@ -8,6 +8,9 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
@@ -154,8 +157,13 @@ public class SettingsFragment extends PreferenceFragment {
 
                             @Override
                             public void onFail() {
-                                processDialog.dismiss();
-                                final AlertDialog dialog = new AlertDialog.Builder(getActivity())
+                              Handler  mHandler = new Handler(Looper.getMainLooper()) {
+                                    @Override
+                                    public void handleMessage(Message message) {
+                                        // This is where you do your work in the UI thread.
+                                        // Your worker tells you in the message what to do.
+                                        processDialog.dismiss();
+                                        final AlertDialog dialog = new AlertDialog.Builder(getActivity())
                                                 .setTitle(R.string.dialog_restore_title)
                                                 .setMessage(R.string.dialog_restore_failed)
                                                 .setPositiveButton(R.string.info_template_ok, new DialogInterface.OnClickListener() {
@@ -164,7 +172,13 @@ public class SettingsFragment extends PreferenceFragment {
                                                         dialog.dismiss();
                                                     }
                                                 }).create();
-                                dialog.show();
+                                        dialog.show();
+                                    }
+                                };
+
+                                Message message = mHandler.obtainMessage(0, null);
+                                message.sendToTarget();
+
                             }
 
                             @Override
