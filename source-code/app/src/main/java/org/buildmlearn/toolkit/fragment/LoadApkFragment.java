@@ -224,7 +224,7 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
                     File apkFile = new File(aFile.getAbsolutePath());
                     PackageInfo info = getActivity().getPackageManager().getPackageArchiveInfo(apkFile.getAbsolutePath(), 0);
                     if (info != null && info.packageName != null && info.packageName.startsWith("org.buildmlearn.")) {
-                        if (apkFile.getName().startsWith(specificApis))
+                        if (apkFile.getName().contains(specificApis))
                             savedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified()));
                         allsavedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified()));
                     }
@@ -349,7 +349,7 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
                 actionBar.setCustomView(R.layout.search_bar);
                 actionBar.setDisplayShowTitleEnabled(false);
                 editSearch = (EditText) actionBar.getCustomView().findViewById(R.id.editSearch);
-                editSearch.setHint("Enter name of Apk");
+                editSearch.setHint("Enter Apk name");
                 editSearch.addTextChangedListener(new TextWatcher() {
                     @Override
                     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -367,7 +367,7 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
                         savedApis.clear();
                         SavedApi tempApi;
                         for (int i = 0; i < allsavedApis.size(); i++) {
-                            if (allsavedApis.get(i).getName().startsWith(text)) {
+                            if (allsavedApis.get(i).getName().contains(text)) {
                                 tempApi = new SavedApi(allsavedApis.get(i).getFile(), allsavedApis.get(i).getName(), allsavedApis.get(i).getUnformattedDate());
                                 savedApis.add(tempApi);
                             }

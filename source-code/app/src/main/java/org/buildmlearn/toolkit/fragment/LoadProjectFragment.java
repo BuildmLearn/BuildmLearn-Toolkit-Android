@@ -261,7 +261,7 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                     Document doc = dBuilder.parse(fXmlFile);
                     doc.getDocumentElement().normalize();
                     Log.d("Files", "Root element :" + doc.getDocumentElement().getAttribute("type"));
-                    if (fXmlFile.getName().startsWith(specificApis))
+                    if (fXmlFile.getName().contains(specificApis))
                         savedProjects.add(new SavedProject(fXmlFile, fXmlFile.getName(), fXmlFile.lastModified(), doc.getDocumentElement().getAttribute("type"), fXmlFile.getAbsolutePath()));
                     allsavedProjects.add(new SavedProject(fXmlFile, fXmlFile.getName(), fXmlFile.lastModified(), doc.getDocumentElement().getAttribute("type"), fXmlFile.getAbsolutePath()));
                 } catch (ParserConfigurationException | DOMException | IOException | SAXException e) {
@@ -406,7 +406,7 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                         savedProjects.clear();
                         SavedProject tempProject;
                         for (int i = 0; i < allsavedProjects.size(); i++) {
-                            if (allsavedProjects.get(i).getName().startsWith(text)) {
+                            if (allsavedProjects.get(i).getName().contains(text)) {
                                 tempProject = new SavedProject(allsavedProjects.get(i).getFile(), allsavedProjects.get(i).getName(), allsavedProjects.get(i).getUnformattedDate(), allsavedProjects.get(i).getType(), allsavedProjects.get(i).getFullPath());
                                 savedProjects.add(tempProject);
                             }
