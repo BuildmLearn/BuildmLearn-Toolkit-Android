@@ -411,4 +411,12 @@
     <string name="match_main_title">Enter a title.</string>
     <string name="valid_before_answer">Enter a valid option before marking it as answer.</string>
     <string name="enter_title">Enter a title.</string>
+    <string name="enter">Enter name</string>
+    <string name="name_valid_msg">Name must start with alphanumeric character</string>
+    <string name="enter_name">Enter name</string>
+    <string name="valid_msg">Name must start with alphanumeric</string>
+    <string name="title_error">Title is required</string>
+    <string name="title_valid">Title must start with alphanumeric</string>
+    <string name="valid_msg_name">Enter valid name</string>
 </resources>
+

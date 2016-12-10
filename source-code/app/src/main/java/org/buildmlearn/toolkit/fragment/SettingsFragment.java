@@ -88,8 +88,21 @@ public class SettingsFragment extends PreferenceFragment {
                 return true;
             }
         });
+        prefUsername.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                if ("".equals(newValue)) {
+                    Toast.makeText(getActivity(), R.string.enter, Toast.LENGTH_LONG).show();
+                    return false;
+                } else if (newValue != null && !Character.isLetterOrDigit(((String) newValue).charAt(0))) {
+                    Toast.makeText(getActivity(), R.string.name_valid_msg, Toast.LENGTH_LONG).show();
+                    return false;
+                }
+                prefUsername.setSummary((String) newValue);
+                return true;
+            }
+        });
         prefUsername.setSummary(preferences.getString(getString(R.string.key_user_name), ""));
-
     }
 
     public void initRestoreProjectDialog() {
@@ -98,7 +111,7 @@ public class SettingsFragment extends PreferenceFragment {
         startActivityForResult(intent, REQUEST_PICK_APK);
     }
 
-    public void resetUserName(){
+    public void resetUserName() {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.dialog_settings_your_name, null);
         final EditText editInput = (EditText) dialogView.findViewById(R.id.et_dialog_settings_your_name);
@@ -112,11 +125,15 @@ public class SettingsFragment extends PreferenceFragment {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 String enteredName = editInput.getText().toString();
-                                if (!TextUtils.isEmpty(enteredName)){
+                                if (TextUtils.isEmpty(enteredName) || enteredName == null || !Character.isLetterOrDigit(((String) enteredName).charAt(0))) {
+                                    Toast.makeText(getActivity(), R.string.valid_msg_name,Toast.LENGTH_LONG).show();
+                                }
+                                else {
                                     prefUsername.getEditor().putString(getString(R.string.key_user_name), enteredName).commit();
                                     prefUsername.setSummary(editInput.getText().toString());
+                                    dialog.dismiss();
                                 }
-                                dialog.dismiss();
+
                             }
                         }).create();
         dialog.show();
@@ -156,14 +173,14 @@ public class SettingsFragment extends PreferenceFragment {
                             public void onFail() {
                                 processDialog.dismiss();
                                 final AlertDialog dialog = new AlertDialog.Builder(getActivity())
-                                                .setTitle(R.string.dialog_restore_title)
-                                                .setMessage(R.string.dialog_restore_failed)
-                                                .setPositiveButton(R.string.info_template_ok, new DialogInterface.OnClickListener() {
-                                                    @Override
-                                                    public void onClick(DialogInterface dialog, int which) {
-                                                        dialog.dismiss();
-                                                    }
-                                                }).create();
+                                        .setTitle(R.string.dialog_restore_title)
+                                        .setMessage(R.string.dialog_restore_failed)
+                                        .setPositiveButton(R.string.info_template_ok, new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.dismiss();
+                                            }
+                                        }).create();
                                 dialog.show();
                             }
 
@@ -171,14 +188,14 @@ public class SettingsFragment extends PreferenceFragment {
                             public void onFail(Exception e) {
                                 processDialog.dismiss();
                                 final AlertDialog dialog = new AlertDialog.Builder(getActivity())
-                                                .setTitle(R.string.dialog_restore_title)
-                                                .setMessage(R.string.dialog_restore_failed)
-                                                .setPositiveButton(R.string.info_template_ok, new DialogInterface.OnClickListener() {
-                                                    @Override
-                                                    public void onClick(DialogInterface dialog, int which) {
-                                                        dialog.dismiss();
-                                                    }
-                                                }).create();
+                                        .setTitle(R.string.dialog_restore_title)
+                                        .setMessage(R.string.dialog_restore_failed)
+                                        .setPositiveButton(R.string.info_template_ok, new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.dismiss();
+                                            }
+                                        }).create();
                                 dialog.show();
                             }
                         });
@@ -189,14 +206,14 @@ public class SettingsFragment extends PreferenceFragment {
                         e.printStackTrace();
 
                         final AlertDialog dialog = new AlertDialog.Builder(getActivity())
-                                        .setTitle(R.string.dialog_restore_title)
-                                        .setMessage(R.string.dialog_restore_fileerror)
-                                        .setPositiveButton(R.string.info_template_ok, new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                dialog.dismiss();
-                                            }
-                                        }).create();
+                                .setTitle(R.string.dialog_restore_title)
+                                .setMessage(R.string.dialog_restore_fileerror)
+                                .setPositiveButton(R.string.info_template_ok, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                }).create();
                         dialog.show();
                     }
 
@@ -209,12 +226,13 @@ public class SettingsFragment extends PreferenceFragment {
         }
 
     }
-    private class AsyncTaskRunner extends AsyncTask<String,Void,Float> {
+
+    private class AsyncTaskRunner extends AsyncTask<String, Void, Float> {
         private ProgressDialog progressDialog;
 
         @Override
         protected void onPreExecute() {
-            progressDialog=new ProgressDialog(getActivity());
+            progressDialog = new ProgressDialog(getActivity());
             progressDialog.setTitle("Deleting...");
             progressDialog.setMessage("Deleting Temporary file");
             progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
