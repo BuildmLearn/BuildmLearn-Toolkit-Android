@@ -133,7 +133,10 @@ public class TutorialAdapter extends PagerAdapter {
         BLUE("#29A6D4"),
         GREEN("#1C7D6C"),
         ORANGE("#F77400"),
-        RED("#F53B3C");
+        RED("#F53B3C"),
+        GRAYISH("#78909C"),
+        PURPLE("#AB47BC"),
+        YELLOW("#F9A01E");
 
         private
         @ColorRes
