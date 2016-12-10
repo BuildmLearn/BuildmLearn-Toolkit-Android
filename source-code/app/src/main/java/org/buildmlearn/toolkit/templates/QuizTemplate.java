@@ -12,7 +12,6 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.model.Template;
 import org.buildmlearn.toolkit.model.TemplateInterface;
@@ -173,6 +172,7 @@ public class QuizTemplate implements TemplateInterface {
                 }
                 for (EditText option : options) {
                     if ("".equals(option.getText().toString().trim())){
+                        option.setText("");
                         continue;
                     }
                     if (option.getText().toString()!= null && "".equals(option.getText().toString().trim())) {
@@ -295,6 +295,7 @@ public class QuizTemplate implements TemplateInterface {
 
                 for (EditText option : options) {
                     if ("".equals(option.getText().toString().trim())){
+                        option.setText("");
                         continue;
                     }
                     if (option.getText().toString()!= null && "".equals(option.getText().toString().trim())) {

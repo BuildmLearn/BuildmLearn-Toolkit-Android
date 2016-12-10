@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.BaseAdapter;
@@ -19,7 +20,6 @@ import org.buildmlearn.toolkit.model.Template;
 import org.buildmlearn.toolkit.model.TemplateInterface;
 import org.buildmlearn.toolkit.utilities.FileDialog;
 import org.buildmlearn.toolkit.views.TextViewPlus;
-import android.support.v7.app.AlertDialog;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -237,6 +237,7 @@ public class ComprehensionTemplate implements TemplateInterface {
 
                 for (EditText option : options) {
                     if ("".equals(option.getText().toString().trim())){
+                        option.setText("");
                         continue;
                     }
                     if (option.getText().toString()!= null && "".equals(option.getText().toString().trim())) {
@@ -467,6 +468,7 @@ public class ComprehensionTemplate implements TemplateInterface {
 
                     for (EditText option : options) {
                         if ("".equals(option.getText().toString().trim())){
+                            option.setText("");
                             continue;
                         }
                         if (option.getText().toString()!= null && "".equals(option.getText().toString().trim())) {

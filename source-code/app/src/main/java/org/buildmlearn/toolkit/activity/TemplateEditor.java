@@ -89,6 +89,8 @@ public class TemplateEditor extends AppCompatActivity {
     private ToolkitApplication toolkit;
     private String oldFileName;
     private ProgressDialog mApkGenerationDialog;
+    private String lastActivity;
+    private String lastFragment;
 
 
     /**
@@ -105,6 +107,8 @@ public class TemplateEditor extends AppCompatActivity {
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         toolkit = (ToolkitApplication) getApplicationContext();
         templateId = getIntent().getIntExtra(Constants.TEMPLATE_ID, -1);
+        lastActivity = getIntent().getStringExtra("lastActivity");
+        lastFragment = getIntent().getStringExtra("lastFragment");
         if (templateId == -1) {
             Toast.makeText(this, "Invalid template ID, closing Template Editor activity", Toast.LENGTH_LONG).show();
             finish();
@@ -387,11 +391,15 @@ public class TemplateEditor extends AppCompatActivity {
                 });
 
                 break;
+
+
             case R.id.action_edit:
                 selectedTemplate.editItem(this, selectedPosition);
                 selectedPosition = -1;
                 restoreSelectedView();
                 break;
+
+
             case R.id.action_save:
                 new BottomSheet.Builder(this).sheet(R.menu.bottom_sheet_template).listener(new DialogInterface.OnClickListener() {
                     @Override
@@ -399,17 +407,26 @@ public class TemplateEditor extends AppCompatActivity {
                         String savedFilePath;
                         switch (id) {
                             case R.id.save_project:
-                                saveProject();
+                                ReturnValidDetails obj = detailsValid("saveProject");
+                                if(obj.result)
+                                    saveProject(obj);
                                 break;
 
                             case R.id.share_project:
-                                savedFilePath = saveProject();
-                                if(("File already exists".equals(savedFilePath))){
-                                    return;
+                                savedFilePath = generateAPK("shareProject");
+                                if ("empty file".equals(savedFilePath)) {
+                                    Toast.makeText(getApplicationContext(), " Empty project. \n" +
+                                                                            "Insert some data", Toast.LENGTH_SHORT).show();
+                                    break;
+                                } else if ("insufficient".equals(savedFilePath)){
+                                    Toast.makeText(getApplicationContext(), "Enter at least one question.", Toast.LENGTH_SHORT).show();
+                                    break;
                                 }
-
-                                if (savedFilePath == null || savedFilePath.length() == 0) {
-                                    return;
+                                else if ("not valid".equals(savedFilePath)){
+                                    break;
+                                } else if ("".equals(savedFilePath)) {
+                                    Toast.makeText(getApplicationContext(), "Failed to share project.", Toast.LENGTH_SHORT).show();
+                                    break;
                                 }
                                 Uri fileUri = Uri.fromFile(new File(savedFilePath));
                                 ArrayList<Uri> uris = new ArrayList<>();
@@ -422,18 +439,28 @@ public class TemplateEditor extends AppCompatActivity {
 
                             case R.id.share_apk:
 
-                                savedFilePath = saveProject();
-                                if(("File already exists".equals(savedFilePath))){
-                                    return;
+                                savedFilePath = generateAPK("shareAPK");
+
+                                if ("empty file".equals(savedFilePath)) {
+                                    Toast.makeText(getApplicationContext(), "Failed to generate APK file.\n" +
+                                                                            "  Please insert some data.  ", Toast.LENGTH_SHORT).show();
+                                    break;
+                                } else if ("insufficient".equals(savedFilePath)){
+                                    Toast.makeText(getApplicationContext(), "Failed to generate APK file.\n" +
+                                            "Enter at least one question. ", Toast.LENGTH_SHORT).show();
+                                    break;
+                                } else if ("not valid".equals(savedFilePath)){
+                                    break;
+                                } else if ("".equals(savedFilePath)) {
+                                    Toast.makeText(getApplicationContext(), "Failed to generate APK file.", Toast.LENGTH_SHORT).show();
+                                    break;
                                 }
-                                if (savedFilePath == null || savedFilePath.length() == 0) {
-                                    return;
-                                }
+
                                 String keyPassword = getString(R.string.key_password);
                                 String aliasName = getString(R.string.alias_name);
                                 String aliaspassword = getString(R.string.alias_password);
                                 KeyStoreDetails keyStoreDetails = new KeyStoreDetails(keyPassword, aliasName, aliaspassword);
-                                SignerThread signer = new SignerThread(getApplicationContext(), selectedTemplate.getApkFilePath(), saveProject(), keyStoreDetails, selectedTemplate.getAssetsFilePath(), selectedTemplate.getAssetsFileName(TemplateEditor.this));
+                                SignerThread signer = new SignerThread(getApplicationContext(), selectedTemplate.getApkFilePath(), generateAPK("saveAPK"), keyStoreDetails, selectedTemplate.getAssetsFilePath(), selectedTemplate.getAssetsFileName(TemplateEditor.this));
 
                                 mApkGenerationDialog = new ProgressDialog(TemplateEditor.this, R.style.AppDialogTheme);
                                 mApkGenerationDialog.setTitle(R.string.apk_progress_dialog);
@@ -487,18 +514,27 @@ public class TemplateEditor extends AppCompatActivity {
 
                                 break;
                             case R.id.save_apk:
-                                savedFilePath = saveProject();
-                                if(("File already exists".equals(savedFilePath))){
-                                    return;
+                                savedFilePath = generateAPK("saveAPK");
+                                if(("empty file".equals(savedFilePath))){
+                                    Toast.makeText(getApplicationContext(), "Failed to generate APK file.\n" +
+                                                                            "  Please insert some data.  ", Toast.LENGTH_SHORT).show();
+                                    break;
+                                } else if ("insufficient".equals(savedFilePath)){
+                                    Toast.makeText(getApplicationContext(), "Failed to generate APK file.\n" +
+                                            "Enter at least one question. ", Toast.LENGTH_SHORT).show();
+                                    break;
+                                } else if ("not valid".equals(savedFilePath)){
+                                    break;
+                                } else if ("".equals(savedFilePath)){
+                                    Toast.makeText(getApplicationContext(), "Failed to generate APK file.", Toast.LENGTH_SHORT).show();
+
                                 }
-                                if (savedFilePath == null || savedFilePath.length() == 0) {
-                                    return;
-                                }
+
                                 keyPassword = getString(R.string.key_password);
                                 aliasName = getString(R.string.alias_name);
                                 aliaspassword = getString(R.string.alias_password);
                                 keyStoreDetails = new KeyStoreDetails(keyPassword, aliasName, aliaspassword);
-                                signer = new SignerThread(getApplicationContext(), selectedTemplate.getApkFilePath(), saveProject(), keyStoreDetails, selectedTemplate.getAssetsFilePath(), selectedTemplate.getAssetsFileName(TemplateEditor.this));
+                                signer = new SignerThread(getApplicationContext(), selectedTemplate.getApkFilePath(), generateAPK("saveAPK"), keyStoreDetails, selectedTemplate.getAssetsFilePath(), selectedTemplate.getAssetsFileName(TemplateEditor.this));
 
                                 mApkGenerationDialog = new ProgressDialog(TemplateEditor.this, R.style.AppDialogTheme);
                                 mApkGenerationDialog.setTitle(R.string.apk_progress_dialog);
@@ -621,106 +657,68 @@ public class TemplateEditor extends AppCompatActivity {
      * @return Absolute path of the saved file. Null if there is some error.
      * @brief Saves the current project into a .buildmlearn file.
      */
-    private String saveProject() {
+    private String saveProject(ReturnValidDetails obj) {
 
+        Document doc = obj.doc;
+        Element dataElement = obj.element;
+
+        for (Element item : selectedTemplate.getItems(doc)) {
+            dataElement.appendChild(item);
+        }
+        if (oldFileName != null) {
+            File tempFile = new File(oldFileName);
+            tempFile.delete();
+            oldFileName = null;
+        }
+        String saveFileName = obj.title + " by " + obj.author + ".buildmlearn";
+        saveFileName = saveFileName.replaceAll(" ", "-");
+
+
+        boolean isSaved=FileUtils.saveXmlFile(toolkit.getSavedDir(), saveFileName, doc);
+
+        if(isSaved) {
+            oldFileName = toolkit.getSavedDir() + saveFileName;
+            Toast.makeText(this, "Project Successfully Saved!", Toast.LENGTH_SHORT).show();
+            finish();
+            return oldFileName;
+        }
+        else {
+            titleEditText = (EditText)findViewById(R.id.template_title);
+            titleEditText.requestFocus();
+            titleEditText.setError("File Already exists");
+            return "File already exists";
+        }
+    }
+
+    private String generateAPK(String callingFunction) {
+
+        EditText titleEditText = (EditText) findViewById(R.id.template_title);
         EditText authorEditText = (EditText) findViewById(R.id.author_name);
-        titleEditText = (EditText) findViewById(R.id.template_title);
-        assert findViewById(R.id.author_name) != null;
-        assert ((EditText) findViewById(R.id.author_name)) != null;
-        String author = ((EditText) findViewById(R.id.author_name)).getText().toString();
-        assert findViewById(R.id.template_title) != null;
-        assert ((EditText) findViewById(R.id.template_title)) != null;
-        String title = ((EditText) findViewById(R.id.template_title)).getText().toString();
-        if ("".equals(author)) {
-            assert authorEditText != null;
-            authorEditText.setError("Author name is required");
-        } else if ("".equals(title)) {
-            assert titleEditText != null;
-            titleEditText.setError("Title is required");
-        } else {
 
-            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder docBuilder;
-            try {
+        String title = titleEditText.getText().toString().trim();
+        String author = authorEditText.getText().toString().trim();
 
-                docBuilder = docFactory.newDocumentBuilder();
-                Document doc = docBuilder.newDocument();
-                Element rootElement = doc.createElement("buildmlearn_application");
-                Attr attr = doc.createAttribute("type");
-                attr.setValue(getResources().getString(template.getType()));
-                rootElement.setAttributeNode(attr);
-
-                Element authorElement = doc.createElement("author");
-                rootElement.appendChild(authorElement);
-
-                Element nameElement = doc.createElement("name");
-                nameElement.appendChild(doc.createTextNode(author));
-
-                authorElement.appendChild(nameElement);
-
-                Element titleElement = doc.createElement("title");
-                titleElement.appendChild(doc.createTextNode(title));
-                rootElement.appendChild(titleElement);
-
-                doc.appendChild(rootElement);
-                Element dataElement = doc.createElement("data");
-                rootElement.appendChild(dataElement);
-                if (selectedTemplate.getItems(doc).size() == 0 || (selectedTemplate.getItems(doc).size() < 2 && (templateId == 5 || templateId == 7))) {
-                    Toast.makeText(this, "Unable to perform action: No Data", Toast.LENGTH_SHORT).show();
-                    return null;
-                }
-                for (Element item : selectedTemplate.getItems(doc)) {
-                    dataElement.appendChild(item);
-                }
-                if (oldFileName != null) {
-                    File tempFile = new File(oldFileName);
-                    tempFile.delete();
-                    oldFileName = null;
-                }
-                String saveFileName = title + " by " + author + ".buildmlearn";
-                saveFileName = saveFileName.replaceAll(" ", "-");
-
-
-                boolean isSaved=FileUtils.saveXmlFile(toolkit.getSavedDir(), saveFileName, doc);
-                if(isSaved) {
-                    oldFileName = toolkit.getSavedDir() + saveFileName;
-                    Toast.makeText(this, "Project Successfully Saved!", Toast.LENGTH_SHORT).show();
-                    return oldFileName;
-                }
-                else {
-                    titleEditText.setError("File Already exists");
-                    return "File already exists";
-                }
-
-            } catch (ParserConfigurationException e) {
-                e.printStackTrace();
+        if (!callingFunction.equals("startSimulator")){
+            if ("".equals(title)) {
+                titleEditText.requestFocus();
+                titleEditText.setError("Enter project title");
+                return "not valid";
+            }
+            if  ("".equals(author)) {
+                authorEditText.requestFocus();
+                authorEditText.setError("Enter author name");
+                return "not valid";
             }
         }
-        return null;
-    }
+        else {
+            if ("".equals(title)) {
+                title = "Test";
+            }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        if (saveDraft() != null)
-            Toast.makeText(getApplicationContext(), "Saved in Draft!", Toast.LENGTH_SHORT).show();
-
-    }
-
-    /**
-     * Converts the current TemplateInterface object into a xml file. Xml file is saved in DRAFT
-     * Directory (defined in constants). File name is of the format: draft<0-X>.buildmlearn
-     *
-     * @return Absolute path of the saved file. Null if there is some error.
-     * @brief Saves the current project into a .buildmlearn file.
-     */
-    private String saveDraft() {
-
-        assert ((EditText) findViewById(R.id.author_name)) != null;
-        String author = ((EditText) findViewById(R.id.author_name)).getText().toString();
-        assert ((EditText) findViewById(R.id.template_title)) != null;
-        String title = ((EditText) findViewById(R.id.template_title)).getText().toString();
-
+            if  ("".equals(author)) {
+                author = "Teacher";
+            }
+        }
 
         DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder docBuilder;
@@ -748,44 +746,111 @@ public class TemplateEditor extends AppCompatActivity {
             doc.appendChild(rootElement);
             Element dataElement = doc.createElement("data");
             rootElement.appendChild(dataElement);
-            if (selectedTemplate.getItems(doc).size() == 0) {
-                Toast.makeText(this, "Unable to perform action: No Data", Toast.LENGTH_SHORT).show();
-                return null;
+
+            if (selectedTemplate.getItems(doc).size() == 0 ) {
+                return "empty file";
+            } else if ((selectedTemplate.getItems(doc).size() < 2 && (templateId == 5 || templateId == 7))){
+                return "insufficient";
             }
+
             for (Element item : selectedTemplate.getItems(doc)) {
                 dataElement.appendChild(item);
             }
 
-            int draftFileIndex = 0;
-            File draftDir = new File(toolkit.getDraftDir());
-            String probableFileName = "draft" + draftFileIndex + ".buildmlearn";
-            File probableFile = new File(draftDir, probableFileName);
-
-            while (probableFile.exists()) {
-                draftFileIndex++;
-                probableFileName = "draft" + draftFileIndex + ".buildmlearn";
-                probableFile = new File(draftDir, probableFileName);
+            if (oldFileName != null) {
+                File tempFile = new File(oldFileName);
+                tempFile.delete();
+                oldFileName = null;
             }
 
-            //Create temporary File, if that file content matches with OldContent
-            // Then Don't make Draft
-            File tempFile = new File(toolkit.getDraftDir(), ".temp");
-            File oldFile = null;
-            if (oldFileName != null)
-                oldFile = new File(oldFileName);
+            String saveFileName = title + " by " + author + ".buildmlearn";
+            saveFileName = saveFileName.replaceAll(" ", "-");
 
-            FileUtils.saveXmlFile(toolkit.getDraftDir(), ".temp", doc);
-            if (oldFile == null || !FileUtils.equalContent(tempFile, oldFile)) {
-                tempFile.renameTo(probableFile);
-                return toolkit.getDraftDir() + probableFileName;
-            } else {
-                File newFile = new File(toolkit.getDraftDir(), ".temp");
-                newFile.delete();
+            boolean isSaved = FileUtils.saveXmlFile(toolkit.getTempDir(), saveFileName, doc);
+
+            if(isSaved) {
+                oldFileName = toolkit.getTempDir() + saveFileName;
+                if ("shareAPK".equals(callingFunction) || "saveAPK".equals(callingFunction)){
+                    Toast.makeText(this, "APK Generated", Toast.LENGTH_SHORT).show();
+                }
+                return oldFileName;
             }
             return null;
 
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if("TemplateActivity".equals( lastActivity)){
+            //ask user if to be saved as project as draft.
+                    whatToDo();
+        }
+        else if("projectFragment".equals(lastFragment)){
+            //update existing project
+            ReturnValidDetails obj = detailsValid("saveProject");
+            if(obj.result)
+                saveProject(obj);
+        }
+        else if("draftFragment".equals(lastFragment)){
+            //update existing draft
+            ReturnValidDetails obj = detailsValid("saveDraft");
+            if(obj.result)
+                saveDraft(obj);
+            super.onBackPressed();
+        }
+    }
+
+    /**
+     * Converts the current TemplateInterface object into a xml file. Xml file is saved in DRAFT
+     * Directory (defined in constants). File name is of the format: draft<0-X>.buildmlearn
+     *
+     * @return Absolute path of the saved file. Null if there is some error.
+     * @brief Saves the current project into a .buildmlearn file.
+     */
+    private String saveDraft(ReturnValidDetails obj) {
+
+        Document doc = obj.doc;
+        Element dataElement = obj.element;
+
+        for (Element item : selectedTemplate.getItems(doc)) {
+            dataElement.appendChild(item);
+        }
+
+
+        int draftFileIndex = 0;
+        File draftDir = new File(toolkit.getDraftDir());
+        String probableFileName = "draft" + draftFileIndex + ".buildmlearn";
+        File probableFile = new File(draftDir, probableFileName);
+
+        while (probableFile.exists()) {
+            draftFileIndex++;
+            probableFileName = "draft" + draftFileIndex + ".buildmlearn";
+            probableFile = new File(draftDir, probableFileName);
+        }
+
+        File tempFile = new File(toolkit.getDraftDir(), ".temp");
+        File oldFile = null;
+        if (oldFileName != null)
+            oldFile = new File(oldFileName);
+        
+        FileUtils.saveXmlFile(toolkit.getDraftDir(), ".temp", doc);
+        if (oldFile == null ) {
+            tempFile.renameTo(probableFile);
+            Toast.makeText(getApplicationContext(), "Draft saved successfully", Toast.LENGTH_SHORT).show();
+            finish();
+            return toolkit.getDraftDir() + probableFileName;
+        } else if(!FileUtils.equalContent(tempFile, oldFile)) {
+            tempFile.renameTo(probableFile);
+            Toast.makeText(getApplicationContext(), "Draft saved successfully", Toast.LENGTH_SHORT).show();
+            return toolkit.getDraftDir() + probableFileName;
+        } else {
+            File newFile = new File(toolkit.getDraftDir(), ".temp");
+            newFile.delete();
         }
         return null;
     }
@@ -798,16 +863,21 @@ public class TemplateEditor extends AppCompatActivity {
      * String message contains file response which will be filepath if successfully saved and otherwise error message.
      */
     private void startSimulator() {
-        String message = saveProject();
-        if (message == null || message.equals("")) {
-            Toast.makeText(this, "Build unsuccessful", Toast.LENGTH_SHORT).show();
+        String message = generateAPK("startSimulator");
+
+        if ("empty file".equals(message)){
+            Toast.makeText(getApplicationContext(), "Failed to start simulator.\n" +
+                                                    "Please insert some data.", Toast.LENGTH_SHORT).show();
+            return;
+        } else if ("insufficient".equals(message)){
+            Toast.makeText(getApplicationContext(), "   Failed to start simulator.\n" +
+                                                    "Enter at least one question.", Toast.LENGTH_SHORT).show();
+            return;
+        } else if ("".equals(message)) {
+            Toast.makeText(this, "Couldn't start simulator.", Toast.LENGTH_SHORT).show();
             return;
         }
-        else if("File already exists".equals(message))
-        {
-            titleEditText.setError("Template Already exists");
-            return;
-        }
+
         Intent simulatorIntent = new Intent(getApplicationContext(), Simulator.class);
         simulatorIntent.putExtra(Constants.TEMPLATE_ID, templateId);
         simulatorIntent.putExtra(Constants.SIMULATOR_FILE_PATH, message);
@@ -909,6 +979,142 @@ public class TemplateEditor extends AppCompatActivity {
             mApkGenerationDialog.dismiss();
             mApkGenerationDialog = null;
         }
+    }
+
+    /**
+     * @brief Checks title, author name and document data.
+     * @return object of ReturnValidDetails which  doc, element and a boolean variable
+     */
+    private ReturnValidDetails detailsValid ( String callingFunction) {
+
+        ReturnValidDetails obj = new ReturnValidDetails();
+
+        EditText titleEdit = (EditText)findViewById(R.id.template_title);
+        assert titleEdit != null;
+        String title = ((EditText) findViewById(R.id.template_title)).getText().toString().trim();
+        if("".equals(title)){
+            titleEdit.requestFocus();
+            titleEdit.setError("Enter project title.");
+            obj.result = false;
+            return obj;
+        }
+        obj.title = title;
+
+        EditText authorEdit = (EditText)findViewById(R.id.author_name);
+        assert authorEdit != null;
+        String author = ((EditText) findViewById(R.id.author_name)).getText().toString().trim();
+        if("".equals(author)){
+            authorEdit.requestFocus();
+            authorEdit.setError("Enter author name.");
+            obj.result = false;
+            return obj;
+        }
+        obj.author = author;
+
+        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder docBuilder;
+
+        try{
+            docBuilder = docFactory.newDocumentBuilder();
+            Document doc = docBuilder.newDocument();
+
+            Attr attr = doc.createAttribute("type");
+            attr.setValue(getResources().getString(template.getType()));
+
+            Element rootElement = doc.createElement("buildmlearn_application");
+            rootElement.setAttributeNode(attr);
+
+            Element authorElement = doc.createElement("author");
+            rootElement.appendChild(authorElement);
+
+            Element nameElement = doc.createElement("name");
+            nameElement.appendChild(doc.createTextNode(author));
+
+            authorElement.appendChild(nameElement);
+
+            Element titleElement = doc.createElement("title");
+            titleElement.appendChild(doc.createTextNode(title));
+            rootElement.appendChild(titleElement);
+
+            doc.appendChild(rootElement);
+            Element dataElement = doc.createElement("data");
+            rootElement.appendChild(dataElement);
+
+            obj.doc = doc;
+            obj.element = dataElement;
+
+            if(callingFunction.equals("saveProject")) {
+                if (selectedTemplate.getItems(doc).size() == 0 || (selectedTemplate.getItems(doc).size() < 2 && (templateId == 5 || templateId == 7))) {
+                    Toast.makeText(this, "Cannot save an empty project.", Toast.LENGTH_SHORT).show();
+                    obj.result = false;
+                    return obj;
+                }
+            }
+
+            if(callingFunction.equals("saveDraft")) {
+                if (selectedTemplate.getItems(doc).size() == 0) {
+                    Toast.makeText(this, "Cannot save an empty draft.", Toast.LENGTH_SHORT).show();
+                    obj.result = false;
+                    return obj;
+                }
+            }
+
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        }
+
+        return obj;
+    }
+
+    /**
+     * Asks the user if the current data is to be saved as a project or draft. Depending on the user input it calls the intended function.
+     */
+
+    private void whatToDo() {
+        AlertDialog.Builder builderNew = new AlertDialog.Builder(this);
+
+        builderNew.setTitle("Confirm action.");
+        builderNew.setMessage("Save as project or draft?");
+
+        builderNew.setPositiveButton("Project", new DialogInterface.OnClickListener() {
+
+            public void onClick(DialogInterface dialog, int which) {
+                ReturnValidDetails obj = detailsValid("saveProject");
+                if(obj.result)
+                    saveProject(obj);
+            }
+        });
+
+        builderNew.setNegativeButton("Draft", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                ReturnValidDetails obj = detailsValid("saveDraft");
+                if(obj.result)
+                    saveDraft(obj);
+            }
+        });
+
+        builderNew.setNeutralButton("Discard", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                finish();
+            }
+        });
+
+        AlertDialog alert = builderNew.create();
+        alert.show();
+    }
+
+    class ReturnValidDetails {
+
+        String title;
+        String author;
+        Document doc = null;
+        Element element = null;
+        boolean result = true;
     }
 
 }
