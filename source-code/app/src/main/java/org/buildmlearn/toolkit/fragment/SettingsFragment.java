@@ -2,6 +2,7 @@ package org.buildmlearn.toolkit.fragment;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,7 +13,6 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -88,7 +88,22 @@ public class SettingsFragment extends PreferenceFragment {
                 return true;
             }
         });
+        prefUsername.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                if ("".equals(newValue)) {
+                    Toast.makeText(getActivity(), R.string.enter, Toast.LENGTH_LONG).show();
+                    return false;
+                } else if (newValue != null && !Character.isLetterOrDigit(((String) newValue).charAt(0))) {
+                    Toast.makeText(getActivity(), R.string.name_valid_msg, Toast.LENGTH_LONG).show();
+                    return false;
+                }
+                prefUsername.setSummary((String) newValue);
+                return true;
+            }
+        });
         prefUsername.setSummary(preferences.getString(getString(R.string.key_user_name), ""));
+
     }
 
     public void initRestoreProjectDialog() {
@@ -97,28 +112,52 @@ public class SettingsFragment extends PreferenceFragment {
         startActivityForResult(intent, REQUEST_PICK_APK);
     }
 
-    public void resetUserName(){
+    public void resetUserName() {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.dialog_settings_your_name, null);
         final EditText editInput = (EditText) dialogView.findViewById(R.id.et_dialog_settings_your_name);
         editInput.setText(prefUsername.getSummary());
+
         final AlertDialog dialog =
                 new AlertDialog.Builder(getActivity())
                         .setTitle(R.string.title_user_name)
                         .setView(dialogView)
                         .setNegativeButton(R.string.dialog_no, null)
-                        .setPositiveButton(R.string.dialog_yes, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                String enteredName = editInput.getText().toString();
-                                if (!TextUtils.isEmpty(enteredName)){
-                                    prefUsername.getEditor().putString(getString(R.string.key_user_name), enteredName).commit();
-                                    prefUsername.setSummary(editInput.getText().toString());
-                                }
-                                dialog.dismiss();
-                            }
-                        }).create();
+                        .setPositiveButton(R.string.dialog_yes, null).create();
+
         dialog.show();
+
+        dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (validated(editInput)) {
+                    String enteredName = editInput.getText().toString();
+                    prefUsername.getEditor().putString(getString(R.string.key_user_name), enteredName).commit();
+                    prefUsername.setSummary(editInput.getText().toString());
+                    dialog.dismiss();
+                }
+
+            }
+        });
+    }
+
+    private boolean validated(EditText editInput) {
+        if (editInput == null) {
+            return false;
+        }
+
+        String authorText = editInput.getText().toString().trim();
+        Context mContext = getActivity();
+
+        if ("".equals(authorText)) {
+            editInput.setError(mContext.getString(R.string.valid_msg_name));
+            return false;
+        } else if (!Character.isLetterOrDigit(authorText.charAt(0))) {
+            editInput.setError(mContext.getString(R.string.title_valid));
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -155,14 +194,14 @@ public class SettingsFragment extends PreferenceFragment {
                             public void onFail() {
                                 processDialog.dismiss();
                                 final AlertDialog dialog = new AlertDialog.Builder(getActivity())
-                                                .setTitle(R.string.dialog_restore_title)
-                                                .setMessage(R.string.dialog_restore_failed)
-                                                .setPositiveButton(R.string.info_template_ok, new DialogInterface.OnClickListener() {
-                                                    @Override
-                                                    public void onClick(DialogInterface dialog, int which) {
-                                                        dialog.dismiss();
-                                                    }
-                                                }).create();
+                                        .setTitle(R.string.dialog_restore_title)
+                                        .setMessage(R.string.dialog_restore_failed)
+                                        .setPositiveButton(R.string.info_template_ok, new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.dismiss();
+                                            }
+                                        }).create();
                                 dialog.show();
                             }
 
@@ -170,14 +209,14 @@ public class SettingsFragment extends PreferenceFragment {
                             public void onFail(Exception e) {
                                 processDialog.dismiss();
                                 final AlertDialog dialog = new AlertDialog.Builder(getActivity())
-                                                .setTitle(R.string.dialog_restore_title)
-                                                .setMessage(R.string.dialog_restore_failed)
-                                                .setPositiveButton(R.string.info_template_ok, new DialogInterface.OnClickListener() {
-                                                    @Override
-                                                    public void onClick(DialogInterface dialog, int which) {
-                                                        dialog.dismiss();
-                                                    }
-                                                }).create();
+                                        .setTitle(R.string.dialog_restore_title)
+                                        .setMessage(R.string.dialog_restore_failed)
+                                        .setPositiveButton(R.string.info_template_ok, new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.dismiss();
+                                            }
+                                        }).create();
                                 dialog.show();
                             }
                         });
@@ -188,14 +227,14 @@ public class SettingsFragment extends PreferenceFragment {
                         e.printStackTrace();
 
                         final AlertDialog dialog = new AlertDialog.Builder(getActivity())
-                                        .setTitle(R.string.dialog_restore_title)
-                                        .setMessage(R.string.dialog_restore_fileerror)
-                                        .setPositiveButton(R.string.info_template_ok, new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                dialog.dismiss();
-                                            }
-                                        }).create();
+                                .setTitle(R.string.dialog_restore_title)
+                                .setMessage(R.string.dialog_restore_fileerror)
+                                .setPositiveButton(R.string.info_template_ok, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                }).create();
                         dialog.show();
                     }
 
@@ -208,12 +247,13 @@ public class SettingsFragment extends PreferenceFragment {
         }
 
     }
-    private class AsyncTaskRunner extends AsyncTask<String,Void,Float> {
+
+    private class AsyncTaskRunner extends AsyncTask<String, Void, Float> {
         private ProgressDialog progressDialog;
 
         @Override
         protected void onPreExecute() {
-            progressDialog=new ProgressDialog(getActivity());
+            progressDialog = new ProgressDialog(getActivity());
             progressDialog.setTitle("Deleting...");
             progressDialog.setMessage("Deleting Temporary file");
             progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);

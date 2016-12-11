@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/menu_top"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/menu_home"
+            android:title="@string/menu_home"
+            android:visible="true" />
+        <item
+            android:id="@+id/nav_saved_projects"
+            android:icon="@drawable/menu_open"
+            android:title="@string/menu_load_project"
+            android:visible="true" />
+        <item
+            android:id="@+id/nav_saved_apks"
+            android:icon="@drawable/ic_android"
+            android:title="@string/menu_load_apks"
+            android:visible="true" />
+        <item
+            android:id="@+id/nav_drafts"
+            android:icon="@drawable/menu_drafts"
+            android:title="@string/menu_drafts"
+            android:visible="true" />
+
+    </group>
+
+    <group
+        android:id="@+id/menu_bottom">
+
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/menu_settings"
+            android:title="@string/menu_settings"
+            android:visible="true"
+            android:checkable="true" />
+        <item
+            android:id="@+id/nav_howto"
+            android:icon="@drawable/menu_how_to"
+            android:title="@string/menu_how_to"
+            android:visible="true" />
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/menu_info"
+            android:title="@string/menu_about_us"
+            android:visible="true" />
+
+    </group>
+
+
+</menu>

@@ -30,7 +30,7 @@
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#29A6D4"
+        android:background="@android:color/transparent"
         android:textAllCaps="false"
         android:id="@+id/skip_button" />
 
