@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.BaseAdapter;
@@ -19,7 +20,6 @@ import org.buildmlearn.toolkit.model.Template;
 import org.buildmlearn.toolkit.model.TemplateInterface;
 import org.buildmlearn.toolkit.utilities.FileDialog;
 import org.buildmlearn.toolkit.views.TextViewPlus;
-import android.support.v7.app.AlertDialog;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -49,26 +49,26 @@ public class ComprehensionTemplate implements TemplateInterface {
         metaData = new ArrayList<>();
     }
 
-    private static boolean validated(Context context, EditText title, EditText passage, EditText timer) {
+    private static boolean validated( Context context, EditText title, EditText passage, EditText timer) {
         if (title == null || passage == null || timer == null) {
             return false;
         }
 
-        String titleText = title.getText().toString();
-        String passageText = passage.getText().toString();
-        String timerText = timer.getText().toString();
+        String titleText = title.getText().toString().trim();
+        String passageText = passage.getText().toString().trim();
+        String timerText = timer.getText().toString().trim();
 
-        if (timerText.length() > 9) {
-            Toast.makeText(context, R.string.comprehension_template_timer_correct_hint, Toast.LENGTH_SHORT).show();
+        if ("".equals(titleText)) {
+            title.setError(context.getString(R.string.comprehension_template_title_hint));
             return false;
-        } else if ("".equals(titleText)) {
-            Toast.makeText(context, R.string.comprehension_template_title_hint, Toast.LENGTH_SHORT).show();
+        } else if ("".equals(passageText)) {
+            passage.setError(context.getString(R.string.comprehension_template_passage_hint));
             return false;
-        } else if (passageText.equals("")) {
-            Toast.makeText(context, R.string.comprehension_template_passage_hint, Toast.LENGTH_SHORT).show();
+        }else if (timerText.length() > 9) {
+            timer.setError(context.getString(R.string.comprehension_template_timer_correct_hint));
             return false;
-        } else if (timerText.equals("")) {
-            Toast.makeText(context, R.string.comprehension_template_timer_hint, Toast.LENGTH_SHORT).show();
+        } else if ("".equals(timerText)) {
+            timer.setError(context.getString(R.string.comprehension_template_timer_hint));
             return false;
         }
 
@@ -137,8 +137,8 @@ public class ComprehensionTemplate implements TemplateInterface {
         for (RadioButton button : buttons) {
             if (button.getId() == id) {
                 int index = buttons.indexOf(button);
-                if (options.get(index).getText().toString().equals("")) {
-                    Toast.makeText(context, "Enter a valid option before marking it as answer", Toast.LENGTH_LONG).show();
+                if ("".equals(options.get(index).getText().toString().trim())) {
+                    options.get(index).setError(context.getString(R.string.valid_before_setting_answer));
                     button.setChecked(false);
                     return;
                 } else {
@@ -200,42 +200,67 @@ public class ComprehensionTemplate implements TemplateInterface {
         dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 boolean isValidated = true;
+
+                if ("".equals(question.getText().toString().trim())) {
+                    question.setError(activity.getString(R.string.enter_question));
+                    isValidated = false;
+                    return;
+                }
+
+                if(options.get(0).getText().toString().trim().equals("")){
+                    options.get(0).setError(activity.getString(R.string.cannot_be_empty));
+                    isValidated = false;
+                    return;
+                }
+                if(options.get(1).getText().toString().trim().equals("")){
+                    options.get(1).setError(activity.getString(R.string.cannot_be_empty));
+                    isValidated = false;
+                    return;
+                }
+                if(options.get(2).getText().toString().trim().equals("") && !options.get(3).getText().toString().trim().equals("")){
+                    options.get(2).hasFocus();
+                    options.get(2).setError(activity.getString(R.string.comprehension_select_option_3_first));
+                    isValidated = false;
+                    return;
+                }
+
+                int correctAnswer = 0;
                 int checkedAns = getCheckedAnswer(buttons);
+
                 if (checkedAns < 0) {
-                    Toast.makeText(activity, "Choose a correct option", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity, R.string.comprehension_template_choose_correct_option, Toast.LENGTH_SHORT).show();
                     isValidated = false;
-                }
-                if (question.getText().toString().equals("")) {
-
-                    question.setError("Question is required");
-                    isValidated = false;
+                    return;
                 }
 
-                int optionCount = 0;
                 for (EditText option : options) {
-                    if (!option.getText().toString().equals("")) {
-                        optionCount++;
+                    if ("".equals(option.getText().toString().trim())){
+                        option.setText("");
+                        continue;
                     }
-                }
-                if (optionCount < 2) {
-                    Toast.makeText(activity, "Minimum two multiple answers are required.", Toast.LENGTH_SHORT).show();
-                    isValidated = false;
+                    if (option.getText().toString()!= null && "".equals(option.getText().toString().trim())) {
+                        option.getText().clear();
+                        option.setError(activity.getString(R.string.comprehension_template_valid_option));
+                        isValidated = false;
+                        return;
+                    }
                 }
 
                 if (isValidated) {
                     dialog.dismiss();
                     ArrayList<String> answerOptions = new ArrayList<>();
-                    int correctAnswer = 0;
+                    correctAnswer = 0;
                     for (int i = 0; i < buttons.size(); i++) {
-                        if (buttons.get(i).isChecked() && !options.get(i).getText().toString().equals("")) {
+                        if (buttons.get(i).isChecked() && !"".equals(options.get(i).getText().toString().trim())) {
                             correctAnswer = answerOptions.size();
-                            answerOptions.add(options.get(i).getText().toString());
-                        } else if (!options.get(i).getText().toString().equals("")) {
-                            answerOptions.add(options.get(i).getText().toString());
+                            answerOptions.add(options.get(i).getText().toString().trim());
+                        } else if (!"".equals(options.get(i).getText().toString().trim())) {
+                            answerOptions.add(options.get(i).getText().toString().trim());
                         }
                     }
-                    String questionText = question.getText().toString();
+                    String questionText = question.getText().toString().trim();
                     comprehensionData.add(new ComprehensionModel(questionText, answerOptions, correctAnswer));
                     setEmptyView(activity);
                     adapter.notifyDataSetChanged();
@@ -283,11 +308,11 @@ public class ComprehensionTemplate implements TemplateInterface {
             @Override
             public void onClick(View v) {
 
-                if (validated(activity, title, passage, timer)) {
+                if (validated(activity,title, passage, timer)) {
 
-                    String titleText = title.getText().toString();
-                    String passageText = passage.getText().toString();
-                    long timerLong = Long.parseLong(timer.getText().toString());
+                    String titleText = title.getText().toString().trim();
+                    String passageText = passage.getText().toString().trim();
+                    long timerLong = Long.parseLong(timer.getText().toString().trim());
                     ComprehensionMetaModel temp = new ComprehensionMetaModel(titleText, passageText, timerLong);
                     metaData.add(temp);
                     setEmptyView(activity);
@@ -321,8 +346,8 @@ public class ComprehensionTemplate implements TemplateInterface {
             final EditText passage = (EditText) dialogView.findViewById(R.id.meta_passage);
             final EditText timer = (EditText) dialogView.findViewById(R.id.meta_timer);
             title.setText(data.getTitle());
-            passage.setText(data.getPassage());
-            timer.setText(String.valueOf(data.getTime()));
+            passage.setText(data.getPassage().trim());
+            timer.setText(String.valueOf(data.getTime()).trim());
 
             dialogView.findViewById(R.id.upload).setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -343,11 +368,11 @@ public class ComprehensionTemplate implements TemplateInterface {
                 @Override
                 public void onClick(View v) {
 
-                    if (validated(activity, title, passage, timer)) {
+                    if (validated(activity,title, passage, timer)) {
 
-                        String titleText = title.getText().toString();
-                        String passageText = passage.getText().toString();
-                        long timerLong = Long.parseLong(timer.getText().toString());
+                        String titleText = title.getText().toString().trim();
+                        String passageText = passage.getText().toString().trim();
+                        long timerLong = Long.parseLong(timer.getText().toString().trim());
 
                         data.setTitle(titleText);
                         data.setPassage(passageText);
@@ -392,7 +417,7 @@ public class ComprehensionTemplate implements TemplateInterface {
                 options.get(i).setText(data.getOptions().get(i));
             }
 
-            question.setText(data.getQuestion());
+            question.setText(data.getQuestion().trim());
             buttons.get(data.getCorrectAnswer()).setChecked(true);
 
             for (final RadioButton button : buttons) {
@@ -409,45 +434,67 @@ public class ComprehensionTemplate implements TemplateInterface {
                 public void onClick(View v) {
 
                     boolean isValidated = true;
+
+                    if ("".equals(question.getText().toString().trim())) {
+                        question.setError(activity.getString(R.string.enter_question));
+                        isValidated = false;
+                    }
+
+                    if(options.get(0).getText().toString().trim().equals("")){
+                        options.get(0).setError(activity.getString(R.string.cannot_be_empty));
+                        isValidated = false;
+                        return;
+                    }
+                    if(options.get(1).getText().toString().trim().equals("")){
+                        options.get(1).setError(activity.getString(R.string.cannot_be_empty));
+                        isValidated = false;
+                        return;
+                    }
+                    if(options.get(2).getText().toString().trim().equals("") && !options.get(3).getText().toString().trim().equals("")){
+                        options.get(2).hasFocus();
+                        options.get(2).setError(activity.getString(R.string.comprehension_select_option_3_first));
+                        isValidated = false;
+                        return;
+                    }
+
+                    int correctAnswer = 0;
                     int checkedAns = getCheckedAnswer(buttons);
+
                     if (checkedAns < 0) {
-                        Toast.makeText(activity, "Choose a correct option", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(activity, R.string.comprehension_template_choose_correct_option, Toast.LENGTH_SHORT).show();
                         isValidated = false;
-                    }
-                    if (question.getText().toString().equals("")) {
-
-                        question.setError("Question is required");
-                        isValidated = false;
+                        return;
                     }
 
-                    int optionCount = 0;
                     for (EditText option : options) {
-                        if (!option.getText().toString().equals("")) {
-                            optionCount++;
+                        if ("".equals(option.getText().toString().trim())){
+                            option.setText("");
+                            continue;
                         }
-                    }
-                    if (optionCount < 2) {
-                        Toast.makeText(activity, "Minimum two multiple answers are required.", Toast.LENGTH_SHORT).show();
-                        isValidated = false;
+                        if (option.getText().toString()!= null && "".equals(option.getText().toString().trim())) {
+                            option.getText().clear();
+                            option.setError(activity.getString(R.string.comprehension_template_valid_option));
+                            isValidated = false;
+                            return;
+                        }
                     }
 
                     if (isValidated) {
                         dialog.dismiss();
                         ArrayList<String> answerOptions = new ArrayList<>();
-                        int correctAnswer = 0;
+                        correctAnswer = 0;
                         for (int i = 0; i < buttons.size(); i++) {
-                            if (buttons.get(i).isChecked() && !options.get(i).getText().toString().equals("")) {
+                            if (buttons.get(i).isChecked() && !"".equals(options.get(i).getText().toString().trim())) {
                                 correctAnswer = answerOptions.size();
-                                answerOptions.add(options.get(i).getText().toString());
-                            } else if (!options.get(i).getText().toString().equals("")) {
-                                answerOptions.add(options.get(i).getText().toString());
+                                answerOptions.add(options.get(i).getText().toString().trim());
+                            } else if (!"".equals(options.get(i).getText().toString().trim())) {
+                                answerOptions.add(options.get(i).getText().toString().trim());
                             }
                         }
-                        String questionText = question.getText().toString();
+                        String questionText = question.getText().toString().trim();
                         comprehensionData.set(position, new ComprehensionModel(questionText, answerOptions, correctAnswer));
                         adapter.notifyDataSetChanged();
                     }
-
                 }
             });
         }

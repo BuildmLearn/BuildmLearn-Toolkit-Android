@@ -70,16 +70,19 @@
     <string name="exit_info">EXIT</string>
     <string name="about_text_info">This application has been developed using the BuildmLearn Toolkit.\n\nTo know more about BuildmLearn Toolkit visit <a href="https://buildmlearn.org/">here</a>.</string>
     <string name="info_thumbnail_info">Info Thumbnail</string>
+    <string name="enter_word">Enter a word.</string>
+    <string name="enter_valid_word">Enter a valid word.</string>
 
     <!-- Flash Card Template-->
     <string name="flash_card_template">FlashCardsTemplate</string>
     <string name="flash_photo_source">Select image source</string>
     <string name="flash_templete_question">Question</string>
     <string name="flash_template_answer">Answer</string>
+    <string name="flash_template_attach_image">Attach an image</string>
     <string name="flash_template_hint">Answer Hint</string>
     <string name="flash_template_question_hint">Enter Question</string>
     <string name="flash_template_anser_hint">Enter Answer</string>
-    <string name="flash_template_hint_hint">Enter Hint</string>
+    <string name="flash_template_hint_hint">Enter Hint (Optional)</string>
 
     <string name="main_title_flash">Learn with FlashCards</string>
     <string name="next_flash">NEXT</string>
@@ -123,7 +126,8 @@
     <string name="video_collection_template_title">Title</string>
     <string name="video_collection_template_description">Description</string>
     <string name="video_collection_template_title_hint">Enter Title</string>
-    <string name="video_collection_template_link_hint">Enter Link</string>
+    <string name="video_collection_template_link_hint">Enter a link</string>
+    <string name="video_collection_template_link_valid_hint">Enter a valid link</string>
     <string name="video_collection_template_description_hint">Enter Description</string>
     <string name="video_collection_or">OR</string>
 
@@ -131,7 +135,7 @@
     <string name="comprehension_title">Comprehension</string>
     <string name="comprehension_template">ComprehensionTemplate</string>
     <string name="comprehension_description">Choose this template to create applications for learning from comprehensions</string>
-    <string name="comprehension_template_title_hint">Enter Title</string>
+    <string name="comprehension_template_title_hint">Enter a title</string>
     <string name="comprehension_template_timer_correct_hint">Max time :: 999,999,999 </string>
 
     <string name="comprehension_navigation_drawer_open">Open navigation drawer</string>
@@ -145,13 +149,17 @@
     <string name="comprehension_go_to_questions">GO TO QUESTIONS</string>
     <string name="comprehension_passage_title">Passage :</string>
     <string name="comprehension_completed_message">Hurrah! You have completed the Comprehension.</string>
+    <string name="valid_before_setting_answer">Enter a valid option before marking it as answer.</string>
+    <string name="comprehension_select_option_3_first">Enter option 3 first.</string>
+    <string name="comprehension_template_choose_correct_option">Choose a correct option.</string>
+    <string name="comprehension_template_valid_option">Enter a valid option.</string>
 
     <!-- Dictation Template-->
     <string name="dictation_title">Dictation</string>
     <string name="dictation_template">DictationTemplate</string>
     <string name="dictation_description">Choose this template to create applications for practising dictation</string>
-    <string name="dictation_template_title_hint">Enter Title</string>
-    <string name="dictation_template_passage_hint">Enter Passage</string>
+    <string name="dictation_template_title_hint">Enter a title</string>
+    <string name="dictation_template_passage_hint">Enter text or upload file.</string>
 
     <!-- MatchTheFollowing Template-->
     <string name="match_title">Match</string>
@@ -330,11 +338,12 @@
     <string name="upload">UPLOAD</string>
     <string name="timer">Timer</string>
     <string name="time_hint">Enter Time in Sec</string>
-    <string name="comprehension_template_passage_hint">Enter Passage</string>
+    <string name="comprehension_template_passage_hint">Enter text or upload file.</string>
     <string name="comprehension_template_timer_hint">Enter time</string>
     <string name="comprehension_edit_meta_title">Edit Meta Details</string>
     <string name="meta_add_help">Click Add button to start adding meta details</string>
     <string name="restart_comprehension">RESTART</string>
+    <string name="video_collection_template_linited_links">Only Youtube, Dailymotion and Vimeo links supported.</string>
 
     <string name="restore_msg">Restoring data from Apk</string>
     <string name="expandbutton">expandButton</string>
@@ -361,8 +370,8 @@
     <string name="enter_first_list_title">Enter First List Title</string>
     <string name="second_list_title">Second List Title</string>
     <string name="enter_second_list_title">Enter Second List Title</string>
-    <string name="match_first_list_title">Enter First List Title</string>
-    <string name="match_second_list_title">Enter Second List Title</string>
+    <string name="match_first_list_title">Enter first list title</string>
+    <string name="match_second_list_title">Enter second list title</string>
     <string name="match_dialog_add_title">Enter two matching topics below</string>
     <string name="first_list_item_match">First List Item</string>
     <string name="second_list_item_match">Second List Item</string>
@@ -392,4 +401,22 @@
     <string name="tutorial_image">Tutorial image</string>
     <string name="create_project">Create Project</string>
     <string name="no_saved_apks">"No Saved Apks yet"</string>
+    <string name="enter_question">Enter a question</string>
+    <string name="enter_answer">Enter an answer</string>
+    <string name="cannot_be_empty">Cannot be empty.</string>
+    <string name="check_sd_card">Please check SD card! Image shot is impossible!</string>
+    <string name="enter_description">Enter the description.</string>
+    <string name="enter_meaning">Enter meaning of the word.</string>
+    <string name="enter_valid_meaning">Enter a valid meaning.</string>
+    <string name="match_main_title">Enter a title.</string>
+    <string name="valid_before_answer">Enter a valid option before marking it as answer.</string>
+    <string name="enter_title">Enter a title.</string>
+    <string name="enter">Enter name</string>
+    <string name="name_valid_msg">Name must start with alphanumeric character</string>
+    <string name="enter_name">Enter name</string>
+    <string name="valid_msg">Name must start with alphanumeric</string>
+    <string name="title_error">Title is required</string>
+    <string name="title_valid">Title must start with alphanumeric</string>
+    <string name="valid_msg_name">Enter valid name</string>
 </resources>
+

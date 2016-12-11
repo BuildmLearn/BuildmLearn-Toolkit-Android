@@ -55,6 +55,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -636,7 +637,13 @@ public class TemplateEditor extends AppCompatActivity {
             authorEditText.setError("Author name is required");
         } else if ("".equals(title)) {
             assert titleEditText != null;
-            titleEditText.setError("Title is required");
+            titleEditText.setError(getResources().getString(R.string.title_error));
+        } else if (!Character.isLetterOrDigit(author.charAt(0))) {
+            assert authorEditText != null;
+            authorEditText.setError(getResources().getString(R.string.valid_msg));
+        } else if (!Character.isLetterOrDigit(title.charAt(0))) {
+            assert titleEditText != null;
+            titleEditText.setError(getString(R.string.title_valid));
         } else {
 
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
