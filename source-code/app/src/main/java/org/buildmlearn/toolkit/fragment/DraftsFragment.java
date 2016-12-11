@@ -148,6 +148,7 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
                 Intent intent = new Intent(getActivity(), TemplateEditor.class);
                 intent.putExtra(Constants.TEMPLATE_ID, i);
                 intent.putExtra(Constants.PROJECT_FILE_PATH, project.getFullPath());
+                intent.putExtra("lastFragment","draftFragment");
                 startActivity(intent);
                 return;
             }
