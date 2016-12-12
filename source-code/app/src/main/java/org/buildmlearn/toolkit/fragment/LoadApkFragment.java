@@ -368,8 +368,7 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
                         SavedApi tempApi;
                         for (int i = 0; i < allsavedApis.size(); i++) {
                             if (allsavedApis.get(i).getName().contains(text)) {
-                                tempApi = new SavedApi(allsavedApis.get(i).getFile(), allsavedApis.get(i).getName(), allsavedApis.get(i).getUnformattedDate());
-                                savedApis.add(tempApi);
+                                savedApis.add(allsavedApis.get(i));
                             }
                         }
                         mAdapter.notifyDataSetChanged();

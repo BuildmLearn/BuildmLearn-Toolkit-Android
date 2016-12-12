@@ -250,7 +250,6 @@
     <!-- Preference Data-->
 
     <string name="project_settings">Project Settings</string>
-    <string name="key_developer_mode">debug_key</string>
     <string name="developer_mode">Developer Mode</string>
     <string name="summary_developer_mode">Developer mode disables publishing of Apk to BuildmLearn Store.</string>
     <string name="title_user_name">Enter your name</string>

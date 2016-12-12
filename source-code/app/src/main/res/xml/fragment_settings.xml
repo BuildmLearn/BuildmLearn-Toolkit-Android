@@ -2,15 +2,6 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory android:title="@string/project_settings">
-
-        <CheckBoxPreference
-            android:key="@string/key_developer_mode"
-            android:summary="@string/summary_developer_mode"
-            android:title="@string/developer_mode" />
-
-    </PreferenceCategory>
-
     <PreferenceCategory android:title="@string/app_settings">
 
         <Preference
