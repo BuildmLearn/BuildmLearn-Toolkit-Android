@@ -1,4 +1,5 @@
 package org.buildmlearn.toolkit.activity;
+
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -54,7 +55,6 @@ import org.xml.sax.SAXException;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -140,6 +140,22 @@ public class TemplateEditor extends AppCompatActivity {
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
                     PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE_RESULT);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE_RESULT: {
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    ToolkitApplication mToolkitApplication = new ToolkitApplication();
+                    mToolkitApplication.storagePathsValidate();
+                }
+                return;
+            }
+
         }
     }
 

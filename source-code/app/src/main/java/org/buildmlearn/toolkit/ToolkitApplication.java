@@ -18,7 +18,7 @@ public class ToolkitApplication extends Application {
 
     private static String dir;
 
-    private boolean isExternalStorageAvailable = false;
+    private static boolean isExternalStorageAvailable = false;
 
     /**
      * @return Folder path
@@ -31,6 +31,10 @@ public class ToolkitApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        storagePathsValidate();
+    }
+
+    public void storagePathsValidate() {
         if (checkExternalStorage()) {
             isExternalStorageAvailable = true;
             dir = Environment.getExternalStorageDirectory().getAbsolutePath();
@@ -50,8 +54,6 @@ public class ToolkitApplication extends Application {
                 f.mkdirs();
             }
         }
-
-
     }
 
     /**
