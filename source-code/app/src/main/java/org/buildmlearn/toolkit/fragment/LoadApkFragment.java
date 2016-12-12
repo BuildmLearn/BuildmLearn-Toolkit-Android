@@ -453,7 +453,10 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
             }
         }
         if(deleted)
-            Toast.makeText(activity, "Project Successfully Deleted!", Toast.LENGTH_SHORT).show();
+            if(selectedPositions.size()==1)
+                Toast.makeText(activity,"Project Successfully Deleted", Toast.LENGTH_SHORT).show();
+            else
+                Toast.makeText(activity,selectedPositions.size()+" Projects Successfully Deleted", Toast.LENGTH_SHORT).show();
         else
             Toast.makeText(activity, "Project Deletion Failed!", Toast.LENGTH_SHORT).show();
     }
