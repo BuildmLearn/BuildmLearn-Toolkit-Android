@@ -18,14 +18,12 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="buildmlearn_welcome_text">The BuildmLearn Toolkit is an easy-to-use program that helps users make mobile apps without any knowledge of application development.\n\nThe toolkit helps creating mobile application with various functionality and allows teachers to input their custom content.</string>
-    <string name="no_item">No items</string>
     <string name="add_item_help">Click Add button to start adding items</string>
 
     <!-- Draft -->
     <string name="draft_deleted">Draft Successfully Deleted!</string>
     <string name="draft_deleted_failed">Draft Deletion Failed!</string>
     <string name="dialog_delete_all_msg">Are you sure you clear you Draft?</string>
-    <string name="dialog_delete_multiple">Are you sure you want to delete the selected items?</string>
     <string name="dialog_delete_all_title">Delete All</string>
     <string name="no_saved_drafts">"No Saved Drafts Yet"</string>
 
@@ -42,9 +40,6 @@
     <string name="dialog_no">No</string>
     <string name="dialog_delete_msg">Are you sure you want to delete this item?</string>
     <string name="dialog_delete_title">Delete</string>
-
-
-    <string name="about_us">This application has been developed using the BuildmLearn Toolkit.\n\nTo know more about BuildmLearn Toolkit visit http://buildmlearn.org/</string>
     <string name="title_activity_simulator">Simulator</string>
     <string name="title_activity_template">Templates</string>
 
@@ -55,12 +50,10 @@
     <string name="info_template_meaning">Description</string>
     <string name="info_template_meaning_hint">Enter description</string>
     <string name="info_template_add">Add</string>
-    <string name="info_template_delete">Delete</string>
     <string name="info_template_ok">OK</string>
     <string name="info_template_cancel">Cancel</string>
     <string name="info_add_new_title">Add new item</string>
     <string name="info_edit_title">Edit item</string>
-    <string name="info_delete_item_content">Are you sure you want to delete this item?</string>
     <string name="info_template">InfoTemplate</string>
     <string name="main_title_info">Info App</string>
     <string name="list_empty_info">List is Empty!</string>
@@ -71,7 +64,6 @@
     <string name="about_text_info">This application has been developed using the BuildmLearn Toolkit.\n\nTo know more about BuildmLearn Toolkit visit <a href="https://buildmlearn.org/">here</a>.</string>
     <string name="info_thumbnail_info">Info Thumbnail</string>
     <string name="enter_word">Enter a word.</string>
-    <string name="enter_valid_word">Enter a valid word.</string>
 
     <!-- Flash Card Template-->
     <string name="flash_card_template">FlashCardsTemplate</string>
@@ -125,7 +117,6 @@
     <string name="video_collection_template_link">Link</string>
     <string name="video_collection_template_title">Title</string>
     <string name="video_collection_template_description">Description</string>
-    <string name="video_collection_template_title_hint">Enter Title</string>
     <string name="video_collection_template_link_hint">Enter a link</string>
     <string name="video_collection_template_link_valid_hint">Enter a valid link</string>
     <string name="video_collection_template_description_hint">Enter Description</string>
@@ -309,7 +300,6 @@
     <string name="restore_progress_dialog">Restoring</string>
     <string name="apk_msg">Inserting data into Apk</string>
     <string name="video_fetching_error">Error while fetching video info!</string>
-    <string name="video_support_error">We only support Youtube, Dailymotion and Vimeo.</string>
     <string name="network_error">Network Unavailable! Please try later.</string>
     <string name="menu_load_apks">Saved APKs</string>
 
@@ -398,7 +388,6 @@
     <string name="template_thumbnail">Template thumbnail</string>
     <string name="show_more">Show more</string>
     <string name="tutorial_image">Tutorial image</string>
-    <string name="create_project">Create Project</string>
     <string name="no_saved_apks">"No Saved Apks yet"</string>
     <string name="enter_question">Enter a question</string>
     <string name="enter_answer">Enter an answer</string>
@@ -406,7 +395,6 @@
     <string name="check_sd_card">Please check SD card! Image shot is impossible!</string>
     <string name="enter_description">Enter the description.</string>
     <string name="enter_meaning">Enter meaning of the word.</string>
-    <string name="enter_valid_meaning">Enter a valid meaning.</string>
     <string name="match_main_title">Enter a title.</string>
     <string name="valid_before_answer">Enter a valid option before marking it as answer.</string>
     <string name="enter_title">Enter a title.</string>
