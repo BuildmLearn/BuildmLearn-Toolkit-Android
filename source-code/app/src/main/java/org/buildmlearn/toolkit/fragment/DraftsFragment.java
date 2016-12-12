@@ -179,6 +179,7 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
         if (mAdapter != null) {
             reloadContent();
         }
+        setEmptyText();
         super.onResume();
     }
 
