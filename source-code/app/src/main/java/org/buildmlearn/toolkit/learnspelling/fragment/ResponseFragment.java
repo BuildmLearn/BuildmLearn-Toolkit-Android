@@ -67,7 +67,7 @@ public class ResponseFragment extends Fragment
                                 new AlertDialog.Builder(getActivity());
                         builder.setTitle(String.format("%1$s", getString(R.string.comprehension_about_us)));
                         builder.setMessage(getResources().getText(R.string.comprehension_about_text));
-                        builder.setPositiveButton("OK", null);
+                        builder.setPositiveButton(getString(R.string.ok), null);
                         AlertDialog welcomeAlert = builder.create();
                         welcomeAlert.show();
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
@@ -142,16 +142,16 @@ public class ResponseFragment extends Fragment
 
         TextView mTv_WordNumber = (TextView) rootView.findViewById(R.id.intro_number);
 
-        mTv_WordNumber.setText(String.format(Locale.ENGLISH, "Word #%d of %d", Integer.parseInt(spellId), numQues));
+        mTv_WordNumber.setText(String.format(Locale.ENGLISH, getString(R.string.R_string_word)+Integer.parseInt(spellId)+getString(R.string.of_score)+numQues));
 
         String message;
         String word_text_view;
         if (word.trim().equalsIgnoreCase(answered)) {
-            message = "Great! You got it right.";
+            message = getString(R.string.RightAnswer);
             word_text_view = "Correct Spell: &nbsp<font color='green'>" + word + "</font>";
         } else {
-            message = "Oops! You got it wrong.";
-            word_text_view = "Correct Spell:&nbsp <font color=\"#7fe77f\">" + word + "</font> <br />You entered:&nbsp <font color=\"#ee9797\">" + answered + "</font>";
+            message = getString(R.string.WrongAnswer);
+            word_text_view = "Correct Spell:<font color=\"#7fe77f\">" + word + "</font> <br />You entered:&nbsp <font color=\"#ee9797\">" + answered + "</font>";
         }
 
         assert rootView.findViewById(R.id.intro_response) != null;

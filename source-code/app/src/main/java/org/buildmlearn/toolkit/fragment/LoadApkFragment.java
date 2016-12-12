@@ -349,7 +349,7 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
                 actionBar.setCustomView(R.layout.search_bar);
                 actionBar.setDisplayShowTitleEnabled(false);
                 editSearch = (EditText) actionBar.getCustomView().findViewById(R.id.editSearch);
-                editSearch.setHint("Enter Apk name");
+                editSearch.setHint(R.string.EnterAPK);
                 editSearch.addTextChangedListener(new TextWatcher() {
                     @Override
                     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -454,11 +454,11 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
         }
         if(deleted)
             if(selectedPositions.size()==1)
-                Toast.makeText(activity,"Project Successfully Deleted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity,R.string.successDelete1, Toast.LENGTH_SHORT).show();
             else
-                Toast.makeText(activity,selectedPositions.size()+" Projects Successfully Deleted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity,selectedPositions.size()+R.string.sucessdelete2, Toast.LENGTH_SHORT).show();
         else
-            Toast.makeText(activity, "Project Deletion Failed!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, R.string.deletefail, Toast.LENGTH_SHORT).show();
     }
 
     /**

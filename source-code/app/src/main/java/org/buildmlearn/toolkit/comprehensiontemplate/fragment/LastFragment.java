@@ -62,7 +62,7 @@ public class LastFragment extends Fragment {
                                 new AlertDialog.Builder(getActivity());
                         builder.setTitle(String.format("%1$s", getString(R.string.comprehension_about_us)));
                         builder.setMessage(getResources().getText(R.string.comprehension_about_text));
-                        builder.setPositiveButton("OK", null);
+                        builder.setPositiveButton(R.string.quiz_ok, null);
                         AlertDialog welcomeAlert = builder.create();
                         welcomeAlert.show();
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
@@ -79,9 +79,9 @@ public class LastFragment extends Fragment {
 
         db.close();
 
-        ((TextView) rootView.findViewById(R.id.correct)).setText(String.format(Locale.getDefault(), "Total Correct : %1$d", stat[0]));
-        ((TextView) rootView.findViewById(R.id.wrong)).setText(String.format(Locale.getDefault(), "Total Wrong : %1$d", stat[1]));
-        ((TextView) rootView.findViewById(R.id.un_answered)).setText(String.format(Locale.getDefault(), "Total Unanswered : %1$d", stat[2]));
+        ((TextView) rootView.findViewById(R.id.correct)).setText(String.format(Locale.getDefault(), getString(R.string.correct_total)+ stat[0]));
+        ((TextView) rootView.findViewById(R.id.wrong)).setText(String.format(Locale.getDefault(), getString(R.string.total_wrong)+ stat[1]));
+        ((TextView) rootView.findViewById(R.id.un_answered)).setText(String.format(Locale.getDefault(), getString(R.string.total_unanswered)+ stat[2]));
 
         rootView.findViewById(R.id.restart).setOnClickListener(new View.OnClickListener() {
             @Override

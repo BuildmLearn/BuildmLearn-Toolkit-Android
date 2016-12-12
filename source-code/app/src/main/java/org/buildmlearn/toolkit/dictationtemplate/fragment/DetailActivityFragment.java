@@ -94,7 +94,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
                                 new AlertDialog.Builder(getActivity());
                         builder.setTitle(String.format("%1$s", getString(R.string.comprehension_about_us)));
                         builder.setMessage(getResources().getText(R.string.about_text_video));
-                        builder.setPositiveButton("OK", null);
+                        builder.setPositiveButton(R.string.quiz_ok, null);
                         AlertDialog welcomeAlert = builder.create();
                         welcomeAlert.show();
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
@@ -153,7 +153,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
                     public void onClick(View v) {
                         progress = new ProgressDialog(getActivity());
                         progress.setCancelable(false);
-                        progress.setMessage("Loading TTS Engine...");
+                        progress.setMessage(getString(R.string.TTSLoading));
                         progress.show();
 
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -226,10 +226,10 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
                     int result = tts.setLanguage(Locale.US);
                     if (result == TextToSpeech.LANG_MISSING_DATA
                             || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                        Toast.makeText(getContext(), "US English is not supported. Playing in device's default installed language.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), R.string.USEnglishNotSupported, Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(getContext(), "Initialization Failed!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), R.string.TTSFAIL, Toast.LENGTH_SHORT).show();
                 }
             }
         });

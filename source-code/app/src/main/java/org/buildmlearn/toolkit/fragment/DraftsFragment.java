@@ -152,7 +152,7 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
                 return;
             }
         }
-        Toast.makeText(getActivity(), "Invalid project file", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), R.string.InvalidProjectFile, Toast.LENGTH_SHORT).show();
     }
 
     private void setAdapter(DraftProjectAdapter adapter) {
@@ -368,11 +368,11 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
         }
         if(deleted)
             if(selectedPositions.size()==1)
-                Toast.makeText(activity,"Project Successfully Deleted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, R.string.successDelete1, Toast.LENGTH_SHORT).show();
             else
-                Toast.makeText(activity,selectedPositions.size()+" Projects Successfully Deleted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity,selectedPositions.size()+getString(R.string.sucessdelete2), Toast.LENGTH_SHORT).show();
         else
-            Toast.makeText(activity, "Project Deletion Failed!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, R.string.deletefail, Toast.LENGTH_SHORT).show();
     }
 
     /**
