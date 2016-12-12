@@ -418,5 +418,6 @@
     <string name="title_error">Title is required</string>
     <string name="title_valid">Title must start with alphanumeric</string>
     <string name="valid_msg_name">Enter valid name</string>
+    <string name="same_options">Two or more options are same.</string>
 </resources>
 
