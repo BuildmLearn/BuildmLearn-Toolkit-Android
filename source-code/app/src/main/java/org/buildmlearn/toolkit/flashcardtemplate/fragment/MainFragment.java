@@ -67,7 +67,7 @@ public class MainFragment extends Fragment implements NavigationView.OnNavigatio
         Toolbar toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
         toolbar.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary_comprehension));
         toolbar.inflateMenu(R.menu.menu_main_white);
-        toolbar.setTitle(getResources().getString(R.string.main_title_spell));
+        toolbar.setTitle(getResources().getString(R.string.main_title_flash));
 
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
