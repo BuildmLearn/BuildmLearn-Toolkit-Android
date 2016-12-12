@@ -103,6 +103,7 @@ public class SettingsFragment extends PreferenceFragment {
             }
         });
         prefUsername.setSummary(preferences.getString(getString(R.string.key_user_name), ""));
+
     }
 
     public void initRestoreProjectDialog() {
