@@ -9,6 +9,8 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
@@ -181,42 +183,59 @@ public class SettingsFragment extends PreferenceFragment {
                         RestoreThread restore = new RestoreThread(getActivity(), inputStream);
 
                         restore.setRestoreListener(new RestoreThread.OnRestoreComplete() {
+                            Handler mHandler =new Handler(Looper.getMainLooper());
                             @Override
-                            public void onSuccess(File assetFile) {
-                                processDialog.dismiss();
-                                Intent intentProject = new Intent(getActivity(), DeepLinkerActivity.class);
-                                intentProject.setData(Uri.fromFile(assetFile));
-                                getActivity().startActivity(intentProject);
+                            public void
+                            onSuccess(final File assetFile) {
+                                mHandler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        processDialog.dismiss();
+                                        Intent intentProject = new Intent(getActivity(), DeepLinkerActivity.class);
+                                        intentProject.setData(Uri.fromFile(assetFile));
+                                        getActivity().startActivity(intentProject);
+                                    }
+                                });
                             }
 
                             @Override
                             public void onFail() {
-                                processDialog.dismiss();
-                                final AlertDialog dialog = new AlertDialog.Builder(getActivity())
-                                        .setTitle(R.string.dialog_restore_title)
-                                        .setMessage(R.string.dialog_restore_failed)
-                                        .setPositiveButton(R.string.info_template_ok, new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                dialog.dismiss();
-                                            }
-                                        }).create();
-                                dialog.show();
+                                mHandler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        processDialog.dismiss();
+                                        final AlertDialog dialog = new AlertDialog.Builder(getActivity())
+                                                .setTitle(R.string.dialog_restore_title)
+                                                .setMessage(R.string.dialog_restore_failed)
+                                                .setPositiveButton(R.string.info_template_ok, new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialog, int which) {
+                                                        dialog.dismiss();
+                                                    }
+                                                }).create();
+                                        dialog.show();
+                                    }
+                                });
                             }
 
                             @Override
                             public void onFail(Exception e) {
-                                processDialog.dismiss();
-                                final AlertDialog dialog = new AlertDialog.Builder(getActivity())
-                                        .setTitle(R.string.dialog_restore_title)
-                                        .setMessage(R.string.dialog_restore_failed)
-                                        .setPositiveButton(R.string.info_template_ok, new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                dialog.dismiss();
-                                            }
-                                        }).create();
-                                dialog.show();
+                                mHandler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        processDialog.dismiss();
+                                        final AlertDialog dialog = new AlertDialog.Builder(getActivity())
+                                                .setTitle(R.string.dialog_restore_title)
+                                                .setMessage(R.string.dialog_restore_failed)
+                                                .setPositiveButton(R.string.info_template_ok, new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialog, int which) {
+                                                        dialog.dismiss();
+                                                    }
+                                                }).create();
+                                        dialog.show();
+                                    }
+                                });
                             }
                         });
 
