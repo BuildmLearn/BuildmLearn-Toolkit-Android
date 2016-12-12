@@ -90,7 +90,7 @@ public class ResultActivityFragment extends Fragment implements LoaderCallbacks<
                                 new AlertDialog.Builder(getActivity());
                         builder.setTitle(String.format("%1$s", getString(R.string.comprehension_about_us)));
                         builder.setMessage(getResources().getText(R.string.about_text_video));
-                        builder.setPositiveButton("OK", null);
+                        builder.setPositiveButton(R.string.quiz_ok, null);
                         AlertDialog welcomeAlert = builder.create();
                         welcomeAlert.show();
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
@@ -150,7 +150,7 @@ public class ResultActivityFragment extends Fragment implements LoaderCallbacks<
                 String result[] = obj.diff_prettyHtml(llDiffs);
 
                 int numTWords = passage.split(" ").length;
-                ((TextView) rootView.findViewById(R.id.score)).setText(String.format(Locale.ENGLISH, "SCORE : %s / %d", result[1], numTWords));
+                ((TextView) rootView.findViewById(R.id.score)).setText(String.format(Locale.ENGLISH, R.string.score+result[1]+"/"+numTWords));
 
                 ((TextView) rootView.findViewById(R.id.checked_text)).setText(Html.fromHtml(result[0]));
 

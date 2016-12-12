@@ -199,7 +199,7 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                 return;
             }
         }
-        Toast.makeText(getActivity(), "Invalid project file", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), R.string.InvalidProjectFile, Toast.LENGTH_SHORT).show();
     }
 
     private void setAdapter(SavedProjectAdapter adapter) {
@@ -388,7 +388,7 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                 actionBar.setCustomView(R.layout.search_bar);
                 actionBar.setDisplayShowTitleEnabled(false);
                 editSearch = (EditText) actionBar.getCustomView().findViewById(R.id.editSearch);
-                editSearch.setHint("Enter name of Project");
+                editSearch.setHint(R.string.EnterProject);
                 editSearch.addTextChangedListener(new TextWatcher() {
                     @Override
                     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -496,11 +496,11 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
         }
         if(deleted)
             if(selectedPositions.size()==1)
-                Toast.makeText(activity,"Project Successfully Deleted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity,R.string.successDelete1, Toast.LENGTH_SHORT).show();
             else
-                Toast.makeText(activity,selectedPositions.size()+" Projects Successfully Deleted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity,selectedPositions.size()+R.string.sucessdelete2, Toast.LENGTH_SHORT).show();
         else
-            Toast.makeText(activity, "Project Deletion Failed!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, R.string.deletefail, Toast.LENGTH_SHORT).show();
     }
 
     /**

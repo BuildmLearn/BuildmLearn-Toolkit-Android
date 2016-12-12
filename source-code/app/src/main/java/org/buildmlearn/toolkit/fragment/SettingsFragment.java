@@ -272,8 +272,7 @@ public class SettingsFragment extends PreferenceFragment {
         @Override
         protected void onPreExecute() {
             progressDialog = new ProgressDialog(getActivity());
-            progressDialog.setTitle("Deleting...");
-            progressDialog.setMessage("Deleting Temporary file");
+            progressDialog.setMessage(getString(R.string.deleting_temp_files));
             progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progressDialog.setCancelable(false);
             progressDialog.show();
@@ -290,9 +289,9 @@ public class SettingsFragment extends PreferenceFragment {
         protected void onPostExecute(Float size) {
             progressDialog.dismiss();
             if (size != 0) {
-                Toast.makeText(getActivity(), "Deleted " + size + " MB.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getString(R.string.deleted) + size + getString(R.string.MB), Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(getActivity(), "No Temp Files Found!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), R.string.No_temp_files, Toast.LENGTH_SHORT).show();
             }
         }
     }

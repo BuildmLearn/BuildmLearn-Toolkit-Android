@@ -94,7 +94,7 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
                                 new AlertDialog.Builder(getActivity());
                         builder.setTitle(String.format("%1$s", getString(R.string.comprehension_about_us)));
                         builder.setMessage(getResources().getText(R.string.about_text_info));
-                        builder.setPositiveButton("OK", null);
+                        builder.setPositiveButton(getString(R.string.ok), null);
                         AlertDialog welcomeAlert = builder.create();
                         welcomeAlert.show();
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
