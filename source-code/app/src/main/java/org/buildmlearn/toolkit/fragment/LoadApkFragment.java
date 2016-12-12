@@ -365,9 +365,8 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
                     public void afterTextChanged(Editable s) {
                         String text = s.toString().trim();
                         savedApis.clear();
-                        SavedApi tempApi;
                         for (int i = 0; i < allsavedApis.size(); i++) {
-                            if (allsavedApis.get(i).getName().contains(text)) {
+                            if (allsavedApis.get(i).getName().toLowerCase().contains(text.toLowerCase())) {
                                 savedApis.add(allsavedApis.get(i));
                             }
                         }
@@ -382,6 +381,11 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
                             editSearch.onKeyPreIme(keyCode, event);
                             if (isSearchOpened) {
                                 closeSearch();
+                                savedApis.clear();
+                                for (int i = 0; i < allsavedApis.size(); i++) {
+                                    savedApis.add(allsavedApis.get(i));
+                                }
+                                mAdapter.notifyDataSetChanged();
                             }
                             return true;
                         }
@@ -425,11 +429,23 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
     private void deleteItems() {
         ArrayList<Integer> selectedPositions = mAdapter.getSelectedPositions();
         boolean deleted = false;
+
         for(int selectedPosition : selectedPositions) {
             SavedApi apk = savedApis.get(selectedPosition);
             File file = new File(apk.getFile().getPath());
             deleted = file.delete();
             if (deleted) {
+                int selectedPos = -1;
+                for (int i = 0; i < allsavedApis.size(); i++) {
+                    SavedApi sApi = allsavedApis.get(i);
+                    if (sApi.getName().equals(apk.getName())) {
+                        selectedPos = i;
+                        break;
+                    }
+                }
+                if (selectedPos != -1) {
+                    allsavedApis.remove(selectedPos);
+                }
                 savedApis.remove(selectedPosition);
                 mAdapter.removeSelectedPosition(selectedPosition);
                 mAdapter.notifyDataSetChanged();

@@ -29,7 +29,6 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.ToolkitApplication;
 import org.buildmlearn.toolkit.activity.TemplateActivity;
@@ -405,9 +404,8 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                     public void afterTextChanged(Editable s) {
                         String text = s.toString().trim();
                         savedProjects.clear();
-                        SavedProject tempProject;
                         for (int i = 0; i < allsavedProjects.size(); i++) {
-                            if (allsavedProjects.get(i).getName().contains(text)) {
+                            if (allsavedProjects.get(i).getName().toLowerCase().contains(text.toLowerCase())) {
                                savedProjects.add(allsavedProjects.get(i));
                             }
                         }
@@ -422,12 +420,18 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                             editSearch.onKeyPreIme(keyCode, event);
                             if (isSearchOpened) {
                                 closeSearch();
+                                savedProjects.clear();
+                                for (int i = 0; i < allsavedProjects.size(); i++) {
+                                    savedProjects.add(allsavedProjects.get(i));
+                                }
+                                mAdapter.notifyDataSetChanged();
                             }
                             return true;
                         }
                         return false;
                     }
                 });
+
                 editSearch.requestFocus();
                 InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.showSoftInput(editSearch, InputMethodManager.SHOW_IMPLICIT);
@@ -466,12 +470,24 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
     private void deleteItems() {
         ArrayList<Integer> selectedPositions = mAdapter.getSelectedPositions();
         boolean deleted = false;
+
         for(int selectedPosition : selectedPositions) {
             SavedProject project = savedProjects.get(selectedPosition);
             File file = new File(project.getFile().getPath());
             deleted = file.delete();
 
             if (deleted) {
+                int selectedPos = -1;
+                for (int i = 0; i < allsavedProjects.size(); i++) {
+                    SavedProject sProject = allsavedProjects.get(i);
+                    if (sProject.getName().equals(project.getName())) {
+                        selectedPos = i;
+                        break;
+                    }
+                }
+                if (selectedPos != -1) {
+                    allsavedProjects.remove(selectedPos);
+                }
                 savedProjects.remove(selectedPosition);
                 mAdapter.removeSelectedPosition(selectedPosition);
                 mAdapter.notifyDataSetChanged();
