@@ -408,8 +408,7 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                         SavedProject tempProject;
                         for (int i = 0; i < allsavedProjects.size(); i++) {
                             if (allsavedProjects.get(i).getName().contains(text)) {
-                                tempProject = new SavedProject(allsavedProjects.get(i).getFile(), allsavedProjects.get(i).getName(), allsavedProjects.get(i).getUnformattedDate(), allsavedProjects.get(i).getType(), allsavedProjects.get(i).getFullPath());
-                                savedProjects.add(tempProject);
+                               savedProjects.add(allsavedProjects.get(i));
                             }
                         }
                         mAdapter.notifyDataSetChanged();
