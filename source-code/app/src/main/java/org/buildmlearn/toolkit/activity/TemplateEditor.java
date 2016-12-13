@@ -1,4 +1,5 @@
 package org.buildmlearn.toolkit.activity;
+
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -139,6 +140,22 @@ public class TemplateEditor extends AppCompatActivity {
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
                     PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE_RESULT);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE_RESULT: {
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    ToolkitApplication mToolkitApplication = new ToolkitApplication();
+                    mToolkitApplication.storagePathsValidate();
+                }
+                return;
+            }
+
         }
     }
 
@@ -636,7 +653,13 @@ public class TemplateEditor extends AppCompatActivity {
             authorEditText.setError("Author name is required");
         } else if ("".equals(title)) {
             assert titleEditText != null;
-            titleEditText.setError("Title is required");
+            titleEditText.setError(getResources().getString(R.string.title_error));
+        } else if (!Character.isLetterOrDigit(author.charAt(0))) {
+            assert authorEditText != null;
+            authorEditText.setError(getResources().getString(R.string.valid_msg));
+        } else if (!Character.isLetterOrDigit(title.charAt(0))) {
+            assert titleEditText != null;
+            titleEditText.setError(getString(R.string.title_valid));
         } else {
 
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -667,6 +690,10 @@ public class TemplateEditor extends AppCompatActivity {
                 rootElement.appendChild(dataElement);
                 if (selectedTemplate.getItems(doc).size() == 0 || (selectedTemplate.getItems(doc).size() < 2 && (templateId == 5 || templateId == 7))) {
                     Toast.makeText(this, "Unable to perform action: No Data", Toast.LENGTH_SHORT).show();
+                    return null;
+                }
+                if (selectedTemplate.getItems(doc).get(0).getTagName().equals("item") && (templateId == 5 || templateId == 7)) {
+                    Toast.makeText(this, "Unable to perform action: Add Meta Details", Toast.LENGTH_SHORT).show();
                     return null;
                 }
                 for (Element item : selectedTemplate.getItems(doc)) {

@@ -35,7 +35,7 @@ public class LastFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_last_flash, container, false);
 
         Toolbar toolbar = (Toolbar) rootView.findViewById(R.id.toolbar_main);
-        toolbar.setTitle(getResources().getString(R.string.main_title_spell));
+        toolbar.setTitle(getResources().getString(R.string.main_title_flash));
         toolbar.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary_comprehension));
         toolbar.inflateMenu(R.menu.menu_main_white);
 

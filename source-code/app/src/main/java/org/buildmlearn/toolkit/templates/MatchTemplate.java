@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
-import android.widget.Toast;
+
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.matchtemplate.fragment.SplashFragment;

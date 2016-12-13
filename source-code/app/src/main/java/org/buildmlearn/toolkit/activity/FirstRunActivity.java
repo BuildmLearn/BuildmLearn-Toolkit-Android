@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
 
@@ -58,7 +57,12 @@ public class FirstRunActivity extends AppCompatActivity {
                         case KeyEvent.KEYCODE_ENTER:
 
                             if (name.getText().toString().equals("")) {
-                                Toast.makeText(getApplicationContext(), "Enter name", Toast.LENGTH_SHORT).show();
+                                name.setError(getApplicationContext().getResources().getString(R.string.enter_name));
+                                return false;
+                            }
+                            else if(!Character.isLetterOrDigit(name.getText().toString().charAt(0)))
+                            {
+                                name.setError(getApplicationContext().getResources().getString(R.string.valid_msg));
                                 return false;
                             }
 

@@ -10,11 +10,10 @@ import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 
 import org.buildmlearn.toolkit.R;
-import org.buildmlearn.toolkit.dictationtemplate.data.DictModel;
 import org.buildmlearn.toolkit.dictationtemplate.fragment.SplashFragment;
 import org.buildmlearn.toolkit.model.Template;
 import org.buildmlearn.toolkit.model.TemplateInterface;

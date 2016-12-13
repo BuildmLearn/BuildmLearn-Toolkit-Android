@@ -67,6 +67,9 @@ public class ComprehensionTemplate implements TemplateInterface {
         }else if (timerText.length() > 9) {
             timer.setError(context.getString(R.string.comprehension_template_timer_correct_hint));
             return false;
+        }else if ("0".equals(timerText)) {
+            timer.setError((context.getString(R.string.time_zero_error)));
+            return false;
         } else if ("".equals(timerText)) {
             timer.setError(context.getString(R.string.comprehension_template_timer_hint));
             return false;
@@ -225,6 +228,16 @@ public class ComprehensionTemplate implements TemplateInterface {
                     isValidated = false;
                     return;
                 }
+
+                for(int i=0;i<options.size();i++){
+                    for(int j=0;j<i;j++){
+                        if(options.get(i).getText().toString().trim().equalsIgnoreCase(options.get(j).getText().toString().trim())){
+                            Toast.makeText(activity.getApplication(), activity.getString(R.string.same_options), Toast.LENGTH_SHORT).show();
+                            isValidated=false;
+                        }
+                    }
+                }
+
 
                 int correctAnswer = 0;
                 int checkedAns = getCheckedAnswer(buttons);
