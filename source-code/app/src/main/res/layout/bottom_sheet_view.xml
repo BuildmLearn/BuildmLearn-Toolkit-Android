@@ -10,6 +10,8 @@
 
 
     <TextView
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
         android:id="@+id/txt_save_apk"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,7 +34,9 @@
         android:padding="10dp"
         android:text="@string/bottom_sheet_save_project"
         android:textColor="@color/black_primary_text"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"/>
 
     <TextView
         android:id="@+id/txt_share_apk"
@@ -44,7 +48,9 @@
         android:padding="10dp"
         android:text="@string/bottom_sheet_share_apk"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/black_primary_text"/>
+        android:textColor="@color/black_primary_text"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"/>
 
     <TextView
         android:id="@+id/txt_share_project"
@@ -56,6 +62,8 @@
         android:padding="10dp"
         android:text="@string/bottom_sheet_share_project"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/black_primary_text"/>
+        android:textColor="@color/black_primary_text"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"/>
 
 </LinearLayout>
