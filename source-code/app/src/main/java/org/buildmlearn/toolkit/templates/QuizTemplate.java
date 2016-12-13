@@ -403,7 +403,7 @@ public class QuizTemplate implements TemplateInterface {
             if (button.getId() == id) {
                 int index = buttons.indexOf(button);
                 if ("".equals(options.get(index).getText().toString().trim())) {
-                    options.get(index).setError(context.getString(R.string.valid_before_answer));
+                    options.get(index).setError(context.getString(R.string.enter_valid_option));
                     options.get(index).setText(null);
                     button.setChecked(false);
                     return;
