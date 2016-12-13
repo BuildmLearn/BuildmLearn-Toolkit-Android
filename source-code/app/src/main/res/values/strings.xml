@@ -416,7 +416,7 @@
     <string name="enter_meaning">Enter meaning of the word.</string>
     <string name="match_main_title">Enter a title.</string>
     <string name="valid_before_answer">Enter a valid option before marking it as answer.</string>
-    <string name="enter_title">Enter a title.</strin
+    <string name="enter_title">Enter a title.</string>
     <string name="apk_file_saved">APK file saved in Downloads folder</string>
     <string name="apk_generated">APK Generated</string>
     <string name="apk_not_generated">APK file not generated</string>
