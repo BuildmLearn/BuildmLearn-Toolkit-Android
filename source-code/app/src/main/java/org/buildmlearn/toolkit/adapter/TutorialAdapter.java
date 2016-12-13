@@ -96,11 +96,7 @@ public class TutorialAdapter extends PagerAdapter {
             title.setText(tutorial.getTitle());
             description.setText(tutorial.getDescription());
             if(!SkipTutorial) {
-                if ("Welcome to BuildmLearn Toolkit".equals(title.getText().toString())) {
-                    skip_button.setVisibility(View.VISIBLE);
-                    } else {
-                    skip_button.setVisibility(View.GONE);
-                }
+                skip_button.setVisibility(View.VISIBLE);
             }
             convertView.findViewById(R.id.skip_button).setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -110,7 +106,7 @@ public class TutorialAdapter extends PagerAdapter {
                     }
                     mActivity.finish();
                 }
-                });
+            });
         }
         container.addView(convertView, 0);
 
@@ -137,7 +133,10 @@ public class TutorialAdapter extends PagerAdapter {
         BLUE("#29A6D4"),
         GREEN("#1C7D6C"),
         ORANGE("#F77400"),
-        RED("#F53B3C");
+        RED("#F53B3C"),
+        GRAYISH("#78909C"),
+        PURPLE("#AB47BC"),
+        YELLOW("#F9A01E");
 
         private
         @ColorRes

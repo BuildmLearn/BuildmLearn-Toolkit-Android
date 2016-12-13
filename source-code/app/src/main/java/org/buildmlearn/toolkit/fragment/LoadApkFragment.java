@@ -147,6 +147,21 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
                 return true;
             }
         });
+
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_BACK) {
+                    if (mAdapter.selectedPositionsSize() > 0) {
+                        unselectAll();
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
     }
 
     /**
@@ -224,7 +239,7 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
                     File apkFile = new File(aFile.getAbsolutePath());
                     PackageInfo info = getActivity().getPackageManager().getPackageArchiveInfo(apkFile.getAbsolutePath(), 0);
                     if (info != null && info.packageName != null && info.packageName.startsWith("org.buildmlearn.")) {
-                        if (apkFile.getName().startsWith(specificApis))
+                        if (apkFile.getName().contains(specificApis))
                             savedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified()));
                         allsavedApis.add(new SavedApi(apkFile, apkFile.getName(), apkFile.lastModified()));
                     }
@@ -349,7 +364,7 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
                 actionBar.setCustomView(R.layout.search_bar);
                 actionBar.setDisplayShowTitleEnabled(false);
                 editSearch = (EditText) actionBar.getCustomView().findViewById(R.id.editSearch);
-                editSearch.setHint("Enter name of Apk");
+                editSearch.setHint("Enter Apk name");
                 editSearch.addTextChangedListener(new TextWatcher() {
                     @Override
                     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -365,11 +380,9 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
                     public void afterTextChanged(Editable s) {
                         String text = s.toString().trim();
                         savedApis.clear();
-                        SavedApi tempApi;
                         for (int i = 0; i < allsavedApis.size(); i++) {
-                            if (allsavedApis.get(i).getName().startsWith(text)) {
-                                tempApi = new SavedApi(allsavedApis.get(i).getFile(), allsavedApis.get(i).getName(), allsavedApis.get(i).getUnformattedDate());
-                                savedApis.add(tempApi);
+                            if (allsavedApis.get(i).getName().toLowerCase().contains(text.toLowerCase())) {
+                                savedApis.add(allsavedApis.get(i));
                             }
                         }
                         mAdapter.notifyDataSetChanged();
@@ -383,6 +396,11 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
                             editSearch.onKeyPreIme(keyCode, event);
                             if (isSearchOpened) {
                                 closeSearch();
+                                savedApis.clear();
+                                for (int i = 0; i < allsavedApis.size(); i++) {
+                                    savedApis.add(allsavedApis.get(i));
+                                }
+                                mAdapter.notifyDataSetChanged();
                             }
                             return true;
                         }
@@ -406,12 +424,7 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
                 break;
 
             case R.id.action_unselect_all:
-                for(int i=0;i<mAdapter.getCount();i++)
-                    if(mAdapter.isPositionSelected(i)) {
-                        mListView.getChildAt(i).setBackgroundColor(0);
-                        mAdapter.removeSelectedPosition(i);
-                    }
-                restoreColorScheme();
+                unselectAll();
                 break;
 
             default: //do nothing
@@ -420,17 +433,38 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
         return super.onOptionsItemSelected(item);
     }
 
+    public void unselectAll() {
+        for (int i = 0; i < mAdapter.getCount(); i++)
+            if (mAdapter.isPositionSelected(i)) {
+                mListView.getChildAt(i).setBackgroundColor(0);
+                mAdapter.removeSelectedPosition(i);
+            }
+        restoreColorScheme();
+    }
+
     /**
      * @brief Removes selected apk item
      */
     private void deleteItems() {
         ArrayList<Integer> selectedPositions = mAdapter.getSelectedPositions();
         boolean deleted = false;
+
         for(int selectedPosition : selectedPositions) {
             SavedApi apk = savedApis.get(selectedPosition);
             File file = new File(apk.getFile().getPath());
             deleted = file.delete();
             if (deleted) {
+                int selectedPos = -1;
+                for (int i = 0; i < allsavedApis.size(); i++) {
+                    SavedApi sApi = allsavedApis.get(i);
+                    if (sApi.getName().equals(apk.getName())) {
+                        selectedPos = i;
+                        break;
+                    }
+                }
+                if (selectedPos != -1) {
+                    allsavedApis.remove(selectedPos);
+                }
                 savedApis.remove(selectedPosition);
                 mAdapter.removeSelectedPosition(selectedPosition);
                 mAdapter.notifyDataSetChanged();
@@ -438,7 +472,10 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
             }
         }
         if(deleted)
-            Toast.makeText(activity, "Project Successfully Deleted!", Toast.LENGTH_SHORT).show();
+            if(selectedPositions.size()==1)
+                Toast.makeText(activity,"Project Successfully Deleted", Toast.LENGTH_SHORT).show();
+            else
+                Toast.makeText(activity,selectedPositions.size()+" Projects Successfully Deleted", Toast.LENGTH_SHORT).show();
         else
             Toast.makeText(activity, "Project Deletion Failed!", Toast.LENGTH_SHORT).show();
     }
@@ -458,8 +495,6 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
             InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
             isSearchOpened = false;
-            actionBar.setDisplayShowHomeEnabled(true);
-            actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setDisplayShowCustomEnabled(false);
             actionBar.setDisplayShowTitleEnabled(true);
         }

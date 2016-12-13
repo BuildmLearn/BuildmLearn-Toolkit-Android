@@ -11,6 +11,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -117,6 +118,21 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
                 return true;
             }
         });
+
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_BACK) {
+                    if (mAdapter.selectedPositionsSize() > 0) {
+                        unselectAll();
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
     }
 
     /**
@@ -179,6 +195,7 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
         if (mAdapter != null) {
             reloadContent();
         }
+        setEmptyText();
         super.onResume();
     }
 
@@ -315,12 +332,7 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
                 break;
 
             case R.id.action_unselect_all:
-                for(int i=0;i<mAdapter.getCount();i++)
-                    if(mAdapter.isPositionSelected(i)) {
-                        mListView.getChildAt(i).setBackgroundColor(0);
-                        mAdapter.removeSelectedPosition(i);
-                    }
-                restoreColorScheme();
+                unselectAll();
                 break;
 
             case R.id.action_delete_all:
@@ -348,6 +360,15 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
         return super.onOptionsItemSelected(item);
     }
 
+    private void unselectAll() {
+        for (int i = 0; i < mAdapter.getCount(); i++)
+            if (mAdapter.isPositionSelected(i)) {
+                mListView.getChildAt(i).setBackgroundColor(0);
+                mAdapter.removeSelectedPosition(i);
+            }
+        restoreColorScheme();
+    }
+
     /**
      * @brief Removes selected project item
      */
@@ -366,7 +387,10 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
             }
         }
         if(deleted)
-            Toast.makeText(activity, "Project Successfully Deleted!", Toast.LENGTH_SHORT).show();
+            if(selectedPositions.size()==1)
+                Toast.makeText(activity,"Project Successfully Deleted", Toast.LENGTH_SHORT).show();
+            else
+                Toast.makeText(activity,selectedPositions.size()+" Projects Successfully Deleted", Toast.LENGTH_SHORT).show();
         else
             Toast.makeText(activity, "Project Deletion Failed!", Toast.LENGTH_SHORT).show();
     }

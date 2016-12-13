@@ -14,8 +14,7 @@
         android:padding="16dp"
         android:text="@string/screen_1_title"
         android:textSize="@dimen/headline" />
-
-
+    
     <ImageView
         android:id="@+id/device_image"
         android:layout_width="wrap_content"
@@ -26,11 +25,11 @@
         android:scaleType="centerInside" />
 
     <Button
-        android:text="Skip tutorial."
+        android:text="Skip Tutorial"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#29A6D4"
+        android:background="@android:color/transparent"
         android:textAllCaps="false"
         android:id="@+id/skip_button" />
 

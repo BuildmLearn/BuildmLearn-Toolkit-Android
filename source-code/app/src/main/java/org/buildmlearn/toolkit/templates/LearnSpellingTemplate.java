@@ -9,8 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
-import android.widget.Toast;
-
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.learnspelling.fragment.SplashFragment;
@@ -41,14 +39,14 @@ public class LearnSpellingTemplate implements TemplateInterface {
             return false;
         }
 
-        String wordText = word.getText().toString();
-        String meaningText = meaning.getText().toString();
+        String wordText = word.getText().toString().trim();
+        String meaningText = meaning.getText().toString().trim();
 
         if ("".equals(wordText)) {
-            Toast.makeText(context, "Enter word", Toast.LENGTH_SHORT).show();
+            word.setError(context.getString(R.string.enter_word));
             return false;
         } else if ("".equals(meaningText)) {
-            Toast.makeText(context, "Enter meaning", Toast.LENGTH_SHORT).show();
+            meaning.setError(context.getString(R.string.enter_meaning));
             return false;
         }
         return true;
@@ -169,16 +167,16 @@ public class LearnSpellingTemplate implements TemplateInterface {
 
         final EditText word = (EditText) dialogView.findViewById(R.id.info_word);
         final EditText meaning = (EditText) dialogView.findViewById(R.id.info_meaning);
-        word.setText(data.getWord());
-        meaning.setText(data.getMeaning());
+        word.setText(data.getWord().trim());
+        meaning.setText(data.getMeaning().trim());
 
         dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 if (validated(activity, word, meaning)) {
-                    String wordText = word.getText().toString();
-                    String meaningText = meaning.getText().toString();
+                    String wordText = word.getText().toString().trim();
+                    String meaningText = meaning.getText().toString().trim();
 
                     data.setWord(wordText);
                     data.setMeaning(meaningText);

@@ -10,11 +10,10 @@ import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 
 import org.buildmlearn.toolkit.R;
-import org.buildmlearn.toolkit.dictationtemplate.data.DictModel;
 import org.buildmlearn.toolkit.dictationtemplate.fragment.SplashFragment;
 import org.buildmlearn.toolkit.model.Template;
 import org.buildmlearn.toolkit.model.TemplateInterface;
@@ -49,14 +48,14 @@ public class DictationTemplate implements TemplateInterface {
             return false;
         }
 
-        String titleText = title.getText().toString();
-        String passageText = passage.getText().toString();
+        String titleText = title.getText().toString().trim();
+        String passageText = passage.getText().toString().trim();
 
         if ("".equals(titleText)) {
-            Toast.makeText(context, R.string.dictation_template_title_hint, Toast.LENGTH_SHORT).show();
+            title.setError(context.getString(R.string.dictation_template_title_hint));
             return false;
         } else if ("".equals(passageText)) {
-            Toast.makeText(context, R.string.dictation_template_passage_hint, Toast.LENGTH_SHORT).show();
+            passage.setError(context.getString(R.string.dictation_template_passage_hint));
             return false;
         }
         return true;
@@ -148,8 +147,8 @@ public class DictationTemplate implements TemplateInterface {
             public void onClick(View v) {
 
                 if (validated(activity, title, passage)) {
-                    String titleText = title.getText().toString();
-                    String passageText = passage.getText().toString();
+                    String titleText = title.getText().toString().trim();
+                    String passageText = passage.getText().toString().trim();
 
                     DictationModel temp = new DictationModel(titleText, passageText);
                     dictData.add(temp);
@@ -190,8 +189,8 @@ public class DictationTemplate implements TemplateInterface {
 
         final EditText title = (EditText) dialogView.findViewById(R.id.dict_title);
         final EditText passage = (EditText) dialogView.findViewById(R.id.dict_passage);
-        title.setText(data.getTitle());
-        passage.setText(data.getPassage());
+        title.setText(data.getTitle().trim());
+        passage.setText(data.getPassage().trim());
 
         dialogView.findViewById(R.id.upload).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -214,8 +213,8 @@ public class DictationTemplate implements TemplateInterface {
 
                 if (validated(activity, title, passage)) {
 
-                    String titleText = title.getText().toString();
-                    String passageText = passage.getText().toString();
+                    String titleText = title.getText().toString().trim();
+                    String passageText = passage.getText().toString().trim();
 
                     data.setTitle(titleText);
                     data.setPassage(passageText);

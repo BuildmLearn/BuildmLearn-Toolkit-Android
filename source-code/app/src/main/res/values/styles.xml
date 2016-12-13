@@ -15,6 +15,21 @@
         <item name="android:windowBackground">@drawable/background_splash</item>
     </style>
 
+    <style name="MaterialDialogSheet" parent="@android:style/Theme.Dialog">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowAnimationStyle">@style/MaterialDialogSheetAnimation</item>
+        <item name="android:textColor">@color/black_primary_text</item>
+    </style>
+
+    <style name="MaterialDialogSheetAnimation">
+        <item name="android:windowEnterAnimation">@anim/popup_show</item>
+        <item name="android:windowExitAnimation">@anim/popup_hide</item>
+    </style>
     <style name="AppTheme" parent="Base.AppTheme">
         <item name="android:textColorPrimary">@color/black_primary_text</item>
         <item name="android:textColorSecondary">@color/black_secondary_text</item>
