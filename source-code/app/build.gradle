@@ -65,6 +65,10 @@ dependencies {
     compile files('libs/kellinwood-logging-lib-1.1.jar')
     compile files('libs/kellinwood-logging-log4j-1.0.jar')
     compile files('libs/axml.jar')
+    compile files('libs/pkix-1.51.0.0.jar')
+    compile files('libs/core-1.51.0.0.jar')
+    compile files('libs/prov-1.51.0.0.jar')
+    compile files('libs/zipio-lib-1.8.jar')
 
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'org.jsoup:jsoup:1.9.1'
