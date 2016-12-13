@@ -31,8 +31,10 @@ import android.widget.Toast;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.ToolkitApplication;
+import org.buildmlearn.toolkit.activity.HomeActivity;
 import org.buildmlearn.toolkit.adapter.SavedApiAdapter;
 import org.buildmlearn.toolkit.model.SavedApi;
+import org.buildmlearn.toolkit.utilities.OnBackPressed;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -45,9 +47,12 @@ import java.util.Comparator;
  * @brief Fragment used for loading existing APKs into a list.
  */
 
-public class LoadApkFragment extends Fragment implements AbsListView.OnItemClickListener {
+public class LoadApkFragment extends Fragment implements AbsListView.OnItemClickListener, OnBackPressed {
 
     private static final String TAG = "Load API Fragment";
+
+    private final String FRAGMENT_TAG_APK = "Apk";
+    private final String FRAGMENT_TAG_HOME = "Home";
     private AbsListView mListView;
 
     private boolean showTemplateSelectedMenu;
@@ -84,6 +89,9 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
         if (file == null) {
             return;
         }
+
+        Fragment currentFragment = getFragmentManager().findFragmentByTag(FRAGMENT_TAG_APK);
+        HomeActivity.setCurrentFragment(currentFragment);
 
         Log.d("Files", "Size: " + file.length);
         for (File aFile : file) {
@@ -464,5 +472,19 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
 
     }
 
-}
+    @Override
+    public boolean onBackPressed() {
 
+        if (mAdapter.selectedPositionsSize() != 0){
+            for(int i=0;i<mAdapter.getCount();i++)
+                if(mAdapter.isPositionSelected(i)) {
+                    mListView.getChildAt(i).setBackgroundColor(0);
+                    mAdapter.removeSelectedPosition(i);
+                }
+            restoreColorScheme();
+            return true;
+        }
+        return false;
+    }
+
+}

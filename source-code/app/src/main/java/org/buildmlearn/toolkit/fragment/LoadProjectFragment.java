@@ -29,15 +29,16 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.ToolkitApplication;
+import org.buildmlearn.toolkit.activity.HomeActivity;
 import org.buildmlearn.toolkit.activity.TemplateActivity;
 import org.buildmlearn.toolkit.activity.TemplateEditor;
 import org.buildmlearn.toolkit.adapter.SavedProjectAdapter;
 import org.buildmlearn.toolkit.constant.Constants;
 import org.buildmlearn.toolkit.model.SavedProject;
 import org.buildmlearn.toolkit.model.Template;
+import org.buildmlearn.toolkit.utilities.OnBackPressed;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
@@ -55,9 +56,12 @@ import javax.xml.parsers.ParserConfigurationException;
 /**
  * @brief Fragment used for loading existing projects into a list.
  */
-public class LoadProjectFragment extends Fragment implements AbsListView.OnItemClickListener {
+public class LoadProjectFragment extends Fragment implements AbsListView.OnItemClickListener,OnBackPressed {
 
     private static final String TAG = "Load Project Fragment";
+
+    private final String FRAGMENT_TAG_PROJECT = "Project";
+    private final String FRAGMENT_TAG_HOME = "Home";
     private AbsListView mListView;
 
     private boolean showTemplateSelectedMenu;
@@ -91,6 +95,9 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
         if (file == null) {
             return;
         }
+
+        Fragment currentFragment = getFragmentManager().findFragmentByTag(FRAGMENT_TAG_PROJECT);
+        HomeActivity.setCurrentFragment(currentFragment);
 
         Log.d("Files", "Size: " + file.length);
         for (File aFile : file) {
@@ -504,5 +511,20 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
             actionBar.setDisplayShowTitleEnabled(true);
         }
 
+    }
+
+    @Override
+    public boolean onBackPressed() {
+
+        if (mAdapter.selectedPositionsSize() != 0){
+            for(int i=0;i<mAdapter.getCount();i++)
+                if(mAdapter.isPositionSelected(i)) {
+                    mListView.getChildAt(i).setBackgroundColor(0);
+                    mAdapter.removeSelectedPosition(i);
+                }
+            restoreColorScheme();
+            return true;
+        }
+        return false;
     }
 }
