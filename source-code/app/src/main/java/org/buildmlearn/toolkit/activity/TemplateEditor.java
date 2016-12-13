@@ -1,8 +1,13 @@
 package org.buildmlearn.toolkit.activity;
+
 import android.Manifest;
+
+import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
+import android.content.Context;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -22,6 +27,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,11 +35,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
-
-import com.cocosw.bottomsheet.BottomSheet;
-
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.ToolkitApplication;
 import org.buildmlearn.toolkit.constant.Constants;
@@ -54,7 +59,6 @@ import org.xml.sax.SAXException;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -91,6 +95,201 @@ public class TemplateEditor extends AppCompatActivity {
     private String oldFileName;
     private ProgressDialog mApkGenerationDialog;
 
+
+    public void openBottomSheet (View v) {
+
+        View view = getLayoutInflater ().inflate (R.layout.bottom_sheet_view, null);
+        TextView txt_save_apk = (TextView)view.findViewById( R.id.txt_save_apk);
+        TextView txt_save_project = (TextView)view.findViewById( R.id.txt_save_project);
+        TextView txt_share_apk = (TextView)view.findViewById( R.id.txt_share_apk);
+        final TextView txt_shareProject = (TextView)view.findViewById( R.id.txt_share_project);
+
+        final Dialog mBottomSheetDialog = new Dialog (TemplateEditor.this,
+                R.style.MaterialDialogSheet);
+        mBottomSheetDialog.setContentView (view);
+        mBottomSheetDialog.setCancelable (true);
+        mBottomSheetDialog.getWindow ().setLayout (LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
+        mBottomSheetDialog.getWindow ().setGravity (Gravity.BOTTOM);
+        mBottomSheetDialog.show ();
+
+
+        //save project
+        txt_save_project.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                saveProject();
+                mBottomSheetDialog.dismiss();
+            }
+        });
+
+        //share project
+        txt_shareProject.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                shareProject();
+                mBottomSheetDialog.dismiss();
+            }
+        });
+
+        txt_share_apk.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                share_apk();
+                mBottomSheetDialog.dismiss();
+            }
+        });
+
+        txt_save_apk.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                save_apk();
+                mBottomSheetDialog.dismiss();
+            }
+        });
+    }
+
+    private void save_apk() {
+        String savedFilePath;
+        savedFilePath = saveProject();
+        if (savedFilePath == null || savedFilePath.length() == 0) {
+            return;
+        }
+        String keyPassword = getString(R.string.key_password);
+        String aliasName = getString(R.string.alias_name);
+        String aliaspassword = getString(R.string.alias_password);
+        KeyStoreDetails keyStoreDetails = new KeyStoreDetails(keyPassword, aliasName, aliaspassword);
+        SignerThread signer = new SignerThread(getApplicationContext(), selectedTemplate.getApkFilePath(), saveProject(), keyStoreDetails, selectedTemplate.getAssetsFilePath(), selectedTemplate.getAssetsFileName(TemplateEditor.this));
+
+        mApkGenerationDialog = new ProgressDialog(TemplateEditor.this, R.style.AppDialogTheme);
+        mApkGenerationDialog.setTitle(R.string.apk_progress_dialog);
+        mApkGenerationDialog.setMessage(getString(R.string.apk_msg));
+        mApkGenerationDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        mApkGenerationDialog.setCancelable(false);
+        mApkGenerationDialog.setProgress(0);
+        mApkGenerationDialog.show();
+
+        signer.setSignerThreadListener(new SignerThread.OnSignComplete() {
+            @Override
+            public void onSuccess(final String path) {
+                Log.d(TAG, "APK generated");
+                mApkGenerationDialog.dismiss();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        AlertDialog dialog = new AlertDialog.Builder(TemplateEditor.this)
+                                .setTitle("Apk Generated")
+                                .setMessage("Apk file saved at " + path)
+                                .setPositiveButton("okay", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                })
+                                .create();
+                        dialog.show();
+                    }
+                });
+
+
+            }
+
+            @Override
+            public void onFail(Exception e) {
+                if (e != null) {
+                    e.printStackTrace();
+                    mApkGenerationDialog.dismiss();
+                    Message message = handlerToast.obtainMessage();
+                    message.arg1 = -1;
+                    handlerToast.sendMessage(message);
+                }
+            }
+        });
+
+        signer.start();
+    }
+
+    private void share_apk() {
+        String savedFilePath;
+        savedFilePath = saveProject();
+        if (savedFilePath == null || savedFilePath.length() == 0) {
+            return;
+        }
+        String keyPassword = getString(R.string.key_password);
+        String aliasName = getString(R.string.alias_name);
+        String aliaspassword = getString(R.string.alias_password);
+        KeyStoreDetails keyStoreDetails = new KeyStoreDetails(keyPassword, aliasName, aliaspassword);
+        SignerThread signer = new SignerThread(getApplicationContext(), selectedTemplate.getApkFilePath(), saveProject(), keyStoreDetails, selectedTemplate.getAssetsFilePath(), selectedTemplate.getAssetsFileName(TemplateEditor.this));
+
+        mApkGenerationDialog = new ProgressDialog(TemplateEditor.this, R.style.AppDialogTheme);
+        mApkGenerationDialog.setTitle(R.string.apk_progress_dialog);
+        mApkGenerationDialog.setMessage(getString(R.string.apk_msg));
+        mApkGenerationDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        mApkGenerationDialog.setCancelable(false);
+        mApkGenerationDialog.setProgress(0);
+        mApkGenerationDialog.show();
+
+        signer.setSignerThreadListener(new SignerThread.OnSignComplete() {
+            @Override
+            public void onSuccess(final String path) {
+                Log.d(TAG, "APK generated");
+                mApkGenerationDialog.dismiss();
+
+                Uri fileUri = Uri.fromFile(new File(path));
+                try {
+                    ArrayList<Uri> uris = new ArrayList<>();
+                    Intent sendIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
+                    sendIntent.setType("application/vnd.android.package-archive");
+                    uris.add(fileUri);
+                    sendIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
+                    startActivity(Intent.createChooser(sendIntent, null));
+
+
+                } catch (Exception e) {
+
+                    ArrayList<Uri> uris = new ArrayList<>();
+                    Intent sendIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
+                    sendIntent.setType("application/zip");
+                    uris.add(fileUri);
+                    sendIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
+                    startActivity(Intent.createChooser(sendIntent, null));
+                }
+
+            }
+
+            @Override
+            public void onFail(Exception e) {
+                if (e != null) {
+                    e.printStackTrace();
+                    mApkGenerationDialog.dismiss();
+                    Message message = handlerToast.obtainMessage();
+                    message.arg1 = -1;
+                    handlerToast.sendMessage(message);
+                }
+            }
+        });
+
+        signer.start();
+    }
+
+    private void shareProject() {
+        String savedFilePath;
+        savedFilePath = saveProject();
+        if (savedFilePath == null || savedFilePath.length() == 0) {
+            return;
+        }
+        Uri fileUri = Uri.fromFile(new File(savedFilePath));
+        ArrayList<Uri> uris = new ArrayList<>();
+        Intent sendIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
+        sendIntent.setType("application/zip");
+        uris.add(fileUri);
+        sendIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
+        startActivity(Intent.createChooser(sendIntent, null));
+    }
 
     /**
      * {@inheritDoc}
@@ -140,6 +339,22 @@ public class TemplateEditor extends AppCompatActivity {
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
                     PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE_RESULT);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE_RESULT: {
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    ToolkitApplication mToolkitApplication = new ToolkitApplication();
+                    mToolkitApplication.storagePathsValidate();
+                }
+                return;
+            }
+
         }
     }
 
@@ -305,10 +520,12 @@ public class TemplateEditor extends AppCompatActivity {
                 populateMetaView(selectedTemplate.newMetaEditorAdapter(this));
             }
             setUpActionBar();
-        } catch (IllegalAccessException e) {
+
+        } catch (InstantiationException e) {
             e.printStackTrace();
         }
-        catch (InstantiationException  e) {
+        catch ( IllegalAccessException e)
+        {
             e.printStackTrace();
         }
     }
@@ -394,163 +611,7 @@ public class TemplateEditor extends AppCompatActivity {
                 restoreSelectedView();
                 break;
             case R.id.action_save:
-                new BottomSheet.Builder(this).sheet(R.menu.bottom_sheet_template).listener(new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        String savedFilePath;
-                        switch (id) {
-                            case R.id.save_project:
-                                saveProject();
-                                break;
-
-                            case R.id.share_project:
-                                savedFilePath = saveProject();
-                                if(("File already exists".equals(savedFilePath))){
-                                    return;
-                                }
-
-                                if (savedFilePath == null || savedFilePath.length() == 0) {
-                                    return;
-                                }
-                                Uri fileUri = Uri.fromFile(new File(savedFilePath));
-                                ArrayList<Uri> uris = new ArrayList<>();
-                                Intent sendIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
-                                sendIntent.setType("application/zip");
-                                uris.add(fileUri);
-                                sendIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
-                                startActivity(Intent.createChooser(sendIntent, null));
-                                break;
-
-                            case R.id.share_apk:
-
-                                savedFilePath = saveProject();
-                                if(("File already exists".equals(savedFilePath))){
-                                    return;
-                                }
-                                if (savedFilePath == null || savedFilePath.length() == 0) {
-                                    return;
-                                }
-                                String keyPassword = getString(R.string.key_password);
-                                String aliasName = getString(R.string.alias_name);
-                                String aliaspassword = getString(R.string.alias_password);
-                                KeyStoreDetails keyStoreDetails = new KeyStoreDetails(keyPassword, aliasName, aliaspassword);
-                                SignerThread signer = new SignerThread(getApplicationContext(), selectedTemplate.getApkFilePath(), saveProject(), keyStoreDetails, selectedTemplate.getAssetsFilePath(), selectedTemplate.getAssetsFileName(TemplateEditor.this));
-
-                                mApkGenerationDialog = new ProgressDialog(TemplateEditor.this, R.style.AppDialogTheme);
-                                mApkGenerationDialog.setTitle(R.string.apk_progress_dialog);
-                                mApkGenerationDialog.setMessage(getString(R.string.apk_msg));
-                                mApkGenerationDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-                                mApkGenerationDialog.setCancelable(false);
-                                mApkGenerationDialog.setProgress(0);
-                                mApkGenerationDialog.show();
-
-                                signer.setSignerThreadListener(new SignerThread.OnSignComplete() {
-                                    @Override
-                                    public void onSuccess(final String path) {
-                                        Log.d(TAG, "APK generated");
-                                        mApkGenerationDialog.dismiss();
-
-                                        Uri fileUri = Uri.fromFile(new File(path));
-                                        try {
-                                            ArrayList<Uri> uris = new ArrayList<>();
-                                            Intent sendIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
-                                            sendIntent.setType("application/vnd.android.package-archive");
-                                            uris.add(fileUri);
-                                            sendIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
-                                            startActivity(Intent.createChooser(sendIntent, null));
-
-
-                                        } catch (Exception e) {
-
-                                            ArrayList<Uri> uris = new ArrayList<>();
-                                            Intent sendIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
-                                            sendIntent.setType("application/zip");
-                                            uris.add(fileUri);
-                                            sendIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
-                                            startActivity(Intent.createChooser(sendIntent, null));
-                                        }
-
-                                    }
-
-                                    @Override
-                                    public void onFail(Exception e) {
-                                        if (e != null) {
-                                            e.printStackTrace();
-                                            mApkGenerationDialog.dismiss();
-                                            Message message = handlerToast.obtainMessage();
-                                            message.arg1 = -1;
-                                            handlerToast.sendMessage(message);
-                                        }
-                                    }
-                                });
-
-                                signer.start();
-
-                                break;
-                            case R.id.save_apk:
-                                savedFilePath = saveProject();
-                                if(("File already exists".equals(savedFilePath))){
-                                    return;
-                                }
-                                if (savedFilePath == null || savedFilePath.length() == 0) {
-                                    return;
-                                }
-                                keyPassword = getString(R.string.key_password);
-                                aliasName = getString(R.string.alias_name);
-                                aliaspassword = getString(R.string.alias_password);
-                                keyStoreDetails = new KeyStoreDetails(keyPassword, aliasName, aliaspassword);
-                                signer = new SignerThread(getApplicationContext(), selectedTemplate.getApkFilePath(), saveProject(), keyStoreDetails, selectedTemplate.getAssetsFilePath(), selectedTemplate.getAssetsFileName(TemplateEditor.this));
-
-                                mApkGenerationDialog = new ProgressDialog(TemplateEditor.this, R.style.AppDialogTheme);
-                                mApkGenerationDialog.setTitle(R.string.apk_progress_dialog);
-                                mApkGenerationDialog.setMessage(getString(R.string.apk_msg));
-                                mApkGenerationDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-                                mApkGenerationDialog.setCancelable(false);
-                                mApkGenerationDialog.setProgress(0);
-                                mApkGenerationDialog.show();
-
-                                signer.setSignerThreadListener(new SignerThread.OnSignComplete() {
-                                    @Override
-                                    public void onSuccess(final String path) {
-                                        Log.d(TAG, "APK generated");
-                                        mApkGenerationDialog.dismiss();
-
-                                        runOnUiThread(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                AlertDialog dialog = new AlertDialog.Builder(TemplateEditor.this)
-                                                        .setTitle("Apk Generated")
-                                                        .setMessage("Apk file saved at " + path)
-                                                        .setPositiveButton("okay", new DialogInterface.OnClickListener() {
-                                                            @Override
-                                                            public void onClick(DialogInterface dialog, int which) {
-                                                                dialog.dismiss();
-                                                            }
-                                                        })
-                                                        .create();
-                                                dialog.show();
-                                            }
-                                        });
-
-
-                                    }
-
-                                    @Override
-                                    public void onFail(Exception e) {
-                                        if (e != null) {
-                                            e.printStackTrace();
-                                            mApkGenerationDialog.dismiss();
-                                            Message message = handlerToast.obtainMessage();
-                                            message.arg1 = -1;
-                                            handlerToast.sendMessage(message);
-                                        }
-                                    }
-                                });
-
-                                signer.start();
-                        }
-                    }
-                }).show();
+                openBottomSheet(LayoutInflater.from(TemplateEditor.this).inflate(R.layout.bottom_sheet_view, null));
                 break;
             case R.id.action_simulate:
                 startSimulator();

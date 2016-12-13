@@ -29,7 +29,6 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.ToolkitApplication;
 import org.buildmlearn.toolkit.activity.TemplateActivity;
@@ -161,6 +160,21 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                     changeColorScheme();
                 }
                 return true;
+            }
+        });
+
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_BACK) {
+                    if (mAdapter.selectedPositionsSize() > 0) {
+                        unselectAll();
+                        return true;
+                    }
+                }
+                return false;
             }
         });
     }
@@ -405,11 +419,9 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                     public void afterTextChanged(Editable s) {
                         String text = s.toString().trim();
                         savedProjects.clear();
-                        SavedProject tempProject;
                         for (int i = 0; i < allsavedProjects.size(); i++) {
-                            if (allsavedProjects.get(i).getName().contains(text)) {
-                                tempProject = new SavedProject(allsavedProjects.get(i).getFile(), allsavedProjects.get(i).getName(), allsavedProjects.get(i).getUnformattedDate(), allsavedProjects.get(i).getType(), allsavedProjects.get(i).getFullPath());
-                                savedProjects.add(tempProject);
+                            if (allsavedProjects.get(i).getName().toLowerCase().contains(text.toLowerCase())) {
+                               savedProjects.add(allsavedProjects.get(i));
                             }
                         }
                         mAdapter.notifyDataSetChanged();
@@ -423,12 +435,18 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                             editSearch.onKeyPreIme(keyCode, event);
                             if (isSearchOpened) {
                                 closeSearch();
+                                savedProjects.clear();
+                                for (int i = 0; i < allsavedProjects.size(); i++) {
+                                    savedProjects.add(allsavedProjects.get(i));
+                                }
+                                mAdapter.notifyDataSetChanged();
                             }
                             return true;
                         }
                         return false;
                     }
                 });
+
                 editSearch.requestFocus();
                 InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.showSoftInput(editSearch, InputMethodManager.SHOW_IMPLICIT);
@@ -446,18 +464,22 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                 break;
 
             case R.id.action_unselect_all:
-                for(int i=0;i<mAdapter.getCount();i++)
-                    if(mAdapter.isPositionSelected(i)) {
-                        mListView.getChildAt(i).setBackgroundColor(0);
-                        mAdapter.removeSelectedPosition(i);
-                    }
-                restoreColorScheme();
+                unselectAll();
                 break;
 
             default: //do nothing
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void unselectAll() {
+        for (int i = 0; i < mAdapter.getCount(); i++)
+            if (mAdapter.isPositionSelected(i)) {
+                mListView.getChildAt(i).setBackgroundColor(0);
+                mAdapter.removeSelectedPosition(i);
+            }
+        restoreColorScheme();
     }
 
     /**
@@ -467,12 +489,24 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
     private void deleteItems() {
         ArrayList<Integer> selectedPositions = mAdapter.getSelectedPositions();
         boolean deleted = false;
+
         for(int selectedPosition : selectedPositions) {
             SavedProject project = savedProjects.get(selectedPosition);
             File file = new File(project.getFile().getPath());
             deleted = file.delete();
 
             if (deleted) {
+                int selectedPos = -1;
+                for (int i = 0; i < allsavedProjects.size(); i++) {
+                    SavedProject sProject = allsavedProjects.get(i);
+                    if (sProject.getName().equals(project.getName())) {
+                        selectedPos = i;
+                        break;
+                    }
+                }
+                if (selectedPos != -1) {
+                    allsavedProjects.remove(selectedPos);
+                }
                 savedProjects.remove(selectedPosition);
                 mAdapter.removeSelectedPosition(selectedPosition);
                 mAdapter.notifyDataSetChanged();
@@ -480,7 +514,10 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
             }
         }
         if(deleted)
-            Toast.makeText(activity, "Project Successfully Deleted!", Toast.LENGTH_SHORT).show();
+            if(selectedPositions.size()==1)
+                Toast.makeText(activity,"Project Successfully Deleted", Toast.LENGTH_SHORT).show();
+            else
+                Toast.makeText(activity,selectedPositions.size()+" Projects Successfully Deleted", Toast.LENGTH_SHORT).show();
         else
             Toast.makeText(activity, "Project Deletion Failed!", Toast.LENGTH_SHORT).show();
     }

@@ -1,9 +1,7 @@
 package org.buildmlearn.toolkit.utilities;
 
 import android.content.Context;
-
 import android.content.res.AssetManager;
-
 
 import org.w3c.dom.Document;
 
@@ -68,7 +66,9 @@ public class FileUtils {
                 f.mkdirs();
             }
 
-            try (ZipInputStream zin = new ZipInputStream(new BufferedInputStream(zipInputStream, BUFFER_SIZE))) {
+            ZipInputStream zin = null;
+            try {
+                zin = new ZipInputStream(new BufferedInputStream(zipInputStream, BUFFER_SIZE));
                 ZipEntry ze;
                 while ((ze = zin.getNextEntry()) != null) {
                     String path = destinationFolder + ze.getName();
@@ -98,6 +98,10 @@ public class FileUtils {
                             fout.close();
                         }
                     }
+                }
+            } finally {
+                if (zin != null) {
+                    zin.close();
                 }
             }
         } catch (Exception e) {

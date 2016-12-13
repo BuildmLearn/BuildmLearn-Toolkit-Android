@@ -13,13 +13,10 @@
     <color name="black_primary_text">#de000000</color>
     <color name="black_secondary_text">#8a000000</color>
     <color name="color_divider">#1E000000</color>
-    <color name="main_menu_background">#fffafafa</color>
     <color name="translucent_grey">#0c000000</color>
     <color name="buildmlearn_blue_translucent">#663479c4</color>
     <color name="simulator_action_bar">#AA181818</color>
     <color name="quiz_correct_answer">#43A047</color>
-
-    <color name="gray">#444440</color>
     <!-- Quiz Template-->
 
     <!-- Info Template-->
@@ -55,5 +52,6 @@
     <color name="colorPrimary_spell">#26C6DA</color>
     <color name="colorPrimaryDark_spell">#00BCD4</color>
     <color name="colorAccent_spell">#3F99A9</color>
+    <color name="selected_dot">#FFFFFF</color>
 
 </resources>

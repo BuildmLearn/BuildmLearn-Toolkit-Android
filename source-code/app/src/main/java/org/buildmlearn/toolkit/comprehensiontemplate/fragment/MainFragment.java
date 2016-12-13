@@ -117,9 +117,10 @@ public class MainFragment extends Fragment implements NavigationView.OnNavigatio
 
                 Fragment frag = QuestionFragment.newInstance();
                 frag.setArguments(arguments);
-                getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
-                getActivity().getSupportFragmentManager().beginTransaction().replace(((ViewGroup) getView().getParent()).getId(), frag).addToBackStack(null).commit();
+                if(getActivity()!=null) {
+                    getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(((ViewGroup) getView().getParent()).getId(), frag).addToBackStack(null).commit();
+                }
             }
         }.start();
 
