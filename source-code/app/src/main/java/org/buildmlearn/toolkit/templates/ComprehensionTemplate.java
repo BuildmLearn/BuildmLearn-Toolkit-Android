@@ -67,6 +67,9 @@ public class ComprehensionTemplate implements TemplateInterface {
         }else if (timerText.length() > 9) {
             timer.setError(context.getString(R.string.comprehension_template_timer_correct_hint));
             return false;
+        }else if ("0".equals(timerText)) {
+            timer.setError((context.getString(R.string.time_zero_error)));
+            return false;
         } else if ("".equals(timerText)) {
             timer.setError(context.getString(R.string.comprehension_template_timer_hint));
             return false;
