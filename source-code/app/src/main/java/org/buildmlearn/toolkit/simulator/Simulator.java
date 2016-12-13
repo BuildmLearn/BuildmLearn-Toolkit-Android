@@ -39,7 +39,7 @@ public class Simulator extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         templateId = getIntent().getIntExtra(Constants.TEMPLATE_ID, -1);
         if (templateId == -1) {
-            Toast.makeText(this, "Invalid template ID, closing Template Editor activity", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.invalidTemplate), Toast.LENGTH_LONG).show();
             finish();
             return;
         }
@@ -98,7 +98,7 @@ public class Simulator extends AppCompatActivity {
         Log.d(TAG, "Activity Restored");
         selectedTemplate = (TemplateInterface) savedInstanceState.getSerializable(Constants.TEMPLATE_OBJECT);
         if (selectedTemplate == null) {
-            Toast.makeText(this, "Unable to restore Activity state, finsihing Template Editor activity", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.unableToRestore), Toast.LENGTH_LONG).show();
             finish();
         }
     }
