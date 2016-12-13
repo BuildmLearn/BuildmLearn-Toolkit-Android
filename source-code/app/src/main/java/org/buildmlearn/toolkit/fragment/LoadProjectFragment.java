@@ -195,6 +195,7 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                 Intent intent = new Intent(getActivity(), TemplateEditor.class);
                 intent.putExtra(Constants.TEMPLATE_ID, i);
                 intent.putExtra(Constants.PROJECT_FILE_PATH, project.getFullPath());
+                intent.putExtra("lastFragment", "projectFragment");
                 startActivity(intent);
                 return;
             }

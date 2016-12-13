@@ -13,6 +13,7 @@ Constants {
     public final static String APK_DIR = BUILD_M_LEARN_PATH + "apk/";
     public final static String SAVED_DIR = BUILD_M_LEARN_PATH + "saved/";
     public final static String DRAFT_DIR = BUILD_M_LEARN_PATH + "draft/";
+    public final static String TEMP_DIR = BUILD_M_LEARN_PATH + "temp/";
     public final static String TEMPLATE_ID = "TEMPLATE_ID";
     public final static String TEMPLATE_OBJECT = "TEMPLATE_OBJECT";
     public final static String SIMULATOR_FILE_PATH = "SIMULATOR_FILE_PATH";
