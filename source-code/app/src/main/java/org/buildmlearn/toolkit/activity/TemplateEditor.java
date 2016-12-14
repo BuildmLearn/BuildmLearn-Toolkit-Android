@@ -555,6 +555,11 @@ public class TemplateEditor extends AppCompatActivity {
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        if (showTemplateSelectedMenu) {
+            getMenuInflater().inflate(R.menu.menu_template_item_selected, menu);
+        } else {
+            getMenuInflater().inflate(R.menu.menu_template_editor, menu);
+        }
         return true;
     }
 
@@ -564,12 +569,6 @@ public class TemplateEditor extends AppCompatActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         Log.d(TAG, "onPrepareOptionsMenu");
-        menu.clear();
-        if (showTemplateSelectedMenu) {
-            getMenuInflater().inflate(R.menu.menu_template_item_selected, menu);
-        } else {
-            getMenuInflater().inflate(R.menu.menu_template_editor, menu);
-        }
         return true;
     }
 
