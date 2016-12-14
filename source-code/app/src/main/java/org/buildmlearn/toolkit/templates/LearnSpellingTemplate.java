@@ -195,6 +195,7 @@ public class LearnSpellingTemplate implements TemplateInterface {
         mLearnSpellingData.remove(position);
         setEmptyView(activity);
         adapter.notifyDataSetChanged();
+        setEmptyView(activity);
         return learnSpellingModel;
     }
 
@@ -207,6 +208,7 @@ public class LearnSpellingTemplate implements TemplateInterface {
             {
                 mLearnSpellingData.add(position,learnSpellingModel);
                 adapter.notifyDataSetChanged();
+                setEmptyView(activity);
             }
         }
     }

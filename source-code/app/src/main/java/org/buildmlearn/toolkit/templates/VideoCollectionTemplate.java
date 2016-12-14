@@ -324,6 +324,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
         videoData.remove(position);
         setEmptyView(activity);
         adapter.notifyDataSetChanged();
+        setEmptyView(activity);
         return videoModel;
     }
 
@@ -334,6 +335,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
             if (videoModel != null) {
                 videoData.add(position, videoModel);
                 adapter.notifyDataSetChanged();
+                setEmptyView(activity);
             }
         }
     }

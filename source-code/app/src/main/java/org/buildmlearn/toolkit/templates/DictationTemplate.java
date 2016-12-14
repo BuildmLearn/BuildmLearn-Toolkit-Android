@@ -231,6 +231,7 @@ public class DictationTemplate implements TemplateInterface {
         dictData.remove(position);
         setEmptyView(activity);
         adapter.notifyDataSetChanged();
+        setEmptyView(activity);
         return dictationModel;
     }
 
@@ -243,6 +244,7 @@ public class DictationTemplate implements TemplateInterface {
             {
                 dictData.add(position,dictationModel);
                 adapter.notifyDataSetChanged();
+                setEmptyView(activity);
             }
         }
     }
