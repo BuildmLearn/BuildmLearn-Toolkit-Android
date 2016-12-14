@@ -338,7 +338,7 @@
     <string name="comprehension_edit_meta_title">Edit Meta Details</string>
     <string name="meta_add_help">Click Add button to start adding meta details</string>
     <string name="restart_comprehension">RESTART</string>
-    <string name="video_collection_template_linited_links">Only Youtube, Dailymotion and Vimeo links supported.</string>
+    <string name="video_collection_template_linited_links">Only Youtube, Dailymotion, Metacafe and Vimeo links supported.</string>
 
     <string name="restore_msg">Restoring data from Apk</string>
     <string name="expandbutton">expandButton</string>

@@ -50,6 +50,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
     private static final String YOUTUBE_SHORT = "youtu.be";
     private static final String DAILYMOTION = "dailymotion";
     private static final String VIMEO = "vimeo";
+    private static final String METACAFE = "metacafe";
     transient private VideoCollectionAdapter adapter;
     private ArrayList<VideoModel> videoData;
     transient private ProgressDialog progress;
@@ -71,7 +72,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
         if ("".equals(linkText)) {
             link.setError(context.getString(R.string.video_collection_template_link_hint));
             return false;
-        } else if (!(linkText.contains(YOUTUBE + ".com") || linkText.contains(YOUTUBE_SHORT) || linkText.contains(DAILYMOTION + ".com") || linkText.contains(VIMEO + ".com"))) {
+        } else if (!(linkText.contains(YOUTUBE + ".com") || linkText.contains(YOUTUBE_SHORT) || linkText.contains(DAILYMOTION + ".com") || linkText.contains(METACAFE + ".com") || linkText.contains(VIMEO + ".com"))) {
             link.setError(context.getString(R.string.video_collection_template_linited_links));
             return false;
         }
@@ -99,7 +100,8 @@ public class VideoCollectionTemplate implements TemplateInterface {
             return false;
         } else if(!Patterns.WEB_URL.matcher(linkText).matches()){
             link.setError(context.getString(R.string.video_collection_template_link_valid_hint));
-        } else if (!(linkText.contains(YOUTUBE + ".com") || linkText.contains(YOUTUBE_SHORT) || linkText.contains(DAILYMOTION + ".com") || linkText.contains(VIMEO + ".com"))) {
+            return false;
+        } else if (!(linkText.contains(YOUTUBE + ".com") || linkText.contains(YOUTUBE_SHORT) || linkText.contains(DAILYMOTION + ".com") || linkText.contains(METACAFE + ".com") || linkText.contains(VIMEO + ".com"))) {
             link.setError(context.getString(R.string.video_collection_template_linited_links));
             return false;
         }
@@ -191,6 +193,18 @@ public class VideoCollectionTemplate implements TemplateInterface {
 
             String VIMEO_OEMBED_LINK = "https://vimeo.com/api/oembed.json?url=";
             return VIMEO_OEMBED_LINK + link;
+        }  else if (link.contains(METACAFE)) {
+            if (!link.contains("www.")) {
+                link = "http://www." + link;
+            } else if (!(link.contains("http:") || link.contains("https:"))) {
+                link = "http://" + link;
+            }
+            if(!link.endsWith("/")) {
+                link = link+"/";
+            }
+            link.replaceFirst("https://","http://");
+
+            return link;
         }
 
         return null;
@@ -409,7 +423,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
             success = true;
             final String BASE_URL = params[0];
 
-            if (BASE_URL.contains(YOUTUBE + ".com")) {
+            if (BASE_URL.contains(YOUTUBE + ".com") || BASE_URL.contains(METACAFE + ".com")) {
                 try {
                     int TIMEOUT_LIMIT = 60000;
                     String USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.94 Safari/537.36";
@@ -424,8 +438,15 @@ public class VideoCollectionTemplate implements TemplateInterface {
                     String META_CONTENT = "content";
                     String title = titleElem.attr(META_CONTENT);
 
-                    org.jsoup.nodes.Element inputElements = document.getElementById("watch-description-text");
-                    String description = inputElements.html();
+                    String description = "";
+                    if(BASE_URL.contains(YOUTUBE + ".com")) {
+                        org.jsoup.nodes.Element inputElements = document.getElementById("watch-description-text");
+                        description = inputElements.html();
+                    } else if(BASE_URL.contains(METACAFE + ".com")) {
+                        String META_PROPERTY_DESCRIPTION = "meta[name=description]";
+                        Elements descriptionElem = document.select(META_PROPERTY_DESCRIPTION);
+                        description = descriptionElem.attr(META_CONTENT);
+                    }
 
                     //String META_PROPERTY_DESCRIPTION = "meta[property=og:description]";
                     //Elements descriptionElem = document.select(META_PROPERTY_DESCRIPTION);
