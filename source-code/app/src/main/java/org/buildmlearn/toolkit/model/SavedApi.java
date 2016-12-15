@@ -18,6 +18,16 @@ public class SavedApi {
     private String name;
     private String author;
 
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
+    }
+
+    private boolean isSelected = false;
+
     public SavedApi(File file, String fileName, long date) {
 
         this.file = file;

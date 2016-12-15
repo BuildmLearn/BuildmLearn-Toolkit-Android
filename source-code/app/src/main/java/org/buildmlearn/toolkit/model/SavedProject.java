@@ -19,6 +19,16 @@ public class SavedProject {
     private String author;
     private long unformattedDate;
 
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
+    }
+
+    private boolean isSelected = false;
+
     public SavedProject(File file, String fileName, long date, String type, String fullPath) {
 
         this.file = file;
