@@ -83,6 +83,14 @@ public class ToolkitApplication extends Application {
 
     /**
      * @return Folder path
+     * @brief Returns folder path for temp folder
+     */
+    public String getTempDir() {
+        return dir + Constants.TEMP_DIR;
+    }
+
+    /**
+     * @return Folder path
      * @brief Returns folder path for saved projects
      */
     public String getDraftDir() {
