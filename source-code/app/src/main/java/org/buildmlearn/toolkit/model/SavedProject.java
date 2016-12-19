@@ -18,6 +18,7 @@ public class SavedProject {
     private String type;
     private String author;
     private long unformattedDate;
+    private boolean isSelected = false;
 
     public boolean isSelected() {
         return isSelected;
@@ -26,8 +27,6 @@ public class SavedProject {
     public void setSelected(boolean selected) {
         isSelected = selected;
     }
-
-    private boolean isSelected = false;
 
     public SavedProject(File file, String fileName, long date, String type, String fullPath) {
 
