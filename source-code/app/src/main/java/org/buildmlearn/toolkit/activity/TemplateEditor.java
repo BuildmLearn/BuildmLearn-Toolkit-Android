@@ -44,6 +44,7 @@ import org.buildmlearn.toolkit.model.KeyStoreDetails;
 import org.buildmlearn.toolkit.model.Template;
 import org.buildmlearn.toolkit.model.TemplateInterface;
 import org.buildmlearn.toolkit.simulator.Simulator;
+import org.buildmlearn.toolkit.templates.MatchTemplate;
 import org.buildmlearn.toolkit.utilities.FileUtils;
 import org.buildmlearn.toolkit.utilities.KeyboardHelper;
 import org.buildmlearn.toolkit.utilities.SignerThread;
@@ -324,7 +325,7 @@ public class TemplateEditor extends AppCompatActivity {
         findViewById(R.id.button_add_item).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ((templateId == 5 || templateId == 7) && selectedTemplate.currentMetaEditorAdapter().isEmpty()) {
+                if ((templateId == 5 ) && selectedTemplate.currentMetaEditorAdapter().isEmpty()) {
                     selectedTemplate.addMetaData(TemplateEditor.this);
                 } else {
                     selectedTemplate.addItem(TemplateEditor.this);
@@ -514,7 +515,7 @@ public class TemplateEditor extends AppCompatActivity {
             selectedTemplate = (TemplateInterface) templateObject;
             selectedTemplate.setTemplateId(templateId);
             populateListView(selectedTemplate.newTemplateEditorAdapter(this));
-            if (templateId == 5 || templateId == 7) {
+            if (templateId == 5 ) {
                 populateMetaView(selectedTemplate.newMetaEditorAdapter(this));
             }
             setUpActionBar();
@@ -541,7 +542,7 @@ public class TemplateEditor extends AppCompatActivity {
             finish();
         } else {
             populateListView(selectedTemplate.currentTemplateEditorAdapter());
-            if (templateId == 5 || templateId == 7) {
+            if (templateId == 5 ) {
                 populateMetaView(selectedTemplate.currentMetaEditorAdapter());
             }
             setUpActionBar();
@@ -642,8 +643,7 @@ public class TemplateEditor extends AppCompatActivity {
      * @brief Changes the color scheme when switching from normal mode to edit mode.
      * <p/>
      * Edit mode is triggered, when the list item is long pressed.
-     */
-    private void changeColorScheme() {
+     */private void changeColorScheme() {
         int primaryColor = ContextCompat.getColor(toolkit, R.color.color_primary_dark);
         int primaryColorDark = ContextCompat.getColor(toolkit, R.color.color_selected_dark);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(primaryColor));
@@ -655,6 +655,7 @@ public class TemplateEditor extends AppCompatActivity {
         showTemplateSelectedMenu = true;
         invalidateOptionsMenu();
     }
+
 
     /**
      * @brief Restores the color scheme when switching from edit mode to normal mode.
@@ -731,12 +732,16 @@ public class TemplateEditor extends AppCompatActivity {
                 doc.appendChild(rootElement);
                 Element dataElement = doc.createElement("data");
                 rootElement.appendChild(dataElement);
-                if (selectedTemplate.getItems(doc).size() == 0 || (selectedTemplate.getItems(doc).size() < 2 && (templateId == 5 || templateId == 7))) {
+                if (selectedTemplate.getItems(doc).size() == 0 || (selectedTemplate.getItems(doc).size() < 2 && (templateId == 5))) {
                     Toast.makeText(this, "Unable to perform action: No Data", Toast.LENGTH_SHORT).show();
                     return null;
                 }
-                if (selectedTemplate.getItems(doc).get(0).getTagName().equals("item") && (templateId == 5 || templateId == 7)) {
+                if (selectedTemplate.getItems(doc).get(0).getTagName().equals("item") && (templateId == 5)) {
                     Toast.makeText(this, "Unable to perform action: Add Meta Details", Toast.LENGTH_SHORT).show();
+                    return null;
+                }
+                if(templateId == 7 && (!(((MatchTemplate)selectedTemplate).validProject()))) {
+                    Toast.makeText(this, "Unable to perform action: Add atleast one pair of matching in each Match the following", Toast.LENGTH_LONG).show();
                     return null;
                 }
                 for (Element item : selectedTemplate.getItems(doc)) {
@@ -927,7 +932,7 @@ public class TemplateEditor extends AppCompatActivity {
             selectedTemplate = (TemplateInterface) templateObject;
             selectedTemplate.setTemplateId(templateId);
             populateListView(selectedTemplate.loadProjectTemplateEditor(this, items));
-            if (templateId == 5 || templateId == 7) {
+            if (templateId == 5 ) {
                 populateMetaView(selectedTemplate.loadProjectMetaEditor(this, doc));
             }
             File draftDir = new File(toolkit.getDraftDir());

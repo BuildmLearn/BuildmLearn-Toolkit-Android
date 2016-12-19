@@ -17,6 +17,7 @@ import android.support.annotation.NonNull;
  */
 public class MatchDb {
 
+    private static final String EQUAL = " == ";
     private final MatchDBHelper dbHelper;
     private SQLiteDatabase db;
 
@@ -45,10 +46,25 @@ public class MatchDb {
         );
     }
 
-    public Cursor getRandMatchCursor() {
+    public Cursor getMetaCursorById(int id) {
 
-        return db.query(MatchContract.Matches.TABLE_NAME + " Order BY RANDOM() ",
-                new String[]{"*"}, null, null, null, null, null);
+        String selection = MatchContract.MetaDetails._ID + EQUAL + id;
+
+        return db.query(
+                MatchContract.MetaDetails.TABLE_NAME,
+                null,
+                selection,
+                null,
+                null,
+                null,
+                null
+        );
+    }
+
+
+    public Cursor getRandMatchCursor(String title) {
+
+        return db.rawQuery("select * from "+ MatchContract.Matches.TABLE_NAME + " where title='"+title+"' order by random();",null);
     }
 
     public void deleteAll() {

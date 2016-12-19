@@ -27,6 +27,7 @@ public class MatchModel implements Parcelable {
 
     private String matchA;
     private String matchB;
+    private String title;
     private int correct;
 
     public MatchModel() {
@@ -72,5 +73,9 @@ public class MatchModel implements Parcelable {
     public void setMatchB(String matchB) {
         this.matchB = matchB;
     }
+
+    public void setTitle(String title) { this.title = title; }
+
+    public String getTitle() { return title; }
 
 }

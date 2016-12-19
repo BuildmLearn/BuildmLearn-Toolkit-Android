@@ -1,6 +1,7 @@
 package org.buildmlearn.toolkit.templates;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +20,8 @@ import java.util.ArrayList;
 class MatchAdapter extends BaseAdapter {
 
     private final Context context;
-    private final ArrayList<MatchModel> matchData;
+    private ArrayList<MatchModel> matchData;
+    private static int selectedPosition = -1;
 
     public MatchAdapter(Context context, ArrayList<MatchModel> matchData) {
         this.context = context;
@@ -61,9 +63,37 @@ class MatchAdapter extends BaseAdapter {
         holder.matchA.setText(data.getMatchA());
         holder.matchB.setText(data.getMatchB());
 
+        if(selectedPosition == position) {
+            convertView.setBackgroundColor(Color.RED);
+        } else {
+            convertView.setBackgroundResource(0);
+        }
         convertView.setTag(holder);
         return convertView;
     }
+
+    public void remove(int position) {
+        matchData.remove(position);
+        notifyDataSetChanged();
+    }
+
+    public void selectItem(int position) {
+        if(selectedPosition == -1) {
+            selectedPosition = position;
+        } else {
+            if(selectedPosition == position) {
+                selectedPosition = -1;
+            } else {
+                selectedPosition = position;
+            }
+        }
+        notifyDataSetChanged();
+    }
+
+    public int getSelectedPosition() { return selectedPosition; }
+
+    public ArrayList<MatchModel> getMatchData() { return matchData; }
+
 
     public class Holder {
         public TextViewPlus matchA;

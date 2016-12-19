@@ -53,26 +53,37 @@ public class FetchXMLTask extends AsyncTask<String, Void, Void> {
         }
     }
 
-    private void saveMetaData(MatchMetaModel metaDetails) {
+    private void saveMetaData(ArrayList<MatchMetaModel> metaDetails) {
 
-        String title;
-        String first_list_title;
-        String second_list_title;
+        Vector<ContentValues> cVVector = new Vector<>(metaDetails.size());
 
-        title = metaDetails.getTitle();
-        first_list_title = metaDetails.getFirstListTitle();
-        second_list_title = metaDetails.getSecondListTitle();
+        for(MatchMetaModel matchMetaModel : metaDetails) {
+            String title;
+            String first_list_title;
+            String second_list_title;
 
-        ContentValues metaValues = new ContentValues();
+            title = matchMetaModel.getTitle();
+            first_list_title = matchMetaModel.getFirstListTitle();
+            second_list_title = matchMetaModel.getSecondListTitle();
 
-        metaValues.put(MetaDetails.TITLE, title);
-        metaValues.put(MetaDetails.FIRST_TITLE_TAG, first_list_title);
-        metaValues.put(MetaDetails.SECOND_TITLE_TAG, second_list_title);
+            ContentValues metaValues = new ContentValues();
 
-        MatchDb db = new MatchDb(mContext);
-        db.open();
-        db.bulkInsertMetaDetails(new ContentValues[]{metaValues});
-        db.close();
+            metaValues.put(MetaDetails.TITLE, title);
+            metaValues.put(MetaDetails.FIRST_TITLE_TAG, first_list_title);
+            metaValues.put(MetaDetails.SECOND_TITLE_TAG, second_list_title);
+
+            cVVector.add(metaValues);
+        }
+
+        if (cVVector.size() > 0) {
+            ContentValues[] cvArray = new ContentValues[cVVector.size()];
+            cVVector.toArray(cvArray);
+            MatchDb db = new MatchDb(mContext);
+            db.open();
+            db.bulkInsertMetaDetails(cvArray);
+            db.close();
+        }
+
     }
 
     private void saveMatches(ArrayList<MatchModel> matches) {
@@ -86,6 +97,7 @@ public class FetchXMLTask extends AsyncTask<String, Void, Void> {
 
             matchValues.put(Matches.MATCH_A, matchInfo.getMatchA());
             matchValues.put(Matches.MATCH_B, matchInfo.getMatchB());
+            matchValues.put(Matches.TITLE, matchInfo.getTitle());
 
             cVVector.add(matchValues);
         }
@@ -106,7 +118,8 @@ public class FetchXMLTask extends AsyncTask<String, Void, Void> {
         if (params.length == 0) {
             return null;
         }
-        ArrayList<MatchModel> mList;
+        ArrayList<MatchModel> mList = new ArrayList<>();
+        ArrayList<MatchMetaModel> metaList = new ArrayList<>();
 
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
@@ -119,30 +132,45 @@ public class FetchXMLTask extends AsyncTask<String, Void, Void> {
             db = dbf.newDocumentBuilder();
             doc = db.parse(fXmlFile);
             doc.normalize();
-            mList = new ArrayList<>();
 
-            String match_title = doc.getElementsByTagName(MatchMetaModel.TITLE_TAG).item(0).getTextContent();
-            String first_list_title = doc.getElementsByTagName(MatchMetaModel.FIRST_TITLE_TAG).item(0).getTextContent();
-            String second_list_title = doc.getElementsByTagName(MatchMetaModel.SECOND_TITLE_TAG).item(0).getTextContent();
-
-            saveMetaData(new MatchMetaModel(match_title, first_list_title, second_list_title));
-
-            NodeList childNodes = doc.getElementsByTagName("item");
-
-            for (int i = 0; i < childNodes.getLength(); i++) {
-                MatchModel app = new MatchModel();
-
-                Node child = childNodes.item(i);
-
-                if (child.getNodeType() == Node.ELEMENT_NODE) {
-                    Element element2 = (Element) child;
-
-                    app.setMatchA(getValue("first_list_item", element2));
-                    app.setMatchB(getValue("second_list_item", element2));
+            NodeList nList = doc.getElementsByTagName("item");
+            ArrayList<Element> items = new ArrayList<>();
+            for (int i = 0; i < nList.getLength(); i++) {
+                Node nodeItem = nList.item(i);
+                if (nodeItem.getNodeType() == Node.ELEMENT_NODE) {
+                    items.add((Element) nodeItem);
                 }
-                mList.add(app);
             }
-            saveMatches(mList);
+
+            for(Element metaElement : items) {
+                mList = new ArrayList<>();
+
+                String match_title = metaElement.getElementsByTagName(MatchMetaModel.TITLE_TAG).item(0).getTextContent();
+                String first_list_title = metaElement.getElementsByTagName(MatchMetaModel.FIRST_TITLE_TAG).item(0).getTextContent();
+                String second_list_title = metaElement.getElementsByTagName(MatchMetaModel.SECOND_TITLE_TAG).item(0).getTextContent();
+
+                MatchMetaModel matchMetaModel = new MatchMetaModel(match_title, first_list_title, second_list_title);
+                metaList.add(matchMetaModel);
+
+                NodeList childNodes = metaElement.getElementsByTagName("matchdataitem");
+
+                for (int i = 0; i < childNodes.getLength(); i++) {
+                    MatchModel app = new MatchModel();
+
+                    Node child = childNodes.item(i);
+
+                    if (child.getNodeType() == Node.ELEMENT_NODE) {
+                        Element element2 = (Element) child;
+
+                        app.setMatchA(getValue("first_list_item", element2));
+                        app.setMatchB(getValue("second_list_item", element2));
+                        app.setTitle(match_title);
+                    }
+                    mList.add(app);
+                }
+                saveMatches(mList);
+            }
+            saveMetaData(metaList);
         } catch (ParserConfigurationException e) {
             return null;
         } catch (FileNotFoundException e) {

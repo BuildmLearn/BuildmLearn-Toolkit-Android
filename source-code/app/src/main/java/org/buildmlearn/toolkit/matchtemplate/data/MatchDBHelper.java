@@ -3,6 +3,7 @@ package org.buildmlearn.toolkit.matchtemplate.data;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import org.buildmlearn.toolkit.matchtemplate.data.MatchContract.Matches;
 import org.buildmlearn.toolkit.matchtemplate.data.MatchContract.MetaDetails;
@@ -21,6 +22,7 @@ class MatchDBHelper extends SQLiteOpenHelper {
 
     public MatchDBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        Log.d("tejavojjala","hii");
     }
 
     @Override
@@ -28,7 +30,8 @@ class MatchDBHelper extends SQLiteOpenHelper {
         final String SQL_CREATE__TABLE_A = "CREATE TABLE " + Matches.TABLE_NAME + " (" +
                 Matches._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 Matches.MATCH_A + "  TEXT," +
-                Matches.MATCH_B + "  TEXT)";
+                Matches.MATCH_B + "  TEXT," + Matches.TITLE + " TEXT )" ;
+        Log.d("tejavojjala",SQL_CREATE__TABLE_A);
 
         sqLiteDatabase.execSQL(SQL_CREATE__TABLE_A);
 

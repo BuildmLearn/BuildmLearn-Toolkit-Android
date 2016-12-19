@@ -15,10 +15,12 @@ public class MatchModel implements Serializable {
 
     private String matchA;
     private String matchB;
+    private boolean isSelected;
 
     public MatchModel(String A, String B) {
         this.matchA = A;
         this.matchB = B;
+        this.isSelected = false;
     }
 
     public String getMatchA() {
@@ -38,7 +40,7 @@ public class MatchModel implements Serializable {
     }
 
     public Element getXml(Document doc) {
-        Element rootElement = doc.createElement("item");
+        Element rootElement = doc.createElement("matchdataitem");
         Element first_list_item = doc.createElement("first_list_item");
         first_list_item.appendChild(doc.createTextNode(matchA));
         rootElement.appendChild(first_list_item);
@@ -47,4 +49,8 @@ public class MatchModel implements Serializable {
         rootElement.appendChild(second_list_item);
         return rootElement;
     }
+
+    public void setSelected(boolean isSelected) { this.isSelected = isSelected; }
+
+    public boolean isSelected() { return isSelected; }
 }

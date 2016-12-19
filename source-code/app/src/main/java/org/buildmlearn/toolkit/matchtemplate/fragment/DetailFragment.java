@@ -1,14 +1,17 @@
 package org.buildmlearn.toolkit.matchtemplate.fragment;
 
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.text.method.LinkMovementMethod;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -48,6 +51,7 @@ public class DetailFragment extends Fragment {
     private ArrayList<MatchModel> matchListA;
     private ArrayList<MatchModel> matchListB;
     private MatchDb db;
+    private String match_id;
 
     public static Fragment newInstance() {
         return new DetailFragment();
@@ -57,6 +61,7 @@ public class DetailFragment extends Fragment {
     public void onSaveInstanceState(Bundle outState) {
         outState.putParcelableArrayList("matchListA", matchListA);
         outState.putParcelableArrayList("matchListB", matchListB);
+        outState.putString(Intent.EXTRA_TEXT,match_id);
         if (mPositionA != ListView.INVALID_POSITION) {
             outState.putInt(SELECTED_KEY_A, mPositionA);
         }
@@ -72,9 +77,11 @@ public class DetailFragment extends Fragment {
         if (savedInstanceState == null || !savedInstanceState.containsKey("matchListA") || !savedInstanceState.containsKey("matchListB")) {
             matchListA = new ArrayList<>();
             matchListB = new ArrayList<>();
+            match_id = "";
         } else {
             matchListA = savedInstanceState.getParcelableArrayList("matchListA");
             matchListB = savedInstanceState.getParcelableArrayList("matchListB");
+            match_id = savedInstanceState.getString(Intent.EXTRA_TEXT);
         }
     }
 
@@ -89,6 +96,7 @@ public class DetailFragment extends Fragment {
         if (arguments != null) {
             matchListA = arguments.getParcelableArrayList(Constants.first_list);
             matchListB = arguments.getParcelableArrayList(Constants.second_list);
+            match_id = arguments.getString(Intent.EXTRA_TEXT);
         }
 
         long countScore = 0;
@@ -117,6 +125,15 @@ public class DetailFragment extends Fragment {
         Toolbar toolbar = (Toolbar) rootView.findViewById(R.id.toolbar_main);
         toolbar.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary_comprehension));
         toolbar.inflateMenu(R.menu.menu_main_white);
+        toolbar.setNavigationIcon(R.drawable.ic_home_white_24dp);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                getActivity().getSupportFragmentManager().beginTransaction().replace(((ViewGroup) getView().getParent()).getId(), org.buildmlearn.toolkit.matchtemplate.fragment.MainActivityFragment.newInstance()).addToBackStack(null).commit();
+            }
+        });
 
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
@@ -154,18 +171,21 @@ public class DetailFragment extends Fragment {
 
         handleListViewListeners();
 
-        listViewA.setAdapter(matchListAdapterA);
-        listViewB.setAdapter(matchListAdapterB);
-
         View header_A = getLayoutInflater(savedInstanceState).inflate(R.layout.match_template_detail_header_a, null);
         View footer_A = getLayoutInflater(savedInstanceState).inflate(R.layout.match_template_detail_footer_a, null);
         listViewA.addHeaderView(header_A);
         listViewA.addFooterView(footer_A);
 
+        listViewA.setAdapter(matchListAdapterA);
+
+
         View header_B = getLayoutInflater(savedInstanceState).inflate(R.layout.match_template_detail_header_b, null);
         View footer_B = getLayoutInflater(savedInstanceState).inflate(R.layout.match_template_detail_footer_b, null);
         listViewB.addHeaderView(header_B);
         listViewB.addFooterView(footer_B);
+
+        listViewB.setAdapter(matchListAdapterB);
+
 
         ((TextView) rootView.findViewById(R.id.score)).setText(String.format(Locale.ENGLISH, "Score : %d of %d", countScore, matchListA.size()));
 
@@ -179,6 +199,7 @@ public class DetailFragment extends Fragment {
             public void onClick(View v) {
 
                 Bundle arguments = new Bundle();
+                arguments.putString(Intent.EXTRA_TEXT, String.valueOf(match_id));
                 arguments.putParcelableArrayList(Constants.first_list, matchListA);
                 arguments.putParcelableArrayList(Constants.second_list, matchListB);
 
@@ -199,6 +220,33 @@ public class DetailFragment extends Fragment {
 
         return rootView;
     }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+                    Bundle arguments = new Bundle();
+                    arguments.putString(Intent.EXTRA_TEXT, String.valueOf(match_id));
+                    arguments.putParcelableArrayList(Constants.first_list, matchListA);
+                    arguments.putParcelableArrayList(Constants.second_list, matchListB);
+
+                    Fragment frag = MainFragment.newInstance();
+                    frag.setArguments(arguments);
+                    getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(((ViewGroup) getView().getParent()).getId(), frag).addToBackStack(null).commit();
+                    return true;
+                }
+                return false;
+            }
+        });
+    }
+
 
     private void handleListViewListeners() {
 

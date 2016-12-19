@@ -376,7 +376,6 @@
     <string name="meta_title">Title</string>
     <string name="meta_title_match_hint">Enter Title</string>
 
-
     <string name="previous_match">PREVIOUS</string>
     <string name="check_answers_match">CHECK ANSWERS</string>
     <string name="try_again_match">TRY AGAIN</string>
@@ -402,6 +401,7 @@
     <string name="enter_description">Enter the description.</string>
     <string name="enter_meaning">Enter meaning of the word.</string>
     <string name="match_main_title">Enter a title.</string>
+    <string name="match_main_title_exists">This title already exists.Please choose another title</string>
     <string name="valid_before_answer">Enter a valid option before marking it as answer.</string>
     <string name="enter_title">Enter a title.</string>
     <string name="enter">Enter name</string>

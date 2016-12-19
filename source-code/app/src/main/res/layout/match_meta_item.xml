@@ -1,42 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:animateLayoutChanges="true"
-    android:gravity="center_vertical|center_horizontal"
-    android:orientation="vertical">
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:animateLayoutChanges="true"
+android:orientation="vertical">
 
-    <view
-        android:id="@+id/meta_title"
-        class="org.buildmlearn.toolkit.views.TextViewPlus"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_weight="1"
-        android:lineSpacingMultiplier="1.2"
-        android:paddingTop="16dp" />
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal">
 
-    <view
-        android:id="@+id/first_list_title"
-        class="org.buildmlearn.toolkit.views.TextViewPlus"
+        <ImageView
+            android:id="@+id/question_icon"
+            style="@style/TextView.CircleIcon"
+            android:layout_gravity="center_vertical"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/show_more"
+            android:scaleType="center"
+            android:src="@drawable/expand" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="vertical">
+
+            <view
+                android:id="@+id/meta_title"
+                class="org.buildmlearn.toolkit.views.TextViewPlus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_weight="1"
+                android:lineSpacingMultiplier="1.2"
+                android:paddingTop="16dp" />
+
+            <view
+                android:id="@+id/first_list_title"
+                class="org.buildmlearn.toolkit.views.TextViewPlus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_weight="1"
+                android:lineSpacingMultiplier="1.2"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp" />
+
+            <view
+                android:id="@+id/second_list_title"
+                class="org.buildmlearn.toolkit.views.TextViewPlus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_weight="1"
+                android:paddingBottom="16dp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="72dp"
+        android:layout_marginStart="72dp"
+        android:background="@color/color_divider">
+
+    </View>
+
+    <LinearLayout
+        android:id="@+id/quiz_options_box"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_weight="1"
-        android:lineSpacingMultiplier="1.2"
+        android:background="@color/translucent_grey"
+        android:orientation="vertical"
         android:paddingBottom="8dp"
-        android:paddingTop="8dp" />
+        android:paddingLeft="30dp"
+        android:paddingStart="30dp"
+        android:paddingTop="16dp">
 
-    <view
-        android:id="@+id/second_list_title"
-        class="org.buildmlearn.toolkit.views.TextViewPlus"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_weight="1"
-        android:paddingBottom="16dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+            <view
+                android:id="@+id/empty_view_text"
+                style="@style/TextView.Empty"
+                class="org.buildmlearn.toolkit.views.TextViewPlus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_item_help" />
+
+            <ListView
+                android:id="@+id/list_view_match_data"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_gravity="center_vertical"
+                android:clipToPadding="false"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="4dp"
+                android:paddingBottom="@dimen/paddingTop_match" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button_add_match_data"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="@string/quiz_add"
+                android:textAllCaps="true"
+                android:textColor="@color/color_primary"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/delete_match_data"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="@string/quiz_delete"
+                android:textAllCaps="true"
+                android:textColor="@color/color_primary"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/edit_match_data"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="@string/menu_edit_template_item"
+                android:textAllCaps="true"
+                android:textColor="@color/color_primary"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>

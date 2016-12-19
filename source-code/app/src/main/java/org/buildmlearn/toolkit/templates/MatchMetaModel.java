@@ -4,6 +4,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * @brief Model class for Match The Following Meta Template Editor data
@@ -14,16 +15,21 @@ public class MatchMetaModel implements Serializable {
     public static final String TITLE_TAG = "meta_title";
     public static final String FIRST_TITLE_TAG = "meta_first_list_title";
     public static final String SECOND_TITLE_TAG = "meta_second_list_title";
-    private static final String ROOT_TAG = "meta_details";
+    private static final String ROOT_TAG = "item";
 
     private String title;
     private String first_list_title;
     private String second_list_title;
+    private ArrayList<MatchModel> matchModels;
+    private boolean isSelected;
+
 
     public MatchMetaModel(String t, String A, String B) {
         this.title = t;
         this.first_list_title = A;
         this.second_list_title = B;
+        this.isSelected = false;
+        this.matchModels = new ArrayList<>();
     }
 
     public String getFirstListTitle() {
@@ -61,6 +67,23 @@ public class MatchMetaModel implements Serializable {
         Element second_list_elem = doc.createElement(SECOND_TITLE_TAG);
         second_list_elem.appendChild(doc.createTextNode(second_list_title));
         rootElement.appendChild(second_list_elem);
+        for(MatchModel matchModel : matchModels) {
+            rootElement.appendChild(matchModel.getXml(doc));
+        }
         return rootElement;
     }
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setIsSelected(boolean isSelected) {
+        this.isSelected = isSelected;
+    }
+
+    public ArrayList<MatchModel> getMatchModels() { return matchModels; }
+
+    public void setMatchModels(ArrayList<MatchModel> matchModels) { this.matchModels = matchModels; }
+
+    public void addMatchModel(MatchModel matchModel) { matchModels.add(matchModel); }
 }

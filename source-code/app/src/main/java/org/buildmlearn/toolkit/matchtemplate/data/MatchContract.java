@@ -9,11 +9,12 @@ import android.provider.BaseColumns;
 /**
  * @brief Contains database contracts for match template's simulator.
  */
-class MatchContract {
+public class MatchContract {
 
     public static final class Matches implements BaseColumns {
 
         public static final String TABLE_NAME = "matches";
+        public static final String TITLE = "title";
 
         public static final String MATCH_A = "match_a";
         public static final String MATCH_B = "match_b";

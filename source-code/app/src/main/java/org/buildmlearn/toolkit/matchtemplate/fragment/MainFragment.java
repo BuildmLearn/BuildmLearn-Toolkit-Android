@@ -1,15 +1,21 @@
 package org.buildmlearn.toolkit.matchtemplate.fragment;
 
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.LoaderManager;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.text.method.LinkMovementMethod;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -37,10 +43,12 @@ import java.util.Collections;
 /**
  * @brief Fragment for the users to match column A with column B in match template's simulator.
  */
-public class MainFragment extends Fragment {
+public class MainFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final String SELECTED_KEY_A = "selected_position_a";
     private static final String SELECTED_KEY_B = "selected_position_b";
+    private static final int MATCH_LOADER = 0;
+
 
     private MatchArrayAdapter_A matchListAdapterA;
     private MatchArrayAdapter_B matchListAdapterB;
@@ -53,12 +61,16 @@ public class MainFragment extends Fragment {
     private ArrayList<MatchModel> matchListB;
     private MatchDb db;
 
+    private String match_Id;
     private int selectedPositionA = -1;
     private int selectedPositionB = -1;
 
     private View selectedViewA;
     private View selectedViewB;
     private View clickSourceA;
+
+    private TextView firstListTitle,secondListTitle;
+    private Toolbar toolbar;
 
     public static Fragment newInstance() {
         return new MainFragment();
@@ -68,6 +80,7 @@ public class MainFragment extends Fragment {
     public void onSaveInstanceState(Bundle outState) {
         outState.putParcelableArrayList("matchListA", matchListA);
         outState.putParcelableArrayList("matchListB", matchListB);
+        outState.putString(Intent.EXTRA_TEXT,match_Id);
         if (mPositionA != ListView.INVALID_POSITION) {
             outState.putInt(SELECTED_KEY_A, mPositionA);
         }
@@ -83,57 +96,40 @@ public class MainFragment extends Fragment {
         if (savedInstanceState == null || !savedInstanceState.containsKey("matchListA") || !savedInstanceState.containsKey("matchListB")) {
             matchListA = new ArrayList<>();
             matchListB = new ArrayList<>();
+            match_Id = "";
         } else {
             matchListA = savedInstanceState.getParcelableArrayList("matchListA");
             matchListB = savedInstanceState.getParcelableArrayList("matchListB");
+            match_Id = savedInstanceState.getString(Intent.EXTRA_TEXT);
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Bundle arguments = getArguments();
+        if (arguments != null) {
+            match_Id = arguments.getString(Intent.EXTRA_TEXT);
+        }
 
         db = new MatchDb(getContext());
         db.open();
 
-        Cursor cursorMatchesA = db.getRandMatchCursor();
-        Cursor cursorMatchesB = db.getRandMatchCursor();
-
-        Cursor meta = db.getMetaCursor();
-
-        if (cursorMatchesA != null) {
-            while (cursorMatchesA.moveToNext()) {
-                MatchModel match = new MatchModel();
-                match.setMatchA(cursorMatchesA.getString(Constants.COL_MATCH_A));
-                match.setMatchB(cursorMatchesA.getString(Constants.COL_MATCH_B));
-                matchListA.add(match);
-            }
-            cursorMatchesA.close();
-        }
-
-        if (cursorMatchesB != null) {
-            while (cursorMatchesB.moveToNext()) {
-                MatchModel match = new MatchModel();
-                match.setMatchA(cursorMatchesB.getString(Constants.COL_MATCH_A));
-                match.setMatchB(cursorMatchesB.getString(Constants.COL_MATCH_B));
-                matchListB.add(match);
-            }
-            cursorMatchesB.close();
-        }
-
-        matchListAdapterA =
-                new MatchArrayAdapter_A(
-                        getActivity(), matchListA);
-
-        matchListAdapterB =
-                new MatchArrayAdapter_B(
-                        getActivity(), matchListB);
-
         View rootView = inflater.inflate(R.layout.match_template_main, container, false);
 
-        Toolbar toolbar = (Toolbar) rootView.findViewById(R.id.toolbar_main);
+        toolbar = (Toolbar) rootView.findViewById(R.id.toolbar_main);
         toolbar.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary_comprehension));
         toolbar.inflateMenu(R.menu.menu_main_white);
+        toolbar.setNavigationIcon(R.drawable.ic_home_white_24dp);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                getActivity().getSupportFragmentManager().beginTransaction().replace(((ViewGroup) getView().getParent()).getId(), org.buildmlearn.toolkit.matchtemplate.fragment.MainActivityFragment.newInstance()).addToBackStack(null).commit();
+            }
+        });
+
 
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
@@ -177,9 +173,6 @@ public class MainFragment extends Fragment {
         listViewB.addHeaderView(header_B);
         listViewB.addFooterView(footer_B);
 
-        listViewA.setAdapter(matchListAdapterA);
-        listViewB.setAdapter(matchListAdapterB);
-
         if (savedInstanceState != null && savedInstanceState.containsKey(SELECTED_KEY_A) && savedInstanceState.containsKey(SELECTED_KEY_B)) {
             mPositionA = savedInstanceState.getInt(SELECTED_KEY_A);
             mPositionB = savedInstanceState.getInt(SELECTED_KEY_B);
@@ -192,6 +185,7 @@ public class MainFragment extends Fragment {
             public void onClick(View v) {
 
                 Bundle arguments = new Bundle();
+                arguments.putString(Intent.EXTRA_TEXT, String.valueOf(match_Id));
                 arguments.putParcelableArrayList(Constants.first_list, matchListA);
                 arguments.putParcelableArrayList(Constants.second_list, matchListB);
 
@@ -203,12 +197,34 @@ public class MainFragment extends Fragment {
             }
         });
 
-        meta.moveToFirst();
-        toolbar.setTitle(meta.getString(Constants.COL_TITLE_META));
-        ((TextView) rootView.findViewById(R.id.first_list_title)).setText(meta.getString(Constants.COL_FIRST_TITLE));
-        ((TextView) rootView.findViewById(R.id.second_list_title)).setText(meta.getString(Constants.COL_SECOND_TITLE));
+        firstListTitle = (TextView) rootView.findViewById(R.id.first_list_title);
+        secondListTitle = (TextView) rootView.findViewById(R.id.second_list_title);
 
         return rootView;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+                    getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(((ViewGroup) getView().getParent()).getId(), org.buildmlearn.toolkit.matchtemplate.fragment.MainActivityFragment.newInstance()).addToBackStack(null).commit();
+                    return true;
+                }
+                return false;
+            }
+        });
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        getLoaderManager().initLoader(MATCH_LOADER, null, this);
+        super.onActivityCreated(savedInstanceState);
     }
 
     private void handleListViewListeners() {
@@ -368,5 +384,82 @@ public class MainFragment extends Fragment {
         db.close();
         ViewGroup mContainer = (ViewGroup) getActivity().findViewById(R.id.container);
         mContainer.removeAllViews();
+    }
+
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        if (null != match_Id) {
+            switch (id) {
+                case MATCH_LOADER:
+
+                    return new CursorLoader(getActivity(), null, Constants.MATCH_COLUMNS, null, null, null) {
+                        @Override
+                        public Cursor loadInBackground() {
+                            return db.getMetaCursorById(Integer.parseInt(match_Id));
+                        }
+                    };
+                default: //do nothing
+                    break;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        if (!data.moveToFirst()) {
+            return;
+        }
+        switch (loader.getId()) {
+            case MATCH_LOADER:
+
+                toolbar.setTitle(data.getString(Constants.COL_TITLE_META));
+                firstListTitle.setText(data.getString(Constants.COL_FIRST_TITLE));
+                secondListTitle.setText(data.getString(Constants.COL_SECOND_TITLE));
+                Cursor cursorMatchesA = db.getRandMatchCursor(data.getString(Constants.COL_TITLE_META));
+                Cursor cursorMatchesB = db.getRandMatchCursor(data.getString(Constants.COL_TITLE_META));
+
+                if (cursorMatchesA != null) {
+                    while (cursorMatchesA.moveToNext()) {
+                        MatchModel match = new MatchModel();
+                        match.setMatchA(cursorMatchesA.getString(Constants.COL_MATCH_A));
+                        match.setMatchB(cursorMatchesA.getString(Constants.COL_MATCH_B));
+                        matchListA.add(match);
+                    }
+                    cursorMatchesA.close();
+                }
+
+                if (cursorMatchesB != null) {
+                    while (cursorMatchesB.moveToNext()) {
+                        MatchModel match = new MatchModel();
+                        match.setMatchA(cursorMatchesB.getString(Constants.COL_MATCH_A));
+                        match.setMatchB(cursorMatchesB.getString(Constants.COL_MATCH_B));
+                        matchListB.add(match);
+                    }
+                    cursorMatchesB.close();
+                }
+
+                matchListAdapterA =
+                        new MatchArrayAdapter_A(
+                                getActivity(), matchListA);
+
+                matchListAdapterB =
+                        new MatchArrayAdapter_B(
+                                getActivity(), matchListB);
+
+                listViewA.setAdapter(matchListAdapterA);
+                listViewB.setAdapter(matchListAdapterB);
+
+                break;
+            default:
+                throw new UnsupportedOperationException("Unknown Loader");
+        }
+
+
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+        // This constructor is intentionally empty
     }
 }
