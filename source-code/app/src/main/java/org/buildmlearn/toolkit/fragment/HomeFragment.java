@@ -6,14 +6,18 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.activity.HomeActivity;
 import org.buildmlearn.toolkit.activity.TemplateActivity;
 
 /**
  * @brief Fragment displayed on the home screen.
  */
 public class HomeFragment extends Fragment {
+
+    private final String FRAGMENT_TAG_HOME = "Home";
 
     /**
      * {@inheritDoc}
@@ -29,6 +33,8 @@ public class HomeFragment extends Fragment {
                 startActivity(new Intent(getActivity(), TemplateActivity.class));
             }
         });
+        Fragment currentFragment = getFragmentManager().findFragmentByTag(FRAGMENT_TAG_HOME);
+        HomeActivity.setCurrentFragment(currentFragment);
         return view;
     }
 
