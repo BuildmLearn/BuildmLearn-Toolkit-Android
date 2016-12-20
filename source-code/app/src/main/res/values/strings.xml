@@ -413,5 +413,22 @@
     <string name="valid_msg_name">Enter valid name</string>
     <string name="same_options">Two or more options are same.</string>
     <string name="time_zero_error">Time can\'t be zero</string>
+    <string name="failed_apk_generation">Failed to generate APK file.</string>
+    <string name="insert_meta_data">Please insert meta data</string>
+    <string name="enter_one_question">Enter at least one question.</string>
+    <string name="enter_project_title">Enter project title</string>
+    <string name="enter_author_name">Enter author name</string>
+    <string name="failed_share_project">Failed to share project.</string>
+    <string name="share_empty_project">Cannot share an empty project</string>
+    <string name="invalid_template_id_closing">Invalid template ID, closing Template Editor activity</string>
+    <string name="draft_saved">Draft saved successfully</string>
+    <string name="failed_emulator">Failed to start simulator.\n</string>
+    <string name="enter_meta_data">Enter meta data.</string>
+    <string name="confirm_action">Confirm action.</string>
+    <string name="save_draft_project">Save as project or draft?</string>
+    <string name="dialog_project">Project</string>
+    <string name="dialog_draft">Draft</string>
+    <string name="dialog_discard">Discard</string>
+    <string name="build_unsuccessfull">Build unsuccessful</string>
 </resources>
 

@@ -40,6 +40,7 @@ public class TemplateActivity extends AppCompatActivity {
             public void onItemClick(int position) {
                 Intent intent = new Intent(getApplicationContext(), TemplateEditor.class);
                 intent.putExtra(Constants.TEMPLATE_ID, position);
+                intent.putExtra("lastActivity", "templateActivity");
                 startActivity(intent);
             }
         });
