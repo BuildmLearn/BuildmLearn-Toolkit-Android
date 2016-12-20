@@ -1,19 +1,18 @@
 package org.buildmlearn.toolkit.activity;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
-
-import android.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
-import android.os.Handler;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -25,7 +24,10 @@ import org.buildmlearn.toolkit.fragment.HomeFragment;
 import org.buildmlearn.toolkit.fragment.LoadApkFragment;
 import org.buildmlearn.toolkit.fragment.LoadProjectFragment;
 import org.buildmlearn.toolkit.fragment.SettingsFragment;
+import org.buildmlearn.toolkit.utilities.OnBackPressed;
 import org.buildmlearn.toolkit.utilities.SmoothNavigationToggle;
+
+;
 
 /**
  * @brief Home screen of the application containg all the menus and settings.
@@ -37,7 +39,10 @@ public class HomeActivity extends AppCompatActivity
     private final String FRAGMENT_TAG_HOME = "Home";
     private final String FRAGMENT_TAG_PROJECT = "Project";
     private final String FRAGMENT_TAG_APK = "Apk";
+    private final String FRAGMENT_TAG_DRAFT = "Drafts";
+    private final String FRAGMENT_TAG_SETTINGS = "Settings";
     private boolean backPressedOnce = false;
+    public static Fragment currentFragment;
 
     private SmoothNavigationToggle smoothNavigationToggle;
 
@@ -66,6 +71,7 @@ public class HomeActivity extends AppCompatActivity
         final TextView name = (TextView) menuHeaderView.findViewById(R.id.name);
         name.setText(String.format(" %s", prefs.getString(getString(R.string.key_user_name), "")));
 
+        currentFragment = getFragmentManager().findFragmentByTag(FRAGMENT_TAG_HOME);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         smoothNavigationToggle = new SmoothNavigationToggle(
@@ -113,6 +119,7 @@ public class HomeActivity extends AppCompatActivity
                 smoothNavigationToggle.runWhenIdle(new Runnable() {
                     @Override
                     public void run() {
+                        currentFragment = getFragmentManager().findFragmentByTag(FRAGMENT_TAG_HOME);
                         fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                                 .replace(R.id.container, new HomeFragment(), FRAGMENT_TAG_HOME).commit();
                         if (getSupportActionBar() != null) {
@@ -126,6 +133,7 @@ public class HomeActivity extends AppCompatActivity
                 smoothNavigationToggle.runWhenIdle(new Runnable() {
                     @Override
                     public void run() {
+                        currentFragment = getFragmentManager().findFragmentByTag(FRAGMENT_TAG_PROJECT);
                         fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                                 .replace(R.id.container, new LoadProjectFragment(),FRAGMENT_TAG_PROJECT).commit();
                         if (getSupportActionBar() != null) {
@@ -139,6 +147,7 @@ public class HomeActivity extends AppCompatActivity
                 smoothNavigationToggle.runWhenIdle(new Runnable() {
                     @Override
                     public void run() {
+                        currentFragment = getFragmentManager().findFragmentByTag(FRAGMENT_TAG_APK);
                         fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                                 .replace(R.id.container, new LoadApkFragment(),FRAGMENT_TAG_APK).commit();
                         if (getSupportActionBar() != null) {
@@ -152,8 +161,9 @@ public class HomeActivity extends AppCompatActivity
                 smoothNavigationToggle.runWhenIdle(new Runnable() {
                     @Override
                     public void run() {
+                        currentFragment = getFragmentManager().findFragmentByTag(FRAGMENT_TAG_DRAFT);
                         fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                                .replace(R.id.container, new DraftsFragment()).commit();
+                                .replace(R.id.container, new DraftsFragment(), FRAGMENT_TAG_DRAFT).commit();
                         if (getSupportActionBar() != null) {
                             getSupportActionBar().setTitle(R.string.menu_drafts);
                         }
@@ -165,8 +175,9 @@ public class HomeActivity extends AppCompatActivity
                 smoothNavigationToggle.runWhenIdle(new Runnable() {
                     @Override
                     public void run() {
+                        currentFragment = getFragmentManager().findFragmentByTag(FRAGMENT_TAG_SETTINGS);
                         fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                                .replace(R.id.container, new SettingsFragment()).commit();
+                                .replace(R.id.container, new SettingsFragment(), FRAGMENT_TAG_SETTINGS).commit();
                         if (getSupportActionBar() != null) {
                             getSupportActionBar().setTitle(R.string.menu_settings);
                         }
@@ -201,12 +212,34 @@ public class HomeActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        FragmentManager fragmentManager = getFragmentManager();
-        Fragment fragment = fragmentManager.findFragmentByTag(FRAGMENT_TAG_HOME);
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        FragmentManager fragmentManager = getFragmentManager();
+        Fragment homeFragment = fragmentManager.findFragmentByTag(FRAGMENT_TAG_HOME);
+
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else if (fragment != null && fragment.isVisible()) {
+        }
+        else if (currentFragment instanceof OnBackPressed) {
+            if(!((OnBackPressed) currentFragment).onBackPressed()){
+                fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                        .replace(R.id.container, new HomeFragment(), FRAGMENT_TAG_HOME).commit();
+                if (getSupportActionBar() != null) {
+                    getSupportActionBar().setTitle(R.string.app_name);
+                }
+                navigationView.setCheckedItem(R.id.nav_home);
+            }
+        }
+        else if (homeFragment == null || !homeFragment.isVisible()){
+            fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                    .replace(R.id.container, new HomeFragment(), FRAGMENT_TAG_HOME).commit();
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().setTitle(R.string.app_name);
+            }
+            navigationView.setCheckedItem(R.id.nav_home);
+        }
+        else if (homeFragment != null && homeFragment.isVisible()){
             if(backPressedOnce){
                 finish();
             }
@@ -220,16 +253,15 @@ public class HomeActivity extends AppCompatActivity
                     backPressedOnce= false;
                 }
             }, 2000);
-        } else {
-            fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                    .replace(R.id.container, new HomeFragment(), FRAGMENT_TAG_HOME).commit();
-            if (getSupportActionBar() != null) {
-                getSupportActionBar().setTitle(R.string.app_name);
-            }
-            navigationView.setCheckedItem(R.id.nav_home);
         }
     }
+
+    public static void setCurrentFragment(Fragment fragment) {
+        if (fragment != null)
+            HomeActivity.currentFragment = fragment;
+    }
+
+    public static Fragment getCurrentFragment() {
+        return currentFragment;
+    }
 }
-
-
-

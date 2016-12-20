@@ -23,11 +23,13 @@ import android.widget.Toast;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.ToolkitApplication;
+import org.buildmlearn.toolkit.activity.HomeActivity;
 import org.buildmlearn.toolkit.activity.TemplateEditor;
 import org.buildmlearn.toolkit.adapter.DraftProjectAdapter;
 import org.buildmlearn.toolkit.constant.Constants;
 import org.buildmlearn.toolkit.model.SavedProject;
 import org.buildmlearn.toolkit.model.Template;
+import org.buildmlearn.toolkit.utilities.OnBackPressed;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
@@ -49,9 +51,13 @@ import javax.xml.parsers.ParserConfigurationException;
 /**
  * @brief Fragment used to save drafts.
  */
-public class DraftsFragment extends Fragment implements AbsListView.OnItemClickListener {
+public class DraftsFragment extends Fragment implements AbsListView.OnItemClickListener, OnBackPressed {
 
     private static final String TAG = "Draft Project Fragment";
+
+    private final String FRAGMENT_TAG_DRAFT = "Drafts";
+    private final String FRAGMENT_TAG_HOME = "Home";
+
     private AbsListView mListView;
 
     private boolean showTemplateSelectedMenu;
@@ -61,6 +67,7 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
     private Activity activity;
     private ArrayList<SavedProject> draftProjects;
     private View selectedView = null;
+    public Fragment currentFragment;
 
     private int selectedPosition = -1;
 
@@ -78,6 +85,8 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
         String path = mToolkit.getDraftDir();
         Log.d("Files", "Path: " + path);
 
+        currentFragment = getFragmentManager().findFragmentByTag(FRAGMENT_TAG_DRAFT);
+        HomeActivity.setCurrentFragment(currentFragment);
 
         reloadContent();
     }
@@ -422,5 +431,20 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
      */
     private void restoreSelectedView() {
         restoreColorScheme();
+    }
+
+    @Override
+    public boolean onBackPressed() {
+
+        if (mAdapter.selectedPositionsSize() != 0){
+            for(int i=0;i<mAdapter.getCount();i++)
+                if(mAdapter.isPositionSelected(i)) {
+                    mListView.getChildAt(i).setBackgroundColor(0);
+                    mAdapter.removeSelectedPosition(i);
+                }
+            restoreColorScheme();
+            return true;
+        }
+        return false;
     }
 }

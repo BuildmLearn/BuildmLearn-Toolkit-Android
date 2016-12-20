@@ -1,6 +1,7 @@
 package org.buildmlearn.toolkit.fragment;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -23,6 +24,7 @@ import android.widget.Toast;
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.ToolkitApplication;
 import org.buildmlearn.toolkit.activity.DeepLinkerActivity;
+import org.buildmlearn.toolkit.activity.HomeActivity;
 import org.buildmlearn.toolkit.utilities.RestoreThread;
 
 import java.io.File;
@@ -35,6 +37,7 @@ import java.io.InputStream;
 public class SettingsFragment extends PreferenceFragment {
 
     private static final int REQUEST_PICK_APK = 9985;
+    private final String FRAGMENT_TAG_SETTINGS = "Settings";
     private Preference prefUsername;
 
     public static float deleteDirectory(File file, float size) {
@@ -72,6 +75,9 @@ public class SettingsFragment extends PreferenceFragment {
                 return true;
             }
         });
+
+        Fragment currentFragment = getFragmentManager().findFragmentByTag(FRAGMENT_TAG_SETTINGS);
+        HomeActivity.setCurrentFragment(currentFragment);
 
         Preference restoreProject = findPreference(getString(R.string.key_restore_project));
         restoreProject.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
