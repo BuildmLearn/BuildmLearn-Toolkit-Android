@@ -416,11 +416,12 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
                 for(int i=0;i<mAdapter.getCount();i++) {
                     if (!mAdapter.isPositionSelected(i))
                     {
-                        mListView.getChildAt(i).setBackgroundColor(ContextCompat.getColor(mToolkit, R.color.color_divider));
+                        savedApis.get(i).setSelected(true);
                         mAdapter.putSelectedPosition(i);
                         changeColorScheme();
                     }
                 }
+                mAdapter.notifyDataSetChanged();
                 break;
 
             case R.id.action_unselect_all:
@@ -436,10 +437,11 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
     public void unselectAll() {
         for (int i = 0; i < mAdapter.getCount(); i++)
             if (mAdapter.isPositionSelected(i)) {
-                mListView.getChildAt(i).setBackgroundColor(0);
+                savedApis.get(i).setSelected(false);
                 mAdapter.removeSelectedPosition(i);
             }
         restoreColorScheme();
+        mAdapter.notifyDataSetChanged();
     }
 
     /**

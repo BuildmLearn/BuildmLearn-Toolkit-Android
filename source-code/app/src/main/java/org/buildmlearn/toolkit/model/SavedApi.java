@@ -17,6 +17,15 @@ public class SavedApi {
     private long unformattedDate;
     private String name;
     private String author;
+    private boolean isSelected = false;
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
+    }
 
     public SavedApi(File file, String fileName, long date) {
 
