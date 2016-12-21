@@ -210,8 +210,9 @@ public class HomeActivity extends AppCompatActivity
             if(backPressedOnce){
                 finish();
             }
+            if(!backPressedOnce)
+                Toast.makeText(this, "Tap back once more to exit.", Toast.LENGTH_SHORT).show();
             backPressedOnce=true;
-            Toast.makeText(this, "Tap back once more to exit.", Toast.LENGTH_SHORT).show();
             new Handler().postDelayed(new Runnable()
             {
                 @Override
