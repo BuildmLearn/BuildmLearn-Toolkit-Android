@@ -413,5 +413,9 @@
     <string name="valid_msg_name">Enter valid name</string>
     <string name="same_options">Two or more options are same.</string>
     <string name="time_zero_error">Time can\'t be zero</string>
+    <string name="pref_rate_title">Rate Toolkit</string>
+    <string name="pref_rate_summary">Rate our app on Play Store</string>
+    <string name="pref_rate_key">rate</string>
+    <string name="settings_network_unavailable">Network not available</string>
 </resources>
 
