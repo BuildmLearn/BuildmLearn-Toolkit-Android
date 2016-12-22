@@ -1,13 +1,10 @@
 package org.buildmlearn.toolkit.activity;
 
 import android.Manifest;
-
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
-import android.support.v7.app.AlertDialog;
 import android.content.Context;
-
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -39,6 +36,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.ToolkitApplication;
 import org.buildmlearn.toolkit.constant.Constants;
@@ -822,6 +820,10 @@ public class TemplateEditor extends AppCompatActivity {
             rootElement.appendChild(dataElement);
             if (selectedTemplate.getItems(doc).size() == 0) {
                 Toast.makeText(this, "Unable to perform action: No Data", Toast.LENGTH_SHORT).show();
+                return null;
+            }
+            if (selectedTemplate.getItems(doc).get(0).getTagName().equals("item") && (templateId == 5 || templateId == 7)) {
+                Toast.makeText(this, "Unable to perform action: No Meta Details", Toast.LENGTH_SHORT).show();
                 return null;
             }
             for (Element item : selectedTemplate.getItems(doc)) {

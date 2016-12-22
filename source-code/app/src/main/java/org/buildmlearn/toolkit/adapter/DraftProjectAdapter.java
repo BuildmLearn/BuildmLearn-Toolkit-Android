@@ -119,6 +119,10 @@ public class DraftProjectAdapter extends BaseAdapter {
         holder.draftTitle.setText(String.format(Locale.ENGLISH, "Drafted on %s", projectData.getDate()));
         holder.draftIcon.setText("D");
         convertView.setTag(holder);
+        if (projectData.isSelected())
+        {
+            convertView.setBackgroundColor(ContextCompat.getColor(mContext, R.color.color_divider));
+        }
         return convertView;
     }
 

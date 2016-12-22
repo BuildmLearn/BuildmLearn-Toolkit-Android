@@ -324,11 +324,12 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
                 for(int i=0;i<mAdapter.getCount();i++) {
                     if (!mAdapter.isPositionSelected(i))
                     {
-                        mListView.getChildAt(i).setBackgroundColor(ContextCompat.getColor(mToolkit, R.color.color_divider));
+                        draftProjects.get(i).setSelected(true);
                         mAdapter.putSelectedPosition(i);
                         changeColorScheme();
                     }
                 }
+                mAdapter.notifyDataSetChanged();
                 break;
 
             case R.id.action_unselect_all:
@@ -363,9 +364,10 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
     private void unselectAll() {
         for (int i = 0; i < mAdapter.getCount(); i++)
             if (mAdapter.isPositionSelected(i)) {
-                mListView.getChildAt(i).setBackgroundColor(0);
+                draftProjects.get(i).setSelected(false);
                 mAdapter.removeSelectedPosition(i);
             }
+        mAdapter.notifyDataSetChanged();
         restoreColorScheme();
     }
 
