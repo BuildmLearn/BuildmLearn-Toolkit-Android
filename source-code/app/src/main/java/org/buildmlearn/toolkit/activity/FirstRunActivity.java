@@ -18,6 +18,7 @@ import org.buildmlearn.toolkit.constant.Constants;
 
 import io.fabric.sdk.android.Fabric;
 
+
 /**
  * @brief Shown on application first launch.
  */
@@ -34,9 +35,8 @@ public class FirstRunActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Fabric.with(this, new Crashlytics());
         prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-
+        Fabric.with(this, new Crashlytics());
         if (prefs.getBoolean(FIRST_RUN, false)) {
             startActivity(new Intent(getApplicationContext(), HomeActivity.class));
             finish();

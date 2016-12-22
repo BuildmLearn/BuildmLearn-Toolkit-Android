@@ -42,11 +42,6 @@
             android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_template_editor"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-
-        <meta-data
-            android:name="io.fabric.ApiKey"
-            android:value="c1d33469d628f14f5b248cb6d6dcf6de726ef5e3" />
-
         <activity
             android:name=".activity.FirstRunActivity"
             android:label="@string/app_name"
@@ -95,6 +90,10 @@
                 <category android:name="android.intent.category.NOTIFICATION_PREFERENCES" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="1132ca7df3eff20168030d5099ebd5b81bbfa805" />
     </application>
 
 </manifest>
