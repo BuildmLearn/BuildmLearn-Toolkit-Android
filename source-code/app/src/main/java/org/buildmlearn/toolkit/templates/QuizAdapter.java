@@ -217,6 +217,16 @@ class QuizAdapter extends BaseAdapter {
                         optionCount++;
                     }
                 }
+
+                for (int i=0;i<options.size();i++){
+                    for(int j=0;j<options.size();j++){
+                        if(options.get(i).getText().toString().trim().equals(options.get(j).getText().toString().trim())){
+                            Toast.makeText(context, context.getString(R.string.same_options), Toast.LENGTH_SHORT).show();
+                            isValidated = false;
+                        }
+                    }
+                }
+
                 if (optionCount < 2) {
                     Toast.makeText(context, "Minimum two multiple answers are required.", Toast.LENGTH_SHORT).show();
                     isValidated = false;
