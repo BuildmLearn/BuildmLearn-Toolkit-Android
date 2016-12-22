@@ -188,6 +188,15 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
                         "</body></html>";
 
                 player.loadData(playVideo, "text/html", "utf-8");
+            } else if(link.contains("metacafe.com")) {
+
+                String embedlink = link.replaceFirst("metacafe.com/watch","metacafe.com/embed");
+                String playVideo = "<html><body style=\"margin: 0; padding: 0\">" +
+                        " <iframe class=\"player\" type=\"text/html\" width=\"100%\" height=\"850\" src=\"" + embedlink + "\">" +
+                        "</body></html>";
+
+                player.loadData(playVideo, "text/html", "utf-8");
+
             }
 
             rootView.findViewById(R.id.next).setOnClickListener(new View.OnClickListener() {

@@ -45,7 +45,7 @@ Glosarry
 | [X]/learnspelling | Contains simulator's code for learnspelling Template  |
 | [X]/flashcardtemplate | Contains simulator's code for FlashCard Template  |
 | [X]/quiztemplate | Contains simulator's code for Quiz Template  |
-| [X]/videocollectiontemplate | Contains simulator's code for FlashCard Template  |
+| [X]/videocollectiontemplate | Contains simulator's code for VideoCollection Template  |
 | [X]/comprehensiontemplate | Contains simulator's code for Comprehension Template  |
 | [X]/dictationtemplate | Contains simulator's code for Dictation Template  |
 | [X]/matchtemplate | Contains simulator's code for Match Template  |
