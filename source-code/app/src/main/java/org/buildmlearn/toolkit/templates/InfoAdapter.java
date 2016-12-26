@@ -97,8 +97,8 @@ class InfoAdapter extends BaseAdapter {
         holder.editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LayoutInflater inflater = LayoutInflater.from(mContext);
-                View dialogView = inflater.inflate(R.layout.info_dialog_add_edit_data, null);
+
+                View dialogView = View.inflate(mContext,R.layout.info_dialog_add_edit_data, null);
                 final AlertDialog dialog = new AlertDialog.Builder(mContext)
                         .setTitle(R.string.info_edit_title)
                         .setView(dialogView,

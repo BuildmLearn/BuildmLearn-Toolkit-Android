@@ -29,6 +29,7 @@
 package org.buildmlearn.toolkit.utilities;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -139,6 +140,7 @@ public class SignerThread extends Thread {
         this.listener = listener;
     }
 
+    @SuppressLint("HardwareIds")
     public void run() {
 
         int permissionCheck = ContextCompat.checkSelfPermission(context,

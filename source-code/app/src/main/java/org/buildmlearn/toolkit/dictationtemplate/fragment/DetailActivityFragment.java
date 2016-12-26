@@ -2,6 +2,7 @@ package org.buildmlearn.toolkit.dictationtemplate.fragment;
 
 import android.app.FragmentManager;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -99,7 +100,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
                         welcomeAlert.show();
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
-                        assert ((TextView) welcomeAlert.findViewById(android.R.id.message)) != null;
+                        assert ( welcomeAlert.findViewById(android.R.id.message)) != null;
                         ((TextView) welcomeAlert.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
                         break;
                     default: //do nothing
@@ -253,7 +254,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
             });
         }
 
-        SharedPreferences prefs = getActivity().getSharedPreferences("Radio", getContext().MODE_PRIVATE);
+        SharedPreferences prefs = getActivity().getSharedPreferences("Radio", Context.MODE_PRIVATE);
         float rate = prefs.getInt("radio_b", 1);
         if (rate == 0) {
             rate = 0.5F;

@@ -38,17 +38,17 @@ public class SettingsFragment extends PreferenceFragment {
     private static final int REQUEST_PICK_APK = 9985;
     private Preference prefUsername;
 
-    public static float deleteDirectory(File file, float size) {
+    private static float deleteDirectory(File file, float size) {
         if (file.exists()) {
             File[] listFiles = file.listFiles();
             if (listFiles == null) return 0;
 
-            for (int i = 0; i < listFiles.length; i++) {
-                if (listFiles[i].isDirectory()) {
-                    size += deleteDirectory(listFiles[i], 0);
+            for (File listFile : listFiles) {
+                if (listFile.isDirectory()) {
+                    size += deleteDirectory(listFile, 0);
                 } else {
-                    size += listFiles[i].length();
-                    listFiles[i].delete();
+                    size += listFile.length();
+                    listFile.delete();
                 }
             }
         }
@@ -127,9 +127,9 @@ public class SettingsFragment extends PreferenceFragment {
         startActivityForResult(intent, REQUEST_PICK_APK);
     }
 
-    public void resetUserName() {
-        LayoutInflater inflater = getActivity().getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.dialog_settings_your_name, null);
+    private void resetUserName() {
+
+        View dialogView = View.inflate(getActivity(),R.layout.dialog_settings_your_name, null);
         final EditText editInput = (EditText) dialogView.findViewById(R.id.et_dialog_settings_your_name);
         editInput.setText(prefUsername.getSummary());
 

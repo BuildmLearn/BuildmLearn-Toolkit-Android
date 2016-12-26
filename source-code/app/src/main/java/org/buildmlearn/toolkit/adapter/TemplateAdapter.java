@@ -40,7 +40,7 @@ public class TemplateAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         this.context = context;
     }
 
-    public static boolean cancelPotentialWork(int data, ImageView imageView) {
+    private static boolean cancelPotentialWork(int data, ImageView imageView) {
         final BitmapWorkerTask bitmapWorkerTask = getBitmapWorkerTask(imageView);
 
         if (bitmapWorkerTask != null) {
@@ -153,8 +153,8 @@ public class TemplateAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         final
         int color;
 
-        ListColor(String colorCode) {
-            this.color = Color.parseColor(colorCode);
+        ListColor( String colorCode) {
+            this.color =  Color.parseColor(colorCode);
         }
 
         public int getColor() {

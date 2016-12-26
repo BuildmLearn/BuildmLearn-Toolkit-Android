@@ -350,7 +350,7 @@ public class TemplateEditor extends AppCompatActivity {
                     ToolkitApplication mToolkitApplication = new ToolkitApplication();
                     mToolkitApplication.storagePathsValidate();
                 }
-                return;
+
             }
 
         }
@@ -686,10 +686,10 @@ public class TemplateEditor extends AppCompatActivity {
         EditText authorEditText = (EditText) findViewById(R.id.author_name);
         titleEditText = (EditText) findViewById(R.id.template_title);
         assert findViewById(R.id.author_name) != null;
-        assert ((EditText) findViewById(R.id.author_name)) != null;
+        assert ( findViewById(R.id.author_name)) != null;
         String author = ((EditText) findViewById(R.id.author_name)).getText().toString();
         assert findViewById(R.id.template_title) != null;
-        assert ((EditText) findViewById(R.id.template_title)) != null;
+        assert ( findViewById(R.id.template_title)) != null;
         String title = ((EditText) findViewById(R.id.template_title)).getText().toString();
         if ("".equals(author)) {
             assert authorEditText != null;
@@ -786,9 +786,9 @@ public class TemplateEditor extends AppCompatActivity {
      */
     private String saveDraft() {
 
-        assert ((EditText) findViewById(R.id.author_name)) != null;
+        assert ( findViewById(R.id.author_name)) != null;
         String author = ((EditText) findViewById(R.id.author_name)).getText().toString();
-        assert ((EditText) findViewById(R.id.template_title)) != null;
+        assert ( findViewById(R.id.template_title)) != null;
         String title = ((EditText) findViewById(R.id.template_title)).getText().toString();
 
 

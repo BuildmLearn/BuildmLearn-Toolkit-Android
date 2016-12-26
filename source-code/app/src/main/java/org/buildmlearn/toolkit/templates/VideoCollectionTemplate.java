@@ -9,7 +9,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.util.Patterns;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
@@ -153,8 +152,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
 
     @Override
     public String getTitle() {
-        String TEMPLATE_NAME = "VideoCollection Template";
-        return TEMPLATE_NAME;
+        return "VideoCollection Template";
     }
 
     private String convertLink(String link) {
@@ -199,8 +197,8 @@ public class VideoCollectionTemplate implements TemplateInterface {
     @Override
     public void addItem(final Activity activity) {
 
-        LayoutInflater inflater = activity.getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.video_dialog_add_data, null);
+
+        View dialogView = View.inflate(activity,R.layout.video_dialog_add_data, null);
         final AlertDialog dialog = new AlertDialog.Builder(activity)
                 .setTitle(R.string.info_add_new_title)
                 .setView(dialogView,
@@ -247,8 +245,8 @@ public class VideoCollectionTemplate implements TemplateInterface {
     @Override
     public void editItem(final Activity activity, final int position) {
 
-        LayoutInflater inflater = activity.getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.video_dialog_edit_data, null);
+
+        View dialogView = View.inflate(activity,R.layout.video_dialog_edit_data, null);
         final AlertDialog dialog = new AlertDialog.Builder(activity)
                 .setTitle(R.string.info_edit_title)
                 .setView(dialogView,

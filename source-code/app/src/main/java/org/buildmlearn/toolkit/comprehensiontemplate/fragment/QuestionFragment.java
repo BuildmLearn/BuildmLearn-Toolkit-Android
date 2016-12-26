@@ -68,7 +68,7 @@ public class QuestionFragment extends Fragment
                         welcomeAlert.show();
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
-                        assert ((TextView) welcomeAlert.findViewById(android.R.id.message)) != null;
+                        assert ( welcomeAlert.findViewById(android.R.id.message)) != null;
                         ((TextView) welcomeAlert.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
                         break;
                     default: //do nothing

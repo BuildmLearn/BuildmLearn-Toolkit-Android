@@ -31,7 +31,8 @@
             android:id="@+id/imageView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/top" />
+            android:background="@drawable/top"
+            android:contentDescription="@string/simulator_frame_top"/>
 
 
         <ImageView
@@ -40,7 +41,8 @@
             android:layout_height="match_parent"
             android:layout_above="@+id/imageView5"
             android:layout_below="@+id/imageView3"
-            android:background="@drawable/left" />
+            android:background="@drawable/left"
+            android:contentDescription="@string/simulator_frame_left"/>
 
         <ImageView
             android:id="@+id/imageView4"
@@ -50,15 +52,18 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/imageView3"
-            android:background="@drawable/right" />
+            android:background="@drawable/right"
+            android:contentDescription="@string/simulator_frame_right"/>
 
 
         <ImageView
             android:id="@+id/imageView5"
+            android:contentDescription="@string/simulator_frame_bottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:background="@drawable/bottom" />
+            android:background="@drawable/bottom"
+            />
     </RelativeLayout>
 
     <android.support.v7.widget.Toolbar
