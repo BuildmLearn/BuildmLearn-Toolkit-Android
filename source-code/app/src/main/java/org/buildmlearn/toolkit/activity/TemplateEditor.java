@@ -163,6 +163,10 @@ public class TemplateEditor extends AppCompatActivity {
         String aliasName = getString(R.string.alias_name);
         String aliaspassword = getString(R.string.alias_password);
         KeyStoreDetails keyStoreDetails = new KeyStoreDetails(keyPassword, aliasName, aliaspassword);
+        Log.v("singer", saveProject());
+        if(saveProject().equals("File already exists")){
+            return;
+        }
         SignerThread signer = new SignerThread(getApplicationContext(), selectedTemplate.getApkFilePath(), saveProject(), keyStoreDetails, selectedTemplate.getAssetsFilePath(), selectedTemplate.getAssetsFileName(TemplateEditor.this));
 
         mApkGenerationDialog = new ProgressDialog(TemplateEditor.this, R.style.AppDialogTheme);
