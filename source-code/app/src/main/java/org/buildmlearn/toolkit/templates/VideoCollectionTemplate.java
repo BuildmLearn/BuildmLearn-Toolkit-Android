@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.squareup.picasso.Picasso;
 
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.activity.TemplateEditorInterface;
 import org.buildmlearn.toolkit.model.Template;
 import org.buildmlearn.toolkit.model.TemplateInterface;
 import org.buildmlearn.toolkit.utilities.NetworkUtils;
@@ -37,6 +38,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * @brief Video template code implementing methods of TemplateInterface
@@ -97,7 +99,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
         } else if ("".equals(linkText)) {
             link.setError(context.getString(R.string.video_collection_template_link_hint));
             return false;
-        } else if(!Patterns.WEB_URL.matcher(linkText).matches()){
+        } else if (!Patterns.WEB_URL.matcher(linkText).matches()) {
             link.setError(context.getString(R.string.video_collection_template_link_valid_hint));
             return false;
         } else if (!(linkText.contains(YOUTUBE + ".com") || linkText.contains(YOUTUBE_SHORT) || linkText.contains(DAILYMOTION + ".com") || linkText.contains(METACAFE + ".com") || linkText.contains(VIMEO + ".com"))) {
@@ -109,9 +111,39 @@ public class VideoCollectionTemplate implements TemplateInterface {
     }
 
     @Override
-    public BaseAdapter newTemplateEditorAdapter(Context context) {
+    public Object newTemplateEditorAdapter(Context context, final TemplateEditorInterface templateEditorInterface) {
         mContext = context;
-        adapter = new VideoCollectionAdapter(context, videoData);
+        adapter = new VideoCollectionAdapter(context, videoData) {
+            @Override
+            public boolean onLongItemClick(int position, View view) {
+                return templateEditorInterface.onItemLongClick(position, view);
+            }
+
+            @Override
+            protected String getAuthorName() {
+                return templateEditorInterface.getAuthorName();
+            }
+
+            @Override
+            protected void setAuthorName(String authorName) {
+                templateEditorInterface.setAuthorName(authorName);
+            }
+
+            @Override
+            protected void setTitle(String title) {
+                templateEditorInterface.setProjectTitle(title);
+            }
+
+            @Override
+            protected void restoreToolbarColorSchema() {
+                templateEditorInterface.restoreColorSchema();
+            }
+
+            @Override
+            protected String getTitle() {
+                return templateEditorInterface.getProjectTitle();
+            }
+        };
         setEmptyView((Activity) context);
         return adapter;
     }
@@ -122,7 +154,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
     }
 
     @Override
-    public BaseAdapter currentTemplateEditorAdapter() {
+    public Object currentTemplateEditorAdapter() {
         return adapter;
     }
 
@@ -137,7 +169,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
     }
 
     @Override
-    public BaseAdapter loadProjectTemplateEditor(Context context, ArrayList<Element> data) {
+    public Object loadProjectTemplateEditor(Context context, ArrayList<Element> data, final TemplateEditorInterface templateEditorInterface) {
         mContext = context;
         videoData = new ArrayList<>();
         for (Element item : data) {
@@ -147,7 +179,37 @@ public class VideoCollectionTemplate implements TemplateInterface {
             String videoThumbLink = item.getElementsByTagName(VideoModel.THUMB_LINK_TAG).item(0).getTextContent();
             videoData.add(new VideoModel(videoTitle, videoDescription, videoLink, videoThumbLink));
         }
-        adapter = new VideoCollectionAdapter(context, videoData);
+        adapter = new VideoCollectionAdapter(context, videoData) {
+            @Override
+            public boolean onLongItemClick(int position, View view) {
+                return templateEditorInterface.onItemLongClick(position, view);
+            }
+
+            @Override
+            protected String getAuthorName() {
+                return templateEditorInterface.getAuthorName();
+            }
+
+            @Override
+            protected void setAuthorName(String authorName) {
+                templateEditorInterface.setAuthorName(authorName);
+            }
+
+            @Override
+            protected void setTitle(String title) {
+                templateEditorInterface.setProjectTitle(title);
+            }
+
+            @Override
+            protected void restoreToolbarColorSchema() {
+                templateEditorInterface.restoreColorSchema();
+            }
+
+            @Override
+            protected String getTitle() {
+                return templateEditorInterface.getProjectTitle();
+            }
+        };
         setEmptyView((Activity) context);
         return adapter;
     }
@@ -395,6 +457,36 @@ public class VideoCollectionTemplate implements TemplateInterface {
         // This is intentionally empty
     }
 
+    @Override
+    public boolean moveDown(Activity activity, int selectedPosition) {
+        try {
+            //Check already at last
+            if (selectedPosition == videoData.size() - 1)
+                return false;
+            Collections.swap(videoData, selectedPosition, selectedPosition + 1);
+            adapter.notifyDataSetChanged();
+            return true;
+        } catch (IndexOutOfBoundsException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean moveUp(Activity activity, int selectedPosition) {
+        try {
+            //Check already at top
+            if (selectedPosition == 0)
+                return false;
+            Collections.swap(videoData, selectedPosition, selectedPosition - 1);
+            adapter.notifyDataSetChanged();
+            return true;
+        } catch (IndexOutOfBoundsException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     /**
      * @brief Toggles the visibility of empty text if Array has zero elements
      */
@@ -554,6 +646,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
             }
             adapter.notifyDataSetChanged();
             progress.dismiss();
+            setEmptyView((Activity)mContext);
         }
     }
 }

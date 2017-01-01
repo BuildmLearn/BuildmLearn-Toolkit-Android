@@ -10,9 +10,11 @@ import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.activity.TemplateEditorInterface;
 import org.buildmlearn.toolkit.matchtemplate.fragment.SplashFragment;
 import org.buildmlearn.toolkit.model.Template;
 import org.buildmlearn.toolkit.model.TemplateInterface;
@@ -21,6 +23,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * @brief Match template code implementing methods of TemplateInterface
@@ -94,8 +97,43 @@ public class MatchTemplate implements TemplateInterface {
     }
 
     @Override
-    public BaseAdapter newTemplateEditorAdapter(Context context) {
-        adapter = new MatchAdapter(context, matchData);
+    public Object newTemplateEditorAdapter(Context context, final TemplateEditorInterface templateEditorInterface) {
+        adapter = new MatchAdapter(context, matchData) {
+            @Override
+            public boolean onLongItemClick(int position, View view) {
+                return templateEditorInterface.onItemLongClick(position, view);
+            }
+
+            @Override
+            protected String getAuthorName() {
+                return templateEditorInterface.getAuthorName();
+            }
+
+            @Override
+            protected void setAuthorName(String authorName) {
+                templateEditorInterface.setAuthorName(authorName);
+            }
+
+            @Override
+            protected void setTitle(String title) {
+                templateEditorInterface.setProjectTitle(title);
+            }
+
+            @Override
+            protected void populateMetaList(ListView listView) {
+                templateEditorInterface.populateMetaList(listView);
+            }
+
+            @Override
+            protected void restoreToolbarColorSchema() {
+                templateEditorInterface.restoreColorSchema();
+            }
+
+            @Override
+            protected String getTitle() {
+                return templateEditorInterface.getProjectTitle();
+            }
+        };
         return adapter;
     }
 
@@ -106,7 +144,7 @@ public class MatchTemplate implements TemplateInterface {
     }
 
     @Override
-    public BaseAdapter currentTemplateEditorAdapter() {
+    public Object currentTemplateEditorAdapter() {
         return adapter;
     }
 
@@ -115,7 +153,7 @@ public class MatchTemplate implements TemplateInterface {
     }
 
     @Override
-    public BaseAdapter loadProjectTemplateEditor(Context context, ArrayList<Element> data) {
+    public Object loadProjectTemplateEditor(Context context, ArrayList<Element> data, final TemplateEditorInterface templateEditorInterface) {
         matchData = new ArrayList<>();
         for (Element item : data) {
             String first_list_item = item.getElementsByTagName("first_list_item").item(0).getTextContent();
@@ -124,7 +162,42 @@ public class MatchTemplate implements TemplateInterface {
             matchData.add(new MatchModel(first_list_item, second_list_item));
 
         }
-        adapter = new MatchAdapter(context, matchData);
+        adapter = new MatchAdapter(context, matchData) {
+            @Override
+            public boolean onLongItemClick(int position, View view) {
+                return templateEditorInterface.onItemLongClick(position, view);
+            }
+
+            @Override
+            protected String getAuthorName() {
+                return templateEditorInterface.getAuthorName();
+            }
+
+            @Override
+            protected void setAuthorName(String authorName) {
+                templateEditorInterface.setAuthorName(authorName);
+            }
+
+            @Override
+            protected void setTitle(String title) {
+                templateEditorInterface.setProjectTitle(title);
+            }
+
+            @Override
+            protected void populateMetaList(ListView listView) {
+                templateEditorInterface.populateMetaList(listView);
+            }
+
+            @Override
+            protected void restoreToolbarColorSchema() {
+                templateEditorInterface.restoreColorSchema();
+            }
+
+            @Override
+            protected String getTitle() {
+                return templateEditorInterface.getProjectTitle();
+            }
+        };
         return adapter;
     }
 
@@ -343,41 +416,36 @@ public class MatchTemplate implements TemplateInterface {
 
     @Override
     public Object deleteItem(Activity activity, int position) {
-        MatchMetaModel matchMetaModel =null;
+        MatchMetaModel matchMetaModel = null;
         MatchModel matchModel = null;
         if (position == -2) {
             matchMetaModel = metaData.get(0);
             metaData.remove(0);
-            setEmptyView(activity);
             metaAdapter.notifyDataSetChanged();
         } else {
             matchModel = matchData.get(position);
             matchData.remove(position);
-            setEmptyView(activity);
-            adapter.notifyDataSetChanged();
         }
+        adapter.notifyDataSetChanged();
         setEmptyView(activity);
-        if (matchMetaModel==null)
-        {
+        if (matchMetaModel == null) {
             return matchModel;
-        }else
-        {
+        } else {
             return matchMetaModel;
         }
     }
 
     @Override
     public void restoreItem(Activity activity, int position, Object object) {
-        if (position==-2)
-        {
+        if (position == -2) {
             if (object instanceof MatchMetaModel) {
                 MatchMetaModel matchMetaModel = (MatchMetaModel) object;
                 if (matchMetaModel != null) {
-                    metaData.add( matchMetaModel);
+                    metaData.add(matchMetaModel);
                     metaAdapter.notifyDataSetChanged();
                 }
             }
-        }else {
+        } else {
             if (object instanceof MatchModel) {
                 MatchModel matchModel = (MatchModel) object;
                 if (matchModel != null) {
@@ -436,27 +504,45 @@ public class MatchTemplate implements TemplateInterface {
         // This is intentionally empty
     }
 
+    @Override
+    public boolean moveDown(Activity activity, int selectedPosition) {
+        //Check already at last
+        if (selectedPosition == matchData.size() - 1)
+            return false;
+        Collections.swap(matchData, selectedPosition, selectedPosition + 1);
+        adapter.notifyDataSetChanged();
+        return true;
+    }
+
+    @Override
+    public boolean moveUp(Activity activity, int selectedPosition) {
+        //Check already at top
+        if (selectedPosition == 0)
+            return false;
+        Collections.swap(matchData, selectedPosition, selectedPosition - 1);
+        adapter.notifyDataSetChanged();
+        return true;
+    }
+
     /**
      * @brief Toggles the visibility of empty text if Array has zero elements
      */
     private void setEmptyView(Activity activity) {
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && metaData.size() > 0) {
-            activity.findViewById(R.id.shadow_meta).setVisibility(View.VISIBLE);
-        }
-        if (matchData.size() < 1 && metaData.size() < 1) {
-            activity.findViewById(R.id.shadow_meta).setVisibility(View.GONE);
-            ((TextViewPlus) activity.findViewById(R.id.empty_view_text)).setText(R.string.meta_add_help);
-            activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
-        } else if (matchData.size() < 1) {
-            ((TextViewPlus) activity.findViewById(R.id.empty_view_text)).setText(R.string.add_item_help);
-            activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
-        } else if (metaData.size() < 1) {
-            activity.findViewById(R.id.shadow_meta).setVisibility(View.GONE);
-            ((TextViewPlus) activity.findViewById(R.id.empty_view_text)).setText(R.string.meta_add_help);
-            activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
-        } else {
-            activity.findViewById(R.id.empty).setVisibility(View.GONE);
+        try {
+            if (matchData.size() < 1 && metaData.size() < 1) {
+                ((TextViewPlus) activity.findViewById(R.id.empty_view_text)).setText(R.string.meta_add_help);
+                activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
+            } else if (matchData.size() < 1) {
+                ((TextViewPlus) activity.findViewById(R.id.empty_view_text)).setText(R.string.add_item_help);
+                activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
+            } else if (metaData.size() < 1) {
+                ((TextViewPlus) activity.findViewById(R.id.empty_view_text)).setText(R.string.meta_add_help);
+                activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
+            } else {
+                activity.findViewById(R.id.empty).setVisibility(View.GONE);
+            }
+        } catch (NullPointerException e) {
+            e.printStackTrace();
         }
     }
 }
