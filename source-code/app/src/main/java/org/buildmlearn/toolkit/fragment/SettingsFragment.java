@@ -74,8 +74,8 @@ public class SettingsFragment extends PreferenceFragment {
             }
         });
 
-        Preference rate_preference=findPreference(getString(R.string.pref_rate_key));
-        rate_preference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+        Preference ratePreference=findPreference(getString(R.string.pref_rate_key));
+        ratePreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
                 if(NetworkUtils.isNetworkAvailable(getActivity()))

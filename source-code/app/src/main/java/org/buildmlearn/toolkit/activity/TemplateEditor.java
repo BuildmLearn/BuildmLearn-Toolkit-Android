@@ -100,10 +100,10 @@ public class TemplateEditor extends AppCompatActivity {
     public void openBottomSheet (View v) {
 
         View view = getLayoutInflater ().inflate (R.layout.bottom_sheet_view, null);
-        TextView txt_save_apk = (TextView)view.findViewById( R.id.txt_save_apk);
-        TextView txt_save_project = (TextView)view.findViewById( R.id.txt_save_project);
-        TextView txt_share_apk = (TextView)view.findViewById( R.id.txt_share_apk);
-        final TextView txt_shareProject = (TextView)view.findViewById( R.id.txt_share_project);
+        TextView txtSaveApk = (TextView)view.findViewById( R.id.txt_save_apk);
+        TextView txtSaveProject = (TextView)view.findViewById( R.id.txt_save_project);
+        TextView txtShareApk = (TextView)view.findViewById( R.id.txt_share_apk);
+        final TextView txtShareProject = (TextView)view.findViewById( R.id.txt_share_project);
 
         final Dialog mBottomSheetDialog = new Dialog (TemplateEditor.this,
                 R.style.MaterialDialogSheet);
@@ -116,7 +116,7 @@ public class TemplateEditor extends AppCompatActivity {
 
 
         //save project
-        txt_save_project.setOnClickListener(new View.OnClickListener() {
+        txtSaveProject.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -126,7 +126,7 @@ public class TemplateEditor extends AppCompatActivity {
         });
 
         //share project
-        txt_shareProject.setOnClickListener(new View.OnClickListener() {
+        txtShareProject.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -135,26 +135,26 @@ public class TemplateEditor extends AppCompatActivity {
             }
         });
 
-        txt_share_apk.setOnClickListener(new View.OnClickListener() {
+        txtShareApk.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                share_apk();
+                shareApk();
                 mBottomSheetDialog.dismiss();
             }
         });
 
-        txt_save_apk.setOnClickListener(new View.OnClickListener() {
+        txtSaveApk.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                save_apk();
+                saveApk();
                 mBottomSheetDialog.dismiss();
             }
         });
     }
 
-    private void save_apk() {
+    private void saveApk() {
         String savedFilePath;
         savedFilePath = saveProject();
         if (savedFilePath == null || savedFilePath.length() == 0) {
@@ -214,7 +214,7 @@ public class TemplateEditor extends AppCompatActivity {
         signer.start();
     }
 
-    private void share_apk() {
+    private void shareApk() {
         String savedFilePath;
         savedFilePath = saveProject();
         if (savedFilePath == null || savedFilePath.length() == 0) {

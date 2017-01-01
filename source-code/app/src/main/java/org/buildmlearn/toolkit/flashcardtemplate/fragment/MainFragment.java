@@ -144,12 +144,12 @@ public class MainFragment extends Fragment implements NavigationView.OnNavigatio
         mi.setTitle(mi.getTitle());
 
 
-        Cursor flash_cursor = db.getFlashCursorById(Integer.parseInt(FlashId));
-        flash_cursor.moveToFirst();
-        String question = flash_cursor.getString(Constants.COL_QUESTION);
-        String answer = flash_cursor.getString(Constants.COL_ANSWER);
-        String hint = flash_cursor.getString(Constants.COL_HINT);
-        String base64 = flash_cursor.getString(Constants.COL_BASE64);
+        Cursor flashCursor = db.getFlashCursorById(Integer.parseInt(FlashId));
+        flashCursor.moveToFirst();
+        String question = flashCursor.getString(Constants.COL_QUESTION);
+        String answer = flashCursor.getString(Constants.COL_ANSWER);
+        String hint = flashCursor.getString(Constants.COL_HINT);
+        String base64 = flashCursor.getString(Constants.COL_BASE64);
 
         assert rootView.findViewById(R.id.intro_number) != null;
         ((TextView) rootView.findViewById(R.id.intro_number)).setText(String.format(Locale.ENGLISH, "Card #%d of %d", Integer.parseInt(FlashId), numFlash));

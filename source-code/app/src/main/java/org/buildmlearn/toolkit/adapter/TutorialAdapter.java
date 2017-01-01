@@ -77,9 +77,11 @@ public class TutorialAdapter extends PagerAdapter {
                 }
             });
         } else {
+
             convertView = View.inflate(mActivity,R.layout.tutorial_layout, null);
-            View skip_button = convertView.findViewById(R.id.skip_button);
-            skip_button.setVisibility(View.GONE);
+            View skipButton = convertView.findViewById(R.id.skip_button);
+            skipButton.setVisibility(View.GONE);
+
             ImageView deviceImage = (ImageView) convertView
                     .findViewById(R.id.device_image);
             TextView title = (TextView) convertView
@@ -95,7 +97,7 @@ public class TutorialAdapter extends PagerAdapter {
             title.setText(tutorial.getTitle());
             description.setText(tutorial.getDescription());
             if(!SkipTutorial) {
-                skip_button.setVisibility(View.VISIBLE);
+                skipButton.setVisibility(View.VISIBLE);
             }
             convertView.findViewById(R.id.skip_button).setOnClickListener(new View.OnClickListener() {
                 @Override

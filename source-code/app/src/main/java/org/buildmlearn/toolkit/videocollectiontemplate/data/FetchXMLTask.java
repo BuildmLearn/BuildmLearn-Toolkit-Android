@@ -59,21 +59,21 @@ public class FetchXMLTask extends AsyncTask<String, Void, Void> {
             String title;
             String description;
             String link;
-            String thumbnail_url;
+            String thumbnailUrl;
 
             VideoModel videoInfo = videos.get(i);
 
             title = videoInfo.getTitle();
             description = videoInfo.getDescription();
             link = videoInfo.getLink();
-            thumbnail_url = videoInfo.getThumbnailUrl();
+            thumbnailUrl = videoInfo.getThumbnailUrl();
 
             ContentValues videoValues = new ContentValues();
 
             videoValues.put(VideoContract.Videos.TITLE, title);
             videoValues.put(VideoContract.Videos.DESCRIPTION, description);
             videoValues.put(VideoContract.Videos.LINK, link);
-            videoValues.put(VideoContract.Videos.THUMBNAIL_URL, thumbnail_url);
+            videoValues.put(VideoContract.Videos.THUMBNAIL_URL, thumbnailUrl);
 
             cVVector.add(videoValues);
         }
