@@ -417,5 +417,7 @@
     <string name="pref_rate_summary">Rate our app on Play Store</string>
     <string name="pref_rate_key">rate</string>
     <string name="settings_network_unavailable">Network not available</string>
+    <string name="move_up">Move Up</string>
+    <string name="move_down">Move Down</string>
 </resources>
 
