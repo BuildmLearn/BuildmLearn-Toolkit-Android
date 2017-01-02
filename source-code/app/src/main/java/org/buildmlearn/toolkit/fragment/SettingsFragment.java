@@ -104,6 +104,29 @@ public class SettingsFragment extends PreferenceFragment {
                 return true;
             }
         });
+
+        Preference checkUpdate = findPreference(getString(R.string.check_update));
+        checkUpdate.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                if(NetworkUtils.isNetworkAvailable(getActivity()))
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("http://play.google.com/store/apps/details?id=" + getActivity().getPackageName())));
+                else {
+                    AlertDialog dialog = new AlertDialog.Builder(getActivity())
+                            .setMessage(getString(R.string.settings_network_unavailable))
+                            .setPositiveButton(getString(R.string.quiz_ok), new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            }).create();
+                    dialog.show();
+
+                }
+                return true;
+            }
+        });
         prefUsername.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
