@@ -419,5 +419,7 @@
     <string name="settings_network_unavailable">Network not available</string>
     <string name="move_up">Move Up</string>
     <string name="move_down">Move Down</string>
+    <string name="already_at_top">Already at top</string>
+    <string name="already_at_bottom">Already at bottom</string>
 </resources>
 

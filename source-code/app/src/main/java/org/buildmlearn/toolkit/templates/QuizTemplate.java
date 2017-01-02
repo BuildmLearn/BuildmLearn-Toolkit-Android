@@ -21,6 +21,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * @brief Quiz template code implementing methods of TemplateInterface
@@ -397,6 +398,38 @@ public class QuizTemplate implements TemplateInterface {
     @Override
     public void onActivityResult(Context context, int requestCode, int resultCode, Intent intent) {
         // This is intentionally empty
+    }
+
+    @Override
+    public boolean moveDown(Activity activity, int selectedPosition) {
+        try{
+            //Check already at last
+            if (selectedPosition==quizData.size()-1)
+                return false;
+            Collections.swap(quizData,selectedPosition,selectedPosition+1);
+            mAdapter.notifyDataSetChanged();
+            return true;
+        }catch (IndexOutOfBoundsException e)
+        {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean moveUp(Activity activity, int selectedPosition) {
+       try {
+           //Check already at top
+            if (selectedPosition==0)
+                return false;
+            Collections.swap(quizData,selectedPosition,selectedPosition-1);
+            mAdapter.notifyDataSetChanged();
+            return true;
+       }catch (IndexOutOfBoundsException e)
+            {
+            e.printStackTrace();
+            }
+        return false;
     }
 
 

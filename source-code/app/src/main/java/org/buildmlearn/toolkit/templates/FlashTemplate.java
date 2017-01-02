@@ -32,6 +32,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * @brief Flash Card template code implementing methods of TemplateInterface
@@ -349,6 +350,38 @@ public class FlashTemplate implements TemplateInterface {
                 mIsPhotoAttached = true;
             }
         }
+    }
+
+    @Override
+    public boolean moveDown(Activity activity, int selectedPosition) {
+        try{
+            //Check already at last
+            if (selectedPosition==mData.size()-1)
+                return false;
+            Collections.swap(mData,selectedPosition,selectedPosition+1);
+            mAdapter.notifyDataSetChanged();
+            return true;
+        }catch (IndexOutOfBoundsException e)
+        {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean moveUp(Activity activity, int selectedPosition) {
+        try{
+            //Check already at top
+            if (selectedPosition==0)
+                return false;
+            Collections.swap(mData,selectedPosition,selectedPosition-1);
+            mAdapter.notifyDataSetChanged();
+            return true;
+        }catch (IndexOutOfBoundsException e)
+            {
+            e.printStackTrace();
+            }
+        return false;
     }
 
     private Bitmap getResizedBitmap(Bitmap image) {

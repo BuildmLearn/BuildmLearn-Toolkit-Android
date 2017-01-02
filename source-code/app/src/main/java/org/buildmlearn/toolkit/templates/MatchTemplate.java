@@ -21,6 +21,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * @brief Match template code implementing methods of TemplateInterface
@@ -407,6 +408,26 @@ public class MatchTemplate implements TemplateInterface {
     @Override
     public void onActivityResult(Context context, int requestCode, int resultCode, Intent intent) {
         // This is intentionally empty
+    }
+
+    @Override
+    public boolean moveDown(Activity activity, int selectedPosition) {
+        //Check already at last
+        if (selectedPosition==matchData.size()-1)
+            return false;
+        Collections.swap(matchData,selectedPosition,selectedPosition+1);
+        adapter.notifyDataSetChanged();
+        return true;
+    }
+
+    @Override
+    public boolean moveUp(Activity activity, int selectedPosition) {
+        //Check already at top
+        if (selectedPosition==0)
+            return false;
+        Collections.swap(matchData,selectedPosition,selectedPosition-1);
+        adapter.notifyDataSetChanged();
+        return true;
     }
 
     /**
