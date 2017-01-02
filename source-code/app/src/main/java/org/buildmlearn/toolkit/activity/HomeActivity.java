@@ -38,6 +38,9 @@ public class HomeActivity extends AppCompatActivity
     private final String FRAGMENT_TAG_PROJECT = "Project";
     private final String FRAGMENT_TAG_APK = "Apk";
     private boolean backPressedOnce = false;
+    private Runnable runnable;
+    private Handler handler = new Handler();
+    private long timer = 2000;
 
     private SmoothNavigationToggle smoothNavigationToggle;
 
@@ -211,16 +214,17 @@ public class HomeActivity extends AppCompatActivity
                 finish();
             }
             if(!backPressedOnce)
-                Toast.makeText(this, "Tap back once more to exit.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.tap_to_exit, Toast.LENGTH_SHORT).show();
             backPressedOnce=true;
-            new Handler().postDelayed(new Runnable()
+            runnable = new Runnable()
             {
                 @Override
                 public void run()
                 {
-                    backPressedOnce= false;
+                    backPressedOnce = false;
                 }
-            }, 2000);
+            };
+            handler.postDelayed(runnable , timer);
         } else {
             fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                     .replace(R.id.container, new HomeFragment(), FRAGMENT_TAG_HOME).commit();
@@ -230,6 +234,16 @@ public class HomeActivity extends AppCompatActivity
             navigationView.setCheckedItem(R.id.nav_home);
         }
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (handler != null)
+        {
+            handler.removeCallbacks(runnable);
+        }
+    }
+
 }
 
 
