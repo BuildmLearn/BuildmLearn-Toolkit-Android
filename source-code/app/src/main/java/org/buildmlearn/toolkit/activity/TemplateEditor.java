@@ -181,8 +181,8 @@ public class TemplateEditor extends AppCompatActivity {
                     public void run() {
                         AlertDialog dialog = new AlertDialog.Builder(TemplateEditor.this)
                                 .setTitle("Apk Generated")
-                                .setMessage("Apk file saved at " + path)
-                                .setNegativeButton("okay", new DialogInterface.OnClickListener() {
+                                .setMessage("Apk file saved at " + path + "\nFind it any time under Saved APKs\nInstall now?")
+                                .setNegativeButton("later", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         dialog.dismiss();

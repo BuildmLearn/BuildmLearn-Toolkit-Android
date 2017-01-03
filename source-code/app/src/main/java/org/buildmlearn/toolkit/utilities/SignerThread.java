@@ -242,12 +242,6 @@ public class SignerThread extends Thread {
             } else {
                 Log.d(TAG, "Signing Complete");
                 listener.onSuccess(finalApk);
-
-                if (toolkit.isExternalStorageAvailable()) {
-                    showNotification("APK file saved in Downloads folder");
-                } else {
-                    showNotification("SD card not found. APK file saved in internal storage.");
-                }
             }
 
         } catch (AutoKeyException | UnrecoverableKeyException x) {
@@ -267,26 +261,6 @@ public class SignerThread extends Thread {
                 listener.onFail(null);
             }
         }
-    }
-
-    private void showNotification(String description) {
-        Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_VIEW);
-        File file = new File(finalApk);
-        intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
-        NotificationCompat.Builder mBuilder =
-                new NotificationCompat.Builder(toolkit)
-                        .setSmallIcon(R.drawable.ic_stat_toggle_check_box)
-                        .setContentTitle("APK Generated")
-                        .setContentText(description)
-                        .setContentIntent(pendingIntent)
-                        .setAutoCancel(true);
-
-        NotificationManager mNotificationManager =
-                (NotificationManager) toolkit.getSystemService(Context.NOTIFICATION_SERVICE);
-// mId allows you to update the notification later on.
-        mNotificationManager.notify(23, mBuilder.build());
     }
 
     public interface OnSignComplete {
