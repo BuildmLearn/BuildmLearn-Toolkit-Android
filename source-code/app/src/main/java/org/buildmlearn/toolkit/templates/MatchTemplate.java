@@ -329,6 +329,7 @@ public class MatchTemplate implements TemplateInterface {
             setEmptyView(activity);
             adapter.notifyDataSetChanged();
         }
+        setEmptyView(activity);
         if (matchMetaModel==null)
         {
             return matchModel;
@@ -358,6 +359,7 @@ public class MatchTemplate implements TemplateInterface {
                 }
             }
         }
+        setEmptyView(activity);
     }
 
     @Override

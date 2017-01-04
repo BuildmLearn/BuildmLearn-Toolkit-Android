@@ -342,6 +342,7 @@ public class QuizTemplate implements TemplateInterface {
         quizData.remove(position);
         setEmptyView(activity);
         mAdapter.notifyDataSetChanged();
+        setEmptyView(activity);
         return quizModel;
     }
 
@@ -352,6 +353,7 @@ public class QuizTemplate implements TemplateInterface {
             if (quizModel != null) {
                 quizData.add(position, quizModel);
                 mAdapter.notifyDataSetChanged();
+                setEmptyView(activity);
             }
         }
     }
