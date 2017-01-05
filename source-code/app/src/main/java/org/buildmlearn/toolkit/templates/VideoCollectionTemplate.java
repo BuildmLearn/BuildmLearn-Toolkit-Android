@@ -38,6 +38,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * @brief Video template code implementing methods of TemplateInterface
@@ -324,6 +325,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
         videoData.remove(position);
         setEmptyView(activity);
         adapter.notifyDataSetChanged();
+        setEmptyView(activity);
         return videoModel;
     }
 
@@ -334,6 +336,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
             if (videoModel != null) {
                 videoData.add(position, videoModel);
                 adapter.notifyDataSetChanged();
+                setEmptyView(activity);
             }
         }
     }
@@ -379,6 +382,38 @@ public class VideoCollectionTemplate implements TemplateInterface {
     @Override
     public void onActivityResult(Context context, int requestCode, int resultCode, Intent intent) {
         // This is intentionally empty
+    }
+
+    @Override
+    public boolean moveDown(Activity activity, int selectedPosition) {
+        try{
+            //Check already at last
+            if (selectedPosition==videoData.size()-1)
+                return false;
+            Collections.swap(videoData,selectedPosition,selectedPosition+1);
+            adapter.notifyDataSetChanged();
+            return true;
+        }catch (IndexOutOfBoundsException e)
+        {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean moveUp(Activity activity, int selectedPosition) {
+        try {
+            //Check already at top
+            if (selectedPosition==0)
+                return false;
+            Collections.swap(videoData,selectedPosition,selectedPosition-1);
+            adapter.notifyDataSetChanged();
+            return true;
+        }catch (IndexOutOfBoundsException e)
+        {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     /**

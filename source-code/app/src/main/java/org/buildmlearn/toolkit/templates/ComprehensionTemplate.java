@@ -30,6 +30,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * @brief Comprehension template code implementing methods of TemplateInterface
@@ -528,6 +529,7 @@ public class ComprehensionTemplate implements TemplateInterface {
             setEmptyView(activity);
             adapter.notifyDataSetChanged();
         }
+        setEmptyView(activity);
         if (comprehensionMetaModel==null)
         {
             return comprehensionModel;
@@ -562,7 +564,7 @@ public class ComprehensionTemplate implements TemplateInterface {
                 }
             }
         }
-
+        setEmptyView(activity);
     }
 
     @Override
@@ -610,6 +612,38 @@ public class ComprehensionTemplate implements TemplateInterface {
     @Override
     public void onActivityResult(Context context, int requestCode, int resultCode, Intent intent) {
 
+    }
+
+    @Override
+    public boolean moveDown(Activity activity, int selectedPosition) {
+        try{
+            //Check already at last
+            if (selectedPosition==comprehensionData.size()-1)
+                return false;
+            Collections.swap(comprehensionData,selectedPosition,selectedPosition+1);
+            adapter.notifyDataSetChanged();
+            return true;
+        }catch (IndexOutOfBoundsException e)
+        {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean moveUp(Activity activity, int selectedPosition) {
+        try{
+            //Check already at top
+            if (selectedPosition==0)
+                return false;
+            Collections.swap(comprehensionData,selectedPosition,selectedPosition-1);
+            adapter.notifyDataSetChanged();
+            return true;
+        }catch (IndexOutOfBoundsException e)
+        {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     /**

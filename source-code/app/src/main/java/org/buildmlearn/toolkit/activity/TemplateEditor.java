@@ -3,6 +3,9 @@ package org.buildmlearn.toolkit.activity;
 import android.Manifest;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -452,40 +455,45 @@ public class TemplateEditor extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Log.e(getClass().getName(), " " + position);
-                if (position == 0) {
-                    return false;
-                }
-
-                if (selectedPosition == position - 1) {
-                    selectedPosition = -1;
-                    if (view instanceof CardView) {
-                        ((CardView) view).setCardBackgroundColor(Color.WHITE);
-                    } else {
-                        view.setBackgroundResource(0);
-                    }
-                    restoreColorScheme();
-                } else {
-                    if (selectedView != null) {
-                        if (selectedView instanceof CardView) {
-                            ((CardView) selectedView).setCardBackgroundColor(Color.WHITE);
-                        } else {
-                            selectedView.setBackgroundResource(0);
-                        }
-                    }
-                    selectedView = view;
-                    selectedPosition = position - 1;
-                    Log.d(TAG, "Position: " + selectedPosition);
-                    if (view instanceof CardView) {
-                        ((CardView) view).setCardBackgroundColor(Color.LTGRAY);
-                    } else {
-                        view.setBackgroundColor(ContextCompat.getColor(toolkit, R.color.color_divider));
-                    }
-                    changeColorScheme();
-                }
-                return true;
+                return changeItemSchema(position,view);
             }
         });
 
+    }
+
+    private boolean changeItemSchema(int position, View view) {
+        if (view==null)
+            return false;
+        if (position == 0) {
+            return false;
+        }
+        if (selectedPosition == position - 1) {
+            selectedPosition = -1;
+            if (view instanceof CardView) {
+                ((CardView) view).setCardBackgroundColor(Color.WHITE);
+            } else {
+                view.setBackgroundResource(0);
+            }
+            restoreColorScheme();
+        } else {
+            if (selectedView != null) {
+                if (selectedView instanceof CardView) {
+                    ((CardView) selectedView).setCardBackgroundColor(Color.WHITE);
+                } else {
+                    selectedView.setBackgroundResource(0);
+                }
+            }
+            selectedView = view;
+            selectedPosition = position - 1;
+            Log.d(TAG, "Position: " + selectedPosition);
+            if (view instanceof CardView) {
+                ((CardView) view).setCardBackgroundColor(Color.LTGRAY);
+            } else {
+                view.setBackgroundColor(ContextCompat.getColor(toolkit, R.color.color_divider));
+            }
+            changeColorScheme();
+        }
+        return true;
     }
 
     /**
@@ -580,28 +588,22 @@ public class TemplateEditor extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
+        boolean isRearrangeOccurs;
         switch (id) {
             case R.id.action_delete:
-
-                final AlertDialog dialog = new AlertDialog.Builder(this)
-                        .setTitle(R.string.dialog_delete_title)
-                        .setMessage(R.string.dialog_delete_msg)
-                        .setPositiveButton(R.string.dialog_yes, null)
-                        .setNegativeButton(R.string.dialog_no, null)
-                        .create();
-                dialog.show();
-
-                dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                        selectedTemplate.deleteItem(TemplateEditor.this, selectedPosition);
-                        selectedPosition = -1;
-                        restoreSelectedView();
-                    }
-                });
-
+                final int restorePosition = selectedPosition;
+                final Object object = selectedTemplate.deleteItem(TemplateEditor.this,selectedPosition);
+                selectedPosition = -1;
+                restoreSelectedView();
+                Snackbar.make(findViewById(R.id.relative_layout),
+                        R.string.snackbar_deleted_message,Snackbar.LENGTH_LONG)
+                        .setAction(R.string.snackbar_undo, new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                selectedTemplate.restoreItem(TemplateEditor.this,restorePosition,object);
+                                Snackbar.make(v,R.string.snackbar_restored_message,Snackbar.LENGTH_LONG).show();
+                            }
+                        }).show();
                 break;
             case R.id.action_edit:
                 selectedTemplate.editItem(this, selectedPosition);
@@ -616,6 +618,33 @@ public class TemplateEditor extends AppCompatActivity {
                 break;
             case android.R.id.home:
                 onBackPressed();
+                break;
+            case R.id.action_move_up:
+                isRearrangeOccurs = selectedTemplate.moveUp(this,selectedPosition);
+                if (isRearrangeOccurs)
+                {
+                    restoreSelectedView();
+                    selectedView =null;
+                    View view = templateEdtiorList.getChildAt(selectedPosition);
+                    changeItemSchema(selectedPosition,view);
+                }else
+                {
+                    Toast.makeText(this,R.string.already_at_top,Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case R.id.action_move_down:
+                isRearrangeOccurs = selectedTemplate.moveDown(this,selectedPosition);
+                if (isRearrangeOccurs)
+                {
+                    restoreSelectedView();
+                    selectedView =null;
+                    View view;
+                    view = templateEdtiorList.getChildAt(selectedPosition+2);
+                    changeItemSchema(selectedPosition+2, view);
+                }else
+                {
+                    Toast.makeText(this,R.string.already_at_bottom,Toast.LENGTH_SHORT).show();
+                }
                 break;
             default: //do nothing
                 break;

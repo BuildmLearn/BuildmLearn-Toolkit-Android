@@ -132,4 +132,19 @@ public interface TemplateInterface extends Serializable {
      */
     void onActivityResult(Context context, int requestCode, int resultCode, Intent intent);
 
+    /**
+     * Move selectedPosition item down by 1
+     * @param activity Current activity
+     * @param selectedPosition Position of item to move down
+     * @return is rearranging occurs
+     */
+    boolean moveDown(Activity activity, int selectedPosition);
+
+    /**
+     * Move selectedPosition item up by 1
+     * @param activity Current activity
+     * @param selectedPosition Position of item to move up
+     * @return is rearranging occurs
+     */
+    boolean moveUp(Activity activity, int selectedPosition);
 }

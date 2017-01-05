@@ -27,6 +27,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * @brief Dictation template code implementing methods of TemplateInterface
@@ -231,6 +232,7 @@ public class DictationTemplate implements TemplateInterface {
         dictData.remove(position);
         setEmptyView(activity);
         adapter.notifyDataSetChanged();
+        setEmptyView(activity);
         return dictationModel;
     }
 
@@ -243,6 +245,7 @@ public class DictationTemplate implements TemplateInterface {
             {
                 dictData.add(position,dictationModel);
                 adapter.notifyDataSetChanged();
+                setEmptyView(activity);
             }
         }
     }
@@ -288,6 +291,38 @@ public class DictationTemplate implements TemplateInterface {
     @Override
     public void onActivityResult(Context context, int requestCode, int resultCode, Intent intent) {
         // This is intentionally empty
+    }
+
+    @Override
+    public boolean moveDown(Activity activity, int selectedPosition) {
+        try{
+            //Check already at last
+            if (selectedPosition==dictData.size()-1)
+                return false;
+            Collections.swap(dictData,selectedPosition,selectedPosition+1);
+            adapter.notifyDataSetChanged();
+            return true;
+        }catch (IndexOutOfBoundsException e)
+        {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean moveUp(Activity activity, int selectedPosition) {
+        try{
+            //Check already at top
+            if (selectedPosition==0)
+                return false;
+            Collections.swap(dictData,selectedPosition,selectedPosition-1);
+            adapter.notifyDataSetChanged();
+            return true;
+        }catch (IndexOutOfBoundsException e)
+        {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     /**
