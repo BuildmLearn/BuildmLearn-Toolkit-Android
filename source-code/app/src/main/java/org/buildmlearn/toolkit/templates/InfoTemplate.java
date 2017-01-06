@@ -195,6 +195,7 @@ public class InfoTemplate implements TemplateInterface {
         infoData.remove(position);
         setEmptyView(activity);
         adapter.notifyDataSetChanged();
+        setEmptyView(activity);
         return infoModel;
     }
 
@@ -207,6 +208,7 @@ public class InfoTemplate implements TemplateInterface {
             {
                 infoData.add(position,infoModel);
                 adapter.notifyDataSetChanged();
+                setEmptyView(activity);
             }
         }
     }

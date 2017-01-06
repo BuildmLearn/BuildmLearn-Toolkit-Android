@@ -52,5 +52,6 @@
     <color name="colorPrimary_spell">#26C6DA</color>
     <color name="colorPrimaryDark_spell">#00BCD4</color>
     <color name="colorAccent_spell">#3F99A9</color>
+    <color name="selected_dot">#FFFFFF</color>
 
 </resources>

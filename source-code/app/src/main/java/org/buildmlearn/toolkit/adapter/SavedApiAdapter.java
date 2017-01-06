@@ -119,6 +119,10 @@ public class SavedApiAdapter extends BaseAdapter {
         holder.apkName.setText(apiData.getName());
         holder.projectIcon.setText(apiData.getName().substring(0, 1).toUpperCase(Locale.US));
         convertView.setTag(holder);
+        if (apiData.isSelected())
+        {
+            convertView.setBackgroundColor(ContextCompat.getColor(mContext, R.color.color_divider));
+        }
         return convertView;
     }
 

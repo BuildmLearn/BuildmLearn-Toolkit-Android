@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
-
+import android.widget.Toast;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.matchtemplate.fragment.SplashFragment;
@@ -61,6 +61,9 @@ public class MatchTemplate implements TemplateInterface {
             second_list_title.hasFocus();
             second_list_title.setError(context.getString(R.string.match_second_list_title));
             return false;
+        } else if (first_list_titleText.equalsIgnoreCase(second_list_titleText)){
+            Toast.makeText(context, "Title of two lists cannot be same.", Toast.LENGTH_SHORT).show();
+            return false;
         }
 
         return true;
@@ -81,6 +84,9 @@ public class MatchTemplate implements TemplateInterface {
         } else if (second_list_titleText.equals("")) {
             second_list_title.hasFocus();
             second_list_title.setError(context.getString(R.string.match_second_list_title));
+            return false;
+        } else if (second_list_titleText.equals(first_list_titleText)){
+            Toast.makeText(context, "Two options cannot be same.", Toast.LENGTH_SHORT).show();
             return false;
         }
 
@@ -323,6 +329,7 @@ public class MatchTemplate implements TemplateInterface {
             setEmptyView(activity);
             adapter.notifyDataSetChanged();
         }
+        setEmptyView(activity);
         if (matchMetaModel==null)
         {
             return matchModel;
@@ -352,6 +359,7 @@ public class MatchTemplate implements TemplateInterface {
                 }
             }
         }
+        setEmptyView(activity);
     }
 
     @Override

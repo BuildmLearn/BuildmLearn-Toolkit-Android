@@ -147,6 +147,21 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
                 return true;
             }
         });
+
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_BACK) {
+                    if (mAdapter.selectedPositionsSize() > 0) {
+                        unselectAll();
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
     }
 
     /**
@@ -401,26 +416,32 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
                 for(int i=0;i<mAdapter.getCount();i++) {
                     if (!mAdapter.isPositionSelected(i))
                     {
-                        mListView.getChildAt(i).setBackgroundColor(ContextCompat.getColor(mToolkit, R.color.color_divider));
+                        savedApis.get(i).setSelected(true);
                         mAdapter.putSelectedPosition(i);
                         changeColorScheme();
                     }
                 }
+                mAdapter.notifyDataSetChanged();
                 break;
 
             case R.id.action_unselect_all:
-                for(int i=0;i<mAdapter.getCount();i++)
-                    if(mAdapter.isPositionSelected(i)) {
-                        mListView.getChildAt(i).setBackgroundColor(0);
-                        mAdapter.removeSelectedPosition(i);
-                    }
-                restoreColorScheme();
+                unselectAll();
                 break;
 
             default: //do nothing
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void unselectAll() {
+        for (int i = 0; i < mAdapter.getCount(); i++)
+            if (mAdapter.isPositionSelected(i)) {
+                savedApis.get(i).setSelected(false);
+                mAdapter.removeSelectedPosition(i);
+            }
+        restoreColorScheme();
+        mAdapter.notifyDataSetChanged();
     }
 
     /**

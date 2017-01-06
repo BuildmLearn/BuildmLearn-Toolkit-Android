@@ -285,24 +285,32 @@
 
     <!-- Tutorial-->
     <string name="screen_1_title">Welcome to BuildmLearn Toolkit</string>
+
     <string name="screen_1_button">Skip tutorial.</string>
-    <string name="screen_1_desc">BuildmLearn Toolkit helps you create mLearning apps without any knowledge about app development</string>
+    <string name="screen_1_desc">BuildmLearn Toolkit helps you create mLearning apps without any knowledge about app development.</string>
+
     <string name="title_activity_tutorial">Tutorial Activity</string>
 
     <string name="screen_2_title">Make mLearning Apps</string>
     <string name="screen_2_desc">Press the big pink button to get started with building app.</string>
 
     <string name="screen_3_title">Various Templates</string>
-    <string name="screen_3_desc">Templates allows creation of various types of apps like spelling and dictation, quiz etc.</string>
+    <string name="screen_3_desc">Templates allows creation of various types of apps like info, spelling, quiz, flash, video, comprehension, dictation and match.</string>
 
     <string name="screen_4_title">InBuilt Editing Features</string>
-    <string name="screen_4_desc">Toolkit editor allows various file operations like save projects, publish Apks, simulate app</string>
+    <string name="screen_4_desc">Toolkit editor allows various operations like save, share projects and APKs, simulate app.</string>
 
     <string name="screen_5_title">Simulator Support</string>
-    <string name="screen_5_desc">BuildmLearn toolkit comes with a Nexus 6 simulator on which you can test app inside toolkit</string>
+    <string name="screen_5_desc">BuildmLearn toolkit comes with a Nexus 6 simulator on which you can test app inside toolkit.</string>
 
     <string name="screen_6_title">Load Saved Projects</string>
-    <string name="screen_6_desc">You can open any saved project created using android or desktop toolkit</string>
+    <string name="screen_6_desc">You can open any saved project created using android or desktop toolkit.</string>
+
+    <string name="screen_7_title">Load Saved APKs</string>
+    <string name="screen_7_desc">You can open any APKs created using android or desktop toolkit.</string>
+
+    <string name="screen_8_title">Load Saved Drafts</string>
+    <string name="screen_8_desc">You can open any automatically saved incomplete project works.</string>
 
 
     <string name="screen_finish">Lets Start</string>
@@ -437,4 +445,8 @@
     <string name="valid_msg_name">Enter valid name</string>
     <string name="same_options">Two or more options are same.</string>
     <string name="time_zero_error">Time can\'t be zero</string>
+    <string name="pref_rate_title">Rate Toolkit</string>
+    <string name="pref_rate_summary">Rate our app on Play Store</string>
+    <string name="pref_rate_key">rate</string>
+    <string name="settings_network_unavailable">Network not available</string>
 </resources>

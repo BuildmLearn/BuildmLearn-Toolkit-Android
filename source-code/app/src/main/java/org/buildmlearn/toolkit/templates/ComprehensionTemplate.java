@@ -231,7 +231,7 @@ public class ComprehensionTemplate implements TemplateInterface {
 
                 for(int i=0;i<options.size();i++){
                     for(int j=0;j<i;j++){
-                        if(options.get(i).getText().toString().trim().equalsIgnoreCase(options.get(j).getText().toString().trim())){
+                        if (!options.get(i).getText().toString().trim().isEmpty() && options.get(i).getText().toString().trim().equalsIgnoreCase(options.get(j).getText().toString().trim())) {
                             Toast.makeText(activity.getApplication(), activity.getString(R.string.same_options), Toast.LENGTH_SHORT).show();
                             isValidated=false;
                         }
@@ -528,6 +528,7 @@ public class ComprehensionTemplate implements TemplateInterface {
             setEmptyView(activity);
             adapter.notifyDataSetChanged();
         }
+        setEmptyView(activity);
         if (comprehensionMetaModel==null)
         {
             return comprehensionModel;
@@ -562,7 +563,7 @@ public class ComprehensionTemplate implements TemplateInterface {
                 }
             }
         }
-
+        setEmptyView(activity);
     }
 
     @Override

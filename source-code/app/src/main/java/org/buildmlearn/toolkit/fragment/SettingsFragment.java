@@ -23,6 +23,7 @@ import android.widget.Toast;
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.ToolkitApplication;
 import org.buildmlearn.toolkit.activity.DeepLinkerActivity;
+import org.buildmlearn.toolkit.utilities.NetworkUtils;
 import org.buildmlearn.toolkit.utilities.RestoreThread;
 
 import java.io.File;
@@ -69,6 +70,19 @@ public class SettingsFragment extends PreferenceFragment {
                 String path = ToolkitApplication.getUnZipDir();
                 AsyncTaskRunner asynctaskrunner = new AsyncTaskRunner();
                 asynctaskrunner.execute(path);
+                return true;
+            }
+        });
+
+        Preference rate_preference=findPreference(getString(R.string.pref_rate_key));
+        rate_preference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                if(NetworkUtils.isNetworkAvailable(getActivity()))
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("http://play.google.com/store/apps/details?id=" + getActivity().getPackageName())));
+                else
+                    Toast.makeText(getActivity(), R.string.settings_network_unavailable,Toast.LENGTH_SHORT).show();
                 return true;
             }
         });

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/popup_window"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom|center"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+
+    <TextView
+        android:id="@+id/txt_save_apk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/touch_selector_white"
+        android:clickable="true"
+        android:drawableLeft="@drawable/save_apk"
+        android:drawablePadding="24dp"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:text="@string/bottom_sheet_save_apk"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/black_primary_text"
+        android:textStyle="bold"
+         />
+
+    <TextView
+        android:id="@+id/txt_save_project"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/touch_selector_white"
+        android:clickable="true"
+        android:drawableLeft="@drawable/save_project"
+        android:drawablePadding="24dp"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:text="@string/bottom_sheet_save_project"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/black_primary_text"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txt_share_apk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/touch_selector_white"
+        android:clickable="true"
+        android:drawableLeft="@drawable/share_apk"
+        android:drawablePadding="24dp"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:text="@string/bottom_sheet_share_apk"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/black_primary_text"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txt_share_project"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/touch_selector_white"
+        android:clickable="true"
+        android:drawableLeft="@drawable/ic_group_work_black_24dp"
+        android:drawablePadding="24dp"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:text="@string/bottom_sheet_share_project"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/black_primary_text"
+        android:textStyle="bold" />
+
+</LinearLayout>

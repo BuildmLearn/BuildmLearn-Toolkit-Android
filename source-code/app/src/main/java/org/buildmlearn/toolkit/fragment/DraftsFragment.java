@@ -11,6 +11,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -115,6 +116,21 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
 
 
                 return true;
+            }
+        });
+
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_BACK) {
+                    if (mAdapter.selectedPositionsSize() > 0) {
+                        unselectAll();
+                        return true;
+                    }
+                }
+                return false;
             }
         });
     }
@@ -308,20 +324,16 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
                 for(int i=0;i<mAdapter.getCount();i++) {
                     if (!mAdapter.isPositionSelected(i))
                     {
-                        mListView.getChildAt(i).setBackgroundColor(ContextCompat.getColor(mToolkit, R.color.color_divider));
+                        draftProjects.get(i).setSelected(true);
                         mAdapter.putSelectedPosition(i);
                         changeColorScheme();
                     }
                 }
+                mAdapter.notifyDataSetChanged();
                 break;
 
             case R.id.action_unselect_all:
-                for(int i=0;i<mAdapter.getCount();i++)
-                    if(mAdapter.isPositionSelected(i)) {
-                        mListView.getChildAt(i).setBackgroundColor(0);
-                        mAdapter.removeSelectedPosition(i);
-                    }
-                restoreColorScheme();
+                unselectAll();
                 break;
 
             case R.id.action_delete_all:
@@ -347,6 +359,16 @@ public class DraftsFragment extends Fragment implements AbsListView.OnItemClickL
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void unselectAll() {
+        for (int i = 0; i < mAdapter.getCount(); i++)
+            if (mAdapter.isPositionSelected(i)) {
+                draftProjects.get(i).setSelected(false);
+                mAdapter.removeSelectedPosition(i);
+            }
+        mAdapter.notifyDataSetChanged();
+        restoreColorScheme();
     }
 
     /**

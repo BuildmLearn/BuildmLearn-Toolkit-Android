@@ -14,7 +14,6 @@ repositories {
     maven { url 'https://maven.fabric.io/public' }
 }
 
-
 android {
     signingConfigs {
         config {
@@ -31,7 +30,7 @@ android {
         minSdkVersion 14
         targetSdkVersion 23
         versionCode 2
-        versionName "2.0.0"
+        versionName "2.5.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -51,27 +50,24 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile('com.crashlytics.sdk.android:crashlytics:2.6.5@aar') {
+        transitive = true;
+    }
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.android.support:cardview-v7:23.4.0'
     compile 'com.android.support:recyclerview-v7:23.4.0'
     compile 'com.android.support:design:23.4.0'
-    compile 'com.cocosw:bottomsheet:1.3.0@aar'
-    compile('com.crashlytics.sdk.android:crashlytics:2.3.1@aar') {
-        transitive = true;
-    }
-    compile files('libs/core-1.51.0.0.jar')
-    compile files('libs/prov-1.51.0.0.jar')
-    compile files('libs/zipio-lib-1.8.jar')
     compile files('libs/zipsigner-lib-1.17.jar')
     compile files('libs/zipsigner-lib-optional-1.16.jar')
-    compile files('libs/pkix-1.51.0.0.jar')
     compile files('libs/kellinwood-logging-android-1.4.jar')
     compile files('libs/kellinwood-logging-lib-1.1.jar')
     compile files('libs/kellinwood-logging-log4j-1.0.jar')
     compile files('libs/axml.jar')
-    compile 'com.viewpagerindicator:library:2.4.1@aar'
-    compile 'com.nineoldandroids:library:2.4.0'
+    compile files('libs/pkix-1.51.0.0.jar')
+    compile files('libs/core-1.51.0.0.jar')
+    compile files('libs/prov-1.51.0.0.jar')
+    compile files('libs/zipio-lib-1.8.jar')
+
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'org.jsoup:jsoup:1.9.1'
     androidTestCompile 'com.android.support:support-annotations:23.4.0'

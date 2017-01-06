@@ -164,7 +164,7 @@ public class QuizTemplate implements TemplateInterface {
 
                 for(int i=0;i<options.size();i++){
                     for(int j=0;j<i;j++){
-                        if(options.get(i).getText().toString().trim().equalsIgnoreCase(options.get(j).getText().toString().trim())){
+                        if (!options.get(i).getText().toString().trim().isEmpty() && options.get(i).getText().toString().trim().equalsIgnoreCase(options.get(j).getText().toString().trim())) {
                             Toast.makeText(activity.getApplication(), activity.getString(R.string.same_options), Toast.LENGTH_SHORT).show();
                             isValidated=false;
                         }
@@ -342,6 +342,7 @@ public class QuizTemplate implements TemplateInterface {
         quizData.remove(position);
         setEmptyView(activity);
         mAdapter.notifyDataSetChanged();
+        setEmptyView(activity);
         return quizModel;
     }
 
@@ -352,6 +353,7 @@ public class QuizTemplate implements TemplateInterface {
             if (quizModel != null) {
                 quizData.add(position, quizModel);
                 mAdapter.notifyDataSetChanged();
+                setEmptyView(activity);
             }
         }
     }
