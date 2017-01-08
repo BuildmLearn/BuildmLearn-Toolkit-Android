@@ -79,7 +79,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
                                 new AlertDialog.Builder(getActivity());
                         builder.setTitle(String.format("%1$s", getString(R.string.comprehension_about_us)));
                         builder.setMessage(getResources().getText(R.string.about_text_video));
-                        builder.setPositiveButton("OK", null);
+                        builder.setPositiveButton(getString(R.string.info_template_ok), null);
                         AlertDialog welcomeAlert = builder.create();
                         welcomeAlert.show();
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
@@ -150,7 +150,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
             player.getSettings().setTextZoom(140);
 
             String link = data.getString(Constants.COL_LINK);
-            if (link.contains("youtube.com")) {
+            if (link.contains(getString(R.string.video_collection_youtube))) {
 
                 int pos = link.indexOf("watch?v=");
                 String videoId = link.substring(pos + 8);
@@ -161,7 +161,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
 
                 player.loadData(playVideo, "text/html", "utf-8");
 
-            } else if (link.contains("vimeo.com")) {
+            } else if (link.contains(getString(R.string.video_collection_vimeo))) {
                 int pos;
 
                 if (link.contains("/")) {
@@ -173,7 +173,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
 
                 player.loadUrl("http://player.vimeo.com/video/" + videoId + "?player_id=player&autoplay=1&title=0&byline=0&portrait=0&api=1&maxheight=480&maxwidth=800");
 
-            } else if (link.contains("dailymotion.com")) {
+            } else if (link.contains(getString(R.string.video_collection_dailymotion))) {
                 int pos;
 
                 if (link.contains("/")) {
