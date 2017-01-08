@@ -131,7 +131,7 @@ public class SignerThread extends Thread {
     }
 
     private String getFinalApkPath(String buildmlearnPath) {
-        int index = buildmlearnPath.lastIndexOf(context.getString(R.string.main_title));
+        int index = buildmlearnPath.lastIndexOf("buildmlearn");
         return buildmlearnPath.substring(0, index) + "apk";
     }
 
