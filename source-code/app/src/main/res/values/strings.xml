@@ -60,6 +60,7 @@
     <string name="previous_info">PREVIOUS</string>
     <string name="next_info">NEXT</string>
     <string name="no_saved_projects">No Saved Projects yet</string>
+    <string name="enter_project_name">Enter name of Project</string>
     <string name="exit_info">EXIT</string>
     <string name="about_text_info">This application has been developed using the BuildmLearn Toolkit.\n\nTo know more about BuildmLearn Toolkit visit <a href="https://buildmlearn.org/">here</a>.</string>
     <string name="info_thumbnail_info">Info Thumbnail</string>
@@ -395,6 +396,7 @@
     <string name="show_more">Show more</string>
     <string name="tutorial_image">Tutorial image</string>
     <string name="no_saved_apks">"No Saved Apks yet"</string>
+    <string name="enter_apk_name">Enter Apk name</string>
     <string name="enter_question">Enter a question</string>
     <string name="enter_answer">Enter an answer</string>
     <string name="cannot_be_empty">Cannot be empty.</string>

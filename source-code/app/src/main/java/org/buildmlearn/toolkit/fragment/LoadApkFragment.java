@@ -364,7 +364,7 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
                 actionBar.setCustomView(R.layout.search_bar);
                 actionBar.setDisplayShowTitleEnabled(false);
                 editSearch = (EditText) actionBar.getCustomView().findViewById(R.id.editSearch);
-                editSearch.setHint("Enter Apk name");
+                editSearch.setHint(R.string.enter_apk_name);
                 editSearch.addTextChangedListener(new TextWatcher() {
                     @Override
                     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
