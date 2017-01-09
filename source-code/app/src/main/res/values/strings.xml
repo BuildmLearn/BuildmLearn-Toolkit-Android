@@ -417,5 +417,8 @@
     <string name="pref_rate_summary">Rate our app on Play Store</string>
     <string name="pref_rate_key">rate</string>
     <string name="settings_network_unavailable">Network not available</string>
+    <string name="pref_tell_key">tell</string>
+    <string name="pref_tell_title">Tell a friend</string>
+    <string name="pref_tell_message">BuildmLearn Toolkit for your phone. Download it from here :</string>
 </resources>
 
