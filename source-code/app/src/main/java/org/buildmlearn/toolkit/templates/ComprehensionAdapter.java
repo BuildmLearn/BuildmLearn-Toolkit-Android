@@ -229,6 +229,7 @@ class ComprehensionAdapter extends BaseAdapter {
                         if (!options.get(i).getText().toString().trim().isEmpty() && options.get(i).getText().toString().trim().equalsIgnoreCase(options.get(j).getText().toString().trim())) {
                             Toast.makeText(context, context.getString(R.string.same_options), Toast.LENGTH_SHORT).show();
                             isValidated = false;
+                            return;
                         }
                     }
                 }

@@ -234,6 +234,7 @@ public class ComprehensionTemplate implements TemplateInterface {
                         if (!options.get(i).getText().toString().trim().isEmpty() && options.get(i).getText().toString().trim().equalsIgnoreCase(options.get(j).getText().toString().trim())) {
                             Toast.makeText(activity.getApplication(), activity.getString(R.string.same_options), Toast.LENGTH_SHORT).show();
                             isValidated=false;
+                            return;
                         }
                     }
                 }
