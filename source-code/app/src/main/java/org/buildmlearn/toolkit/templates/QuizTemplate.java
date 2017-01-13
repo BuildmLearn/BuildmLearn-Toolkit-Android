@@ -342,6 +342,7 @@ public class QuizTemplate implements TemplateInterface {
         quizData.remove(position);
         setEmptyView(activity);
         mAdapter.notifyDataSetChanged();
+        setEmptyView(activity);
         return quizModel;
     }
 
@@ -352,6 +353,7 @@ public class QuizTemplate implements TemplateInterface {
             if (quizModel != null) {
                 quizData.add(position, quizModel);
                 mAdapter.notifyDataSetChanged();
+                setEmptyView(activity);
             }
         }
     }
@@ -403,7 +405,7 @@ public class QuizTemplate implements TemplateInterface {
             if (button.getId() == id) {
                 int index = buttons.indexOf(button);
                 if ("".equals(options.get(index).getText().toString().trim())) {
-                    options.get(index).setError(context.getString(R.string.valid_before_answer));
+                    options.get(index).setError(context.getString(R.string.enter_valid_option));
                     options.get(index).setText(null);
                     button.setChecked(false);
                     return;
