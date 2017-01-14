@@ -104,6 +104,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
         super.onActivityCreated(savedInstanceState);
     }
 
+
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         if (null != video_Id) {
