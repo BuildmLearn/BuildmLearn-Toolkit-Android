@@ -12,6 +12,7 @@
         android:required="true" />
 
     <application
+        android:fullBackupContent="true"
         android:name=".ToolkitApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"

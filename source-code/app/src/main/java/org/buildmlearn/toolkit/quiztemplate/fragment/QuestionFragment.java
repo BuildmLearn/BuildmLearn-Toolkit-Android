@@ -64,12 +64,12 @@ public class QuestionFragment extends Fragment
                                 new AlertDialog.Builder(getActivity());
                         builder.setTitle(String.format("%1$s", getString(R.string.comprehension_about_us)));
                         builder.setMessage(getResources().getText(R.string.comprehension_about_text));
-                        builder.setPositiveButton("OK", null);
+                        builder.setPositiveButton(getString(R.string.info_template_ok), null);
                         AlertDialog welcomeAlert = builder.create();
                         welcomeAlert.show();
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
-                        assert ((TextView) welcomeAlert.findViewById(android.R.id.message)) != null;
+                        assert ( welcomeAlert.findViewById(android.R.id.message)) != null;
                         ((TextView) welcomeAlert.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
                         break;
                     default: //do nothing
@@ -110,7 +110,7 @@ public class QuestionFragment extends Fragment
         toolbar.setTitle(getResources().getString(R.string.app_name_quiz));
 
         Menu m = navigationView.getMenu();
-        SubMenu topChannelMenu = m.addSubMenu("Questions");
+        SubMenu topChannelMenu = m.addSubMenu(getString(R.string.quiz_new_question));
         long numQues = db.getCountQuestions();
 
         final String finalQuestionId = questionId;
@@ -122,7 +122,7 @@ public class QuestionFragment extends Fragment
             rg.check(rg.getChildAt(Integer.parseInt(answered)).getId());
         }
         for (int i = 1; i <= numQues; i++) {
-            topChannelMenu.add(String.format(Locale.getDefault(), "Question %1$d", i));
+            topChannelMenu.add(String.format(Locale.getDefault(), getString(R.string.question), i));
             topChannelMenu.getItem(i - 1).setIcon(R.drawable.ic_assignment_black_24dp);
             final int finalI = i;
             topChannelMenu.getItem(i - 1).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
@@ -150,7 +150,7 @@ public class QuestionFragment extends Fragment
             });
         }
 
-        ((TextView) rootView.findViewById(R.id.question_title)).setText(String.format(Locale.getDefault(), "Question No : %1$s", questionId));
+        ((TextView) rootView.findViewById(R.id.question_title)).setText(String.format(Locale.getDefault(), getString(R.string.quiz_question_no), questionId));
         ((TextView) rootView.findViewById(R.id.question)).setText(question);
         if (option_1 != null) {
             rootView.findViewById(R.id.radioButton1).setVisibility(View.VISIBLE);

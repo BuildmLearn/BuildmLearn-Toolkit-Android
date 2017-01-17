@@ -6,7 +6,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.support.v7.app.AlertDialog;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
@@ -132,8 +131,8 @@ public class ComprehensionTemplate implements TemplateInterface {
 
     @Override
     public String getTitle() {
-        String TEMPLATE_NAME = "Comprehension Template";
-        return TEMPLATE_NAME;
+
+        return "Comprehension Template";
     }
 
     private void checkButton(ArrayList<RadioButton> buttons, ArrayList<EditText> options, int id, Context context) {
@@ -164,8 +163,7 @@ public class ComprehensionTemplate implements TemplateInterface {
 
     @Override
     public void addItem(final Activity activity) {
-        LayoutInflater inflater = activity.getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.quiz_dialog_add_question, null);
+        View dialogView = View.inflate(activity,R.layout.quiz_dialog_add_question,null);
         final AlertDialog dialog = new AlertDialog.Builder(activity)
                 .setTitle(R.string.quiz_new_question_title)
                 .setView(dialogView,
@@ -284,8 +282,7 @@ public class ComprehensionTemplate implements TemplateInterface {
 
     @Override
     public void addMetaData(final Activity activity) {
-        LayoutInflater inflater = activity.getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.comprehension_meta_dialog_add_edit_data, null);
+        final View dialogView = View.inflate(activity,R.layout.comprehension_meta_dialog_add_edit_data, null);
         final AlertDialog dialog = new AlertDialog.Builder(activity)
                 .setTitle(R.string.comprehension_add_meta_title)
                 .setView(dialogView,
@@ -339,8 +336,8 @@ public class ComprehensionTemplate implements TemplateInterface {
     @Override
     public void editItem(final Activity activity, final int position) {
         if (position == -2) {
-            LayoutInflater inflater = activity.getLayoutInflater();
-            final View dialogView = inflater.inflate(R.layout.comprehension_meta_dialog_add_edit_data, null);
+
+            final View dialogView = View.inflate(activity,R.layout.comprehension_meta_dialog_add_edit_data, null);
             final AlertDialog dialog = new AlertDialog.Builder(activity)
                     .setTitle(R.string.comprehension_edit_meta_title)
                     .setView(dialogView,
@@ -400,8 +397,8 @@ public class ComprehensionTemplate implements TemplateInterface {
 
             ComprehensionModel data = comprehensionData.get(position);
 
-            LayoutInflater inflater = activity.getLayoutInflater();
-            View dialogView = inflater.inflate(R.layout.quiz_dialog_add_question, null);
+
+            View dialogView = View.inflate(activity,R.layout.quiz_dialog_add_question,null);
             final AlertDialog dialog = new AlertDialog.Builder(activity)
                     .setTitle(R.string.quiz_edit)
                     .setView(dialogView,
@@ -528,6 +525,7 @@ public class ComprehensionTemplate implements TemplateInterface {
             setEmptyView(activity);
             adapter.notifyDataSetChanged();
         }
+        setEmptyView(activity);
         if (comprehensionMetaModel==null)
         {
             return comprehensionModel;
@@ -562,7 +560,7 @@ public class ComprehensionTemplate implements TemplateInterface {
                 }
             }
         }
-
+        setEmptyView(activity);
     }
 
     @Override

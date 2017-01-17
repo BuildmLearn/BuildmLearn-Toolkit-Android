@@ -8,7 +8,7 @@ import android.graphics.Color;
 import android.preference.PreferenceManager;
 import android.support.annotation.ColorRes;
 import android.support.v4.view.PagerAdapter;
-import android.view.LayoutInflater;
+
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -58,15 +58,14 @@ public class TutorialAdapter extends PagerAdapter {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(mActivity);
         boolean SkipTutorial = prefs.getBoolean("SkipTutorial",false);
 
-        LayoutInflater inflater = (LayoutInflater) container.getContext()
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
 
         Tutorial tutorial = getItem(position);
 
 
         View convertView;
         if (tutorial.isLastScreen()) {
-            convertView = inflater.inflate(R.layout.tutorial_layout_finish, null);
+            convertView = View.inflate(mActivity,R.layout.tutorial_layout_finish, null);
 
             convertView.findViewById(R.id.finish_tutorial_button).setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -78,7 +77,7 @@ public class TutorialAdapter extends PagerAdapter {
                 }
             });
         } else {
-            convertView = inflater.inflate(R.layout.tutorial_layout, null);
+            convertView = View.inflate(mActivity,R.layout.tutorial_layout, null);
             View skip_button = convertView.findViewById(R.id.skip_button);
             skip_button.setVisibility(View.GONE);
             ImageView deviceImage = (ImageView) convertView

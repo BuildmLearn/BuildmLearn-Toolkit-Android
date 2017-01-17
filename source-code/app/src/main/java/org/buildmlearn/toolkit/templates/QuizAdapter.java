@@ -152,8 +152,8 @@ class QuizAdapter extends BaseAdapter {
     private void editItem(final int position, final Context context) {
         QuizModel data = getItem(position);
 
-        LayoutInflater inflater = LayoutInflater.from(context);
-        final View dialogView = inflater.inflate(R.layout.quiz_dialog_add_question, null);
+
+        final View dialogView = View.inflate(context,R.layout.quiz_dialog_add_question, null);
         final AlertDialog dialog = new AlertDialog.Builder(context)
                 .setTitle(R.string.quiz_edit)
                 .setView(dialogView,
@@ -201,12 +201,12 @@ class QuizAdapter extends BaseAdapter {
                 boolean isValidated = true;
                 int checkedAns = getCheckedAnswer(buttons);
                 if (checkedAns < 0) {
-                    Toast.makeText(context, "Choose a correct option", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.choose_correct_option, Toast.LENGTH_SHORT).show();
                     isValidated = false;
                 }
                 if (question.getText().toString().equals("")) {
 
-                    question.setError("Question is required");
+                    question.setError(context.getString(R.string.ques_required));
                     isValidated = false;
                 }
 
@@ -217,7 +217,7 @@ class QuizAdapter extends BaseAdapter {
                     }
                 }
                 if (optionCount < 2) {
-                    Toast.makeText(context, "Minimum two multiple answers are required.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.min_answers_required, Toast.LENGTH_SHORT).show();
                     isValidated = false;
                 }
 
@@ -256,7 +256,7 @@ class QuizAdapter extends BaseAdapter {
             if (button.getId() == id) {
                 int index = buttons.indexOf(button);
                 if (options.get(index).getText().toString().equals("")) {
-                    Toast.makeText(context, "Enter a valid option before marking it as answer", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, R.string.enter_valid_option, Toast.LENGTH_LONG).show();
                     button.setChecked(false);
                     return;
                 } else {

@@ -88,7 +88,7 @@ public class MainFragment extends Fragment
                         welcomeAlert.show();
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
-                        assert ((TextView) welcomeAlert.findViewById(android.R.id.message)) != null;
+                        assert ( welcomeAlert.findViewById(android.R.id.message)) != null;
                         ((TextView) welcomeAlert.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
                         break;
                     default: //do nothing
@@ -236,9 +236,9 @@ public class MainFragment extends Fragment
             @Override
             public void onClick(View v) {
 
-                LayoutInflater factory = LayoutInflater.from(mContext);
-                final View textEntryView = factory.inflate(
-                        R.layout.spelling_dialog_spellinginput, null);
+
+                final View textEntryView = View.inflate(
+                        mContext,R.layout.spelling_dialog_spellinginput, null);
                 android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(mContext);
                 mAlert = builder.create();
                 mAlert.setCancelable(true);

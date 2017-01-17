@@ -6,7 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.support.v7.app.AlertDialog;
-import android.view.LayoutInflater;
+
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
@@ -143,14 +143,12 @@ public class MatchTemplate implements TemplateInterface {
 
     @Override
     public String getTitle() {
-        String TEMPLATE_NAME = "Match Template";
-        return TEMPLATE_NAME;
+        return "Match Template";
     }
 
     @Override
     public void addItem(final Activity activity) {
-        LayoutInflater inflater = activity.getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.match_dialog_add_edit, null);
+        View dialogView = View.inflate(activity,R.layout.match_dialog_add_edit, null);
         final AlertDialog dialog = new AlertDialog.Builder(activity)
                 .setTitle(R.string.match_dialog_add_title)
                 .setView(dialogView,
@@ -174,6 +172,21 @@ public class MatchTemplate implements TemplateInterface {
                     String first_list_itemText = first_list_item.getText().toString().trim();
                     String second_list_itemText = second_list_item.getText().toString().trim();
 
+                    if(matchData.size() > 0) {
+                        for (int i = 0; i < matchData.size(); i++) {
+                            if (first_list_itemText.equals(matchData.get(i).getMatchA()) || first_list_itemText.equals(matchData.get(i).getMatchB())) {
+                                first_list_item.requestFocus();
+                                first_list_item.setError("Option already inserted in list");
+                                return;
+                            }
+                            if (second_list_itemText.equals(matchData.get(i).getMatchA()) || second_list_itemText.equals(matchData.get(i).getMatchB())) {
+                                second_list_item.requestFocus();
+                                second_list_item.setError("Option already inserted in list");
+                                return;
+                            }
+                        }
+                    }
+
                     MatchModel temp = new MatchModel(first_list_itemText, second_list_itemText);
                     matchData.add(temp);
                     adapter.notifyDataSetChanged();
@@ -187,8 +200,7 @@ public class MatchTemplate implements TemplateInterface {
 
     @Override
     public void addMetaData(final Activity activity) {
-        LayoutInflater inflater = activity.getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.match_meta_dialog_add_edit_data, null);
+        View dialogView = View.inflate(activity,R.layout.match_meta_dialog_add_edit_data, null);
         final AlertDialog dialog = new AlertDialog.Builder(activity)
                 .setTitle(R.string.comprehension_add_meta_title)
                 .setView(dialogView,
@@ -227,8 +239,7 @@ public class MatchTemplate implements TemplateInterface {
     @Override
     public void editItem(final Activity activity, final int position) {
         if (position == -2) {
-            LayoutInflater inflater = activity.getLayoutInflater();
-            View dialogView = inflater.inflate(R.layout.match_meta_dialog_add_edit_data, null);
+            View dialogView = View.inflate(activity,R.layout.match_meta_dialog_add_edit_data, null);
             final AlertDialog dialog = new AlertDialog.Builder(activity)
                     .setTitle(R.string.comprehension_edit_meta_title)
                     .setView(dialogView,
@@ -274,8 +285,7 @@ public class MatchTemplate implements TemplateInterface {
 
             final MatchModel data = matchData.get(position);
 
-            LayoutInflater inflater = activity.getLayoutInflater();
-            View dialogView = inflater.inflate(R.layout.match_dialog_add_edit, null);
+            View dialogView = View.inflate(activity,R.layout.match_dialog_add_edit, null);
             final AlertDialog dialog = new AlertDialog.Builder(activity)
                     .setTitle(R.string.match_dialog_edit_title)
                     .setView(dialogView,
@@ -303,6 +313,23 @@ public class MatchTemplate implements TemplateInterface {
                         String first_list_itemText = first_list_item.getText().toString().trim();
                         String second_list_itemText = second_list_item.getText().toString().trim();
 
+                        if (matchData.size() > 0){
+                            for(int i=0;i<matchData.size();i++){
+                                if(i == position)
+                                    continue;
+                                if (first_list_itemText.equals(matchData.get(i).getMatchA()) || first_list_itemText.equals(matchData.get(i).getMatchB())) {
+                                    first_list_item.requestFocus();
+                                    first_list_item.setError("Option already inserted in the list");
+                                    return;
+                                }
+                                if (second_list_itemText.equals(matchData.get(i).getMatchA()) || second_list_itemText.equals(matchData.get(i).getMatchB())) {
+                                    second_list_item.requestFocus();
+                                    second_list_item.setError("Option already inserted in the list");
+                                    return;
+                                }
+                            }
+                        }
+
                         data.setMatchA(first_list_itemText);
                         data.setMatchB(second_list_itemText);
 
@@ -329,6 +356,7 @@ public class MatchTemplate implements TemplateInterface {
             setEmptyView(activity);
             adapter.notifyDataSetChanged();
         }
+        setEmptyView(activity);
         if (matchMetaModel==null)
         {
             return matchModel;
@@ -351,13 +379,14 @@ public class MatchTemplate implements TemplateInterface {
             }
         }else {
             if (object instanceof MatchModel) {
-               MatchModel matchModel = (MatchModel) object;
+                MatchModel matchModel = (MatchModel) object;
                 if (matchModel != null) {
                     matchData.add(position, matchModel);
                     adapter.notifyDataSetChanged();
                 }
             }
         }
+        setEmptyView(activity);
     }
 
     @Override

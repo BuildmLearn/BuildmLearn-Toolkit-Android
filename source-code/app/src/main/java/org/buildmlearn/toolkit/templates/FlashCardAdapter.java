@@ -1,6 +1,7 @@
 package org.buildmlearn.toolkit.templates;
 
 import android.content.Context;
+
 import android.support.design.widget.Snackbar;
 
 import android.view.LayoutInflater;
@@ -81,7 +82,7 @@ class FlashCardAdapter extends BaseAdapter {
         holder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, "Long press to edit this item", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, R.string.LongPress_toedit, Toast.LENGTH_SHORT).show();
             }
         });
 

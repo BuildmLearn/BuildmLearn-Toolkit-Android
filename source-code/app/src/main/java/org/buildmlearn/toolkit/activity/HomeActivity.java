@@ -4,16 +4,19 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 
 import android.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.os.Handler;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -41,7 +44,7 @@ public class HomeActivity extends AppCompatActivity
 
     private SmoothNavigationToggle smoothNavigationToggle;
 
-    NavigationView navigationView;
+    private NavigationView navigationView;
 
     /**
      * {@inheritDoc}
@@ -107,7 +110,7 @@ public class HomeActivity extends AppCompatActivity
             getSupportActionBar().setDisplayShowHomeEnabled(true);
             getSupportActionBar().setDisplayShowTitleEnabled(true);
         }
-
+        restoreColorScheme();
         switch(id){
             case R.id.nav_home:
                 smoothNavigationToggle.runWhenIdle(new Runnable() {
@@ -197,6 +200,16 @@ public class HomeActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void restoreColorScheme() {
+        int primaryColor = ContextCompat.getColor(HomeActivity.this, R.color.color_primary);
+        int primaryColorDark = ContextCompat.getColor(HomeActivity.this, R.color.color_primary_dark);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(primaryColor));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(primaryColorDark);
+            getWindow().setNavigationBarColor(primaryColor);
+        }
     }
 
     @Override
