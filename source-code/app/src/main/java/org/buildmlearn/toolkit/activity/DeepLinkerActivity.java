@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.constant.Constants;
 import org.buildmlearn.toolkit.model.SavedProject;
 import org.buildmlearn.toolkit.model.Template;
@@ -57,7 +58,7 @@ public class DeepLinkerActivity extends Activity {
                     return;
                 }
             }
-            Toast.makeText(this, "Invalid project file", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.project_invalid), Toast.LENGTH_SHORT).show();
             finish();
         } catch (ParserConfigurationException | IOException | SAXException e) {
             e.printStackTrace();

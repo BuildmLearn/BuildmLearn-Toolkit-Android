@@ -63,7 +63,7 @@ public class QuestionFragment extends Fragment
                                 new AlertDialog.Builder(getActivity());
                         builder.setTitle(String.format("%1$s", getString(R.string.comprehension_about_us)));
                         builder.setMessage(getResources().getText(R.string.comprehension_about_text));
-                        builder.setPositiveButton("OK", null);
+                        builder.setPositiveButton(getString(R.string.info_template_ok), null);
                         AlertDialog welcomeAlert = builder.create();
                         welcomeAlert.show();
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
@@ -152,7 +152,7 @@ public class QuestionFragment extends Fragment
             });
         }
 
-        ((TextView) rootView.findViewById(R.id.question_title)).setText(String.format(Locale.getDefault(), "Question No : %1$s", questionId));
+        ((TextView) rootView.findViewById(R.id.question_title)).setText(String.format(Locale.getDefault(), getString(R.string.question_no)+"%1$s", questionId));
         ((TextView) rootView.findViewById(R.id.question)).setText(question);
         if (option_1 != null) {
             rootView.findViewById(R.id.radioButton1).setVisibility(View.VISIBLE);

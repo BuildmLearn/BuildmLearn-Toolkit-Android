@@ -127,7 +127,7 @@ public class DetailFragment extends Fragment {
                                 new AlertDialog.Builder(getActivity());
                         builder.setTitle(String.format("%1$s", getString(R.string.comprehension_about_us)));
                         builder.setMessage(getResources().getText(R.string.comprehension_about_text));
-                        builder.setPositiveButton("OK", null);
+                        builder.setPositiveButton(getString(R.string.info_template_ok), null);
                         AlertDialog welcomeAlert = builder.create();
                         welcomeAlert.show();
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
@@ -167,7 +167,7 @@ public class DetailFragment extends Fragment {
         listViewB.addFooterView(footer_B);
         listViewB.setAdapter(matchListAdapterB);
 
-        ((TextView) rootView.findViewById(R.id.score)).setText(String.format(Locale.ENGLISH, "Score : %d of %d", countScore, matchListA.size()));
+        ((TextView) rootView.findViewById(R.id.score)).setText(String.format(Locale.ENGLISH, getString(R.string.match_score)+"%d of %d", countScore, matchListA.size()));
 
         if (savedInstanceState != null && savedInstanceState.containsKey(SELECTED_KEY_A) && savedInstanceState.containsKey(SELECTED_KEY_B)) {
             mPositionA = savedInstanceState.getInt(SELECTED_KEY_A);

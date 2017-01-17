@@ -79,7 +79,7 @@ public class TemplateEditor extends AppCompatActivity {
     private final Handler handlerToast = new Handler() {
         public void handleMessage(Message message) {
             if (message.arg1 == -1) {
-                Toast.makeText(TemplateEditor.this, "Build unsuccessful", Toast.LENGTH_SHORT).show();
+                Toast.makeText(TemplateEditor.this, getString(R.string.build_fail), Toast.LENGTH_SHORT).show();
             }
         }
     };
@@ -177,15 +177,15 @@ public class TemplateEditor extends AppCompatActivity {
         signer.setSignerThreadListener(new SignerThread.OnSignComplete() {
             @Override
             public void onSuccess(final String path) {
-                Log.d(TAG, "APK generated");
+                Log.d(TAG, getString(R.string.apk_generated));
                 mApkGenerationDialog.dismiss();
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         AlertDialog dialog = new AlertDialog.Builder(TemplateEditor.this)
-                                .setTitle("Apk Generated")
-                                .setMessage("Apk file saved at " + path)
-                                .setPositiveButton("okay", new DialogInterface.OnClickListener() {
+                                .setTitle(getString(R.string.apk_generated))
+                                .setMessage(getString(R.string.apk_saved_at) + path)
+                                .setPositiveButton(getString(R.string.info_template_ok), new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         dialog.dismiss();
@@ -237,7 +237,7 @@ public class TemplateEditor extends AppCompatActivity {
         signer.setSignerThreadListener(new SignerThread.OnSignComplete() {
             @Override
             public void onSuccess(final String path) {
-                Log.d(TAG, "APK generated");
+                Log.d(TAG, getString(R.string.apk_generated));
                 mApkGenerationDialog.dismiss();
 
                 Uri fileUri = Uri.fromFile(new File(path));
@@ -307,7 +307,7 @@ public class TemplateEditor extends AppCompatActivity {
         toolkit = (ToolkitApplication) getApplicationContext();
         templateId = getIntent().getIntExtra(Constants.TEMPLATE_ID, -1);
         if (templateId == -1) {
-            Toast.makeText(this, "Invalid template ID, closing Template Editor activity", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.invalid_template_id), Toast.LENGTH_LONG).show();
             finish();
         }
 
@@ -690,7 +690,7 @@ public class TemplateEditor extends AppCompatActivity {
         String title = ((EditText) findViewById(R.id.template_title)).getText().toString();
         if ("".equals(author)) {
             assert authorEditText != null;
-            authorEditText.setError("Author name is required");
+            authorEditText.setError(getString(R.string.author_name_error));
         } else if ("".equals(title)) {
             assert titleEditText != null;
             titleEditText.setError(getResources().getString(R.string.title_error));
@@ -729,11 +729,11 @@ public class TemplateEditor extends AppCompatActivity {
                 Element dataElement = doc.createElement("data");
                 rootElement.appendChild(dataElement);
                 if (selectedTemplate.getItems(doc).size() == 0 || (selectedTemplate.getItems(doc).size() < 2 && (templateId == 5 || templateId == 7))) {
-                    Toast.makeText(this, "Unable to perform action: No Data", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.no_data), Toast.LENGTH_SHORT).show();
                     return null;
                 }
                 if (selectedTemplate.getItems(doc).get(0).getTagName().equals("item") && (templateId == 5 || templateId == 7)) {
-                    Toast.makeText(this, "Unable to perform action: Add Meta Details", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.no_data_add_meta), Toast.LENGTH_SHORT).show();
                     return null;
                 }
                 for (Element item : selectedTemplate.getItems(doc)) {
@@ -751,12 +751,12 @@ public class TemplateEditor extends AppCompatActivity {
                 boolean isSaved=FileUtils.saveXmlFile(toolkit.getSavedDir(), saveFileName, doc);
                 if(isSaved) {
                     oldFileName = toolkit.getSavedDir() + saveFileName;
-                    Toast.makeText(this, "Project Successfully Saved!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.project_saved), Toast.LENGTH_SHORT).show();
                     return oldFileName;
                 }
                 else {
-                    titleEditText.setError("File Already exists");
-                    return "File already exists";
+                    titleEditText.setError(getString(R.string.file_already));
+                    return getString(R.string.file_already);
                 }
 
             } catch (ParserConfigurationException e) {
@@ -770,7 +770,7 @@ public class TemplateEditor extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         if (saveDraft() != null)
-            Toast.makeText(getApplicationContext(), "Saved in Draft!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.saved_in_drafts), Toast.LENGTH_SHORT).show();
 
     }
 
@@ -816,11 +816,11 @@ public class TemplateEditor extends AppCompatActivity {
             Element dataElement = doc.createElement("data");
             rootElement.appendChild(dataElement);
             if (selectedTemplate.getItems(doc).size() == 0) {
-                Toast.makeText(this, "Unable to perform action: No Data", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.no_data), Toast.LENGTH_SHORT).show();
                 return null;
             }
             if (selectedTemplate.getItems(doc).get(0).getTagName().equals("item") && (templateId == 5 || templateId == 7)) {
-                Toast.makeText(this, "Unable to perform action: No Meta Details", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.no_data_add_meta), Toast.LENGTH_SHORT).show();
                 return null;
             }
             for (Element item : selectedTemplate.getItems(doc)) {
@@ -871,12 +871,12 @@ public class TemplateEditor extends AppCompatActivity {
     private void startSimulator() {
         String message = saveProject();
         if (message == null || message.equals("")) {
-            Toast.makeText(this, "Build unsuccessful", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.build_fail), Toast.LENGTH_SHORT).show();
             return;
         }
-        else if("File already exists".equals(message))
+        else if(getString(R.string.file_already).equals(message))
         {
-            titleEditText.setError("Template Already exists");
+            titleEditText.setError(getString(R.string.temp_already));
             return;
         }
         Intent simulatorIntent = new Intent(getApplicationContext(), Simulator.class);

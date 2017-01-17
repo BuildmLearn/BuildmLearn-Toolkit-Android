@@ -84,7 +84,7 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
         rootView = inflater.inflate(R.layout.fragment_main_dict, container, false);
 
         Toolbar toolbar = (Toolbar) rootView.findViewById(R.id.card_toolbar);
-        toolbar.setTitle("List of Passages :");
+        toolbar.setTitle(getString(R.string.dict_toolbar_title));
 
         Toolbar maintoolbar = (Toolbar) rootView.findViewById(R.id.toolbar_main);
         final String result[] = DataUtils.readTitleAuthor();
@@ -99,7 +99,7 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
                                 new AlertDialog.Builder(getActivity());
                         builder.setTitle(String.format("%1$s", getString(R.string.about_us_dict)));
                         builder.setMessage(getResources().getText(R.string.about_text_dict));
-                        builder.setPositiveButton("OK", null);
+                        builder.setPositiveButton(getString(R.string.info_template_ok), null);
                         AlertDialog welcomeAlert = builder.create();
                         welcomeAlert.show();
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
