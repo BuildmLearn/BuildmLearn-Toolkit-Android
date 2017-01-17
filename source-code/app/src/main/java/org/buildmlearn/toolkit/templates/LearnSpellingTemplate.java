@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
-import android.view.LayoutInflater;
+
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
@@ -106,8 +106,8 @@ public class LearnSpellingTemplate implements TemplateInterface {
     @Override
     public void addItem(final Activity activity) {
 
-        LayoutInflater inflater = activity.getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.info_dialog_add_edit_data, null);
+
+        View dialogView = View.inflate(activity,R.layout.info_dialog_add_edit_data, null);
         final AlertDialog dialog = new AlertDialog.Builder(activity)
                 .setTitle(R.string.info_add_new_title)
                 .setView(dialogView,
@@ -149,8 +149,8 @@ public class LearnSpellingTemplate implements TemplateInterface {
 
     @Override
     public void editItem(final Activity activity, int position) {
-        LayoutInflater inflater = activity.getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.info_dialog_add_edit_data, null);
+
+        View dialogView = View.inflate(activity,R.layout.info_dialog_add_edit_data, null);
         final AlertDialog dialog = new AlertDialog.Builder(activity)
                 .setTitle(R.string.info_edit_title)
                 .setView(dialogView,

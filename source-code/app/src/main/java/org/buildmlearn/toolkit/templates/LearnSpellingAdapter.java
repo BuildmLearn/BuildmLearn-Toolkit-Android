@@ -94,8 +94,7 @@ class LearnSpellingAdapter extends BaseAdapter {
         holder.editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                final View dialogView = inflater.inflate(R.layout.info_dialog_add_edit_data, null);
+                final View dialogView = View.inflate(mContext,R.layout.info_dialog_add_edit_data, null);
                 final AlertDialog dialog = new AlertDialog.Builder(mContext)
                         .setTitle(R.string.info_edit_title)
                         .setView(dialogView,

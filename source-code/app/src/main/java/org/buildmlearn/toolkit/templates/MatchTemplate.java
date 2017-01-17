@@ -6,7 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.support.v7.app.AlertDialog;
-import android.view.LayoutInflater;
+
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
@@ -143,14 +143,12 @@ public class MatchTemplate implements TemplateInterface {
 
     @Override
     public String getTitle() {
-        String TEMPLATE_NAME = "Match Template";
-        return TEMPLATE_NAME;
+        return "Match Template";
     }
 
     @Override
     public void addItem(final Activity activity) {
-        LayoutInflater inflater = activity.getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.match_dialog_add_edit, null);
+        View dialogView = View.inflate(activity,R.layout.match_dialog_add_edit, null);
         final AlertDialog dialog = new AlertDialog.Builder(activity)
                 .setTitle(R.string.match_dialog_add_title)
                 .setView(dialogView,
@@ -202,8 +200,7 @@ public class MatchTemplate implements TemplateInterface {
 
     @Override
     public void addMetaData(final Activity activity) {
-        LayoutInflater inflater = activity.getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.match_meta_dialog_add_edit_data, null);
+        View dialogView = View.inflate(activity,R.layout.match_meta_dialog_add_edit_data, null);
         final AlertDialog dialog = new AlertDialog.Builder(activity)
                 .setTitle(R.string.comprehension_add_meta_title)
                 .setView(dialogView,
@@ -242,8 +239,7 @@ public class MatchTemplate implements TemplateInterface {
     @Override
     public void editItem(final Activity activity, final int position) {
         if (position == -2) {
-            LayoutInflater inflater = activity.getLayoutInflater();
-            View dialogView = inflater.inflate(R.layout.match_meta_dialog_add_edit_data, null);
+            View dialogView = View.inflate(activity,R.layout.match_meta_dialog_add_edit_data, null);
             final AlertDialog dialog = new AlertDialog.Builder(activity)
                     .setTitle(R.string.comprehension_edit_meta_title)
                     .setView(dialogView,
@@ -289,8 +285,7 @@ public class MatchTemplate implements TemplateInterface {
 
             final MatchModel data = matchData.get(position);
 
-            LayoutInflater inflater = activity.getLayoutInflater();
-            View dialogView = inflater.inflate(R.layout.match_dialog_add_edit, null);
+            View dialogView = View.inflate(activity,R.layout.match_dialog_add_edit, null);
             final AlertDialog dialog = new AlertDialog.Builder(activity)
                     .setTitle(R.string.match_dialog_edit_title)
                     .setView(dialogView,

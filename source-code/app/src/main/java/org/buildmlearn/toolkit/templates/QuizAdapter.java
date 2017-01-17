@@ -152,8 +152,8 @@ class QuizAdapter extends BaseAdapter {
     private void editItem(final int position, final Context context) {
         QuizModel data = getItem(position);
 
-        LayoutInflater inflater = LayoutInflater.from(context);
-        final View dialogView = inflater.inflate(R.layout.quiz_dialog_add_question, null);
+
+        final View dialogView = View.inflate(context,R.layout.quiz_dialog_add_question, null);
         final AlertDialog dialog = new AlertDialog.Builder(context)
                 .setTitle(R.string.quiz_edit)
                 .setView(dialogView,

@@ -93,6 +93,7 @@ public class ComprehensionTest {
                 try {
                     allowPermissions.click();
                 } catch (UiObjectNotFoundException e) {
+                e.printStackTrace();
                 }
             }
         }
@@ -118,13 +119,13 @@ public class ComprehensionTest {
         });
     }
 
-    public void toolbarTitle() {
+    private void toolbarTitle() {
         String title = "Comprehension Template";
         onView(allOf(instanceOf(TextView.class), withParent(withId(R.id.toolbar))))
                 .check(matches(withText(title)));
     }
 
-    public void addMetaDetails() {
+    private void addMetaDetails() {
         String passTitle = "PassageTitle";
         String passage = "Short Passage.";
         String timer = "180";
@@ -143,7 +144,7 @@ public class ComprehensionTest {
 
     }
 
-    public void editMetaDetails() {
+    private void editMetaDetails() {
         String passTitle = "EditedPassageTitle";
         String passage = "EditedShort Passage.";
 
@@ -158,7 +159,7 @@ public class ComprehensionTest {
 
     }
 
-    public void addQuestions() {
+    private void addQuestions() {
         String question = "This is just a silly question whose answer is (b).";
 
         onView(withId(R.id.button_add_item)).perform(click());
@@ -180,7 +181,7 @@ public class ComprehensionTest {
 
     }
 
-    public void editQuestions() {
+    private void editQuestions() {
         String question = "This is just a silly question whose answer changed to (a).";
 
         onData(anything()).inAdapterView(withId(R.id.template_editor_listview)).atPosition(1).perform(longClick());
@@ -193,13 +194,13 @@ public class ComprehensionTest {
 
     }
 
-    public void addTemplate() {
+    private void addTemplate() {
 
         onView(withId(R.id.author_name)).perform(replaceText("Anupam"));
         onView(withId(R.id.template_title)).perform(replaceText("Testing template"));
     }
 
-    public void saveAPK() {
+    private void saveAPK() {
 
         onView(withId(R.id.action_save)).perform(click());
         onView(withText("Save APK")).perform(click());
@@ -235,7 +236,7 @@ public class ComprehensionTest {
         return stringHolder[0];
     }
 
-    public void checkSimulator() {
+    private void checkSimulator() {
         onView(withId(R.id.action_simulate)).perform(click());
         onView(withText("Testing template")).check(matches(isDisplayed()));
         onView(withText("Anupam")).check(matches(isDisplayed()));
