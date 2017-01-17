@@ -265,7 +265,7 @@ public class FlashTemplate implements TemplateInterface {
         mData.remove(position);
         setEmptyView(activity);
         mAdapter.notifyDataSetChanged();
-
+        setEmptyView(activity);
         return flashCardModel;
     }
 
@@ -278,6 +278,7 @@ public class FlashTemplate implements TemplateInterface {
             {
                 mData.add(position,flashCardModel);
                 mAdapter.notifyDataSetChanged();
+                setEmptyView(activity);
             }
         }
     }

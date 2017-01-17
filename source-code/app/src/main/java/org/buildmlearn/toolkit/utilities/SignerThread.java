@@ -240,15 +240,15 @@ public class SignerThread extends Thread {
 
             if (zipSigner.isCanceled()) {
                 Log.d(TAG, "Signing cancelled");
-                Toast.makeText(toolkit, "APK file not generated", Toast.LENGTH_SHORT).show();
+                Toast.makeText(toolkit, R.string.apk_not_generated, Toast.LENGTH_SHORT).show();
             } else {
                 Log.d(TAG, "Signing Complete");
                 listener.onSuccess(finalApk);
 
                 if (toolkit.isExternalStorageAvailable()) {
-                    showNotification("APK file saved in Downloads folder");
+                    showNotification(context.getString(R.string.apk_file_saved));
                 } else {
-                    showNotification("SD card not found. APK file saved in internal storage.");
+                    showNotification(context.getString(R.string.sd_card_notfound));
                 }
             }
 
@@ -280,7 +280,7 @@ public class SignerThread extends Thread {
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(toolkit)
                         .setSmallIcon(R.drawable.ic_stat_toggle_check_box)
-                        .setContentTitle("APK Generated")
+                        .setContentTitle(context.getString(R.string.apk_generated))
                         .setContentText(description)
                         .setContentIntent(pendingIntent)
                         .setAutoCancel(true);

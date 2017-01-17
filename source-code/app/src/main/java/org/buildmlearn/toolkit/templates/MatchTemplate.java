@@ -172,6 +172,21 @@ public class MatchTemplate implements TemplateInterface {
                     String first_list_itemText = first_list_item.getText().toString().trim();
                     String second_list_itemText = second_list_item.getText().toString().trim();
 
+                    if(matchData.size() > 0) {
+                        for (int i = 0; i < matchData.size(); i++) {
+                            if (first_list_itemText.equals(matchData.get(i).getMatchA()) || first_list_itemText.equals(matchData.get(i).getMatchB())) {
+                                first_list_item.requestFocus();
+                                first_list_item.setError("Option already inserted in list");
+                                return;
+                            }
+                            if (second_list_itemText.equals(matchData.get(i).getMatchA()) || second_list_itemText.equals(matchData.get(i).getMatchB())) {
+                                second_list_item.requestFocus();
+                                second_list_item.setError("Option already inserted in list");
+                                return;
+                            }
+                        }
+                    }
+
                     MatchModel temp = new MatchModel(first_list_itemText, second_list_itemText);
                     matchData.add(temp);
                     adapter.notifyDataSetChanged();
@@ -298,6 +313,23 @@ public class MatchTemplate implements TemplateInterface {
                         String first_list_itemText = first_list_item.getText().toString().trim();
                         String second_list_itemText = second_list_item.getText().toString().trim();
 
+                        if (matchData.size() > 0){
+                            for(int i=0;i<matchData.size();i++){
+                                if(i == position)
+                                    continue;
+                                if (first_list_itemText.equals(matchData.get(i).getMatchA()) || first_list_itemText.equals(matchData.get(i).getMatchB())) {
+                                    first_list_item.requestFocus();
+                                    first_list_item.setError("Option already inserted in the list");
+                                    return;
+                                }
+                                if (second_list_itemText.equals(matchData.get(i).getMatchA()) || second_list_itemText.equals(matchData.get(i).getMatchB())) {
+                                    second_list_item.requestFocus();
+                                    second_list_item.setError("Option already inserted in the list");
+                                    return;
+                                }
+                            }
+                        }
+
                         data.setMatchA(first_list_itemText);
                         data.setMatchB(second_list_itemText);
 
@@ -324,6 +356,7 @@ public class MatchTemplate implements TemplateInterface {
             setEmptyView(activity);
             adapter.notifyDataSetChanged();
         }
+        setEmptyView(activity);
         if (matchMetaModel==null)
         {
             return matchModel;
@@ -346,13 +379,14 @@ public class MatchTemplate implements TemplateInterface {
             }
         }else {
             if (object instanceof MatchModel) {
-               MatchModel matchModel = (MatchModel) object;
+                MatchModel matchModel = (MatchModel) object;
                 if (matchModel != null) {
                     matchData.add(position, matchModel);
                     adapter.notifyDataSetChanged();
                 }
             }
         }
+        setEmptyView(activity);
     }
 
     @Override

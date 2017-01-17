@@ -525,6 +525,7 @@ public class ComprehensionTemplate implements TemplateInterface {
             setEmptyView(activity);
             adapter.notifyDataSetChanged();
         }
+        setEmptyView(activity);
         if (comprehensionMetaModel==null)
         {
             return comprehensionModel;
@@ -559,7 +560,7 @@ public class ComprehensionTemplate implements TemplateInterface {
                 }
             }
         }
-
+        setEmptyView(activity);
     }
 
     @Override
