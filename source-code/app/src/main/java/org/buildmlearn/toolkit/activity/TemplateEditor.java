@@ -3,6 +3,9 @@ package org.buildmlearn.toolkit.activity;
 import android.Manifest;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -97,10 +100,10 @@ public class TemplateEditor extends AppCompatActivity {
     public void openBottomSheet (View v) {
 
         View view = getLayoutInflater ().inflate (R.layout.bottom_sheet_view, null);
-        TextView txt_save_apk = (TextView)view.findViewById( R.id.txt_save_apk);
-        TextView txt_save_project = (TextView)view.findViewById( R.id.txt_save_project);
-        TextView txt_share_apk = (TextView)view.findViewById( R.id.txt_share_apk);
-        final TextView txt_shareProject = (TextView)view.findViewById( R.id.txt_share_project);
+        TextView txtSaveApk = (TextView)view.findViewById( R.id.txt_save_apk);
+        TextView txtSaveProject = (TextView)view.findViewById( R.id.txt_save_project);
+        TextView txtShareApk = (TextView)view.findViewById( R.id.txt_share_apk);
+        final TextView txtShareProject = (TextView)view.findViewById( R.id.txt_share_project);
 
         final Dialog mBottomSheetDialog = new Dialog (TemplateEditor.this,
                 R.style.MaterialDialogSheet);
@@ -113,7 +116,7 @@ public class TemplateEditor extends AppCompatActivity {
 
 
         //save project
-        txt_save_project.setOnClickListener(new View.OnClickListener() {
+        txtSaveProject.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -123,7 +126,7 @@ public class TemplateEditor extends AppCompatActivity {
         });
 
         //share project
-        txt_shareProject.setOnClickListener(new View.OnClickListener() {
+        txtShareProject.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -132,26 +135,26 @@ public class TemplateEditor extends AppCompatActivity {
             }
         });
 
-        txt_share_apk.setOnClickListener(new View.OnClickListener() {
+        txtShareApk.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                share_apk();
+                shareApk();
                 mBottomSheetDialog.dismiss();
             }
         });
 
-        txt_save_apk.setOnClickListener(new View.OnClickListener() {
+        txtSaveApk.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                save_apk();
+                saveApk();
                 mBottomSheetDialog.dismiss();
             }
         });
     }
 
-    private void save_apk() {
+    private void saveApk() {
         String savedFilePath;
         savedFilePath = saveProject();
         if (savedFilePath == null || savedFilePath.length() == 0) {
@@ -161,6 +164,9 @@ public class TemplateEditor extends AppCompatActivity {
         String aliasName = getString(R.string.alias_name);
         String aliaspassword = getString(R.string.alias_password);
         KeyStoreDetails keyStoreDetails = new KeyStoreDetails(keyPassword, aliasName, aliaspassword);
+        if(saveProject().equals("File already exists")){
+            return;
+        }
         SignerThread signer = new SignerThread(getApplicationContext(), selectedTemplate.getApkFilePath(), saveProject(), keyStoreDetails, selectedTemplate.getAssetsFilePath(), selectedTemplate.getAssetsFileName(TemplateEditor.this));
 
         mApkGenerationDialog = new ProgressDialog(TemplateEditor.this, R.style.AppDialogTheme);
@@ -211,7 +217,7 @@ public class TemplateEditor extends AppCompatActivity {
         signer.start();
     }
 
-    private void share_apk() {
+    private void shareApk() {
         String savedFilePath;
         savedFilePath = saveProject();
         if (savedFilePath == null || savedFilePath.length() == 0) {
@@ -350,7 +356,7 @@ public class TemplateEditor extends AppCompatActivity {
                     ToolkitApplication mToolkitApplication = new ToolkitApplication();
                     mToolkitApplication.storagePathsValidate();
                 }
-                return;
+
             }
 
         }
@@ -583,25 +589,19 @@ public class TemplateEditor extends AppCompatActivity {
 
         switch (id) {
             case R.id.action_delete:
-
-                final AlertDialog dialog = new AlertDialog.Builder(this)
-                        .setTitle(R.string.dialog_delete_title)
-                        .setMessage(R.string.dialog_delete_msg)
-                        .setPositiveButton(R.string.dialog_yes, null)
-                        .setNegativeButton(R.string.dialog_no, null)
-                        .create();
-                dialog.show();
-
-                dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                        selectedTemplate.deleteItem(TemplateEditor.this, selectedPosition);
-                        selectedPosition = -1;
-                        restoreSelectedView();
-                    }
-                });
-
+                final int restorePosition = selectedPosition;
+                final Object object = selectedTemplate.deleteItem(TemplateEditor.this,selectedPosition);
+                selectedPosition = -1;
+                restoreSelectedView();
+                Snackbar.make(findViewById(R.id.relative_layout),
+                        R.string.snackbar_deleted_message,Snackbar.LENGTH_LONG)
+                        .setAction(R.string.snackbar_undo, new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                selectedTemplate.restoreItem(TemplateEditor.this,restorePosition,object);
+                                Snackbar.make(v,R.string.snackbar_restored_message,Snackbar.LENGTH_LONG).show();
+                            }
+                        }).show();
                 break;
             case R.id.action_edit:
                 selectedTemplate.editItem(this, selectedPosition);
@@ -686,10 +686,10 @@ public class TemplateEditor extends AppCompatActivity {
         EditText authorEditText = (EditText) findViewById(R.id.author_name);
         titleEditText = (EditText) findViewById(R.id.template_title);
         assert findViewById(R.id.author_name) != null;
-        assert ((EditText) findViewById(R.id.author_name)) != null;
+        assert ( findViewById(R.id.author_name)) != null;
         String author = ((EditText) findViewById(R.id.author_name)).getText().toString();
         assert findViewById(R.id.template_title) != null;
-        assert ((EditText) findViewById(R.id.template_title)) != null;
+        assert ( findViewById(R.id.template_title)) != null;
         String title = ((EditText) findViewById(R.id.template_title)).getText().toString();
         if ("".equals(author)) {
             assert authorEditText != null;
@@ -786,9 +786,9 @@ public class TemplateEditor extends AppCompatActivity {
      */
     private String saveDraft() {
 
-        assert ((EditText) findViewById(R.id.author_name)) != null;
+        assert ( findViewById(R.id.author_name)) != null;
         String author = ((EditText) findViewById(R.id.author_name)).getText().toString();
-        assert ((EditText) findViewById(R.id.template_title)) != null;
+        assert ( findViewById(R.id.template_title)) != null;
         String title = ((EditText) findViewById(R.id.template_title)).getText().toString();
 
 

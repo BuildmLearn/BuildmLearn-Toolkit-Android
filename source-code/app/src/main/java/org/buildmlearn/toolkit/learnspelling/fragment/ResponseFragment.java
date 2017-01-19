@@ -72,7 +72,7 @@ public class ResponseFragment extends Fragment
                         welcomeAlert.show();
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
-                        assert ((TextView) welcomeAlert.findViewById(android.R.id.message)) != null;
+                        assert ( welcomeAlert.findViewById(android.R.id.message)) != null;
                         ((TextView) welcomeAlert.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
                         break;
                     default: //do nothing
@@ -105,11 +105,11 @@ public class ResponseFragment extends Fragment
             spellId = extras.getString(Intent.EXTRA_TEXT);
         }
 
-        Cursor spell_cursor = db.getSpellingCursorById(Integer.parseInt(spellId));
-        spell_cursor.moveToFirst();
-        String word = spell_cursor.getString(Constants.COL_WORD);
-        String meaning = spell_cursor.getString(Constants.COL_MEANING);
-        String answered = spell_cursor.getString(Constants.COL_ANSWERED);
+        Cursor spellCursor = db.getSpellingCursorById(Integer.parseInt(spellId));
+        spellCursor.moveToFirst();
+        String word = spellCursor.getString(Constants.COL_WORD);
+        String meaning = spellCursor.getString(Constants.COL_MEANING);
+        String answered = spellCursor.getString(Constants.COL_ANSWERED);
 
 
         Menu m = navigationView.getMenu();
@@ -140,24 +140,24 @@ public class ResponseFragment extends Fragment
         MenuItem mi = m.getItem(m.size() - 1);
         mi.setTitle(mi.getTitle());
 
-        TextView mTv_WordNumber = (TextView) rootView.findViewById(R.id.intro_number);
+        TextView mTvWordNumber = (TextView) rootView.findViewById(R.id.intro_number);
 
-        mTv_WordNumber.setText(String.format(Locale.ENGLISH, "Word #%d of %d", Integer.parseInt(spellId), numQues));
+        mTvWordNumber.setText(String.format(Locale.ENGLISH, "Word #%d of %d", Integer.parseInt(spellId), numQues));
 
         String message;
-        String word_text_view;
+        String wordTextView;
         if (word.trim().equalsIgnoreCase(answered)) {
             message = "Great! You got it right.";
-            word_text_view = "Correct Spell: &nbsp<font color='green'>" + word + "</font>";
+            wordTextView = "Correct Spell: &nbsp<font color='green'>" + word + "</font>";
         } else {
             message = "Oops! You got it wrong.";
-            word_text_view = "Correct Spell:&nbsp <font color=\"#7fe77f\">" + word + "</font> <br />You entered:&nbsp <font color=\"#ee9797\">" + answered + "</font>";
+            wordTextView = "Correct Spell:&nbsp <font color=\"#7fe77f\">" + word + "</font> <br />You entered:&nbsp <font color=\"#ee9797\">" + answered + "</font>";
         }
 
         assert rootView.findViewById(R.id.intro_response) != null;
         ((TextView) rootView.findViewById(R.id.intro_response)).setText(message);
         assert rootView.findViewById(R.id.word) != null;
-        ((TextView) rootView.findViewById(R.id.word)).setText(Html.fromHtml(word_text_view), TextView.BufferType.SPANNABLE);
+        ((TextView) rootView.findViewById(R.id.word)).setText(Html.fromHtml(wordTextView), TextView.BufferType.SPANNABLE);
 
         assert rootView.findViewById(R.id.meaning) != null;
         ((TextView) rootView.findViewById(R.id.meaning)).setText(meaning);

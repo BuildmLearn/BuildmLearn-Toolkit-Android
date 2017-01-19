@@ -25,7 +25,7 @@
         android:scaleType="centerInside" />
 
     <Button
-        android:text="Skip Tutorial"
+        android:text="@string/skip_tutorial"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

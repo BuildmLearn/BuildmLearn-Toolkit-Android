@@ -38,17 +38,17 @@ public class SettingsFragment extends PreferenceFragment {
     private static final int REQUEST_PICK_APK = 9985;
     private Preference prefUsername;
 
-    public static float deleteDirectory(File file, float size) {
+    private static float deleteDirectory(File file, float size) {
         if (file.exists()) {
             File[] listFiles = file.listFiles();
             if (listFiles == null) return 0;
 
-            for (int i = 0; i < listFiles.length; i++) {
-                if (listFiles[i].isDirectory()) {
-                    size += deleteDirectory(listFiles[i], 0);
+            for (File listFile : listFiles) {
+                if (listFile.isDirectory()) {
+                    size += deleteDirectory(listFile, 0);
                 } else {
-                    size += listFiles[i].length();
-                    listFiles[i].delete();
+                    size += listFile.length();
+                    listFile.delete();
                 }
             }
         }
@@ -74,8 +74,8 @@ public class SettingsFragment extends PreferenceFragment {
             }
         });
 
-        Preference rate_preference=findPreference(getString(R.string.pref_rate_key));
-        rate_preference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+        Preference ratePreference=findPreference(getString(R.string.pref_rate_key));
+        ratePreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
                 if(NetworkUtils.isNetworkAvailable(getActivity()))
@@ -83,6 +83,19 @@ public class SettingsFragment extends PreferenceFragment {
                             Uri.parse("http://play.google.com/store/apps/details?id=" + getActivity().getPackageName())));
                 else
                     Toast.makeText(getActivity(), R.string.settings_network_unavailable,Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
+
+        Preference tell_friend=findPreference(getString(R.string.pref_tell_key));
+        tell_friend.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                Intent shareIntent = new Intent();
+                shareIntent.setAction(Intent.ACTION_SEND);
+                shareIntent.putExtra(Intent.EXTRA_TEXT,getString(R.string.pref_tell_message)+" http://play.google.com/store/apps/details?id=" + getActivity().getPackageName());
+                shareIntent.setType("text/plain");
+                startActivity(shareIntent);
                 return true;
             }
         });
@@ -127,9 +140,9 @@ public class SettingsFragment extends PreferenceFragment {
         startActivityForResult(intent, REQUEST_PICK_APK);
     }
 
-    public void resetUserName() {
-        LayoutInflater inflater = getActivity().getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.dialog_settings_your_name, null);
+    private void resetUserName() {
+
+        View dialogView = View.inflate(getActivity(),R.layout.dialog_settings_your_name, null);
         final EditText editInput = (EditText) dialogView.findViewById(R.id.et_dialog_settings_your_name);
         editInput.setText(prefUsername.getSummary());
 

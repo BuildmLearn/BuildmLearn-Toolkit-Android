@@ -12,7 +12,6 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.BaseAdapter;
@@ -112,8 +111,8 @@ public class FlashTemplate implements TemplateInterface {
 
         mIsPhotoAttached = false;
 
-        LayoutInflater inflater = activity.getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.flash_dialog_add_edit_item, null);
+
+        View dialogView = View.inflate(activity,R.layout.flash_dialog_add_edit_item, null);
         final AlertDialog dialog = new AlertDialog.Builder(activity)
                 .setTitle(R.string.info_add_new_title)
                 .setView(dialogView,
@@ -180,8 +179,8 @@ public class FlashTemplate implements TemplateInterface {
 
         FlashCardModel data = mData.get(position);
 
-        LayoutInflater inflater = activity.getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.flash_dialog_add_edit_item, null);
+
+        View dialogView = View.inflate(activity,R.layout.flash_dialog_add_edit_item, null);
         final AlertDialog dialog = new AlertDialog.Builder(activity)
                 .setTitle(R.string.info_edit_title)
                 .setView(dialogView,
@@ -266,7 +265,7 @@ public class FlashTemplate implements TemplateInterface {
         mData.remove(position);
         setEmptyView(activity);
         mAdapter.notifyDataSetChanged();
-
+        setEmptyView(activity);
         return flashCardModel;
     }
 
@@ -279,6 +278,7 @@ public class FlashTemplate implements TemplateInterface {
             {
                 mData.add(position,flashCardModel);
                 mAdapter.notifyDataSetChanged();
+                setEmptyView(activity);
             }
         }
     }

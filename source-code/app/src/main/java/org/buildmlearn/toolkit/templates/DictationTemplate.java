@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
@@ -14,6 +13,7 @@ import android.widget.TextView;
 
 
 import org.buildmlearn.toolkit.R;
+
 import org.buildmlearn.toolkit.dictationtemplate.fragment.SplashFragment;
 import org.buildmlearn.toolkit.model.Template;
 import org.buildmlearn.toolkit.model.TemplateInterface;
@@ -103,15 +103,14 @@ public class DictationTemplate implements TemplateInterface {
 
     @Override
     public String getTitle() {
-        String TEMPLATE_NAME = "Dictation Template";
-        return TEMPLATE_NAME;
+        return "Dictation Template";
     }
 
     @Override
     public void addItem(final Activity activity) {
 
-        LayoutInflater inflater = activity.getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.dict_dialog_add_edit_data, null);
+
+        final View dialogView = View.inflate(activity,R.layout.dict_dialog_add_edit_data, null);
         final AlertDialog dialog = new AlertDialog.Builder(activity)
                 .setTitle(R.string.info_add_new_title)
                 .setView(dialogView,
@@ -171,8 +170,8 @@ public class DictationTemplate implements TemplateInterface {
     @Override
     public void editItem(final Activity activity, final int position) {
 
-        LayoutInflater inflater = activity.getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.dict_dialog_add_edit_data, null);
+
+        final View dialogView = View.inflate(activity,R.layout.dict_dialog_add_edit_data, null);
         final AlertDialog dialog = new AlertDialog.Builder(activity)
                 .setTitle(R.string.info_edit_title)
                 .setView(dialogView,
@@ -231,6 +230,7 @@ public class DictationTemplate implements TemplateInterface {
         dictData.remove(position);
         setEmptyView(activity);
         adapter.notifyDataSetChanged();
+        setEmptyView(activity);
         return dictationModel;
     }
 
@@ -243,6 +243,7 @@ public class DictationTemplate implements TemplateInterface {
             {
                 dictData.add(position,dictationModel);
                 adapter.notifyDataSetChanged();
+                setEmptyView(activity);
             }
         }
     }
