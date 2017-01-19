@@ -37,7 +37,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
     private final ContentValues infoValues;
 
     private View rootView;
-    private String info_Id;
+    private String infoId;
     private InfoDb db;
 
     public DetailActivityFragment() {
@@ -54,7 +54,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
                              Bundle savedInstanceState) {
         Bundle arguments = getArguments();
         if (arguments != null) {
-            info_Id = arguments.getString(Intent.EXTRA_TEXT);
+            infoId = arguments.getString(Intent.EXTRA_TEXT);
         }
         rootView = inflater.inflate(R.layout.fragment_detail_info, container, false);
 
@@ -108,14 +108,14 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        if (null != info_Id) {
+        if (null != infoId) {
             switch (id) {
                 case DETAIL_LOADER:
 
                     return new CursorLoader(getActivity(), null, Constants.INFO_COLUMNS, null, null, null) {
                         @Override
                         public Cursor loadInBackground() {
-                            return db.getInfoCursorById(Integer.parseInt(info_Id));
+                            return db.getInfoCursorById(Integer.parseInt(infoId));
                         }
                     };
                 default: //do nothing
@@ -144,7 +144,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
 
                 final long numColumns = db.getCount();
 
-                if (Integer.parseInt(info_Id) == numColumns) {
+                if (Integer.parseInt(infoId) == numColumns) {
 
                     rootView.findViewById(R.id.next).setVisibility(View.INVISIBLE);
                     rootView.findViewById(R.id.exit).setOnClickListener(new View.OnClickListener() {
@@ -161,7 +161,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
                         @Override
                         public void onClick(View v) {
 
-                            long nextInfoId = Integer.parseInt(info_Id) + 1;
+                            long nextInfoId = Integer.parseInt(infoId) + 1;
 
                             Bundle arguments = new Bundle();
                             arguments.putString(Intent.EXTRA_TEXT, String.valueOf(nextInfoId));
@@ -174,7 +174,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
                     });
                 }
 
-                if (Integer.parseInt(info_Id) == 1) {
+                if (Integer.parseInt(infoId) == 1) {
 
                     rootView.findViewById(R.id.previous).setVisibility(View.INVISIBLE);
 
@@ -184,7 +184,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
                         @Override
                         public void onClick(View v) {
 
-                            int prevInfoId = Integer.parseInt(info_Id) - 1;
+                            int prevInfoId = Integer.parseInt(infoId) - 1;
 
                             if (prevInfoId >= 1) {
 

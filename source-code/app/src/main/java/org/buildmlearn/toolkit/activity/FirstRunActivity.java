@@ -46,9 +46,9 @@ public class FirstRunActivity extends AppCompatActivity {
 
 
         findViewById(R.id.focus_thief).clearFocus();
-        Animation anim_bounceinup=AnimationUtils.loadAnimation(getBaseContext(),R.anim.bounceinup);
+        Animation animBounceinup=AnimationUtils.loadAnimation(getBaseContext(),R.anim.bounceinup);
         name = (EditText) findViewById(R.id.first_name);
-        name.startAnimation(anim_bounceinup);
+        name.startAnimation(animBounceinup);
         name.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {

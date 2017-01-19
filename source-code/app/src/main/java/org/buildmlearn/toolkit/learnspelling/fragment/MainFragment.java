@@ -51,9 +51,9 @@ public class MainFragment extends Fragment
     private static final float MIN_SPEECH_RATE = 0.01f;
     private android.app.AlertDialog mAlert;
     private Context mContext;
-    private Button mBtn_Spell, mBtn_Skip;
-    private EditText mEt_Spelling;
-    private SeekBar mSb_SpeechRate;
+    private Button mBtnSpell, mBtnSkip;
+    private EditText mEtSpelling;
+    private SeekBar mSbSpeechRate;
     private SpellDb db;
     private TextToSpeech tts;
     private ProgressDialog progress;
@@ -149,19 +149,19 @@ public class MainFragment extends Fragment
         mi.setTitle(mi.getTitle());
 
 
-        mBtn_Spell = (Button) rootView.findViewById(R.id.spell_it);
-        mBtn_Skip = (Button) rootView.findViewById(R.id.skip);
-        mSb_SpeechRate = (SeekBar) rootView.findViewById(R.id.seek_bar);
-        TextView mTv_WordNumber = (TextView) rootView.findViewById(R.id.intro_number);
+        mBtnSpell = (Button) rootView.findViewById(R.id.spell_it);
+        mBtnSkip = (Button) rootView.findViewById(R.id.skip);
+        mSbSpeechRate = (SeekBar) rootView.findViewById(R.id.seek_bar);
+        TextView mTvWordNumber = (TextView) rootView.findViewById(R.id.intro_number);
 
-        mBtn_Spell.setEnabled(false);
-        mBtn_Skip.setEnabled(false);
-        mTv_WordNumber.setText(String.format(Locale.ENGLISH, "Word #%d of %d", Integer.parseInt(spellId), numQues));
+        mBtnSpell.setEnabled(false);
+        mBtnSkip.setEnabled(false);
+        mTvWordNumber.setText(String.format(Locale.ENGLISH, "Word #%d of %d", Integer.parseInt(spellId), numQues));
 
-        Cursor spell_cursor = db.getSpellingCursorById(Integer.parseInt(spellId));
-        spell_cursor.moveToFirst();
-        String word = spell_cursor.getString(Constants.COL_WORD);
-        String answered = spell_cursor.getString(Constants.COL_ANSWERED);
+        Cursor spellCursor = db.getSpellingCursorById(Integer.parseInt(spellId));
+        spellCursor.moveToFirst();
+        String word = spellCursor.getString(Constants.COL_WORD);
+        String answered = spellCursor.getString(Constants.COL_ANSWERED);
 
         setListeners(spellId, word, answered);
 
@@ -214,7 +214,7 @@ public class MainFragment extends Fragment
                 progress.show();
 
 
-                float speechRate = getProgressValue(mSb_SpeechRate.getProgress());
+                float speechRate = getProgressValue(mSbSpeechRate.getProgress());
                 tts.setSpeechRate(speechRate);
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -225,10 +225,10 @@ public class MainFragment extends Fragment
                     map.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "dict");
                     tts.speak(word, TextToSpeech.QUEUE_FLUSH, map);
                 }
-                mBtn_Spell.setEnabled(true);
-                mBtn_Skip.setEnabled(true);
-                mBtn_Skip.setTextColor(ContextCompat.getColor(mContext, R.color.colorAccent_spell));
-                mBtn_Spell.setTextColor(ContextCompat.getColor(mContext, R.color.colorAccent_spell));
+                mBtnSpell.setEnabled(true);
+                mBtnSkip.setEnabled(true);
+                mBtnSkip.setTextColor(ContextCompat.getColor(mContext, R.color.colorAccent_spell));
+                mBtnSpell.setTextColor(ContextCompat.getColor(mContext, R.color.colorAccent_spell));
             }
         });
 
@@ -246,8 +246,8 @@ public class MainFragment extends Fragment
                 if (mAlert != null && !mAlert.isShowing()) {
                     mAlert.show();
                 }
-                mEt_Spelling = (EditText) mAlert.findViewById(R.id.et_spelling);
-                mEt_Spelling.setText(answered);
+                mEtSpelling = (EditText) mAlert.findViewById(R.id.et_spelling);
+                mEtSpelling.setText(answered);
 
                 Button mBtn_Submit = (Button) mAlert.findViewById(R.id.btn_submit);
                 mBtn_Submit.setOnClickListener(new View.OnClickListener() {
@@ -263,7 +263,7 @@ public class MainFragment extends Fragment
     }
 
     private void submit(String spell) {
-        String input = mEt_Spelling.getText().toString().trim();
+        String input = mEtSpelling.getText().toString().trim();
         if (input.length() == 0) {
             Toast.makeText(mContext, "Please enter the spelling",
                     Toast.LENGTH_SHORT).show();
@@ -271,7 +271,7 @@ public class MainFragment extends Fragment
         } else {
             mAlert.dismiss();
 
-            String answered = mEt_Spelling.getText().toString().trim();
+            String answered = mEtSpelling.getText().toString().trim();
             db.markAnswered(Integer.parseInt(spell), answered);
 
             Bundle arguments = new Bundle();
