@@ -97,22 +97,21 @@ public class TemplateEditor extends AppCompatActivity {
     private ProgressDialog mApkGenerationDialog;
 
 
-    public void openBottomSheet (View v) {
+    public void openBottomSheet(View v) {
 
-        View view = getLayoutInflater ().inflate (R.layout.bottom_sheet_view, null);
-        TextView txtSaveApk = (TextView)view.findViewById( R.id.txt_save_apk);
-        TextView txtSaveProject = (TextView)view.findViewById( R.id.txt_save_project);
-        TextView txtShareApk = (TextView)view.findViewById( R.id.txt_share_apk);
-        final TextView txtShareProject = (TextView)view.findViewById( R.id.txt_share_project);
-
-        final Dialog mBottomSheetDialog = new Dialog (TemplateEditor.this,
+        View view = getLayoutInflater().inflate(R.layout.bottom_sheet_view, null);
+        TextView txtSaveApk = (TextView) view.findViewById(R.id.txt_save_apk);
+        TextView txtSaveProject = (TextView) view.findViewById(R.id.txt_save_project);
+        TextView txtShareApk = (TextView) view.findViewById(R.id.txt_share_apk);
+        final TextView txtShareProject = (TextView) view.findViewById(R.id.txt_share_project);
+        final Dialog mBottomSheetDialog = new Dialog(TemplateEditor.this,
                 R.style.MaterialDialogSheet);
-        mBottomSheetDialog.setContentView (view);
-        mBottomSheetDialog.setCancelable (true);
-        mBottomSheetDialog.getWindow ().setLayout (LinearLayout.LayoutParams.MATCH_PARENT,
+        mBottomSheetDialog.setContentView(view);
+        mBottomSheetDialog.setCancelable(true);
+        mBottomSheetDialog.getWindow().setLayout(LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
-        mBottomSheetDialog.getWindow ().setGravity (Gravity.BOTTOM);
-        mBottomSheetDialog.show ();
+        mBottomSheetDialog.getWindow().setGravity(Gravity.BOTTOM);
+        mBottomSheetDialog.show();
 
 
         //save project
@@ -164,7 +163,7 @@ public class TemplateEditor extends AppCompatActivity {
         String aliasName = getString(R.string.alias_name);
         String aliaspassword = getString(R.string.alias_password);
         KeyStoreDetails keyStoreDetails = new KeyStoreDetails(keyPassword, aliasName, aliaspassword);
-        if(saveProject().equals("File already exists")){
+        if (saveProject().equals("File already exists")) {
             return;
         }
         SignerThread signer = new SignerThread(getApplicationContext(), selectedTemplate.getApkFilePath(), saveProject(), keyStoreDetails, selectedTemplate.getAssetsFilePath(), selectedTemplate.getAssetsFileName(TemplateEditor.this));
@@ -527,9 +526,7 @@ public class TemplateEditor extends AppCompatActivity {
 
         } catch (InstantiationException e) {
             e.printStackTrace();
-        }
-        catch ( IllegalAccessException e)
-        {
+        } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
     }
@@ -590,16 +587,16 @@ public class TemplateEditor extends AppCompatActivity {
         switch (id) {
             case R.id.action_delete:
                 final int restorePosition = selectedPosition;
-                final Object object = selectedTemplate.deleteItem(TemplateEditor.this,selectedPosition);
+                final Object object = selectedTemplate.deleteItem(TemplateEditor.this, selectedPosition);
                 selectedPosition = -1;
                 restoreSelectedView();
                 Snackbar.make(findViewById(R.id.relative_layout),
-                        R.string.snackbar_deleted_message,Snackbar.LENGTH_LONG)
+                        R.string.snackbar_deleted_message, Snackbar.LENGTH_LONG)
                         .setAction(R.string.snackbar_undo, new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                selectedTemplate.restoreItem(TemplateEditor.this,restorePosition,object);
-                                Snackbar.make(v,R.string.snackbar_restored_message,Snackbar.LENGTH_LONG).show();
+                                selectedTemplate.restoreItem(TemplateEditor.this, restorePosition, object);
+                                Snackbar.make(v, R.string.snackbar_restored_message, Snackbar.LENGTH_LONG).show();
                             }
                         }).show();
                 break;
@@ -686,10 +683,10 @@ public class TemplateEditor extends AppCompatActivity {
         EditText authorEditText = (EditText) findViewById(R.id.author_name);
         titleEditText = (EditText) findViewById(R.id.template_title);
         assert findViewById(R.id.author_name) != null;
-        assert ( findViewById(R.id.author_name)) != null;
+        assert (findViewById(R.id.author_name)) != null;
         String author = ((EditText) findViewById(R.id.author_name)).getText().toString();
         assert findViewById(R.id.template_title) != null;
-        assert ( findViewById(R.id.template_title)) != null;
+        assert (findViewById(R.id.template_title)) != null;
         String title = ((EditText) findViewById(R.id.template_title)).getText().toString();
         if ("".equals(author)) {
             assert authorEditText != null;
@@ -739,6 +736,12 @@ public class TemplateEditor extends AppCompatActivity {
                     Toast.makeText(this, "Unable to perform action: Add Meta Details", Toast.LENGTH_SHORT).show();
                     return null;
                 }
+
+                if (templateId == 7 && selectedTemplate.getItems(doc).size() == 2) {
+                    Toast.makeText(this, "Please enter atleast 2 items", Toast.LENGTH_SHORT).show();
+                    return null;
+                }
+
                 for (Element item : selectedTemplate.getItems(doc)) {
                     dataElement.appendChild(item);
                 }
@@ -751,13 +754,12 @@ public class TemplateEditor extends AppCompatActivity {
                 saveFileName = saveFileName.replaceAll(" ", "-");
 
 
-                boolean isSaved=FileUtils.saveXmlFile(toolkit.getSavedDir(), saveFileName, doc);
-                if(isSaved) {
+                boolean isSaved = FileUtils.saveXmlFile(toolkit.getSavedDir(), saveFileName, doc);
+                if (isSaved) {
                     oldFileName = toolkit.getSavedDir() + saveFileName;
                     Toast.makeText(this, "Project Successfully Saved!", Toast.LENGTH_SHORT).show();
                     return oldFileName;
-                }
-                else {
+                } else {
                     titleEditText.setError("File Already exists");
                     return "File already exists";
                 }
@@ -786,9 +788,9 @@ public class TemplateEditor extends AppCompatActivity {
      */
     private String saveDraft() {
 
-        assert ( findViewById(R.id.author_name)) != null;
+        assert (findViewById(R.id.author_name)) != null;
         String author = ((EditText) findViewById(R.id.author_name)).getText().toString();
-        assert ( findViewById(R.id.template_title)) != null;
+        assert (findViewById(R.id.template_title)) != null;
         String title = ((EditText) findViewById(R.id.template_title)).getText().toString();
 
 
@@ -818,12 +820,17 @@ public class TemplateEditor extends AppCompatActivity {
             doc.appendChild(rootElement);
             Element dataElement = doc.createElement("data");
             rootElement.appendChild(dataElement);
+
             if (selectedTemplate.getItems(doc).size() == 0) {
                 Toast.makeText(this, "Unable to perform action: No Data", Toast.LENGTH_SHORT).show();
                 return null;
             }
             if (selectedTemplate.getItems(doc).get(0).getTagName().equals("item") && (templateId == 5 || templateId == 7)) {
                 Toast.makeText(this, "Unable to perform action: No Meta Details", Toast.LENGTH_SHORT).show();
+                return null;
+            }
+            if (templateId == 7 && selectedTemplate.getItems(doc).size() == 2) {
+                Toast.makeText(this, "Please enter atleast 2 items", Toast.LENGTH_SHORT).show();
                 return null;
             }
             for (Element item : selectedTemplate.getItems(doc)) {
@@ -876,9 +883,7 @@ public class TemplateEditor extends AppCompatActivity {
         if (message == null || message.equals("")) {
             Toast.makeText(this, "Build unsuccessful", Toast.LENGTH_SHORT).show();
             return;
-        }
-        else if("File already exists".equals(message))
-        {
+        } else if ("File already exists".equals(message)) {
             titleEditText.setError("Template Already exists");
             return;
         }
