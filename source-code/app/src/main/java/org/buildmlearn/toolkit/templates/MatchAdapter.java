@@ -1,6 +1,7 @@
 package org.buildmlearn.toolkit.templates;
 
 import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -10,9 +11,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.activity.TemplateEditor;
+import org.buildmlearn.toolkit.adapter.TemplateAdapter;
 import org.buildmlearn.toolkit.views.TextViewPlus;
 import org.buildmlearn.toolkit.views.dragdroprecyclerview.ItemTouchHelperAdapter;
 import org.buildmlearn.toolkit.views.dragdroprecyclerview.ItemTouchHelperViewHolder;
@@ -29,7 +33,6 @@ abstract class MatchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_ITEM = 1;
-    private final Context context;
     private final ArrayList<MatchModel> matchData;
 
     protected abstract boolean onLongItemClick(int position, View view);
@@ -46,8 +49,7 @@ abstract class MatchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     protected abstract void populateMetaList(ListView listView);
 
-    MatchAdapter(Context context, ArrayList<MatchModel> matchData) {
-        this.context = context;
+    MatchAdapter(ArrayList<MatchModel> matchData) {
         this.matchData = matchData;
     }
 
@@ -180,10 +182,20 @@ abstract class MatchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         HeaderHolder(View itemView) {
             super(itemView);
+            Context context = itemView.getContext();
             authorEditText = (EditText) itemView.findViewById(R.id.author_name);
             titleEditText = (EditText) itemView.findViewById(R.id.template_title);
             listView = (ListView) itemView.findViewById(R.id.template_meta_listview);
             shadowMeta = itemView.findViewById(R.id.shadow_meta);
+
+            LinearLayout headerLayout = (LinearLayout) itemView.findViewById(R.id.header_layout);
+            headerLayout.setBackgroundColor(TemplateAdapter.ListColor.values()[7].getColor());
+            headerLayout.invalidate();
+            ((TemplateEditor)context).getSupportActionBar().setBackgroundDrawable(new ColorDrawable(TemplateAdapter.ListColor.values()[7].getColor()));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                ((TemplateEditor)context).getWindow().setStatusBarColor(TemplateAdapter.ListDarkColor.values()[7].getColor());
+                ((TemplateEditor)context).getWindow().setNavigationBarColor(TemplateAdapter.ListColor.values()[7].getColor());
+            }
         }
     }
 

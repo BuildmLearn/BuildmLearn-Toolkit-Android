@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.activity.TemplateEditor;
+import org.buildmlearn.toolkit.holder.HeaderHolder;
 import org.buildmlearn.toolkit.views.TextViewPlus;
 import org.buildmlearn.toolkit.views.dragdroprecyclerview.ItemTouchHelperAdapter;
 import org.buildmlearn.toolkit.views.dragdroprecyclerview.ItemTouchHelperViewHolder;
@@ -37,7 +38,7 @@ abstract class QuizAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_ITEM = 1;
-    private final Context context;
+    private final Context mContext;
     private final ArrayList<QuizModel> quizData;
     private int expandedPostion = -1;
 
@@ -48,8 +49,8 @@ abstract class QuizAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     protected abstract void setAuthorName(String authorName);
     protected abstract void setTitle(String title);
 
-    QuizAdapter(Context context, ArrayList<QuizModel> quizData) {
-        this.context = context;
+    QuizAdapter(Context mContext, ArrayList<QuizModel> quizData) {
+        this.mContext = mContext;
         this.quizData = quizData;
     }
 
@@ -70,7 +71,7 @@ abstract class QuizAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             return new QuizAdapterHolder(view);
         } else if (viewType == TYPE_HEADER) {
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listview_header_template, parent, false);
-            return new HeaderHolder(view);
+            return new HeaderHolder(view,mContext,2);
         }
         return null;
     }
@@ -111,15 +112,15 @@ abstract class QuizAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 if (i < data.getOptions().size()) {
                     int ascii = 65 + i;
                     quizAdapterHolder.options.get(i).setText(String.format("%s) %s", Character.toString((char) ascii), data.getOptions().get(i)));
-                    quizAdapterHolder.options.get(i).setTextColor(ContextCompat.getColor(context, R.color.black_secondary_text));
+                    quizAdapterHolder.options.get(i).setTextColor(ContextCompat.getColor(mContext, R.color.black_secondary_text));
                     quizAdapterHolder.options.get(i).setVisibility(View.VISIBLE);
                 } else {
                     quizAdapterHolder.options.get(i).setVisibility(View.GONE);
                 }
             }
 
-            quizAdapterHolder.options.get(data.getCorrectAnswer()).setCustomFont(context, "roboto_medium.ttf");
-            quizAdapterHolder.options.get(data.getCorrectAnswer()).setTextColor(ContextCompat.getColor(context, R.color.quiz_correct_answer));
+            quizAdapterHolder.options.get(data.getCorrectAnswer()).setCustomFont(mContext, "roboto_medium.ttf");
+            quizAdapterHolder.options.get(data.getCorrectAnswer()).setTextColor(ContextCompat.getColor(mContext, R.color.quiz_correct_answer));
 
             quizAdapterHolder.questionIcon.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -141,7 +142,7 @@ abstract class QuizAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             quizAdapterHolder.edit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    editItem(viewHolder.getLayoutPosition()-1, context);
+                    editItem(viewHolder.getLayoutPosition()-1, mContext);
                 }
             });
             quizAdapterHolder.delete.setOnClickListener(new View.OnClickListener() {
@@ -164,7 +165,7 @@ abstract class QuizAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                                 }
                             }).show();
 
-                    ((TemplateEditor) context).restoreSelectedView();
+                    ((TemplateEditor) mContext).restoreSelectedView();
                     expandedPostion = -1;
                 }
             });
@@ -372,16 +373,6 @@ abstract class QuizAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         } catch (IndexOutOfBoundsException e) {
             e.printStackTrace();
             return false;
-        }
-    }
-
-    private static class HeaderHolder extends RecyclerView.ViewHolder {
-        private EditText authorEditText, titleEditText;
-
-        HeaderHolder(View itemView) {
-            super(itemView);
-            authorEditText = (EditText) itemView.findViewById(R.id.author_name);
-            titleEditText = (EditText) itemView.findViewById(R.id.template_title);
         }
     }
 

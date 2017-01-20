@@ -4,9 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
 import android.support.v7.app.AlertDialog;
-
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
@@ -98,7 +96,7 @@ public class MatchTemplate implements TemplateInterface {
 
     @Override
     public Object newTemplateEditorAdapter(Context context, final TemplateEditorInterface templateEditorInterface) {
-        adapter = new MatchAdapter(context, matchData) {
+        adapter = new MatchAdapter(matchData) {
             @Override
             public boolean onLongItemClick(int position, View view) {
                 return templateEditorInterface.onItemLongClick(position, view);
@@ -162,7 +160,7 @@ public class MatchTemplate implements TemplateInterface {
             matchData.add(new MatchModel(first_list_item, second_list_item));
 
         }
-        adapter = new MatchAdapter(context, matchData) {
+        adapter = new MatchAdapter(matchData) {
             @Override
             public boolean onLongItemClick(int position, View view) {
                 return templateEditorInterface.onItemLongClick(position, view);

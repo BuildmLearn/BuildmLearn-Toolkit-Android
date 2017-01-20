@@ -5,10 +5,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.util.TypedValue;
-
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.adapter.TutorialAdapter;

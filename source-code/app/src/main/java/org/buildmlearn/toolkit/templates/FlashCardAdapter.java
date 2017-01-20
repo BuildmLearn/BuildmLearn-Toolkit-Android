@@ -1,9 +1,7 @@
 package org.buildmlearn.toolkit.templates;
 
 import android.content.Context;
-
 import android.support.design.widget.Snackbar;
-
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -16,9 +14,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.activity.TemplateEditor;
+import org.buildmlearn.toolkit.holder.HeaderHolder;
 import org.buildmlearn.toolkit.views.TextViewPlus;
 import org.buildmlearn.toolkit.views.dragdroprecyclerview.ItemTouchHelperAdapter;
 import org.buildmlearn.toolkit.views.dragdroprecyclerview.ItemTouchHelperViewHolder;
@@ -67,7 +65,7 @@ abstract class FlashCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             return new FlashCardAdapterHolder(view);
         } else if (viewType == TYPE_HEADER) {
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listview_header_template, parent, false);
-            return new HeaderHolder(view);
+            return new HeaderHolder(view,mContext,3);
         }
         return null;
     }
@@ -162,8 +160,8 @@ abstract class FlashCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 }
             });
 
-        } else if (viewHolder instanceof FlashCardAdapter.HeaderHolder) {
-            final FlashCardAdapter.HeaderHolder headerHolder = (FlashCardAdapter.HeaderHolder) viewHolder;
+        } else if (viewHolder instanceof HeaderHolder) {
+            final HeaderHolder headerHolder = (HeaderHolder) viewHolder;
             try {
                 headerHolder.authorEditText.setText(getAuthorName());
                 headerHolder.titleEditText.setText(getTitle());
@@ -233,16 +231,6 @@ abstract class FlashCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         } catch (IndexOutOfBoundsException e) {
             e.printStackTrace();
             return false;
-        }
-    }
-
-    private static class HeaderHolder extends RecyclerView.ViewHolder {
-        private EditText authorEditText, titleEditText;
-
-        HeaderHolder(View itemView) {
-            super(itemView);
-            authorEditText = (EditText) itemView.findViewById(R.id.author_name);
-            titleEditText = (EditText) itemView.findViewById(R.id.template_title);
         }
     }
 
