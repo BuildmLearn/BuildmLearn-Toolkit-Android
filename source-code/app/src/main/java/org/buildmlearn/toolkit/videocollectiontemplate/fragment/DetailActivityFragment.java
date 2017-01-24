@@ -36,7 +36,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
 
     private View rootView;
     private WebView player;
-    private String video_Id;
+    private String videoId;
     private VideoDb db;
 
     public DetailActivityFragment() {
@@ -52,7 +52,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
                              Bundle savedInstanceState) {
         Bundle arguments = getArguments();
         if (arguments != null) {
-            video_Id = arguments.getString(Intent.EXTRA_TEXT);
+            videoId = arguments.getString(Intent.EXTRA_TEXT);
         }
         rootView = inflater.inflate(R.layout.fragment_detail_video, container, false);
 
@@ -79,12 +79,12 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
                                 new AlertDialog.Builder(getActivity());
                         builder.setTitle(String.format("%1$s", getString(R.string.comprehension_about_us)));
                         builder.setMessage(getResources().getText(R.string.about_text_video));
-                        builder.setPositiveButton("OK", null);
+                        builder.setPositiveButton(getString(R.string.info_template_ok), null);
                         AlertDialog welcomeAlert = builder.create();
                         welcomeAlert.show();
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
-                        assert ((TextView) welcomeAlert.findViewById(android.R.id.message)) != null;
+                        assert ( welcomeAlert.findViewById(android.R.id.message)) != null;
                         ((TextView) welcomeAlert.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
                         break;
                     default: //do nothing
@@ -106,14 +106,14 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        if (null != video_Id) {
+        if (null != videoId) {
             switch (id) {
                 case DETAIL_LOADER:
 
                     return new CursorLoader(getActivity(), null, Constants.VIDEO_COLUMNS, null, null, null) {
                         @Override
                         public Cursor loadInBackground() {
-                            return db.getVideoCursorById(Integer.parseInt(video_Id));
+                            return db.getVideoCursorById(Integer.parseInt(videoId));
                         }
                     };
                 default: //do nothing
@@ -150,7 +150,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
             player.getSettings().setTextZoom(140);
 
             String link = data.getString(Constants.COL_LINK);
-            if (link.contains("youtube.com")) {
+            if (link.contains(getString(R.string.video_collection_youtube))) {
 
                 int pos = link.indexOf("watch?v=");
                 String videoId = link.substring(pos + 8);
@@ -161,7 +161,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
 
                 player.loadData(playVideo, "text/html", "utf-8");
 
-            } else if (link.contains("vimeo.com")) {
+            } else if (link.contains(getString(R.string.video_collection_vimeo))) {
                 int pos;
 
                 if (link.contains("/")) {
@@ -173,7 +173,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
 
                 player.loadUrl("http://player.vimeo.com/video/" + videoId + "?player_id=player&autoplay=1&title=0&byline=0&portrait=0&api=1&maxheight=480&maxwidth=800");
 
-            } else if (link.contains("dailymotion.com")) {
+            } else if (link.contains(getString(R.string.video_collection_dailymotion))) {
                 int pos;
 
                 if (link.contains("/")) {
@@ -188,6 +188,15 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
                         "</body></html>";
 
                 player.loadData(playVideo, "text/html", "utf-8");
+            } else if(link.contains("metacafe.com")) {
+
+                String embedlink = link.replaceFirst("metacafe.com/watch","metacafe.com/embed");
+                String playVideo = "<html><body style=\"margin: 0; padding: 0\">" +
+                        " <iframe class=\"player\" type=\"text/html\" width=\"100%\" height=\"850\" src=\"" + embedlink + "\">" +
+                        "</body></html>";
+
+                player.loadData(playVideo, "text/html", "utf-8");
+
             }
 
             rootView.findViewById(R.id.next).setOnClickListener(new View.OnClickListener() {
@@ -196,7 +205,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
 
                     long numColumns = db.getCount();
 
-                    long nextVideoId = Integer.parseInt(video_Id) + 1;
+                    long nextVideoId = Integer.parseInt(videoId) + 1;
 
                     if (nextVideoId <= numColumns) {
 
@@ -213,7 +222,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
                 }
             });
 
-            if (Integer.parseInt(video_Id) == 1) {
+            if (Integer.parseInt(videoId) == 1) {
 
                 rootView.findViewById(R.id.previous).setVisibility(View.INVISIBLE);
 
@@ -223,7 +232,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
                     @Override
                     public void onClick(View v) {
 
-                        int prevVideoId = Integer.parseInt(video_Id) - 1;
+                        int prevVideoId = Integer.parseInt(videoId) - 1;
 
                         if (prevVideoId >= 1) {
                             Bundle arguments = new Bundle();

@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
@@ -98,8 +97,8 @@ public class QuizTemplate implements TemplateInterface {
 
     @Override
     public void addItem(final Activity activity) {
-        LayoutInflater inflater = activity.getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.quiz_dialog_add_question, null);
+
+        final View dialogView = View.inflate(activity,R.layout.quiz_dialog_add_question, null);
         final AlertDialog dialog = new AlertDialog.Builder(activity)
                 .setTitle(R.string.quiz_new_question_title)
                 .setView(dialogView,
@@ -224,8 +223,8 @@ public class QuizTemplate implements TemplateInterface {
     public void editItem(final Activity activity, final int position) {
         QuizModel data = quizData.get(position);
 
-        LayoutInflater inflater = activity.getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.quiz_dialog_add_question, null);
+
+        final View dialogView = View.inflate(activity,R.layout.quiz_dialog_add_question, null);
         final AlertDialog dialog = new AlertDialog.Builder(activity)
                 .setTitle(R.string.quiz_edit)
                 .setView(dialogView,
@@ -342,6 +341,7 @@ public class QuizTemplate implements TemplateInterface {
         quizData.remove(position);
         setEmptyView(activity);
         mAdapter.notifyDataSetChanged();
+        setEmptyView(activity);
         return quizModel;
     }
 
@@ -352,6 +352,7 @@ public class QuizTemplate implements TemplateInterface {
             if (quizModel != null) {
                 quizData.add(position, quizModel);
                 mAdapter.notifyDataSetChanged();
+                setEmptyView(activity);
             }
         }
     }
@@ -403,7 +404,7 @@ public class QuizTemplate implements TemplateInterface {
             if (button.getId() == id) {
                 int index = buttons.indexOf(button);
                 if ("".equals(options.get(index).getText().toString().trim())) {
-                    options.get(index).setError(context.getString(R.string.valid_before_answer));
+                    options.get(index).setError(context.getString(R.string.enter_valid_option));
                     options.get(index).setText(null);
                     button.setChecked(false);
                     return;

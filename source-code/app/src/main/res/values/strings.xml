@@ -36,10 +36,14 @@
     <!-- Quiz Template-->
     <string name="app_name_quiz">Quiz Time</string>
     <string name="completed_message_quiz">Hurrah! You have completed the Quiz.</string>
+    <string name="total_correct">Total Correct : %1$d</string>
+    <string name="total_wrong">Total Wrong : %1$d</string>
+    <string name="total_unanswered">Total Unanswered : %1$d</string>
     <string name="dialog_yes">Yes</string>
     <string name="dialog_no">No</string>
     <string name="dialog_delete_msg">Are you sure you want to delete this item?</string>
     <string name="dialog_delete_title">Delete</string>
+
     <string name="title_activity_simulator">Simulator</string>
     <string name="title_activity_template">Templates</string>
 
@@ -121,6 +125,11 @@
     <string name="video_collection_template_link_valid_hint">Enter a valid link</string>
     <string name="video_collection_template_description_hint">Enter Description</string>
     <string name="video_collection_or">OR</string>
+    <string name="video_collection_youtube">youtube.com</string>
+    <string name="video_collection_dailymotion">dailymotion.com</string>
+    <string name="video_collection_vimeo">vimeo.com</string>
+    <string name="video_collection_list">List of Videos :</string>
+    <string name="video_collection_videoList">videoList</string>
 
     <!-- Comprehension Template-->
     <string name="comprehension_title">Comprehension</string>
@@ -200,6 +209,7 @@
     <string name="quiz_option_hint_2">Option 2</string>
     <string name="quiz_option_hint_3">Option 3</string>
     <string name="quiz_option_hint_4">Option 4</string>
+    <string name="quiz_question_no">Question No : %1$s</string>
 
     <!-- Menu Strings-->
 
@@ -217,6 +227,7 @@
     <string name="bottom_sheet_save_project">Save Project</string>
     <string name="menu_select_all">Select All</string>
     <string name="menu_unselect_all">Unselect All</string>
+    <string name="menu_search">Select All</string>
 
     <!--  Built-in file manager string values -->
 
@@ -233,6 +244,14 @@
     <string name="GeneratingSignatureBlock">Generating signature block file</string>
     <string name="CopyingZipEntry">Copying zip entry %1$d of %2$d</string>
 
+    <!-- Toast messages -->
+    <string name="unableToRestore">Unable to restore Activity state, finsihing Template Editor activity</string>
+    <string name="invalidTemplate">Invalid template ID, closing Template Editor activity</string>
+    <string name="correctOption">Choose a correct option</string>
+    <string name="MinAns">Minimum two multiple answers are required.</string>
+    <string name="enterValid">Enter a valid option before marking it as answer</string>
+
+
     <!-- Error message shown if the input and output filenames are the same -->
     <string name="InputFileSameAsOutput">Input and output files are the same. Specify a different name for the output.</string>
     <!-- Error message shown when the key/mode="auto" and the key to use for signing can't be determined.  %s replaced with input filename. -->
@@ -240,9 +259,8 @@
 
     <!-- Preference Data-->
 
-    <string name="project_settings">Project Settings</string>
-    <string name="developer_mode">Developer Mode</string>
-    <string name="summary_developer_mode">Developer mode disables publishing of Apk to BuildmLearn Store.</string>
+
+
     <string name="title_user_name">Enter your name</string>
 
     <string name="key_delete_temporary_files">delete_temp_files</string>
@@ -267,7 +285,10 @@
 
     <!-- Tutorial-->
     <string name="screen_1_title">Welcome to BuildmLearn Toolkit</string>
+
+    <string name="screen_1_button">Skip tutorial.</string>
     <string name="screen_1_desc">BuildmLearn Toolkit helps you create mLearning apps without any knowledge about app development.</string>
+
     <string name="title_activity_tutorial">Tutorial Activity</string>
 
     <string name="screen_2_title">Make mLearning Apps</string>
@@ -306,6 +327,7 @@
     <string name="restore_progress_dialog">Restoring</string>
     <string name="apk_msg">Inserting data into Apk</string>
     <string name="video_fetching_error">Error while fetching video info!</string>
+
     <string name="network_error">Network Unavailable! Please try later.</string>
     <string name="menu_load_apks">Saved APKs</string>
 
@@ -338,7 +360,7 @@
     <string name="comprehension_edit_meta_title">Edit Meta Details</string>
     <string name="meta_add_help">Click Add button to start adding meta details</string>
     <string name="restart_comprehension">RESTART</string>
-    <string name="video_collection_template_linited_links">Only Youtube, Dailymotion and Vimeo links supported.</string>
+    <string name="video_collection_template_linited_links">Only Youtube, Dailymotion, Metacafe and Vimeo links supported.</string>
 
     <string name="restore_msg">Restoring data from Apk</string>
     <string name="expandbutton">expandButton</string>
@@ -404,6 +426,17 @@
     <string name="match_main_title">Enter a title.</string>
     <string name="valid_before_answer">Enter a valid option before marking it as answer.</string>
     <string name="enter_title">Enter a title.</string>
+    <string name="apk_file_saved">APK file saved in Downloads folder</string>
+    <string name="apk_generated">APK Generated</string>
+    <string name="apk_not_generated">APK file not generated</string>
+    <string name="sd_card_notfound">SD card not found. APK file saved in internal storage.</string>
+    <string name="choose_correct_option">Choose a correct option</string>
+    <string name="ques_required">Question is required</string>
+    <string name="min_answers_required">Minimum two multiple answers are required.</string>
+    <string name="enter_valid_option">Enter a valid option before marking it as answer.</string>
+    <string name="LongPress_toedit">Long press to edit this item</string>
+    <string name="question">Question %1$d</string>
+
     <string name="enter">Enter name</string>
     <string name="name_valid_msg">Name must start with alphanumeric character</string>
     <string name="enter_name">Enter name</string>
@@ -412,6 +445,7 @@
     <string name="title_valid">Title must start with alphanumeric</string>
     <string name="valid_msg_name">Enter valid name</string>
     <string name="same_options">Two or more options are same.</string>
+
     <string name="time_zero_error">Time can\'t be zero</string>
     <string name="pref_rate_title">Rate Toolkit</string>
     <string name="pref_rate_summary">Rate our app on Play Store</string>
@@ -420,5 +454,12 @@
     <string name="check_update">Update</string>
     <string name="update_title">Check for New Version</string>
     <string name="update_summary">Check for Latest Version of app Playstore</string>
+    <string name="skip_tutorial">Skip Tutorial</string>
+    <string name="simulator_frame_top">Simulator frame top</string>
+    <string name="simulator_frame_left">simulator frame left</string>
+    <string name="simulator_frame_right">simulator frame right</string>
+    <string name="simulator_frame_bottom">Simulator frame bottom</string>
+    <string name="pref_tell_key">tell</string>
+    <string name="pref_tell_title">Tell a friend</string>
+    <string name="pref_tell_message">BuildmLearn Toolkit for your phone. Download it from here :</string>
 </resources>
-

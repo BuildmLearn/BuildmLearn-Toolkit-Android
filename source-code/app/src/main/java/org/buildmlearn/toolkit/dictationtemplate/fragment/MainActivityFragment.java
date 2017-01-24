@@ -1,5 +1,6 @@
 package org.buildmlearn.toolkit.dictationtemplate.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -102,7 +103,7 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
                         AlertDialog welcomeAlert = builder.create();
                         welcomeAlert.show();
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
-                        assert ((TextView) welcomeAlert.findViewById(android.R.id.message)) != null;
+                        assert ( welcomeAlert.findViewById(android.R.id.message)) != null;
                         ((TextView) welcomeAlert.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
                         break;
                     default: //do nothing
@@ -137,7 +138,7 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
             mPosition = savedInstanceState.getInt(SELECTED_KEY);
         }
 
-        SharedPreferences prefs = getActivity().getSharedPreferences("Radio", getContext().MODE_PRIVATE);
+        SharedPreferences prefs = getActivity().getSharedPreferences("Radio", Context.MODE_PRIVATE);
         int pos = prefs.getInt("radio_b", 1);
         RadioGroup rg = (RadioGroup) rootView.findViewById(R.id.radio_group);
         rg.check(rg.getChildAt(pos).getId());
@@ -171,7 +172,7 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
         rootView.findViewById(R.id.radioButton1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences.Editor editor = getActivity().getSharedPreferences("Radio", getContext().MODE_PRIVATE).edit();
+                SharedPreferences.Editor editor = getActivity().getSharedPreferences("Radio", Context.MODE_PRIVATE).edit();
                 editor.putInt("radio_b", 0);
                 editor.apply();
             }
@@ -180,7 +181,7 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
         rootView.findViewById(R.id.radioButton2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences.Editor editor = getActivity().getSharedPreferences("Radio", getContext().MODE_PRIVATE).edit();
+                SharedPreferences.Editor editor = getActivity().getSharedPreferences("Radio", Context.MODE_PRIVATE).edit();
                 editor.putInt("radio_b", 1);
                 editor.apply();
             }
@@ -189,7 +190,7 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
         rootView.findViewById(R.id.radioButton3).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences.Editor editor = getActivity().getSharedPreferences("Radio", getContext().MODE_PRIVATE).edit();
+                SharedPreferences.Editor editor = getActivity().getSharedPreferences("Radio", Context.MODE_PRIVATE).edit();
                 editor.putInt("radio_b", 2);
                 editor.apply();
             }

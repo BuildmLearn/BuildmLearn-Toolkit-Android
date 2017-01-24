@@ -64,12 +64,12 @@ public class QuestionFragment extends Fragment
                                 new AlertDialog.Builder(getActivity());
                         builder.setTitle(String.format("%1$s", getString(R.string.comprehension_about_us)));
                         builder.setMessage(getResources().getText(R.string.comprehension_about_text));
-                        builder.setPositiveButton("OK", null);
+                        builder.setPositiveButton(getString(R.string.info_template_ok), null);
                         AlertDialog welcomeAlert = builder.create();
                         welcomeAlert.show();
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
-                        assert ((TextView) welcomeAlert.findViewById(android.R.id.message)) != null;
+                        assert ( welcomeAlert.findViewById(android.R.id.message)) != null;
                         ((TextView) welcomeAlert.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
                         break;
                     default: //do nothing
@@ -100,17 +100,17 @@ public class QuestionFragment extends Fragment
         Cursor cursor = db.getQuestionCursorById(Integer.parseInt(questionId));
         cursor.moveToFirst();
         String question = cursor.getString(Constants.COL_QUESTION);
-        String option_1 = cursor.getString(Constants.COL_OPTION_1);
-        String option_2 = cursor.getString(Constants.COL_OPTION_2);
-        String option_3 = cursor.getString(Constants.COL_OPTION_3);
-        String option_4 = cursor.getString(Constants.COL_OPTION_4);
+        String optionOne = cursor.getString(Constants.COL_OPTION_1);
+        String optionTwo = cursor.getString(Constants.COL_OPTION_2);
+        String optionThree = cursor.getString(Constants.COL_OPTION_3);
+        String optionFour = cursor.getString(Constants.COL_OPTION_4);
         int attempted = cursor.getInt(Constants.COL_ATTEMPTED);
         String answered;
 
         toolbar.setTitle(getResources().getString(R.string.app_name_quiz));
 
         Menu m = navigationView.getMenu();
-        SubMenu topChannelMenu = m.addSubMenu("Questions");
+        SubMenu topChannelMenu = m.addSubMenu(getString(R.string.quiz_new_question));
         long numQues = db.getCountQuestions();
 
         final String finalQuestionId = questionId;
@@ -122,7 +122,7 @@ public class QuestionFragment extends Fragment
             rg.check(rg.getChildAt(Integer.parseInt(answered)).getId());
         }
         for (int i = 1; i <= numQues; i++) {
-            topChannelMenu.add(String.format(Locale.getDefault(), "Question %1$d", i));
+            topChannelMenu.add(String.format(Locale.getDefault(), getString(R.string.question), i));
             topChannelMenu.getItem(i - 1).setIcon(R.drawable.ic_assignment_black_24dp);
             final int finalI = i;
             topChannelMenu.getItem(i - 1).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
@@ -150,23 +150,23 @@ public class QuestionFragment extends Fragment
             });
         }
 
-        ((TextView) rootView.findViewById(R.id.question_title)).setText(String.format(Locale.getDefault(), "Question No : %1$s", questionId));
+        ((TextView) rootView.findViewById(R.id.question_title)).setText(String.format(Locale.getDefault(), getString(R.string.quiz_question_no), questionId));
         ((TextView) rootView.findViewById(R.id.question)).setText(question);
-        if (option_1 != null) {
+        if (optionOne != null) {
             rootView.findViewById(R.id.radioButton1).setVisibility(View.VISIBLE);
-            ((TextView) rootView.findViewById(R.id.radioButton1)).setText(option_1);
+            ((TextView) rootView.findViewById(R.id.radioButton1)).setText(optionOne);
         }
-        if (option_2 != null) {
+        if (optionTwo != null) {
             rootView.findViewById(R.id.radioButton2).setVisibility(View.VISIBLE);
-            ((TextView) rootView.findViewById(R.id.radioButton2)).setText(option_2);
+            ((TextView) rootView.findViewById(R.id.radioButton2)).setText(optionTwo);
         }
-        if (option_3 != null) {
+        if (optionThree != null) {
             rootView.findViewById(R.id.radioButton3).setVisibility(View.VISIBLE);
-            ((TextView) rootView.findViewById(R.id.radioButton3)).setText(option_3);
+            ((TextView) rootView.findViewById(R.id.radioButton3)).setText(optionThree);
         }
-        if (option_4 != null) {
+        if (optionFour != null) {
             rootView.findViewById(R.id.radioButton4).setVisibility(View.VISIBLE);
-            ((TextView) rootView.findViewById(R.id.radioButton4)).setText(option_4);
+            ((TextView) rootView.findViewById(R.id.radioButton4)).setText(optionFour);
         }
 
 

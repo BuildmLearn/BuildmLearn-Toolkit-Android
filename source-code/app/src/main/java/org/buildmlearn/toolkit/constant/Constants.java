@@ -19,6 +19,7 @@ Constants {
     public final static String PROJECT_FILE_PATH = "PROJECT_FILE_PATH";
     public final static String START_ACTIVITY = "START_ACTIVITY";
     public final static String START_FRAGMENT = "START_FRAGMENT";
+    public final static String BUILD_M_LEARN_PATH_123 = "/BuildmLearn123/";
 
 
 }
