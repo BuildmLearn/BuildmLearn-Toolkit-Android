@@ -451,6 +451,9 @@
     <string name="pref_rate_summary">Rate our app on Play Store</string>
     <string name="pref_rate_key">rate</string>
     <string name="settings_network_unavailable">Network not available</string>
+    <string name="check_update">Update</string>
+    <string name="update_title">Check for New Version</string>
+    <string name="update_summary">Check for Latest Version of app Playstore</string>
     <string name="skip_tutorial">Skip Tutorial</string>
     <string name="simulator_frame_top">Simulator frame top</string>
     <string name="simulator_frame_left">simulator frame left</string>
