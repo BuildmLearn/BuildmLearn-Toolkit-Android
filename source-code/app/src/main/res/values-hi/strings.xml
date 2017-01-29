@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BuildmLearn टूलकिट</string>
+    <string name="menu_load_project">सहेजी गयी परियोजनाएं</string>
+    <string name="menu_settings">सेटिंग्स</string>
+    <string name="menu_drafts">मेरे ड्राफ्ट्</string>
+    <string name="menu_how_to">कैसे</string>
+    <string name="menu_about_us">BuildmLearn के बारे में</string>
+    <string name="menu_home">होम</string>
+    <string name="menu_load_apks">सहेजी गयी APKs</string>
+    <string name="buildmlearn_welcome_title">BuildmLearn टूलकिट में आपका स्वागत है।</string>
+    <string name="welcome">वेलकम</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="buildmlearn_welcome_text">BuildmLearn टूलकिट एक ऐसी ऐप्प है जो लोगों की किसी भी ज्ञान के बिना मोबाइल ऐप्प बनाने में मदद करती है।  \n\nटूलकिट विभिन्न कार्यक्षमता और कस्टम सामग्री के साथ मोबाइल ऐप्प बनाने में शिक्षकों की मदद करती है।</string>
+    <string name="no_item">कोई वस्तु नहीं</string>
+    <string name="add_item_help">आइटम जोड़ने के लिए ऐड बटन क्लिक करें</string>
+
+    <!-- Draft -->
+    <string name="draft_deleted">ड्राफ्ट सफलतापूर्वक नष्ट कर दिया!</string>
+    <string name="draft_deleted_failed">ड्राफ्ट विलोपन विफल!</string>
+    <string name="dialog_delete_all_msg">क्या आप वाकई प्रारूप मिटा रहे हैं?</string>
+    <string name="dialog_delete_all_title">सभी हटा दो</string>
+    <string name="no_saved_drafts">"कोई सहेजे गए ड्राफ़्ट नहीं"</string>
+
+    <!-- Restore Dialog-->
+
+    <string name="dialog_restore_title">पुनर्स्थापना परियोजना</string>
+    <string name="dialog_restore_failed">दिए गए APK से परियोजना को बहाल करने में असमर्थ</string>
+    <string name="dialog_restore_fileerror">दिए गए APK लोड करने में असमर्थ</string>
+
+    <!-- Quiz Template-->
+    <string name="app_name_quiz">Quiz Time</string>
+    <string name="completed_message_quiz">मुबारक हो! आपने प्रश्नोत्तरी पूरा कर लिया है।</string>
+    <string name="dialog_yes">हाँ</string>
+    <string name="dialog_no">नहीं</string>
+    <string name="dialog_delete_msg">क्या आप सुनिश्चित रूप से इस आइटम को मिटाना चाहते हैं?</string>
+    <string name="dialog_delete_title">मिटाना</string>
+
+
+    <string name="about_us"> यह मोबाइल ऐप्प BuildmLearn टूलकिट का उपयोग कर विकसित किया गया है। \n\nBuildmLearn टूलकिट  के बारे में और अधिक जानने  के लिए  http://buildmlearn.org/ पे जाए ।</string>
+    <string name="title_activity_simulator">सिम्युलेटर</string>
+    <string name="title_activity_template">टेम्पलेट्स</string>
+
+    <!-- Info Template-->
+    <string name="info_template_word">शब्द</string>
+    <string name="info_template_word_hint">शीर्षक दर्ज करें</string>
+    <string name="info_template_meaning">विवरण</string>
+    <string name="info_template_meaning_hint">विवरण दर्ज करें</string>
+    <string name="info_template_add">जोड़ें</string>
+    <string name="info_template_delete">मिटाना</string>
+    <string name="info_template_ok">ठीक</string>
+    <string name="info_template_cancel">रद्द करें</string>
+    <string name="info_add_new_title">नया आइटम जोड़ें</string>
+    <string name="info_edit_title">संपादित आइटम</string>
+    <string name="info_delete_item_content">क्या आप सुनिश्चित रूप से इस आइटम को मिटाना चाहते हैं?</string>
+    <string name="info_template">इंफो टेम्पलट</string>
+    <string name="main_title_info">जानकारी अनुप्रयोग</string>
+    <string name="list_empty_info">सूची खाली है!</string>
+    <string name="previous_info">पिछला</string>
+    <string name="next_info">अगला</string>
+    <string name="no_saved_projects">कोई सहेजे गयी परियोजनाएं नहीं</string>
+    <string name="enter_project_name">परियोजना का नाम दर्ज करें</string>
+    <string name="exit_info">निकास</string>
+    <string name="about_text_info">यह मोबाइल ऐप्प BuildmLearn टूलकिट का उपयोग कर विकसित किया गया है। \n \nBuildmLearn टूलकिट  के बारे में और अधिक जानने  के लिए  <a href="https://buildmlearn.org/">यहाँ</a> जाए।</string>
+    <string name="info_thumbnail_info">जानकारी थंबनेल</string>
+
+    <!-- Flash Card Template-->
+    <string name="flash_card_template">फ्लैश कार्ड टेम्पलेट</string>
+    <string name="flash_photo_source">छवि स्रोत का चयन करें</string>
+    <string name="flash_templete_question">सवाल</string>
+    <string name="flash_template_answer">उत्तर</string>
+    <string name="flash_template_hint">उत्तर संकेत</string>
+    <string name="flash_template_question_hint">प्रश्न दर्ज करें</string>
+    <string name="flash_template_anser_hint">उत्तर दर्ज करें</string>
+    <string name="flash_template_hint_hint">संकेत दर्ज करें</string>
+
+    <string name="main_title_flash">फ़्लैश कार्ड के साथ जानें</string>
+    <string name="next_flash">अगला</string>
+    <string name="exit_flash">निकास</string>
+    <string name="restart_flash">पुनः आरंभ करें</string>
+    <string name="buildmlearn_logo_flash">BuildmLearn प्रतीक चिन्ह</string>
+    <string name="completed_message_flash">मुबारक हो! आपने पूरा कर लिया है.\nवह अंतिम कार्ड था !</string>
+    <string name="previous_flash">पिछला</string>
+    <string name="flip_flash">फ्लिप</string>
+    <string name="backdrop_image_flash">BuildmLearn पृष्ठभूमि की छवि</string>
+
+    <!-- Spelling Template-->
+
+    <string name="submit">जमा करें</string>
+    <string name="restart">पुनः आरंभ करें</string>
+    <string name="exit">निकास</string>
+    <string name="high">ऊंचा</string>
+    <string name="speech_rate">भाषण दर:</string>
+
+    <string name="main_title_spell">स्पेलिंग जानें</string>
+    <string name="next_spell">अगला</string>
+    <string name="exit_spell">निकास</string>
+    <string name="restart_spell">पुनः आरंभ करें</string>
+    <string name="buildmlearn_logo_spell">BuildmLearn प्रतीक चिन्ह</string>
+    <string name="completed_message_spell">मुबारक हो! आपने पूरा कर लिया है।</string>
+    <string name="spell_it_spell">विन्यास करें</string>
+    <string name="skip_spell">छोड़ें</string>
+    <string name="listen_spell">सुनें </string>
+    <string name="submit_spell">जमा करें</string>
+    <string name="enter_spelling">स्पेलिंग दर्ज करें</string>
+    <string name="normal_spell">साधारण</string>
+    <string name="low_spell">नीचा</string>
+    <string name="intro_text_spell">तैयार होने पर स्पीक बटन को दबाये। आप स्लाइडर का उपयोग कर के भाषा दर को समायोजित कर सकते हैं। जवाब देने से पहले कई बार शब्दों को सुनें। नहीं आने पर आप इस शब्द को छोड़ सकते हैं।</string>
+
+
+    <!-- Video Collection Template-->
+    <string name="video_collection_title">वीडियो संग्रह</string>
+    <string name="video_collection_template">वीडियो संग्रह टेम्पलेट</string>
+    <string name="video_collection_description">वीडियो से सीखने के लिए यह टेम्पलेट चुनें</string>
+    <string name="video_collection_template_link">लिंक</string>
+    <string name="video_collection_template_title">शीर्षक</string>
+    <string name="video_collection_template_description">विवरण</string>
+    <string name="video_collection_template_title_hint">शीर्षक दर्ज करें</string>
+    <string name="video_collection_template_link_hint">लिंक दर्ज करें</string>
+    <string name="video_collection_template_description_hint">विवरण दर्ज करें</string>
+    <string name="video_collection_or">या</string>
+
+    <!-- Comprehension Template-->
+    <string name="comprehension_title">निबंध </string>
+    <string name="comprehension_template">निबंध टेम्पलेट</string>
+    <string name="comprehension_description">निबंध से सीखने के लिए यह टेम्पलेट चुनें</string>
+    <string name="comprehension_template_title_hint">शीर्षक दर्ज करें</string>
+    <string name="comprehension_template_timer_correct_hint">अधिकतम समय :: 999,999,999 </string>
+
+    <string name="comprehension_previous">पिछला</string>
+    <string name="comprehension_next">अगला</string>
+    <string name="comprehension_about_us">हमारे बारे में</string>
+    <string name="comprehension_about_text">यह मोबाइल ऐप्प BuildmLearn टूलकिट का उपयोग कर विकसित किया गया है। \n \nBuildmLearn टूलकिट  के बारे में और अधिक जानने  के लिए  <a href="https://buildmlearn.org/">यहाँ</a> जाए।</string>
+    <string name="comprehension_buildmlearn_logo">BuildmLearn प्रतीक चिन्ह</string>
+    <string name="comprehension_go_to_questions">प्रश्न पर जाएं</string>
+    <string name="comprehension_passage_title">पैसेज :</string>
+    <string name="comprehension_completed_message">मुबारक हो! आपने निबंध पूरा कर लिया ह।</string>
+
+    <!-- Dictation Template-->
+    <string name="dictation_title">श्रुतलेख</string>
+    <string name="dictation_template">श्रुतलेख टेम्पलेट</string>
+    <string name="dictation_description">श्रुतलेख अभ्यास के लिए यह टेम्पलेट चुनें</string>
+    <string name="dictation_template_title_hint">शीर्षक दर्ज करें</string>
+    <string name="dictation_template_passage_hint">पैसेज दर्ज करें</string>
+
+    <!-- MatchTheFollowing Template-->
+    <string name="match_title">मैच</string>
+    <string name="match_template">मैच टेम्पलेट</string>
+    <string name="match_description">\"निम्नलिखित को मिलाएं\" अभ्यास के लिए इस टेम्पलेट का चयन करें।</string>
+
+    <!-- Assets Filename -->
+
+    <!-- Template Resources-->
+    <string name="basic_m_learning_title">बेसिक mLearning</string>
+    <string name="basic_m_learning_description">शाब्दिक जानकारी के क्लिक करने योग्य सूची प्रदर्शित  करने के लिए एप्लिकेशन बनाएं</string>
+
+    <string name="flash_card_title">फ्लैश कार्ड </string>
+    <string name="flash_card_description">फ्लैश कार्ड आवेदन पत्र बनाने के लिए यह टेम्पलेट चुनें</string>
+
+    <string name="learn_spellings_title">वर्तनी जानें </string>
+    <string name="learn_spellings_description">शब्दों की वर्तनी सीखने के लिए यह टेम्पलेट चुनें</string>
+    <string name="spelling_type">स्पेलिंग टेम्पलेट</string>
+
+
+    <string name="quiz_title">प्रश्नोत्तरी</string>
+    <string name="quiz_new_question_title">नए प्रश्न जोड़ें</string>
+    <string name="quiz_type">प्रश्नोत्तरी टेम्पलेट</string>
+
+    <string name="quiz_add">जोड़ें</string>
+    <string name="quiz_delete">हटा दें</string>
+    <string name="quiz_ok"> ठीक</string>
+    <string name="quiz_cancel">रद्द करें</string>
+    <string name="quiz_edit">प्रश्न संपादित करें</string>
+    <string name="quiz_description">प्रश्नोत्तरी-जैसे अनुप्रयोगों को बनाने के लिए यह टेम्पलेट चुनें</string>
+    <string name="hint_quiz_name">टेम्पलेट नाम(अंग्रेजी मे)ं</string>
+    <string name="label_quiz">टेम्पलेट का नाम</string>
+    <string name="hint_author">नाम (अंग्रेजी मे)</string>
+    <string name="label_author">लेखक</string>
+    <string name="title_activity_template_editor">टेम्पलेट संपादक</string>
+    <string name="quiz_new_question">सवाल</string>
+    <string name="quiz_new_question_answer">जवाब</string>
+    <string name="quiz_option_hint_1">विकल्प 1</string>
+    <string name="quiz_option_hint_2">विकल्प 2</string>
+    <string name="quiz_option_hint_3">विकल्प 3</string>
+    <string name="quiz_option_hint_4">विकल्प 4</string>
+
+    <!-- Menu Strings-->
+
+    <string name="menu_save_template">टेम्पलेट सहेजें</string>
+    <string name="menu_simulate">अनुकरण कीजिए</string>
+    <string name="menu_delete_template_item">हटा दें</string>
+    <string name="menu_delete_all_template_items">सभी को हटाएँ</string>
+    <string name="menu_edit_template_item">संपादित करें</string>
+
+    <!-- Dialog Sort -->
+
+    <!-- Bottom Sheet-->
+    <string name="bottom_sheet_share_apk">शेयर APK</string>
+    <string name="bottom_sheet_save_apk">APK सहेजें</string>
+    <string name="bottom_sheet_save_project">परियोजना सहेजें</string>
+
+    <!--  Built-in file manager string values -->
+
+    <!--  menu string values -->
+
+    <!-- Manage Keys string values -->
+
+
+    <!-- Progress messages -->
+    <string name="LoadingCertificateAnKey">प्रमाण पत्र और निजी कुंजी लोड हो रहें है </string>
+    <string name="ParsingCentralDirectory">पार्स इनपुट केंद्रीय निर्देशिका</string>
+    <string name="GeneratingManifest">सृजन प्रकट</string>
+    <string name="GeneratingSignatureFile">हस्ताक्षर फ़ाइल सृजन</string>
+    <string name="GeneratingSignatureBlock">सृजन हस्ताक्षर ब्लॉक फ़ाइल</string>
+    <string name="CopyingZipEntry">प्रतिलिपि बनाई ज़िप प्रविष्टि%2$d में से %1$d</string>
+
+    <!-- Error message shown if the input and output filenames are the same -->
+    <string name="InputFileSameAsOutput">इनपुट और आउटपुट फाइल का नाम एक ही  हैं। उत्पादन के लिए आउटपुट फाइल का नाम कुछ और रखें।</string>
+    <!-- Error message shown when the key/mode="auto" and the key to use for signing can't be determined.  %s replaced with input filename. -->
+    <string name="AutoKeySelectionError">% s को हस्ताक्षर करने के  लिए कुंजी ऑटो का चयन करने में असमर्थ।</string>
+
+    <!-- Preference Data-->
+
+    <string name="project_settings">परियोजना सेटिंग्स</string>
+    <string name="developer_mode">डेवलपर मोड</string>
+    <string name="summary_developer_mode">डेवलपर मोड BuildmLearn स्टोर पे Apk का प्रकाशन निष्क्रिय करता है।</string>
+    <string name="title_user_name">अपना नाम दर्ज करें</string>
+
+    <string name="delete_temp_files">अस्थाई फ़ाइलें मिटायें </string>
+    <string name="summary_temp_files">भंडारण अंतरिक्ष को बचाने के लिए अस्थायी उत्पन्न फ़ाइलों को हटाएँ</string>
+
+    <string name="restore_project">पुनर्स्थापना परियोजना</string>
+    <string name="summary_restore_project">APK से वापस बहाल परियोजना</string>
+
+    <string name="your_name">आपका नाम</string>
+    <string name="app_settings">एप्लिकेशन सेटिंग</string>
+    <string name="advance_settings">अग्रिम सेटिंग्स</string>
+
+    <string name="main_subtitle">टूलकिट</string>
+    <string name="main_name_hint">आपका नाम!</string>
+
+
+    <!-- Flash Card Template-->
+
+    <!-- Tutorial-->
+    <string name="screen_1_title">BuildmLearn टूलकिट में आपका स्वागत है।</string>
+    <string name="screen_1_desc">BuildmLearn टूलकिट एक ऐसी ऐप्प है जो लोगों की किसी भी ज्ञान के बिना मोबाइल ऐप्प बनाने में मदद करती है। </string>
+    <string name="title_activity_tutorial">टुटोरिअल एक्टिविटी </string>
+
+    <string name="screen_2_title">mLearning ऐप्प बनाये</string>
+    <string name="screen_2_desc">ऐप्प बनाने के लिए बड़ा गुलाबी बटन दबाएँ।</string>
+
+    <string name="screen_3_title">विभिन्न टेम्पलेट्स</string>
+    <string name="screen_3_desc">टेम्पलेट्स वर्तनी,श्रुतलेख, प्रश्नोत्तरी आदि के निर्माण की अनुमति देता है।</string>
+
+    <string name="screen_4_title">इनबिल्ट संपादन सुविधाएँ</string>
+    <string name="screen_4_desc">टूलकिट संपादक परियोजनाओं को बचाने, apks प्रकाशित, अनुकरण एप्लिकेशन जैसे विभिन्न फ़ाइल कार्रवाई की अनुमति देता है।</string>
+
+    <string name="screen_5_title">सिम्युलेटर समर्थन</string>
+    <string name="screen_5_desc">BuildmLearn टूलकिट एक नेक्सस 6 सिम्युलेटर  के साथ आता है जिस पर आप एप्लिकेशन का परीक्षण कर सकते हैं।</string>
+
+    <string name="screen_6_title">परियोजनाएं लोड करें </string>
+    <string name="screen_6_desc">आपके द्वारा बनाई गई किसी भी परियोजना को आप एंड्राइड या डेस्कटॉप टूलकिट का उपयोग कर खोल सकते हैं।</string>
+
+    <string name="screen_7_title">APKs लोड करें</string>
+    <string name="screen_7_desc">आपके द्वारा बनाई गई किसी भी APK को आप एंड्राइड या डेस्कटॉप टूलकिट का उपयोग कर खोल सकते हैं।</string>
+
+    <string name="screen_8_title">लोड सेव्ड ड्राफ्ट्स</string>
+    <string name="screen_8_desc">आप किसी भी स्वचालित रूप से सहेजा अधूरा परियोजना कार्ये खोल सकते हैं।</string>
+
+
+    <string name="screen_finish">शुरू करें</string>
+    <string name="title_activity_about_buildm_learn">BuildmLearn के बारे में</string>
+
+
+    <!-- About BuildmLearn-->
+    <string name="about_para_1">BuildmLearn टूलकिट एक ऐसी ऐप्प है जो लोगों की किसी भी ज्ञान के बिना मोबाइल ऐप्प बनाने में मदद करती है। </string>
+    <string name="about_para_2">http://buildmlearn.org/. पर हमसे मिलें ।</string>
+    <string name="about_para_3">किसी भी प्रतिक्रिया या BuildmLearn टूलकिट से संबंधित सुझावों का हमेशा स्वागत है। कृपया buildmlearn@gmail.com पर हमें लिखें।</string>
+    <string name="title_activity_deep_linker">BuildmLearn टूलकिट</string>
+
+    <string name="apk_progress_dialog">जनरेटिंग Apk</string>
+    <string name="restore_progress_dialog">बहाल करना</string>
+    <string name="apk_msg">Apk में डेटा डालना </string>
+    <string name="video_fetching_error">वीडियो की जानकारी दिलकश करने में त्रुटि!</string>
+    <string name="video_support_error">हम केवल YouTube, Dailymotion और vimeo समर्थन करते हैं।</string>
+    <string name="network_error">प्रसार अनुपलब्ध है! कृपया बाद में प्रयास करें।</string>
+
+    <!-- About VideoCollectionTemplate -->
+
+    <string name="enter_video">दर्ज</string>
+    <string name="by_video">by</string>
+    <string name="title_activity_about_video">के बारे में</string>
+    <string name="list_empty_video">सूची खाली है!</string>
+    <string name="previous_video">पिछला</string>
+    <string name="next_video">अगला</string>
+    <string name="about_text_video">यह मोबाइल ऐप्प BuildmLearn टूलकिट का उपयोग कर विकसित किया गया है। \n \nBuildmLearn टूलकिट  के बारे में और अधिक जानने  के लिए  <a href="https://buildmlearn.org/">यहाँ</a> जाए।</string>
+    <string name="background_image_video">पृष्ठभूमि छवि</string>
+    <string name="buildmlearn_logo_video">BuildmLearn प्रतीक चिन्ह</string>
+    <string name="last_video">वह आखरी वीडियो था!</string>
+    <string name="video_thumbnail">वीडियो थंबनेल</string>
+    <string name="comprehension_add_meta_title">मेटा विवरण जोड़ें</string>
+    <string name="comprehension_meta_title">शीर्षक</string>
+    <string name="comprehension_meta_title_of_passage">पैसेज का शीर्षक</string>
+    <string name="comprehension_meta_passage">पैसेज</string>
+    <string name="comprehension_meta_enter_passage">पैसेज दर्ज करें या एक फ़ाइल अपलोड करें</string>
+    <string name="or">या</string>
+    <string name="upload">अपलोड</string>
+    <string name="timer">टाइमर</string>
+    <string name="time_hint">Sec में समय दर्ज करें</string>
+    <string name="comprehension_template_passage_hint">पैसेज दर्ज करें</string>
+    <string name="comprehension_template_timer_hint">समय दर्ज करें</string>
+    <string name="comprehension_edit_meta_title">संपादित मेटा विवरण</string>
+    <string name="meta_add_help"> मेटा विवरण जोड़ने के लिए  ऐड बटन क्लिक करें</string>
+    <string name="restart_comprehension">पुनः आरंभ करें</string>
+
+    <string name="restore_msg">Apk से डेटा को पुनर्स्थापित</string>
+
+    <!-- About DictationTemplate -->
+    <string name="list_empty_dict">सूची खाली है!</string>
+    <string name="exit_dict">निकास</string>
+    <string name="about_us_dict">हमारे बारे में</string>
+    <string name="about_text_dict">यह मोबाइल ऐप्प BuildmLearn टूलकिट का उपयोग कर विकसित किया गया है। \n \nBuildmLearn टूलकिट  के बारे में और अधिक जानने  के लिए  <a href="https://buildmlearn.org/">यहाँ</a> जाए।</string>
+    <string name="fast_dict">तेज</string>
+    <string name="medium_dict">मध्यम</string>
+    <string name="slow_dict">धीमी</string>
+    <string name="select_speed_dict">स्पीड चयन करें</string>
+    <string name="back_dict">वापस</string>
+    <string name="hint_passage_dict">सुनने के लिए ध्वनि चिह्न को दबाये और फिर पैसेज लिखें । </string>
+    <string name="restart_dict">पुनः आरंभ करें</string>
+    <string name="sound_icon_dict">ध्वनि चिह्न</string>
+
+    <!--Match Template -->
+
+    <string name="divider">विभक्त</string>
+    <string name="first_list_title">पहली सूची का शीर्षक</string>
+    <string name="enter_first_list_title"> पहली सूची का शीर्षक दर्ज करें</string>
+    <string name="second_list_title">दूसरी सूची  का शीर्षक</string>
+    <string name="enter_second_list_title">दूसरी सूची  का शीर्षक दर्ज करें</string>
+    <string name="match_first_list_title">पहली सूची शीर्षक का दर्ज करें</string>
+    <string name="match_second_list_title">दूसरी सूची  का शीर्षक दर्ज करें</string>
+    <string name="match_dialog_add_title">नीचे दो मिलान विषयों दर्ज करें</string>
+    <string name="first_list_item_match">पहली सूची आइटम</string>
+    <string name="second_list_item_match">दूसरी सूची आइटम</string>
+    <string name="enter_first_list_item_match">पहली सूची आइटम दर्ज करें</string>
+    <string name="enter_second_list_item_match">दूसरी सूची आइटम दर्ज करें</string>
+    <string name="match_dialog_edit_title">नीचे दो मिलान विषयों दर्ज करें</string>
+    <string name="meta_title">शीर्षक</string>
+    <string name="meta_title_match_hint">शीर्षक दर्ज करें</string>
+
+
+    <string name="previous_match">पिछला</string>
+    <string name="check_answers_match">उत्तर जांचें</string>
+    <string name="try_again_match">पुनः प्रयास करें</string>
+    <string name="first_list_up_match">प्रथम सूची में ऊपर</string>
+    <string name="first_list_down_match">प्रथम सूची में नीचे</string>
+    <string name="second_list_up_match">दूसरी सूची में ऊपर</string>
+    <string name="separator_match">विभाजक</string>
+    <string name="second_list_down_match">दूसरी सूची में नीचे</string>
+    <string name="no_saved_apks">"कोई सहेजे गयी Apks नहीं"</string>
+    <string name="enter_apk_name">Apk का नाम दर्ज करें</string>
+    <string name="bottom_sheet_share_project">शेयर परियोजना</string>
+    <string name="buildmlearn_logo">BuildmLearn लोगो</string>
+    <string name="buildmlearn_backdrop_image">BuildmLearn पृष्ठभूमि की छवि</string>
+    <string name="upload_image">तस्वीर डालिये</string>
+    <string name="flashcard_image">फ्लैशकार्ड  की छवि</string>
+    <string name="delete_item">चीज़ें हटाएं</string>
+    <string name="template_thumbnail">टेम्पलेट थम्बनेल</string>
+    <string name="show_more">और दिखाओ</string>
+    <string name="pref_rate_title">रेट टूलकिट</string>
+    <string name="pref_rate_summary">हमारी ऐप्प को प्ले  स्टोर पर रेट करें</string>
+    <string name="tutorial_image">ट्यूटोरियल की छवि</string>
+
+</resources>
