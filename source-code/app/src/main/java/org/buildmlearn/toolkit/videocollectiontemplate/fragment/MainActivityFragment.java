@@ -51,7 +51,7 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        outState.putParcelableArrayList("videoList", videoList);
+        outState.putParcelableArrayList(getString(R.string.video_collection_videoList), videoList);
         if (mPosition != ListView.INVALID_POSITION) {
             outState.putInt(SELECTED_KEY, mPosition);
         }
@@ -61,10 +61,10 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (savedInstanceState == null || !savedInstanceState.containsKey("videoList")) {
+        if (savedInstanceState == null || !savedInstanceState.containsKey(getString(R.string.video_collection_videoList))) {
             videoList = new ArrayList<>();
         } else {
-            videoList = savedInstanceState.getParcelableArrayList("videoList");
+            videoList = savedInstanceState.getParcelableArrayList(getString(R.string.video_collection_videoList));
         }
     }
 
@@ -79,7 +79,7 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
         rootView = inflater.inflate(R.layout.fragment_main_video, container, false);
 
         Toolbar toolbar = (Toolbar) rootView.findViewById(R.id.card_toolbar);
-        toolbar.setTitle("List of Videos :");
+        toolbar.setTitle(getString(R.string.video_collection_list));
 
         Toolbar maintoolbar = (Toolbar) rootView.findViewById(R.id.toolbar_main);
         final String result[] = DataUtils.readTitleAuthor();
@@ -94,12 +94,12 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
                                 new AlertDialog.Builder(getActivity());
                         builder.setTitle(String.format("%1$s", getString(R.string.comprehension_about_us)));
                         builder.setMessage(getResources().getText(R.string.about_text_video));
-                        builder.setPositiveButton("OK", null);
+                        builder.setPositiveButton(getString(R.string.quiz_ok), null);
                         AlertDialog welcomeAlert = builder.create();
                         welcomeAlert.show();
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
-                        assert ((TextView) welcomeAlert.findViewById(android.R.id.message)) != null;
+                        assert ( welcomeAlert.findViewById(android.R.id.message)) != null;
                         ((TextView) welcomeAlert.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
                         break;
                     default: //do nothing
@@ -163,7 +163,7 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
         try {
             TextView info = (TextView) rootView.findViewById(R.id.empty);
             if (videoListAdapter.getCount() == 0) {
-                info.setText(R.string.list_empty_video);
+                info.setText(getString(R.string.list_empty_video));
                 info.setVisibility(View.VISIBLE);
             } else {
                 info.setVisibility(View.GONE);

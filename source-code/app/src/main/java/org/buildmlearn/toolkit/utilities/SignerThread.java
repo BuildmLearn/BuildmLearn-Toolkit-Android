@@ -29,6 +29,7 @@
 package org.buildmlearn.toolkit.utilities;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -139,6 +140,7 @@ public class SignerThread extends Thread {
         this.listener = listener;
     }
 
+    @SuppressLint("HardwareIds")
     public void run() {
 
         int permissionCheck = ContextCompat.checkSelfPermission(context,
@@ -238,7 +240,7 @@ public class SignerThread extends Thread {
 
             if (zipSigner.isCanceled()) {
                 Log.d(TAG, "Signing cancelled");
-                Toast.makeText(toolkit, "APK file not generated", Toast.LENGTH_SHORT).show();
+                Toast.makeText(toolkit, R.string.apk_not_generated, Toast.LENGTH_SHORT).show();
             } else {
                 Log.d(TAG, "Signing Complete");
                 listener.onSuccess(finalApk);

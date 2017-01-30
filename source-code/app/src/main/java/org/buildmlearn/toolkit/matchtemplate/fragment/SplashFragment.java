@@ -39,10 +39,10 @@ public class SplashFragment extends Fragment {
         final Activity mActivity = getActivity();
         final String result[] = DataUtils.readTitleAuthor();
         TextView title = (TextView) rootView.findViewById(R.id.title);
-        TextView author_name = (TextView) rootView.findViewById(R.id.author_name);
+        TextView authorName = (TextView) rootView.findViewById(R.id.author_name);
 
         title.setText(result[0]);
-        author_name.setText(result[1]);
+        authorName.setText(result[1]);
         ((TextViewPlus) rootView.findViewById(R.id.intro_text)).setText(getResources().getString(R.string.match_title));
 
 

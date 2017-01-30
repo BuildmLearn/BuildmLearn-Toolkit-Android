@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
@@ -13,6 +12,7 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.activity.TemplateEditorInterface;
 import org.buildmlearn.toolkit.model.Template;
 import org.buildmlearn.toolkit.model.TemplateInterface;
 import org.buildmlearn.toolkit.quiztemplate.fragment.SplashFragment;
@@ -21,6 +21,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * @brief Quiz template code implementing methods of TemplateInterface
@@ -39,10 +40,39 @@ public class QuizTemplate implements TemplateInterface {
     }
 
 
-
     @Override
-    public BaseAdapter newTemplateEditorAdapter(Context context) {
-        mAdapter = new QuizAdapter(context, quizData);
+    public QuizAdapter newTemplateEditorAdapter(Context context, final TemplateEditorInterface templateEditorInterface) {
+        mAdapter = new QuizAdapter(context, quizData) {
+            @Override
+            public boolean onLongItemClick(int position, View view) {
+                return templateEditorInterface.onItemLongClick(position, view);
+            }
+
+            @Override
+            protected String getAuthorName() {
+                return templateEditorInterface.getAuthorName();
+            }
+
+            @Override
+            protected void setAuthorName(String authorName) {
+                templateEditorInterface.setAuthorName(authorName);
+            }
+
+            @Override
+            protected void setTitle(String title) {
+                templateEditorInterface.setProjectTitle(title);
+            }
+
+            @Override
+            protected void restoreToolbarColorSchema() {
+                templateEditorInterface.restoreColorSchema();
+            }
+
+            @Override
+            protected String getTitle() {
+                return templateEditorInterface.getProjectTitle();
+            }
+        };
         setEmptyView((Activity) context);
         return mAdapter;
     }
@@ -53,7 +83,7 @@ public class QuizTemplate implements TemplateInterface {
     }
 
     @Override
-    public BaseAdapter currentTemplateEditorAdapter() {
+    public Object currentTemplateEditorAdapter() {
         return mAdapter;
     }
 
@@ -68,7 +98,7 @@ public class QuizTemplate implements TemplateInterface {
     }
 
     @Override
-    public BaseAdapter loadProjectTemplateEditor(Context context, ArrayList<Element> data) {
+    public Object loadProjectTemplateEditor(Context context, ArrayList<Element> data, final TemplateEditorInterface templateEditorInterface) {
         quizData = new ArrayList<>();
         for (Element item : data) {
             String question = item.getElementsByTagName("question").item(0).getTextContent();
@@ -81,7 +111,37 @@ public class QuizTemplate implements TemplateInterface {
             quizData.add(new QuizModel(question, answers, answer));
 
         }
-        mAdapter = new QuizAdapter(context, quizData);
+        mAdapter = new QuizAdapter(context, quizData) {
+            @Override
+            public boolean onLongItemClick(int position, View view) {
+                return templateEditorInterface.onItemLongClick(position, view);
+            }
+
+            @Override
+            protected String getAuthorName() {
+                return templateEditorInterface.getAuthorName();
+            }
+
+            @Override
+            protected void setAuthorName(String authorName) {
+                templateEditorInterface.setAuthorName(authorName);
+            }
+
+            @Override
+            protected void setTitle(String title) {
+                templateEditorInterface.setProjectTitle(title);
+            }
+
+            @Override
+            protected void restoreToolbarColorSchema() {
+                templateEditorInterface.restoreColorSchema();
+            }
+
+            @Override
+            protected String getTitle() {
+                return templateEditorInterface.getProjectTitle();
+            }
+        };
         setEmptyView((Activity) context);
         return mAdapter;
     }
@@ -98,8 +158,8 @@ public class QuizTemplate implements TemplateInterface {
 
     @Override
     public void addItem(final Activity activity) {
-        LayoutInflater inflater = activity.getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.quiz_dialog_add_question, null);
+
+        final View dialogView = View.inflate(activity,R.layout.quiz_dialog_add_question, null);
         final AlertDialog dialog = new AlertDialog.Builder(activity)
                 .setTitle(R.string.quiz_new_question_title)
                 .setView(dialogView,
@@ -145,28 +205,28 @@ public class QuizTemplate implements TemplateInterface {
                     return;
                 }
 
-                if(options.get(0).getText().toString().trim().equals("")){
+                if (options.get(0).getText().toString().trim().equals("")) {
                     options.get(0).setError(activity.getString(R.string.cannot_be_empty));
                     isValidated = false;
                     return;
                 }
-                if(options.get(1).getText().toString().trim().equals("")){
+                if (options.get(1).getText().toString().trim().equals("")) {
                     options.get(1).setError(activity.getString(R.string.cannot_be_empty));
                     isValidated = false;
                     return;
                 }
-                if(options.get(2).getText().toString().trim().equals("") && !options.get(3).getText().toString().trim().equals("")){
+                if (options.get(2).getText().toString().trim().equals("") && !options.get(3).getText().toString().trim().equals("")) {
                     options.get(2).hasFocus();
                     options.get(2).setError(activity.getString(R.string.comprehension_select_option_3_first));
                     isValidated = false;
                     return;
                 }
 
-                for(int i=0;i<options.size();i++){
-                    for(int j=0;j<i;j++){
+                for (int i = 0; i < options.size(); i++) {
+                    for (int j = 0; j < i; j++) {
                         if (!options.get(i).getText().toString().trim().isEmpty() && options.get(i).getText().toString().trim().equalsIgnoreCase(options.get(j).getText().toString().trim())) {
                             Toast.makeText(activity.getApplication(), activity.getString(R.string.same_options), Toast.LENGTH_SHORT).show();
-                            isValidated=false;
+                            isValidated = false;
                         }
                     }
                 }
@@ -181,11 +241,11 @@ public class QuizTemplate implements TemplateInterface {
                     return;
                 }
                 for (EditText option : options) {
-                    if ("".equals(option.getText().toString().trim())){
+                    if ("".equals(option.getText().toString().trim())) {
                         option.setText("");
                         continue;
                     }
-                    if (option.getText().toString()!= null && "".equals(option.getText().toString().trim())) {
+                    if (option.getText().toString() != null && "".equals(option.getText().toString().trim())) {
                         option.getText().clear();
                         option.setError(activity.getString(R.string.comprehension_template_valid_option));
                         isValidated = false;
@@ -224,8 +284,8 @@ public class QuizTemplate implements TemplateInterface {
     public void editItem(final Activity activity, final int position) {
         QuizModel data = quizData.get(position);
 
-        LayoutInflater inflater = activity.getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.quiz_dialog_add_question, null);
+
+        final View dialogView = View.inflate(activity,R.layout.quiz_dialog_add_question, null);
         final AlertDialog dialog = new AlertDialog.Builder(activity)
                 .setTitle(R.string.quiz_edit)
                 .setView(dialogView,
@@ -277,17 +337,17 @@ public class QuizTemplate implements TemplateInterface {
                     isValidated = false;
                 }
 
-                if(options.get(0).getText().toString().trim().equals("")){
+                if (options.get(0).getText().toString().trim().equals("")) {
                     options.get(0).setError(activity.getString(R.string.cannot_be_empty));
                     isValidated = false;
                     return;
                 }
-                if(options.get(1).getText().toString().trim().equals("")){
+                if (options.get(1).getText().toString().trim().equals("")) {
                     options.get(1).setError(activity.getString(R.string.cannot_be_empty));
                     isValidated = false;
                     return;
                 }
-                if(options.get(2).getText().toString().trim().equals("") && !options.get(3).getText().toString().trim().equals("")){
+                if (options.get(2).getText().toString().trim().equals("") && !options.get(3).getText().toString().trim().equals("")) {
                     options.get(2).hasFocus();
                     options.get(2).setError(activity.getString(R.string.comprehension_select_option_3_first));
                     isValidated = false;
@@ -304,11 +364,11 @@ public class QuizTemplate implements TemplateInterface {
                 }
 
                 for (EditText option : options) {
-                    if ("".equals(option.getText().toString().trim())){
+                    if ("".equals(option.getText().toString().trim())) {
                         option.setText("");
                         continue;
                     }
-                    if (option.getText().toString()!= null && "".equals(option.getText().toString().trim())) {
+                    if (option.getText().toString() != null && "".equals(option.getText().toString().trim())) {
                         option.getText().clear();
                         option.setError(activity.getString(R.string.comprehension_template_valid_option));
                         isValidated = false;
@@ -342,6 +402,7 @@ public class QuizTemplate implements TemplateInterface {
         quizData.remove(position);
         setEmptyView(activity);
         mAdapter.notifyDataSetChanged();
+        setEmptyView(activity);
         return quizModel;
     }
 
@@ -352,6 +413,7 @@ public class QuizTemplate implements TemplateInterface {
             if (quizModel != null) {
                 quizData.add(position, quizModel);
                 mAdapter.notifyDataSetChanged();
+                setEmptyView(activity);
             }
         }
     }
@@ -397,13 +459,43 @@ public class QuizTemplate implements TemplateInterface {
         // This is intentionally empty
     }
 
+    @Override
+    public boolean moveDown(Activity activity, int selectedPosition) {
+        try {
+            //Check already at last
+            if (selectedPosition == quizData.size() - 1)
+                return false;
+            Collections.swap(quizData, selectedPosition, selectedPosition + 1);
+            mAdapter.notifyDataSetChanged();
+            return true;
+        } catch (IndexOutOfBoundsException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean moveUp(Activity activity, int selectedPosition) {
+        try {
+            //Check already at top
+            if (selectedPosition == 0)
+                return false;
+            Collections.swap(quizData, selectedPosition, selectedPosition - 1);
+            mAdapter.notifyDataSetChanged();
+            return true;
+        } catch (IndexOutOfBoundsException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 
     private void checkButton(ArrayList<RadioButton> buttons, ArrayList<EditText> options, int id, Context context) {
         for (RadioButton button : buttons) {
             if (button.getId() == id) {
                 int index = buttons.indexOf(button);
                 if ("".equals(options.get(index).getText().toString().trim())) {
-                    options.get(index).setError(context.getString(R.string.valid_before_answer));
+                    options.get(index).setError(context.getString(R.string.enter_valid_option));
                     options.get(index).setText(null);
                     button.setChecked(false);
                     return;

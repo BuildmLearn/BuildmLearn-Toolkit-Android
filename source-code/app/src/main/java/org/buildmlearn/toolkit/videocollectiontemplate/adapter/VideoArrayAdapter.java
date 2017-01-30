@@ -43,11 +43,11 @@ public class VideoArrayAdapter extends CursorAdapter {
     public void bindView(View view, final Context context, Cursor cursor) {
         final ViewHolder viewHolder = (ViewHolder) view.getTag();
 
-        final String thumb_url = cursor.getString(Constants.COL_THUMBNAIL_URL);
+        final String thumbUrl = cursor.getString(Constants.COL_THUMBNAIL_URL);
 
         Picasso
                 .with(context)
-                .load(thumb_url)
+                .load(thumbUrl)
                 .transform(new RoundedTransformation(10, 10))
                 .fit()
                 .centerCrop()
@@ -61,7 +61,7 @@ public class VideoArrayAdapter extends CursorAdapter {
                     public void onError() {
                         Picasso
                                 .with(context)
-                                .load(thumb_url)
+                                .load(thumbUrl)
                                 .error(R.mipmap.ic_launcher)
                                 .fit()
                                 .centerCrop()
