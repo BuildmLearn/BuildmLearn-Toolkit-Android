@@ -194,11 +194,19 @@ public class TemplateEditor extends AppCompatActivity implements TemplateEditorI
                     public void run() {
                         AlertDialog dialog = new AlertDialog.Builder(TemplateEditor.this)
                                 .setTitle("Apk Generated")
-                                .setMessage("Apk file saved at " + path)
-                                .setPositiveButton("okay", new DialogInterface.OnClickListener() {
+                                .setMessage("Apk file saved at " + path + "\nFind it any time under Saved APKs\nInstall now?")
+                                .setNegativeButton("later", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         dialog.dismiss();
+                                    }
+                                }).setPositiveButton("install", new DialogInterface.OnClickListener(){
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent intent = new Intent();
+                                        intent.setAction(Intent.ACTION_VIEW);
+                                        intent.setDataAndType(Uri.fromFile(new File(path)), "application/vnd.android.package-archive");
+                                        startActivity(intent);
                                     }
                                 })
                                 .create();
