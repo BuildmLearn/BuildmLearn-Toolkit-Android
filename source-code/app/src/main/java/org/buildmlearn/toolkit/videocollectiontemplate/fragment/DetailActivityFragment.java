@@ -36,7 +36,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
 
     private View rootView;
     private WebView player;
-    private String video_Id;
+    private String videoId;
     private VideoDb db;
 
     public DetailActivityFragment() {
@@ -52,7 +52,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
                              Bundle savedInstanceState) {
         Bundle arguments = getArguments();
         if (arguments != null) {
-            video_Id = arguments.getString(Intent.EXTRA_TEXT);
+            videoId = arguments.getString(Intent.EXTRA_TEXT);
         }
         rootView = inflater.inflate(R.layout.fragment_detail_video, container, false);
 
@@ -84,7 +84,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
                         welcomeAlert.show();
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
-                        assert ((TextView) welcomeAlert.findViewById(android.R.id.message)) != null;
+                        assert ( welcomeAlert.findViewById(android.R.id.message)) != null;
                         ((TextView) welcomeAlert.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
                         break;
                     default: //do nothing
@@ -106,14 +106,14 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        if (null != video_Id) {
+        if (null != videoId) {
             switch (id) {
                 case DETAIL_LOADER:
 
                     return new CursorLoader(getActivity(), null, Constants.VIDEO_COLUMNS, null, null, null) {
                         @Override
                         public Cursor loadInBackground() {
-                            return db.getVideoCursorById(Integer.parseInt(video_Id));
+                            return db.getVideoCursorById(Integer.parseInt(videoId));
                         }
                     };
                 default: //do nothing
@@ -205,7 +205,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
 
                     long numColumns = db.getCount();
 
-                    long nextVideoId = Integer.parseInt(video_Id) + 1;
+                    long nextVideoId = Integer.parseInt(videoId) + 1;
 
                     if (nextVideoId <= numColumns) {
 
@@ -222,7 +222,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
                 }
             });
 
-            if (Integer.parseInt(video_Id) == 1) {
+            if (Integer.parseInt(videoId) == 1) {
 
                 rootView.findViewById(R.id.previous).setVisibility(View.INVISIBLE);
 
@@ -232,7 +232,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
                     @Override
                     public void onClick(View v) {
 
-                        int prevVideoId = Integer.parseInt(video_Id) - 1;
+                        int prevVideoId = Integer.parseInt(videoId) - 1;
 
                         if (prevVideoId >= 1) {
                             Bundle arguments = new Bundle();

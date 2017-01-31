@@ -2,23 +2,30 @@ package org.buildmlearn.toolkit.templates;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.Build;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.activity.TemplateEditor;
 import org.buildmlearn.toolkit.views.TextViewPlus;
+import org.buildmlearn.toolkit.views.dragdroprecyclerview.ItemTouchHelperAdapter;
+import org.buildmlearn.toolkit.views.dragdroprecyclerview.ItemTouchHelperViewHolder;
 
 import java.util.ArrayList;
 
@@ -30,26 +37,195 @@ import java.util.ArrayList;
  * @brief Adapter for displaying Comprehension Template Editor data.
  * <p/>
  */
-class ComprehensionAdapter extends BaseAdapter {
+abstract class ComprehensionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+        implements ItemTouchHelperAdapter {
 
-
+    private static final int TYPE_HEADER = 0;
+    private static final int TYPE_ITEM = 1;
     private final Context context;
     private final ArrayList<ComprehensionModel> comprehensionData;
     private int expandedPostion = -1;
 
-    public ComprehensionAdapter(Context context, ArrayList<ComprehensionModel> comprehensionData) {
+    protected abstract boolean onLongItemClick(int position, View view);
+
+    protected abstract String getTitle();
+
+    protected abstract void restoreToolbarColorSchema();
+
+    protected abstract String getAuthorName();
+
+    protected abstract void setAuthorName(String authorName);
+
+    protected abstract void setTitle(String title);
+
+    protected abstract void populateMetaList(ListView listView);
+
+    ComprehensionAdapter(Context context, ArrayList<ComprehensionModel> comprehensionData) {
         this.context = context;
         this.comprehensionData = comprehensionData;
     }
 
-    @Override
-    public int getCount() {
-        return comprehensionData.size();
+    public ComprehensionModel getItem(int position) {
+        return comprehensionData.get(position);
     }
 
     @Override
-    public ComprehensionModel getItem(int position) {
-        return comprehensionData.get(position);
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view;
+        if (viewType == TYPE_ITEM) {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.quiz_item, parent, false);
+            return new ComprehensionAdapterHolder(view);
+        } else if (viewType == TYPE_HEADER) {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listview_header_template, parent, false);
+            return new HeaderHolder(view);
+        }
+        return null;
+    }
+
+    @Override
+    public void onBindViewHolder(final RecyclerView.ViewHolder viewHolder, final int position) {
+        if (viewHolder instanceof ComprehensionAdapterHolder) {
+            ComprehensionAdapterHolder comprehensionAdapterHolder = (ComprehensionAdapterHolder) viewHolder;
+            comprehensionAdapterHolder.view.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    return onLongItemClick(viewHolder.getLayoutPosition(), v);
+                }
+            });
+            ComprehensionModel data = getItem(position - 1);
+            comprehensionAdapterHolder.question.setText(data.getQuestion());
+            if (data.isSelected()) {
+                comprehensionAdapterHolder.questionIcon.setImageResource(R.drawable.collapse);
+                comprehensionAdapterHolder.quizOptionsBox.setVisibility(View.VISIBLE);
+            } else {
+                comprehensionAdapterHolder.questionIcon.setImageResource(R.drawable.expand);
+                comprehensionAdapterHolder.quizOptionsBox.setVisibility(View.GONE);
+            }
+
+            for (int i = 0; i < comprehensionAdapterHolder.options.size(); i++) {
+                if (i < data.getOptions().size()) {
+                    int ascii = 65 + i;
+                    comprehensionAdapterHolder.options.get(i).setText(String.format("%s) %s", Character.toString((char) ascii), data.getOptions().get(i)));
+                    comprehensionAdapterHolder.options.get(i).setTextColor(ContextCompat.getColor(context, R.color.black_secondary_text));
+                    comprehensionAdapterHolder.options.get(i).setVisibility(View.VISIBLE);
+                } else {
+                    comprehensionAdapterHolder.options.get(i).setVisibility(View.GONE);
+                }
+            }
+
+            comprehensionAdapterHolder.options.get(data.getCorrectAnswer()).setCustomFont(context, "roboto_medium.ttf");
+            comprehensionAdapterHolder.options.get(data.getCorrectAnswer()).setTextColor(ContextCompat.getColor(context, R.color.quiz_correct_answer));
+
+            comprehensionAdapterHolder.questionIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (expandedPostion >= 0 && expandedPostion != viewHolder.getLayoutPosition() && getItem(expandedPostion - 1) != null) {
+                        getItem(expandedPostion - 1).setIsSelected(false);
+                    }
+                    if (getItem(viewHolder.getLayoutPosition() - 1).isSelected()) {
+                        getItem(viewHolder.getLayoutPosition() - 1).setIsSelected(false);
+                        expandedPostion = -1;
+                    } else {
+                        getItem(viewHolder.getLayoutPosition() - 1).setIsSelected(true);
+                        expandedPostion = viewHolder.getLayoutPosition();
+                    }
+                    notifyDataSetChanged();
+                }
+            });
+
+            comprehensionAdapterHolder.edit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    editItem(position - 1, context);
+                }
+            });
+            comprehensionAdapterHolder.delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final ComprehensionModel comprehensionModel = comprehensionData.get(viewHolder.getLayoutPosition() - 1);
+                    comprehensionData.remove(viewHolder.getLayoutPosition() - 1);
+                    notifyDataSetChanged();
+                    Snackbar.make(v, R.string.snackbar_deleted_message, Snackbar.LENGTH_LONG)
+                            .setAction(R.string.snackbar_undo, new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    if (viewHolder.getLayoutPosition() - 1 >= 0) {
+                                        comprehensionData.add(viewHolder.getLayoutPosition() - 1, comprehensionModel);
+                                    } else {
+                                        comprehensionData.add(comprehensionModel);
+                                    }
+                                    notifyDataSetChanged();
+                                    Snackbar.make(v, R.string.snackbar_restored_message, Snackbar.LENGTH_LONG).show();
+                                }
+                            }).show();
+
+                    ((TemplateEditor) context).restoreSelectedView();
+                    expandedPostion = -1;
+                }
+            });
+        } else if (viewHolder instanceof ComprehensionAdapter.HeaderHolder) {
+            final ComprehensionAdapter.HeaderHolder headerHolder = (ComprehensionAdapter.HeaderHolder) viewHolder;
+            try {
+                headerHolder.authorEditText.setText(getAuthorName());
+                headerHolder.titleEditText.setText(getTitle());
+                populateMetaList(headerHolder.listView);
+                if (headerHolder.listView.getAdapter().getCount() < 1)
+                    headerHolder.shadowMeta.setVisibility(View.GONE);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && headerHolder.listView.getAdapter().getCount() > 0) {
+                    headerHolder.shadowMeta.setVisibility(View.VISIBLE);
+                }
+                handleTextChange(headerHolder.authorEditText, headerHolder.titleEditText);
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void handleTextChange(final EditText authorEditText, final EditText titleEditText) {
+        authorEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                Log.e(getClass().getName(), "beforeTextChanged");
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                setAuthorName(authorEditText.getText().toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                Log.e(getClass().getName(), "afterTextChanged");
+            }
+        });
+        titleEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                Log.e(getClass().getName(), "beforeTextChanged");
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                setTitle(titleEditText.getText().toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                Log.e(getClass().getName(), "afterTextChanged");
+            }
+        });
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if (isPositionHeader(position))
+            return TYPE_HEADER;
+
+        return TYPE_ITEM;
+    }
+
+    private boolean isPositionHeader(int position) {
+        return position == 0;
     }
 
     @Override
@@ -58,105 +234,15 @@ class ComprehensionAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
-        LayoutInflater mInflater;
-        mInflater = LayoutInflater.from(context);
-        Holder holder;
-        if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.quiz_item, parent, false);
-            holder = new Holder();
-
-            holder.question = (TextViewPlus) convertView.findViewById(R.id.question);
-            holder.options = new ArrayList<>();
-            holder.options.add((TextViewPlus) convertView.findViewById(R.id.answer1));
-            holder.options.add((TextViewPlus) convertView.findViewById(R.id.answer2));
-            holder.options.add((TextViewPlus) convertView.findViewById(R.id.answer3));
-            holder.options.add((TextViewPlus) convertView.findViewById(R.id.answer4));
-            holder.questionIcon = (ImageView) convertView.findViewById(R.id.question_icon);
-            holder.quizOptionsBox = (LinearLayout) convertView.findViewById(R.id.quiz_options_box);
-            holder.delete = (Button) convertView.findViewById(R.id.quiz_item_delete);
-            holder.edit = (Button) convertView.findViewById(R.id.quiz_item_edit);
-
-        } else {
-            holder = (Holder) convertView.getTag();
-        }
-
-        ComprehensionModel data = getItem(position);
-        holder.question.setText(data.getQuestion());
-        if (data.isSelected()) {
-            holder.questionIcon.setImageResource(R.drawable.collapse);
-            holder.quizOptionsBox.setVisibility(View.VISIBLE);
-        } else {
-            holder.questionIcon.setImageResource(R.drawable.expand);
-            holder.quizOptionsBox.setVisibility(View.GONE);
-        }
-
-        for (int i = 0; i < holder.options.size(); i++) {
-            if (i < data.getOptions().size()) {
-                int ascii = 65 + i;
-                holder.options.get(i).setText(String.format("%s) %s", Character.toString((char) ascii), data.getOptions().get(i)));
-                holder.options.get(i).setTextColor(ContextCompat.getColor(context, R.color.black_secondary_text));
-                holder.options.get(i).setVisibility(View.VISIBLE);
-            } else {
-                holder.options.get(i).setVisibility(View.GONE);
-            }
-        }
-
-        holder.options.get(data.getCorrectAnswer()).setCustomFont(context, "roboto_medium.ttf");
-        holder.options.get(data.getCorrectAnswer()).setTextColor(ContextCompat.getColor(context, R.color.quiz_correct_answer));
-
-        holder.questionIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (expandedPostion >= 0 && expandedPostion != position && getItem(expandedPostion) != null) {
-                    getItem(expandedPostion).setIsSelected(false);
-                }
-                if (getItem(position).isSelected()) {
-                    getItem(position).setIsSelected(false);
-                    expandedPostion = -1;
-                } else {
-                    getItem(position).setIsSelected(true);
-                    expandedPostion = position;
-                }
-                notifyDataSetChanged();
-            }
-        });
-
-        holder.edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                editItem(position, context);
-            }
-        });
-        holder.delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final ComprehensionModel comprehensionModel = comprehensionData.get(position);
-                comprehensionData.remove(position);
-                notifyDataSetChanged();
-                Snackbar.make(v,R.string.snackbar_deleted_message,Snackbar.LENGTH_LONG)
-                        .setAction(R.string.snackbar_undo, new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        comprehensionData.add(position,comprehensionModel);
-                        notifyDataSetChanged();
-                        Snackbar.make(v,R.string.snackbar_restored_message,Snackbar.LENGTH_LONG).show();
-                    }
-                }).show();
-
-                ((TemplateEditor) context).restoreSelectedView();
-                expandedPostion = -1;
-            }
-        });
-        convertView.setTag(holder);
-        return convertView;
+    public int getItemCount() {
+        return comprehensionData.size() + 1;
     }
 
     private void editItem(final int position, final Context context) {
         ComprehensionModel data = getItem(position);
 
-        LayoutInflater inflater = LayoutInflater.from(context);
-        final View dialogView = inflater.inflate(R.layout.quiz_dialog_add_question, null);
+
+        final View dialogView = View.inflate(context,R.layout.quiz_dialog_add_question, null);
         final AlertDialog dialog = new AlertDialog.Builder(context)
                 .setTitle(R.string.quiz_edit)
                 .setView(dialogView,
@@ -279,12 +365,65 @@ class ComprehensionAdapter extends BaseAdapter {
         return -1;
     }
 
-    public class Holder {
+    @Override
+    public boolean onItemMove(int fromPosition, int toPosition) {
+        if (toPosition == 0)
+            return false;
+        try {
+            ComprehensionModel prev = comprehensionData.remove(fromPosition - 1);
+            comprehensionData.add(toPosition > fromPosition ? toPosition - 1 : toPosition - 1, prev);
+            notifyItemMoved(fromPosition, toPosition);
+            restoreToolbarColorSchema();
+            return true;
+        } catch (IndexOutOfBoundsException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    private static class HeaderHolder extends RecyclerView.ViewHolder {
+        private EditText authorEditText, titleEditText;
+        private ListView listView;
+        private View view, shadowMeta;
+
+        HeaderHolder(View itemView) {
+            super(itemView);
+            this.view = itemView;
+            authorEditText = (EditText) itemView.findViewById(R.id.author_name);
+            titleEditText = (EditText) itemView.findViewById(R.id.template_title);
+            listView = (ListView) itemView.findViewById(R.id.template_meta_listview);
+            shadowMeta = itemView.findViewById(R.id.shadow_meta);
+        }
+    }
+
+    private static class ComprehensionAdapterHolder extends RecyclerView.ViewHolder
+            implements ItemTouchHelperViewHolder {
         public TextViewPlus question;
-        public ImageView questionIcon;
+        private ImageView questionIcon;
         public ArrayList<TextViewPlus> options;
-        public LinearLayout quizOptionsBox;
+        private LinearLayout quizOptionsBox;
         public Button delete;
         public Button edit;
+        private View view;
+
+        ComprehensionAdapterHolder(View itemView) {
+            super(itemView);
+            this.view = itemView;
+            question = (TextViewPlus) itemView.findViewById(R.id.question);
+            options = new ArrayList<>();
+            options.add((TextViewPlus) itemView.findViewById(R.id.answer1));
+            options.add((TextViewPlus) itemView.findViewById(R.id.answer2));
+            options.add((TextViewPlus) itemView.findViewById(R.id.answer3));
+            options.add((TextViewPlus) itemView.findViewById(R.id.answer4));
+            questionIcon = (ImageView) itemView.findViewById(R.id.question_icon);
+            quizOptionsBox = (LinearLayout) itemView.findViewById(R.id.quiz_options_box);
+            delete = (Button) itemView.findViewById(R.id.quiz_item_delete);
+            edit = (Button) itemView.findViewById(R.id.quiz_item_edit);
+        }
+
+        @Override
+        public void onItemSelected() {
+            Log.e(getClass().getName(), "Item Selected to drag");
+        }
     }
 }

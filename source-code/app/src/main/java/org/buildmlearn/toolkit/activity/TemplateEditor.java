@@ -6,8 +6,6 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -22,10 +20,13 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -50,6 +51,8 @@ import org.buildmlearn.toolkit.simulator.Simulator;
 import org.buildmlearn.toolkit.utilities.FileUtils;
 import org.buildmlearn.toolkit.utilities.KeyboardHelper;
 import org.buildmlearn.toolkit.utilities.SignerThread;
+import org.buildmlearn.toolkit.views.dragdroprecyclerview.ItemTouchHelperAdapter;
+import org.buildmlearn.toolkit.views.dragdroprecyclerview.SimpleItemTouchHelperCallback;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -72,7 +75,7 @@ import javax.xml.parsers.ParserConfigurationException;
  * data, generate and save projects, APKs and sharing options.
  */
 
-public class TemplateEditor extends AppCompatActivity {
+public class TemplateEditor extends AppCompatActivity implements TemplateEditorInterface {
 
     private static final String TAG = "TEMPLATE EDITOR";
     private static final int PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE_RESULT = 100;
@@ -83,7 +86,7 @@ public class TemplateEditor extends AppCompatActivity {
             }
         }
     };
-    private ListView templateEdtiorList;
+    private RecyclerView templateEdtiorList;
     private ListView templateMetaList;
     private int templateId;
     private Template template;
@@ -95,28 +98,32 @@ public class TemplateEditor extends AppCompatActivity {
     private ToolkitApplication toolkit;
     private String oldFileName;
     private ProgressDialog mApkGenerationDialog;
+    private TemplateEditorInterface templateEditorInterface;
+    private String authorName, title;
+    private BaseAdapter metaAdapter;
 
 
-    public void openBottomSheet (View v) {
+    public void openBottomSheet(View v) {
 
-        View view = getLayoutInflater ().inflate (R.layout.bottom_sheet_view, null);
-        TextView txt_save_apk = (TextView)view.findViewById( R.id.txt_save_apk);
-        TextView txt_save_project = (TextView)view.findViewById( R.id.txt_save_project);
-        TextView txt_share_apk = (TextView)view.findViewById( R.id.txt_share_apk);
-        final TextView txt_shareProject = (TextView)view.findViewById( R.id.txt_share_project);
+        View view = getLayoutInflater().inflate(R.layout.bottom_sheet_view, null);
 
-        final Dialog mBottomSheetDialog = new Dialog (TemplateEditor.this,
+        TextView txtSaveApk = (TextView) view.findViewById(R.id.txt_save_apk);
+        TextView txtSaveProject = (TextView) view.findViewById(R.id.txt_save_project);
+        TextView txtShareApk = (TextView) view.findViewById(R.id.txt_share_apk);
+        final TextView txtShareProject = (TextView) view.findViewById(R.id.txt_share_project);
+
+        final Dialog mBottomSheetDialog = new Dialog(TemplateEditor.this,
                 R.style.MaterialDialogSheet);
-        mBottomSheetDialog.setContentView (view);
-        mBottomSheetDialog.setCancelable (true);
-        mBottomSheetDialog.getWindow ().setLayout (LinearLayout.LayoutParams.MATCH_PARENT,
+        mBottomSheetDialog.setContentView(view);
+        mBottomSheetDialog.setCancelable(true);
+        mBottomSheetDialog.getWindow().setLayout(LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
-        mBottomSheetDialog.getWindow ().setGravity (Gravity.BOTTOM);
-        mBottomSheetDialog.show ();
+        mBottomSheetDialog.getWindow().setGravity(Gravity.BOTTOM);
+        mBottomSheetDialog.show();
 
 
         //save project
-        txt_save_project.setOnClickListener(new View.OnClickListener() {
+        txtSaveProject.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -126,7 +133,7 @@ public class TemplateEditor extends AppCompatActivity {
         });
 
         //share project
-        txt_shareProject.setOnClickListener(new View.OnClickListener() {
+        txtShareProject.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -135,26 +142,26 @@ public class TemplateEditor extends AppCompatActivity {
             }
         });
 
-        txt_share_apk.setOnClickListener(new View.OnClickListener() {
+        txtShareApk.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                share_apk();
+                shareApk();
                 mBottomSheetDialog.dismiss();
             }
         });
 
-        txt_save_apk.setOnClickListener(new View.OnClickListener() {
+        txtSaveApk.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                save_apk();
+                saveApk();
                 mBottomSheetDialog.dismiss();
             }
         });
     }
 
-    private void save_apk() {
+    private void saveApk() {
         String savedFilePath;
         savedFilePath = saveProject();
         if (savedFilePath == null || savedFilePath.length() == 0) {
@@ -164,6 +171,9 @@ public class TemplateEditor extends AppCompatActivity {
         String aliasName = getString(R.string.alias_name);
         String aliaspassword = getString(R.string.alias_password);
         KeyStoreDetails keyStoreDetails = new KeyStoreDetails(keyPassword, aliasName, aliaspassword);
+        if (saveProject().equals("File already exists")) {
+            return;
+        }
         SignerThread signer = new SignerThread(getApplicationContext(), selectedTemplate.getApkFilePath(), saveProject(), keyStoreDetails, selectedTemplate.getAssetsFilePath(), selectedTemplate.getAssetsFileName(TemplateEditor.this));
 
         mApkGenerationDialog = new ProgressDialog(TemplateEditor.this, R.style.AppDialogTheme);
@@ -184,11 +194,19 @@ public class TemplateEditor extends AppCompatActivity {
                     public void run() {
                         AlertDialog dialog = new AlertDialog.Builder(TemplateEditor.this)
                                 .setTitle("Apk Generated")
-                                .setMessage("Apk file saved at " + path)
-                                .setPositiveButton("okay", new DialogInterface.OnClickListener() {
+                                .setMessage("Apk file saved at " + path + "\nFind it any time under Saved APKs\nInstall now?")
+                                .setNegativeButton("later", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         dialog.dismiss();
+                                    }
+                                }).setPositiveButton("install", new DialogInterface.OnClickListener(){
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent intent = new Intent();
+                                        intent.setAction(Intent.ACTION_VIEW);
+                                        intent.setDataAndType(Uri.fromFile(new File(path)), "application/vnd.android.package-archive");
+                                        startActivity(intent);
                                     }
                                 })
                                 .create();
@@ -214,7 +232,7 @@ public class TemplateEditor extends AppCompatActivity {
         signer.start();
     }
 
-    private void share_apk() {
+    private void shareApk() {
         String savedFilePath;
         savedFilePath = saveProject();
         if (savedFilePath == null || savedFilePath.length() == 0) {
@@ -300,8 +318,9 @@ public class TemplateEditor extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         oldFileName = null;
         setContentView(R.layout.activity_template_editor);
+        templateEditorInterface = this;
         KeyboardHelper.hideKeyboard(this, findViewById(R.id.toolbar));
-        KeyboardHelper.hideKeyboard(this, findViewById(R.id.template_editor_listview));
+        KeyboardHelper.hideKeyboard(this, findViewById(R.id.template_editor_recyclerView));
         KeyboardHelper.hideKeyboard(this, findViewById(R.id.empty));
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         toolkit = (ToolkitApplication) getApplicationContext();
@@ -353,7 +372,7 @@ public class TemplateEditor extends AppCompatActivity {
                     ToolkitApplication mToolkitApplication = new ToolkitApplication();
                     mToolkitApplication.storagePathsValidate();
                 }
-                return;
+
             }
 
         }
@@ -384,9 +403,11 @@ public class TemplateEditor extends AppCompatActivity {
      * @param adapter Adapter containing template meta data
      * @brief Populates meta ListView item by setting adapter to ListView.
      */
-    private void populateMetaView(final BaseAdapter adapter) {
+    private void populateMetaView(final BaseAdapter adapter, ListView templateMetaList) {
+        this.templateMetaList = templateMetaList;
         if (templateMetaList == null) {
-            templateMetaList = (ListView) findViewById(R.id.template_meta_listview);
+            View view = templateEdtiorList.getChildAt(0);
+            templateMetaList = (ListView) view.findViewById(R.id.template_meta_listview);
         }
 
         setAdapterMeta(adapter);
@@ -404,7 +425,7 @@ public class TemplateEditor extends AppCompatActivity {
                     } else {
                         view.setBackgroundResource(0);
                     }
-                    restoreColorScheme();
+                    restoreToolbarColorScheme();
                 } else {
                     if (selectedView != null) {
                         if (selectedView instanceof CardView) {
@@ -435,60 +456,59 @@ public class TemplateEditor extends AppCompatActivity {
      * <p/>
      * Header view contains the editable author name and template title fields.
      */
-    private void populateListView(final BaseAdapter adapter) {
+    private void populateListView(final Object adapter) {
         if (templateEdtiorList == null) {
-            templateEdtiorList = (ListView) findViewById(R.id.template_editor_listview);
+            initializeRecyclerView((ItemTouchHelperAdapter) adapter);
         }
-        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View templateHeader = inflater.inflate(R.layout.listview_header_template, templateEdtiorList, false);
-        templateEdtiorList.addHeaderView(templateHeader, null, false);
-
-        EditText authorEditText = (EditText) findViewById(R.id.author_name);
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        assert authorEditText != null;
-        authorEditText.setText(preferences.getString(getString(R.string.key_user_name), ""));
-
         setAdapter(adapter);
+    }
 
-        templateEdtiorList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+    private void initializeRecyclerView(ItemTouchHelperAdapter adapter) {
+        templateEdtiorList = (RecyclerView) findViewById(R.id.template_editor_recyclerView);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        templateEdtiorList.setLayoutManager(mLayoutManager);
+        templateEdtiorList.setItemAnimator(new DefaultItemAnimator());
+        if (adapter == null)
+            return;
+        ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(adapter);
+        ItemTouchHelper mItemTouchHelper;
+        mItemTouchHelper = new ItemTouchHelper(callback);
+        mItemTouchHelper.attachToRecyclerView(templateEdtiorList);
+    }
 
-                Log.e(getClass().getName(), " " + position);
-                if (position == 0) {
-                    return false;
-                }
-
-                if (selectedPosition == position - 1) {
-                    selectedPosition = -1;
-                    if (view instanceof CardView) {
-                        ((CardView) view).setCardBackgroundColor(Color.WHITE);
-                    } else {
-                        view.setBackgroundResource(0);
-                    }
-                    restoreColorScheme();
-                } else {
-                    if (selectedView != null) {
-                        if (selectedView instanceof CardView) {
-                            ((CardView) selectedView).setCardBackgroundColor(Color.WHITE);
-                        } else {
-                            selectedView.setBackgroundResource(0);
-                        }
-                    }
-                    selectedView = view;
-                    selectedPosition = position - 1;
-                    Log.d(TAG, "Position: " + selectedPosition);
-                    if (view instanceof CardView) {
-                        ((CardView) view).setCardBackgroundColor(Color.LTGRAY);
-                    } else {
-                        view.setBackgroundColor(ContextCompat.getColor(toolkit, R.color.color_divider));
-                    }
-                    changeColorScheme();
-                }
-                return true;
+    private boolean changeItemSchema(int position, View view) {
+        if (view == null)
+            return false;
+        if (position == 0) {
+            return false;
+        }
+        if (selectedPosition == position - 1) {
+            selectedPosition = -1;
+            if (view instanceof CardView) {
+                ((CardView) view).setCardBackgroundColor(Color.WHITE);
+            } else {
+                view.setBackgroundResource(0);
             }
-        });
-
+            restoreToolbarColorScheme();
+        } else {
+            if (selectedView != null) {
+                if (selectedView instanceof CardView) {
+                    ((CardView) selectedView).setCardBackgroundColor(Color.WHITE);
+                } else {
+                    selectedView.setBackgroundResource(0);
+                }
+            }
+            selectedView = view;
+            selectedPosition = position - 1;
+            Log.d(TAG, "Position: " + selectedPosition);
+            if (view instanceof CardView) {
+                ((CardView) view).setCardBackgroundColor(Color.LTGRAY);
+            } else {
+                view.setBackgroundColor(ContextCompat.getColor(toolkit, R.color.color_divider));
+            }
+            changeColorScheme();
+        }
+        return true;
     }
 
     /**
@@ -496,7 +516,7 @@ public class TemplateEditor extends AppCompatActivity {
      */
     private void setUpActionBar() {
         ActionBar actionBar = getSupportActionBar();
-        templateEdtiorList = (ListView) findViewById(R.id.template_editor_listview);
+        initializeRecyclerView(null);
         if (actionBar == null) {
             throw new AssertionError();
         }
@@ -516,17 +536,17 @@ public class TemplateEditor extends AppCompatActivity {
             Object templateObject = templateClass.newInstance();
             selectedTemplate = (TemplateInterface) templateObject;
             selectedTemplate.setTemplateId(templateId);
-            populateListView(selectedTemplate.newTemplateEditorAdapter(this));
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+            setAuthorName(preferences.getString(this.getString(R.string.key_user_name), ""));
+            populateListView(selectedTemplate.newTemplateEditorAdapter(this, templateEditorInterface));
             if (templateId == 5 || templateId == 7) {
-                populateMetaView(selectedTemplate.newMetaEditorAdapter(this));
+                setMetaAdapter(selectedTemplate.newMetaEditorAdapter(this));
             }
             setUpActionBar();
 
         } catch (InstantiationException e) {
             e.printStackTrace();
-        }
-        catch ( IllegalAccessException e)
-        {
+        } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
     }
@@ -543,9 +563,11 @@ public class TemplateEditor extends AppCompatActivity {
         if (selectedTemplate == null) {
             finish();
         } else {
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+            setAuthorName(preferences.getString(this.getString(R.string.key_user_name), ""));
             populateListView(selectedTemplate.currentTemplateEditorAdapter());
             if (templateId == 5 || templateId == 7) {
-                populateMetaView(selectedTemplate.currentMetaEditorAdapter());
+                setMetaAdapter(selectedTemplate.currentMetaEditorAdapter());
             }
             setUpActionBar();
         }
@@ -583,27 +605,27 @@ public class TemplateEditor extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
+        boolean isRearrangeOccurs;
         switch (id) {
             case R.id.action_delete:
                 final int restorePosition = selectedPosition;
-                final Object object = selectedTemplate.deleteItem(TemplateEditor.this,selectedPosition);
+                final Object object = selectedTemplate.deleteItem(TemplateEditor.this, selectedPosition);
                 selectedPosition = -1;
                 restoreSelectedView();
                 Snackbar.make(findViewById(R.id.relative_layout),
-                        R.string.snackbar_deleted_message,Snackbar.LENGTH_LONG)
+                        R.string.snackbar_deleted_message, Snackbar.LENGTH_LONG)
                         .setAction(R.string.snackbar_undo, new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                selectedTemplate.restoreItem(TemplateEditor.this,restorePosition,object);
-                                Snackbar.make(v,R.string.snackbar_restored_message,Snackbar.LENGTH_LONG).show();
+                                selectedTemplate.restoreItem(TemplateEditor.this, restorePosition, object);
+                                Snackbar.make(v, R.string.snackbar_restored_message, Snackbar.LENGTH_LONG).show();
                             }
                         }).show();
+                restoreColorSchema();
                 break;
             case R.id.action_edit:
                 selectedTemplate.editItem(this, selectedPosition);
-                selectedPosition = -1;
-                restoreSelectedView();
+                restoreColorSchema();
                 break;
             case R.id.action_save:
                 openBottomSheet(LayoutInflater.from(TemplateEditor.this).inflate(R.layout.bottom_sheet_view, null));
@@ -613,6 +635,29 @@ public class TemplateEditor extends AppCompatActivity {
                 break;
             case android.R.id.home:
                 onBackPressed();
+                break;
+            case R.id.action_move_up:
+                isRearrangeOccurs = selectedTemplate.moveUp(this, selectedPosition);
+                if (isRearrangeOccurs) {
+                    restoreSelectedView();
+                    selectedView = null;
+                    View view = templateEdtiorList.getChildAt(selectedPosition);
+                    changeItemSchema(selectedPosition, view);
+                } else {
+                    Toast.makeText(this, R.string.already_at_top, Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case R.id.action_move_down:
+                isRearrangeOccurs = selectedTemplate.moveDown(this, selectedPosition);
+                if (isRearrangeOccurs) {
+                    restoreSelectedView();
+                    selectedView = null;
+                    View view;
+                    view = templateEdtiorList.getChildAt(selectedPosition + 2);
+                    changeItemSchema(selectedPosition + 2, view);
+                } else {
+                    Toast.makeText(this, R.string.already_at_bottom, Toast.LENGTH_SHORT).show();
+                }
                 break;
             default: //do nothing
                 break;
@@ -632,7 +677,7 @@ public class TemplateEditor extends AppCompatActivity {
             }
         }
 
-        restoreColorScheme();
+        restoreToolbarColorScheme();
     }
 
     /**
@@ -658,7 +703,7 @@ public class TemplateEditor extends AppCompatActivity {
      * <p/>
      * Edit mode is triggered, when the list item is long pressed.
      */
-    private void restoreColorScheme() {
+    private void restoreToolbarColorScheme() {
         int primaryColor = ContextCompat.getColor(toolkit, R.color.color_primary);
         int primaryColorDark = ContextCompat.getColor(toolkit, R.color.color_primary_dark);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(primaryColor));
@@ -679,98 +724,102 @@ public class TemplateEditor extends AppCompatActivity {
      * @brief Saves the current project into a .buildmlearn file.
      */
     private String saveProject() {
+        try {
+            View view = templateEdtiorList.getChildAt(0);
+            EditText authorEditText = (EditText) view.findViewById(R.id.author_name);
+            titleEditText = (EditText) view.findViewById(R.id.template_title);
+            String author = authorEditText.getText().toString();
+            String title = titleEditText.getText().toString();
+            if ("".equals(author)) {
+                assert authorEditText != null;
+                authorEditText.setError("Author name is required");
+            } else if ("".equals(title)) {
+                assert titleEditText != null;
+                titleEditText.setError(getResources().getString(R.string.title_error));
+            } else if (!Character.isLetterOrDigit(author.charAt(0))) {
+                assert authorEditText != null;
+                authorEditText.setError(getResources().getString(R.string.valid_msg));
+            } else if (!Character.isLetterOrDigit(title.charAt(0))) {
+                assert titleEditText != null;
+                titleEditText.setError(getString(R.string.title_valid));
+            } else {
+                DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+                DocumentBuilder docBuilder;
+                try {
+                    docBuilder = docFactory.newDocumentBuilder();
+                    Document doc = docBuilder.newDocument();
+                    Element rootElement = doc.createElement("buildmlearn_application");
+                    Attr attr = doc.createAttribute("type");
+                    attr.setValue(getResources().getString(template.getType()));
+                    rootElement.setAttributeNode(attr);
 
-        EditText authorEditText = (EditText) findViewById(R.id.author_name);
-        titleEditText = (EditText) findViewById(R.id.template_title);
-        assert findViewById(R.id.author_name) != null;
-        assert ((EditText) findViewById(R.id.author_name)) != null;
-        String author = ((EditText) findViewById(R.id.author_name)).getText().toString();
-        assert findViewById(R.id.template_title) != null;
-        assert ((EditText) findViewById(R.id.template_title)) != null;
-        String title = ((EditText) findViewById(R.id.template_title)).getText().toString();
-        if ("".equals(author)) {
-            assert authorEditText != null;
-            authorEditText.setError("Author name is required");
-        } else if ("".equals(title)) {
-            assert titleEditText != null;
-            titleEditText.setError(getResources().getString(R.string.title_error));
-        } else if (!Character.isLetterOrDigit(author.charAt(0))) {
-            assert authorEditText != null;
-            authorEditText.setError(getResources().getString(R.string.valid_msg));
-        } else if (!Character.isLetterOrDigit(title.charAt(0))) {
-            assert titleEditText != null;
-            titleEditText.setError(getString(R.string.title_valid));
-        } else {
+                    Element authorElement = doc.createElement("author");
+                    rootElement.appendChild(authorElement);
 
-            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder docBuilder;
-            try {
+                    Element nameElement = doc.createElement("name");
+                    nameElement.appendChild(doc.createTextNode(author));
 
-                docBuilder = docFactory.newDocumentBuilder();
-                Document doc = docBuilder.newDocument();
-                Element rootElement = doc.createElement("buildmlearn_application");
-                Attr attr = doc.createAttribute("type");
-                attr.setValue(getResources().getString(template.getType()));
-                rootElement.setAttributeNode(attr);
+                    authorElement.appendChild(nameElement);
 
-                Element authorElement = doc.createElement("author");
-                rootElement.appendChild(authorElement);
+                    Element titleElement = doc.createElement("title");
+                    titleElement.appendChild(doc.createTextNode(title));
+                    rootElement.appendChild(titleElement);
 
-                Element nameElement = doc.createElement("name");
-                nameElement.appendChild(doc.createTextNode(author));
+                    doc.appendChild(rootElement);
+                    Element dataElement = doc.createElement("data");
+                    rootElement.appendChild(dataElement);
+                    if (selectedTemplate.getItems(doc).size() == 0 || (selectedTemplate.getItems(doc).size() < 2 && (templateId == 5 || templateId == 7))) {
+                        Toast.makeText(this, "Unable to perform action: No Data", Toast.LENGTH_SHORT).show();
+                        return null;
+                    }
+                    if (selectedTemplate.getItems(doc).get(0).getTagName().equals("item") && (templateId == 5 || templateId == 7)) {
+                        Toast.makeText(this, "Unable to perform action: Add Meta Details", Toast.LENGTH_SHORT).show();
+                        return null;
+                    }
+                    if (templateId == 7 && selectedTemplate.getItems(doc).size() == 2) {
+                        Toast.makeText(this, "Please enter atleast 2 items", Toast.LENGTH_SHORT).show();
+                        return null;
+                    }
+                    for (Element item : selectedTemplate.getItems(doc)) {
+                        dataElement.appendChild(item);
+                    }
+                    if (oldFileName != null) {
+                        File tempFile = new File(oldFileName);
+                        tempFile.delete();
+                        oldFileName = null;
+                    }
+                    String saveFileName = title + " by " + author + ".buildmlearn";
+                    saveFileName = saveFileName.replaceAll(" ", "-");
 
-                authorElement.appendChild(nameElement);
+                    boolean isSaved = FileUtils.saveXmlFile(toolkit.getSavedDir(), saveFileName, doc);
+                    if (isSaved) {
+                        oldFileName = toolkit.getSavedDir() + saveFileName;
+                        Toast.makeText(this, "Project Successfully Saved!", Toast.LENGTH_SHORT).show();
+                        return oldFileName;
+                    } else {
+                        titleEditText.setError("File Already exists");
+                        return "File already exists";
+                    }
+                } catch (ParserConfigurationException e) {
+                    e.printStackTrace();
 
-                Element titleElement = doc.createElement("title");
-                titleElement.appendChild(doc.createTextNode(title));
-                rootElement.appendChild(titleElement);
-
-                doc.appendChild(rootElement);
-                Element dataElement = doc.createElement("data");
-                rootElement.appendChild(dataElement);
-                if (selectedTemplate.getItems(doc).size() == 0 || (selectedTemplate.getItems(doc).size() < 2 && (templateId == 5 || templateId == 7))) {
-                    Toast.makeText(this, "Unable to perform action: No Data", Toast.LENGTH_SHORT).show();
-                    return null;
                 }
-                if (selectedTemplate.getItems(doc).get(0).getTagName().equals("item") && (templateId == 5 || templateId == 7)) {
-                    Toast.makeText(this, "Unable to perform action: Add Meta Details", Toast.LENGTH_SHORT).show();
-                    return null;
-                }
-                for (Element item : selectedTemplate.getItems(doc)) {
-                    dataElement.appendChild(item);
-                }
-                if (oldFileName != null) {
-                    File tempFile = new File(oldFileName);
-                    tempFile.delete();
-                    oldFileName = null;
-                }
-                String saveFileName = title + " by " + author + ".buildmlearn";
-                saveFileName = saveFileName.replaceAll(" ", "-");
-
-
-                boolean isSaved=FileUtils.saveXmlFile(toolkit.getSavedDir(), saveFileName, doc);
-                if(isSaved) {
-                    oldFileName = toolkit.getSavedDir() + saveFileName;
-                    Toast.makeText(this, "Project Successfully Saved!", Toast.LENGTH_SHORT).show();
-                    return oldFileName;
-                }
-                else {
-                    titleEditText.setError("File Already exists");
-                    return "File already exists";
-                }
-
-            } catch (ParserConfigurationException e) {
-                e.printStackTrace();
             }
+        } catch (NullPointerException e) {
+            e.printStackTrace();
         }
         return null;
     }
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        if (saveDraft() != null)
-            Toast.makeText(getApplicationContext(), "Saved in Draft!", Toast.LENGTH_SHORT).show();
+        if (selectedView == null) {
+            super.onBackPressed();
+            if (saveDraft() != null)
+                Toast.makeText(getApplicationContext(), "Saved in Draft!", Toast.LENGTH_SHORT).show();
+        } else {
+            restoreColorSchema();
+        }
 
     }
 
@@ -782,16 +831,14 @@ public class TemplateEditor extends AppCompatActivity {
      * @brief Saves the current project into a .buildmlearn file.
      */
     private String saveDraft() {
-
-        assert ((EditText) findViewById(R.id.author_name)) != null;
-        String author = ((EditText) findViewById(R.id.author_name)).getText().toString();
-        assert ((EditText) findViewById(R.id.template_title)) != null;
-        String title = ((EditText) findViewById(R.id.template_title)).getText().toString();
-
-
         DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder docBuilder;
         try {
+            View view = templateEdtiorList.getChildAt(0);
+            EditText etAuthorName = ((EditText) view.findViewById(R.id.author_name));
+            String author = etAuthorName.getText().toString();
+            EditText etTemplateTitle = ((EditText) findViewById(R.id.template_title));
+            String title = etTemplateTitle.getText().toString();
 
             docBuilder = docFactory.newDocumentBuilder();
             Document doc = docBuilder.newDocument();
@@ -815,12 +862,17 @@ public class TemplateEditor extends AppCompatActivity {
             doc.appendChild(rootElement);
             Element dataElement = doc.createElement("data");
             rootElement.appendChild(dataElement);
+
             if (selectedTemplate.getItems(doc).size() == 0) {
                 Toast.makeText(this, "Unable to perform action: No Data", Toast.LENGTH_SHORT).show();
                 return null;
             }
             if (selectedTemplate.getItems(doc).get(0).getTagName().equals("item") && (templateId == 5 || templateId == 7)) {
                 Toast.makeText(this, "Unable to perform action: No Meta Details", Toast.LENGTH_SHORT).show();
+                return null;
+            }
+            if (templateId == 7 && selectedTemplate.getItems(doc).size() == 2) {
+                Toast.makeText(this, "Please enter atleast 2 items", Toast.LENGTH_SHORT).show();
                 return null;
             }
             for (Element item : selectedTemplate.getItems(doc)) {
@@ -855,7 +907,7 @@ public class TemplateEditor extends AppCompatActivity {
             }
             return null;
 
-        } catch (ParserConfigurationException e) {
+        } catch (ParserConfigurationException | NullPointerException e) {
             e.printStackTrace();
         }
         return null;
@@ -873,9 +925,7 @@ public class TemplateEditor extends AppCompatActivity {
         if (message == null || message.equals("")) {
             Toast.makeText(this, "Build unsuccessful", Toast.LENGTH_SHORT).show();
             return;
-        }
-        else if("File already exists".equals(message))
-        {
+        } else if ("File already exists".equals(message)) {
             titleEditText.setError("Template Already exists");
             return;
         }
@@ -923,9 +973,10 @@ public class TemplateEditor extends AppCompatActivity {
             Object templateObject = templateClass.newInstance();
             selectedTemplate = (TemplateInterface) templateObject;
             selectedTemplate.setTemplateId(templateId);
-            populateListView(selectedTemplate.loadProjectTemplateEditor(this, items));
+            updateHeaderDetails(name, title);
+            populateListView(selectedTemplate.loadProjectTemplateEditor(this, items, templateEditorInterface));
             if (templateId == 5 || templateId == 7) {
-                populateMetaView(selectedTemplate.loadProjectMetaEditor(this, doc));
+                setMetaAdapter(selectedTemplate.loadProjectMetaEditor(this, doc));
             }
             File draftDir = new File(toolkit.getDraftDir());
             if (fXmlFile.getParentFile().compareTo(draftDir) == 0) {
@@ -933,7 +984,6 @@ public class TemplateEditor extends AppCompatActivity {
                 fXmlFile.delete();
             }
             setUpActionBar();
-            updateHeaderDetails(name, title);
 
 
         } catch (SAXException | IOException | ParserConfigurationException | IllegalAccessException | InstantiationException e) {
@@ -949,20 +999,16 @@ public class TemplateEditor extends AppCompatActivity {
      * @brief Updates the title and author name in the header view.
      */
     private void updateHeaderDetails(String name, String title) {
-        EditText authorEditText = (EditText) findViewById(R.id.author_name);
-        titleEditText = (EditText) findViewById(R.id.template_title);
-        assert authorEditText != null;
-        authorEditText.setText(name);
-        assert titleEditText != null;
-        titleEditText.setText(title);
+        setAuthorName(name);
+        setTitle(title);
     }
 
     /**
      * @param adapter
      * @brief Sets the adapter to the ListView
      */
-    private void setAdapter(BaseAdapter adapter) {
-        templateEdtiorList.setAdapter(adapter);
+    private void setAdapter(Object adapter) {
+        templateEdtiorList.setAdapter((RecyclerView.Adapter) adapter);
     }
 
     /**
@@ -982,5 +1028,55 @@ public class TemplateEditor extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onItemLongClick(int position, View view) {
+        return !(position == 0 || view == null) && changeItemSchema(position, view);
+    }
+
+    @Override
+    public String getProjectTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    @Override
+    public String getAuthorName() {
+        return authorName;
+    }
+
+    @Override
+    public void setProjectTitle(String title) {
+        this.title=title;
+    }
+
+    @Override
+    public void restoreColorSchema() {
+        restoreSelectedView();
+        restoreToolbarColorScheme();
+        selectedView = null;
+        selectedPosition = -1;
+    }
+
+    @Override
+    public void populateMetaList(ListView listView) {
+        if (templateId == 5 || templateId == 7) {
+            populateMetaView(getMetaAdapter(), listView);
+        }
+    }
+    @Override
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
+    }
+
+    public BaseAdapter getMetaAdapter() {
+        return metaAdapter;
+    }
+
+    public void setMetaAdapter(BaseAdapter metaAdapter) {
+        this.metaAdapter = metaAdapter;
+    }
 }
 
