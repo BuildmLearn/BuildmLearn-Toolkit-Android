@@ -69,7 +69,7 @@ public class ComprehensionTemplate implements TemplateInterface {
         } else if (timerText.length() > 9) {
             timer.setError(context.getString(R.string.comprehension_template_timer_correct_hint));
             return false;
-        } else if ("0".equals(timerText)) {
+        }else if (timerText.matches("[0]+")) {
             timer.setError((context.getString(R.string.time_zero_error)));
             return false;
         } else if ("".equals(timerText)) {
@@ -324,7 +324,7 @@ public class ComprehensionTemplate implements TemplateInterface {
                         option.setText("");
                         continue;
                     }
-                    if (option.getText().toString() != null && "".equals(option.getText().toString().trim())) {
+                    if ("".equals(option.getText().toString().trim())) {
                         option.getText().clear();
                         option.setError(activity.getString(R.string.comprehension_template_valid_option));
                         isValidated = false;
@@ -553,7 +553,7 @@ public class ComprehensionTemplate implements TemplateInterface {
                             option.setText("");
                             continue;
                         }
-                        if (option.getText().toString() != null && "".equals(option.getText().toString().trim())) {
+                        if ("".equals(option.getText().toString().trim())) {
                             option.getText().clear();
                             option.setError(activity.getString(R.string.comprehension_template_valid_option));
                             isValidated = false;
