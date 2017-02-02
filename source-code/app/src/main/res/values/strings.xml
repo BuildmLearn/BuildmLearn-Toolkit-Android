@@ -43,6 +43,7 @@
     <string name="dialog_no">No</string>
     <string name="dialog_delete_msg">Are you sure you want to delete this item?</string>
     <string name="dialog_delete_title">Delete</string>
+
     <string name="title_activity_simulator">Simulator</string>
     <string name="title_activity_template">Templates</string>
 
@@ -258,9 +259,8 @@
 
     <!-- Preference Data-->
 
-    <string name="project_settings">Project Settings</string>
-    <string name="developer_mode">Developer Mode</string>
-    <string name="summary_developer_mode">Developer mode disables publishing of Apk to BuildmLearn Store.</string>
+
+
     <string name="title_user_name">Enter your name</string>
 
     <string name="key_delete_temporary_files">delete_temp_files</string>
@@ -327,6 +327,7 @@
     <string name="restore_progress_dialog">Restoring</string>
     <string name="apk_msg">Inserting data into Apk</string>
     <string name="video_fetching_error">Error while fetching video info!</string>
+
     <string name="network_error">Network Unavailable! Please try later.</string>
     <string name="menu_load_apks">Saved APKs</string>
 
@@ -444,12 +445,26 @@
     <string name="title_valid">Title must start with alphanumeric</string>
     <string name="valid_msg_name">Enter valid name</string>
     <string name="same_options">Two or more options are same.</string>
+
     <string name="time_zero_error">Time can\'t be zero</string>
     <string name="pref_rate_title">Rate Toolkit</string>
     <string name="pref_rate_summary">Rate our app on Play Store</string>
     <string name="pref_rate_key">rate</string>
     <string name="settings_network_unavailable">Network not available</string>
+    <string name="check_update">Update</string>
+    <string name="update_title">Check for New Version</string>
+    <string name="update_summary">Check for Latest Version of app Playstore</string>
+    <string name="skip_tutorial">Skip Tutorial</string>
+    <string name="simulator_frame_top">Simulator frame top</string>
+    <string name="simulator_frame_left">simulator frame left</string>
+    <string name="simulator_frame_right">simulator frame right</string>
+    <string name="simulator_frame_bottom">Simulator frame bottom</string>
     <string name="pref_tell_key">tell</string>
     <string name="pref_tell_title">Tell a friend</string>
     <string name="pref_tell_message">BuildmLearn Toolkit for your phone. Download it from here :</string>
+    <string name="comprehension_clear_all">CLEAR</string>
+    <string name="move_up">Move Up</string>
+    <string name="move_down">Move Down</string>
+    <string name="already_at_top">Already at top</string>
+    <string name="already_at_bottom">Already at bottom</string>
 </resources>

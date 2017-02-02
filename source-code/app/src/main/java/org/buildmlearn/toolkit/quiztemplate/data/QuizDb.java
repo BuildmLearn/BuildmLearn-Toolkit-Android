@@ -79,11 +79,11 @@ public class QuizDb {
             Cursor cursor = getQuestionCursorById(i);
             cursor.moveToFirst();
 
-            String correct_answer = cursor.getString(Constants.COL_CORRECT_ANSWER);
+            String correctAnswer = cursor.getString(Constants.COL_CORRECT_ANSWER);
             int attempted = cursor.getInt(Constants.COL_ATTEMPTED);
             if (attempted == 1) {
                 String answer = cursor.getString(Constants.COL_ANSWERED);
-                if (answer.equals(correct_answer)) {
+                if (answer.equals(correctAnswer)) {
                     stat[0]++;
                 } else {
                     stat[1]++;

@@ -2,6 +2,7 @@ package org.buildmlearn.toolkit.dictationtemplate.fragment;
 
 import android.app.FragmentManager;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -45,7 +46,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
     private static final int DETAIL_LOADER = 0;
 
     private View rootView;
-    private String dict_Id;
+    private String dictId;
     private DictDb db;
     private TextToSpeech tts;
     private ProgressDialog progress;
@@ -63,7 +64,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
                              Bundle savedInstanceState) {
         Bundle arguments = getArguments();
         if (arguments != null) {
-            dict_Id = arguments.getString(Intent.EXTRA_TEXT);
+            dictId = arguments.getString(Intent.EXTRA_TEXT);
         }
         rootView = inflater.inflate(R.layout.fragment_detail_dict, container, false);
 
@@ -99,7 +100,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
                         welcomeAlert.show();
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
-                        assert ((TextView) welcomeAlert.findViewById(android.R.id.message)) != null;
+                        assert ( welcomeAlert.findViewById(android.R.id.message)) != null;
                         ((TextView) welcomeAlert.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
                         break;
                     default: //do nothing
@@ -120,14 +121,14 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        if (null != dict_Id) {
+        if (null != dictId) {
             switch (id) {
                 case DETAIL_LOADER:
 
                     return new CursorLoader(getActivity(), null, Constants.DICT_COLUMNS, null, null, null) {
                         @Override
                         public Cursor loadInBackground() {
-                            return db.getDictCursorById(Integer.parseInt(dict_Id));
+                            return db.getDictCursorById(Integer.parseInt(dictId));
                         }
                     };
                 default: //do nothing
@@ -170,11 +171,11 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
                 rootView.findViewById(R.id.submit).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        String passage_usr = passageText.getText().toString();
+                        String passageUsr = passageText.getText().toString();
 
                         Bundle arguments = new Bundle();
-                        arguments.putString(Intent.EXTRA_TEXT, String.valueOf(dict_Id));
-                        arguments.putString(Constants.passage, passage_usr);
+                        arguments.putString(Intent.EXTRA_TEXT, String.valueOf(dictId));
+                        arguments.putString(Constants.passage, passageUsr);
 
                         Fragment frag = ResultActivityFragment.newInstance();
                         frag.setArguments(arguments);
@@ -253,7 +254,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
             });
         }
 
-        SharedPreferences prefs = getActivity().getSharedPreferences("Radio", getContext().MODE_PRIVATE);
+        SharedPreferences prefs = getActivity().getSharedPreferences("Radio", Context.MODE_PRIVATE);
         float rate = prefs.getInt("radio_b", 1);
         if (rate == 0) {
             rate = 0.5F;

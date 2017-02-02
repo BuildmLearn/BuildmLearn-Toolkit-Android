@@ -31,7 +31,7 @@
                 class="org.buildmlearn.toolkit.views.TextViewPlus"
                 android:ellipsize="end"
                 android:paddingTop="16dp"
-                android:singleLine="true" />
+                android:maxLines="1" />
 
             <view
                 android:id="@+id/subtitle"
@@ -40,7 +40,7 @@
                 android:ellipsize="end"
                 android:paddingBottom="16dp"
                 android:paddingTop="8dp"
-                android:singleLine="true" />
+                android:maxLines="1" />
         </LinearLayout>
 
 

@@ -38,17 +38,17 @@ public class SettingsFragment extends PreferenceFragment {
     private static final int REQUEST_PICK_APK = 9985;
     private Preference prefUsername;
 
-    public static float deleteDirectory(File file, float size) {
+    private static float deleteDirectory(File file, float size) {
         if (file.exists()) {
             File[] listFiles = file.listFiles();
             if (listFiles == null) return 0;
 
-            for (int i = 0; i < listFiles.length; i++) {
-                if (listFiles[i].isDirectory()) {
-                    size += deleteDirectory(listFiles[i], 0);
+            for (File listFile : listFiles) {
+                if (listFile.isDirectory()) {
+                    size += deleteDirectory(listFile, 0);
                 } else {
-                    size += listFiles[i].length();
-                    listFiles[i].delete();
+                    size += listFile.length();
+                    listFile.delete();
                 }
             }
         }
@@ -74,8 +74,8 @@ public class SettingsFragment extends PreferenceFragment {
             }
         });
 
-        Preference rate_preference=findPreference(getString(R.string.pref_rate_key));
-        rate_preference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+        Preference ratePreference=findPreference(getString(R.string.pref_rate_key));
+        ratePreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
                 if(NetworkUtils.isNetworkAvailable(getActivity()))
@@ -117,6 +117,29 @@ public class SettingsFragment extends PreferenceFragment {
                 return true;
             }
         });
+
+        Preference checkUpdate = findPreference(getString(R.string.check_update));
+        checkUpdate.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                if(NetworkUtils.isNetworkAvailable(getActivity()))
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("http://play.google.com/store/apps/details?id=" + getActivity().getPackageName())));
+                else {
+                    AlertDialog dialog = new AlertDialog.Builder(getActivity())
+                            .setMessage(getString(R.string.settings_network_unavailable))
+                            .setPositiveButton(getString(R.string.quiz_ok), new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            }).create();
+                    dialog.show();
+
+                }
+                return true;
+            }
+        });
         prefUsername.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -140,9 +163,9 @@ public class SettingsFragment extends PreferenceFragment {
         startActivityForResult(intent, REQUEST_PICK_APK);
     }
 
-    public void resetUserName() {
-        LayoutInflater inflater = getActivity().getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.dialog_settings_your_name, null);
+    private void resetUserName() {
+
+        View dialogView = View.inflate(getActivity(),R.layout.dialog_settings_your_name, null);
         final EditText editInput = (EditText) dialogView.findViewById(R.id.et_dialog_settings_your_name);
         editInput.setText(prefUsername.getSummary());
 

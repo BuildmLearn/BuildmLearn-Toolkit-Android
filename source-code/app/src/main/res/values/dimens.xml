@@ -50,6 +50,7 @@
 
     <!-- Flash card template-->
 
+
     <dimen name="navigation_drawer_header_height">160dp</dimen>
     <dimen name="thumb_size">250dp</dimen>
     <dimen name="thumb_padding">8dp</dimen>

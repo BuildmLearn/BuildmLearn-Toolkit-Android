@@ -137,6 +137,21 @@
                 android:text="@string/comprehension_previous"
                 android:textAppearance="?android:textAppearanceSmall"
                 android:textColor="@color/black_secondary_text" />
+            <Button
+                android:id="@+id/clear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_toLeftOf="@+id/previous"
+                android:layout_toStartOf="@+id/previous"
+                android:background="@android:color/transparent"
+                android:paddingBottom="@dimen/headline_leading_simulator"
+                android:paddingLeft="@dimen/activity_vertical_margin_simulator"
+                android:paddingRight="@dimen/activity_vertical_margin_simulator"
+                android:paddingTop="@dimen/activity_vertical_margin_simulator"
+                android:text="@string/comprehension_clear_all"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:textColor="@color/black_secondary_text" />
 
         </RelativeLayout>
 
