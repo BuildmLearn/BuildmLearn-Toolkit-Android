@@ -132,7 +132,7 @@ public class DetailFragment extends Fragment {
                         welcomeAlert.show();
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
-                        assert ((TextView) welcomeAlert.findViewById(android.R.id.message)) != null;
+                        assert ( welcomeAlert.findViewById(android.R.id.message)) != null;
                         ((TextView) welcomeAlert.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
                         break;
                     default: //do nothing
@@ -154,18 +154,18 @@ public class DetailFragment extends Fragment {
 
         handleListViewListeners();
 
-        listViewA.setAdapter(matchListAdapterA);
-        listViewB.setAdapter(matchListAdapterB);
 
         View header_A = getLayoutInflater(savedInstanceState).inflate(R.layout.match_template_detail_header_a, null);
         View footer_A = getLayoutInflater(savedInstanceState).inflate(R.layout.match_template_detail_footer_a, null);
         listViewA.addHeaderView(header_A);
         listViewA.addFooterView(footer_A);
+        listViewA.setAdapter(matchListAdapterA);
 
         View header_B = getLayoutInflater(savedInstanceState).inflate(R.layout.match_template_detail_header_b, null);
         View footer_B = getLayoutInflater(savedInstanceState).inflate(R.layout.match_template_detail_footer_b, null);
         listViewB.addHeaderView(header_B);
         listViewB.addFooterView(footer_B);
+        listViewB.setAdapter(matchListAdapterB);
 
         ((TextView) rootView.findViewById(R.id.score)).setText(String.format(Locale.ENGLISH, "Score : %d of %d", countScore, matchListA.size()));
 

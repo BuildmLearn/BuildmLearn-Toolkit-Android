@@ -5,15 +5,14 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.TextView;
 
 
-
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.activity.TemplateEditorInterface;
 import org.buildmlearn.toolkit.dictationtemplate.fragment.SplashFragment;
 import org.buildmlearn.toolkit.model.Template;
 import org.buildmlearn.toolkit.model.TemplateInterface;
@@ -27,6 +26,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * @brief Dictation template code implementing methods of TemplateInterface
@@ -62,8 +62,38 @@ public class DictationTemplate implements TemplateInterface {
     }
 
     @Override
-    public BaseAdapter newTemplateEditorAdapter(Context context) {
-        adapter = new DictationAdapter(context, dictData);
+    public Object newTemplateEditorAdapter(Context context, final TemplateEditorInterface templateEditorInterface) {
+        adapter = new DictationAdapter(context, dictData) {
+            @Override
+            public boolean onLongItemClick(int position, View view) {
+                return templateEditorInterface.onItemLongClick(position, view);
+            }
+
+            @Override
+            protected String getAuthorName() {
+                return templateEditorInterface.getAuthorName();
+            }
+
+            @Override
+            protected void setAuthorName(String authorName) {
+                templateEditorInterface.setAuthorName(authorName);
+            }
+
+            @Override
+            protected void setTitle(String title) {
+                templateEditorInterface.setProjectTitle(title);
+            }
+
+            @Override
+            protected void restoreToolbarColorSchema() {
+                templateEditorInterface.restoreColorSchema();
+            }
+
+            @Override
+            protected String getTitle() {
+                return templateEditorInterface.getProjectTitle();
+            }
+        };
         setEmptyView((Activity) context);
         return adapter;
     }
@@ -74,7 +104,7 @@ public class DictationTemplate implements TemplateInterface {
     }
 
     @Override
-    public BaseAdapter currentTemplateEditorAdapter() {
+    public Object currentTemplateEditorAdapter() {
         return adapter;
     }
 
@@ -89,29 +119,58 @@ public class DictationTemplate implements TemplateInterface {
     }
 
     @Override
-    public BaseAdapter loadProjectTemplateEditor(Context context, ArrayList<Element> data) {
+    public Object loadProjectTemplateEditor(Context context, ArrayList<Element> data, final TemplateEditorInterface templateEditorInterface) {
         dictData = new ArrayList<>();
         for (Element item : data) {
             String dictTitle = item.getElementsByTagName(DictationModel.TITLE_TAG).item(0).getTextContent();
             String dictPassage = item.getElementsByTagName(DictationModel.PASSAGE_TAG).item(0).getTextContent();
             dictData.add(new DictationModel(dictTitle, dictPassage));
         }
-        adapter = new DictationAdapter(context, dictData);
+        adapter = new DictationAdapter(context, dictData) {
+            @Override
+            public boolean onLongItemClick(int position, View view) {
+                return templateEditorInterface.onItemLongClick(position, view);
+            }
+
+            @Override
+            protected String getAuthorName() {
+                return templateEditorInterface.getAuthorName();
+            }
+
+            @Override
+            protected void setAuthorName(String authorName) {
+                templateEditorInterface.setAuthorName(authorName);
+            }
+
+            @Override
+            protected void setTitle(String title) {
+                templateEditorInterface.setProjectTitle(title);
+            }
+
+            @Override
+            protected void restoreToolbarColorSchema() {
+                templateEditorInterface.restoreColorSchema();
+            }
+
+            @Override
+            protected String getTitle() {
+                return templateEditorInterface.getProjectTitle();
+            }
+        };
         setEmptyView((Activity) context);
         return adapter;
     }
 
     @Override
     public String getTitle() {
-        String TEMPLATE_NAME = "Dictation Template";
-        return TEMPLATE_NAME;
+        return "Dictation Template";
     }
 
     @Override
     public void addItem(final Activity activity) {
 
-        LayoutInflater inflater = activity.getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.dict_dialog_add_edit_data, null);
+
+        final View dialogView = View.inflate(activity,R.layout.dict_dialog_add_edit_data, null);
         final AlertDialog dialog = new AlertDialog.Builder(activity)
                 .setTitle(R.string.info_add_new_title)
                 .setView(dialogView,
@@ -171,8 +230,8 @@ public class DictationTemplate implements TemplateInterface {
     @Override
     public void editItem(final Activity activity, final int position) {
 
-        LayoutInflater inflater = activity.getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.dict_dialog_add_edit_data, null);
+
+        final View dialogView = View.inflate(activity,R.layout.dict_dialog_add_edit_data, null);
         final AlertDialog dialog = new AlertDialog.Builder(activity)
                 .setTitle(R.string.info_edit_title)
                 .setView(dialogView,
@@ -231,18 +290,18 @@ public class DictationTemplate implements TemplateInterface {
         dictData.remove(position);
         setEmptyView(activity);
         adapter.notifyDataSetChanged();
+        setEmptyView(activity);
         return dictationModel;
     }
 
     @Override
     public void restoreItem(Activity activity, int position, Object object) {
-        if (object instanceof DictationModel)
-        {
-            DictationModel dictationModel = (DictationModel)object;
-            if (dictationModel!=null)
-            {
-                dictData.add(position,dictationModel);
+        if (object instanceof DictationModel) {
+            DictationModel dictationModel = (DictationModel) object;
+            if (dictationModel != null) {
+                dictData.add(position, dictationModel);
                 adapter.notifyDataSetChanged();
+                setEmptyView(activity);
             }
         }
     }
@@ -288,6 +347,36 @@ public class DictationTemplate implements TemplateInterface {
     @Override
     public void onActivityResult(Context context, int requestCode, int resultCode, Intent intent) {
         // This is intentionally empty
+    }
+
+    @Override
+    public boolean moveDown(Activity activity, int selectedPosition) {
+        try {
+            //Check already at last
+            if (selectedPosition == dictData.size() - 1)
+                return false;
+            Collections.swap(dictData, selectedPosition, selectedPosition + 1);
+            adapter.notifyDataSetChanged();
+            return true;
+        } catch (IndexOutOfBoundsException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean moveUp(Activity activity, int selectedPosition) {
+        try {
+            //Check already at top
+            if (selectedPosition == 0)
+                return false;
+            Collections.swap(dictData, selectedPosition, selectedPosition - 1);
+            adapter.notifyDataSetChanged();
+            return true;
+        } catch (IndexOutOfBoundsException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     /**

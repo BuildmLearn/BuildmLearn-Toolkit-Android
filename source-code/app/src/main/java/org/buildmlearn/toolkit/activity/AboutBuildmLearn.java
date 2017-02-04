@@ -35,8 +35,8 @@ public class AboutBuildmLearn extends AppCompatActivity {
             ((TextView) findViewById(R.id.app_version)).setText(String.format(Locale.ENGLISH, "Version: %s", version));
         } catch (PackageManager.NameNotFoundException e) {
             assert findViewById(R.id.app_version) != null;
-            assert ((TextView) findViewById(R.id.app_version)) != null;
-            ((TextView) findViewById(R.id.app_version)).setText("Version: 2.5.0");
+            assert ( findViewById(R.id.app_version)) != null;
+            ((TextView) findViewById(R.id.app_version)).setText("Version: 1.0");
             e.printStackTrace();
         }
 

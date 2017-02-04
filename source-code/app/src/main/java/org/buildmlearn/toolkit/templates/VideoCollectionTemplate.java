@@ -9,7 +9,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.util.Patterns;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
@@ -19,6 +18,7 @@ import android.widget.Toast;
 import com.squareup.picasso.Picasso;
 
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.activity.TemplateEditorInterface;
 import org.buildmlearn.toolkit.model.Template;
 import org.buildmlearn.toolkit.model.TemplateInterface;
 import org.buildmlearn.toolkit.utilities.NetworkUtils;
@@ -38,6 +38,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * @brief Video template code implementing methods of TemplateInterface
@@ -50,6 +51,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
     private static final String YOUTUBE_SHORT = "youtu.be";
     private static final String DAILYMOTION = "dailymotion";
     private static final String VIMEO = "vimeo";
+    private static final String METACAFE = "metacafe";
     transient private VideoCollectionAdapter adapter;
     private ArrayList<VideoModel> videoData;
     transient private ProgressDialog progress;
@@ -71,7 +73,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
         if ("".equals(linkText)) {
             link.setError(context.getString(R.string.video_collection_template_link_hint));
             return false;
-        } else if (!(linkText.contains(YOUTUBE + ".com") || linkText.contains(YOUTUBE_SHORT) || linkText.contains(DAILYMOTION + ".com") || linkText.contains(VIMEO + ".com"))) {
+        } else if (!(linkText.contains(YOUTUBE + ".com") || linkText.contains(YOUTUBE_SHORT) || linkText.contains(DAILYMOTION + ".com") || linkText.contains(METACAFE + ".com") || linkText.contains(VIMEO + ".com"))) {
             link.setError(context.getString(R.string.video_collection_template_linited_links));
             return false;
         }
@@ -97,9 +99,10 @@ public class VideoCollectionTemplate implements TemplateInterface {
         } else if ("".equals(linkText)) {
             link.setError(context.getString(R.string.video_collection_template_link_hint));
             return false;
-        } else if(!Patterns.WEB_URL.matcher(linkText).matches()){
+        } else if (!Patterns.WEB_URL.matcher(linkText).matches()) {
             link.setError(context.getString(R.string.video_collection_template_link_valid_hint));
-        } else if (!(linkText.contains(YOUTUBE + ".com") || linkText.contains(YOUTUBE_SHORT) || linkText.contains(DAILYMOTION + ".com") || linkText.contains(VIMEO + ".com"))) {
+            return false;
+        } else if (!(linkText.contains(YOUTUBE + ".com") || linkText.contains(YOUTUBE_SHORT) || linkText.contains(DAILYMOTION + ".com") || linkText.contains(METACAFE + ".com") || linkText.contains(VIMEO + ".com"))) {
             link.setError(context.getString(R.string.video_collection_template_linited_links));
             return false;
         }
@@ -108,9 +111,39 @@ public class VideoCollectionTemplate implements TemplateInterface {
     }
 
     @Override
-    public BaseAdapter newTemplateEditorAdapter(Context context) {
+    public Object newTemplateEditorAdapter(Context context, final TemplateEditorInterface templateEditorInterface) {
         mContext = context;
-        adapter = new VideoCollectionAdapter(context, videoData);
+        adapter = new VideoCollectionAdapter(context, videoData) {
+            @Override
+            public boolean onLongItemClick(int position, View view) {
+                return templateEditorInterface.onItemLongClick(position, view);
+            }
+
+            @Override
+            protected String getAuthorName() {
+                return templateEditorInterface.getAuthorName();
+            }
+
+            @Override
+            protected void setAuthorName(String authorName) {
+                templateEditorInterface.setAuthorName(authorName);
+            }
+
+            @Override
+            protected void setTitle(String title) {
+                templateEditorInterface.setProjectTitle(title);
+            }
+
+            @Override
+            protected void restoreToolbarColorSchema() {
+                templateEditorInterface.restoreColorSchema();
+            }
+
+            @Override
+            protected String getTitle() {
+                return templateEditorInterface.getProjectTitle();
+            }
+        };
         setEmptyView((Activity) context);
         return adapter;
     }
@@ -121,7 +154,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
     }
 
     @Override
-    public BaseAdapter currentTemplateEditorAdapter() {
+    public Object currentTemplateEditorAdapter() {
         return adapter;
     }
 
@@ -136,7 +169,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
     }
 
     @Override
-    public BaseAdapter loadProjectTemplateEditor(Context context, ArrayList<Element> data) {
+    public Object loadProjectTemplateEditor(Context context, ArrayList<Element> data, final TemplateEditorInterface templateEditorInterface) {
         mContext = context;
         videoData = new ArrayList<>();
         for (Element item : data) {
@@ -146,15 +179,44 @@ public class VideoCollectionTemplate implements TemplateInterface {
             String videoThumbLink = item.getElementsByTagName(VideoModel.THUMB_LINK_TAG).item(0).getTextContent();
             videoData.add(new VideoModel(videoTitle, videoDescription, videoLink, videoThumbLink));
         }
-        adapter = new VideoCollectionAdapter(context, videoData);
+        adapter = new VideoCollectionAdapter(context, videoData) {
+            @Override
+            public boolean onLongItemClick(int position, View view) {
+                return templateEditorInterface.onItemLongClick(position, view);
+            }
+
+            @Override
+            protected String getAuthorName() {
+                return templateEditorInterface.getAuthorName();
+            }
+
+            @Override
+            protected void setAuthorName(String authorName) {
+                templateEditorInterface.setAuthorName(authorName);
+            }
+
+            @Override
+            protected void setTitle(String title) {
+                templateEditorInterface.setProjectTitle(title);
+            }
+
+            @Override
+            protected void restoreToolbarColorSchema() {
+                templateEditorInterface.restoreColorSchema();
+            }
+
+            @Override
+            protected String getTitle() {
+                return templateEditorInterface.getProjectTitle();
+            }
+        };
         setEmptyView((Activity) context);
         return adapter;
     }
 
     @Override
     public String getTitle() {
-        String TEMPLATE_NAME = "VideoCollection Template";
-        return TEMPLATE_NAME;
+        return "VideoCollection Template";
     }
 
     private String convertLink(String link) {
@@ -191,6 +253,18 @@ public class VideoCollectionTemplate implements TemplateInterface {
 
             String VIMEO_OEMBED_LINK = "https://vimeo.com/api/oembed.json?url=";
             return VIMEO_OEMBED_LINK + link;
+        }  else if (link.contains(METACAFE)) {
+            if (!link.contains("www.")) {
+                link = "http://www." + link;
+            } else if (!(link.contains("http:") || link.contains("https:"))) {
+                link = "http://" + link;
+            }
+            if(!link.endsWith("/")) {
+                link = link+"/";
+            }
+            link.replaceFirst("https://","http://");
+
+            return link;
         }
 
         return null;
@@ -199,8 +273,8 @@ public class VideoCollectionTemplate implements TemplateInterface {
     @Override
     public void addItem(final Activity activity) {
 
-        LayoutInflater inflater = activity.getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.video_dialog_add_data, null);
+
+        View dialogView = View.inflate(activity,R.layout.video_dialog_add_data, null);
         final AlertDialog dialog = new AlertDialog.Builder(activity)
                 .setTitle(R.string.info_add_new_title)
                 .setView(dialogView,
@@ -247,8 +321,8 @@ public class VideoCollectionTemplate implements TemplateInterface {
     @Override
     public void editItem(final Activity activity, final int position) {
 
-        LayoutInflater inflater = activity.getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.video_dialog_edit_data, null);
+
+        View dialogView = View.inflate(activity,R.layout.video_dialog_edit_data, null);
         final AlertDialog dialog = new AlertDialog.Builder(activity)
                 .setTitle(R.string.info_edit_title)
                 .setView(dialogView,
@@ -324,6 +398,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
         videoData.remove(position);
         setEmptyView(activity);
         adapter.notifyDataSetChanged();
+        setEmptyView(activity);
         return videoModel;
     }
 
@@ -334,6 +409,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
             if (videoModel != null) {
                 videoData.add(position, videoModel);
                 adapter.notifyDataSetChanged();
+                setEmptyView(activity);
             }
         }
     }
@@ -381,6 +457,36 @@ public class VideoCollectionTemplate implements TemplateInterface {
         // This is intentionally empty
     }
 
+    @Override
+    public boolean moveDown(Activity activity, int selectedPosition) {
+        try {
+            //Check already at last
+            if (selectedPosition == videoData.size() - 1)
+                return false;
+            Collections.swap(videoData, selectedPosition, selectedPosition + 1);
+            adapter.notifyDataSetChanged();
+            return true;
+        } catch (IndexOutOfBoundsException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean moveUp(Activity activity, int selectedPosition) {
+        try {
+            //Check already at top
+            if (selectedPosition == 0)
+                return false;
+            Collections.swap(videoData, selectedPosition, selectedPosition - 1);
+            adapter.notifyDataSetChanged();
+            return true;
+        } catch (IndexOutOfBoundsException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     /**
      * @brief Toggles the visibility of empty text if Array has zero elements
      */
@@ -409,7 +515,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
             success = true;
             final String BASE_URL = params[0];
 
-            if (BASE_URL.contains(YOUTUBE + ".com")) {
+            if (BASE_URL.contains(YOUTUBE + ".com") || BASE_URL.contains(METACAFE + ".com")) {
                 try {
                     int TIMEOUT_LIMIT = 60000;
                     String USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.94 Safari/537.36";
@@ -424,8 +530,15 @@ public class VideoCollectionTemplate implements TemplateInterface {
                     String META_CONTENT = "content";
                     String title = titleElem.attr(META_CONTENT);
 
-                    org.jsoup.nodes.Element inputElements = document.getElementById("watch-description-text");
-                    String description = inputElements.html();
+                    String description = "";
+                    if(BASE_URL.contains(YOUTUBE + ".com")) {
+                        org.jsoup.nodes.Element inputElements = document.getElementById("watch-description-text");
+                        description = inputElements.html();
+                    } else if(BASE_URL.contains(METACAFE + ".com")) {
+                        String META_PROPERTY_DESCRIPTION = "meta[name=description]";
+                        Elements descriptionElem = document.select(META_PROPERTY_DESCRIPTION);
+                        description = descriptionElem.attr(META_CONTENT);
+                    }
 
                     //String META_PROPERTY_DESCRIPTION = "meta[property=og:description]";
                     //Elements descriptionElem = document.select(META_PROPERTY_DESCRIPTION);
@@ -533,6 +646,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
             }
             adapter.notifyDataSetChanged();
             progress.dismiss();
+            setEmptyView((Activity)mContext);
         }
     }
 }

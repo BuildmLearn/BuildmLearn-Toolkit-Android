@@ -20,13 +20,13 @@ public class VideoModel implements Serializable {
     private String title;
     private String description;
     private String link;
-    private String thumbnail_url;
+    private String thumbnailUrl;
 
-    public VideoModel(String title, String description, String link, String thumbnail_url) {
+    public VideoModel(String title, String description, String link, String thumbnailUrl) {
         this.title = title;
         this.description = description;
         this.link = link;
-        this.thumbnail_url = thumbnail_url;
+        this.thumbnailUrl = thumbnailUrl;
     }
 
     public String getTitle() {
@@ -46,11 +46,11 @@ public class VideoModel implements Serializable {
     }
 
     public String getThumbnailUrl() {
-        return thumbnail_url;
+        return thumbnailUrl;
     }
 
-    public void setThumbnailUrl(String thumbnail_url) {
-        this.thumbnail_url = thumbnail_url;
+    public void setThumbnailUrl(String thumbnailUrl) {
+        this.thumbnailUrl = thumbnailUrl;
     }
 
     public String getLink() {
@@ -73,7 +73,7 @@ public class VideoModel implements Serializable {
         linkElement.appendChild(doc.createTextNode(String.valueOf(link)));
         rootElement.appendChild(linkElement);
         Element videoLinkElement = doc.createElement(THUMB_LINK_TAG);
-        videoLinkElement.appendChild(doc.createTextNode(String.valueOf(thumbnail_url)));
+        videoLinkElement.appendChild(doc.createTextNode(String.valueOf(thumbnailUrl)));
         rootElement.appendChild(videoLinkElement);
         return rootElement;
     }

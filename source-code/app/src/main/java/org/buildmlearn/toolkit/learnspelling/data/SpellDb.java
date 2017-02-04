@@ -74,11 +74,11 @@ public class SpellDb {
             Cursor cursor = getSpellingCursorById(i);
             cursor.moveToFirst();
 
-            String correct_answer = cursor.getString(Constants.COL_WORD);
+            String correctAnswer = cursor.getString(Constants.COL_WORD);
             int attempted = cursor.getInt(Constants.COL_ATTEMPTED);
             if (attempted == 1) {
                 String answer = cursor.getString(Constants.COL_ANSWERED);
-                if (answer.equalsIgnoreCase(correct_answer)) {
+                if (answer.equalsIgnoreCase(correctAnswer)) {
                     stat[0]++;
                 } else {
                     stat[1]++;

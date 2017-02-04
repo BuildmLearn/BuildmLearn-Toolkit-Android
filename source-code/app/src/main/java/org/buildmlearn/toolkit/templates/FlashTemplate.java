@@ -12,7 +12,6 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.BaseAdapter;
@@ -22,6 +21,7 @@ import android.widget.Toast;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.ToolkitApplication;
+import org.buildmlearn.toolkit.activity.TemplateEditorInterface;
 import org.buildmlearn.toolkit.flashcardtemplate.fragment.SplashFragment;
 import org.buildmlearn.toolkit.model.Template;
 import org.buildmlearn.toolkit.model.TemplateInterface;
@@ -32,6 +32,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * @brief Flash Card template code implementing methods of TemplateInterface
@@ -53,9 +54,39 @@ public class FlashTemplate implements TemplateInterface {
     }
 
     @Override
-    public BaseAdapter newTemplateEditorAdapter(Context context) {
+    public Object newTemplateEditorAdapter(Context context, final TemplateEditorInterface templateEditorInterface) {
 
-        mAdapter = new FlashCardAdapter(context, mData);
+        mAdapter = new FlashCardAdapter(context, mData) {
+            @Override
+            public boolean onLongItemClick(int position, View view) {
+                return templateEditorInterface.onItemLongClick(position, view);
+            }
+
+            @Override
+            protected String getAuthorName() {
+                return templateEditorInterface.getAuthorName();
+            }
+
+            @Override
+            protected void setAuthorName(String authorName) {
+                templateEditorInterface.setAuthorName(authorName);
+            }
+
+            @Override
+            protected void setTitle(String title) {
+                templateEditorInterface.setProjectTitle(title);
+            }
+
+            @Override
+            protected void restoreToolbarColorSchema() {
+                templateEditorInterface.restoreColorSchema();
+            }
+
+            @Override
+            protected String getTitle() {
+                return templateEditorInterface.getProjectTitle();
+            }
+        };
         setEmptyView((Activity) context);
         return mAdapter;
     }
@@ -66,7 +97,7 @@ public class FlashTemplate implements TemplateInterface {
     }
 
     @Override
-    public BaseAdapter currentTemplateEditorAdapter() {
+    public Object currentTemplateEditorAdapter() {
         return mAdapter;
     }
 
@@ -81,7 +112,7 @@ public class FlashTemplate implements TemplateInterface {
     }
 
     @Override
-    public BaseAdapter loadProjectTemplateEditor(Context context, ArrayList<Element> data) {
+    public Object loadProjectTemplateEditor(Context context, ArrayList<Element> data, final TemplateEditorInterface templateEditorInterface) {
 
         mData = new ArrayList<>();
         for (Element item : data) {
@@ -92,7 +123,37 @@ public class FlashTemplate implements TemplateInterface {
             mData.add(new FlashCardModel(question, answer, hint, image));
 
         }
-        mAdapter = new FlashCardAdapter(context, mData);
+        mAdapter = new FlashCardAdapter(context, mData) {
+            @Override
+            public boolean onLongItemClick(int position, View view) {
+                return templateEditorInterface.onItemLongClick(position, view);
+            }
+
+            @Override
+            protected String getAuthorName() {
+                return templateEditorInterface.getAuthorName();
+            }
+
+            @Override
+            protected void setAuthorName(String authorName) {
+                templateEditorInterface.setAuthorName(authorName);
+            }
+
+            @Override
+            protected void setTitle(String title) {
+                templateEditorInterface.setProjectTitle(title);
+            }
+
+            @Override
+            protected void restoreToolbarColorSchema() {
+                templateEditorInterface.restoreColorSchema();
+            }
+
+            @Override
+            protected String getTitle() {
+                return templateEditorInterface.getProjectTitle();
+            }
+        };
         setEmptyView((Activity) context);
         return mAdapter;
     }
@@ -112,8 +173,8 @@ public class FlashTemplate implements TemplateInterface {
 
         mIsPhotoAttached = false;
 
-        LayoutInflater inflater = activity.getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.flash_dialog_add_edit_item, null);
+
+        View dialogView = View.inflate(activity,R.layout.flash_dialog_add_edit_item, null);
         final AlertDialog dialog = new AlertDialog.Builder(activity)
                 .setTitle(R.string.info_add_new_title)
                 .setView(dialogView,
@@ -180,8 +241,8 @@ public class FlashTemplate implements TemplateInterface {
 
         FlashCardModel data = mData.get(position);
 
-        LayoutInflater inflater = activity.getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.flash_dialog_add_edit_item, null);
+
+        View dialogView = View.inflate(activity,R.layout.flash_dialog_add_edit_item, null);
         final AlertDialog dialog = new AlertDialog.Builder(activity)
                 .setTitle(R.string.info_edit_title)
                 .setView(dialogView,
@@ -266,19 +327,18 @@ public class FlashTemplate implements TemplateInterface {
         mData.remove(position);
         setEmptyView(activity);
         mAdapter.notifyDataSetChanged();
-
+        setEmptyView(activity);
         return flashCardModel;
     }
 
     @Override
     public void restoreItem(Activity activity, int position, Object object) {
-        if (object instanceof FlashCardModel)
-        {
-            FlashCardModel flashCardModel = (FlashCardModel)object;
-            if (flashCardModel!=null)
-            {
-                mData.add(position,flashCardModel);
+        if (object instanceof FlashCardModel) {
+            FlashCardModel flashCardModel = (FlashCardModel) object;
+            if (flashCardModel != null) {
+                mData.add(position, flashCardModel);
                 mAdapter.notifyDataSetChanged();
+                setEmptyView(activity);
             }
         }
     }
@@ -348,6 +408,36 @@ public class FlashTemplate implements TemplateInterface {
                 mIsPhotoAttached = true;
             }
         }
+    }
+
+    @Override
+    public boolean moveDown(Activity activity, int selectedPosition) {
+        try {
+            //Check already at last
+            if (selectedPosition == mData.size() - 1)
+                return false;
+            Collections.swap(mData, selectedPosition, selectedPosition + 1);
+            mAdapter.notifyDataSetChanged();
+            return true;
+        } catch (IndexOutOfBoundsException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean moveUp(Activity activity, int selectedPosition) {
+        try {
+            //Check already at top
+            if (selectedPosition == 0)
+                return false;
+            Collections.swap(mData, selectedPosition, selectedPosition - 1);
+            mAdapter.notifyDataSetChanged();
+            return true;
+        } catch (IndexOutOfBoundsException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     private Bitmap getResizedBitmap(Bitmap image) {
