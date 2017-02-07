@@ -28,19 +28,19 @@ public class MatchMetaModel implements Parcelable {
         }
     };
     private final String title;
-    private final String first_list_title;
-    private final String second_list_title;
+    private final String firstListTitle;
+    private final String secondListTitle;
 
     public MatchMetaModel(String t, String A, String B) {
         this.title = t;
-        this.first_list_title = A;
-        this.second_list_title = B;
+        this.firstListTitle = A;
+        this.secondListTitle = B;
     }
 
     private MatchMetaModel(Parcel in) {
         this.title = in.readString();
-        this.first_list_title = in.readString();
-        this.second_list_title = in.readString();
+        this.firstListTitle = in.readString();
+        this.secondListTitle = in.readString();
     }
 
     @Override
@@ -51,16 +51,16 @@ public class MatchMetaModel implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(title);
-        dest.writeString(first_list_title);
-        dest.writeString(second_list_title);
+        dest.writeString(firstListTitle);
+        dest.writeString(secondListTitle);
     }
 
     public String getFirstListTitle() {
-        return first_list_title;
+        return firstListTitle;
     }
 
     public String getSecondListTitle() {
-        return second_list_title;
+        return secondListTitle;
     }
 
     public String getTitle() {

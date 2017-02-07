@@ -24,7 +24,7 @@ public class VideoModel implements Parcelable {
     private String title;
     private String description;
     private String link;
-    private String thumbnail_url;
+    private String thumbnailUrl;
 
     public VideoModel() {
     }
@@ -33,7 +33,7 @@ public class VideoModel implements Parcelable {
         this.title = in.readString();
         this.description = in.readString();
         this.link = in.readString();
-        this.thumbnail_url = in.readString();
+        this.thumbnailUrl = in.readString();
     }
 
     @Override
@@ -46,7 +46,7 @@ public class VideoModel implements Parcelable {
         dest.writeString(title);
         dest.writeString(description);
         dest.writeString(link);
-        dest.writeString(thumbnail_url);
+        dest.writeString(thumbnailUrl);
     }
 
     public String getTitle() {
@@ -66,11 +66,11 @@ public class VideoModel implements Parcelable {
     }
 
     public String getThumbnailUrl() {
-        return thumbnail_url;
+        return thumbnailUrl;
     }
 
-    public void setThumbnailUrl(String thumbnail_url) {
-        this.thumbnail_url = thumbnail_url;
+    public void setThumbnailUrl(String thumbnailUrl) {
+        this.thumbnailUrl = thumbnailUrl;
     }
 
     public String getLink() {

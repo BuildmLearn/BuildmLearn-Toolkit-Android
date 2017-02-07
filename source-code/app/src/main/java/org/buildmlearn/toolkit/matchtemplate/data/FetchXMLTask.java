@@ -56,18 +56,18 @@ public class FetchXMLTask extends AsyncTask<String, Void, Void> {
     private void saveMetaData(MatchMetaModel metaDetails) {
 
         String title;
-        String first_list_title;
-        String second_list_title;
+        String firstListTitle;
+        String secondListTitle;
 
         title = metaDetails.getTitle();
-        first_list_title = metaDetails.getFirstListTitle();
-        second_list_title = metaDetails.getSecondListTitle();
+        firstListTitle = metaDetails.getFirstListTitle();
+        secondListTitle = metaDetails.getSecondListTitle();
 
         ContentValues metaValues = new ContentValues();
 
         metaValues.put(MetaDetails.TITLE, title);
-        metaValues.put(MetaDetails.FIRST_TITLE_TAG, first_list_title);
-        metaValues.put(MetaDetails.SECOND_TITLE_TAG, second_list_title);
+        metaValues.put(MetaDetails.FIRST_TITLE_TAG, firstListTitle);
+        metaValues.put(MetaDetails.SECOND_TITLE_TAG, secondListTitle);
 
         MatchDb db = new MatchDb(mContext);
         db.open();
@@ -121,11 +121,11 @@ public class FetchXMLTask extends AsyncTask<String, Void, Void> {
             doc.normalize();
             mList = new ArrayList<>();
 
-            String match_title = doc.getElementsByTagName(MatchMetaModel.TITLE_TAG).item(0).getTextContent();
-            String first_list_title = doc.getElementsByTagName(MatchMetaModel.FIRST_TITLE_TAG).item(0).getTextContent();
-            String second_list_title = doc.getElementsByTagName(MatchMetaModel.SECOND_TITLE_TAG).item(0).getTextContent();
+            String matchTitle = doc.getElementsByTagName(MatchMetaModel.TITLE_TAG).item(0).getTextContent();
+            String firstListTitle = doc.getElementsByTagName(MatchMetaModel.FIRST_TITLE_TAG).item(0).getTextContent();
+            String secondListTitle = doc.getElementsByTagName(MatchMetaModel.SECOND_TITLE_TAG).item(0).getTextContent();
 
-            saveMetaData(new MatchMetaModel(match_title, first_list_title, second_list_title));
+            saveMetaData(new MatchMetaModel(matchTitle, firstListTitle, secondListTitle));
 
             NodeList childNodes = doc.getElementsByTagName("item");
 
