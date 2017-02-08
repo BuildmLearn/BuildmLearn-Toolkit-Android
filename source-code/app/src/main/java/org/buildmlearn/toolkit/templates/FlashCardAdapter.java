@@ -100,68 +100,6 @@ abstract class FlashCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             flashCardAdapterHolder.hint.setText(data.getHint());
             flashCardAdapterHolder.question.setText(data.getQuestion());
 
-            flashCardAdapterHolder.edit.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(mContext, "Long press to edit this item", Toast.LENGTH_SHORT).show();
-                }
-            });
-
-            flashCardAdapterHolder.delete.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    final FlashCardModel flashCardModel = mData.get(viewHolder.getLayoutPosition() - 1);
-                    mData.remove(viewHolder.getLayoutPosition() - 1);
-                    notifyDataSetChanged();
-                    notifyDataSetChanged();
-                    Snackbar.make(v, R.string.snackbar_deleted_message, Snackbar.LENGTH_LONG)
-                            .setAction(R.string.snackbar_undo, new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    mData.add(viewHolder.getLayoutPosition(), flashCardModel);
-                                    notifyDataSetChanged();
-                                    Snackbar.make(v, R.string.snackbar_restored_message, Snackbar.LENGTH_LONG).show();
-                                }
-                            }).show();
-
-
-                    ((TemplateEditor) mContext).restoreSelectedView();
-                }
-            });
-
-            flashCardAdapterHolder.edit.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(mContext, R.string.LongPress_toedit, Toast.LENGTH_SHORT).show();
-                }
-            });
-
-            flashCardAdapterHolder.delete.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    final FlashCardModel flashCardModel = mData.get(viewHolder.getLayoutPosition() - 1);
-                    mData.remove(viewHolder.getLayoutPosition() - 1);
-                    notifyDataSetChanged();
-                    notifyDataSetChanged();
-                    Snackbar.make(v, R.string.snackbar_deleted_message, Snackbar.LENGTH_LONG)
-                            .setAction(R.string.snackbar_undo, new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    if (viewHolder.getLayoutPosition() - 1 >= 0) {
-                                        mData.add(viewHolder.getLayoutPosition() - 1, flashCardModel);
-                                    } else {
-                                        mData.add(flashCardModel);
-                                    }
-                                    notifyDataSetChanged();
-                                    Snackbar.make(v, R.string.snackbar_restored_message, Snackbar.LENGTH_LONG).show();
-                                }
-                            }).show();
-
-
-                    ((TemplateEditor) mContext).restoreSelectedView();
-                }
-            });
-
         } else if (viewHolder instanceof FlashCardAdapter.HeaderHolder) {
             final FlashCardAdapter.HeaderHolder headerHolder = (FlashCardAdapter.HeaderHolder) viewHolder;
             try {
@@ -263,8 +201,6 @@ abstract class FlashCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             answer = (TextViewPlus) itemView.findViewById(R.id.flash_item_answer);
             hint = (TextViewPlus) itemView.findViewById(R.id.flash_item_hint);
             image = (ImageView) itemView.findViewById(R.id.flash_item_image);
-            delete = (ImageView) itemView.findViewById(R.id.flash_template_delete);
-            edit = (ImageView) itemView.findViewById(R.id.flash_item_edit);
         }
 
         @Override

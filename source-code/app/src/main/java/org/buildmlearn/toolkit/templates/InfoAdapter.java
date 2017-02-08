@@ -88,70 +88,6 @@ abstract class InfoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             });
             holder.meaning.setText(info.getInfoDescription());
             holder.word.setText(info.getInfoObject());
-            holder.deleteButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    final InfoModel infoModel = data.get(viewHolder.getLayoutPosition() - 1);
-                    data.remove(viewHolder.getLayoutPosition() - 1);
-                    notifyDataSetChanged();
-                    Snackbar.make(v, R.string.snackbar_deleted_message, Snackbar.LENGTH_LONG)
-                            .setAction(R.string.snackbar_undo, new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    if (viewHolder.getLayoutPosition() - 1 >= 0) {
-                                        data.add(viewHolder.getLayoutPosition() - 1, infoModel);
-                                    } else {
-                                        data.add(infoModel);
-                                    }
-                                    notifyDataSetChanged();
-                                    Snackbar.make(v, R.string.snackbar_restored_message, Snackbar.LENGTH_LONG).show();
-                                }
-                            }).show();
-                    ((TemplateEditor) mContext).restoreSelectedView();
-                }
-            });
-            holder.editButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    LayoutInflater inflater = LayoutInflater.from(mContext);
-                    View dialogView = inflater.inflate(R.layout.info_dialog_add_edit_data, null);
-                    final AlertDialog dialog = new AlertDialog.Builder(mContext)
-                            .setTitle(R.string.info_edit_title)
-                            .setView(dialogView,
-                                    mContext.getResources().getDimensionPixelSize(R.dimen.spacing_left),
-                                    mContext.getResources().getDimensionPixelSize(R.dimen.spacing_top),
-                                    mContext.getResources().getDimensionPixelSize(R.dimen.spacing_right),
-                                    mContext.getResources().getDimensionPixelSize(R.dimen.spacing_bottom))
-                            .setPositiveButton(R.string.info_template_add, null)
-                            .setNegativeButton(R.string.info_template_cancel, null)
-                            .create();
-                    dialog.show();
-
-                    final InfoModel data = getItem(viewHolder.getLayoutPosition() - 1);
-
-                    final EditText word = (EditText) dialogView.findViewById(R.id.info_word);
-                    final EditText meaning = (EditText) dialogView.findViewById(R.id.info_meaning);
-                    word.setText(data.getInfoObject());
-                    meaning.setText(data.getInfoDescription());
-
-                    dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-
-                            if (InfoTemplate.validated(mContext, word, meaning)) {
-                                String wordText = word.getText().toString();
-                                String meaningText = meaning.getText().toString();
-
-                                data.setWord(wordText);
-                                data.setInfoDescription(meaningText);
-
-                                notifyDataSetChanged();
-                                dialog.dismiss();
-                            }
-                        }
-                    });
-                }
-            });
         } else if (viewHolder instanceof HeaderHolder) {
             final HeaderHolder headerHolder = (HeaderHolder) viewHolder;
             try {
@@ -247,8 +183,6 @@ abstract class InfoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             this.view = itemView;
             word = (TextViewPlus) itemView.findViewById(R.id.info_object);
             meaning = (TextViewPlus) itemView.findViewById(R.id.info_description);
-            editButton = (ImageView) itemView.findViewById(R.id.info_template_edit);
-            deleteButton = (ImageView) itemView.findViewById(R.id.info_template_delete);
         }
 
         @Override
