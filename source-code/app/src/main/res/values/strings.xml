@@ -399,6 +399,7 @@
     <string name="meta_title_match_hint">Enter Title</string>
 
 
+    <string name="answer_not_blank">Answer cannot be blank.</string>
     <string name="previous_match">PREVIOUS</string>
     <string name="check_answers_match">CHECK ANSWERS</string>
     <string name="try_again_match">TRY AGAIN</string>

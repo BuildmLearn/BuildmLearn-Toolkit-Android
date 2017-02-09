@@ -562,6 +562,12 @@ public class ComprehensionTemplate implements TemplateInterface {
                         }
                     }
 
+                    if ("".equals(options.get(checkedAns).getText().toString().trim())){
+                        Toast.makeText(activity, R.string.answer_not_blank, Toast.LENGTH_SHORT).show();
+                        isValidated = false;
+                        return;
+                    }
+
                     if (isValidated) {
                         dialog.dismiss();
                         ArrayList<String> answerOptions = new ArrayList<>();
