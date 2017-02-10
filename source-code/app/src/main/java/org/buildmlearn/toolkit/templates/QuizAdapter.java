@@ -41,7 +41,7 @@ abstract class QuizAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private final ArrayList<QuizModel> quizData;
     private int expandedPostion = -1;
 
-    protected abstract boolean onLongItemClick(int position, View view);
+    protected abstract boolean onLongItemClick(int position, View view, boolean isLongPress);
     protected abstract String getTitle();
     protected abstract void restoreToolbarColorSchema();
     protected abstract String getAuthorName();
@@ -95,7 +95,13 @@ abstract class QuizAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             quizAdapterHolder.view.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    return onLongItemClick(viewHolder.getLayoutPosition(), v);
+                    return onLongItemClick(viewHolder.getLayoutPosition(), v, true);
+                }
+            });
+            quizAdapterHolder.view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onLongItemClick(viewHolder.getLayoutPosition(), v, false);
                 }
             });
             quizAdapterHolder.question.setText(data.getQuestion());

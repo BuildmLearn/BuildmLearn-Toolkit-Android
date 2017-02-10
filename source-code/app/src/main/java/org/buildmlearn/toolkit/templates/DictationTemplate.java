@@ -65,8 +65,8 @@ public class DictationTemplate implements TemplateInterface {
     public Object newTemplateEditorAdapter(Context context, final TemplateEditorInterface templateEditorInterface) {
         adapter = new DictationAdapter(context, dictData) {
             @Override
-            public boolean onLongItemClick(int position, View view) {
-                return templateEditorInterface.onItemLongClick(position, view);
+            public boolean onLongItemClick(int position, View view, boolean isLongPress) {
+                return templateEditorInterface.onItemLongClick(position, view, isLongPress);
             }
 
             @Override
@@ -128,8 +128,8 @@ public class DictationTemplate implements TemplateInterface {
         }
         adapter = new DictationAdapter(context, dictData) {
             @Override
-            public boolean onLongItemClick(int position, View view) {
-                return templateEditorInterface.onItemLongClick(position, view);
+            public boolean onLongItemClick(int position, View view, boolean isLongPress) {
+                return templateEditorInterface.onItemLongClick(position, view, isLongPress);
             }
 
             @Override

@@ -38,7 +38,7 @@ abstract class FlashCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     private final Context mContext;
     private final ArrayList<FlashCardModel> mData;
 
-    protected abstract boolean onLongItemClick(int position, View view);
+    protected abstract boolean onLongItemClick(int position, View view, boolean isLongPress);
 
     protected abstract String getTitle();
 
@@ -92,7 +92,13 @@ abstract class FlashCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             flashCardAdapterHolder.view.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    return onLongItemClick(viewHolder.getLayoutPosition(), v);
+                    return onLongItemClick(viewHolder.getLayoutPosition(), v, true);
+                }
+            });
+            flashCardAdapterHolder.view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onLongItemClick(viewHolder.getLayoutPosition(), v, false);
                 }
             });
             flashCardAdapterHolder.answer.setText(data.getAnswer());

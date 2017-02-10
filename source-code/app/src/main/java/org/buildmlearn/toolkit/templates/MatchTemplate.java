@@ -100,8 +100,8 @@ public class MatchTemplate implements TemplateInterface {
     public Object newTemplateEditorAdapter(Context context, final TemplateEditorInterface templateEditorInterface) {
         adapter = new MatchAdapter(context, matchData) {
             @Override
-            public boolean onLongItemClick(int position, View view) {
-                return templateEditorInterface.onItemLongClick(position, view);
+            public boolean onLongItemClick(int position, View view, boolean isLongPress) {
+                return templateEditorInterface.onItemLongClick(position, view, isLongPress);
             }
 
             @Override
@@ -164,8 +164,8 @@ public class MatchTemplate implements TemplateInterface {
         }
         adapter = new MatchAdapter(context, matchData) {
             @Override
-            public boolean onLongItemClick(int position, View view) {
-                return templateEditorInterface.onItemLongClick(position, view);
+            public boolean onLongItemClick(int position, View view, boolean isLongPress) {
+                return templateEditorInterface.onItemLongClick(position, view, isLongPress);
             }
 
             @Override

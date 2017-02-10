@@ -34,7 +34,7 @@ abstract class InfoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private final Context mContext;
     private final ArrayList<InfoModel> data;
 
-    protected abstract boolean onItemClick(int position, View view);
+    protected abstract boolean onItemClick(int position, View view, boolean isLongPress);
     protected abstract String getTitle();
     protected abstract void restoreToolbarColorSchema();
     protected abstract String getAuthorName();
@@ -83,7 +83,13 @@ abstract class InfoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             holder.view.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    return onItemClick(viewHolder.getLayoutPosition(), v);
+                    return onItemClick(viewHolder.getLayoutPosition(), v, true);
+                }
+            });
+            holder.view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onItemClick(viewHolder.getLayoutPosition(), v, false);
                 }
             });
             holder.meaning.setText(info.getInfoDescription());

@@ -476,7 +476,7 @@ public class TemplateEditor extends AppCompatActivity implements TemplateEditorI
         mItemTouchHelper.attachToRecyclerView(templateEdtiorList);
     }
 
-    private boolean changeItemSchema(int position, View view) {
+    private boolean changeItemSchema(int position, View view, boolean isLongPress) {
         if (view == null)
             return false;
         if (position == 0) {
@@ -490,6 +490,9 @@ public class TemplateEditor extends AppCompatActivity implements TemplateEditorI
                 view.setBackgroundResource(0);
             }
             restoreToolbarColorScheme();
+            if (!isLongPress) {
+                return true;
+            }
         } else {
             if (selectedView != null) {
                 if (selectedView instanceof CardView) {
@@ -497,6 +500,9 @@ public class TemplateEditor extends AppCompatActivity implements TemplateEditorI
                 } else {
                     selectedView.setBackgroundResource(0);
                 }
+            }
+            if (!isLongPress) {
+                return true;
             }
             selectedView = view;
             selectedPosition = position - 1;
@@ -642,7 +648,7 @@ public class TemplateEditor extends AppCompatActivity implements TemplateEditorI
                     restoreSelectedView();
                     selectedView = null;
                     View view = templateEdtiorList.getChildAt(selectedPosition);
-                    changeItemSchema(selectedPosition, view);
+                    changeItemSchema(selectedPosition, view, true);
                 } else {
                     Toast.makeText(this, R.string.already_at_top, Toast.LENGTH_SHORT).show();
                 }
@@ -654,7 +660,7 @@ public class TemplateEditor extends AppCompatActivity implements TemplateEditorI
                     selectedView = null;
                     View view;
                     view = templateEdtiorList.getChildAt(selectedPosition + 2);
-                    changeItemSchema(selectedPosition + 2, view);
+                    changeItemSchema(selectedPosition + 2, view, true);
                 } else {
                     Toast.makeText(this, R.string.already_at_bottom, Toast.LENGTH_SHORT).show();
                 }
@@ -1029,8 +1035,8 @@ public class TemplateEditor extends AppCompatActivity implements TemplateEditorI
     }
 
     @Override
-    public boolean onItemLongClick(int position, View view) {
-        return !(position == 0 || view == null) && changeItemSchema(position, view);
+    public boolean onItemLongClick(int position, View view, boolean isLongPress) {
+        return !(position == 0 || view == null) && changeItemSchema(position, view, isLongPress);
     }
 
     @Override
