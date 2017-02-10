@@ -8,6 +8,7 @@ import android.os.Build;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -162,6 +163,7 @@ public class MatchTemplate implements TemplateInterface {
                 .setNegativeButton(R.string.quiz_cancel, null)
                 .create();
         dialog.show();
+        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
         final EditText first_list_item = (EditText) dialogView.findViewById(R.id.first_list_item);
         final EditText second_list_item = (EditText) dialogView.findViewById(R.id.second_list_item);
@@ -200,6 +202,7 @@ public class MatchTemplate implements TemplateInterface {
                 .setNegativeButton(R.string.info_template_cancel, null)
                 .create();
         dialog.show();
+        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
         final EditText title = (EditText) dialogView.findViewById(R.id.meta_title);
         final EditText first_list_title = (EditText) dialogView.findViewById(R.id.meta_first_list_title);

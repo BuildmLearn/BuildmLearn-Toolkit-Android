@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -125,6 +126,8 @@ public class FlashTemplate implements TemplateInterface {
                 .setNegativeButton(R.string.info_template_cancel, null)
                 .create();
         dialog.show();
+
+        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
         final EditText question = (EditText) dialogView.findViewById(R.id.flash_question);
         final EditText answer = (EditText) dialogView.findViewById(R.id.flash_answer);
@@ -248,9 +251,11 @@ public class FlashTemplate implements TemplateInterface {
 
         if ("".equals(questionText)) {
             question.setError(context.getString(R.string.enter_question));
+            question.requestFocus();
             return false;
         } else if ("".equals(answerText)) {
             answer.setError(context.getString(R.string.enter_answer));
+            answer.requestFocus();
             return false;
         } else if (!mIsPhotoAttached) {
             Toast.makeText(context, context.getString(R.string.flash_template_attach_image), Toast.LENGTH_SHORT).show();
@@ -272,12 +277,10 @@ public class FlashTemplate implements TemplateInterface {
 
     @Override
     public void restoreItem(Activity activity, int position, Object object) {
-        if (object instanceof FlashCardModel)
-        {
-            FlashCardModel flashCardModel = (FlashCardModel)object;
-            if (flashCardModel!=null)
-            {
-                mData.add(position,flashCardModel);
+        if (object instanceof FlashCardModel) {
+            FlashCardModel flashCardModel = (FlashCardModel) object;
+            if (flashCardModel != null) {
+                mData.add(position, flashCardModel);
                 mAdapter.notifyDataSetChanged();
             }
         }
