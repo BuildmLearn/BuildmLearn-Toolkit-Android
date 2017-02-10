@@ -1,75 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent"
+    android:scrollbars="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginBottom="10dp">
-
-        <ImageView
-            android:id="@+id/banner_image"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:adjustViewBounds="true"
-            android:contentDescription="@string/upload_image"
-            android:scaleType="centerCrop"
-            android:src="@drawable/bg_card" />
+            android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/flash_upload_image"
+            <ImageView
+                android:id="@+id/banner_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/upload_image"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bg_card" />
+
+            <ImageView
+                android:id="@+id/flash_upload_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/upload_image"
+                android:scaleType="centerCrop"
+                android:src="@drawable/upload_button" />
+        </RelativeLayout>
+
+
+        <TextView
+            style="@style/TextView.Caption.Light"
+            android:text="@string/flash_templete_question"
+            android:textColor="@color/black_secondary_text" />
+
+        <EditText
+            android:id="@+id/flash_question"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:adjustViewBounds="true"
-            android:contentDescription="@string/upload_image"
-            android:scaleType="centerCrop"
-            android:src="@drawable/upload_button" />
-    </RelativeLayout>
+            android:layout_height="wrap_content"
+            android:hint="@string/flash_template_question_hint"
+            android:inputType="textPersonName" />
+
+        <TextView
+            style="@style/TextView.Caption.Light"
+            android:text="@string/flash_template_answer"
+            android:textColor="@color/black_secondary_text" />
 
 
-    <TextView
-        style="@style/TextView.Caption.Light"
-        android:text="@string/flash_templete_question"
-        android:textColor="@color/black_secondary_text" />
+        <EditText
+            android:id="@+id/flash_answer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/flash_template_anser_hint"
+            android:inputType="textPersonName" />
 
-    <EditText
-        android:id="@+id/flash_question"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/flash_template_question_hint"
-        android:inputType="textPersonName" />
-
-    <TextView
-        style="@style/TextView.Caption.Light"
-        android:text="@string/flash_template_answer"
-        android:textColor="@color/black_secondary_text" />
+        <TextView
+            style="@style/TextView.Caption.Light"
+            android:text="@string/flash_template_hint"
+            android:textColor="@color/black_secondary_text" />
 
 
-    <EditText
-        android:id="@+id/flash_answer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/flash_template_anser_hint"
-        android:inputType="textPersonName" />
+        <EditText
+            android:id="@+id/flash_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/flash_template_hint_hint"
+            android:inputType="textPersonName" />
 
-    <TextView
-        style="@style/TextView.Caption.Light"
-        android:text="@string/flash_template_hint"
-        android:textColor="@color/black_secondary_text" />
-
-
-    <EditText
-        android:id="@+id/flash_hint"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/flash_template_hint_hint"
-        android:inputType="textPersonName" />
 
     </LinearLayout>
 

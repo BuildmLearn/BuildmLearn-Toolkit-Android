@@ -1,72 +1,86 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:font="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.buildmlearn.toolkit.activity.FirstRunActivity">
+    android:fillViewport="true"
+    android:scrollbars="vertical">
 
-    <ImageView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:adjustViewBounds="true"
-        android:contentDescription="@string/buildmlearn_backdrop_image"
-        android:scaleType="centerCrop"
-        android:src="@drawable/first_run_bg" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:contentDescription="@string/buildmlearn_logo"
-            android:scaleType="centerCrop"
-            android:src="@drawable/logo_70" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/buildmlearn_backdrop_image"
+            android:src="@drawable/first_run_bg" />
 
-        <org.buildmlearn.toolkit.views.TextViewPlus
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="@string/main_title"
-            android:textColor="@color/white_secondary_text"
-            android:textSize="@dimen/headline_leading"
-            font:customFont="roboto_light.ttf" />
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <org.buildmlearn.toolkit.views.TextViewPlus
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="@string/main_subtitle"
-            android:textColor="@color/white_secondary_text"
-            android:textSize="@dimen/title"
-            font:customFont="roboto_light.ttf" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/buildmlearn_logo"
+                android:scaleType="centerCrop"
+                android:src="@drawable/logo_70" />
 
-        <View
-            android:id="@+id/focus_thief"
-            android:layout_width="1dp"
-            android:layout_height="1dp"
-            android:focusable="true"
-            android:focusableInTouchMode="true" />
+            <org.buildmlearn.toolkit.views.TextViewPlus
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/main_title"
+                android:textColor="@color/white_secondary_text"
+                android:textSize="@dimen/headline_leading"
+                font:customFont="roboto_light.ttf" />
 
-        <EditText
-            android:id="@+id/first_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:ems="10"
-            
-            android:hint="@string/main_name_hint"
-            android:inputType="textPersonName"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:textColorHint="@color/white_hint_text_disabled" />
+            <org.buildmlearn.toolkit.views.TextViewPlus
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/main_subtitle"
+                android:textColor="@color/white_secondary_text"
+                android:textSize="@dimen/title"
+                font:customFont="roboto_light.ttf" />
 
+            <View
+                android:id="@+id/focus_thief"
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true" />
 
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="48dp"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
 
-</RelativeLayout>
+                <EditText
+                    android:id="@+id/first_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/main_name_hint"
+                    android:inputType="textPersonName"
+                    android:textColorHint="@color/white_hint_text_disabled" />
+
+                <Button
+                    android:id="@+id/proceed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/proceed" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</ScrollView>

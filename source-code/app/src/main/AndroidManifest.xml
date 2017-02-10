@@ -17,7 +17,8 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:windowSoftInputMode="adjustResize|adjustPan">
         <activity
             android:name=".activity.HomeActivity"
             android:configChanges="orientation|screenSize"
@@ -39,14 +40,15 @@
         </activity>
         <activity
             android:name=".activity.TemplateEditor"
-            android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_template_editor"
+            android:configChanges="orientation|screenSize"
+            android:windowSoftInputMode="adjustResize"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.FirstRunActivity"
             android:label="@string/app_name"
             android:theme="@style/SplashTheme"
-            android:windowSoftInputMode="adjustPan">
+            android:windowSoftInputMode="adjustPan|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
