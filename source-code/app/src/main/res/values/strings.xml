@@ -420,5 +420,6 @@
     <string name="pref_tell_key">tell</string>
     <string name="pref_tell_title">Tell a friend</string>
     <string name="pref_tell_message">BuildmLearn Toolkit for your phone. Download it from here :</string>
+    <string name="proceed">Proceed</string>
 </resources>
 

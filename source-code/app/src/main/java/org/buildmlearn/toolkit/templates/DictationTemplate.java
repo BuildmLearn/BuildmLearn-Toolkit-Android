@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -123,6 +124,7 @@ public class DictationTemplate implements TemplateInterface {
                 .setNegativeButton(R.string.info_template_cancel, null)
                 .create();
         dialog.show();
+        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
         final EditText title = (EditText) dialogView.findViewById(R.id.dict_title);
         final EditText passage = (EditText) dialogView.findViewById(R.id.dict_passage);
@@ -184,6 +186,7 @@ public class DictationTemplate implements TemplateInterface {
                 .setNegativeButton(R.string.info_template_cancel, null)
                 .create();
         dialog.show();
+        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
         final DictationModel data = dictData.get(position);
 

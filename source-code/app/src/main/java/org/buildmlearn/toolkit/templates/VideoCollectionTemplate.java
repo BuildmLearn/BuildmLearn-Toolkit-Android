@@ -11,6 +11,7 @@ import android.support.v7.app.AlertDialog;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -212,6 +213,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
                 .setNegativeButton(R.string.info_template_cancel, null)
                 .create();
         dialog.show();
+        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
         final EditText link = (EditText) dialogView.findViewById(R.id.video_link);
 
@@ -260,6 +262,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
                 .setNegativeButton(R.string.info_template_cancel, null)
                 .create();
         dialog.show();
+        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
         final VideoModel data = videoData.get(position);
 

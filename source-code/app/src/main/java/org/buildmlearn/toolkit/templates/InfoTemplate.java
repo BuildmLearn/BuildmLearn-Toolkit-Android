@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 
@@ -119,6 +120,7 @@ public class InfoTemplate implements TemplateInterface {
                 .setNegativeButton(R.string.info_template_cancel, null)
                 .create();
         dialog.show();
+        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
         final EditText word = (EditText) dialogView.findViewById(R.id.info_word);
         final EditText meaning = (EditText) dialogView.findViewById(R.id.info_meaning);
@@ -162,6 +164,7 @@ public class InfoTemplate implements TemplateInterface {
                 .setNegativeButton(R.string.info_template_cancel, null)
                 .create();
         dialog.show();
+        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
         final InfoModel data = infoData.get(position);
 

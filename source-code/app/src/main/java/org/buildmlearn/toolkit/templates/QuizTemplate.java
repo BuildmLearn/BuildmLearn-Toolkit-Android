@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -111,6 +112,7 @@ public class QuizTemplate implements TemplateInterface {
                 .setNegativeButton(R.string.quiz_cancel, null)
                 .create();
         dialog.show();
+        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
         final EditText question = (EditText) dialogView.findViewById(R.id.quiz_question);
         final ArrayList<RadioButton> buttons = new ArrayList<>();
@@ -237,6 +239,7 @@ public class QuizTemplate implements TemplateInterface {
                 .setNegativeButton(R.string.quiz_cancel, null)
                 .create();
         dialog.show();
+        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
         final EditText question = (EditText) dialogView.findViewById(R.id.quiz_question);
         final ArrayList<RadioButton> buttons = new ArrayList<>();
