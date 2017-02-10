@@ -9,6 +9,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.crashlytics.android.Crashlytics;
@@ -27,6 +28,7 @@ public class FirstRunActivity extends AppCompatActivity {
     private static final String FIRST_RUN = "first_run";
 
     private EditText name;
+    private Button proceed;
     private SharedPreferences prefs;
 
     /**
@@ -45,8 +47,9 @@ public class FirstRunActivity extends AppCompatActivity {
 
 
         findViewById(R.id.focus_thief).clearFocus();
-        Animation anim_bounceinup=AnimationUtils.loadAnimation(getBaseContext(),R.anim.bounceinup);
+        Animation anim_bounceinup = AnimationUtils.loadAnimation(getBaseContext(), R.anim.bounceinup);
         name = (EditText) findViewById(R.id.first_name);
+        assert name != null;
         name.startAnimation(anim_bounceinup);
         name.setOnKeyListener(new View.OnKeyListener() {
             @Override
@@ -56,27 +59,7 @@ public class FirstRunActivity extends AppCompatActivity {
                         case KeyEvent.KEYCODE_DPAD_CENTER:
                         case KeyEvent.KEYCODE_ENTER:
 
-                            if (name.getText().toString().equals("")) {
-                                name.setError(getApplicationContext().getResources().getString(R.string.enter_name));
-                                return false;
-                            }
-                            else if(!Character.isLetterOrDigit(name.getText().toString().charAt(0)))
-                            {
-                                name.setError(getApplicationContext().getResources().getString(R.string.valid_msg));
-                                return false;
-                            }
-
-
-                            SharedPreferences.Editor editor = prefs.edit();
-
-                            editor.putString(getString(R.string.key_user_name), name.getText().toString());
-                            editor.putBoolean(FIRST_RUN, true);
-                            editor.apply();
-                            Intent intent = new Intent(getApplicationContext(), TutorialActivity.class);
-                            intent.putExtra(Constants.START_ACTIVITY, true);
-                            startActivity(intent);
-                            finish();
-                            return true;
+                            return validateUser();
                         default:
                             break;
                     }
@@ -84,6 +67,37 @@ public class FirstRunActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        proceed = (Button) findViewById(R.id.proceed);
+
+        proceed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                validateUser();
+            }
+        });
+    }
+
+    boolean validateUser() {
+        if (name.getText().toString().equals("")) {
+            name.setError(getApplicationContext().getResources().getString(R.string.enter_name));
+            return false;
+        } else if (!Character.isLetterOrDigit(name.getText().toString().charAt(0))) {
+            name.setError(getApplicationContext().getResources().getString(R.string.valid_msg));
+            return false;
+        }
+
+
+        SharedPreferences.Editor editor = prefs.edit();
+
+        editor.putString(getString(R.string.key_user_name), name.getText().toString());
+        editor.putBoolean(FIRST_RUN, true);
+        editor.apply();
+        Intent intent = new Intent(getApplicationContext(), TutorialActivity.class);
+        intent.putExtra(Constants.START_ACTIVITY, true);
+        startActivity(intent);
+        finish();
+        return true;
     }
 
 }
