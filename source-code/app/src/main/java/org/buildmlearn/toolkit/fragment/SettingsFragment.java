@@ -37,6 +37,7 @@ public class SettingsFragment extends PreferenceFragment {
 
     private static final int REQUEST_PICK_APK = 9985;
     private Preference prefUsername;
+    private Toast mToast;
 
     private static float deleteDirectory(File file, float size) {
         if (file.exists()) {
@@ -61,6 +62,7 @@ public class SettingsFragment extends PreferenceFragment {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.fragment_settings);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        mToast=Toast.makeText(getActivity()," ",Toast.LENGTH_SHORT);
 
         Preference deleteTempFiles = findPreference(getString(R.string.key_delete_temporary_files));
         deleteTempFiles.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
@@ -81,8 +83,10 @@ public class SettingsFragment extends PreferenceFragment {
                 if(NetworkUtils.isNetworkAvailable(getActivity()))
                     startActivity(new Intent(Intent.ACTION_VIEW,
                             Uri.parse("http://play.google.com/store/apps/details?id=" + getActivity().getPackageName())));
-                else
-                    Toast.makeText(getActivity(), R.string.settings_network_unavailable,Toast.LENGTH_SHORT).show();
+                else {
+                    mToast.setText(R.string.settings_network_unavailable);
+                    mToast.show();
+                }
                 return true;
             }
         });
@@ -342,7 +346,8 @@ public class SettingsFragment extends PreferenceFragment {
             if (size != 0) {
                 Toast.makeText(getActivity(), "Deleted " + size + " MB.", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(getActivity(), "No Temp Files Found!", Toast.LENGTH_SHORT).show();
+                mToast.setText("No Temp Files Found!");
+                mToast.show();
             }
         }
     }
