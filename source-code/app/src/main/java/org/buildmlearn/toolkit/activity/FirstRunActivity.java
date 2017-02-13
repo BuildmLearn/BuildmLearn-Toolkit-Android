@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
-
+import android.widget.Button;
 
 import com.crashlytics.android.Crashlytics;
 
@@ -44,11 +44,37 @@ public class FirstRunActivity extends AppCompatActivity {
         }
         setContentView(R.layout.activity_first_run);
 
-
         findViewById(R.id.focus_thief).clearFocus();
-        Animation animBounceinup=AnimationUtils.loadAnimation(getBaseContext(),R.anim.bounceinup);
+        Animation anim_bounceinup=AnimationUtils.loadAnimation(getBaseContext(),R.anim.bounceinup);
         name = (EditText) findViewById(R.id.first_name);
-        name.startAnimation(animBounceinup);
+        Button button = (Button) findViewById(R.id.ok_button);
+        name.startAnimation(anim_bounceinup);
+        button.startAnimation(anim_bounceinup);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                if (name.getText().toString().equals("")) {
+                    name.setError(getApplicationContext().getResources().getString(R.string.enter_name));
+                }
+                else if(!Character.isLetterOrDigit(name.getText().toString().charAt(0)))
+                {
+                    name.setError(getApplicationContext().getResources().getString(R.string.valid_msg));
+                }
+
+
+                SharedPreferences.Editor editor = prefs.edit();
+
+                editor.putString(getString(R.string.key_user_name), name.getText().toString());
+                editor.putBoolean(FIRST_RUN, true);
+                editor.apply();
+                Intent intent = new Intent(getApplicationContext(), TutorialActivity.class);
+                intent.putExtra(Constants.START_ACTIVITY, true);
+                startActivity(intent);
+                finish();
+
+            }
+        });
+
         name.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
