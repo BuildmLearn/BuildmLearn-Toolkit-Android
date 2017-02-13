@@ -1,6 +1,5 @@
 package org.buildmlearn.toolkit.flashcardtemplate.fragment;
 
-import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -132,7 +131,6 @@ public class MainFragment extends Fragment implements NavigationView.OnNavigatio
 
                     Fragment frag = MainFragment.newInstance();
                     frag.setArguments(arguments);
-                    getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                     getActivity().getSupportFragmentManager().beginTransaction().replace(((ViewGroup) getView().getParent()).getId(), frag).addToBackStack(null).commit();
 
                     return false;
@@ -194,7 +192,6 @@ public class MainFragment extends Fragment implements NavigationView.OnNavigatio
 
                 Fragment frag = MainFragment.newInstance();
                 frag.setArguments(arguments);
-                getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 getActivity().getSupportFragmentManager().beginTransaction().replace(((ViewGroup) getView().getParent()).getId(), frag).addToBackStack(null).commit();
 
             }
@@ -214,7 +211,6 @@ public class MainFragment extends Fragment implements NavigationView.OnNavigatio
 
                     Fragment frag = MainFragment.newInstance();
                     frag.setArguments(arguments);
-                    getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                     getActivity().getSupportFragmentManager().beginTransaction().replace(((ViewGroup) getView().getParent()).getId(), frag).addToBackStack(null).commit();
 
 
@@ -223,7 +219,6 @@ public class MainFragment extends Fragment implements NavigationView.OnNavigatio
                     Bundle arguments = new Bundle();
                     Fragment frag = LastFragment.newInstance();
                     frag.setArguments(arguments);
-                    getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                     getActivity().getSupportFragmentManager().beginTransaction().replace(((ViewGroup) getView().getParent()).getId(), frag).addToBackStack(null).commit();
 
                 }
