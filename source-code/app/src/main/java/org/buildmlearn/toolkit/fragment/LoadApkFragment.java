@@ -2,14 +2,18 @@ package org.buildmlearn.toolkit.fragment;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
@@ -17,6 +21,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -29,12 +34,21 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.baoyz.swipemenulistview.SwipeMenu;
+import com.baoyz.swipemenulistview.SwipeMenuCreator;
+import com.baoyz.swipemenulistview.SwipeMenuItem;
+import com.baoyz.swipemenulistview.SwipeMenuListView;
+
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.ToolkitApplication;
+import org.buildmlearn.toolkit.activity.DeepLinkerActivity;
 import org.buildmlearn.toolkit.adapter.SavedApiAdapter;
 import org.buildmlearn.toolkit.model.SavedApi;
+import org.buildmlearn.toolkit.utilities.RestoreThread;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -48,7 +62,7 @@ import java.util.Comparator;
 public class LoadApkFragment extends Fragment implements AbsListView.OnItemClickListener {
 
     private static final String TAG = "Load API Fragment";
-    private AbsListView mListView;
+    private SwipeMenuListView mListView;
 
     private boolean showTemplateSelectedMenu;
     private SavedApiAdapter mAdapter;
@@ -128,7 +142,7 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         mAdapter = new SavedApiAdapter(getActivity(), savedApis);
-        mListView = (AbsListView) view.findViewById(android.R.id.list);
+        mListView = (SwipeMenuListView) view.findViewById(android.R.id.list);
         setAdapter(mAdapter);
         mListView.setOnItemClickListener(this);
         mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -137,7 +151,7 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
                 if (mAdapter.isPositionSelected(position)) {
                     mAdapter.removeSelectedPosition(position);
                     view.setBackgroundResource(0);
-                    if(mAdapter.selectedPositionsSize()==0)
+                    if(mAdapter.selectedPositionsSize() == 0)
                         restoreColorScheme();
                 } else {
                     view.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.color_divider));
@@ -147,7 +161,36 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
                 return true;
             }
         });
+        SwipeMenuCreator creator = new SwipeMenuCreator() {
 
+            @Override
+            public void create(SwipeMenu menu) {
+                SwipeMenuItem openItem = new SwipeMenuItem(getActivity().getApplicationContext());
+                openItem.setBackground(new ColorDrawable(Color.rgb(169,169,169)));
+                openItem.setWidth((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 90,
+                        getActivity().getResources().getDisplayMetrics()));
+                openItem.setTitle("Restore Project");
+                openItem.setTitleSize(18);
+                openItem.setTitleColor(Color.WHITE);
+                menu.addMenuItem(openItem);
+            }
+        };
+
+        mListView.setMenuCreator(creator);
+        mListView.setSwipeDirection(SwipeMenuListView.DIRECTION_LEFT);
+        mListView.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
+                switch (index) {
+                    case 0:
+                        restoreApk(position);
+                        break;
+                    default:
+                        break;
+                }
+                return false;
+            }
+        });
         getView().setFocusableInTouchMode(true);
         getView().requestFocus();
         getView().setOnKeyListener(new View.OnKeyListener() {
@@ -432,6 +475,93 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void restoreApk(int position){
+        try {
+            final ProgressDialog processDialog = new ProgressDialog(getActivity(), R.style.AppDialogTheme);
+            processDialog.setTitle(R.string.restore_progress_dialog);
+            processDialog.setMessage(getActivity().getString(R.string.restore_msg));
+            processDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            processDialog.setCancelable(false);
+            processDialog.setProgress(0);
+            processDialog.show();
+
+            InputStream inputStream = new FileInputStream(savedApis.get(position).getFile());
+            RestoreThread restore = new RestoreThread(getActivity(), inputStream);
+
+            restore.setRestoreListener(new RestoreThread.OnRestoreComplete() {
+                Handler mHandler =new Handler(Looper.getMainLooper());
+                @Override
+                public void onSuccess(final File assetFile) {
+                    mHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            processDialog.dismiss();
+                            Intent intentProject = new Intent(getActivity(), DeepLinkerActivity.class);
+                            intentProject.setData(Uri.fromFile(assetFile));
+                            getActivity().startActivity(intentProject);
+                        }
+                    });
+                }
+
+                @Override
+                public void onFail() {
+                    mHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            processDialog.dismiss();
+                            final AlertDialog dialog = new AlertDialog.Builder(getActivity())
+                                    .setTitle(R.string.dialog_restore_title)
+                                    .setMessage(R.string.dialog_restore_failed)
+                                    .setPositiveButton(R.string.info_template_ok, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.dismiss();
+                                        }
+                                    }).create();
+                            dialog.show();
+                        }
+                    });
+                }
+
+                @Override
+                public void onFail(Exception e) {
+                    mHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            processDialog.dismiss();
+                            final AlertDialog dialog = new AlertDialog.Builder(getActivity())
+                                    .setTitle(R.string.dialog_restore_title)
+                                    .setMessage(R.string.dialog_restore_failed)
+                                    .setPositiveButton(R.string.info_template_ok, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.dismiss();
+                                        }
+                                    }).create();
+                            dialog.show();
+                        }
+                    });
+                }
+            });
+
+            restore.start();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            final AlertDialog dialog = new AlertDialog.Builder(getActivity())
+                    .setTitle(R.string.dialog_restore_title)
+                    .setMessage(R.string.dialog_restore_fileerror)
+                    .setPositiveButton(R.string.info_template_ok, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    }).create();
+            dialog.show();
+        }
     }
 
     public void unselectAll() {
