@@ -66,10 +66,34 @@ public class SettingsFragment extends PreferenceFragment {
         deleteTempFiles.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
+                final String path = ToolkitApplication.getUnZipDir();
+                final AsyncTaskRunner asynctaskrunner = new AsyncTaskRunner();
 
-                String path = ToolkitApplication.getUnZipDir();
-                AsyncTaskRunner asynctaskrunner = new AsyncTaskRunner();
-                asynctaskrunner.execute(path);
+
+                //// add alertdialogue .....for prompting
+                final AlertDialog prompt_delete = new AlertDialog.Builder(getActivity()).
+                        setTitle("Delete files").
+                        setMessage("Are you sure !!!").
+                        setPositiveButton("Yes",null).
+                        setNegativeButton("No",null).
+                        create();
+                prompt_delete.show();
+
+                prompt_delete.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        asynctaskrunner.execute(path);
+                        prompt_delete.dismiss();
+                    }
+                });
+
+                prompt_delete.getButton(DialogInterface.BUTTON_NEGATIVE).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        prompt_delete.dismiss();
+                    }
+                });
+
                 return true;
             }
         });
