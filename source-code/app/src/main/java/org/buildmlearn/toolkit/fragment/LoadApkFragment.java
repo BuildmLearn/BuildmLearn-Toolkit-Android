@@ -33,11 +33,14 @@ import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.ToolkitApplication;
 import org.buildmlearn.toolkit.adapter.SavedApiAdapter;
 import org.buildmlearn.toolkit.model.SavedApi;
+import org.buildmlearn.toolkit.service.UploadFileTask;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+
+import static org.buildmlearn.toolkit.activity.HomeActivity.mGoogleApiClient;
 
 /**
  * Created by opticod (Anupam Das) on 29/2/16.
@@ -48,6 +51,7 @@ import java.util.Comparator;
 public class LoadApkFragment extends Fragment implements AbsListView.OnItemClickListener {
 
     private static final String TAG = "Load API Fragment";
+    private static final int APK_CATEGOTY = 1;
     private AbsListView mListView;
 
     private boolean showTemplateSelectedMenu;
@@ -340,6 +344,40 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
                     }
                 });
                 break;
+
+            case R.id.action_sync:
+
+
+                if(mGoogleApiClient != null){
+                    if(mGoogleApiClient.isConnected()) {
+                        final AlertDialog dialog_sync = new AlertDialog.Builder(activity)
+                                .setTitle("Sync to Drive")
+                                .setMessage("Do you want to save the selected Apks to your drive")
+                                .setPositiveButton(R.string.dialog_yes, null)
+                                .setNegativeButton(R.string.dialog_no, null)
+                                .create();
+                        dialog_sync.show();
+                        dialog_sync.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                dialog_sync.dismiss();
+                                syncApks();
+                                restoreSelectedView();
+                            }
+                        });
+                    }
+                    else{
+                        Toast.makeText(getActivity(),"google drive is not connected",Toast.LENGTH_SHORT).show();
+                        mGoogleApiClient.connect();
+                    }
+                }
+                else{
+                    Toast.makeText(getActivity(),"Please sign in to upload",Toast.LENGTH_SHORT).show();
+                }
+
+
+                break;
+
             case R.id.action_share:
 
                 ArrayList<Integer> selectedPositions = mAdapter.getSelectedPositions();
@@ -502,6 +540,34 @@ public class LoadApkFragment extends Fragment implements AbsListView.OnItemClick
         }
 
     }
+
+    /**
+     * @brief Calls the async task to sync the apk to drive sequentially
+     */
+    public void syncApks() {
+        ArrayList<Integer> selectedPositions = mAdapter.getSelectedPositions();
+        if (selectedPositions.size() == 1) {
+            Toast.makeText(activity, "Uploading Apk", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(activity, "Uploading Apk's", Toast.LENGTH_SHORT).show();
+        }
+
+        for (int selectedPosition : selectedPositions) {
+            SavedApi apk = savedApis.get(selectedPosition);
+            File file = new File(apk.getFile().getPath());
+
+            String [] strings =new String[4];
+
+            strings[0]=file.getName();
+            strings[1]= String.valueOf(selectedPosition);
+            strings[2]=String.valueOf(APK_CATEGOTY);
+            strings[3]=file.getPath();
+
+            new UploadFileTask().execute(strings);
+
+        }
+    }
+
 
 }
 

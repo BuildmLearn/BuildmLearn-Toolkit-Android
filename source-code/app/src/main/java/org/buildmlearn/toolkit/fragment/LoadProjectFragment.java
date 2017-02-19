@@ -37,6 +37,7 @@ import org.buildmlearn.toolkit.adapter.SavedProjectAdapter;
 import org.buildmlearn.toolkit.constant.Constants;
 import org.buildmlearn.toolkit.model.SavedProject;
 import org.buildmlearn.toolkit.model.Template;
+import org.buildmlearn.toolkit.service.UploadFileTask;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
@@ -51,12 +52,15 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import static org.buildmlearn.toolkit.activity.HomeActivity.mGoogleApiClient;
+
 /**
  * @brief Fragment used for loading existing projects into a list.
  */
 public class LoadProjectFragment extends Fragment implements AbsListView.OnItemClickListener {
 
     private static final String TAG = "Load Project Fragment";
+    private static final int SAVED_PROJECT_CATEGOTY = 2;
     private AbsListView mListView;
 
     private boolean showTemplateSelectedMenu;
@@ -68,6 +72,7 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
 
     private boolean isSearchOpened = false;
     private EditText editSearch;
+    public static int semaphore = 1;
 
     /**
      * {@inheritDoc}
@@ -378,6 +383,45 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                     }
                 });
                 break;
+
+            case R.id.action_sync_saved_project:
+
+
+                if(mGoogleApiClient != null){
+                    if(mGoogleApiClient.isConnected()) {
+
+                        final AlertDialog dialog_sync = new AlertDialog.Builder(activity)
+                                .setTitle("Sync to Drive")
+                                .setMessage("Do you want to save the selected projects to your drive")
+                                .setPositiveButton(R.string.dialog_yes, null)
+                                .setNegativeButton(R.string.dialog_no, null)
+                                .create();
+
+                        dialog_sync.show();
+
+                        dialog_sync.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                dialog_sync.dismiss();
+                                syncProjects();
+                                restoreSelectedView();
+                            }
+                        });
+                    }
+                    else{
+
+                        Toast.makeText(getActivity(),"Drive not connected",Toast.LENGTH_SHORT).show();
+                        mGoogleApiClient.connect();
+                    }
+                }
+                else{
+
+                    Toast.makeText(getActivity(),"Drive not connected",Toast.LENGTH_SHORT).show();
+                }
+
+
+                break;
+
             case R.id.action_share:
 
                 ArrayList<Integer> selectedPositions = mAdapter.getSelectedPositions();
@@ -394,6 +438,7 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
                 sendIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
                 startActivity(Intent.createChooser(sendIntent, null));
                 break;
+
             case R.id.action_search:
 
                 isSearchOpened = true;
@@ -543,5 +588,34 @@ public class LoadProjectFragment extends Fragment implements AbsListView.OnItemC
             actionBar.setDisplayShowTitleEnabled(true);
         }
 
+    }
+
+
+    /**
+     * Calls the asyc task  to sync the project to drive sequentially
+     */
+    public void syncProjects() {
+        ArrayList<Integer> selectedPositions = mAdapter.getSelectedPositions();
+        if (selectedPositions.size() == 1) {
+            Toast.makeText(activity, "Uploading Project", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(activity, "Uploading Projects", Toast.LENGTH_SHORT).show();
+        }
+
+        for (int selectedPosition : selectedPositions) {
+
+            SavedProject project =savedProjects.get(selectedPosition);
+            File file = new File(project.getFile().getPath());
+
+            String [] strings =new String[4];
+
+            strings[0]=file.getName();
+            strings[1]= String.valueOf(selectedPosition);
+            strings[2]=String.valueOf(SAVED_PROJECT_CATEGOTY);
+            strings[3]=file.getPath();
+
+            new UploadFileTask().execute(strings);
+
+        }
     }
 }
