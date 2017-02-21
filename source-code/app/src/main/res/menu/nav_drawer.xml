@@ -48,6 +48,11 @@
             android:icon="@drawable/menu_info"
             android:title="@string/menu_about_us"
             android:visible="true" />
+        <item
+            android:id="@+id/sign_in"
+            android:title="Sign In"
+            android:icon="@drawable/google_login"
+            android:visible="true"/>
 
     </group>
 

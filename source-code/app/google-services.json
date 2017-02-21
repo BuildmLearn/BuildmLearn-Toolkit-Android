@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "373868766583",
+    "project_id": "theta-bindery-158207"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:373868766583:android:dce0dccbf435c38d",
+        "android_client_info": {
+          "package_name": "org.buildmlearn.toolkit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "373868766583-k2t8n2b4tajj0ota82ff7muu6ijlr0dp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6aSOA0BXOe0mL2XQnPxfXd-7Uo5yZWs8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

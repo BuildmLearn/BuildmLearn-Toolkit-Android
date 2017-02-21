@@ -13,6 +13,7 @@
         android:src="@drawable/bg_navigation_drawer_header" />
 
     <ImageView
+        android:id="@+id/profile_pic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/nav_text"
@@ -29,21 +30,19 @@
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="5dp"
-        android:id="@+id/nav_text">
+        android:id="@+id/nav_text"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/person_name"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/welcome"
             android:textColor="@color/white_primary_text"
-            android:textSize="@dimen/sub_title" />
+            android:textSize="@dimen/sub_title"
+            android:gravity="center"/>
 
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white_primary_text"
-            android:textSize="@dimen/sub_title" />
     </LinearLayout>
 
 </RelativeLayout>
