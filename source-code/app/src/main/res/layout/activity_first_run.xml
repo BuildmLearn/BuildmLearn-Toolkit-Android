@@ -18,7 +18,8 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:weightSum="1">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -59,14 +60,28 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:ems="10"
-            
+
             android:hint="@string/main_name_hint"
             android:inputType="textPersonName"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:textColorHint="@color/white_hint_text_disabled" />
 
+        <Button
+            android:id="@+id/button_next"
+            android:text="@string/button_next"
+            android:layout_width="130dp"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.49"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="30dp"
+            android:background="@android:color/transparent"/>
 
     </LinearLayout>
+
 
 </RelativeLayout>
