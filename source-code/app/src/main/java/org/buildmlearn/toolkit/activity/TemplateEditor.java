@@ -898,13 +898,21 @@ public class TemplateEditor extends AppCompatActivity implements TemplateEditorI
                 oldFile = new File(oldFileName);
 
             FileUtils.saveXmlFile(toolkit.getDraftDir(), ".temp", doc);
-            if (oldFile == null || !FileUtils.equalContent(tempFile, oldFile)) {
+
+            if(oldFile == null){
                 tempFile.renameTo(probableFile);
                 return toolkit.getDraftDir() + probableFileName;
-            } else {
+            }
+            else if (!FileUtils.equalContent(tempFile, oldFile)){
+                tempFile.renameTo(probableFile);
+                oldFile.delete();
+                return toolkit.getDraftDir() + probableFileName;
+            }
+            else {
                 File newFile = new File(toolkit.getDraftDir(), ".temp");
                 newFile.delete();
             }
+
             return null;
 
         } catch (ParserConfigurationException | NullPointerException e) {
@@ -981,7 +989,7 @@ public class TemplateEditor extends AppCompatActivity implements TemplateEditorI
             File draftDir = new File(toolkit.getDraftDir());
             if (fXmlFile.getParentFile().compareTo(draftDir) == 0) {
                 //If Draft File
-                fXmlFile.delete();
+               // fXmlFile.delete();
             }
             setUpActionBar();
 
