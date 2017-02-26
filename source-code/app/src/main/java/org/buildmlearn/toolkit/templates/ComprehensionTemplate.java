@@ -9,11 +9,13 @@ import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.activity.TemplateEditorInterface;
 import org.buildmlearn.toolkit.comprehensiontemplate.fragment.SplashFragment;
 import org.buildmlearn.toolkit.model.Template;
 import org.buildmlearn.toolkit.model.TemplateInterface;
@@ -29,6 +31,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * @brief Comprehension template code implementing methods of TemplateInterface
@@ -48,7 +51,7 @@ public class ComprehensionTemplate implements TemplateInterface {
         metaData = new ArrayList<>();
     }
 
-    private static boolean validated( Context context, EditText title, EditText passage, EditText timer) {
+    private static boolean validated(Context context, EditText title, EditText passage, EditText timer) {
         if (title == null || passage == null || timer == null) {
             return false;
         }
@@ -63,10 +66,10 @@ public class ComprehensionTemplate implements TemplateInterface {
         } else if ("".equals(passageText)) {
             passage.setError(context.getString(R.string.comprehension_template_passage_hint));
             return false;
-        }else if (timerText.length() > 9) {
+        } else if (timerText.length() > 9) {
             timer.setError(context.getString(R.string.comprehension_template_timer_correct_hint));
             return false;
-        }else if ("0".equals(timerText)) {
+        }else if (timerText.matches("[0]+")) {
             timer.setError((context.getString(R.string.time_zero_error)));
             return false;
         } else if ("".equals(timerText)) {
@@ -78,8 +81,43 @@ public class ComprehensionTemplate implements TemplateInterface {
     }
 
     @Override
-    public BaseAdapter newTemplateEditorAdapter(Context context) {
-        adapter = new ComprehensionAdapter(context, comprehensionData);
+    public Object newTemplateEditorAdapter(Context context, final TemplateEditorInterface templateEditorInterface) {
+        adapter = new ComprehensionAdapter(context, comprehensionData) {
+            @Override
+            public boolean onLongItemClick(int position, View view) {
+                return templateEditorInterface.onItemLongClick(position, view);
+            }
+
+            @Override
+            protected String getAuthorName() {
+                return templateEditorInterface.getAuthorName();
+            }
+
+            @Override
+            protected void setAuthorName(String authorName) {
+                templateEditorInterface.setAuthorName(authorName);
+            }
+
+            @Override
+            protected void setTitle(String title) {
+                templateEditorInterface.setProjectTitle(title);
+            }
+
+            @Override
+            protected void populateMetaList(ListView listView) {
+                templateEditorInterface.populateMetaList(listView);
+            }
+
+            @Override
+            protected void restoreToolbarColorSchema() {
+                templateEditorInterface.restoreColorSchema();
+            }
+
+            @Override
+            protected String getTitle() {
+                return templateEditorInterface.getProjectTitle();
+            }
+        };
         return adapter;
     }
 
@@ -90,7 +128,7 @@ public class ComprehensionTemplate implements TemplateInterface {
     }
 
     @Override
-    public BaseAdapter currentTemplateEditorAdapter() {
+    public Object currentTemplateEditorAdapter() {
         return adapter;
     }
 
@@ -99,7 +137,7 @@ public class ComprehensionTemplate implements TemplateInterface {
     }
 
     @Override
-    public BaseAdapter loadProjectTemplateEditor(Context context, ArrayList<Element> data) {
+    public Object loadProjectTemplateEditor(Context context, ArrayList<Element> data, final TemplateEditorInterface templateEditorInterface) {
         comprehensionData = new ArrayList<>();
         for (Element item : data) {
             String question = item.getElementsByTagName("question").item(0).getTextContent();
@@ -112,7 +150,42 @@ public class ComprehensionTemplate implements TemplateInterface {
             comprehensionData.add(new ComprehensionModel(question, answers, answer));
 
         }
-        adapter = new ComprehensionAdapter(context, comprehensionData);
+        adapter = new ComprehensionAdapter(context, comprehensionData) {
+            @Override
+            public boolean onLongItemClick(int position, View view) {
+                return templateEditorInterface.onItemLongClick(position, view);
+            }
+
+            @Override
+            protected String getAuthorName() {
+                return templateEditorInterface.getAuthorName();
+            }
+
+            @Override
+            protected void setAuthorName(String authorName) {
+                templateEditorInterface.setAuthorName(authorName);
+            }
+
+            @Override
+            protected void setTitle(String title) {
+                templateEditorInterface.setProjectTitle(title);
+            }
+
+            @Override
+            protected void populateMetaList(ListView listView) {
+                templateEditorInterface.populateMetaList(listView);
+            }
+
+            @Override
+            protected void restoreToolbarColorSchema() {
+                templateEditorInterface.restoreColorSchema();
+            }
+
+            @Override
+            protected String getTitle() {
+                return templateEditorInterface.getProjectTitle();
+            }
+        };
         return adapter;
     }
 
@@ -210,28 +283,29 @@ public class ComprehensionTemplate implements TemplateInterface {
                     return;
                 }
 
-                if(options.get(0).getText().toString().trim().equals("")){
+                if (options.get(0).getText().toString().trim().equals("")) {
                     options.get(0).setError(activity.getString(R.string.cannot_be_empty));
                     isValidated = false;
                     return;
                 }
-                if(options.get(1).getText().toString().trim().equals("")){
+                if (options.get(1).getText().toString().trim().equals("")) {
                     options.get(1).setError(activity.getString(R.string.cannot_be_empty));
                     isValidated = false;
                     return;
                 }
-                if(options.get(2).getText().toString().trim().equals("") && !options.get(3).getText().toString().trim().equals("")){
+                if (options.get(2).getText().toString().trim().equals("") && !options.get(3).getText().toString().trim().equals("")) {
                     options.get(2).hasFocus();
                     options.get(2).setError(activity.getString(R.string.comprehension_select_option_3_first));
                     isValidated = false;
                     return;
                 }
 
-                for(int i=0;i<options.size();i++){
-                    for(int j=0;j<i;j++){
+                for (int i = 0; i < options.size(); i++) {
+                    for (int j = 0; j < i; j++) {
                         if (!options.get(i).getText().toString().trim().isEmpty() && options.get(i).getText().toString().trim().equalsIgnoreCase(options.get(j).getText().toString().trim())) {
                             Toast.makeText(activity.getApplication(), activity.getString(R.string.same_options), Toast.LENGTH_SHORT).show();
                             isValidated=false;
+                            return;
                         }
                     }
                 }
@@ -247,11 +321,11 @@ public class ComprehensionTemplate implements TemplateInterface {
                 }
 
                 for (EditText option : options) {
-                    if ("".equals(option.getText().toString().trim())){
+                    if ("".equals(option.getText().toString().trim())) {
                         option.setText("");
                         continue;
                     }
-                    if (option.getText().toString()!= null && "".equals(option.getText().toString().trim())) {
+                    if ("".equals(option.getText().toString().trim())) {
                         option.getText().clear();
                         option.setError(activity.getString(R.string.comprehension_template_valid_option));
                         isValidated = false;
@@ -318,7 +392,7 @@ public class ComprehensionTemplate implements TemplateInterface {
             @Override
             public void onClick(View v) {
 
-                if (validated(activity,title, passage, timer)) {
+                if (validated(activity, title, passage, timer)) {
 
                     String titleText = title.getText().toString().trim();
                     String passageText = passage.getText().toString().trim();
@@ -378,7 +452,7 @@ public class ComprehensionTemplate implements TemplateInterface {
                 @Override
                 public void onClick(View v) {
 
-                    if (validated(activity,title, passage, timer)) {
+                    if (validated(activity, title, passage, timer)) {
 
                         String titleText = title.getText().toString().trim();
                         String passageText = passage.getText().toString().trim();
@@ -394,7 +468,6 @@ public class ComprehensionTemplate implements TemplateInterface {
             });
 
         } else {
-
             ComprehensionModel data = comprehensionData.get(position);
 
 
@@ -450,17 +523,17 @@ public class ComprehensionTemplate implements TemplateInterface {
                         isValidated = false;
                     }
 
-                    if(options.get(0).getText().toString().trim().equals("")){
+                    if (options.get(0).getText().toString().trim().equals("")) {
                         options.get(0).setError(activity.getString(R.string.cannot_be_empty));
                         isValidated = false;
                         return;
                     }
-                    if(options.get(1).getText().toString().trim().equals("")){
+                    if (options.get(1).getText().toString().trim().equals("")) {
                         options.get(1).setError(activity.getString(R.string.cannot_be_empty));
                         isValidated = false;
                         return;
                     }
-                    if(options.get(2).getText().toString().trim().equals("") && !options.get(3).getText().toString().trim().equals("")){
+                    if (options.get(2).getText().toString().trim().equals("") && !options.get(3).getText().toString().trim().equals("")) {
                         options.get(2).hasFocus();
                         options.get(2).setError(activity.getString(R.string.comprehension_select_option_3_first));
                         isValidated = false;
@@ -477,11 +550,11 @@ public class ComprehensionTemplate implements TemplateInterface {
                     }
 
                     for (EditText option : options) {
-                        if ("".equals(option.getText().toString().trim())){
+                        if ("".equals(option.getText().toString().trim())) {
                             option.setText("");
                             continue;
                         }
-                        if (option.getText().toString()!= null && "".equals(option.getText().toString().trim())) {
+                        if ("".equals(option.getText().toString().trim())) {
                             option.getText().clear();
                             option.setError(activity.getString(R.string.comprehension_template_valid_option));
                             isValidated = false;
@@ -512,50 +585,40 @@ public class ComprehensionTemplate implements TemplateInterface {
 
     @Override
     public Object deleteItem(Activity activity, int position) {
-        ComprehensionMetaModel comprehensionMetaModel =null;
-        ComprehensionModel comprehensionModel=null;
+        ComprehensionMetaModel comprehensionMetaModel = null;
+        ComprehensionModel comprehensionModel = null;
         if (position == -2) {
             comprehensionMetaModel = metaData.get(0);
             metaData.remove(0);
-            setEmptyView(activity);
             metaAdapter.notifyDataSetChanged();
         } else {
             comprehensionModel = comprehensionData.get(position);
             comprehensionData.remove(position);
-            setEmptyView(activity);
-            adapter.notifyDataSetChanged();
         }
+        adapter.notifyDataSetChanged();
         setEmptyView(activity);
-        if (comprehensionMetaModel==null)
-        {
+        if (comprehensionMetaModel == null) {
             return comprehensionModel;
-        }else
-        {
+        } else {
             return comprehensionMetaModel;
         }
     }
 
     @Override
     public void restoreItem(Activity activity, int position, Object object) {
-        if (position==-2)
-        {
-            if (object instanceof ComprehensionMetaModel)
-            {
-                ComprehensionMetaModel comprehensionMetaModel = (ComprehensionMetaModel)object;
-                if (comprehensionMetaModel!=null)
-                {
+        if (position == -2) {
+            if (object instanceof ComprehensionMetaModel) {
+                ComprehensionMetaModel comprehensionMetaModel = (ComprehensionMetaModel) object;
+                if (comprehensionMetaModel != null) {
                     metaData.add(comprehensionMetaModel);
                     metaAdapter.notifyDataSetChanged();
                 }
             }
-        }else
-        {
-            if (object instanceof ComprehensionModel)
-            {
-                ComprehensionModel comprehensionModel = (ComprehensionModel)object;
-                if (comprehensionModel!=null)
-                {
-                    comprehensionData.add(position,comprehensionModel);
+        } else {
+            if (object instanceof ComprehensionModel) {
+                ComprehensionModel comprehensionModel = (ComprehensionModel) object;
+                if (comprehensionModel != null) {
+                    comprehensionData.add(position, comprehensionModel);
                     adapter.notifyDataSetChanged();
                 }
             }
@@ -610,27 +673,56 @@ public class ComprehensionTemplate implements TemplateInterface {
 
     }
 
+    @Override
+    public boolean moveDown(Activity activity, int selectedPosition) {
+        try {
+            //Check already at last
+            if (selectedPosition == comprehensionData.size() - 1)
+                return false;
+            Collections.swap(comprehensionData, selectedPosition, selectedPosition + 1);
+            adapter.notifyDataSetChanged();
+            return true;
+        } catch (IndexOutOfBoundsException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean moveUp(Activity activity, int selectedPosition) {
+        try {
+            //Check already at top
+            if (selectedPosition == 0)
+                return false;
+            Collections.swap(comprehensionData, selectedPosition, selectedPosition - 1);
+            adapter.notifyDataSetChanged();
+            return true;
+        } catch (IndexOutOfBoundsException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     /**
      * @brief Toggles the visibility of empty text if Array has zero elements
      */
     private void setEmptyView(Activity activity) {
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && metaData.size() > 0) {
-            activity.findViewById(R.id.shadow_meta).setVisibility(View.VISIBLE);
-        }
-        if (comprehensionData.size() < 1 && metaData.size() < 1) {
-            activity.findViewById(R.id.shadow_meta).setVisibility(View.GONE);
-            ((TextViewPlus) activity.findViewById(R.id.empty_view_text)).setText(R.string.meta_add_help);
-            activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
-        } else if (comprehensionData.size() < 1) {
-            ((TextViewPlus) activity.findViewById(R.id.empty_view_text)).setText(R.string.add_item_help);
-            activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
-        } else if (metaData.size() < 1) {
-            activity.findViewById(R.id.shadow_meta).setVisibility(View.GONE);
-            ((TextViewPlus) activity.findViewById(R.id.empty_view_text)).setText(R.string.meta_add_help);
-            activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
-        } else {
-            activity.findViewById(R.id.empty).setVisibility(View.GONE);
+        try {
+            if (comprehensionData.size() < 1 && metaData.size() < 1) {
+                ((TextViewPlus) activity.findViewById(R.id.empty_view_text)).setText(R.string.meta_add_help);
+                activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
+            } else if (comprehensionData.size() < 1) {
+                ((TextViewPlus) activity.findViewById(R.id.empty_view_text)).setText(R.string.add_item_help);
+                activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
+            } else if (metaData.size() < 1) {
+                ((TextViewPlus) activity.findViewById(R.id.empty_view_text)).setText(R.string.meta_add_help);
+                activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
+            } else {
+                activity.findViewById(R.id.empty).setVisibility(View.GONE);
+            }
+        }catch (NullPointerException e)
+        {
+            e.printStackTrace();
         }
     }
 

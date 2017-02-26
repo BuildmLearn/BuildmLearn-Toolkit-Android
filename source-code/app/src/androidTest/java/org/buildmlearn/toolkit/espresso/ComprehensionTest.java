@@ -184,7 +184,7 @@ public class ComprehensionTest {
     private void editQuestions() {
         String question = "This is just a silly question whose answer changed to (a).";
 
-        onData(anything()).inAdapterView(withId(R.id.template_editor_listview)).atPosition(1).perform(longClick());
+        onData(anything()).inAdapterView(withId(R.id.template_editor_recyclerView)).atPosition(1).perform(longClick());
         onView(withId(R.id.action_edit)).perform(click());
         onView(withId(R.id.quiz_question)).perform(replaceText(question));
         closeSoftKeyboard();

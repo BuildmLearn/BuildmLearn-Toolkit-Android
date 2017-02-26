@@ -37,6 +37,7 @@ public class SettingsFragment extends PreferenceFragment {
     private static final int REQUEST_PICK_APK = 9985;
     private static final int REQUEST_CHOICES=9906;
     private Preference prefUsername;
+    private Toast mToast;
 
     private static int openChoices=0;
 
@@ -63,6 +64,7 @@ public class SettingsFragment extends PreferenceFragment {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.fragment_settings);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        mToast=Toast.makeText(getActivity()," ",Toast.LENGTH_SHORT);
 
         Preference deleteTempFiles = findPreference(getString(R.string.key_delete_temporary_files));
         deleteTempFiles.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
@@ -83,8 +85,10 @@ public class SettingsFragment extends PreferenceFragment {
                 if(NetworkUtils.isNetworkAvailable(getActivity()))
                     startActivity(new Intent(Intent.ACTION_VIEW,
                             Uri.parse("http://play.google.com/store/apps/details?id=" + getActivity().getPackageName())));
-                else
-                    Toast.makeText(getActivity(), R.string.settings_network_unavailable,Toast.LENGTH_SHORT).show();
+                else {
+                    mToast.setText(R.string.settings_network_unavailable);
+                    mToast.show();
+                }
                 return true;
             }
         });
@@ -120,6 +124,43 @@ public class SettingsFragment extends PreferenceFragment {
             @Override
             public boolean onPreferenceClick(Preference preference) {
                 resetUserName();
+                return true;
+            }
+        });
+
+        Preference checkUpdate = findPreference(getString(R.string.check_update));
+        checkUpdate.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                if(NetworkUtils.isNetworkAvailable(getActivity()))
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("http://play.google.com/store/apps/details?id=" + getActivity().getPackageName())));
+                else {
+                    AlertDialog dialog = new AlertDialog.Builder(getActivity())
+                            .setMessage(getString(R.string.settings_network_unavailable))
+                            .setPositiveButton(getString(R.string.quiz_ok), new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            }).create();
+                    dialog.show();
+
+                }
+                return true;
+            }
+        });
+        prefUsername.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                if ("".equals(newValue)) {
+                    Toast.makeText(getActivity(), R.string.enter, Toast.LENGTH_LONG).show();
+                    return false;
+                } else if (newValue != null && !Character.isLetterOrDigit(((String) newValue).charAt(0))) {
+                    Toast.makeText(getActivity(), R.string.name_valid_msg, Toast.LENGTH_LONG).show();
+                    return false;
+                }
+                prefUsername.setSummary((String) newValue);
                 return true;
             }
         });
@@ -322,7 +363,8 @@ public class SettingsFragment extends PreferenceFragment {
             if (size != 0) {
                 Toast.makeText(getActivity(), "Deleted " + size + " MB.", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(getActivity(), "No Temp Files Found!", Toast.LENGTH_SHORT).show();
+                mToast.setText("No Temp Files Found!");
+                mToast.show();
             }
         }
     }

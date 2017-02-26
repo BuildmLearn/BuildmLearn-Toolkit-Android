@@ -451,6 +451,9 @@
     <string name="pref_rate_summary">Rate our app on Play Store</string>
     <string name="pref_rate_key">rate</string>
     <string name="settings_network_unavailable">Network not available</string>
+    <string name="check_update">Update</string>
+    <string name="update_title">Check for New Version</string>
+    <string name="update_summary">Check for Latest Version of app Playstore</string>
     <string name="skip_tutorial">Skip Tutorial</string>
     <string name="simulator_frame_top">Simulator frame top</string>
     <string name="simulator_frame_left">simulator frame left</string>
@@ -459,4 +462,9 @@
     <string name="pref_tell_key">tell</string>
     <string name="pref_tell_title">Tell a friend</string>
     <string name="pref_tell_message">BuildmLearn Toolkit for your phone. Download it from here :</string>
+    <string name="comprehension_clear_all">CLEAR</string>
+    <string name="move_up">Move Up</string>
+    <string name="move_down">Move Down</string>
+    <string name="already_at_top">Already at top</string>
+    <string name="already_at_bottom">Already at bottom</string>
 </resources>

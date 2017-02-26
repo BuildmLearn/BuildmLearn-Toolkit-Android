@@ -208,6 +208,14 @@ public class QuestionFragment extends Fragment
             }
         });
 
+        rootView.findViewById(R.id.clear).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+               rg.clearCheck();
+            }
+        });
+
         if (Integer.parseInt(questionId) == 1) {
 
             rootView.findViewById(R.id.previous).setVisibility(View.INVISIBLE);
