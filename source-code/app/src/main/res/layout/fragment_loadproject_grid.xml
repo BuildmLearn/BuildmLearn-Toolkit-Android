@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/gridRootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:fab="http://schemas.android.com/apk/res-auto"
     tools:context="org.buildmlearn.toolkit.fragment.LoadProjectFragment">
 
     <GridView
@@ -28,31 +29,30 @@
 
     <TextView
         android:id="@+id/no_saved_project"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:padding="@dimen/main_menu_padding"
-        android:text="@string/no_saved_projects" />
+        android:text="@string/no_saved_projects"
+        android:textAppearance="?android:textAppearanceMedium" />
 
     <TextView
         android:id="@+id/no_saved_apks"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:padding="@dimen/main_menu_padding"
-        android:text="@string/no_saved_apks" />
+        android:text="@string/no_saved_apks"
+        android:textAppearance="?android:textAppearanceMedium" />
 
     <TextView
         android:id="@+id/no_saved_drafts"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:padding="@dimen/main_menu_padding"
-        android:text="@string/no_saved_drafts" />
-
+        android:text="@string/no_saved_drafts"
+        android:textAppearance="?android:textAppearanceMedium" />
 
 
 </RelativeLayout>
