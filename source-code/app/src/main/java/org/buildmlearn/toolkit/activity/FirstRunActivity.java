@@ -46,22 +46,18 @@ public class FirstRunActivity extends AppCompatActivity {
 
         Button next = (Button) findViewById(R.id.button_next);
         findViewById(R.id.focus_thief).clearFocus();
-        Animation anim_bounceinup=AnimationUtils.loadAnimation(getBaseContext(),R.anim.bounceinup);
+        Animation animBounceInput = AnimationUtils.loadAnimation(getBaseContext(), R.anim.bounceinup);
         name = (EditText) findViewById(R.id.first_name);
-        name.startAnimation(anim_bounceinup);
+        name.startAnimation(animBounceInput);
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (name.getText().toString().equals("")) {
                     name.setError(getApplicationContext().getResources().getString(R.string.enter_name));
-                }
-                else if(!Character.isLetterOrDigit(name.getText().toString().charAt(0)))
-                {
+                } else if (!Character.isLetterOrDigit(name.getText().toString().charAt(0))) {
                     name.setError(getApplicationContext().getResources().getString(R.string.valid_msg));
-                }
-                else
-                {
+                } else {
                     SharedPreferences.Editor editor = prefs.edit();
 
                     editor.putString(getString(R.string.key_user_name), name.getText().toString());
@@ -86,9 +82,7 @@ public class FirstRunActivity extends AppCompatActivity {
                             if (name.getText().toString().equals("")) {
                                 name.setError(getApplicationContext().getResources().getString(R.string.enter_name));
                                 return false;
-                            }
-                            else if(!Character.isLetterOrDigit(name.getText().toString().charAt(0)))
-                            {
+                            } else if (!Character.isLetterOrDigit(name.getText().toString().charAt(0))) {
                                 name.setError(getApplicationContext().getResources().getString(R.string.valid_msg));
                                 return false;
                             }

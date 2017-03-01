@@ -260,7 +260,6 @@
     <!-- Preference Data-->
 
 
-
     <string name="title_user_name">Enter your name</string>
 
     <string name="key_delete_temporary_files">delete_temp_files</string>
@@ -467,5 +466,5 @@
     <string name="move_down">Move Down</string>
     <string name="already_at_top">Already at top</string>
     <string name="already_at_bottom">Already at bottom</string>
-    <string name="button_next">next</string>
+    <string name="button_next">Next</string>
 </resources>
