@@ -1,9 +1,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:font="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="org.buildmlearn.toolkit.activity.FirstRunActivity">
+                xmlns:font="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="org.buildmlearn.toolkit.activity.FirstRunActivity">
 
     <ImageView
         android:layout_width="match_parent"
@@ -11,14 +11,15 @@
         android:adjustViewBounds="true"
         android:contentDescription="@string/buildmlearn_backdrop_image"
         android:scaleType="centerCrop"
-        android:src="@drawable/first_run_bg" />
+        android:src="@drawable/first_run_bg"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:weightSum="1">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -26,7 +27,7 @@
             android:adjustViewBounds="true"
             android:contentDescription="@string/buildmlearn_logo"
             android:scaleType="centerCrop"
-            android:src="@drawable/logo_70" />
+            android:src="@drawable/logo_70"/>
 
         <org.buildmlearn.toolkit.views.TextViewPlus
             android:layout_width="match_parent"
@@ -35,7 +36,7 @@
             android:text="@string/main_title"
             android:textColor="@color/white_secondary_text"
             android:textSize="@dimen/headline_leading"
-            font:customFont="roboto_light.ttf" />
+            font:customFont="roboto_light.ttf"/>
 
         <org.buildmlearn.toolkit.views.TextViewPlus
             android:layout_width="match_parent"
@@ -44,14 +45,14 @@
             android:text="@string/main_subtitle"
             android:textColor="@color/white_secondary_text"
             android:textSize="@dimen/title"
-            font:customFont="roboto_light.ttf" />
+            font:customFont="roboto_light.ttf"/>
 
         <View
             android:id="@+id/focus_thief"
             android:layout_width="1dp"
             android:layout_height="1dp"
             android:focusable="true"
-            android:focusableInTouchMode="true" />
+            android:focusableInTouchMode="true"/>
 
         <EditText
             android:id="@+id/first_name"
@@ -59,14 +60,28 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:ems="10"
-            
+
             android:hint="@string/main_name_hint"
             android:inputType="textPersonName"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:textColorHint="@color/white_hint_text_disabled" />
+            android:textColorHint="@color/white_hint_text_disabled"/>
 
+        <Button
+            android:id="@+id/button_next"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="30dp"
+            android:layout_weight="0.49"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:text="@string/button_next"
+            android:textAllCaps="false"/>
 
     </LinearLayout>
+
 
 </RelativeLayout>
