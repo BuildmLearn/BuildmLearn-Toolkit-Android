@@ -36,14 +36,6 @@
                 android:layout_gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/flash_item_edit"
-                    style="@style/TextView.CircleIcon"
-                    android:layout_gravity="center_vertical"
-                    android:contentDescription="@string/info_edit_title"
-                    android:padding="2dp"
-                    android:src="@drawable/menu_edit_template_item" />
-
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -80,21 +72,13 @@
                 </LinearLayout>
 
 
-                <ImageView
-                    android:id="@+id/flash_template_delete"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
-                    android:adjustViewBounds="true"
-                    android:contentDescription="@string/delete_item"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/template_delete" />
-
-
             </LinearLayout>
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/grey_shade_4_flash"/>
 
     </android.support.v7.widget.CardView>
 

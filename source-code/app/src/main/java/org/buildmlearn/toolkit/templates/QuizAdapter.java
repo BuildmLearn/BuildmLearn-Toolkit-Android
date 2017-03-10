@@ -138,36 +138,6 @@ abstract class QuizAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 }
             });
 
-            quizAdapterHolder.edit.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    editItem(viewHolder.getLayoutPosition()-1, context);
-                }
-            });
-            quizAdapterHolder.delete.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    final QuizModel quizModel = quizData.get(viewHolder.getLayoutPosition()-1);
-                    quizData.remove(viewHolder.getLayoutPosition()-1);
-                    notifyDataSetChanged();
-                    Snackbar.make(v, R.string.snackbar_deleted_message, Snackbar.LENGTH_LONG)
-                            .setAction(R.string.snackbar_undo, new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    if (viewHolder.getLayoutPosition() - 1 >= 0) {
-                                        quizData.add(viewHolder.getLayoutPosition() - 1, quizModel);
-                                    } else {
-                                        quizData.add(quizModel);
-                                    }
-                                    notifyDataSetChanged();
-                                    Snackbar.make(v, R.string.snackbar_restored_message, Snackbar.LENGTH_LONG).show();
-                                }
-                            }).show();
-
-                    ((TemplateEditor) context).restoreSelectedView();
-                    expandedPostion = -1;
-                }
-            });
         } else if (viewHolder instanceof HeaderHolder) {
             final HeaderHolder headerHolder = (HeaderHolder) viewHolder;
             try {
@@ -406,8 +376,6 @@ abstract class QuizAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             options.add((TextViewPlus) itemView.findViewById(R.id.answer4));
             questionIcon = (ImageView) itemView.findViewById(R.id.question_icon);
             quizOptionsBox = (LinearLayout) itemView.findViewById(R.id.quiz_options_box);
-            delete = (Button) itemView.findViewById(R.id.quiz_item_delete);
-            edit = (Button) itemView.findViewById(R.id.quiz_item_edit);
         }
 
         @Override
