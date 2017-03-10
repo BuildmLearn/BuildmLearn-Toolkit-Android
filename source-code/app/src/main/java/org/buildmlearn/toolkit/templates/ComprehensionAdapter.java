@@ -319,6 +319,13 @@ abstract class ComprehensionAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                         }
                     }
                 }
+
+                if ("".equals(options.get(checkedAns).getText().toString().trim())){
+                    Toast.makeText(context, R.string.answer_not_blank, Toast.LENGTH_SHORT).show();
+                    isValidated = false;
+                    return;
+                }
+
                 if (isValidated) {
                     dialog.dismiss();
                     ArrayList<String> answerOptions = new ArrayList<>();
