@@ -1,19 +1,19 @@
 package org.buildmlearn.toolkit.activity;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.support.design.widget.NavigationView;
-
+import android.support.design.widget.NavigationView
 import android.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
-import android.os.Handler;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -30,6 +30,8 @@ import org.buildmlearn.toolkit.fragment.LoadProjectFragment;
 import org.buildmlearn.toolkit.fragment.SettingsFragment;
 import org.buildmlearn.toolkit.utilities.SmoothNavigationToggle;
 
+;
+
 /**
  * @brief Home screen of the application containg all the menus and settings.
  */
@@ -40,12 +42,13 @@ public class HomeActivity extends AppCompatActivity
     private final String FRAGMENT_TAG_HOME = "Home";
     private final String FRAGMENT_TAG_PROJECT = "Project";
     private final String FRAGMENT_TAG_APK = "Apk";
+    NavigationView navigationView;
     private boolean backPressedOnce = false;
-
+    private Runnable runnable;
+    private Handler handler = new Handler();
+    private long timer = 2000;
     private SmoothNavigationToggle smoothNavigationToggle;
-
     private NavigationView navigationView;
-
     /**
      * {@inheritDoc}
      */
@@ -72,7 +75,7 @@ public class HomeActivity extends AppCompatActivity
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         smoothNavigationToggle = new SmoothNavigationToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close){
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
@@ -130,7 +133,7 @@ public class HomeActivity extends AppCompatActivity
                     @Override
                     public void run() {
                         fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                                .replace(R.id.container, new LoadProjectFragment(),FRAGMENT_TAG_PROJECT).commit();
+                                .replace(R.id.container, new LoadProjectFragment(), FRAGMENT_TAG_PROJECT).commit();
                         if (getSupportActionBar() != null) {
                             getSupportActionBar().setTitle(R.string.menu_load_project);
                         }
@@ -143,7 +146,7 @@ public class HomeActivity extends AppCompatActivity
                     @Override
                     public void run() {
                         fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                                .replace(R.id.container, new LoadApkFragment(),FRAGMENT_TAG_APK).commit();
+                                .replace(R.id.container, new LoadApkFragment(), FRAGMENT_TAG_APK).commit();
                         if (getSupportActionBar() != null) {
                             getSupportActionBar().setTitle(R.string.menu_load_apks);
                         }
@@ -220,20 +223,19 @@ public class HomeActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else if (fragment != null && fragment.isVisible()) {
-            if(backPressedOnce){
+            if (backPressedOnce) {
                 finish();
             }
-            if(!backPressedOnce)
-                Toast.makeText(this, "Tap back once more to exit.", Toast.LENGTH_SHORT).show();
-            backPressedOnce=true;
-            new Handler().postDelayed(new Runnable()
-            {
+            if (!backPressedOnce)
+                Toast.makeText(this, R.string.tap_to_exit, Toast.LENGTH_SHORT).show();
+            backPressedOnce = true;
+            runnable = new Runnable() {
                 @Override
-                public void run()
-                {
-                    backPressedOnce= false;
+                public void run() {
+                    backPressedOnce = false;
                 }
-            }, 2000);
+            };
+            handler.postDelayed(runnable, timer);
         } else {
             fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                     .replace(R.id.container, new HomeFragment(), FRAGMENT_TAG_HOME).commit();
@@ -243,6 +245,15 @@ public class HomeActivity extends AppCompatActivity
             navigationView.setCheckedItem(R.id.nav_home);
         }
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (handler != null) {
+            handler.removeCallbacks(runnable);
+        }
+    }
+
 }
 
 

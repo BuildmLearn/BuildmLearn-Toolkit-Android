@@ -10,6 +10,7 @@
     <string name="menu_home">Home</string>
     <string name="buildmlearn_welcome_title">Welcome to BuildmLearn Toolkit</string>
     <string name="welcome">Welcome</string>
+    <string name="tap_to_exit">Tap back once more to exit.</string>
 
     <!--Snackbar-->
     <string name="snackbar_deleted_message">Item deleted</string>
