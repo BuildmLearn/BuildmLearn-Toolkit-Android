@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_centerHorizontal="true"
-    tools:context="dictationtemplate.fragment.DetailActivityFragment">
+    tools:mContext="dictationtemplate.fragment.DetailActivityFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

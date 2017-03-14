@@ -2,6 +2,7 @@ package org.buildmlearn.toolkit.templates;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
@@ -23,6 +24,7 @@ import android.widget.Toast;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.activity.TemplateEditor;
+import org.buildmlearn.toolkit.adapter.TemplateAdapter;
 import org.buildmlearn.toolkit.views.TextViewPlus;
 import org.buildmlearn.toolkit.views.dragdroprecyclerview.ItemTouchHelperAdapter;
 import org.buildmlearn.toolkit.views.dragdroprecyclerview.ItemTouchHelperViewHolder;
@@ -397,10 +399,20 @@ abstract class ComprehensionAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         HeaderHolder(View itemView) {
             super(itemView);
             this.view = itemView;
+            Context context = itemView.getContext();
             authorEditText = (EditText) itemView.findViewById(R.id.author_name);
             titleEditText = (EditText) itemView.findViewById(R.id.template_title);
             listView = (ListView) itemView.findViewById(R.id.template_meta_listview);
             shadowMeta = itemView.findViewById(R.id.shadow_meta);
+
+            LinearLayout headerLayout = (LinearLayout) itemView.findViewById(R.id.header_layout);
+            headerLayout.setBackgroundColor(TemplateAdapter.ListColor.values()[5].getColor());
+            headerLayout.invalidate();
+            ((TemplateEditor)context).getSupportActionBar().setBackgroundDrawable(new ColorDrawable(TemplateAdapter.ListColor.values()[5].getColor()));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                ((TemplateEditor)context).getWindow().setStatusBarColor(TemplateAdapter.ListDarkColor.values()[5].getColor());
+                ((TemplateEditor)context).getWindow().setNavigationBarColor(TemplateAdapter.ListColor.values()[5].getColor());
+            }
         }
     }
 

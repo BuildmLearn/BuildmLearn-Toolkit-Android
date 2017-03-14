@@ -16,6 +16,7 @@ import android.widget.ImageView;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.activity.TemplateEditor;
+import org.buildmlearn.toolkit.holder.HeaderHolder;
 import org.buildmlearn.toolkit.views.TextViewPlus;
 import org.buildmlearn.toolkit.views.dragdroprecyclerview.ItemTouchHelperAdapter;
 import org.buildmlearn.toolkit.views.dragdroprecyclerview.ItemTouchHelperViewHolder;
@@ -55,7 +56,7 @@ abstract class LearnSpellingAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             return new LearnSpellingHolder(view);
         } else if (viewType == TYPE_HEADER) {
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listview_header_template, parent, false);
-            return new HeaderHolder(view);
+            return new HeaderHolder(view,mContext,1);
         }
         return null;
     }
@@ -225,16 +226,6 @@ abstract class LearnSpellingAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         } catch (IndexOutOfBoundsException e) {
             e.printStackTrace();
             return false;
-        }
-    }
-
-    private static class HeaderHolder extends RecyclerView.ViewHolder {
-        private EditText authorEditText, titleEditText;
-
-        HeaderHolder(View itemView) {
-            super(itemView);
-            authorEditText = (EditText) itemView.findViewById(R.id.author_name);
-            titleEditText = (EditText) itemView.findViewById(R.id.template_title);
         }
     }
 

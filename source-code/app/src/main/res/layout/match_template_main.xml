@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:descendantFocusability="blocksDescendants"
     android:orientation="vertical"
-    tools:context=".matchtemplate.fragment.MainFragment">
+    tools:mContext=".matchtemplate.fragment.MainFragment">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_main"

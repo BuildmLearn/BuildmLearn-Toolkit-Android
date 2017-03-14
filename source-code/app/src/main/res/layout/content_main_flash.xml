@@ -5,7 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="52.12dp"
-    tools:context=".flashcardtemplate.fragment.MainFragment"
+    tools:mContext=".flashcardtemplate.fragment.MainFragment"
     tools:showIn="@layout/app_bar_main_flash">
 
     <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"

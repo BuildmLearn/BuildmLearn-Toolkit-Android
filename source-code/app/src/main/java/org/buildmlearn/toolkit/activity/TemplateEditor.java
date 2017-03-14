@@ -1,3 +1,4 @@
+
 package org.buildmlearn.toolkit.activity;
 
 import android.Manifest;
@@ -200,7 +201,7 @@ public class TemplateEditor extends AppCompatActivity implements TemplateEditorI
                                     public void onClick(DialogInterface dialog, int which) {
                                         dialog.dismiss();
                                     }
-                                }).setPositiveButton("install", new DialogInterface.OnClickListener(){
+                                }).setPositiveButton("install", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         Intent intent = new Intent();
@@ -1049,7 +1050,7 @@ public class TemplateEditor extends AppCompatActivity implements TemplateEditorI
 
     @Override
     public void setProjectTitle(String title) {
-        this.title=title;
+        this.title = title;
     }
 
     @Override
@@ -1066,6 +1067,7 @@ public class TemplateEditor extends AppCompatActivity implements TemplateEditorI
             populateMetaView(getMetaAdapter(), listView);
         }
     }
+
     @Override
     public void setAuthorName(String authorName) {
         this.authorName = authorName;
@@ -1079,4 +1081,3 @@ public class TemplateEditor extends AppCompatActivity implements TemplateEditorI
         this.metaAdapter = metaAdapter;
     }
 }
-
