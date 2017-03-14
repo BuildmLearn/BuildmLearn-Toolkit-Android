@@ -1,7 +1,6 @@
 package org.buildmlearn.toolkit.utilities;
 
 import android.app.Activity;
-
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 

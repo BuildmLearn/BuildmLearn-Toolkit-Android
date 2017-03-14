@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.BaseAdapter;
 
+import org.buildmlearn.toolkit.activity.TemplateEditorInterface;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -25,7 +26,7 @@ public interface TemplateInterface extends Serializable {
      * @return BaseAdapter inherited Object
      * @brief Called from Template Editor when template editor is started for creating a new template project.
      */
-    BaseAdapter newTemplateEditorAdapter(Context context);
+    Object newTemplateEditorAdapter(Context context, TemplateEditorInterface templateEditorInterface);
 
     /**
      * @param context Application context
@@ -38,7 +39,7 @@ public interface TemplateInterface extends Serializable {
      * @return BaseAdapter inherited Object
      * @brief This function is used to get the adapter (containing template data) for a existing/current template project.
      */
-    BaseAdapter currentTemplateEditorAdapter();
+    Object currentTemplateEditorAdapter();
 
     /**
      * @return BaseAdapter inherited Object
@@ -48,7 +49,7 @@ public interface TemplateInterface extends Serializable {
 
     BaseAdapter loadProjectMetaEditor(Context context, Document doc);
 
-    BaseAdapter loadProjectTemplateEditor(Context context, ArrayList<Element> data);
+    Object loadProjectTemplateEditor(Context context, ArrayList<Element> data, TemplateEditorInterface templateEditorInterface);
 
     /**
      * @param templateId
@@ -131,5 +132,21 @@ public interface TemplateInterface extends Serializable {
      * @brief Called whenever onActivityResult is called in Template Editor. Can be used to perform action related to intent and callbacks.
      */
     void onActivityResult(Context context, int requestCode, int resultCode, Intent intent);
+
+    /**
+     * Move selectedPosition item down by 1
+     * @param activity Current activity
+     * @param selectedPosition Position of item to move down
+     * @return is rearranging occurs
+     */
+    boolean moveDown(Activity activity, int selectedPosition);
+
+    /**
+     * Move selectedPosition item up by 1
+     * @param activity Current activity
+     * @param selectedPosition Position of item to move up
+     * @return is rearranging occurs
+     */
+    boolean moveUp(Activity activity, int selectedPosition);
 
 }

@@ -5,12 +5,12 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
-
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.activity.TemplateEditorInterface;
 import org.buildmlearn.toolkit.learnspelling.fragment.SplashFragment;
 import org.buildmlearn.toolkit.model.Template;
 import org.buildmlearn.toolkit.model.TemplateInterface;
@@ -18,6 +18,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * @brief Learn Spelling template code implementing methods of TemplateInterface
@@ -54,8 +55,38 @@ public class LearnSpellingTemplate implements TemplateInterface {
     }
 
     @Override
-    public BaseAdapter newTemplateEditorAdapter(Context context) {
-        adapter = new LearnSpellingAdapter(context, mLearnSpellingData);
+    public Object newTemplateEditorAdapter(Context context, final TemplateEditorInterface templateEditorInterface) {
+        adapter = new LearnSpellingAdapter(context, mLearnSpellingData) {
+            @Override
+            public boolean onLongItemClick(int position, View view) {
+                return templateEditorInterface.onItemLongClick(position, view);
+            }
+
+            @Override
+            protected String getAuthorName() {
+                return templateEditorInterface.getAuthorName();
+            }
+
+            @Override
+            protected void setAuthorName(String authorName) {
+                templateEditorInterface.setAuthorName(authorName);
+            }
+
+            @Override
+            protected void setTitle(String title) {
+                templateEditorInterface.setProjectTitle(title);
+            }
+
+            @Override
+            protected void restoreToolbarColorSchema() {
+                templateEditorInterface.restoreColorSchema();
+            }
+
+            @Override
+            protected String getTitle() {
+                return templateEditorInterface.getProjectTitle();
+            }
+        };
         setEmptyView((Activity) context);
         return adapter;
     }
@@ -66,7 +97,7 @@ public class LearnSpellingTemplate implements TemplateInterface {
     }
 
     @Override
-    public BaseAdapter currentTemplateEditorAdapter() {
+    public Object currentTemplateEditorAdapter() {
         return adapter;
     }
 
@@ -81,14 +112,44 @@ public class LearnSpellingTemplate implements TemplateInterface {
     }
 
     @Override
-    public BaseAdapter loadProjectTemplateEditor(Context context, ArrayList<Element> data) {
+    public Object loadProjectTemplateEditor(Context context, ArrayList<Element> data, final TemplateEditorInterface templateEditorInterface) {
         mLearnSpellingData = new ArrayList<>();
         for (Element item : data) {
             String infoObject = item.getElementsByTagName("word").item(0).getTextContent();
             String infoDescription = item.getElementsByTagName("meaning").item(0).getTextContent();
             mLearnSpellingData.add(new LearnSpellingModel(infoObject, infoDescription));
         }
-        adapter = new LearnSpellingAdapter(context, mLearnSpellingData);
+        adapter = new LearnSpellingAdapter(context, mLearnSpellingData) {
+            @Override
+            public boolean onLongItemClick(int position, View view) {
+                return templateEditorInterface.onItemLongClick(position, view);
+            }
+
+            @Override
+            protected String getAuthorName() {
+                return templateEditorInterface.getAuthorName();
+            }
+
+            @Override
+            protected void setAuthorName(String authorName) {
+                templateEditorInterface.setAuthorName(authorName);
+            }
+
+            @Override
+            protected void setTitle(String title) {
+                templateEditorInterface.setProjectTitle(title);
+            }
+
+            @Override
+            protected void restoreToolbarColorSchema() {
+                templateEditorInterface.restoreColorSchema();
+            }
+
+            @Override
+            protected String getTitle() {
+                return templateEditorInterface.getProjectTitle();
+            }
+        };
         setEmptyView((Activity) context);
         return adapter;
     }
@@ -201,12 +262,10 @@ public class LearnSpellingTemplate implements TemplateInterface {
 
     @Override
     public void restoreItem(Activity activity, int position, Object object) {
-        if (object instanceof LearnSpellingModel)
-        {
-            LearnSpellingModel learnSpellingModel = (LearnSpellingModel)object;
-            if (learnSpellingModel!=null)
-            {
-                mLearnSpellingData.add(position,learnSpellingModel);
+        if (object instanceof LearnSpellingModel) {
+            LearnSpellingModel learnSpellingModel = (LearnSpellingModel) object;
+            if (learnSpellingModel != null) {
+                mLearnSpellingData.add(position, learnSpellingModel);
                 adapter.notifyDataSetChanged();
                 setEmptyView(activity);
             }
@@ -250,6 +309,36 @@ public class LearnSpellingTemplate implements TemplateInterface {
     @Override
     public void onActivityResult(Context context, int requestCode, int resultCode, Intent intent) {
         // This is intentionally empty
+    }
+
+    @Override
+    public boolean moveDown(Activity activity, int selectedPosition) {
+        try {
+            //Check already at last
+            if (selectedPosition == mLearnSpellingData.size() - 1)
+                return false;
+            Collections.swap(mLearnSpellingData, selectedPosition, selectedPosition + 1);
+            adapter.notifyDataSetChanged();
+            return true;
+        } catch (IndexOutOfBoundsException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean moveUp(Activity activity, int selectedPosition) {
+        try {
+            //Check already at top
+            if (selectedPosition == 0)
+                return false;
+            Collections.swap(mLearnSpellingData, selectedPosition, selectedPosition - 1);
+            adapter.notifyDataSetChanged();
+            return true;
+        } catch (IndexOutOfBoundsException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     /**

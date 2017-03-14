@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.adapter.TemplateAdapter;
@@ -29,12 +31,21 @@ public class TemplateActivity extends AppCompatActivity {
         assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
+
+        //setting the grid layout to cut-off white space in tablet view
+        DisplayMetrics displayMetrics = this.getResources().getDisplayMetrics();
+        float width = displayMetrics.widthPixels / displayMetrics.density;
+        int spanCount = (int) (width / 500.00);
+
         TemplateAdapter mAdapter = new TemplateAdapter(this);
         RecyclerView mRecyclerView = (RecyclerView) findViewById(android.R.id.list);
         assert mRecyclerView != null;
         mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
+        if (findViewById(R.id.gridRootLayout) != null) {
+            mRecyclerView.setLayoutManager(new GridLayoutManager(this, spanCount));
+        } else {
+            mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        }
         mAdapter.setOnClickListener(new TemplateAdapter.SetOnClickListener() {
             @Override
             public void onItemClick(int position) {

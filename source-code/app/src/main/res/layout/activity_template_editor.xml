@@ -4,7 +4,7 @@
     android:id="@+id/relative_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.buildmlearn.toolkit.activity.TemplateEditor">
+    tools:mContext="org.buildmlearn.toolkit.activity.TemplateEditor">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -13,27 +13,26 @@
         android:layout_height="?attr/actionBarSize"
         android:layout_gravity="center_horizontal|top" />
 
-    <ListView
-        android:id="@+id/template_editor_listview"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/template_editor_recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@+id/toolbar"
         android:layout_gravity="center_vertical"
         android:clipToPadding="false"
         android:divider="@android:color/transparent"
-        android:dividerHeight="8dp"
-        android:paddingBottom="@dimen/cardview_padding_last_bottom" />
+        android:dividerHeight="8dp" />
 
     <LinearLayout
         android:id="@+id/empty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_below="@+id/template_editor_listview"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="340dp"
         android:layout_centerHorizontal="true"
-        android:gravity="center"
+        android:gravity="bottom"
+        android:paddingBottom="@dimen/padding_small"
         android:orientation="vertical">
-
 
         <view
             android:id="@+id/empty_view_text"

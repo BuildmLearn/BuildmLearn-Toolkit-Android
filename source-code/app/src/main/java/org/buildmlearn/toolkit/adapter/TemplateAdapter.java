@@ -138,7 +138,7 @@ public class TemplateAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return position % 2;
     }
 
-    enum ListColor {
+    public enum ListColor {
         BLUE("#29A6D4"),
         GREEN("#1C7D6C"),
         ORANGE("#F77400"),
@@ -153,8 +153,34 @@ public class TemplateAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         final
         int color;
 
-        ListColor( String colorCode) {
-            this.color =  Color.parseColor(colorCode);
+        ListColor(String colorCode) {
+            //noinspection ResourceType
+            this.color = Color.parseColor(colorCode);
+        }
+
+        public int getColor() {
+            return color;
+        }
+    }
+
+    public enum ListDarkColor {
+        BLUE("#1F7D9F"),
+        GREEN("#155E51"),
+        ORANGE("#E65100"),
+        RED("#B82C2D"),
+        GRAYISH("#5A6C75"),
+        PURPLE("#80358D"),
+        YELLOW("#BB7816"),
+        YELLOW_GREEN("#739A26");
+
+        private
+        @ColorRes
+        final
+        int color;
+
+        ListDarkColor(String colorCode) {
+            //noinspection ResourceType
+            this.color = Color.parseColor(colorCode);
         }
 
         public int getColor() {

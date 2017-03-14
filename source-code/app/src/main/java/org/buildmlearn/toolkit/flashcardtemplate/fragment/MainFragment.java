@@ -1,6 +1,5 @@
 package org.buildmlearn.toolkit.flashcardtemplate.fragment;
 
-import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -132,7 +131,6 @@ public class MainFragment extends Fragment implements NavigationView.OnNavigatio
 
                     Fragment frag = MainFragment.newInstance();
                     frag.setArguments(arguments);
-                    getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                     getActivity().getSupportFragmentManager().beginTransaction().replace(((ViewGroup) getView().getParent()).getId(), frag).addToBackStack(null).commit();
 
                     return false;
@@ -144,12 +142,12 @@ public class MainFragment extends Fragment implements NavigationView.OnNavigatio
         mi.setTitle(mi.getTitle());
 
 
-        Cursor flash_cursor = db.getFlashCursorById(Integer.parseInt(FlashId));
-        flash_cursor.moveToFirst();
-        String question = flash_cursor.getString(Constants.COL_QUESTION);
-        String answer = flash_cursor.getString(Constants.COL_ANSWER);
-        String hint = flash_cursor.getString(Constants.COL_HINT);
-        String base64 = flash_cursor.getString(Constants.COL_BASE64);
+        Cursor flashCursor = db.getFlashCursorById(Integer.parseInt(FlashId));
+        flashCursor.moveToFirst();
+        String question = flashCursor.getString(Constants.COL_QUESTION);
+        String answer = flashCursor.getString(Constants.COL_ANSWER);
+        String hint = flashCursor.getString(Constants.COL_HINT);
+        String base64 = flashCursor.getString(Constants.COL_BASE64);
 
         assert rootView.findViewById(R.id.intro_number) != null;
         ((TextView) rootView.findViewById(R.id.intro_number)).setText(String.format(Locale.ENGLISH, getString(R.string.card)+"#%d of %d", Integer.parseInt(FlashId), numFlash));
@@ -194,7 +192,6 @@ public class MainFragment extends Fragment implements NavigationView.OnNavigatio
 
                 Fragment frag = MainFragment.newInstance();
                 frag.setArguments(arguments);
-                getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 getActivity().getSupportFragmentManager().beginTransaction().replace(((ViewGroup) getView().getParent()).getId(), frag).addToBackStack(null).commit();
 
             }
@@ -214,7 +211,6 @@ public class MainFragment extends Fragment implements NavigationView.OnNavigatio
 
                     Fragment frag = MainFragment.newInstance();
                     frag.setArguments(arguments);
-                    getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                     getActivity().getSupportFragmentManager().beginTransaction().replace(((ViewGroup) getView().getParent()).getId(), frag).addToBackStack(null).commit();
 
 
@@ -223,7 +219,6 @@ public class MainFragment extends Fragment implements NavigationView.OnNavigatio
                     Bundle arguments = new Bundle();
                     Fragment frag = LastFragment.newInstance();
                     frag.setArguments(arguments);
-                    getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                     getActivity().getSupportFragmentManager().beginTransaction().replace(((ViewGroup) getView().getParent()).getId(), frag).addToBackStack(null).commit();
 
                 }

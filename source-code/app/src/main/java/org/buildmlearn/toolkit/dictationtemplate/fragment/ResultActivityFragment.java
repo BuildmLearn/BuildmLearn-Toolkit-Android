@@ -42,7 +42,7 @@ public class ResultActivityFragment extends Fragment implements LoaderCallbacks<
     private final ContentValues dictValues;
 
     private View rootView;
-    private String dict_Id;
+    private String dictId;
     private String passageEntered;
     private DictDb db;
 
@@ -60,7 +60,7 @@ public class ResultActivityFragment extends Fragment implements LoaderCallbacks<
                              Bundle savedInstanceState) {
         Bundle arguments = getArguments();
         if (arguments != null) {
-            dict_Id = arguments.getString(Intent.EXTRA_TEXT);
+            dictId = arguments.getString(Intent.EXTRA_TEXT);
             passageEntered = arguments.getString(Constants.passage);
         }
         rootView = inflater.inflate(R.layout.fragment_result_dict, container, false);
@@ -116,14 +116,14 @@ public class ResultActivityFragment extends Fragment implements LoaderCallbacks<
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        if (null != dict_Id) {
+        if (null != dictId) {
             switch (id) {
                 case DETAIL_LOADER:
 
                     return new CursorLoader(getActivity(), null, Constants.DICT_COLUMNS, null, null, null) {
                         @Override
                         public Cursor loadInBackground() {
-                            return db.getDictCursorById(Integer.parseInt(dict_Id));
+                            return db.getDictCursorById(Integer.parseInt(dictId));
                         }
                     };
                 default: //do nothing
@@ -160,7 +160,7 @@ public class ResultActivityFragment extends Fragment implements LoaderCallbacks<
                         getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
                         Bundle arguments = new Bundle();
-                        arguments.putString(Intent.EXTRA_TEXT, dict_Id);
+                        arguments.putString(Intent.EXTRA_TEXT, dictId);
 
                         Fragment frag = org.buildmlearn.toolkit.dictationtemplate.fragment.DetailActivityFragment.newInstance();
                         frag.setArguments(arguments);

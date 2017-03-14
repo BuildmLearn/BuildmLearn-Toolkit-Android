@@ -4,15 +4,15 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
 import android.support.v7.app.AlertDialog;
-
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import org.buildmlearn.toolkit.R;
+import org.buildmlearn.toolkit.activity.TemplateEditorInterface;
 import org.buildmlearn.toolkit.matchtemplate.fragment.SplashFragment;
 import org.buildmlearn.toolkit.model.Template;
 import org.buildmlearn.toolkit.model.TemplateInterface;
@@ -21,6 +21,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * @brief Match template code implementing methods of TemplateInterface
@@ -40,28 +41,28 @@ public class MatchTemplate implements TemplateInterface {
         metaData = new ArrayList<>();
     }
 
-    private static boolean validated(Context context, EditText title, EditText first_list_title, EditText second_list_title) {
-        if (title == null || first_list_title == null || second_list_title == null) {
+    private static boolean validated(Context context, EditText title, EditText firstListTitle, EditText secondListTitle) {
+        if (title == null || firstListTitle == null || secondListTitle == null) {
             return false;
         }
 
         String titleText = title.getText().toString().trim();
-        String first_list_titleText = first_list_title.getText().toString().trim();
-        String second_list_titleText = second_list_title.getText().toString().trim();
+        String firstListTitleText = firstListTitle.getText().toString().trim();
+        String secondListTitleText = secondListTitle.getText().toString().trim();
 
         if ("".equals(titleText)) {
             title.hasFocus();
             title.setError(context.getString(R.string.match_main_title));
             return false;
-        } else if ("".equals(first_list_titleText)) {
-            first_list_title.hasFocus();
-            first_list_title.setError(context.getString(R.string.match_first_list_title));
+        } else if ("".equals(firstListTitleText)) {
+            firstListTitle.hasFocus();
+            firstListTitle.setError(context.getString(R.string.match_first_list_title));
             return false;
-        } else if ("".equals(second_list_titleText)) {
-            second_list_title.hasFocus();
-            second_list_title.setError(context.getString(R.string.match_second_list_title));
+        } else if ("".equals(secondListTitleText)) {
+            secondListTitle.hasFocus();
+            secondListTitle.setError(context.getString(R.string.match_second_list_title));
             return false;
-        } else if (first_list_titleText.equalsIgnoreCase(second_list_titleText)){
+        } else if (firstListTitleText.equalsIgnoreCase(secondListTitleText)){
             Toast.makeText(context, "Title of two lists cannot be same.", Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -69,23 +70,23 @@ public class MatchTemplate implements TemplateInterface {
         return true;
     }
 
-    private static boolean validated(Context context, EditText first_list_title, EditText second_list_title) {
-        if (first_list_title == null || second_list_title == null) {
+    private static boolean validated(Context context, EditText firstListTitle, EditText secondListTitle) {
+        if (firstListTitle == null || secondListTitle == null) {
             return false;
         }
 
-        String first_list_titleText = first_list_title.getText().toString().trim();
-        String second_list_titleText = second_list_title.getText().toString().trim();
+        String firstListTitleText = firstListTitle.getText().toString().trim();
+        String secondListTitleText = secondListTitle.getText().toString().trim();
 
-        if (first_list_titleText.equals("")) {
-            first_list_title.hasFocus();
-            first_list_title.setError(context.getString(R.string.match_first_list_title));
+        if (firstListTitleText.equals("")) {
+            firstListTitle.hasFocus();
+            firstListTitle.setError(context.getString(R.string.match_first_list_title));
             return false;
-        } else if (second_list_titleText.equals("")) {
-            second_list_title.hasFocus();
-            second_list_title.setError(context.getString(R.string.match_second_list_title));
+        } else if (secondListTitleText.equals("")) {
+            secondListTitle.hasFocus();
+            secondListTitle.setError(context.getString(R.string.match_second_list_title));
             return false;
-        } else if (second_list_titleText.equals(first_list_titleText)){
+        } else if (secondListTitleText.equals(firstListTitleText)){
             Toast.makeText(context, "Two options cannot be same.", Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -94,8 +95,43 @@ public class MatchTemplate implements TemplateInterface {
     }
 
     @Override
-    public BaseAdapter newTemplateEditorAdapter(Context context) {
-        adapter = new MatchAdapter(context, matchData);
+    public Object newTemplateEditorAdapter(Context context, final TemplateEditorInterface templateEditorInterface) {
+        adapter = new MatchAdapter(matchData) {
+            @Override
+            public boolean onLongItemClick(int position, View view) {
+                return templateEditorInterface.onItemLongClick(position, view);
+            }
+
+            @Override
+            protected String getAuthorName() {
+                return templateEditorInterface.getAuthorName();
+            }
+
+            @Override
+            protected void setAuthorName(String authorName) {
+                templateEditorInterface.setAuthorName(authorName);
+            }
+
+            @Override
+            protected void setTitle(String title) {
+                templateEditorInterface.setProjectTitle(title);
+            }
+
+            @Override
+            protected void populateMetaList(ListView listView) {
+                templateEditorInterface.populateMetaList(listView);
+            }
+
+            @Override
+            protected void restoreToolbarColorSchema() {
+                templateEditorInterface.restoreColorSchema();
+            }
+
+            @Override
+            protected String getTitle() {
+                return templateEditorInterface.getProjectTitle();
+            }
+        };
         return adapter;
     }
 
@@ -106,7 +142,7 @@ public class MatchTemplate implements TemplateInterface {
     }
 
     @Override
-    public BaseAdapter currentTemplateEditorAdapter() {
+    public Object currentTemplateEditorAdapter() {
         return adapter;
     }
 
@@ -115,7 +151,7 @@ public class MatchTemplate implements TemplateInterface {
     }
 
     @Override
-    public BaseAdapter loadProjectTemplateEditor(Context context, ArrayList<Element> data) {
+    public Object loadProjectTemplateEditor(Context context, ArrayList<Element> data, final TemplateEditorInterface templateEditorInterface) {
         matchData = new ArrayList<>();
         for (Element item : data) {
             String first_list_item = item.getElementsByTagName("first_list_item").item(0).getTextContent();
@@ -124,16 +160,51 @@ public class MatchTemplate implements TemplateInterface {
             matchData.add(new MatchModel(first_list_item, second_list_item));
 
         }
-        adapter = new MatchAdapter(context, matchData);
+        adapter = new MatchAdapter(matchData) {
+            @Override
+            public boolean onLongItemClick(int position, View view) {
+                return templateEditorInterface.onItemLongClick(position, view);
+            }
+
+            @Override
+            protected String getAuthorName() {
+                return templateEditorInterface.getAuthorName();
+            }
+
+            @Override
+            protected void setAuthorName(String authorName) {
+                templateEditorInterface.setAuthorName(authorName);
+            }
+
+            @Override
+            protected void setTitle(String title) {
+                templateEditorInterface.setProjectTitle(title);
+            }
+
+            @Override
+            protected void populateMetaList(ListView listView) {
+                templateEditorInterface.populateMetaList(listView);
+            }
+
+            @Override
+            protected void restoreToolbarColorSchema() {
+                templateEditorInterface.restoreColorSchema();
+            }
+
+            @Override
+            protected String getTitle() {
+                return templateEditorInterface.getProjectTitle();
+            }
+        };
         return adapter;
     }
 
     public BaseAdapter loadProjectMetaEditor(Context context, Document doc) {
 
         String title = doc.getElementsByTagName(MatchMetaModel.TITLE_TAG).item(0).getTextContent();
-        String first_list_title = doc.getElementsByTagName(MatchMetaModel.FIRST_TITLE_TAG).item(0).getTextContent();
-        String second_list_title = doc.getElementsByTagName(MatchMetaModel.SECOND_TITLE_TAG).item(0).getTextContent();
-        metaData.add(new MatchMetaModel(title, first_list_title, second_list_title));
+        String firstListTitle = doc.getElementsByTagName(MatchMetaModel.FIRST_TITLE_TAG).item(0).getTextContent();
+        String secondListTitle = doc.getElementsByTagName(MatchMetaModel.SECOND_TITLE_TAG).item(0).getTextContent();
+        metaData.add(new MatchMetaModel(title, firstListTitle, secondListTitle));
         metaAdapter = new MatchMetaAdapter(context, metaData);
         setEmptyView((Activity) context);
 
@@ -214,19 +285,19 @@ public class MatchTemplate implements TemplateInterface {
         dialog.show();
 
         final EditText title = (EditText) dialogView.findViewById(R.id.meta_title);
-        final EditText first_list_title = (EditText) dialogView.findViewById(R.id.meta_first_list_title);
-        final EditText second_list_title = (EditText) dialogView.findViewById(R.id.meta_second_list_title);
+        final EditText firstListTitle = (EditText) dialogView.findViewById(R.id.meta_first_list_title);
+        final EditText secondListTitle = (EditText) dialogView.findViewById(R.id.meta_second_list_title);
 
         dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (validated(activity, title, first_list_title, second_list_title)) {
+                if (validated(activity, title, firstListTitle, secondListTitle)) {
 
                     String titleText = title.getText().toString().trim();
-                    String first_list_titleText = first_list_title.getText().toString().trim();
-                    String second_list_titleText = second_list_title.getText().toString().trim();
-                    MatchMetaModel temp = new MatchMetaModel(titleText, first_list_titleText, second_list_titleText);
+                    String firstListTitleText = firstListTitle.getText().toString().trim();
+                    String secondListTitleText = secondListTitle.getText().toString().trim();
+                    MatchMetaModel temp = new MatchMetaModel(titleText, firstListTitleText, secondListTitleText);
                     metaData.add(temp);
                     setEmptyView(activity);
                     metaAdapter.notifyDataSetChanged();
@@ -255,26 +326,26 @@ public class MatchTemplate implements TemplateInterface {
             final MatchMetaModel data = metaData.get(0);
 
             final EditText title = (EditText) dialogView.findViewById(R.id.meta_title);
-            final EditText first_list_title = (EditText) dialogView.findViewById(R.id.meta_first_list_title);
-            final EditText second_list_title = (EditText) dialogView.findViewById(R.id.meta_second_list_title);
+            final EditText firstListTitle = (EditText) dialogView.findViewById(R.id.meta_first_list_title);
+            final EditText secondListTitle = (EditText) dialogView.findViewById(R.id.meta_second_list_title);
 
             title.setText(data.getTitle().trim());
-            first_list_title.setText(data.getFirstListTitle().trim());
-            second_list_title.setText(data.getSecondListTitle().trim());
+            firstListTitle.setText(data.getFirstListTitle().trim());
+            secondListTitle.setText(data.getSecondListTitle().trim());
 
             dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
-                    if (validated(activity, title, first_list_title, second_list_title)) {
+                    if (validated(activity, title, firstListTitle, secondListTitle)) {
 
                         String titleText = title.getText().toString().trim();
-                        String first_list_titleText = first_list_title.getText().toString().trim();
-                        String second_list_titleText = second_list_title.getText().toString().trim();
+                        String firstListTitleText = firstListTitle.getText().toString().trim();
+                        String secondListTitleText = secondListTitle.getText().toString().trim();
 
                         data.setTitle(titleText);
-                        data.setFirstListTitle(first_list_titleText);
-                        data.setSecond_list_title(second_list_titleText);
+                        data.setFirstListTitle(firstListTitleText);
+                        data.setSecond_list_title(secondListTitleText);
                         metaAdapter.notifyDataSetChanged();
                         dialog.dismiss();
                     }
@@ -343,41 +414,36 @@ public class MatchTemplate implements TemplateInterface {
 
     @Override
     public Object deleteItem(Activity activity, int position) {
-        MatchMetaModel matchMetaModel =null;
+        MatchMetaModel matchMetaModel = null;
         MatchModel matchModel = null;
         if (position == -2) {
             matchMetaModel = metaData.get(0);
             metaData.remove(0);
-            setEmptyView(activity);
             metaAdapter.notifyDataSetChanged();
         } else {
             matchModel = matchData.get(position);
             matchData.remove(position);
-            setEmptyView(activity);
-            adapter.notifyDataSetChanged();
         }
+        adapter.notifyDataSetChanged();
         setEmptyView(activity);
-        if (matchMetaModel==null)
-        {
+        if (matchMetaModel == null) {
             return matchModel;
-        }else
-        {
+        } else {
             return matchMetaModel;
         }
     }
 
     @Override
     public void restoreItem(Activity activity, int position, Object object) {
-        if (position==-2)
-        {
+        if (position == -2) {
             if (object instanceof MatchMetaModel) {
                 MatchMetaModel matchMetaModel = (MatchMetaModel) object;
                 if (matchMetaModel != null) {
-                    metaData.add( matchMetaModel);
+                    metaData.add(matchMetaModel);
                     metaAdapter.notifyDataSetChanged();
                 }
             }
-        }else {
+        } else {
             if (object instanceof MatchModel) {
                 MatchModel matchModel = (MatchModel) object;
                 if (matchModel != null) {
@@ -436,27 +502,45 @@ public class MatchTemplate implements TemplateInterface {
         // This is intentionally empty
     }
 
+    @Override
+    public boolean moveDown(Activity activity, int selectedPosition) {
+        //Check already at last
+        if (selectedPosition == matchData.size() - 1)
+            return false;
+        Collections.swap(matchData, selectedPosition, selectedPosition + 1);
+        adapter.notifyDataSetChanged();
+        return true;
+    }
+
+    @Override
+    public boolean moveUp(Activity activity, int selectedPosition) {
+        //Check already at top
+        if (selectedPosition == 0)
+            return false;
+        Collections.swap(matchData, selectedPosition, selectedPosition - 1);
+        adapter.notifyDataSetChanged();
+        return true;
+    }
+
     /**
      * @brief Toggles the visibility of empty text if Array has zero elements
      */
     private void setEmptyView(Activity activity) {
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && metaData.size() > 0) {
-            activity.findViewById(R.id.shadow_meta).setVisibility(View.VISIBLE);
-        }
-        if (matchData.size() < 1 && metaData.size() < 1) {
-            activity.findViewById(R.id.shadow_meta).setVisibility(View.GONE);
-            ((TextViewPlus) activity.findViewById(R.id.empty_view_text)).setText(R.string.meta_add_help);
-            activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
-        } else if (matchData.size() < 1) {
-            ((TextViewPlus) activity.findViewById(R.id.empty_view_text)).setText(R.string.add_item_help);
-            activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
-        } else if (metaData.size() < 1) {
-            activity.findViewById(R.id.shadow_meta).setVisibility(View.GONE);
-            ((TextViewPlus) activity.findViewById(R.id.empty_view_text)).setText(R.string.meta_add_help);
-            activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
-        } else {
-            activity.findViewById(R.id.empty).setVisibility(View.GONE);
+        try {
+            if (matchData.size() < 1 && metaData.size() < 1) {
+                ((TextViewPlus) activity.findViewById(R.id.empty_view_text)).setText(R.string.meta_add_help);
+                activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
+            } else if (matchData.size() < 1) {
+                ((TextViewPlus) activity.findViewById(R.id.empty_view_text)).setText(R.string.add_item_help);
+                activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
+            } else if (metaData.size() < 1) {
+                ((TextViewPlus) activity.findViewById(R.id.empty_view_text)).setText(R.string.meta_add_help);
+                activity.findViewById(R.id.empty).setVisibility(View.VISIBLE);
+            } else {
+                activity.findViewById(R.id.empty).setVisibility(View.GONE);
+            }
+        } catch (NullPointerException e) {
+            e.printStackTrace();
         }
     }
 }

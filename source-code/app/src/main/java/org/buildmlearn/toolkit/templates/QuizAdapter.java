@@ -5,10 +5,13 @@ import android.content.DialogInterface;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -18,7 +21,10 @@ import android.widget.Toast;
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.activity.TemplateEditor;
+import org.buildmlearn.toolkit.holder.HeaderHolder;
 import org.buildmlearn.toolkit.views.TextViewPlus;
+import org.buildmlearn.toolkit.views.dragdroprecyclerview.ItemTouchHelperAdapter;
+import org.buildmlearn.toolkit.views.dragdroprecyclerview.ItemTouchHelperViewHolder;
 
 import java.util.ArrayList;
 
@@ -27,26 +33,187 @@ import java.util.ArrayList;
  * <p/>
  * Created by abhishek on 28/5/15.
  */
-class QuizAdapter extends BaseAdapter {
+abstract class QuizAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+        implements ItemTouchHelperAdapter {
 
-
-    private final Context context;
+    private static final int TYPE_HEADER = 0;
+    private static final int TYPE_ITEM = 1;
+    private final Context mContext;
     private final ArrayList<QuizModel> quizData;
     private int expandedPostion = -1;
 
-    public QuizAdapter(Context context, ArrayList<QuizModel> quizData) {
-        this.context = context;
+    protected abstract boolean onLongItemClick(int position, View view);
+    protected abstract String getTitle();
+    protected abstract void restoreToolbarColorSchema();
+    protected abstract String getAuthorName();
+    protected abstract void setAuthorName(String authorName);
+    protected abstract void setTitle(String title);
+
+    QuizAdapter(Context mContext, ArrayList<QuizModel> quizData) {
+        this.mContext = mContext;
         this.quizData = quizData;
     }
 
-    @Override
-    public int getCount() {
-        return quizData.size();
+    public QuizModel getItem(int position) {
+        try {
+            return quizData.get(position);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override
-    public QuizModel getItem(int position) {
-        return quizData.get(position);
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view;
+        if (viewType == TYPE_ITEM) {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.quiz_item, parent, false);
+            return new QuizAdapterHolder(view);
+        } else if (viewType == TYPE_HEADER) {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listview_header_template, parent, false);
+            return new HeaderHolder(view,mContext,2);
+        }
+        return null;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if (isPositionHeader(position))
+            return TYPE_HEADER;
+
+        return TYPE_ITEM;
+    }
+
+    private boolean isPositionHeader(int position) {
+        return position == 0;
+    }
+
+    @Override
+    public void onBindViewHolder(final RecyclerView.ViewHolder viewHolder, final int position) {
+        if (viewHolder instanceof QuizAdapterHolder) {
+            QuizAdapterHolder quizAdapterHolder = (QuizAdapterHolder) viewHolder;
+            QuizModel data = getItem(viewHolder.getLayoutPosition() - 1);
+            quizAdapterHolder.view.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    return onLongItemClick(viewHolder.getLayoutPosition(), v);
+                }
+            });
+            quizAdapterHolder.question.setText(data.getQuestion());
+            if (data.isSelected()) {
+                quizAdapterHolder.questionIcon.setImageResource(R.drawable.collapse);
+                quizAdapterHolder.quizOptionsBox.setVisibility(View.VISIBLE);
+            } else {
+                quizAdapterHolder.questionIcon.setImageResource(R.drawable.expand);
+                quizAdapterHolder.quizOptionsBox.setVisibility(View.GONE);
+            }
+
+            for (int i = 0; i < quizAdapterHolder.options.size(); i++) {
+                if (i < data.getOptions().size()) {
+                    int ascii = 65 + i;
+                    quizAdapterHolder.options.get(i).setText(String.format("%s) %s", Character.toString((char) ascii), data.getOptions().get(i)));
+                    quizAdapterHolder.options.get(i).setTextColor(ContextCompat.getColor(mContext, R.color.black_secondary_text));
+                    quizAdapterHolder.options.get(i).setVisibility(View.VISIBLE);
+                } else {
+                    quizAdapterHolder.options.get(i).setVisibility(View.GONE);
+                }
+            }
+
+            quizAdapterHolder.options.get(data.getCorrectAnswer()).setCustomFont(mContext, "roboto_medium.ttf");
+            quizAdapterHolder.options.get(data.getCorrectAnswer()).setTextColor(ContextCompat.getColor(mContext, R.color.quiz_correct_answer));
+
+            quizAdapterHolder.questionIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (expandedPostion >= 0 && expandedPostion != viewHolder.getLayoutPosition() && getItem(expandedPostion - 1) != null) {
+                        getItem(expandedPostion - 1).setIsSelected(false);
+                    }
+                    if (getItem(viewHolder.getLayoutPosition() - 1).isSelected()) {
+                        getItem(viewHolder.getLayoutPosition() - 1).setIsSelected(false);
+                        expandedPostion = -1;
+                    } else {
+                        getItem(viewHolder.getLayoutPosition() - 1).setIsSelected(true);
+                        expandedPostion = viewHolder.getLayoutPosition() - 1;
+                    }
+                    notifyDataSetChanged();
+                }
+            });
+
+            quizAdapterHolder.edit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    editItem(viewHolder.getLayoutPosition()-1, mContext);
+                }
+            });
+            quizAdapterHolder.delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final QuizModel quizModel = quizData.get(viewHolder.getLayoutPosition()-1);
+                    quizData.remove(viewHolder.getLayoutPosition()-1);
+                    notifyDataSetChanged();
+                    Snackbar.make(v, R.string.snackbar_deleted_message, Snackbar.LENGTH_LONG)
+                            .setAction(R.string.snackbar_undo, new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    if (viewHolder.getLayoutPosition() - 1 >= 0) {
+                                        quizData.add(viewHolder.getLayoutPosition() - 1, quizModel);
+                                    } else {
+                                        quizData.add(quizModel);
+                                    }
+                                    notifyDataSetChanged();
+                                    Snackbar.make(v, R.string.snackbar_restored_message, Snackbar.LENGTH_LONG).show();
+                                }
+                            }).show();
+
+                    ((TemplateEditor) mContext).restoreSelectedView();
+                    expandedPostion = -1;
+                }
+            });
+        } else if (viewHolder instanceof HeaderHolder) {
+            final HeaderHolder headerHolder = (HeaderHolder) viewHolder;
+            try {
+                headerHolder.authorEditText.setText(getAuthorName());
+                headerHolder.titleEditText.setText(getTitle());
+                handleTextChange(headerHolder.authorEditText, headerHolder.titleEditText);
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void handleTextChange(final EditText authorEditText, final EditText titleEditText) {
+        authorEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                Log.e(getClass().getName(), "beforeTextChanged");
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                setAuthorName(authorEditText.getText().toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                Log.e(getClass().getName(), "afterTextChanged");
+            }
+        });
+        titleEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                Log.e(getClass().getName(), "beforeTextChanged");
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                setTitle(titleEditText.getText().toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                Log.e(getClass().getName(), "afterTextChanged");
+            }
+        });
     }
 
     @Override
@@ -55,98 +222,8 @@ class QuizAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
-        LayoutInflater mInflater;
-        mInflater = LayoutInflater.from(context);
-        Holder holder;
-        if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.quiz_item, parent, false);
-            holder = new Holder();
-
-            holder.question = (TextViewPlus) convertView.findViewById(R.id.question);
-            holder.options = new ArrayList<>();
-            holder.options.add((TextViewPlus) convertView.findViewById(R.id.answer1));
-            holder.options.add((TextViewPlus) convertView.findViewById(R.id.answer2));
-            holder.options.add((TextViewPlus) convertView.findViewById(R.id.answer3));
-            holder.options.add((TextViewPlus) convertView.findViewById(R.id.answer4));
-            holder.questionIcon = (ImageView) convertView.findViewById(R.id.question_icon);
-            holder.quizOptionsBox = (LinearLayout) convertView.findViewById(R.id.quiz_options_box);
-            holder.delete = (Button) convertView.findViewById(R.id.quiz_item_delete);
-            holder.edit = (Button) convertView.findViewById(R.id.quiz_item_edit);
-
-        } else {
-            holder = (Holder) convertView.getTag();
-        }
-
-        QuizModel data = getItem(position);
-        holder.question.setText(data.getQuestion());
-        if (data.isSelected()) {
-            holder.questionIcon.setImageResource(R.drawable.collapse);
-            holder.quizOptionsBox.setVisibility(View.VISIBLE);
-        } else {
-            holder.questionIcon.setImageResource(R.drawable.expand);
-            holder.quizOptionsBox.setVisibility(View.GONE);
-        }
-
-        for (int i = 0; i < holder.options.size(); i++) {
-            if (i < data.getOptions().size()) {
-                int ascii = 65 + i;
-                holder.options.get(i).setText(String.format("%s) %s", Character.toString((char) ascii), data.getOptions().get(i)));
-                holder.options.get(i).setTextColor(ContextCompat.getColor(context, R.color.black_secondary_text));
-                holder.options.get(i).setVisibility(View.VISIBLE);
-            } else {
-                holder.options.get(i).setVisibility(View.GONE);
-            }
-        }
-
-        holder.options.get(data.getCorrectAnswer()).setCustomFont(context, "roboto_medium.ttf");
-        holder.options.get(data.getCorrectAnswer()).setTextColor(ContextCompat.getColor(context, R.color.quiz_correct_answer));
-
-        holder.questionIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (expandedPostion >= 0 && expandedPostion != position && getItem(expandedPostion) != null) {
-                    getItem(expandedPostion).setIsSelected(false);
-                }
-                if (getItem(position).isSelected()) {
-                    getItem(position).setIsSelected(false);
-                    expandedPostion = -1;
-                } else {
-                    getItem(position).setIsSelected(true);
-                    expandedPostion = position;
-                }
-                notifyDataSetChanged();
-            }
-        });
-
-        holder.edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                editItem(position, context);
-            }
-        });
-        holder.delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final QuizModel learnSpellingModel = quizData.get(position);
-                quizData.remove(position);
-                notifyDataSetChanged();
-                Snackbar.make(v,R.string.snackbar_deleted_message,Snackbar.LENGTH_LONG)
-                        .setAction(R.string.snackbar_undo, new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                quizData.add(position,learnSpellingModel);
-                                notifyDataSetChanged();
-                                Snackbar.make(v,R.string.snackbar_restored_message,Snackbar.LENGTH_LONG).show();
-                            }
-                        }).show();
-
-                ((TemplateEditor) context).restoreSelectedView();
-                expandedPostion = -1;
-            }
-        });
-        convertView.setTag(holder);
-        return convertView;
+    public int getItemCount() {
+        return quizData.size() + 1;
     }
 
     private void editItem(final int position, final Context context) {
@@ -230,6 +307,12 @@ class QuizAdapter extends BaseAdapter {
                     }
                 }
 
+                if ("".equals(options.get(checkedAns).getText().toString().trim())){
+                    Toast.makeText(context, R.string.answer_not_blank, Toast.LENGTH_SHORT).show();
+                    isValidated = false;
+                    return;
+                }
+
                 if (isValidated) {
                     dialog.dismiss();
                     ArrayList<String> answerOptions = new ArrayList<>();
@@ -277,12 +360,50 @@ class QuizAdapter extends BaseAdapter {
         return -1;
     }
 
-    public class Holder {
-        public TextViewPlus question;
-        public ImageView questionIcon;
-        public ArrayList<TextViewPlus> options;
-        public LinearLayout quizOptionsBox;
-        public Button delete;
-        public Button edit;
+    @Override
+    public boolean onItemMove(int fromPosition, int toPosition) {
+        if (toPosition == 0)
+            return false;
+        try {
+            QuizModel prev = quizData.remove(fromPosition - 1);
+            quizData.add(toPosition > fromPosition ? toPosition - 1 : toPosition - 1, prev);
+            notifyItemMoved(fromPosition, toPosition);
+            restoreToolbarColorSchema();
+            return true;
+        } catch (IndexOutOfBoundsException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    private static class QuizAdapterHolder extends RecyclerView.ViewHolder
+            implements ItemTouchHelperViewHolder {
+        private View view;
+        private TextViewPlus question;
+        private ImageView questionIcon;
+        private ArrayList<TextViewPlus> options;
+        private LinearLayout quizOptionsBox;
+        private Button delete;
+        private Button edit;
+
+        private QuizAdapterHolder(View itemView) {
+            super(itemView);
+            this.view = itemView;
+            question = (TextViewPlus) itemView.findViewById(R.id.question);
+            options = new ArrayList<>();
+            options.add((TextViewPlus) itemView.findViewById(R.id.answer1));
+            options.add((TextViewPlus) itemView.findViewById(R.id.answer2));
+            options.add((TextViewPlus) itemView.findViewById(R.id.answer3));
+            options.add((TextViewPlus) itemView.findViewById(R.id.answer4));
+            questionIcon = (ImageView) itemView.findViewById(R.id.question_icon);
+            quizOptionsBox = (LinearLayout) itemView.findViewById(R.id.quiz_options_box);
+            delete = (Button) itemView.findViewById(R.id.quiz_item_delete);
+            edit = (Button) itemView.findViewById(R.id.quiz_item_edit);
+        }
+
+        @Override
+        public void onItemSelected() {
+            Log.e(getClass().getName(), "Item Selected to drag");
+        }
     }
 }

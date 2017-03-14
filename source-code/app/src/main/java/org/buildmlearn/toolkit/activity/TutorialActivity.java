@@ -5,10 +5,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.util.TypedValue;
-
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 
 import org.buildmlearn.toolkit.R;
 import org.buildmlearn.toolkit.adapter.TutorialAdapter;
@@ -43,9 +41,9 @@ public class TutorialActivity extends AppCompatActivity {
         mPager.addOnPageChangeListener(viewPagerPageChangeListener);
     }
 
-    private void addBottomDots(int current_slide) {
+    private void addBottomDots(int currentSlide) {
         TextView[] dots = new TextView[Tutorial.values().length];
-        int dot_colorActive = getResources().getColor(R.color.selected_dot);
+        int dotColorActive = getResources().getColor(R.color.selected_dot);
 
         indicatingDotsContainer.removeAllViews();
 
@@ -59,9 +57,9 @@ public class TutorialActivity extends AppCompatActivity {
 
         //dot corresponding to current slide is given active color i.e white color
         if (dots.length > 0) {
-            dots[current_slide].setTextColor(dot_colorActive);
-            dots[current_slide].setText(Html.fromHtml("&#8226;"));
-            dots[current_slide].setTextSize(TypedValue.COMPLEX_UNIT_SP,32);
+            dots[currentSlide].setTextColor(dotColorActive);
+            dots[currentSlide].setText(Html.fromHtml("&#8226;"));
+            dots[currentSlide].setTextSize(TypedValue.COMPLEX_UNIT_SP,32);
         }
     }
 
