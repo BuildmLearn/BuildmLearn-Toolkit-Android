@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:customFont="http://schemas.android.com/tools"
     android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -10,39 +11,48 @@
     card_view:cardCornerRadius="@dimen/cardview_default_radius"
     card_view:cardElevation="@dimen/cardview_default_elevation">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="bottom"
-        android:orientation="horizontal">
-
+        android:orientation="horizontal"
+        android:paddingTop="20dp">
 
         <ImageView
             android:id="@+id/image"
             android:layout_width="141dp"
             android:layout_height="180dp"
             android:adjustViewBounds="true"
-            android:contentDescription="@string/template_thumbnail"
-            android:paddingTop="20dp" />
+            android:contentDescription="@string/template_thumbnail" />
+
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_margin="8dp"
             android:layout_weight="1"
-            android:orientation="vertical"
-            android:paddingTop="15dp">
+            android:orientation="vertical">
 
 
             <view
                 android:id="@+id/title"
-                style="@style/CardView.Title"
-                class="org.buildmlearn.toolkit.views.TextViewPlus" />
+                style="@style/Base.TextAppearance.AppCompat.Large"
+                class="org.buildmlearn.toolkit.views.TextViewPlus"
+                customFont="roboto_medium.ttf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/abc_primary_text_material_dark"
+                android:textSize="@dimen/cardview_title_text_size" />
 
             <view
                 android:id="@+id/description"
-                style="@style/CardView.Body"
-                class="org.buildmlearn.toolkit.views.TextViewPlus" />
+                class="org.buildmlearn.toolkit.views.TextViewPlus"
+                customFont="roboto_regular.ttf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/abc_primary_text_material_dark"
+                android:textSize="@dimen/cardview_body_text_size" />
         </LinearLayout>
     </LinearLayout>
 
