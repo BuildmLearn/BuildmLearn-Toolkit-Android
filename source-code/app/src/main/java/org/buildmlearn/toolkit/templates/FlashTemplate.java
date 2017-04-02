@@ -392,7 +392,11 @@ public class FlashTemplate implements TemplateInterface {
                 try {
                     stream = context.getContentResolver().openInputStream(
                             intent.getData());
-                    bitmap = BitmapFactory.decodeStream(stream);
+                    BitmapFactory.Options options = new BitmapFactory.Options();
+                    options.inSampleSize = calculateInSampleSize(stream,mBannerImage.getWidth(),mBannerImage.getHeight());
+                    stream = context.getContentResolver().openInputStream(
+                            intent.getData());
+                    bitmap = BitmapFactory.decodeStream(stream, null, options);
                     bitmap = getResizedBitmap(bitmap);
                     if (bitmap != null) {
                         Log.d(TAG, "Bitmap not null: From Gallery");
@@ -453,6 +457,30 @@ public class FlashTemplate implements TemplateInterface {
             width = (int) (height * bitmapRatio);
         }
         return Bitmap.createScaledBitmap(image, width, height, true);
+    }
+
+    private int calculateInSampleSize(InputStream stream, int reqWidth, int reqHeight) {
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeStream(stream, null, options);
+        // Raw height and width of image
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+
+        if (height > reqHeight || width > reqWidth) {
+
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+
+            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
+            // height and width larger than the requested height and width.
+            while ((halfHeight / inSampleSize) >= reqHeight
+                    && (halfWidth / inSampleSize) >= reqWidth) {
+                inSampleSize *= 2;
+            }
+        }
+        return inSampleSize;
     }
 
     private Bitmap grabImage(Context context) {
