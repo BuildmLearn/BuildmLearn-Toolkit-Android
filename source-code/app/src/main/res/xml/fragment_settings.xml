@@ -24,13 +24,4 @@
 
     </PreferenceCategory>
 
-    <PreferenceScreen
-        android:key="@string/pref_rate_key"
-        android:title="@string/pref_rate_title"
-        android:summary="@string/pref_rate_summary"/>
-
-    <PreferenceScreen
-        android:key="@string/pref_tell_key"
-        android:title="@string/pref_tell_title"/>
-
 </PreferenceScreen>

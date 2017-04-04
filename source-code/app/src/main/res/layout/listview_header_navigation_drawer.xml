@@ -2,15 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/navigation_drawer_header_height"
+    android:background="@color/color_primary_dark"
     android:paddingBottom="@dimen/layout_margin">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:adjustViewBounds="true"
-        android:contentDescription="@string/buildmlearn_backdrop_image"
-        android:scaleType="centerCrop"
-        android:src="@drawable/bg_navigation_drawer_header" />
 
     <ImageView
         android:layout_width="wrap_content"

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BuildmLearn Toolkit</string>
+    <string name="app_name">Quiz Generator</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="menu_load_project">Saved Projects</string>
@@ -10,6 +10,7 @@
     <string name="menu_home">Home</string>
     <string name="buildmlearn_welcome_title">Welcome to BuildmLearn Toolkit</string>
     <string name="welcome">Welcome</string>
+    <string name="about_text">This application has been developed using the Quiz Generator.\n\nTo know more about Quiz Generator visit <a href="https://github.com/octacode">here</a>.</string>
 
     <!--Snackbar-->
     <string name="snackbar_deleted_message">Item deleted</string>
@@ -17,7 +18,7 @@
     <string name="snackbar_restored_message">Item restored</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="buildmlearn_welcome_text">The BuildmLearn Toolkit is an easy-to-use program that helps users make mobile apps without any knowledge of application development.\n\nThe toolkit helps creating mobile application with various functionality and allows teachers to input their custom content.</string>
+    <string name="buildmlearn_welcome_text">The Quiz Generator is an easy-to-use program that helps users make quiz based android apps without any knowledge of application development.\n\nThe generator helps creating mobile application with various functionality and allows teachers to input their custom content.</string>
     <string name="add_item_help">Click Add button to start adding items</string>
 
     <!-- Draft -->

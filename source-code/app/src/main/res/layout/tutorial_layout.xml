@@ -6,7 +6,7 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <org.buildmlearn.toolkit.views.TextViewPlus
+    <org.quizGen.shasha.views.TextViewPlus
         android:id="@+id/tutorial_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
         android:textAllCaps="false"
         android:id="@+id/skip_button" />
 
-    <org.buildmlearn.toolkit.views.TextViewPlus
+    <org.quizGen.shasha.views.TextViewPlus
         android:id="@+id/tutorial_desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

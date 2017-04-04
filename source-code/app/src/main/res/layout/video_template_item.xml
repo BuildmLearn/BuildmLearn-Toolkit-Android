@@ -30,7 +30,7 @@
 
             <view
                 android:id="@+id/title"
-                class="org.buildmlearn.toolkit.views.TextViewPlus"
+                class="org.quizGen.shasha.views.TextViewPlus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/thumb"
@@ -42,7 +42,7 @@
 
             <view
                 android:id="@+id/description"
-                class="org.buildmlearn.toolkit.views.TextViewPlus"
+                class="org.quizGen.shasha.views.TextViewPlus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/title"

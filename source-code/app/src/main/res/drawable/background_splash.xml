@@ -7,13 +7,5 @@
         <bitmap
             android:gravity="center"
             android:src="@drawable/logo_70" />
-
-
-    </item>
-    <item android:top="60dp">
-        <bitmap
-            android:gravity="center"
-            android:src="@drawable/buildmlearn_text"
-            android:tint="@android:color/white" />
     </item>
 </layer-list>

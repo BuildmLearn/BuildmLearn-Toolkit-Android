@@ -8,7 +8,7 @@
 
     <view
         android:id="@+id/meta_title"
-        class="org.buildmlearn.toolkit.views.TextViewPlus"
+        class="org.quizGen.shasha.views.TextViewPlus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
@@ -19,7 +19,7 @@
 
     <view
         android:id="@+id/first_list_title"
-        class="org.buildmlearn.toolkit.views.TextViewPlus"
+        class="org.quizGen.shasha.views.TextViewPlus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
@@ -31,7 +31,7 @@
 
     <view
         android:id="@+id/second_list_title"
-        class="org.buildmlearn.toolkit.views.TextViewPlus"
+        class="org.quizGen.shasha.views.TextViewPlus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"

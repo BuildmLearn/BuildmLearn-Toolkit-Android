@@ -38,16 +38,6 @@
             android:title="@string/menu_settings"
             android:visible="true"
             android:checkable="true" />
-        <item
-            android:id="@+id/nav_howto"
-            android:icon="@drawable/menu_how_to"
-            android:title="@string/menu_how_to"
-            android:visible="true" />
-        <item
-            android:id="@+id/nav_about"
-            android:icon="@drawable/menu_info"
-            android:title="@string/menu_about_us"
-            android:visible="true" />
 
     </group>
 

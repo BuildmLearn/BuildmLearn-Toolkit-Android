@@ -28,7 +28,7 @@
             android:scaleType="centerCrop"
             android:src="@drawable/logo_70" />
 
-        <org.buildmlearn.toolkit.views.TextViewPlus
+        <org.quizGen.shasha.views.TextViewPlus
             android:id="@+id/intro_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
             android:textSize="@dimen/headline_leading_simulator"
             font:customFont="roboto_light.ttf" />
 
-        <org.buildmlearn.toolkit.views.TextViewPlus
+        <org.quizGen.shasha.views.TextViewPlus
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
             android:textSize="@dimen/title_simulator"
             font:customFont="roboto_light.ttf" />
 
-        <org.buildmlearn.toolkit.views.TextViewPlus
+        <org.quizGen.shasha.views.TextViewPlus
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
@@ -58,7 +58,7 @@
             android:textSize="@dimen/title_simulator"
             font:customFont="roboto_light.ttf" />
 
-        <org.buildmlearn.toolkit.views.TextViewPlus
+        <org.quizGen.shasha.views.TextViewPlus
             android:id="@+id/author_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

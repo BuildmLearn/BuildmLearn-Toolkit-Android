@@ -22,7 +22,7 @@
 
             <view
                 android:id="@+id/matchA"
-                class="org.buildmlearn.toolkit.views.TextViewPlus"
+                class="org.quizGen.shasha.views.TextViewPlus"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
@@ -42,7 +42,7 @@
 
             <view
                 android:id="@+id/matchB"
-                class="org.buildmlearn.toolkit.views.TextViewPlus"
+                class="org.quizGen.shasha.views.TextViewPlus"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"

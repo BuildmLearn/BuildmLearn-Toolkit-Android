@@ -14,7 +14,7 @@
         <view
             android:id="@+id/title"
             style="@style/TextView.Title.Bold"
-            class="org.buildmlearn.toolkit.views.TextViewPlus"
+            class="org.quizGen.shasha.views.TextViewPlus"
             android:layout_marginLeft="16dp"
             android:layout_marginStart="16dp"
             android:layout_weight="1"
@@ -25,7 +25,7 @@
         <view
             android:id="@+id/timer"
             style="@style/TextView.Title.Thin"
-            class="org.buildmlearn.toolkit.views.TextViewPlus"
+            class="org.quizGen.shasha.views.TextViewPlus"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             android:layout_weight="1"
@@ -38,7 +38,7 @@
     <view
         android:id="@+id/passage"
         style="@style/TextView.Body1"
-        class="org.buildmlearn.toolkit.views.TextViewPlus"
+        class="org.quizGen.shasha.views.TextViewPlus"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
         android:lineSpacingMultiplier="1.2"
