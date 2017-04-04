@@ -39,12 +39,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-/**
- * Created by opticod (Anupam Das) on 29/2/16.
- *
- * @brief Fragment used for loading existing APKs into a list.
- */
-
 public class LoadApkFragment extends Fragment implements AbsListView.OnItemClickListener {
 
     private static final String TAG = "Load API Fragment";

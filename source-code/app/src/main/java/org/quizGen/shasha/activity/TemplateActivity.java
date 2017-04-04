@@ -12,9 +12,7 @@ import org.quizGen.shasha.R;
 import org.quizGen.shasha.adapter.TemplateAdapter;
 import org.quizGen.shasha.constant.Constants;
 
-/**
- * @brief Template activity show the list of available templates in the toolkit. Templates are defined in Template.java enum file
- */
+
 public class TemplateActivity extends AppCompatActivity {
 
     /**

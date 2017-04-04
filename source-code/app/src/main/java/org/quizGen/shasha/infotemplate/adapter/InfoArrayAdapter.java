@@ -13,10 +13,6 @@ import org.quizGen.shasha.R;
 import org.quizGen.shasha.infotemplate.Constants;
 
 /**
- * Created by Anupam (opticod) on 20/6/16.
- */
-
-/**
  * @brief Custom Adapter for info template's simulator.
  */
 public class InfoArrayAdapter extends CursorAdapter {

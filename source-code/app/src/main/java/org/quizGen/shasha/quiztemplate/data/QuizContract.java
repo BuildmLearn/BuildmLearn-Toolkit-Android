@@ -3,10 +3,6 @@ package org.quizGen.shasha.quiztemplate.data;
 import android.provider.BaseColumns;
 
 /**
- * Created by Anupam (opticod) on 14/8/16.
- */
-
-/**
  * @brief Contains database contracts for quiz template's simulator.
  */
 class QuizContract {

@@ -3,9 +3,6 @@ package org.quizGen.shasha.flashcardtemplate.animations;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
-/**
- * Created by Ashish Goel on 1/30/2016.
- */
 public class FlipPageTransformer implements ViewPager.PageTransformer {
 
     @Override

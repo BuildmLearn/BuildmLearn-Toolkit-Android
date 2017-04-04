@@ -19,7 +19,6 @@ import java.util.ArrayList;
 /**
  * @brief Adapter for displaying VideoCollection Template Editor data.
  * <p/>
- * Created by Anupam (opticod) on 4/5/16.
  */
 class VideoCollectionAdapter extends BaseAdapter {
 

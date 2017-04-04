@@ -26,9 +26,6 @@ import org.quizGen.shasha.fragment.LoadProjectFragment;
 import org.quizGen.shasha.fragment.SettingsFragment;
 import org.quizGen.shasha.utilities.SmoothNavigationToggle;
 
-/**
- * @brief Home screen of the application containg all the menus and settings.
- */
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -183,7 +180,7 @@ public class HomeActivity extends AppCompatActivity
 //                });
 //                break;
 //            case R.id.nav_about:
-//                final Intent intent2 = new Intent(this, AboutBuildmLearn.class);
+//                final Intent intent2 = new Intent(this, AboutQuizGen.class);
 //                smoothNavigationToggle.runWhenIdle(new Runnable() {
 //                    @Override
 //                    public void run() {

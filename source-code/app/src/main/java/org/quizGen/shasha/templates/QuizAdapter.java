@@ -25,7 +25,6 @@ import java.util.ArrayList;
 /**
  * @brief Adapter for displaying Quiz Template Editor data.
  * <p/>
- * Created by abhishek on 28/5/15.
  */
 class QuizAdapter extends BaseAdapter {
 

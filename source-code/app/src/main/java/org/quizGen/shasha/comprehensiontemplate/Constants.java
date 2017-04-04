@@ -1,10 +1,6 @@
 package org.quizGen.shasha.comprehensiontemplate;
 
 /**
- * Created by Anupam (opticod) on 5/6/16.
- */
-
-/**
  * @brief Constants used in comprehension template's simulator relating databases.
  */
 public class Constants {

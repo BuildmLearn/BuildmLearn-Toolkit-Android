@@ -62,13 +62,6 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-/**
- * @brief Placeholder activity for all the templates
- * <p/>
- * A placeholder activty in which all the templates are loaded and allows the user to enter respective template
- * data, generate and save projects, APKs and sharing options.
- */
-
 public class TemplateEditor extends AppCompatActivity {
 
     private static final String TAG = "TEMPLATE EDITOR";

@@ -11,10 +11,6 @@ import android.support.annotation.NonNull;
 import org.quizGen.shasha.flashcardtemplate.data.FlashContract.FlashCards;
 
 /**
- * Created by Anupam (opticod) on 10/8/16.
- */
-
-/**
  * @brief Contains database util functions for flash card template's simulator.
  */
 public class FlashDb {

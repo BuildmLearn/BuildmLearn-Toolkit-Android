@@ -23,11 +23,6 @@ import org.quizGen.shasha.model.Template;
 
 import java.lang.ref.WeakReference;
 
-/**
- * @brief Adapter used for showing Templates available in the toolkit
- * <p/>
- * Created by Abhishek on 23-05-2015.
- */
 public class TemplateAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private final Context context;

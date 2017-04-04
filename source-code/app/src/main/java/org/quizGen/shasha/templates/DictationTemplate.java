@@ -30,7 +30,6 @@ import java.util.ArrayList;
 /**
  * @brief Dictation template code implementing methods of TemplateInterface
  * <p/>
- * Created by Anupam (opticod) on 4/7/16.
  */
 public class DictationTemplate implements TemplateInterface {
 

@@ -8,10 +8,6 @@ import org.quizGen.shasha.matchtemplate.data.MatchContract.Matches;
 import org.quizGen.shasha.matchtemplate.data.MatchContract.MetaDetails;
 
 /**
- * Created by Anupam (opticod) on 24/7/16.
- */
-
-/**
  * @brief DatabaseHelper for match template's simulator.
  */
 class MatchDBHelper extends SQLiteOpenHelper {

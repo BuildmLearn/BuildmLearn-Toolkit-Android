@@ -16,7 +16,6 @@ import java.util.ArrayList;
  * <p/>
  * Each template must implement this interface. For using the template, a new enum in Template Enum is required.
  * <p/>
- * Created by abhishek on 27/5/15.
  */
 public interface TemplateInterface extends Serializable {
 

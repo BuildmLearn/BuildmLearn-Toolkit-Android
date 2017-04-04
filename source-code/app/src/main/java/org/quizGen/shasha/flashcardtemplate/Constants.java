@@ -1,10 +1,6 @@
 package org.quizGen.shasha.flashcardtemplate;
 
 /**
- * Created by Anupam (opticod) on 10/8/16.
- */
-
-/**
  * @brief Constants used in flash card template's simulator relating databases.
  */
 public class Constants {

@@ -7,10 +7,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import org.quizGen.shasha.dictationtemplate.data.DictContract.Dict;
 
 /**
- * Created by Anupam (opticod) on 10/7/16.
- */
-
-/**
  * @brief DatabaseHelper for dictation template's simulator.
  */
 

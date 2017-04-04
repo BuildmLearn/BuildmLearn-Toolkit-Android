@@ -1,9 +1,5 @@
 package org.quizGen.shasha.activity;
 
-/**
- * Created by Anupam (Opticod) on 7/4/16.
- */
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

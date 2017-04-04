@@ -17,9 +17,6 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-/**
- * Created by scopeinfinity on 10/3/16.
- */
 
 /**
  * @brief Adapter used for DraftsFragment to show the items

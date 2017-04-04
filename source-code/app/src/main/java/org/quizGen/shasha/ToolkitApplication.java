@@ -11,8 +11,6 @@ import java.util.ArrayList;
 /**
  * @brief Extended Application class
  * <p/>
- * <p/>
- * Created by Abhishek on 31-05-2015.
  */
 public class ToolkitApplication extends Application {
 

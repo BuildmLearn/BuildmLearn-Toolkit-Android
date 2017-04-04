@@ -29,10 +29,6 @@ import org.quizGen.shasha.quiztemplate.data.QuizDb;
 import java.util.Locale;
 
 /**
- * Created by Anupam (opticod) on 14/8/16.
- */
-
-/**
  * @brief Question Fragment for quiz template's simulator.
  */
 public class QuestionFragment extends Fragment

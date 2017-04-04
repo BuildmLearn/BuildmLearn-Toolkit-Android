@@ -1,8 +1,5 @@
 package org.quizGen.shasha.quiztemplate;
 
-/**
- * Created by Anupam (opticod) on 14/8/16.
- */
 
 /**
  * @brief Constants used in quiz template's simulator relating databases.

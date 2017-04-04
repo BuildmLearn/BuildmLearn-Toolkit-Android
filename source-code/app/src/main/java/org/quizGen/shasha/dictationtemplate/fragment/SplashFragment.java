@@ -17,10 +17,6 @@ import org.quizGen.shasha.dictationtemplate.data.FetchXMLTask;
 import org.quizGen.shasha.views.TextViewPlus;
 
 /**
- * Created by Anupam (opticod) on 10/7/16.
- */
-
-/**
  * @brief Splash intro Fragment for dictation template's simulator.
  */
 public class SplashFragment extends Fragment {

@@ -19,7 +19,6 @@ import java.util.ArrayList;
 /**
  * @brief Adapter for displaying Dictation Template Editor data.
  * <p/>
- * Created by Anupam (opticod) on 4/7/16.
  */
 class DictationAdapter extends BaseAdapter {
 

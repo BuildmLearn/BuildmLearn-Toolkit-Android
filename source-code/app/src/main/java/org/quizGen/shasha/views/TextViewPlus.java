@@ -11,9 +11,6 @@ import android.widget.TextView;
 import org.quizGen.shasha.R;
 
 
-/**
- * Created by Abhishek on 10-05-2015.
- */
 public class TextViewPlus extends TextView {
 
     public TextViewPlus(Context context, AttributeSet attrs, int defStyle) {

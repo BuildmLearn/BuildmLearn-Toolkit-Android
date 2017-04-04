@@ -12,10 +12,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 /**
- * Created by Anupam (opticod) on 10/7/16.
- */
-
-/**
  * @brief Contains xml data utils for dictation template's simulator.
  */
 public class DataUtils {

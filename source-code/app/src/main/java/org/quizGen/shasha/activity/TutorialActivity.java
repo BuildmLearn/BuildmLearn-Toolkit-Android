@@ -15,9 +15,6 @@ import org.quizGen.shasha.adapter.TutorialAdapter;
 import org.quizGen.shasha.constant.Constants;
 import org.quizGen.shasha.model.Tutorial;
 
-/**
- * @brief Shows the tutorial related to BuildmLearn toolkit usage.
- */
 public class TutorialActivity extends AppCompatActivity {
 
 

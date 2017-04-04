@@ -6,7 +6,6 @@ import java.text.SimpleDateFormat;
 /**
  * @brief Model class for holding the details of a Saved File
  * <p/>
- * Created by Abhishek on 01-06-2015.
  */
 public class SavedProject {
 

@@ -9,7 +9,6 @@ import java.util.ArrayList;
 /**
  * @brief Model class for Comprehension Template Editor data
  * <p/>
- * Created by Anupam (opticod) on 26/5/16.
  */
 public class ComprehensionModel implements Serializable {
 

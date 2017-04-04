@@ -2,11 +2,6 @@ package org.quizGen.shasha.flashcardtemplate.data;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
-/**
- * Created by Anupam (opticod) on 10/8/16.
- */
-
 /**
  * @brief Model used to save flash entries in database for flash card template's simulator.
  */

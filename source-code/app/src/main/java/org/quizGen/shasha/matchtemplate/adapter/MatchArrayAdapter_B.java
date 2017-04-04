@@ -13,9 +13,6 @@ import org.quizGen.shasha.matchtemplate.data.MatchModel;
 
 import java.util.ArrayList;
 
-/**
- * Created by Anupam (opticod) on 24/7/16.
- */
 
 /**
  * @brief Custom Adapter for match template's simulator.

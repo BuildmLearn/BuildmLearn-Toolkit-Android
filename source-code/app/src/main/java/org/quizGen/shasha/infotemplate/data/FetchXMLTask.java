@@ -22,10 +22,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 /**
- * Created by Anupam (opticod) on 20/6/16.
- */
-
-/**
  * @brief Used to parse XML and save in database for info template's simulator.
  */
 public class FetchXMLTask extends AsyncTask<String, Void, Void> {

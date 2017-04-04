@@ -9,7 +9,6 @@ import java.util.ArrayList;
 /**
  * @brief Model class for Quiz Template Editor data
  * <p/>
- * Created by abhishek on 28/5/15.
  */
 
 public class QuizModel implements Serializable {

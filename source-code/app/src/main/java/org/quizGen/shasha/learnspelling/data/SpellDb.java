@@ -14,10 +14,6 @@ import org.quizGen.shasha.learnspelling.data.SpellContract.Spellings;
 import java.util.Arrays;
 
 /**
- * Created by Anupam (opticod) on 1/6/16.
- */
-
-/**
  * @brief Contains database util functions for spell template's simulator.
  */
 public class SpellDb {

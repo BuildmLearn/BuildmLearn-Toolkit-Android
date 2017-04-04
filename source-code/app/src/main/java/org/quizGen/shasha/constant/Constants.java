@@ -1,10 +1,5 @@
 package org.quizGen.shasha.constant;
 
-/**
- * @brief Constants related project directories, preferences and keys
- * <p/>
- * Created by Abhishek on 21/04/15.
- */
 public class
 Constants {
 

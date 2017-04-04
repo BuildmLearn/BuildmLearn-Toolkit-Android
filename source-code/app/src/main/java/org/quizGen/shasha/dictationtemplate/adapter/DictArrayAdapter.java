@@ -13,10 +13,6 @@ import org.quizGen.shasha.R;
 import org.quizGen.shasha.dictationtemplate.Constants;
 
 /**
- * Created by Anupam (opticod) on 10/7/16.
- */
-
-/**
  * @brief Custom Adapter for dictation template's simulator.
  */
 public class DictArrayAdapter extends CursorAdapter {

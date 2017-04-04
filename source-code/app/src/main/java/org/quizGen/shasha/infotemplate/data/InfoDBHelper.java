@@ -7,10 +7,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import org.quizGen.shasha.infotemplate.data.InfoContract.Info;
 
 /**
- * Created by Anupam (opticod) on 20/6/16.
- */
-
-/**
  * @brief DatabaseHelper for info template's simulator.
  */
 class InfoDBHelper extends SQLiteOpenHelper {

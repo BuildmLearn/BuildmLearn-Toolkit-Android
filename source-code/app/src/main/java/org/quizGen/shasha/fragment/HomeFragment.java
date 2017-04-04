@@ -11,9 +11,6 @@ import org.quizGen.shasha.R;
 import org.quizGen.shasha.activity.TemplateEditor;
 import org.quizGen.shasha.constant.Constants;
 
-/**
- * @brief Fragment displayed on the home screen.
- */
 public class HomeFragment extends Fragment {
 
     /**

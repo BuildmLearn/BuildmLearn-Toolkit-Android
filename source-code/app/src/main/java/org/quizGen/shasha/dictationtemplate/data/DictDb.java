@@ -9,10 +9,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
 
 /**
- * Created by Anupam (opticod) on 10/7/16.
- */
-
-/**
  * @brief Contains database util functions for dictation template's simulator.
  */
 public class DictDb {

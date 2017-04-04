@@ -7,9 +7,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import org.quizGen.shasha.comprehensiontemplate.data.ComprehensionContract.MetaDetails;
 import org.quizGen.shasha.comprehensiontemplate.data.ComprehensionContract.Questions;
 
-/**
- * Created by Anupam (opticod) on 5/6/16.
- */
 
 /**
  * @brief DatabaseHelper for comprehension template's simulator.

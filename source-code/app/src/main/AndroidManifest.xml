@@ -58,7 +58,7 @@
             android:label="@string/title_activity_tutorial"
             android:theme="@style/Buildmlearn.FullScreen" />
         <activity
-            android:name="org.quizGen.shasha.activity.AboutBuildmLearn"
+            android:name="org.quizGen.shasha.activity.AboutQuizGen"
             android:label="@string/title_activity_about_buildm_learn"
             android:parentActivityName="org.quizGen.shasha.activity.HomeActivity"
             android:theme="@style/AppTheme.NoActionBar">

@@ -30,10 +30,6 @@ import org.quizGen.shasha.learnspelling.data.SpellDb;
 import java.util.Locale;
 
 /**
- * Created by Anupam (opticod) on 31/5/16.
- */
-
-/**
  * @brief Fragment for displaying the correct and user entered spell to users in spelling template's simulator.
  */
 

@@ -16,11 +16,6 @@ import android.widget.TextView;
 
 import org.quizGen.shasha.R;
 
-
-/**
- * Created by anupam on 10/8/16.
- */
-
 /**
  * @brief Fragment for displaying score to user in flash card template's simulator.
  */

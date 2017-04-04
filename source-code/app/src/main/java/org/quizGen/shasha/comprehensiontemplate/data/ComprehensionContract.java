@@ -3,10 +3,6 @@ package org.quizGen.shasha.comprehensiontemplate.data;
 import android.provider.BaseColumns;
 
 /**
- * Created by Anupam (opticod) on 5/6/16.
- */
-
-/**
  * @brief Contains database contracts for comprehension template's simulator.
  */
 

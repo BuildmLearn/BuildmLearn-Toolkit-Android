@@ -29,10 +29,6 @@ import org.quizGen.shasha.comprehensiontemplate.data.ComprehensionDb;
 import java.util.Locale;
 
 /**
- * Created by Anupam (opticod) on 5/6/16.
- */
-
-/**
  * @brief Main Fragment for comprehension template's simulator.
  */
 

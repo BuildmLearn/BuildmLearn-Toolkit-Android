@@ -29,11 +29,6 @@ import org.quizGen.shasha.matchtemplate.data.MatchModel;
 
 import java.util.ArrayList;
 import java.util.Collections;
-
-/**
- * Created by Anupam (opticod) on 24/7/16.
- */
-
 /**
  * @brief Fragment for the users to match column A with column B in match template's simulator.
  */

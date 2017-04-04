@@ -10,9 +10,6 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-/**
- * Created by Anupam (opticod) on 10/8/16.
- */
 
 /**
  * @brief Contains xml data utils for flash card template's simulator.

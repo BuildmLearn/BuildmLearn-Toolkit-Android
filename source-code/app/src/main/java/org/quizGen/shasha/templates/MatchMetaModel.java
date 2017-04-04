@@ -7,7 +7,6 @@ import java.io.Serializable;
 
 /**
  * @brief Model class for Match The Following Meta Template Editor data
- * Created by Anupam (opticod) on 16/7/16.
  */
 public class MatchMetaModel implements Serializable {
 

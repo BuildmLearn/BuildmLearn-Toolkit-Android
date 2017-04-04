@@ -9,7 +9,6 @@ import org.quizGen.shasha.R;
 /**
  * @brief Enum used as model for holding tutorial data.
  * <p/>
- * Created by abhishek on 03/08/15 at 10:53 PM.
  */
 public enum Tutorial {
     START(R.drawable.app_splash_screen_framed, R.string.screen_1_title, R.string.screen_1_desc),

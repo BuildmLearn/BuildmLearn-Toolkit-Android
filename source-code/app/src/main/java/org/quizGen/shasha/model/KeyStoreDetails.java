@@ -3,7 +3,6 @@ package org.quizGen.shasha.model;
 /**
  * @brief Model class for holding the details of keystore file.
  * <p/>
- * Created by abhishek on 11/06/15 at 2:19 PM.
  */
 public class KeyStoreDetails {
 

@@ -25,7 +25,6 @@ import java.util.ArrayList;
 /**
  * @brief Quiz template code implementing methods of TemplateInterface
  * <p/>
- * Created by abhishek on 27/5/15.
  */
 public class QuizTemplate implements TemplateInterface {
 

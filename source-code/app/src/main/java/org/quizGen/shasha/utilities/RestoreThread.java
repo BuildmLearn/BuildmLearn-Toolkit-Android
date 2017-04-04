@@ -1,9 +1,5 @@
 package org.quizGen.shasha.utilities;
 
-/**
- * Created by scopeinfinity on 14/3/16.
- */
-
 
 import android.content.Context;
 

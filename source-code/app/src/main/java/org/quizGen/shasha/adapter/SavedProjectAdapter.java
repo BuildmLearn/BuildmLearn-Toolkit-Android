@@ -17,11 +17,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-/**
- * @brief Adapter used for showing saved projects in a list
- * <p/>
- * Created by Abhishek on 01-06-2015.
- */
+
 public class SavedProjectAdapter extends BaseAdapter {
 
     private final Context mContext;

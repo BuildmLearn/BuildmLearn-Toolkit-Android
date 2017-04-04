@@ -17,10 +17,6 @@ import org.quizGen.shasha.comprehensiontemplate.data.FetchXMLTask;
 import org.quizGen.shasha.views.TextViewPlus;
 
 /**
- * Created by Anupam (opticod) on 5/6/16.
- */
-
-/**
  * @brief Splash intro Fragment for comprehension template's simulator.
  */
 public class SplashFragment extends Fragment {

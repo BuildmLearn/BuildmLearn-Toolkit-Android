@@ -17,11 +17,6 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-/**
- * @brief Adapter used for showing saved APIs in a list
- * <p/>
- * Created by opticod (Anupam Das) on 29/2/16.
- */
 
 public class SavedApiAdapter extends BaseAdapter {
 

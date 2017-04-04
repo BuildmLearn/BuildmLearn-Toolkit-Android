@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <buildmlearn_application type="VideoCollectionTemplate">
     <author>
-        <name>Anupam Das</name>
+        <name>Kumar Shashwat</name>
     </author>
-    <title>Popular Movies App Tutorial</title>
+    <title>Moviebuzz App Tutorial</title>
     <data>
         <item>
             <video_title>Popular Movies Promo Video</video_title>

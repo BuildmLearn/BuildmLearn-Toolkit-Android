@@ -1,10 +1,6 @@
 package org.quizGen.shasha.matchtemplate;
 
 /**
- * Created by Anupam (opticod) on 24/7/16.
- */
-
-/**
  * @brief Constants used in match template's simulator relating databases.
  */
 public class Constants {

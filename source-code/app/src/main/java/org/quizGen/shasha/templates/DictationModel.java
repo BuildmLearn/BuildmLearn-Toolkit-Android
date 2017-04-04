@@ -8,7 +8,6 @@ import java.io.Serializable;
 /**
  * @brief Model class for Dictation Template Editor data
  * <p/>
- * Created by Anupam (opticod) on 4/7/16.
  */
 public class DictationModel implements Serializable {
 

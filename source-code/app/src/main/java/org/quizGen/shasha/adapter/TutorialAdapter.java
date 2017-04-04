@@ -18,11 +18,6 @@ import org.quizGen.shasha.R;
 import org.quizGen.shasha.activity.HomeActivity;
 import org.quizGen.shasha.model.Tutorial;
 
-/**
- * @brief Adapter used for showing tutorial
- * <p/>
- * Created by abhishek on 03/08/15 at 10:52 PM.
- */
 public class TutorialAdapter extends PagerAdapter {
 
     private final Activity mActivity;

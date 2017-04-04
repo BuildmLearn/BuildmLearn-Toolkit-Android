@@ -30,7 +30,6 @@ import javax.xml.transform.stream.StreamResult;
 /**
  * @brief Helper functions related to String manipulation.
  * <p/>
- * Created by Abhishek on 23-05-2015.
  */
 public class FileUtils {
 

@@ -6,10 +6,6 @@ import android.os.Parcelable;
 import java.util.ArrayList;
 
 /**
- * Created by Anupam (opticod) on 11/8/16.
- */
-
-/**
  * @brief Model used to save quiz entries in database for quiz template's simulator.
  */
 public class QuizModel implements Parcelable {

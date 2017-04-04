@@ -6,9 +6,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import org.quizGen.shasha.flashcardtemplate.data.FlashContract.FlashCards;
 
-/**
- * Created by Anupam (opticod) on 10/8/16.
- */
 
 /**
  * @brief DatabaseHelper for flash card template's simulator.

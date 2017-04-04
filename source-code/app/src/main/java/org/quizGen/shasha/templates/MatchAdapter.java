@@ -14,7 +14,6 @@ import java.util.ArrayList;
 /**
  * @brief Adapter for displaying Match Template Editor data.
  * <p/>
- * Created by Anupam (opticod) on 16/7/16.
  */
 class MatchAdapter extends BaseAdapter {
 

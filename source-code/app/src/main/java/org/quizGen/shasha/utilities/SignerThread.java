@@ -63,11 +63,6 @@ import pxb.android.axml.AxmlWriter;
 import pxb.android.axml.NodeVisitor;
 
 /**
- * Created by Abhishek on 10-06-2015.
- * Modified by Anupam (opticod) on 18-05-2016
- */
-
-/**
  * @brief Class for signing a unsigned apk file using a given keystore and credentials.
  */
 public class SignerThread extends Thread {

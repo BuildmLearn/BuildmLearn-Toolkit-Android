@@ -8,7 +8,6 @@ import java.io.Serializable;
 /**
  * @brief Model class for VideoCollection Template Editor data
  * <p/>
- * Created by Anupam (opticod) on 4/5/16.
  */
 public class VideoModel implements Serializable {
 

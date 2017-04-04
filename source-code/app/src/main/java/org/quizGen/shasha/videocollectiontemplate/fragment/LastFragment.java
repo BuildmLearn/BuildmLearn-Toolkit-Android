@@ -15,7 +15,6 @@ import org.quizGen.shasha.R;
 /**
  * @brief Fragment for displaying score to user in video collection template's simulator.
  * <p/>
- * Created by Anupam (opticod) on 21/5/16.
  */
 public class LastFragment extends Fragment {
 

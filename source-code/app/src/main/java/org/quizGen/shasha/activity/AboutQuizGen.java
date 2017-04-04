@@ -12,18 +12,14 @@ import org.quizGen.shasha.R;
 
 import java.util.Locale;
 
-/**
- * @brief Gives brief info about BuildmLearn community and toolkit
- */
-
-public class AboutBuildmLearn extends AppCompatActivity {
+public class AboutQuizGen extends AppCompatActivity {
     /**
      * {@inheritDoc}
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about_buildm_learn);
+        setContentView(R.layout.activity_about_quiz_gen);
 
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

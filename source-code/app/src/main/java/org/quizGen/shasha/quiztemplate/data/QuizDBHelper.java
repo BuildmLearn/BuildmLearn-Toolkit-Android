@@ -7,10 +7,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import org.quizGen.shasha.quiztemplate.data.QuizContract.Questions;
 
 /**
- * Created by Anupam (opticod) on 11/8/16.
- */
-
-/**
  * @brief DatabaseHelper for quiz template's simulator.
  */
 class QuizDBHelper extends SQLiteOpenHelper {

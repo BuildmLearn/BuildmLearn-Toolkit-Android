@@ -16,9 +16,6 @@ import org.quizGen.shasha.learnspelling.data.FetchXMLTask;
 import org.quizGen.shasha.learnspelling.data.SpellDb;
 import org.quizGen.shasha.views.TextViewPlus;
 
-/**
- * Created by Anupam (opticod) on 6/7/16.
- */
 
 /**
  * @brief Splash intro Fragment for spelling template's simulator.

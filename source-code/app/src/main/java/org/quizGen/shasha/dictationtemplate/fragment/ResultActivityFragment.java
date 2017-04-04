@@ -29,9 +29,6 @@ import org.quizGen.shasha.utilities.diff_match_patch;
 import java.util.LinkedList;
 import java.util.Locale;
 
-/**
- * Created by Anupam (opticod) on 10/7/16.
- */
 
 /**
  * @brief Fragment for displaying score to user in dictation template's simulator.

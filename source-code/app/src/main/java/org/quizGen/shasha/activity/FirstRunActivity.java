@@ -19,9 +19,6 @@ import org.quizGen.shasha.constant.Constants;
 import io.fabric.sdk.android.Fabric;
 
 
-/**
- * @brief Shown on application first launch.
- */
 public class FirstRunActivity extends AppCompatActivity {
 
     private static final String FIRST_RUN = "first_run";

@@ -7,7 +7,6 @@ import java.io.Serializable;
 
 /**
  * @brief Model class for Comprehension Meta Template Editor data
- * Created by Anupam (opticod) on 26/5/16.
  */
 public class ComprehensionMetaModel implements Serializable {
 

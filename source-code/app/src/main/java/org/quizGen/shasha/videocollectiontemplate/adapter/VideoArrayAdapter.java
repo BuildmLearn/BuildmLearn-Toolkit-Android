@@ -21,7 +21,6 @@ import org.quizGen.shasha.videocollectiontemplate.Constants;
 /**
  * @brief Adapter for displaying VideoCollection Template Editor data in simulator.
  * <p/>
- * Created by Anupam (opticod) on 12/5/16.
  */
 public class VideoArrayAdapter extends CursorAdapter {
 

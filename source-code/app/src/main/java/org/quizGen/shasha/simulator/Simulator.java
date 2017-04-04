@@ -18,7 +18,7 @@ import org.quizGen.shasha.model.TemplateInterface;
 
 /**
  * @brief This activity acts as a placeholder for Simulator fragment.
- * Contains a Nexus 6 frame in which the fragments are laodded
+ * Contains a Nexus 6 frame in which the fragments are loaded
  */
 public class Simulator extends AppCompatActivity {
 

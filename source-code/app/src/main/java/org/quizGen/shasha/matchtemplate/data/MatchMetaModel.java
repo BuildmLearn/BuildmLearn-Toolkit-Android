@@ -4,11 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- * @brief Model class for Match The Following Meta Template Editor data
- * Created by Anupam (opticod) on 24/7/16.
- */
-
-/**
  * @brief Model used to save match meta entries in database for match template's simulator.
  */
 public class MatchMetaModel implements Parcelable {

@@ -43,10 +43,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 /**
- * Created by scopeinfinity on 10/3/16.
- */
-
-/**
  * @brief Fragment used to save drafts.
  */
 public class DraftsFragment extends Fragment implements AbsListView.OnItemClickListener {

@@ -17,10 +17,6 @@ import org.quizGen.shasha.matchtemplate.data.MatchDb;
 import org.quizGen.shasha.views.TextViewPlus;
 
 /**
- * Created by Anupam (opticod) on 28/7/16.
- */
-
-/**
  * @brief Splash intro Fragment for match template's simulator.
  */
 public class SplashFragment extends Fragment {

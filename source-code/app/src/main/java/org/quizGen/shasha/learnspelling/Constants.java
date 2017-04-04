@@ -1,10 +1,6 @@
 package org.quizGen.shasha.learnspelling;
 
 /**
- * Created by Anupam (opticod) on 31/5/16.
- */
-
-/**
  * @brief Constants used in spell template's simulator relating databases.
  */
 public class Constants {

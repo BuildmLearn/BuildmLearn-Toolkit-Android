@@ -14,10 +14,6 @@ import org.quizGen.shasha.quiztemplate.data.QuizContract.Questions;
 import java.util.Arrays;
 
 /**
- * Created by Anupam (opticod) on 14/8/16.
- */
-
-/**
  * @brief Contains database util functions for quiz template's simulator.
  */
 public class QuizDb {

@@ -19,7 +19,6 @@ import org.quizGen.shasha.views.TextViewPlus;
 /**
  * @brief Splash intro Fragment for video collection template's simulator.
  * <p/>
- * Created by Anupam (opticod) on 21/5/16.
  */
 public class SplashFragment extends Fragment {
 

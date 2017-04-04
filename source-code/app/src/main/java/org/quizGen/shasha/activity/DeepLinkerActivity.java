@@ -20,13 +20,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-/**
- * @brief Activity responsible for handling files opened from file explorer
- * <p/>
- * This activity is started whenever users opens a .buildmlearn file from file explorer.
- * This activity is responsible for getting the template type from the file, and passes the template Id and
- * file path to Template Editor/ activity.
- */
+
 
 public class DeepLinkerActivity extends Activity {
     /**

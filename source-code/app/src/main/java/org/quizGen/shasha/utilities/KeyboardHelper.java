@@ -8,8 +8,6 @@ import android.view.inputmethod.InputMethodManager;
 /**
  * @brief Helper functions used to hide the soft keyboard.
  * <p/>
- * User : opticod(Anupam Das)
- * Date : 24/2/16.
  */
 public class KeyboardHelper {
     public static void hideKeyboard(final Activity activity, View view) {

@@ -51,9 +51,6 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-/**
- * @brief Fragment used for loading existing projects into a list.
- */
 public class LoadProjectFragment extends Fragment implements AbsListView.OnItemClickListener {
 
     private static final String TAG = "Load Project Fragment";

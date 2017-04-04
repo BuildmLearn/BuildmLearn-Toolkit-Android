@@ -19,10 +19,6 @@ import org.quizGen.shasha.quiztemplate.data.QuizDb;
 import java.util.Locale;
 
 /**
- * Created by Anupam (opticod) on 14/8/16.
- */
-
-/**
  * @brief Fragment for displaying score to user in quiz template's simulator.
  */
 public class LastFragment extends Fragment {

@@ -15,7 +15,6 @@ import java.util.Locale;
 /**
  * @brief Adapter for displaying Meta Details of Comprehension Template Editor data.
  * <p/>
- * Created by Anupam (opticod) on 26/5/16.
  */
 class ComprehensionMetaAdapter extends BaseAdapter {
 

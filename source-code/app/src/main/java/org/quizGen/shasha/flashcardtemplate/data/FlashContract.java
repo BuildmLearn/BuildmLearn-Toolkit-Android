@@ -3,10 +3,6 @@ package org.quizGen.shasha.flashcardtemplate.data;
 import android.provider.BaseColumns;
 
 /**
- * Created by Anupam (opticod) on 10/8/16.
- */
-
-/**
  * @brief Contains database contracts for flash card template's simulator.
  */
 class FlashContract {

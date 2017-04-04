@@ -2,9 +2,6 @@ package org.quizGen.shasha.dictationtemplate;
 
 import org.quizGen.shasha.dictationtemplate.data.DictContract;
 
-/**
- * Created by Anupam (opticod) on 10/7/16.
- */
 
 /**
  * @brief Constants used in dictation template's simulator relating databases.

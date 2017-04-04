@@ -11,9 +11,6 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-/**
- * Created by Anupam (opticod) on 14/8/16.
- */
 
 /**
  * @brief Contains xml data utils for quiz template's simulator.

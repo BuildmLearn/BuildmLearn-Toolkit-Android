@@ -4,10 +4,6 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 
 /**
- * Created by anupam on 29/2/16.
- */
-
-/**
  * @brief Model used to hold api entries.
  */
 public class SavedApi {

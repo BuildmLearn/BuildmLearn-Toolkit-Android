@@ -17,10 +17,6 @@ import org.quizGen.shasha.flashcardtemplate.data.FlashDb;
 import org.quizGen.shasha.views.TextViewPlus;
 
 /**
- * Created by Anupam (opticod) on 10/8/16.
- */
-
-/**
  * @brief Splash intro Fragment for flash card template's simulator.
  */
 public class SplashFragment extends Fragment {
