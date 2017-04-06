@@ -20,7 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                card_view:cardBackgroundColor="@color/home_color"
+                card_view:cardBackgroundColor="#607D8B"
                 card_view:cardCornerRadius="@dimen/cardview_default_radius"
                 card_view:cardElevation="@dimen/cardview_default_elevation">
 
@@ -46,13 +46,13 @@
                         <view
                             android:id="@+id/title"
                             style="@style/CardView.Title"
-                            class="org.buildmlearn.toolkit.views.TextViewPlus"
+                            class="org.quizGen.shasha.views.TextViewPlus"
                             android:text="@string/buildmlearn_welcome_title" />
 
 
                         <view
                             style="@style/CardView.Body"
-                            class="org.buildmlearn.toolkit.views.TextViewPlus"
+                            class="org.quizGen.shasha.views.TextViewPlus"
                             android:text="@string/buildmlearn_welcome_text" />
                     </LinearLayout>
 

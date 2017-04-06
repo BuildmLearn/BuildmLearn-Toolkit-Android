@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.buildmlearn.toolkit.activity.FirstRunActivity">
+    tools:context="org.quizGen.shasha.activity.FirstRunActivity">
 
     <ImageView
         android:layout_width="match_parent"
@@ -28,20 +28,20 @@
             android:scaleType="centerCrop"
             android:src="@drawable/logo_70" />
 
-        <org.buildmlearn.toolkit.views.TextViewPlus
+        <org.quizGen.shasha.views.TextViewPlus
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="@string/main_title"
+            android:text="Quiz"
             android:textColor="@color/white_secondary_text"
             android:textSize="@dimen/headline_leading"
             font:customFont="roboto_light.ttf" />
 
-        <org.buildmlearn.toolkit.views.TextViewPlus
+        <org.quizGen.shasha.views.TextViewPlus
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="@string/main_subtitle"
+            android:text="Generator"
             android:textColor="@color/white_secondary_text"
             android:textSize="@dimen/title"
             font:customFont="roboto_light.ttf" />

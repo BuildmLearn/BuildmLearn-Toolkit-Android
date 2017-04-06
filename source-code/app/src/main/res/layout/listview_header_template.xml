@@ -24,7 +24,7 @@
 
             <view
                 style="@style/TextView.Caption"
-                class="org.buildmlearn.toolkit.views.TextViewPlus"
+                class="org.quizGen.shasha.views.TextViewPlus"
                 android:text="@string/label_quiz"
                 android:textColor="@color/color_accent" />
 
@@ -40,7 +40,7 @@
 
             <view
                 style="@style/TextView.Caption"
-                class="org.buildmlearn.toolkit.views.TextViewPlus"
+                class="org.quizGen.shasha.views.TextViewPlus"
                 android:text="@string/label_author"
                 android:textColor="@color/color_accent" />
 

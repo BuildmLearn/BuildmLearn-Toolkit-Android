@@ -54,7 +54,7 @@
                     <view
                         android:id="@+id/flash_item_question"
                         style="@style/TextView.Title.Thin"
-                        class="org.buildmlearn.toolkit.views.TextViewPlus"
+                        class="org.quizGen.shasha.views.TextViewPlus"
                         android:layout_marginLeft="16dp"
                         android:layout_marginStart="16dp"
                         android:paddingBottom="8dp"
@@ -64,7 +64,7 @@
                     <view
                         android:id="@+id/flash_item_answer"
                         style="@style/TextView.Body1"
-                        class="org.buildmlearn.toolkit.views.TextViewPlus"
+                        class="org.quizGen.shasha.views.TextViewPlus"
                         android:layout_marginLeft="16dp"
                         android:layout_marginStart="16dp"
                         android:paddingBottom="4dp" />
@@ -72,7 +72,7 @@
                     <view
                         android:id="@+id/flash_item_hint"
                         style="@style/TextView.Body1"
-                        class="org.buildmlearn.toolkit.views.TextViewPlus"
+                        class="org.quizGen.shasha.views.TextViewPlus"
                         android:layout_marginLeft="16dp"
                         android:layout_marginStart="16dp"
                         android:paddingBottom="8dp" />

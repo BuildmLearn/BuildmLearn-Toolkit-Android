@@ -1,15 +1,16 @@
 <resources>
-    <string name="app_name">BuildmLearn Toolkit</string>
+    <string name="app_name">Quiz Generator</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="menu_load_project">Saved Projects</string>
     <string name="menu_settings">Settings</string>
     <string name="menu_drafts">My Drafts</string>
     <string name="menu_how_to">How to</string>
-    <string name="menu_about_us">About BuildmLearn</string>
+    <string name="menu_about_us">About Quiz Generator</string>
     <string name="menu_home">Home</string>
-    <string name="buildmlearn_welcome_title">Welcome to BuildmLearn Toolkit</string>
+    <string name="buildmlearn_welcome_title">Welcome to Quiz Generator</string>
     <string name="welcome">Welcome</string>
+    <string name="about_text">This application has been developed using the Quiz Generator.\n\nTo know more about Quiz Generator visit <a href="https://github.com/octacode">here</a>.</string>
 
     <!--Snackbar-->
     <string name="snackbar_deleted_message">Item deleted</string>
@@ -17,7 +18,7 @@
     <string name="snackbar_restored_message">Item restored</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="buildmlearn_welcome_text">The BuildmLearn Toolkit is an easy-to-use program that helps users make mobile apps without any knowledge of application development.\n\nThe toolkit helps creating mobile application with various functionality and allows teachers to input their custom content.</string>
+    <string name="buildmlearn_welcome_text">The Quiz Generator is an easy-to-use program that helps users make quiz based android apps without any knowledge of application development.\n\nThe generator helps creating mobile application with various functionality and allows teachers to input their custom content.</string>
     <string name="add_item_help">Click Add button to start adding items</string>
 
     <!-- Draft -->
@@ -61,7 +62,7 @@
     <string name="next_info">NEXT</string>
     <string name="no_saved_projects">No Saved Projects yet</string>
     <string name="exit_info">EXIT</string>
-    <string name="about_text_info">This application has been developed using the BuildmLearn Toolkit.\n\nTo know more about BuildmLearn Toolkit visit <a href="https://buildmlearn.org/">here</a>.</string>
+    <string name="about_text_info">This application has been developed using the Quiz Generator.\n\nTo know more about BuildmLearn Toolkit visit <a href="https://buildmlearn.org/">here</a>.</string>
     <string name="info_thumbnail_info">Info Thumbnail</string>
     <string name="enter_word">Enter a word.</string>
 
@@ -80,7 +81,7 @@
     <string name="next_flash">NEXT</string>
     <string name="exit_flash">EXIT</string>
     <string name="restart_flash">RESTART</string>
-    <string name="buildmlearn_logo_flash">BuildmLearn Logo</string>
+    <string name="buildmlearn_logo_flash">Quiz Generator Logo</string>
     <string name="completed_message_flash">Hurrah! You have completed.\nThat was the last card!</string>
     <string name="previous_flash">PREVIOUS</string>
     <string name="flip_flash">FLIP</string>
@@ -98,7 +99,7 @@
     <string name="next_spell">NEXT</string>
     <string name="exit_spell">EXIT</string>
     <string name="restart_spell">RESTART</string>
-    <string name="buildmlearn_logo_spell">BuildmLearn Logo</string>
+    <string name="buildmlearn_logo_spell">Quiz Generator Logo</string>
     <string name="completed_message_spell">Hurrah! You have completed.</string>
     <string name="spell_it_spell">SPELL IT</string>
     <string name="skip_spell">SKIP</string>
@@ -135,8 +136,8 @@
     <string name="comprehension_previous">PREVIOUS</string>
     <string name="comprehension_next">NEXT</string>
     <string name="comprehension_about_us">About Us</string>
-    <string name="comprehension_about_text">This application has been developed using the BuildmLearn Toolkit.\n\nTo know more about BuildmLearn Toolkit visit <a href="https://buildmlearn.org/">here</a>.</string>
-    <string name="comprehension_buildmlearn_logo">BuildmLearn Logo</string>
+    <string name="comprehension_about_text">This application has been developed using the Quiz Generator.\n\nTo know more about BuildmLearn Toolkit visit <a href="https://buildmlearn.org/">here</a>.</string>
+    <string name="comprehension_buildmlearn_logo">Quiz Generator Logo</string>
     <string name="comprehension_go_to_questions">GO TO QUESTIONS</string>
     <string name="comprehension_passage_title">Passage :</string>
     <string name="comprehension_completed_message">Hurrah! You have completed the Comprehension.</string>
@@ -242,7 +243,7 @@
 
     <string name="project_settings">Project Settings</string>
     <string name="developer_mode">Developer Mode</string>
-    <string name="summary_developer_mode">Developer mode disables publishing of Apk to BuildmLearn Store.</string>
+    <string name="summary_developer_mode">Developer mode disables publishing of Apk to Quiz Generator.</string>
     <string name="title_user_name">Enter your name</string>
 
     <string name="key_delete_temporary_files">delete_temp_files</string>
@@ -258,7 +259,7 @@
     <string name="app_settings">App Settings</string>
     <string name="advance_settings">Advance Settings</string>
 
-    <string name="main_title">BuildmLearn</string>
+    <string name="main_title">Quiz Generator</string>
     <string name="main_subtitle">Toolkit</string>
     <string name="main_name_hint">Your Name!</string>
 
@@ -266,12 +267,12 @@
     <!-- Flash Card Template-->
 
     <!-- Tutorial-->
-    <string name="screen_1_title">Welcome to BuildmLearn Toolkit</string>
-    <string name="screen_1_desc">BuildmLearn Toolkit helps you create mLearning apps without any knowledge about app development.</string>
+    <string name="screen_1_title">Welcome to Quiz Generator</string>
+    <string name="screen_1_desc">Quiz Generator helps you create mLearning apps without any knowledge about app development.</string>
     <string name="title_activity_tutorial">Tutorial Activity</string>
 
     <string name="screen_2_title">Make mLearning Apps</string>
-    <string name="screen_2_desc">Press the big pink button to get started with building app.</string>
+    <string name="screen_2_desc">Press the big pink button to get started with Quiz Generator.</string>
 
     <string name="screen_3_title">Various Templates</string>
     <string name="screen_3_desc">Templates allows creation of various types of apps like info, spelling, quiz, flash, video, comprehension, dictation and match.</string>
@@ -280,7 +281,7 @@
     <string name="screen_4_desc">Toolkit editor allows various operations like save, share projects and APKs, simulate app.</string>
 
     <string name="screen_5_title">Simulator Support</string>
-    <string name="screen_5_desc">BuildmLearn toolkit comes with a Nexus 6 simulator on which you can test app inside toolkit.</string>
+    <string name="screen_5_desc">Quiz Generator comes with a Nexus 6 simulator on which you can test app inside toolkit.</string>
 
     <string name="screen_6_title">Load Saved Projects</string>
     <string name="screen_6_desc">You can open any saved project created using android or desktop toolkit.</string>
@@ -293,13 +294,13 @@
 
 
     <string name="screen_finish">Lets Start</string>
-    <string name="title_activity_about_buildm_learn">About BuildmLearn</string>
+    <string name="title_activity_about_buildm_learn">About Quiz Generator</string>
 
 
     <!-- About BuildmLearn-->
-    <string name="about_para_1">BuildmLearn Toolkit is an easy-to-use program that helps users make mobile apps without any knowledge of application development.</string>
+    <string name="about_para_1">Quiz Generator is an easy-to-use program that helps users make mobile apps without any knowledge of application development.</string>
     <string name="about_para_2">Visit us at http://buildmlearn.org/.</string>
-    <string name="about_para_3">Any feedback or suggestions related to BuildmLearn Toolkit are always welcome. Please write to us at buildmlearn@gmail.com.</string>
+    <string name="about_para_3">Any feedback or suggestions related to Quiz Generator are always welcome. Please write to us at buildmlearn@gmail.com.</string>
     <string name="title_activity_deep_linker">BuildmLearn Tookit</string>
 
     <string name="apk_progress_dialog">Generating Apk</string>
@@ -319,9 +320,9 @@
     <string name="list_empty_video">List is Empty!</string>
     <string name="previous_video">PREVIOUS</string>
     <string name="next_video">NEXT</string>
-    <string name="about_text_video">This application has been developed using the BuildmLearn Toolkit.\n\nTo know more about BuildmLearn Toolkit visit <a href="https://buildmlearn.org/">here</a>.</string>
+    <string name="about_text_video">This application has been developed using the Quiz Generator.\n\nTo know more about BuildmLearn Toolkit visit <a href="https://buildmlearn.org/">here</a>.</string>
     <string name="background_image_video">Background Image</string>
-    <string name="buildmlearn_logo_video">BuildmLearn Logo</string>
+    <string name="buildmlearn_logo_video">Quiz Generator Logo</string>
     <string name="last_video">That was the last Video!</string>
     <string name="video_thumbnail">Video Thumbnail</string>
     <string name="comprehension_add_meta_title">Add Meta Details</string>
@@ -347,7 +348,7 @@
     <string name="list_empty_dict">List is Empty!</string>
     <string name="exit_dict">EXIT</string>
     <string name="about_us_dict">About Us</string>
-    <string name="about_text_dict">This application has been developed using the BuildmLearn Toolkit.\n\nTo know more about BuildmLearn Toolkit visit <a href="https://buildmlearn.org/">here</a>.</string>
+    <string name="about_text_dict">This application has been developed using the Quiz Generator.\n\nTo know more about BuildmLearn Toolkit visit <a href="https://buildmlearn.org/">here</a>.</string>
     <string name="dict_thumbnail">Dict Thumbnail</string>
     <string name="fast_dict">FAST</string>
     <string name="medium_dict">MEDIUM</string>
@@ -386,8 +387,8 @@
     <string name="separator_match">Separator</string>
     <string name="second_list_down_match">Second List Down</string>
     <string name="bottom_sheet_share_project">Share Project</string>
-    <string name="buildmlearn_logo">BuildmLearn Logo</string>
-    <string name="buildmlearn_backdrop_image">BuildmLearn backdrop image</string>
+    <string name="buildmlearn_logo">Quiz Generator Logo</string>
+    <string name="buildmlearn_backdrop_image">Quiz Generator backdrop image</string>
     <string name="upload_image">Upload image</string>
     <string name="flashcard_image">FlashCard image</string>
     <string name="delete_item">Delete item</string>
@@ -419,6 +420,6 @@
     <string name="settings_network_unavailable">Network not available</string>
     <string name="pref_tell_key">tell</string>
     <string name="pref_tell_title">Tell a friend</string>
-    <string name="pref_tell_message">BuildmLearn Toolkit for your phone. Download it from here :</string>
+    <string name="pref_tell_message">Quiz Gen for your phone. Download it from here :</string>
 </resources>
 

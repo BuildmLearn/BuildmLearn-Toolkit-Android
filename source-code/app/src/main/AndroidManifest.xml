@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.buildmlearn.toolkit">
+    package="org.quizGen.shasha">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -12,38 +12,38 @@
         android:required="true" />
 
     <application
-        android:name=".ToolkitApplication"
+        android:name="org.quizGen.shasha.ToolkitApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activity.HomeActivity"
+            android:name="org.quizGen.shasha.activity.HomeActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name"
             android:theme="@style/NoActionBarThemeTransparentStatusBar" />
         <activity
-            android:name=".simulator.Simulator"
+            android:name="org.quizGen.shasha.simulator.Simulator"
             android:label="@string/title_activity_simulator"
             android:screenOrientation="portrait"
             android:theme="@style/Buildmlearn.Simulator" />
         <activity
-            android:name=".activity.TemplateActivity"
+            android:name="org.quizGen.shasha.activity.TemplateActivity"
             android:label="@string/title_activity_template"
-            android:parentActivityName=".activity.HomeActivity"
+            android:parentActivityName="org.quizGen.shasha.activity.HomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="org.buildmlearn.toolkit.activity.HomeActivity" />
+                android:value="org.quizGen.shasha.activity.HomeActivity" />
         </activity>
         <activity
-            android:name=".activity.TemplateEditor"
+            android:name="org.quizGen.shasha.activity.TemplateEditor"
             android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_template_editor"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.FirstRunActivity"
+            android:name="org.quizGen.shasha.activity.FirstRunActivity"
             android:label="@string/app_name"
             android:theme="@style/SplashTheme"
             android:windowSoftInputMode="adjustPan">
@@ -54,20 +54,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.TutorialActivity"
+            android:name="org.quizGen.shasha.activity.TutorialActivity"
             android:label="@string/title_activity_tutorial"
             android:theme="@style/Buildmlearn.FullScreen" />
         <activity
-            android:name=".activity.AboutBuildmLearn"
+            android:name="org.quizGen.shasha.activity.AboutQuizGen"
             android:label="@string/title_activity_about_buildm_learn"
-            android:parentActivityName=".activity.HomeActivity"
+            android:parentActivityName="org.quizGen.shasha.activity.HomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="org.buildmlearn.toolkit.activity.HomeActivity" />
+                android:value="org.quizGen.shasha.activity.HomeActivity" />
         </activity>
         <activity
-            android:name=".activity.DeepLinkerActivity"
+            android:name="org.quizGen.shasha.activity.DeepLinkerActivity"
             android:label="@string/title_activity_deep_linker">
             <intent-filter
                 android:icon="@mipmap/ic_launcher"
@@ -83,7 +83,7 @@
                 <data android:pathPattern=".*\\.buildmlearn" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.SettingsLinkerActivity">
+        <activity android:name="org.quizGen.shasha.activity.SettingsLinkerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -4,7 +4,7 @@
     android:id="@+id/relative_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.buildmlearn.toolkit.activity.TemplateEditor">
+    tools:context="org.quizGen.shasha.activity.TemplateEditor">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -38,7 +38,7 @@
         <view
             android:id="@+id/empty_view_text"
             style="@style/TextView.Empty"
-            class="org.buildmlearn.toolkit.views.TextViewPlus"
+            class="org.quizGen.shasha.views.TextViewPlus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/padding_small"

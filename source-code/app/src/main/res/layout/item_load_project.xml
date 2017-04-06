@@ -14,7 +14,7 @@
         <view
             android:id="@+id/icon"
             style="@style/TextView.CircleIcon"
-            class="org.buildmlearn.toolkit.views.TextViewPlus"
+            class="org.quizGen.shasha.views.TextViewPlus"
             android:layout_gravity="center_vertical" />
 
         <LinearLayout
@@ -28,7 +28,7 @@
             <view
                 android:id="@+id/title"
                 style="@style/TextView.Title.Thin"
-                class="org.buildmlearn.toolkit.views.TextViewPlus"
+                class="org.quizGen.shasha.views.TextViewPlus"
                 android:ellipsize="end"
                 android:paddingTop="16dp"
                 android:singleLine="true" />
@@ -36,7 +36,7 @@
             <view
                 android:id="@+id/subtitle"
                 style="@style/TextView.Body1.Thin"
-                class="org.buildmlearn.toolkit.views.TextViewPlus"
+                class="org.quizGen.shasha.views.TextViewPlus"
                 android:ellipsize="end"
                 android:paddingBottom="16dp"
                 android:paddingTop="8dp"

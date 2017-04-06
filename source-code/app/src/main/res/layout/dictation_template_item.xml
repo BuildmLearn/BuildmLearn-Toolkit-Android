@@ -21,7 +21,7 @@
 
             <view
                 android:id="@+id/dict_title"
-                class="org.buildmlearn.toolkit.views.TextViewPlus"
+                class="org.quizGen.shasha.views.TextViewPlus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lineSpacingMultiplier="1.2"
@@ -32,7 +32,7 @@
 
             <view
                 android:id="@+id/dict_passage"
-                class="org.buildmlearn.toolkit.views.TextViewPlus"
+                class="org.quizGen.shasha.views.TextViewPlus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/dict_title"

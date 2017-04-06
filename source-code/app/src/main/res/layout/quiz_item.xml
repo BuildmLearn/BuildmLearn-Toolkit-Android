@@ -23,7 +23,7 @@
         <view
             android:id="@+id/question"
             style="@style/TextView.Title.Thin"
-            class="org.buildmlearn.toolkit.views.TextViewPlus"
+            class="org.quizGen.shasha.views.TextViewPlus"
             android:layout_marginLeft="16dp"
             android:layout_marginStart="16dp"
             android:paddingBottom="16dp"
@@ -55,25 +55,25 @@
         <view
             android:id="@+id/answer1"
             style="@style/TextView.Body1"
-            class="org.buildmlearn.toolkit.views.TextViewPlus"
+            class="org.quizGen.shasha.views.TextViewPlus"
             android:paddingBottom="8dp" />
 
         <view
             android:id="@+id/answer2"
             style="@style/TextView.Body1"
-            class="org.buildmlearn.toolkit.views.TextViewPlus"
+            class="org.quizGen.shasha.views.TextViewPlus"
             android:paddingBottom="8dp" />
 
         <view
             android:id="@+id/answer3"
             style="@style/TextView.Body1"
-            class="org.buildmlearn.toolkit.views.TextViewPlus"
+            class="org.quizGen.shasha.views.TextViewPlus"
             android:paddingBottom="8dp" />
 
         <view
             android:id="@+id/answer4"
             style="@style/TextView.Body1"
-            class="org.buildmlearn.toolkit.views.TextViewPlus"
+            class="org.quizGen.shasha.views.TextViewPlus"
             android:paddingBottom="8dp" />
 
 

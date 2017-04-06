@@ -27,12 +27,12 @@
             <view
                 android:id="@+id/title"
                 style="@style/CardView.Title"
-                class="org.buildmlearn.toolkit.views.TextViewPlus" />
+                class="org.quizGen.shasha.views.TextViewPlus" />
 
             <view
                 android:id="@+id/description"
                 style="@style/CardView.Body"
-                class="org.buildmlearn.toolkit.views.TextViewPlus" />
+                class="org.quizGen.shasha.views.TextViewPlus" />
         </LinearLayout>
 
         <ImageView
