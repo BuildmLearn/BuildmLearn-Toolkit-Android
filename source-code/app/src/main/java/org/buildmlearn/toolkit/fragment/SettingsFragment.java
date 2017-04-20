@@ -251,7 +251,7 @@ public class SettingsFragment extends PreferenceFragment {
                         processDialog.show();
 
                         InputStream inputStream = getActivity().getContentResolver().openInputStream(data.getData());
-                        RestoreThread restore = new RestoreThread(getActivity(), inputStream);
+                        RestoreThread restore = new RestoreThread(getActivity(), inputStream,processDiaglog);
 
                         restore.setRestoreListener(new RestoreThread.OnRestoreComplete() {
                             Handler mHandler =new Handler(Looper.getMainLooper());
