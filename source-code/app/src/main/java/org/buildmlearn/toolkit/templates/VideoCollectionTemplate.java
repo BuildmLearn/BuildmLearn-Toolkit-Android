@@ -299,6 +299,7 @@ public class VideoCollectionTemplate implements TemplateInterface {
 
                     if (NetworkUtils.isNetworkAvailable(mContext)) {
                         progress = new ProgressDialog(activity);
+                        progress.setMessage("Adding Video to the list");
                         progress.setCancelable(false);
                         progress.show();
                         new VideoInfoTask().execute(convertedLink, linkText, "-1");
