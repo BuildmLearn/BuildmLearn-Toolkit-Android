@@ -40,6 +40,9 @@ public class MainFragment extends Fragment implements NavigationView.OnNavigatio
 
     private View rootView;
     private ComprehensionDb db;
+    private CountDownTimer countDownTimer;
+    private static long millisLeft;
+    private TextView timer;
 
     public static Fragment newInstance() {
         return new MainFragment();
@@ -98,13 +101,14 @@ public class MainFragment extends Fragment implements NavigationView.OnNavigatio
         toolbar.setTitle(title);
         String passage = cursor.getString(Constants.COL_PASSAGE);
         final long time = cursor.getLong(Constants.COL_TIME);
-        final TextView timer = (TextView) rootView.findViewById(R.id.timer);
+        timer = (TextView) rootView.findViewById(R.id.timer);
         assert timer != null;
         timer.setText(String.valueOf(time));
 
-        final CountDownTimer countDownTimer = new CountDownTimer(time * 1000, 1000) {
+         countDownTimer = new CountDownTimer(time * 1000, 1000) {
 
             public void onTick(long millisUntilFinished) {
+                millisLeft = millisUntilFinished;
                 long min = millisUntilFinished / 60000;
                 long sec = millisUntilFinished / 1000 - min * 60;
                 timer.setText(String.format(Locale.getDefault(), "%1$d:%2$02d", min, sec));
@@ -186,4 +190,39 @@ public class MainFragment extends Fragment implements NavigationView.OnNavigatio
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    @Override
+    public void onResume() {
+        if(countDownTimer==null)
+            countDownTimer = new CountDownTimer(millisLeft, 1000) {
+
+                public void onTick(long millisUntilFinished) {
+                    long min = millisUntilFinished / 60000;
+                    long sec = millisUntilFinished / 1000 - min * 60;
+                    timer.setText(String.format(Locale.getDefault(), "%1$d:%2$02d", min, sec));
+                }
+
+                public void onFinish() {
+
+                    Bundle arguments = new Bundle();
+                    arguments.putString(Intent.EXTRA_TEXT, "1");
+
+                    Fragment frag = QuestionFragment.newInstance();
+                    frag.setArguments(arguments);
+                    if(getActivity()!=null) {
+                        getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(((ViewGroup) getView().getParent()).getId(), frag).addToBackStack(null).commit();
+                    }
+                }
+            }.start();
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        countDownTimer.cancel();
+        countDownTimer=null;
+        super.onPause();
+    }
+
 }
