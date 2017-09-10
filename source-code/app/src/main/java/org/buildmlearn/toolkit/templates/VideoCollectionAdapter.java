@@ -36,7 +36,7 @@ abstract class VideoCollectionAdapter extends RecyclerView.Adapter<RecyclerView.
     private final Context mContext;
     private final ArrayList<VideoModel> data;
 
-    protected abstract boolean onLongItemClick(int position, View view);
+    protected abstract boolean onLongItemClick(int position, View view, boolean isLongPress);
     protected abstract String getTitle();
     protected abstract void restoreToolbarColorSchema();
     protected abstract String getAuthorName();
@@ -84,7 +84,13 @@ abstract class VideoCollectionAdapter extends RecyclerView.Adapter<RecyclerView.
             holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    return onLongItemClick(viewHolder.getLayoutPosition(), v);
+                    return onLongItemClick(viewHolder.getLayoutPosition(), v, true);
+                }
+            });
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onLongItemClick(viewHolder.getLayoutPosition(), v, false);
                 }
             });
             VideoModel video = getItem(viewHolder.getLayoutPosition() - 1);

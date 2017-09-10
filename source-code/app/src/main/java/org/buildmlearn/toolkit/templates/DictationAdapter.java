@@ -35,7 +35,7 @@ abstract class DictationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     private final Context mContext;
     private final ArrayList<DictationModel> data;
 
-    protected abstract boolean onLongItemClick(int position, View view);
+    protected abstract boolean onLongItemClick(int position, View view, boolean isLongPress);
     protected abstract String getTitle();
     protected abstract void restoreToolbarColorSchema();
     protected abstract String getAuthorName();
@@ -83,7 +83,13 @@ abstract class DictationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             holder.view.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    return onLongItemClick(viewHolder.getLayoutPosition(), v);
+                    return onLongItemClick(viewHolder.getLayoutPosition(), v,true);
+                }
+            });
+            holder.view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onLongItemClick(viewHolder.getLayoutPosition(), v,false);
                 }
             });
             final DictationModel dictation = getItem(position - 1);

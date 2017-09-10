@@ -58,8 +58,8 @@ public class FlashTemplate implements TemplateInterface {
 
         mAdapter = new FlashCardAdapter(context, mData) {
             @Override
-            public boolean onLongItemClick(int position, View view) {
-                return templateEditorInterface.onItemLongClick(position, view);
+            public boolean onLongItemClick(int position, View view, boolean isLongPress) {
+                return templateEditorInterface.onItemLongClick(position, view, isLongPress);
             }
 
             @Override
@@ -125,8 +125,8 @@ public class FlashTemplate implements TemplateInterface {
         }
         mAdapter = new FlashCardAdapter(context, mData) {
             @Override
-            public boolean onLongItemClick(int position, View view) {
-                return templateEditorInterface.onItemLongClick(position, view);
+            public boolean onLongItemClick(int position, View view, boolean isLongPress) {
+                return templateEditorInterface.onItemLongClick(position, view, isLongPress);
             }
 
             @Override

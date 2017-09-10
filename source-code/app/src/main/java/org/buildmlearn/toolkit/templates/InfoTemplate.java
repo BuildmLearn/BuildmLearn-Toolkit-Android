@@ -58,8 +58,8 @@ public class InfoTemplate implements TemplateInterface {
     public Object newTemplateEditorAdapter(Context context, final TemplateEditorInterface templateEditorInterface) {
         adapter = new InfoAdapter(context, infoData) {
             @Override
-            public boolean onItemClick(int position, View view) {
-                return templateEditorInterface.onItemLongClick(position, view);
+            public boolean onItemClick(int position, View view, boolean isLongPress) {
+                return templateEditorInterface.onItemLongClick(position, view, isLongPress);
             }
 
             @Override
@@ -121,8 +121,8 @@ public class InfoTemplate implements TemplateInterface {
         }
         adapter = new InfoAdapter(context, infoData) {
             @Override
-            public boolean onItemClick(int position, View view) {
-                return templateEditorInterface.onItemLongClick(position, view);
+            public boolean onItemClick(int position, View view, boolean isLongPress) {
+                return templateEditorInterface.onItemLongClick(position, view, isLongPress);
             }
 
             @Override

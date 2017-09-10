@@ -83,8 +83,8 @@ public class ComprehensionTemplate implements TemplateInterface {
     public Object newTemplateEditorAdapter(Context context, final TemplateEditorInterface templateEditorInterface) {
         adapter = new ComprehensionAdapter(context, comprehensionData) {
             @Override
-            public boolean onLongItemClick(int position, View view) {
-                return templateEditorInterface.onItemLongClick(position, view);
+            public boolean onLongItemClick(int position, View view, boolean isLongPress) {
+                return templateEditorInterface.onItemLongClick(position, view, isLongPress);
             }
 
             @Override
@@ -151,8 +151,8 @@ public class ComprehensionTemplate implements TemplateInterface {
         }
         adapter = new ComprehensionAdapter(context, comprehensionData) {
             @Override
-            public boolean onLongItemClick(int position, View view) {
-                return templateEditorInterface.onItemLongClick(position, view);
+            public boolean onLongItemClick(int position, View view, boolean isLongPress) {
+                return templateEditorInterface.onItemLongClick(position, view, isLongPress);
             }
 
             @Override
