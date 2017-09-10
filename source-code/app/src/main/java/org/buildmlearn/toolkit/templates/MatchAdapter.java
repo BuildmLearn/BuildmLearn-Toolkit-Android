@@ -35,7 +35,7 @@ abstract class MatchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private static final int TYPE_ITEM = 1;
     private final ArrayList<MatchModel> matchData;
 
-    protected abstract boolean onLongItemClick(int position, View view);
+    protected abstract boolean onLongItemClick(int position, View view, boolean isLongPress);
 
     protected abstract String getTitle();
 
@@ -90,7 +90,13 @@ abstract class MatchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    return onLongItemClick(viewHolder.getLayoutPosition(), v);
+                    return onLongItemClick(viewHolder.getLayoutPosition(), v, true);
+                }
+            });
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onLongItemClick(viewHolder.getLayoutPosition(), v, false);
                 }
             });
             MatchModel data = getItem(viewHolder.getLayoutPosition() - 1);

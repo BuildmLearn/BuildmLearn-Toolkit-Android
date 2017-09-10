@@ -44,8 +44,8 @@ public class QuizTemplate implements TemplateInterface {
     public QuizAdapter newTemplateEditorAdapter(Context context, final TemplateEditorInterface templateEditorInterface) {
         mAdapter = new QuizAdapter(context, quizData) {
             @Override
-            public boolean onLongItemClick(int position, View view) {
-                return templateEditorInterface.onItemLongClick(position, view);
+            public boolean onLongItemClick(int position, View view, boolean isLongPress) {
+                return templateEditorInterface.onItemLongClick(position, view, isLongPress);
             }
 
             @Override
@@ -113,8 +113,8 @@ public class QuizTemplate implements TemplateInterface {
         }
         mAdapter = new QuizAdapter(context, quizData) {
             @Override
-            public boolean onLongItemClick(int position, View view) {
-                return templateEditorInterface.onItemLongClick(position, view);
+            public boolean onLongItemClick(int position, View view, boolean isLongPress) {
+                return templateEditorInterface.onItemLongClick(position, view, isLongPress);
             }
 
             @Override

@@ -48,7 +48,7 @@ abstract class ComprehensionAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     private final ArrayList<ComprehensionModel> comprehensionData;
     private int expandedPostion = -1;
 
-    protected abstract boolean onLongItemClick(int position, View view);
+    protected abstract boolean onLongItemClick(int position, View view, boolean isLongPress);
 
     protected abstract String getTitle();
 
@@ -91,7 +91,13 @@ abstract class ComprehensionAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             comprehensionAdapterHolder.view.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    return onLongItemClick(viewHolder.getLayoutPosition(), v);
+                    return onLongItemClick(viewHolder.getLayoutPosition(), v, true);
+                }
+            });
+            comprehensionAdapterHolder.view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onLongItemClick(viewHolder.getLayoutPosition(), v, false);
                 }
             });
             ComprehensionModel data = getItem(position - 1);

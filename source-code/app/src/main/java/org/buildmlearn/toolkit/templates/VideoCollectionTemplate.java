@@ -115,8 +115,8 @@ public class VideoCollectionTemplate implements TemplateInterface {
         mContext = context;
         adapter = new VideoCollectionAdapter(context, videoData) {
             @Override
-            public boolean onLongItemClick(int position, View view) {
-                return templateEditorInterface.onItemLongClick(position, view);
+            public boolean onLongItemClick(int position, View view, boolean isLongPress) {
+                return templateEditorInterface.onItemLongClick(position, view, isLongPress);
             }
 
             @Override
@@ -181,8 +181,8 @@ public class VideoCollectionTemplate implements TemplateInterface {
         }
         adapter = new VideoCollectionAdapter(context, videoData) {
             @Override
-            public boolean onLongItemClick(int position, View view) {
-                return templateEditorInterface.onItemLongClick(position, view);
+            public boolean onLongItemClick(int position, View view, boolean isLongPress) {
+                return templateEditorInterface.onItemLongClick(position, view, isLongPress);
             }
 
             @Override

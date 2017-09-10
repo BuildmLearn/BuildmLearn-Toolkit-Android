@@ -12,9 +12,10 @@ public interface TemplateEditorInterface {
      *
      * @param position on which long click is applied
      * @param view     view of the item
+     * @param isLongPress if true select item, else unselect
      * @return onLongClick
      */
-    boolean onItemLongClick(int position, View view);
+    boolean onItemLongClick(int position, View view, boolean isLongPress);
 
     /**
      * Get title of the project

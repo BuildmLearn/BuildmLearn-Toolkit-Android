@@ -58,8 +58,8 @@ public class LearnSpellingTemplate implements TemplateInterface {
     public Object newTemplateEditorAdapter(Context context, final TemplateEditorInterface templateEditorInterface) {
         adapter = new LearnSpellingAdapter(context, mLearnSpellingData) {
             @Override
-            public boolean onLongItemClick(int position, View view) {
-                return templateEditorInterface.onItemLongClick(position, view);
+            public boolean onLongItemClick(int position, View view, boolean isLongPress) {
+                return templateEditorInterface.onItemLongClick(position, view, isLongPress);
             }
 
             @Override
@@ -121,8 +121,8 @@ public class LearnSpellingTemplate implements TemplateInterface {
         }
         adapter = new LearnSpellingAdapter(context, mLearnSpellingData) {
             @Override
-            public boolean onLongItemClick(int position, View view) {
-                return templateEditorInterface.onItemLongClick(position, view);
+            public boolean onLongItemClick(int position, View view, boolean isLongPress) {
+                return templateEditorInterface.onItemLongClick(position, view, isLongPress);
             }
 
             @Override
