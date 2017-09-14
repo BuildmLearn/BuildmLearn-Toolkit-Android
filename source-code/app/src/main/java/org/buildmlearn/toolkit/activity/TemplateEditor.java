@@ -102,6 +102,7 @@ public class TemplateEditor extends AppCompatActivity implements TemplateEditorI
     private TemplateEditorInterface templateEditorInterface;
     private String authorName, title;
     private BaseAdapter metaAdapter;
+    private Boolean saved;
 
 
     public void openBottomSheet(View v) {
@@ -325,6 +326,7 @@ public class TemplateEditor extends AppCompatActivity implements TemplateEditorI
         KeyboardHelper.hideKeyboard(this, findViewById(R.id.empty));
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         toolkit = (ToolkitApplication) getApplicationContext();
+        saved = false;
         templateId = getIntent().getIntExtra(Constants.TEMPLATE_ID, -1);
         if (templateId == -1) {
             Toast.makeText(this, "Invalid template ID, closing Template Editor activity", Toast.LENGTH_LONG).show();
@@ -822,12 +824,22 @@ public class TemplateEditor extends AppCompatActivity implements TemplateEditorI
     public void onBackPressed() {
         if (selectedView == null) {
             super.onBackPressed();
-            if (saveDraft() != null)
+            if (saveDraft() != null){
                 Toast.makeText(getApplicationContext(), "Saved in Draft!", Toast.LENGTH_SHORT).show();
+                saved = true;
+            }
         } else {
             restoreColorSchema();
         }
 
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if(!saved){
+            saveDraft();
+        }
     }
 
     /**
