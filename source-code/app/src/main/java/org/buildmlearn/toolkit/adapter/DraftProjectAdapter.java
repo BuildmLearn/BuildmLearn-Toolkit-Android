@@ -2,6 +2,7 @@ package org.buildmlearn.toolkit.adapter;
 
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -117,7 +118,25 @@ public class DraftProjectAdapter extends BaseAdapter {
         SavedProject projectData = getItem(position);
         holder.draftSubtitle.setText(String.format(Locale.ENGLISH, "Last Modified: %s", projectData.getTime()));
         holder.draftTitle.setText(String.format(Locale.ENGLISH, "Drafted on %s", projectData.getDate()));
-        holder.draftIcon.setText("D");
+
+
+        if("InfoTemplate".equals(projectData.getType()))
+            holder.draftIcon.setText("I");
+        else if("SpellingTemplate".equals(projectData.getType()))
+            holder.draftIcon.setText("S");
+        else if("QuizTemplate".equals(projectData.getType()))
+            holder.draftIcon.setText("Q");
+        else if("FlashCardsTemplate".equals(projectData.getType()))
+            holder.draftIcon.setText("F");
+        else if("VideoCollectionTemplate".equals(projectData.getType()))
+            holder.draftIcon.setText("V");
+        else if("ComprehensionTemplate".equals(projectData.getType()))
+            holder.draftIcon.setText("C");
+        else if("DictationTemplate".equals(projectData.getType()))
+            holder.draftIcon.setText("D");
+        else if("MatchTemplate".equals(projectData.getType()))
+            holder.draftIcon.setText("M");
+
         convertView.setTag(holder);
         if (projectData.isSelected())
         {
