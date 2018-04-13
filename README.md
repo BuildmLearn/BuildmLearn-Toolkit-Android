@@ -7,18 +7,34 @@ This repository contains the Android version of the [BuildmLearn Toolkit](https:
 [Toolkit-mobile-templates](https://github.com/BuildmLearn/Toolkit-mobile-templates) contains the template applications of the toolkit.
 
 # Application Screenshots
-<img src="https://cloud.githubusercontent.com/assets/13872065/20721460/d83d3c9a-b688-11e6-891d-1f28092de314.jpeg"  width="250" height="400" />
-<img src="https://cloud.githubusercontent.com/assets/13872065/20721466/d8c038fc-b688-11e6-9b9e-1394c6dedc74.jpeg"  width="200" height="400" />
-<img src="https://cloud.githubusercontent.com/assets/13872065/20721462/d87f6d7c-b688-11e6-82e1-f3faa596d5d0.jpeg"  width="200" height="400" />
-<img src="https://cloud.githubusercontent.com/assets/13872065/20721464/d8b36672-b688-11e6-897c-8a0c849dbeb0.jpeg"  width="200" height="400" />
-<img src="https://cloud.githubusercontent.com/assets/13872065/20722851/3542f4de-b68e-11e6-8079-aaa35d5b9943.gif"  width="250" height="400" />
-<img src="https://cloud.githubusercontent.com/assets/13872065/20722869/427b28ce-b68e-11e6-9885-48147e87b531.jpeg"  width="200" height="400" />
-<img src="https://cloud.githubusercontent.com/assets/13872065/20722870/42803256-b68e-11e6-966b-2ea24db13a60.jpeg"  width="200" height="400" />
-<img src="https://cloud.githubusercontent.com/assets/13872065/20722871/428db1e2-b68e-11e6-97cf-5adab6ff0a63.jpeg"  width="200" height="400" />
-<img src="https://cloud.githubusercontent.com/assets/13872065/20724136/10f7366c-b693-11e6-8c53-a69707f2f9c8.jpeg"  width="250" height="400" />
-<img src="https://cloud.githubusercontent.com/assets/13872065/20724137/1133c4e2-b693-11e6-9d83-61dc7676f426.jpeg"  width="200" height="400" />
-<img src="https://cloud.githubusercontent.com/assets/13872065/20724129/0cd258a0-b693-11e6-90f3-66e88aeec244.gif"  width="200" height="400" />
-<img src="https://cloud.githubusercontent.com/assets/13872065/20724248/83706d30-b693-11e6-8c17-acd711ec11f7.gif"  width="200" height="400" />
+<table>
+  <tr>
+<td><img src="https://cloud.githubusercontent.com/assets/13872065/20721460/d83d3c9a-b688-11e6-891d-1f28092de314.jpeg"  width="250" height="400" /></td>
+<td><img src="https://cloud.githubusercontent.com/assets/13872065/20721466/d8c038fc-b688-11e6-9b9e-1394c6dedc74.jpeg"  width="250" height="400" /></td>
+<td><img src="https://cloud.githubusercontent.com/assets/13872065/20721462/d87f6d7c-b688-11e6-82e1-f3faa596d5d0.jpeg"  width="250" height="400" /></td>
+    </tr>
+  </table>
+  <table>
+  <tr>
+<td><img src="https://cloud.githubusercontent.com/assets/13872065/20721464/d8b36672-b688-11e6-897c-8a0c849dbeb0.jpeg"  width="250" height="400" /></td>
+<td><img src="https://cloud.githubusercontent.com/assets/13872065/20722851/3542f4de-b68e-11e6-8079-aaa35d5b9943.gif"  width="250" height="400" /></td>
+<td><img src="https://cloud.githubusercontent.com/assets/13872065/20722869/427b28ce-b68e-11e6-9885-48147e87b531.jpeg"  width="250" height="400" /></td>
+  </tr>
+    </table>
+    <table>
+  <tr>
+<td><img src="https://cloud.githubusercontent.com/assets/13872065/20722870/42803256-b68e-11e6-966b-2ea24db13a60.jpeg"  width="250" height="400" /></td>
+<td><img src="https://cloud.githubusercontent.com/assets/13872065/20722871/428db1e2-b68e-11e6-97cf-5adab6ff0a63.jpeg"  width="250" height="400" /></td>
+<td><img src="https://cloud.githubusercontent.com/assets/13872065/20724136/10f7366c-b693-11e6-8c53-a69707f2f9c8.jpeg"  width="250" height="400" /></td>
+  </tr>
+  </table>
+  <table>
+  <tr>
+<td><img src="https://cloud.githubusercontent.com/assets/13872065/20724137/1133c4e2-b693-11e6-9d83-61dc7676f426.jpeg"  width="250" height="400" /></td>
+<td><img src="https://cloud.githubusercontent.com/assets/13872065/20724129/0cd258a0-b693-11e6-90f3-66e88aeec244.gif"  width="250" height="400" /></td>
+<td><img src="https://cloud.githubusercontent.com/assets/13872065/20724248/83706d30-b693-11e6-8c17-acd711ec11f7.gif"  width="250" height="400" /></td>
+  </tr>
+  </table>
 
 # Development Setup
 1. Go to the project repo and click the `Fork` button
