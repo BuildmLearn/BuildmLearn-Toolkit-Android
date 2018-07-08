@@ -1,6 +1,7 @@
 package org.buildmlearn.toolkit.simulator;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -25,6 +26,7 @@ public class Simulator extends AppCompatActivity {
     private static final String TAG = "SIMULATOR";
     private int templateId;
     private TemplateInterface selectedTemplate;
+    private boolean isBackPressed = false;
 
     /**
      * {@inheritDoc}
@@ -117,20 +119,31 @@ public class Simulator extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-
-        int count = getSupportFragmentManager().getBackStackEntryCount();
-        if (count == 1) {
-            finish();
-        }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer != null) {
-            if (drawer.isDrawerOpen(GravityCompat.START)) {
-                drawer.closeDrawer(GravityCompat.START);
-            } else {
+        if (drawer != null && drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            int count = getSupportFragmentManager().getBackStackEntryCount();
+            if (count <= 1) {
+                if (isBackPressed){
+                    finish();
+                    super.onBackPressed();
+                }
+                else{
+                    Toast.makeText(this, "Tap back once more to exit.", Toast.LENGTH_SHORT).show();
+                    isBackPressed=true;
+                    new Handler().postDelayed(new Runnable()
+                {
+                    @Override
+                    public void run()
+                    {
+                        isBackPressed= false;
+                    }
+                }, 3000);
+                }}
+            else {
                 super.onBackPressed();
             }
-        } else {
-            super.onBackPressed();
         }
     }
 
