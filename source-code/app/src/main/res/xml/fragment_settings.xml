@@ -6,10 +6,12 @@
 
         <Preference
             android:key="@string/key_user_name"
+            android:icon="@drawable/ic_account_circle_black_24dp"
             android:title="@string/your_name" />
 
         <Preference
             android:key="@string/key_delete_temporary_files"
+            android:icon="@drawable/ic_delete_black_24dp"
             android:summary="@string/summary_temp_files"
             android:title="@string/delete_temp_files" />
 
@@ -19,6 +21,7 @@
 
         <Preference
             android:key="@string/key_restore_project"
+            android:icon="@drawable/ic_input_black_24dp"
             android:summary="@string/summary_restore_project"
             android:title="@string/restore_project" />
 
@@ -32,6 +35,7 @@
     <PreferenceScreen
         android:key="@string/pref_rate_key"
         android:title="@string/pref_rate_title"
+        android:icon="@drawable/ic_star_black_24dp"
         android:summary="@string/pref_rate_summary"/>
 
     <PreferenceScreen
