@@ -32,11 +32,11 @@ public class AboutBuildmLearn extends AppCompatActivity {
             pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
             String version = pInfo.versionName;
             assert findViewById(R.id.app_version) != null;
-            ((TextView) findViewById(R.id.app_version)).setText(String.format(Locale.ENGLISH, "Version: %s", version));
+            ((TextView) findViewById(R.id.app_version)).setText(String.format(Locale.ENGLISH, getString(R.string.version)+"%s", version));
         } catch (PackageManager.NameNotFoundException e) {
             assert findViewById(R.id.app_version) != null;
             assert ( findViewById(R.id.app_version)) != null;
-            ((TextView) findViewById(R.id.app_version)).setText("Version: 1.0");
+            ((TextView) findViewById(R.id.app_version)).setText(getString(R.string.version)+"1.0");
             e.printStackTrace();
         }
 

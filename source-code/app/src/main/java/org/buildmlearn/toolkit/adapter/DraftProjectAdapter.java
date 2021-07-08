@@ -115,8 +115,8 @@ public class DraftProjectAdapter extends BaseAdapter {
         }
 
         SavedProject projectData = getItem(position);
-        holder.draftSubtitle.setText(String.format(Locale.ENGLISH, "Last Modified: %s", projectData.getTime()));
-        holder.draftTitle.setText(String.format(Locale.ENGLISH, "Drafted on %s", projectData.getDate()));
+        holder.draftSubtitle.setText(String.format(Locale.ENGLISH, mContext.getString(R.string.last_mod)+"%s", projectData.getTime()));
+        holder.draftTitle.setText(String.format(Locale.ENGLISH, mContext.getString(R.string.drafted_on)+"%s", projectData.getDate()));
         holder.draftIcon.setText("D");
         convertView.setTag(holder);
         if (projectData.isSelected())

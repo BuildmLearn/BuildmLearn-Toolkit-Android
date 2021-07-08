@@ -83,7 +83,7 @@ public class MainFragment extends Fragment
                                 new AlertDialog.Builder(getActivity());
                         builder.setTitle(String.format("%1$s", getString(R.string.comprehension_about_us)));
                         builder.setMessage(getResources().getText(R.string.comprehension_about_text));
-                        builder.setPositiveButton("OK", null);
+                        builder.setPositiveButton(getString(R.string.info_template_ok), null);
                         AlertDialog welcomeAlert = builder.create();
                         welcomeAlert.show();
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
@@ -154,9 +154,11 @@ public class MainFragment extends Fragment
         mSbSpeechRate = (SeekBar) rootView.findViewById(R.id.seek_bar);
         TextView mTvWordNumber = (TextView) rootView.findViewById(R.id.intro_number);
 
-        mBtnSpell.setEnabled(false);
-        mBtnSkip.setEnabled(false);
-        mTvWordNumber.setText(String.format(Locale.ENGLISH, "Word #%d of %d", Integer.parseInt(spellId), numQues));
+
+        mBtn_Spell.setEnabled(false);
+        mBtn_Skip.setEnabled(false);
+        mTv_WordNumber.setText(String.format(Locale.ENGLISH, getString(R.string.learn_spell_word)+"#%d of %d", Integer.parseInt(spellId), numQues));
+
 
         Cursor spellCursor = db.getSpellingCursorById(Integer.parseInt(spellId));
         spellCursor.moveToFirst();
@@ -210,7 +212,7 @@ public class MainFragment extends Fragment
 
                 progress = new ProgressDialog(mContext);
                 progress.setCancelable(false);
-                progress.setMessage("Loading TTS Engine...");
+                progress.setMessage(getString(R.string.loading_tts));
                 progress.show();
 
 
@@ -265,7 +267,7 @@ public class MainFragment extends Fragment
     private void submit(String spell) {
         String input = mEtSpelling.getText().toString().trim();
         if (input.length() == 0) {
-            Toast.makeText(mContext, "Please enter the spelling",
+            Toast.makeText(mContext, getString(R.string.learn_spell_enter_spell),
                     Toast.LENGTH_SHORT).show();
 
         } else {
@@ -319,10 +321,10 @@ public class MainFragment extends Fragment
                     int result = tts.setLanguage(Locale.US);
                     if (result == TextToSpeech.LANG_MISSING_DATA
                             || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                        Toast.makeText(mContext, "US English is not supported. Playing in device's default installed language.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, getString(R.string.tts_lang_not_supported), Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(mContext, "Initialization Failed!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, getString(R.string.tts_failed), Toast.LENGTH_SHORT).show();
                 }
             }
         });

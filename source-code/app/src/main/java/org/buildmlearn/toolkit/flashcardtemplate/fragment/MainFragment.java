@@ -77,7 +77,7 @@ public class MainFragment extends Fragment implements NavigationView.OnNavigatio
                                 new AlertDialog.Builder(getActivity());
                         builder.setTitle(String.format("%1$s", getString(R.string.comprehension_about_us)));
                         builder.setMessage(getResources().getText(R.string.comprehension_about_text));
-                        builder.setPositiveButton("OK", null);
+                        builder.setPositiveButton(getString(R.string.info_template_ok), null);
                         AlertDialog welcomeAlert = builder.create();
                         welcomeAlert.show();
                         assert welcomeAlert.findViewById(android.R.id.message) != null;
@@ -150,11 +150,11 @@ public class MainFragment extends Fragment implements NavigationView.OnNavigatio
         String base64 = flashCursor.getString(Constants.COL_BASE64);
 
         assert rootView.findViewById(R.id.intro_number) != null;
-        ((TextView) rootView.findViewById(R.id.intro_number)).setText(String.format(Locale.ENGLISH, "Card #%d of %d", Integer.parseInt(FlashId), numFlash));
+        ((TextView) rootView.findViewById(R.id.intro_number)).setText(String.format(Locale.ENGLISH, getString(R.string.card)+"#%d of %d", Integer.parseInt(FlashId), numFlash));
         assert rootView.findViewById(R.id.question) != null;
         ((TextView) rootView.findViewById(R.id.question)).setText(question);
         assert rootView.findViewById(R.id.hint) != null;
-        ((TextView) rootView.findViewById(R.id.hint)).setText(String.format(Locale.ENGLISH, "Hint : %s", hint));
+        ((TextView) rootView.findViewById(R.id.hint)).setText(String.format(Locale.ENGLISH, getString(R.string.hint)+"%s", hint));
 
         Button prv = (Button) rootView.findViewById(R.id.previous);
         Button flip = (Button) rootView.findViewById(R.id.flip);

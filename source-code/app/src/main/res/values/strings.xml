@@ -395,6 +395,7 @@
     <string name="enter_second_list_item_match">Enter Second List Item</string>
     <string name="match_dialog_edit_title">Edit two matching topics below</string>
     <string name="meta_title">Title</string>
+    <string name="match_score">Score : </string>
     <string name="meta_title_match_hint">Enter Title</string>
 
 
@@ -427,6 +428,7 @@
     <string name="valid_before_answer">Enter a valid option before marking it as answer.</string>
     <string name="enter_title">Enter a title.</string>
     <string name="apk_file_saved">APK file saved in Downloads folder</string>
+    <string name="apk_saved_at">APK saved at </string>
     <string name="apk_generated">APK Generated</string>
     <string name="apk_not_generated">APK file not generated</string>
     <string name="sd_card_notfound">SD card not found. APK file saved in internal storage.</string>
@@ -436,6 +438,14 @@
     <string name="enter_valid_option">Enter a valid option before marking it as answer.</string>
     <string name="LongPress_toedit">Long press to edit this item</string>
     <string name="question">Question %1$d</string>
+    <string name="invalid_template_id">Invalid template ID, closing Template Editor activity</string>
+    <string name="author_name_error">Author name is required</string>
+    <string name="no_data">Unable to perform action: No Data</string>
+    <string name="no_data_add_meta">Unable to perform action: Add Meta Details</string>
+    <string name="project_saved">Project successfully saved</string>
+    <string name="file_already">File Already exists</string>
+    <string name="saved_in_drafts">Saved in Draft!</string>
+    <string name="temp_already">Template Already exists</string>
 
     <string name="enter">Enter name</string>
     <string name="name_valid_msg">Name must start with alphanumeric character</string>
@@ -445,6 +455,29 @@
     <string name="title_valid">Title must start with alphanumeric</string>
     <string name="valid_msg_name">Enter valid name</string>
     <string name="same_options">Two or more options are same.</string>
+    <string name="learn_spell_total_correct">Total Correct : </string>
+    <string name="learn_spell_total_wrong">Total Wrong : </string>
+    <string name="learn_spell_total_unanswered">Total Unanswered : </string>
+    <string name="learn_spell_word">Word </string>
+    <string name="loading_tts">Loading TTS Engine…</string>
+    <string name="tts_lang_not_supported">US English is not supported. Playing in device\'s default installed language.</string>
+    <string name="tts_failed">Initialization Failed!</string>
+    <string name="learn_spell_enter_spell">Please enter the spelling</string>
+    <string name="project_invalid">Invalid project file</string>
+    <string name="project_deleted"> Project Successfully Deleted</string>
+    <string name="project_deletion_failed">Project Deletion Failed</string>
+    <string name="ask_apk_name">Enter Apk name</string>
+    <string name="deleting">Deleting…</string>
+    <string name="no_temp_files">No Temp Files Found!</string>
+    <string name="deleted">Deleted </string>
+    <string name="card">Card </string>
+    <string name="hint">Hint : </string>
+    <string name="dict_toolbar_title">List of Passages :</string>
+    <string name="question_no">Question No : </string>
+    <string name="last_mod">Last Modified: </string>
+    <string name="drafted_on">Drafted on </string>
+    <string name="version">Version: </string>
+    <string name="build_fail">Build unsuccessful</string>
 
     <string name="time_zero_error">Time can\'t be zero</string>
     <string name="pref_rate_title">Rate Toolkit</string>
